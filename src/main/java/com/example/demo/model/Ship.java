@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-import com.example.demo.model.enums.NavigationEquipment;
 import com.example.demo.model.enums.ShipType;
 
 import java.util.ArrayList;
@@ -12,13 +11,13 @@ public class Ship extends Offer {
     private Integer numberOfEngines;
     private Integer powerOfEngine;
     private Integer maxSpeed;
-    private NavigationEquipment navigationEquipment;
+    private List<NavigationEquipment> navigationEquipmentList;
     private List<String> images;
     private Integer capacity;
     private String cancellationConditions;
     private ShipOwner owner;
     private List<FastReservation> fastReservations = new ArrayList<>();
-    private List<FishingEquipment> fishingEquipments = new ArrayList<>();
+    private List<FishingEquipment> fishingEquipmentList = new ArrayList<>();
 
     public Ship() {
         super();
@@ -64,12 +63,12 @@ public class Ship extends Offer {
         this.maxSpeed = maxSpeed;
     }
 
-    public NavigationEquipment getNavigationEquipment() {
-        return navigationEquipment;
+    public List<NavigationEquipment> getNavigationEquipmentList() {
+        return navigationEquipmentList;
     }
 
-    public void setNavigationEquipment(NavigationEquipment navigationEquipment) {
-        this.navigationEquipment = navigationEquipment;
+    public void setNavigationEquipmentList(List<NavigationEquipment> navigationEquipmentList) {
+        this.navigationEquipmentList = navigationEquipmentList;
     }
 
     public List<String> getImages() {
@@ -112,11 +111,11 @@ public class Ship extends Offer {
         this.fastReservations = fastReservations;
     }
 
-    public List<FishingEquipment> getFishingEquipments() {
-        return fishingEquipments;
+    public List<FishingEquipment> getFishingEquipmentList() {
+        return fishingEquipmentList;
     }
 
-    public void setFishingEquipments(List<FishingEquipment> fishingEquipments) {
-        this.fishingEquipments = fishingEquipments;
+    public void setFishingEquipmentList(List<FishingEquipment> fishingEquipmentList) {
+        this.fishingEquipmentList = fishingEquipmentList;
     }
 }

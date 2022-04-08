@@ -10,7 +10,7 @@ public abstract class Offer {
     protected PriceList priceList;
     protected List<String> rules = new ArrayList<>();
     protected String additionalInfo;
-    protected Availability availability;
+    protected List<Availability> availabilities;
     protected List<Client> subscribers = new ArrayList<>();
     protected List<Reservation> reservations = new ArrayList<>();
 
@@ -65,12 +65,12 @@ public abstract class Offer {
         this.additionalInfo = additionalInfo;
     }
 
-    public Availability getAvailability() {
-        return availability;
+    public List<Availability> getAvailabilities() {
+        return availabilities;
     }
 
-    public void setAvailability(Availability availability) {
-        this.availability = availability;
+    public void setAvailabilities(List<Availability> availabilities) {
+        this.availabilities = availabilities;
     }
 
     public List<Client> getSubscribers() {
