@@ -1,11 +1,20 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Cottage extends Offer {
+
+    @OneToMany(mappedBy = "cottage", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Room> rooms = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cottage_owner_id")
     private CottageOwner owner;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<FastReservation> fastReservations = new ArrayList<>();
 
     public Cottage() {

@@ -1,13 +1,26 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Adventure extends Offer {
+
+    @Column
     private Integer maxPeople;
-    private List<String> images = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Image> images = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "fishing_instructor_id")
     private FishingInstructor instructor;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<FishingEquipment> fishingEquipments = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<FastAdventureReservation> fastAdventureReservations = new ArrayList<>();
 
     public Adventure() {
@@ -22,11 +35,11 @@ public class Adventure extends Offer {
         this.maxPeople = maxPeople;
     }
 
-    public List<String> getImages() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setImages(List<String> images) {
+    public void setImages(List<Image> images) {
         this.images = images;
     }
 

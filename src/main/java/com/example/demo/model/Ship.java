@@ -2,21 +2,48 @@ package com.example.demo.model;
 
 import com.example.demo.model.enums.ShipType;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Ship extends Offer {
+
+    @Enumerated(EnumType.STRING)
     private ShipType shipType;
+
+    @Column(name = "shipLength")
     private Double length;
+
+    @Column
     private Integer numberOfEngines;
+
+    @Column
     private Integer powerOfEngine;
+
+    @Column
     private Integer maxSpeed;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<NavigationEquipment> navigationEquipmentList;
-    private List<String> images;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Image> images;
+
+    @Column
     private Integer capacity;
+
+    @Column
     private String cancellationConditions;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ship_owner_id")
     private ShipOwner owner;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<FastReservation> fastReservations = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<FishingEquipment> fishingEquipmentList = new ArrayList<>();
 
     public Ship() {
@@ -71,11 +98,11 @@ public class Ship extends Offer {
         this.navigationEquipmentList = navigationEquipmentList;
     }
 
-    public List<String> getImages() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setImages(List<String> images) {
+    public void setImages(List<Image> images) {
         this.images = images;
     }
 

@@ -1,9 +1,15 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Entity
+@DiscriminatorValue("ADV")
 public class FastAdventureReservation extends FastReservation {
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_id")
     private Address place;
 
     public FastAdventureReservation() {

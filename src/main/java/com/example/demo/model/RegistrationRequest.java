@@ -3,14 +3,30 @@ package com.example.demo.model;
 import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.model.enums.RegistrationType;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class RegistrationRequest {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(nullable = false)
     private LocalDateTime dateTime;
+
+    @OneToOne
     private ProfileData profileData;
+
+    @Column
     private String reason;
+
+    @Enumerated(EnumType.STRING)
+    private AdminApprovalStatus approvalStatus;
+
+    @Enumerated(EnumType.STRING)
     private RegistrationType registrationType;
-    private AdminApprovalStatus status;
 
     public RegistrationRequest() {
     }
@@ -20,7 +36,14 @@ public class RegistrationRequest {
         this.profileData = profileData;
         this.reason = reason;
         this.registrationType = registrationType;
-        this.status = AdminApprovalStatus.PENDING;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public LocalDateTime getDateTime() {
@@ -55,11 +78,11 @@ public class RegistrationRequest {
         this.registrationType = registrationType;
     }
 
-    public AdminApprovalStatus getStatus() {
-        return status;
+    public AdminApprovalStatus getApprovalStatus() {
+        return approvalStatus;
     }
 
-    public void setStatus(AdminApprovalStatus status) {
-        this.status = status;
+    public void setApprovalStatus(AdminApprovalStatus approvalStatus) {
+        this.approvalStatus = approvalStatus;
     }
 }

@@ -1,20 +1,54 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Offer {
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Offer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column
     protected String name;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_id")
     protected Address address;
+
+    @Column
     protected String description;
+
+    @OneToOne
     protected PriceList priceList;
-    protected List<String> rules = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    protected List<Rule> rules = new ArrayList<>();
+
+    @Column
     protected String additionalInfo;
+
+    @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     protected List<Availability> availabilities;
+
+    @ManyToMany(mappedBy = "subscriptions")
     protected List<Client> subscribers = new ArrayList<>();
+
+    @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     protected List<Reservation> reservations = new ArrayList<>();
 
     public Offer() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -49,11 +83,11 @@ public abstract class Offer {
         this.priceList = priceList;
     }
 
-    public List<String> getRules() {
+    public List<Rule> getRules() {
         return rules;
     }
 
-    public void setRules(List<String> rules) {
+    public void setRules(List<Rule> rules) {
         this.rules = rules;
     }
 

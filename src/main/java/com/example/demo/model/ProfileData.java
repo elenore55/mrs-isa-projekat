@@ -1,11 +1,31 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
+
+@Entity
 public class ProfileData {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String surname;
+
+    @Column(name = "phoneNumber", nullable = false)
     private String phoneNumber;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_id")
     private Address address;
 
     public ProfileData() {
@@ -18,6 +38,14 @@ public class ProfileData {
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.address = address;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getEmail() {

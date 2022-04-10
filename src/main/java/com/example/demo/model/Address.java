@@ -1,8 +1,21 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Address {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "street", nullable = false)
     private String street;
+
+    @Column(name = "city", nullable = false)
     private String city;
+
+    @Column(name = "country")
     private String country;
 
     public Address() {
@@ -12,6 +25,14 @@ public class Address {
         this.street = street;
         this.city = city;
         this.country = country;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getStreet() {

@@ -1,6 +1,12 @@
 package com.example.demo.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class Admin extends User {
+
+    @Column
     private Boolean isMain;
 
     public Admin() {

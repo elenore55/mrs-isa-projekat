@@ -1,17 +1,50 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Coefficients {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column
     private Integer requiredPointsSilver;
+
+    @Column
     private Integer requiredPointsGold;
+
+    @Column
     private Integer userReservationPoints;
+
+    @Column
     private Integer ownerReservationPoints;
+
+    @Column
     private Double percentageClientSilver;
+
+    @Column
     private Double percentageClientGold;
+
+    @Column
     private Double percentageOwnerSilver;
+
+    @Column
     private Double percentageOwnerGold;
+
+    @Column
     private Double reservationPercentage;
 
     public Coefficients() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getRequiredPointsSilver() {

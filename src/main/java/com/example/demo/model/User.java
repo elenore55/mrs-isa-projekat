@@ -2,18 +2,43 @@ package com.example.demo.model;
 
 import com.example.demo.model.enums.Category;
 
-public abstract class User {
-    private ProfileData profileData;
-    private Integer numberOfPoints;
-    private Category category;
+import javax.persistence.*;
+
+import static javax.persistence.InheritanceType.JOINED;
+
+@Entity
+@Table(name = "my_users")
+@Inheritance(strategy = JOINED)
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column
+    protected Integer numberOfPoints;
+
+    @Enumerated(EnumType.STRING)
+    protected Category category;
+
+    @OneToOne
+    protected ProfileData profileData;
 
     public User() {
     }
 
     public User(String email, String password, String name, String surname, String phoneNumber, Address address) {
-        this.profileData = new ProfileData(email, password, name, surname, phoneNumber, address);
+        // this.profileData = new ProfileData(email, password, name, surname, phoneNumber, address);
         this.numberOfPoints = 0;
         this.category = Category.REGULAR;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getEmail() {

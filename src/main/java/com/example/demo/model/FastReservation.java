@@ -1,13 +1,34 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import static javax.persistence.DiscriminatorType.STRING;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type", discriminatorType = STRING)
+@DiscriminatorValue("OTH")
 public class FastReservation {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "reservation_start")
     protected LocalDateTime start;
+
+    @Column
     protected Integer duration;
+
+    @Column
     protected Integer maxPeople;
+
+    @Column
     protected String additionalServices;
+
+    @Column
     protected BigDecimal price;
 
     public FastReservation() {
@@ -20,6 +41,14 @@ public class FastReservation {
         this.maxPeople = maxPeople;
         this.additionalServices = additionalServices;
         this.price = price;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public LocalDateTime getStart() {

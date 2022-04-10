@@ -1,11 +1,26 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
 public class Penalty {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id")
     private Client client;
+
+    @OneToOne
     private Reservation reservation;
+
+    @Column(name = "date_of_penalty")
     private LocalDate date;
+
+    @Column
     private String reason;
 
     public Penalty() {
@@ -17,6 +32,14 @@ public class Penalty {
         this.client = client;
         this.date = date;
         this.reason = reason;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Client getClient() {

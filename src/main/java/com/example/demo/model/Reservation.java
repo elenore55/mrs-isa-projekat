@@ -2,14 +2,34 @@ package com.example.demo.model;
 
 import com.example.demo.model.enums.ReservationStatus;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class Reservation {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "startDateTime", nullable = false)
     private LocalDateTime start;
+
+    @Column(name = "endDateTime", nullable = false)
     private LocalDateTime end;
+
+    @Enumerated(EnumType.STRING)
     private ReservationStatus reservationStatus;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id")
     private Client client;
+
+    @OneToOne
     private Feedback feedback;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "offer_id")
     private Offer offer;
 
     public Reservation() {
@@ -21,6 +41,14 @@ public class Reservation {
         this.reservationStatus = ReservationStatus.PENDING;
         this.client = client;
         this.offer = offer;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public LocalDateTime getStart() {
