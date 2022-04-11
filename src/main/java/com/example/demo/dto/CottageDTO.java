@@ -1,10 +1,16 @@
 package com.example.demo.dto;
 
+import com.example.demo.model.Cottage;
+import com.example.demo.model.Room;
+import com.example.demo.model.Rule;
+
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CottageDTO {
     private String name;
+    private String description;
     private AddressDTO address;
     private List<RoomDTO> rooms;
     private BigDecimal price;
@@ -15,8 +21,9 @@ public class CottageDTO {
     public CottageDTO() {
     }
 
-    public CottageDTO(String name, AddressDTO address, List<RoomDTO> rooms, BigDecimal price, List<String> rules, String additionalInfo, Integer ownerId) {
+    public CottageDTO(String name, String description, AddressDTO address, List<RoomDTO> rooms, BigDecimal price, List<String> rules, String additionalInfo, Integer ownerId) {
         this.name = name;
+        this.description = description;
         this.address = address;
         this.rooms = rooms;
         this.price = price;
@@ -25,12 +32,37 @@ public class CottageDTO {
         this.ownerId = ownerId;
     }
 
+    public CottageDTO(Cottage cottage) {
+        this.name = cottage.getName();
+        this.description = cottage.getDescription();
+        this.address = new AddressDTO(cottage.getAddress());
+        this.rooms = new ArrayList<>();
+        for (Room room : cottage.getRooms()) {
+            rooms.add(new RoomDTO(room));
+        }
+        this.price = cottage.getPriceList().getAmount();
+        this.rules = new ArrayList<>();
+        for (Rule rule : cottage.getRules()) {
+            rules.add(rule.getText());
+        }
+        this.additionalInfo = cottage.getAdditionalInfo();
+        this.ownerId = cottage.getOwner().getId();
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public AddressDTO getAddress() {
