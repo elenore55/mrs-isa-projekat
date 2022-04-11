@@ -7,23 +7,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoomDTO {
+    private Integer id;
     private Integer numberOfBeds;
     private List<String> imagePaths;
 
     public RoomDTO() {
     }
 
-    public RoomDTO(Integer numberOfBeds, List<String> imagePaths) {
+    public RoomDTO(Integer id, Integer numberOfBeds, List<String> imagePaths) {
+        this.id = id;
         this.numberOfBeds = numberOfBeds;
         this.imagePaths = imagePaths;
     }
 
     public RoomDTO(Room room) {
+        this.id = room.getId();
         this.numberOfBeds = room.getNumberOfBeds();
         this.imagePaths = new ArrayList<>();
         for (Image img : room.getImages()) {
             imagePaths.add(img.getPath());
         }
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getNumberOfBeds() {

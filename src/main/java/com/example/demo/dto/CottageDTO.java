@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CottageDTO {
+    private Integer id;
     private String name;
     private String description;
     private AddressDTO address;
@@ -21,7 +22,8 @@ public class CottageDTO {
     public CottageDTO() {
     }
 
-    public CottageDTO(String name, String description, AddressDTO address, List<RoomDTO> rooms, BigDecimal price, List<String> rules, String additionalInfo, Integer ownerId) {
+    public CottageDTO(Integer id, String name, String description, AddressDTO address, List<RoomDTO> rooms, BigDecimal price, List<String> rules, String additionalInfo, Integer ownerId) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.address = address;
@@ -33,6 +35,7 @@ public class CottageDTO {
     }
 
     public CottageDTO(Cottage cottage) {
+        this.id = cottage.getId();
         this.name = cottage.getName();
         this.description = cottage.getDescription();
         this.address = new AddressDTO(cottage.getAddress());
@@ -47,6 +50,14 @@ public class CottageDTO {
         }
         this.additionalInfo = cottage.getAdditionalInfo();
         this.ownerId = cottage.getOwner().getId();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

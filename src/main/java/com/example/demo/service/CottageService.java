@@ -19,4 +19,8 @@ public class CottageService {
         return cottageRepository.save(cottage);
     }
 
+    public Cottage findOne(Integer id) {
+        return cottageRepository.findById(id).orElseGet(null);
+    }
+
 }

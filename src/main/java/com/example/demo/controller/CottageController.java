@@ -32,6 +32,23 @@ public class CottageController {
     @PostMapping(consumes = "application/json")
     public ResponseEntity<CottageDTO> saveCottage(@RequestBody CottageDTO cottageDTO) {
         Cottage cottage = new Cottage();
+        setAttributes(cottage, cottageDTO);
+        cottage = cottageService.save(cottage);
+        return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.CREATED);
+    }
+
+    @PostMapping(consumes = "application/json")
+    public ResponseEntity<CottageDTO> updateCottage(@RequestBody CottageDTO cottageDTO) {
+        Cottage cottage = cottageService.findOne(cottageDTO.getId());
+        if (cottage == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        setAttributes(cottage, cottageDTO);
+        return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.OK);
+    }
+
+    private void setAttributes(Cottage cottage, CottageDTO cottageDTO) {
+        cottage.setId(cottageDTO.getId());
         cottage.setName(cottageDTO.getName());
         cottage.setDescription(cottageDTO.getDescription());
         cottage.setAddress(new Address(cottageDTO.getAddress().getStreet(), cottageDTO.getAddress().getCity(), cottageDTO.getAddress().getCountry()));
@@ -51,7 +68,5 @@ public class CottageController {
         }
         cottage.setRooms(rooms);
         cottage.setOwner(cottageOwnerService.findOne(cottageDTO.getOwnerId()));
-        cottage = cottageService.save(cottage);
-        return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.CREATED);
     }
 }
