@@ -15,8 +15,8 @@ public class CottageService {
         this.cottageRepository = cottageRepository;
     }
 
-    public void save(Cottage cottage) {
-        cottageRepository.save(cottage);
+    public Cottage save(Cottage cottage) {
+        return cottageRepository.save(cottage);
     }
 
 }
