@@ -21,7 +21,9 @@ Vue.component("add-cottage", {
                    name: false,
                    description: false,
                    price: false,
-                   address: false
+                   street: false,
+                   city: false,
+                   country: false
                }
            }
        }
@@ -44,13 +46,19 @@ Vue.component("add-cottage", {
       <div id="address-div">
         <label>Address</label>
         <div>
-          <input v-on:focus="cottage.errors.address = false" v-model="cottage.address.street" type="text" placeholder="Street" />
-          <br />
-          <input v-on:focus="cottage.errors.address = false" v-model="cottage.address.city" type="text" placeholder="City" />
-          <br />
-          <input v-on:focus="cottage.errors.address = false" v-model="cottage.address.country" type="text" placeholder="Country"/>
+          <div>
+            <input v-on:focus="cottage.errors.street = false" v-model="cottage.address.street" type="text" placeholder="Street" />
+            <p v-if="!isValidAddress && cottage.errors.street" class="error-msg">Invalid street name.</p>
+          </div>
+          <div>
+            <input v-on:focus="cottage.errors.city = false" v-model="cottage.address.city" type="text" placeholder="City" />
+            <p v-if="!isValidAddress && cottage.errors.city" class="error-msg">Invalid city name.</p>
+          </div>
+          <div>
+            <input v-on:focus="cottage.errors.country = false" v-model="cottage.address.country" type="text" placeholder="Country"/>
+            <p v-if="!isValidAddress && cottage.errors.country" class="error-msg">Invalid country name.</p>
+          </div>
         </div>
-        <p v-if="!isValidAddress && cottage.errors.address" class="error-msg">Invalid address.</p>
       </div>
       <div>
         <label>Additional info</label>
@@ -113,7 +121,9 @@ Vue.component("add-cottage", {
                 this.cottage.errors.name = true;
                 this.cottage.errors.description = true;
                 this.cottage.errors.price = true;
-                this.cottage.errors.address = true;
+                this.cottage.errors.street = true;
+                this.cottage.errors.city = true;
+                this.cottage.errors.country = true;
             }
         },
     },
@@ -136,11 +146,13 @@ Vue.component("add-cottage", {
        },
 
        isValidCity() {
-           return !!this.cottage.address.city;
+           const re = new RegExp(/([A-Z])([A-Za-z]+)$/);
+           return !!this.cottage.address.city && re.test(this.cottage.address.city);
        },
 
        isValidCountry() {
-           return !!this.cottage.address.country;
+           const re = new RegExp(/([A-Z])([A-Za-z]+)$/);
+           return !!this.cottage.address.country && re.test(this.cottage.address.country);
        },
 
        isValidAddress() {
