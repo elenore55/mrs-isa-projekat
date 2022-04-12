@@ -9,15 +9,12 @@ Vue.component("add-cottage", {
                    city: "",
                    country: ""
                },
-               price: 0,
+               price: null,
                rules: [],
                additionalInfo: "",
                rooms: [],
-               room: {
-                   numberOfBeds: 0,
-                   images: []
-               },
-               rule: ""
+               rule: "",
+               numBeds: null
            }
        }
    },
@@ -52,10 +49,18 @@ Vue.component("add-cottage", {
       <div>
         <label>Rules</label>
         <div v-for="(r, i) in cottage.rules" id="rules-div">
-        <p>{{  i + 1  }}. {{ r }}</p>
+        <p>{{ i + 1 }}. {{ r }}</p>
         </div>
         <input v-model="cottage.rule" id="rule-input" type="text">
         <button v-on:click="addRule">Add rule</button>
+      </div>
+      <div>
+        <label>Rooms</label>
+        <div v-for="(r, i) in cottage.rooms" id="rooms-div">
+           <p>Room number {{ i + 1 }}: {{ r }} beds</p>
+        </div>
+        <input v-model="cottage.numBeds" id="room-input" type="number" min="1" placeholder="Number of beds">
+        <button v-on:click="addRoom">Add room</button>
       </div>
       <input type="submit" value="Submit" />
     </form>
@@ -66,6 +71,13 @@ Vue.component("add-cottage", {
                 this.cottage.rules.push(this.cottage.rule);
             }
             this.cottage.rule = "";
+        },
+
+        addRoom() {
+            if (this.cottage.numBeds) {
+                this.cottage.rooms.push(this.cottage.numBeds);
+            }
+            this.cottage.numBeds = null;
         }
     }
 });
