@@ -29,9 +29,12 @@ public class CottageController {
     @ResponseBody
     @RequestMapping(path = "/addCottage", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> saveCottage(@RequestBody CottageDTO cottageDTO) {
+        CottageOwner owner = new CottageOwner("email@gmail.com", "pass", "Pero", "Peric",
+                "12334556", new Address("Milana Rakica 19", "Novi Sad", "Srbija"));
+        cottageOwnerService.save(owner);
         Cottage cottage = new Cottage();
         setAttributes(cottage, cottageDTO);
-        cottage = cottageService.save(cottage);
+        // cottage = cottageService.save(cottage);
         return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.CREATED);
     }
 
@@ -51,7 +54,7 @@ public class CottageController {
         cottage.setName(cottageDTO.getName());
         cottage.setDescription(cottageDTO.getDescription());
         cottage.setAddress(new Address(cottageDTO.getAddress().getStreet(), cottageDTO.getAddress().getCity(), cottageDTO.getAddress().getCountry()));
-        cottage.setPriceList(new PriceList(LocalDate.now(), null, cottageDTO.getPrice()));
+        cottage.setPriceList(cottageDTO.getPrice());
         List<Rule> rules = new ArrayList<>();
         for (String ruleText : cottageDTO.getRules()) rules.add(new Rule(ruleText));
         cottage.setRules(rules);
@@ -66,6 +69,7 @@ public class CottageController {
         List<Image> images = new ArrayList<>();
         for (String imgPath : cottageDTO.getImagePaths()) images.add(new Image(imgPath));
         cottage.setImages(images);
-        cottage.setOwner(cottageOwnerService.findOne(cottageDTO.getOwnerId()));
+        CottageOwner owner = cottageOwnerService.findOne(cottageDTO.getOwnerId());
+        if (owner != null) cottage.setOwner(owner);
     }
 }

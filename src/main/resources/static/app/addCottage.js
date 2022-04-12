@@ -123,6 +123,21 @@ Vue.component("add-cottage", {
 
         sendRequest() {
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress) {
+                axios.post("api/cottages/addCottage", {
+                    name: this.cottage.name,
+                    description: this.cottage.description,
+                    address: this.cottage.address,
+                    rooms: this.cottage.rooms,
+                    price: this.cottage.price,
+                    rules: this.cottage.rules,
+                    additionalInfo: this.cottage.additionalInfo,
+                    imagePaths: this.cottage.images,
+                    ownerId: 1
+                }).then(function(response) {
+                    alert("Good");
+                }).catch(function (error) {
+                    alert("Bad");
+                });
             } else {
                 this.cottage.errors.name = true;
                 this.cottage.errors.description = true;

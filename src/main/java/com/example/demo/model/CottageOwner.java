@@ -20,6 +20,10 @@ public class CottageOwner extends User {
         super();
     }
 
+    public CottageOwner(String email, String password, String name, String surname, String phoneNumber, Address address) {
+        super(email, password, name, surname, phoneNumber, address);
+    }
+
     public List<Cottage> getCottages() {
         return cottages;
     }

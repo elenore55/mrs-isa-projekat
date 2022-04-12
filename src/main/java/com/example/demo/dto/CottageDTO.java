@@ -45,7 +45,7 @@ public class CottageDTO {
         for (Room room : cottage.getRooms()) {
             rooms.add(new RoomDTO(room));
         }
-        this.price = cottage.getPriceList().getAmount();
+        this.price = cottage.getPriceList();
         this.rules = new ArrayList<>();
         for (Rule rule : cottage.getRules()) {
             rules.add(rule.getText());

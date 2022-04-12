@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +23,8 @@ public class Offer {
     @Column
     protected String description;
 
-    @OneToOne
-    protected PriceList priceList;
+    @Column
+    protected BigDecimal priceList;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     protected List<Rule> rules = new ArrayList<>();
@@ -75,11 +76,11 @@ public class Offer {
         this.description = description;
     }
 
-    public PriceList getPriceList() {
+    public BigDecimal getPriceList() {
         return priceList;
     }
 
-    public void setPriceList(PriceList priceList) {
+    public void setPriceList(BigDecimal priceList) {
         this.priceList = priceList;
     }
 

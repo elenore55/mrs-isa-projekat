@@ -17,4 +17,8 @@ public class CottageOwnerService {
     public CottageOwner findOne(Integer id) {
         return cottageOwnerRepository.findById(id).orElseGet(null);
     }
+
+    public CottageOwner save(CottageOwner owner) {
+        return this.cottageOwnerRepository.save(owner);
+    }
 }
