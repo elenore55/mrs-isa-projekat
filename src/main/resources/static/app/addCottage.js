@@ -14,7 +14,9 @@ Vue.component("add-cottage", {
                additionalInfo: "",
                rooms: [],
                rule: "",
-               numBeds: null
+               numBeds: null,
+               imgPath: "",
+               images: []
            }
        }
    },
@@ -62,6 +64,13 @@ Vue.component("add-cottage", {
         <input v-model="cottage.numBeds" id="room-input" type="number" min="1" placeholder="Number of beds">
         <button v-on:click="addRoom">Add room</button>
       </div>
+      <div>
+        <label>Images</label>
+        <div v-for="img in cottage.images" id="images-div">
+           <p>{{ img }}</p>
+        </div>
+        <input type="file" id="img" name="img" accept="image/*" @change="addImage($event)" multiple>
+      </div>
       <input type="submit" value="Submit" />
     </form>
    `,
@@ -78,6 +87,15 @@ Vue.component("add-cottage", {
                 this.cottage.rooms.push(this.cottage.numBeds);
             }
             this.cottage.numBeds = null;
+        },
+
+        addImage(e) {
+            let files = e.target.files || e.dataTransfer.files;
+            if (!files.length)
+                return;
+            for (let file of files) {
+                this.cottage.images.push(file.name);
+            }
         }
     }
 });
