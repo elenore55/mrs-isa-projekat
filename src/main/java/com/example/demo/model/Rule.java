@@ -15,6 +15,10 @@ public class Rule {
     public Rule() {
     }
 
+    public Rule(String text) {
+        this.text = text;
+    }
+
     public Integer getId() {
         return id;
     }
