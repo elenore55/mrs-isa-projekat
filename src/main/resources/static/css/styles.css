@@ -7,7 +7,7 @@ label {
     font-size: 1.2em;
 }
 
-#rules-div, #rooms-div, #images-div {
+#rules-div-inner, #rooms-div-inner, #images-div-inner {
     margin-left: 1.5%;
 }
 
@@ -16,3 +16,76 @@ label {
     color: red;
     margin-left: 2%;
 }
+
+h2 {
+    text-align: center;
+}
+
+#desc-div,
+#name-div,
+#price-div,
+#address-div,
+#info-div,
+#rules-div,
+#images-div,
+#rooms-div {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 2%;
+}
+
+div {
+    text-align: center;
+}
+
+#address-div {
+    margin-right: 5%;
+}
+
+#info-div {
+    margin-left: 5%;
+}
+
+#desc-div {
+    width: 30%;
+    text-align: center;
+}
+
+#name-div {
+    width: 30%;
+    text-align: center;
+}
+
+#price-div {
+    width: 30%;
+    text-align: center;
+}
+
+#wrapper1 {
+    width: 60%;
+    margin: auto;
+}
+
+#wrapper2 {
+    width: 50%;
+    margin: 2% auto;
+}
+
+#wrapper3 {
+    margin: auto;
+}
+
+#rooms-div, #images-div, #rules-div {
+    width: 30%;
+    border: 1px solid black;
+}
+
+#add-submit-btn {
+    margin: 3%;
+    font-size: 1.1em;
+    width: 7%;
+    padding: 1% 0;
+    float: right;
+}
+
+
