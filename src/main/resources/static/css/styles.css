@@ -10,3 +10,9 @@ label {
 #rules-div, #rooms-div, #images-div {
     margin-left: 1.5%;
 }
+
+.error-msg {
+    font-size: 1.1em;
+    color: red;
+    margin-left: 2%;
+}

@@ -16,7 +16,13 @@ Vue.component("add-cottage", {
                rule: "",
                numBeds: null,
                imgPath: "",
-               images: []
+               images: [],
+               errors: {
+                   name: false,
+                   description: false,
+                   price: false,
+                   address: false
+               }
            }
        }
    },
@@ -24,24 +30,27 @@ Vue.component("add-cottage", {
     <form>
       <h2>Add Cottage</h2>
       <div>
-        <input v-model="cottage.name" type="text" placeholder="Name" />
-        <br />
+        <input v-on:focus="cottage.errors.name = false" v-model="cottage.name" type="text" placeholder="Name" />
+        <p v-if="!isValidName && cottage.errors.name" class="error-msg">Name is required.</p>
       </div>
       <div>
-        <input v-model="cottage.description" type="text" placeholder="Description" />
+        <input v-on:focus="cottage.errors.description = false" v-model="cottage.description" type="text" placeholder="Description" />
+        <p v-if="!isValidDescription && cottage.errors.description" class="error-msg">Description is required.</p>
       </div>
       <div>
-        <input v-model="cottage.price" type="number" step="0.01" min="0" placeholder="Price (EUR)" />
+        <input v-on:focus="cottage.errors.price = false" v-model="cottage.price" type="number" step="0.01" min="0" placeholder="Price (EUR)" />
+        <p v-if="!isValidPrice && cottage.errors.price" class="error-msg">Price is required.</p>
       </div>
       <div id="address-div">
         <label>Address</label>
         <div>
-          <input v-model="cottage.address.street" type="text" placeholder="Street" />
+          <input v-on:focus="cottage.errors.address = false" v-model="cottage.address.street" type="text" placeholder="Street" />
           <br />
-          <input v-model="cottage.address.city" type="text" placeholder="City" />
+          <input v-on:focus="cottage.errors.address = false" v-model="cottage.address.city" type="text" placeholder="City" />
           <br />
-          <input v-model="cottage.address.country" type="text" placeholder="Country"/>
+          <input v-on:focus="cottage.errors.address = false" v-model="cottage.address.country" type="text" placeholder="Country"/>
         </div>
+        <p v-if="!isValidAddress && cottage.errors.address" class="error-msg">Invalid address.</p>
       </div>
       <div>
         <label>Additional info</label>
@@ -71,7 +80,7 @@ Vue.component("add-cottage", {
         </div>
         <input type="file" id="img" name="img" accept="image/*" @change="addImage($event)" multiple>
       </div>
-      <input type="submit" value="Submit" />
+      <button v-on:click="sendRequest">Submit</button>
     </form>
    `,
     methods: {
@@ -96,6 +105,47 @@ Vue.component("add-cottage", {
             for (let file of files) {
                 this.cottage.images.push(file.name);
             }
-        }
+        },
+
+        sendRequest() {
+            if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress) {
+            } else {
+                this.cottage.errors.name = true;
+                this.cottage.errors.description = true;
+                this.cottage.errors.price = true;
+                this.cottage.errors.address = true;
+            }
+        },
+    },
+
+    computed: {
+       isValidName() {
+           return !!this.cottage.name;
+       },
+
+       isValidDescription() {
+           return !!this.cottage.description;
+       },
+
+       isValidPrice() {
+           return this.cottage.price > 0;
+       },
+
+       isValidStreet() {
+           return !!this.cottage.address.street;
+       },
+
+       isValidCity() {
+           return !!this.cottage.address.city;
+       },
+
+       isValidCountry() {
+           return !!this.cottage.address.country;
+       },
+
+       isValidAddress() {
+           return this.isValidStreet && this.isValidCity && this.isValidCountry;
+       }
     }
+
 });
