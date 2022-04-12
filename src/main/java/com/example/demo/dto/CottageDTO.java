@@ -1,6 +1,7 @@
 package com.example.demo.dto;
 
 import com.example.demo.model.Cottage;
+import com.example.demo.model.Image;
 import com.example.demo.model.Room;
 import com.example.demo.model.Rule;
 
@@ -18,6 +19,7 @@ public class CottageDTO {
     private List<String> rules;
     private String additionalInfo;
     private Integer ownerId;
+    private List<String> imagePaths;
 
     public CottageDTO() {
     }
@@ -50,6 +52,10 @@ public class CottageDTO {
         }
         this.additionalInfo = cottage.getAdditionalInfo();
         this.ownerId = cottage.getOwner().getId();
+        this.imagePaths = new ArrayList<>();
+        for (Image img : cottage.getImages()) {
+            imagePaths.add(img.getPath());
+        }
     }
 
     public Integer getId() {
@@ -122,5 +128,13 @@ public class CottageDTO {
 
     public void setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
+    }
+
+    public List<String> getImagePaths() {
+        return imagePaths;
+    }
+
+    public void setImagePaths(List<String> imagePaths) {
+        this.imagePaths = imagePaths;
     }
 }

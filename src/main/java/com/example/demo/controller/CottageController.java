@@ -8,10 +8,7 @@ import com.example.demo.service.CottageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,7 +26,8 @@ public class CottageController {
         this.cottageOwnerService = cottageOwnerService;
     }
 
-    @PostMapping(consumes = "application/json")
+    @ResponseBody
+    @RequestMapping(path = "/addCottage", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> saveCottage(@RequestBody CottageDTO cottageDTO) {
         Cottage cottage = new Cottage();
         setAttributes(cottage, cottageDTO);
@@ -37,7 +35,8 @@ public class CottageController {
         return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.CREATED);
     }
 
-    @PostMapping(consumes = "application/json")
+    @ResponseBody
+    @RequestMapping(path = "/updateCottage", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> updateCottage(@RequestBody CottageDTO cottageDTO) {
         Cottage cottage = cottageService.findOne(cottageDTO.getId());
         if (cottage == null) {
@@ -61,12 +60,12 @@ public class CottageController {
         for (RoomDTO dto : cottageDTO.getRooms()) {
             Room room = new Room();
             room.setNumberOfBeds(dto.getNumberOfBeds());
-            List<Image> images = new ArrayList<>();
-            for (String imgPath : dto.getImagePaths()) images.add(new Image(imgPath));
-            room.setImages(images);
             rooms.add(room);
         }
         cottage.setRooms(rooms);
+        List<Image> images = new ArrayList<>();
+        for (String imgPath : cottageDTO.getImagePaths()) images.add(new Image(imgPath));
+        cottage.setImages(images);
         cottage.setOwner(cottageOwnerService.findOne(cottageDTO.getOwnerId()));
     }
 }

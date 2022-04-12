@@ -17,6 +17,9 @@ public class Cottage extends Offer {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<FastReservation> fastReservations = new ArrayList<>();
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Image> images;
+
     public Cottage() {
         super();
     }
@@ -43,5 +46,13 @@ public class Cottage extends Offer {
 
     public void setFastReservations(List<FastReservation> fastReservations) {
         this.fastReservations = fastReservations;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }
