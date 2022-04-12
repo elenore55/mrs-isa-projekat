@@ -16,7 +16,8 @@ Vue.component("add-cottage", {
                room: {
                    numberOfBeds: 0,
                    images: []
-               }
+               },
+               rule: ""
            }
        }
    },
@@ -48,10 +49,23 @@ Vue.component("add-cottage", {
         <br />
         <textarea v-model="cottage.additionalInfo" cols="25" rows="5"></textarea>
       </div>
+      <div>
+        <label>Rules</label>
+        <div v-for="(r, i) in cottage.rules" id="rules-div">
+        <p>{{  i + 1  }}. {{ r }}</p>
+        </div>
+        <input v-model="cottage.rule" id="rule-input" type="text">
+        <button v-on:click="addRule">Add rule</button>
+      </div>
       <input type="submit" value="Submit" />
     </form>
    `,
     methods: {
-
+        addRule() {
+            if (this.cottage.rule) {
+                this.cottage.rules.push(this.cottage.rule);
+            }
+            this.cottage.rule = "";
+        }
     }
 });
