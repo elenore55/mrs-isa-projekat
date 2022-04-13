@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>AddingAdventure</title>
+
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <script src="js/axios.js"></script>
+    <script src="app/app_addAdventure.js"></script>
+
 </head>
 <body>
-
+<!--sta korisnik vidi jeste ovaj div sa id-om app, kontent tog diva pravimo dinamicki preko js-fajla u "resources/static/app"-->
+    <div id="app_addAdventure">
+<!--        title se odnosni na onaj title u app_addAdventure.js vue-u-->
+        <p>{{ title }}</p>
+    </div>
 </body>
 </html>
