@@ -1,20 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>AddingAdventure</title>
-
-    <script src="js/vue.js"></script>
-    <script src="js/vue-router.js"></script>
-    <script src="js/axios.js"></script>
-    <script src="app/app_addAdventure.js"></script>
-
+    <link rel="stylesheet" href="css/style_addAdventure.css"/>
 </head>
 <body>
 <!--sta korisnik vidi jeste ovaj div sa id-om app, kontent tog diva pravimo dinamicki preko js-fajla u "resources/static/app"-->
     <div id="app_addAdventure">
+<!--        $event nam pristup podacima koje nam on pruza!?!??-->
+        <input type="text" v-on:input="style_addAdventure= $event.target.value">
+        <p v-bind:class="style_addAdventure">Class : {{ style_addAdventure }}</p>
+
 <!--        title se odnosni na onaj title u app_addAdventure.js vue-u-->
+        <button v-on:click="changeTitle">Change title</button>
         <p>{{ title }}</p>
     </div>
+
+
+<!--SKRIPTE MORAJU DA SE DODAJU U BODY-->
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <script src="js/axios.js"></script>
+    <script src="js/toast.js"></script>
+    <script src="app/app_addAdventure.js"></script>
 </body>
 </html>
