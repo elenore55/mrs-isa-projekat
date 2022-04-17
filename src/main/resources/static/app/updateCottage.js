@@ -79,6 +79,21 @@ Vue.component("update-cottage", {
                     <label for="info-textarea" class="mt-5">Additional info</label>
                 </div>
             </div>
+            <div class="row my-4 mx-1">
+                <div class="col">
+                    <label class="form-label h5">Rules</label>
+                    <div v-for="(r, i) in cottage.rules" class="mb-2">
+                        <span>{{ i + 1 }}. {{ r }}</span>
+                        <button v-on:click="cottage.rules.splice(i, 1)" class="btn btn-outline-danger btn-sm float-end">Delete</button>
+                    </div>
+                    <input v-model="cottage.rule" id="rule-input" type="text" class="form-control">
+                    <button v-on:click="addRule" class="btn btn-secondary my-1">Add rule</button>
+                </div>
+            <div class="col">
+                <label class="form-label h5">Rooms</label>
+                    
+            </div>
+            </div>
             <div class="row mt-1">
                 <div class="col text-end">
                     <button class="btn btn-primary btn-lg" v-on:click="sendRequest">Submit</button>
@@ -88,7 +103,22 @@ Vue.component("update-cottage", {
     </form>
    `,
     methods: {
+        addRule() {
+            if (this.cottage.rule) {
+                this.cottage.rules.push(this.cottage.rule);
+            }
+            this.cottage.rule = "";
+        },
 
+        addRoom() {
+            if (this.cottage.numBeds) {
+                this.cottage.rooms.push({numberOfBeds: this.cottage.numBeds});
+            }
+            this.cottage.numBeds = null;
+        },
+
+        sendRequest() {
+        }
     },
 
     computed: {

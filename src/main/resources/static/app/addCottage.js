@@ -90,8 +90,9 @@ Vue.component("add-cottage", {
         <div class="row mt-5 mx-1">
           <div class="col">
             <label class="form-label h5">Rules</label>
-            <div v-for="(r, i) in cottage.rules" id="rules-div-inner">
-            <p>{{ i + 1 }}. {{ r }}</p>
+            <div v-for="(r, i) in cottage.rules" class="mb-2">
+                <span>{{ i + 1 }}. {{ r }}</span>
+                <button v-on:click="cottage.rules.splice(i, 1)" class="btn btn-outline-danger btn-sm float-end">Delete</button>
             </div>
             <input v-model="cottage.rule" id="rule-input" type="text" class="form-control">
             <button v-on:click="addRule" class="btn btn-secondary my-1">Add rule</button>
