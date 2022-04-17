@@ -36,7 +36,7 @@ Vue.component("add-cottage", {
           <div class="col">
               <div class="form-floating has-validation">
                 <input v-on:focus="cottage.errors.name = false" v-model="cottage.name" type="text" class="form-control" id="name-input" required/>
-                <p v-if="!isValidName && cottage.errors.name" class="text-danger">Price is required.</p>
+                <p v-if="!isValidName && cottage.errors.name" class="text-danger">Name is required.</p>
                 <label for="name-input">Name</label>
               </div>
           </div>
@@ -44,7 +44,7 @@ Vue.component("add-cottage", {
               <div class="form-floating">
                 <input v-on:focus="cottage.errors.description = false" v-model="cottage.description" type="text" class="form-control" id="desc-input" required/>
                 <label for="desc-input">Description</label>
-                <p v-if="!isValidDescription && cottage.errors.description" class="text-danger">Price is required.</p>
+                <p v-if="!isValidDescription && cottage.errors.description" class="text-danger">Description is required.</p>
               </div>
           </div>
           <div class="col">
