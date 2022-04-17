@@ -89,10 +89,25 @@ Vue.component("update-cottage", {
                     <input v-model="cottage.rule" id="rule-input" type="text" class="form-control">
                     <button v-on:click="addRule" class="btn btn-secondary my-1">Add rule</button>
                 </div>
-            <div class="col">
-                <label class="form-label h5">Rooms</label>
-                    
-            </div>
+                <div class="col">
+                    <label class="form-label h5">Rooms</label>
+                    <div v-for="(r, i) in cottage.rooms" class="container mb-1 card">
+                        <div class="card-body">
+                            <p class="card-title h6 mt-1">Room number {{ i + 1 }}</p>
+                            <label>Number of beds</label>
+                            <div class="row">
+                                <div class="col">
+                                    <input v-model="r.numberOfBeds" type="number" min="1" class="form-control w-75">
+                                </div>
+                                <div class="col">
+                                    <button v-on:click="cottage.rooms.splice(i, 1)" class="btn btn-sm btn-outline-danger float-end">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <input v-model="cottage.numBeds" id="room-input" type="number" min="1" placeholder="Number of beds" class="form-control">            
+                        <button v-on:click="addRoom" class="btn btn-secondary my-1">Add room</button>
+                </div>
             </div>
             <div class="row mt-1">
                 <div class="col text-end">

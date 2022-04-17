@@ -99,12 +99,23 @@ Vue.component("add-cottage", {
           </div>
           <div class="col">
             <label class="form-label h5">Rooms</label>
-            <div v-for="(r, i) in cottage.rooms" id="rooms-div-inner">
-               <p>Room number {{ i + 1 }}: {{ r.numberOfBeds }} beds</p>
+            <div v-for="(r, i) in cottage.rooms" class="container mb-1 card">
+                <div class="card-body">
+                    <p class="card-title h6 mt-1">Room number {{ i + 1 }}</p>
+                    <label>Number of beds</label>
+                    <div class="row">
+                        <div class="col">
+                            <input v-model="r.numberOfBeds" type="number" min="1" class="form-control w-75">
+                        </div>
+                        <div class="col">
+                            <button v-on:click="cottage.rooms.splice(i, 1)" class="btn btn-sm btn-outline-danger float-end">Delete</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <input v-model="cottage.numBeds" id="room-input" type="number" min="1" placeholder="Number of beds" class="form-control">
-            <button v-on:click="addRoom" class="btn btn-secondary my-1">Add room</button>
-          </div>
+                <input v-model="cottage.numBeds" id="room-input" type="number" min="1" placeholder="Number of beds" class="form-control">            
+                <button v-on:click="addRoom" class="btn btn-secondary my-1">Add room</button>
+        </div>
           <div class="col form-group">
             <label class="form-label h5">Images</label> <br />
             <div v-for="img in cottage.images" id="images-div-inner">
