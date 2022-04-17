@@ -16,7 +16,7 @@ public class Offer {
     @Column
     protected String name;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     protected Address address;
 

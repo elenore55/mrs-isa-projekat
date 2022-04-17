@@ -29,72 +29,95 @@ Vue.component("add-cottage", {
        }
    },
    template: `
-    <form>
-      <h2>Add Cottage</h2>
-      <div id="wrapper1">
-          <div id="name-div">
-            <input v-on:focus="cottage.errors.name = false" v-model="cottage.name" type="text" placeholder="Name" />
-            <p v-if="!isValidName && cottage.errors.name" class="error-msg">Name is required.</p>
-          </div>
-          <div id="desc-div">
-            <input v-on:focus="cottage.errors.description = false" v-model="cottage.description" type="text" placeholder="Description" />
-            <p v-if="!isValidDescription && cottage.errors.description" class="error-msg">Description is required.</p>
-          </div>
-          <div id="price-div">
-            <input v-on:focus="cottage.errors.price = false" v-model="cottage.price" type="number" step="0.01" min="0" placeholder="Price (EUR)" />
-            <p v-if="!isValidPrice && cottage.errors.price" class="error-msg">Price is required.</p>
-          </div>
-      </div>
-      <div id="wrapper2">
-          <div id="address-div">
-            <label>Address</label>
-            <div>
-              <div>
-                <input v-on:focus="cottage.errors.street = false" v-model="cottage.address.street" type="text" placeholder="Street" />
-                <p v-if="!isValidAddress && cottage.errors.street" class="error-msg">Invalid street name.</p>
+    <form novalidate>
+      <h2 class="text-center my-4">Add Cottage</h2>
+      <div class="container">
+        <div class="row my-4 mx-1">
+          <div class="col">
+              <div class="form-floating has-validation">
+                <input v-on:focus="cottage.errors.name = false" v-model="cottage.name" type="text" class="form-control" id="name-input" required/>
+                <p v-if="!isValidName && cottage.errors.name" class="text-danger">Price is required.</p>
+                <label for="name-input">Name</label>
               </div>
-              <div>
-                <input v-on:focus="cottage.errors.city = false" v-model="cottage.address.city" type="text" placeholder="City" />
-                <p v-if="!isValidAddress && cottage.errors.city" class="error-msg">Invalid city name.</p>
+          </div>
+          <div class="col">
+              <div class="form-floating">
+                <input v-on:focus="cottage.errors.description = false" v-model="cottage.description" type="text" class="form-control" id="desc-input" required/>
+                <label for="desc-input">Description</label>
+                <p v-if="!isValidDescription && cottage.errors.description" class="text-danger">Price is required.</p>
               </div>
-              <div>
-                <input v-on:focus="cottage.errors.country = false" v-model="cottage.address.country" type="text" placeholder="Country"/>
-                <p v-if="!isValidAddress && cottage.errors.country" class="error-msg">Invalid country name.</p>
+          </div>
+          <div class="col">
+              <div class="form-floating">
+                <input v-on:focus="cottage.errors.price = false" v-model="cottage.price" type="number" step="0.01" min="0" class="form-control" id="price-input" required/>
+                <label for="price-input">Price (EUR)</label>
+                <p v-if="!isValidPrice && cottage.errors.price" class="text-danger">Price is required.</p>
+              </div>
+          </div>
+        </div>
+        <div class="row justify-content-center my-4 mx-1">
+          <div class="col"">
+            <div class="container">
+            <label class="form-label h5">Address</label>
+              <div class="row m-1">
+                <div class="col form-floating">
+                    <input v-on:focus="cottage.errors.street = false" v-model="cottage.address.street" type="text" class="form-control" id="street-input" />
+                    <label for="street-input">Street</label>
+                    <p v-if="!isValidAddress && cottage.errors.street" class="text-danger">Invalid street name.</p> 
+                </div>
+              </div>
+              <div class="row m-1">
+                <div class="col form-floating">
+                    <input v-on:focus="cottage.errors.city = false" v-model="cottage.address.city" type="text" class="form-control" id="city-input" />
+                    <label for="city-input">City</label>
+                    <p v-if="!isValidAddress && cottage.errors.city" class="text-danger">Invalid city name.</p>
+                </div>
+              </div>
+              <div class="row m-1">
+                <div class="col form-floating">
+                    <input v-on:focus="cottage.errors.country = false" v-model="cottage.address.country" type="text" class="form-control" id="country-input"/>
+                    <label for="country-input">Country</label>
+                    <p v-if="!isValidAddress && cottage.errors.country" class="text-danger">Invalid country name.</p>
+                </div>
               </div>
             </div>
           </div>
-          <div id="info-div">
-            <label>Additional info</label>
-            <br />
-            <textarea v-model="cottage.additionalInfo" cols="30" rows="5"></textarea>
+          <div class="col form-floating">
+            <textarea v-model="cottage.additionalInfo" class="form-control mt-5" id="info-textarea" style="height: 150px"></textarea>
+            <label for="info-textarea" class="mt-5">Additional info</label>
           </div>
-      </div>
-      <div id="wrapper3">
-          <div id="rules-div">
-            <label>Rules</label>
+        </div>      
+        <div class="row mt-5 mx-1">
+          <div class="col">
+            <label class="form-label h5">Rules</label>
             <div v-for="(r, i) in cottage.rules" id="rules-div-inner">
             <p>{{ i + 1 }}. {{ r }}</p>
             </div>
-            <input v-model="cottage.rule" id="rule-input" type="text">
-            <button v-on:click="addRule">Add rule</button>
+            <input v-model="cottage.rule" id="rule-input" type="text" class="form-control">
+            <button v-on:click="addRule" class="btn btn-secondary my-1">Add rule</button>
           </div>
-          <div id="rooms-div">
-            <label>Rooms</label>
+          <div class="col">
+            <label class="form-label h5">Rooms</label>
             <div v-for="(r, i) in cottage.rooms" id="rooms-div-inner">
-               <p>Room number {{ i + 1 }}: {{ r }} beds</p>
+               <p>Room number {{ i + 1 }}: {{ r.numberOfBeds }} beds</p>
             </div>
-            <input v-model="cottage.numBeds" id="room-input" type="number" min="1" placeholder="Number of beds">
-            <button v-on:click="addRoom">Add room</button>
+            <input v-model="cottage.numBeds" id="room-input" type="number" min="1" placeholder="Number of beds" class="form-control">
+            <button v-on:click="addRoom" class="btn btn-secondary my-1">Add room</button>
           </div>
-          <div id="images-div">
-            <label>Images</label>
+          <div class="col form-group">
+            <label class="form-label h5">Images</label> <br />
             <div v-for="img in cottage.images" id="images-div-inner">
                <p>{{ img }}</p>
             </div>
-            <input type="file" id="img" name="img" accept="image/*" @change="addImage($event)" multiple>
+            <input type="file" class="form-control-file" id="img" name="img" accept="image/*" @change="addImage($event)" multiple>
           </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col text-end">
+                <button class="btn btn-primary btn-lg" v-on:click="sendRequest">Submit</button>
+            </div>
+        </div>
       </div>
-      <button id="add-submit-btn" v-on:click="sendRequest">Submit</button>
     </form>
    `,
     methods: {
@@ -107,7 +130,7 @@ Vue.component("add-cottage", {
 
         addRoom() {
             if (this.cottage.numBeds) {
-                this.cottage.rooms.push(this.cottage.numBeds);
+                this.cottage.rooms.push({numberOfBeds: this.cottage.numBeds});
             }
             this.cottage.numBeds = null;
         },
@@ -134,9 +157,9 @@ Vue.component("add-cottage", {
                     imagePaths: this.cottage.images,
                     ownerId: 1
                 }).then(function(response) {
-                    alert("Good");
+                    alert('Cottage successfully added!');
                 }).catch(function (error) {
-                    alert("Bad");
+                    alert('An error occurred!');
                 });
             } else {
                 this.cottage.errors.name = true;
