@@ -1,0 +1,1 @@
+insert into fishing_equipment (amount, name) values (10,'stapovi');

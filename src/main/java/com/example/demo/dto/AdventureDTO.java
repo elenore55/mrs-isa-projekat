@@ -17,12 +17,13 @@ public class AdventureDTO {
     private List<String> imagePaths;
     private List<String> rules;
     private List<FishingEquipmentDTO> fishingEquipmentList;
+    private Integer maxPeople;
 
     public AdventureDTO()
     {
 
     }
-    public AdventureDTO(Integer id, String name, Address address, String description, BigDecimal price, String additionalInfo, Integer fInstructorId, List<String> imagePaths, List<String> rules, List<FishingEquipmentDTO> fishingEquipmentList) {
+    public AdventureDTO(Integer id, String name, Address address, String description, BigDecimal price, String additionalInfo, Integer fInstructorId, List<String> imagePaths, List<String> rules, List<FishingEquipmentDTO> fishingEquipmentList, Integer maxPeople) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -33,6 +34,7 @@ public class AdventureDTO {
         this.imagePaths = imagePaths;
         this.rules = rules;
         this.fishingEquipmentList = fishingEquipmentList;
+        this.maxPeople = maxPeople;
     }
 
     public AdventureDTO(Adventure adventure)
@@ -56,6 +58,7 @@ public class AdventureDTO {
         this.fishingEquipmentList = new ArrayList<>();
         for(FishingEquipment fishingEquipment : adventure.getFishingEquipments())
             fishingEquipmentList.add(new FishingEquipmentDTO(fishingEquipment));
+        this.maxPeople = adventure.getMaxPeople();
     }
 
     public Integer getId() {
@@ -136,5 +139,13 @@ public class AdventureDTO {
 
     public void setFishingEquipmentList(List<FishingEquipmentDTO> fishingEquipmentList) {
         this.fishingEquipmentList = fishingEquipmentList;
+    }
+
+    public Integer getMaxPeople() {
+        return maxPeople;
+    }
+
+    public void setMaxPeople(Integer maxPeople) {
+        this.maxPeople = maxPeople;
     }
 }
