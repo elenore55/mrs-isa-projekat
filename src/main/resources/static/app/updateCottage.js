@@ -30,7 +30,7 @@ Vue.component("update-cottage", {
     },
     template: `
     <form novalidate>  
-        <h2 class="text-center my-4">Cottage Profile</h2>
+        <update-cottage-nav></update-cottage-nav>
         <div class="container">
             <div class="row my-4 mx-1">
                 <div class="col form-floating has-validation">

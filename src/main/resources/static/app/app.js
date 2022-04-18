@@ -1,9 +1,14 @@
+const UpdateCottageNav = {template: '<update-cottage-nav></update-cottage-nav>'};
 const UpdateCottage = {template: '<update-cottage></update-cottage>'};
 const AddCottage = {template: '<add-cottage></add-cottage>'};
 
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/updateCottageNav/",
+            component: UpdateCottageNav
+        },
         {
             path: "/updateCottage/",
             component: UpdateCottage
