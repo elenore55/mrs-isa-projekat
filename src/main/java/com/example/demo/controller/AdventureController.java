@@ -49,7 +49,7 @@ public class AdventureController {
         return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.OK);
     }
 
-    @PostMapping(consumes = "application/json")
+    @RequestMapping(path = "/addAdventure",method=RequestMethod.POST,consumes = "application/json")
     public ResponseEntity<AdventureDTO> saveAdventure(@RequestBody AdventureDTO adventureDTO) {
 
         Adventure adventure = new Adventure();

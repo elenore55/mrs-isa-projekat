@@ -18,7 +18,7 @@ Vue.component("add-adventure",{
                 fishingEquipmentList: [],
                 maxPeople: 1
             }
-        }  //ovde se nalaze podaci koji ce se iskoristiti na komponenti
+        }
     },
     template: `
     <form style="width: 800px; margin: auto">
@@ -49,15 +49,15 @@ Vue.component("add-adventure",{
             <div class="col">
                 <div class="form-group">
                     <label>Country</label>
-                    <input v-model="form.country" type="text" class="form-control"">
+                    <input v-model="form.address.country" type="text" class="form-control"">
                 </div>
                 <div class="form-group">
                     <label>City</label>
-                    <input v-model="form.city" type="text" class="form-control"">
+                    <input v-model="form.address.city" type="text" class="form-control"">
                 </div>
                 <div class="form-group">
                     <label>Street</label>
-                    <input v-model="form.street" type="text" class="form-control"">
+                    <input v-model="form.address.street" type="text" class="form-control"">
                 </div>
             </div>
             <div class="col">
@@ -90,14 +90,47 @@ Vue.component("add-adventure",{
             </div>
             <div class="col-4">
                 <div class="form-group">
-                        <label>Maximum number of people</label>
+                        <label>Maximum number of people!!</label>
                         <input v-model="form.maxPeople" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label>Pictures</label>
+                <input accept="image/*" type="file" class="form-control" multiple/>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-2">
+                <div class="form-group">
+                   <br>
+<!--                   <input type="button" class="btn btn-primary form-control" value="Submit">-->
+                   <button type="button" class="btn btn-primary btn-lg" v-on:click="sendRequest">Submit</button>
                 </div>
             </div>
         </div>
     </form>
     `,
     methods:{
-
+        sendRequest(){
+            axios.post("api/adventures/addAdventure", {
+                name: this.form.name,
+                description: this.form.description,
+                rules: this.form.rules,
+                price: this.form.price,
+                maxPeople: this.form.maxPeople,
+                fishingEquipmentList: this.form.fishingEquipmentList,
+                fInstructorBio: this.form.fInstructorBio,
+                imagePaths: this.form.imagePaths,
+                // country: this.form.country,
+                // city: this.form.city,
+                // street: this.form.street,
+                address: this.form.address
+            }).then(function(response){
+                alert("Successfully added an adventure");
+            }).catch(function(error){
+                alert("An ERROR occurred while adding an adventure");
+            });
+        }
     }
 })
