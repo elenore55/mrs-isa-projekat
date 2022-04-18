@@ -40,6 +40,7 @@ public class CottageController {
     @ResponseBody
     @RequestMapping(path = "/updateCottage", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> updateCottage(@RequestBody CottageDTO cottageDTO) {
+        System.out.println("*** UPDATE OF COTTAGE ***");
         Cottage cottage = cottageService.findOne(cottageDTO.getId());
         if (cottage == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

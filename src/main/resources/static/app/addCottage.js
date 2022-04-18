@@ -63,21 +63,21 @@ Vue.component("add-cottage", {
                 <div class="col form-floating">
                     <input v-on:focus="cottage.errors.street = false" v-model="cottage.address.street" type="text" class="form-control" id="street-input" />
                     <label for="street-input">Street</label>
-                    <p v-if="!isValidAddress && cottage.errors.street" class="text-danger">Invalid street name.</p> 
+                    <p v-if="!isValidStreet && cottage.errors.street" class="text-danger">Invalid street name.</p> 
                 </div>
               </div>
               <div class="row m-1">
                 <div class="col form-floating">
                     <input v-on:focus="cottage.errors.city = false" v-model="cottage.address.city" type="text" class="form-control" id="city-input" />
                     <label for="city-input">City</label>
-                    <p v-if="!isValidAddress && cottage.errors.city" class="text-danger">Invalid city name.</p>
+                    <p v-if="!isValidCity && cottage.errors.city" class="text-danger">Invalid city name.</p>
                 </div>
               </div>
               <div class="row m-1">
                 <div class="col form-floating">
                     <input v-on:focus="cottage.errors.country = false" v-model="cottage.address.country" type="text" class="form-control" id="country-input"/>
                     <label for="country-input">Country</label>
-                    <p v-if="!isValidAddress && cottage.errors.country" class="text-danger">Invalid country name.</p>
+                    <p v-if="!isValidCountry && cottage.errors.country" class="text-danger">Invalid country name.</p>
                 </div>
               </div>
             </div>
