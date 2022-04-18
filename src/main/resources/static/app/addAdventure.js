@@ -2,6 +2,7 @@ Vue.component("add-adventure",{
     data:function ()
     {
         return{
+            allEquipments: [],
             form:{
                 name: "",
                 address:{
@@ -16,12 +17,12 @@ Vue.component("add-adventure",{
                 imagePaths: [],
                 rules: [],
                 fishingEquipmentList: [],
-                maxPeople: 1,
-                errors:{
-                    name: false
-                }
+                maxPeople: 1
             }
         }
+    },
+    mounted: function (){
+        this.loadEquipment()
     },
     template: `
     <form style="width: 800px; margin: auto">
@@ -30,8 +31,7 @@ Vue.component("add-adventure",{
             <div class="col">
                 <div class="form-group">
                     <label>Adventure name</label>
-                    <input v-on:focus="form.errors.name = false" v-model="form.name" type="text" class="form-control" required>
-<!--                    <p v-if="!isValidName && form.errors.name" class="text-danger">Name is required.</p>-->
+                    <input v-model="form.name" type="text" class="form-control">          
                 </div>
                 <div class="form-group">
                     <label>Description</label>
@@ -39,14 +39,11 @@ Vue.component("add-adventure",{
                 </div>
                 <div class="form-group">
                     <label>Rules</label>
-                    <select class="select" multiple v-model="form.rules" class="form-control">
-                      <option value="1">Rule 1.</option>
-                      <option value="2">Rule 2.</option>
-                      <option value="3">Rule 3.</option>
-                      <option value="4">Rule 4.</option>
-                      <option value="5">Rule 5.</option>
-                      <option value="6">Rule 6.</option>
-                      <option value="7">Rule 7.</option>
+                    <select class="select form-control" multiple v-model="form.rules">
+                      <option value="1">Rule1</option>
+                      <option value="2">Rule2</option>
+                      <option value="3">Rule3</option>
+                      <option value="4">Rule4</option>
                     </select>
                 </div>
             </div>
@@ -67,15 +64,11 @@ Vue.component("add-adventure",{
             <div class="col">
                 <div class="form-group">
                     <label>Fishing equipment</label>
-                    <select class="select" multiple v-model="form.fishingEquipmentList" class="form-control">
-                      <option value="1">Fishing Rod</option>
-                      <option value="2">Fishing Line</option>
-                      <option value="3">Hooks</option>
-                      <option value="4">Bait</option>
-                      <option value="5">Lures</option>
-                      <option value="6">Bobbers</option>
-                      <option value="7">Sinkers</option>
+                        <select class="select form-control" multiple v-model="form.fishingEquipmentList">
+                            <option v-for="equipment in allEquipments">{{equipment.name}}</option>
+                        </select>
                     </select>
+                        
                 </div>                
             </div>
             <div class="col">
@@ -116,36 +109,33 @@ Vue.component("add-adventure",{
     </form>
     `,
     methods:{
-        sendRequest(){
-            if(this.isValidName) {
-                axios.post("api/adventures/addAdventure", {
-                    name: this.form.name,
-                    description: this.form.description,
-                    rules: this.form.rules,
-                    price: this.form.price,
-                    maxPeople: this.form.maxPeople,
-                    fishingEquipmentList: this.form.fishingEquipmentList,
-                    fInstructorBio: this.form.fInstructorBio,
-                    imagePaths: this.form.imagePaths,
-                    // country: this.form.country,
-                    // city: this.form.city,
-                    // street: this.form.street,
-                    address: this.form.address
-                }).then(function (response) {
-                    alert("Successfully added an adventure");
-                }).catch(function (error) {
-                    alert("An ERROR occurred while adding an adventure");
-                });
-            }
-            else
-            {
-                this.errors.name = true;
-            }
+        loadEquipment(){
+          axios.get("api/fishingEquipment/all").then(response => {
+            this.allEquipments = response.data
+              console.log(this.allEquipments)
+          })
         },
-        computed: {
-            isValidName() {
-                return !!this.form.name;
-            }
+        sendRequest(){
+            console.log(this.form.fishingEquipmentList)
+            axios.post("api/adventures/addAdventure", {
+                name: this.form.name,
+                description: this.form.description,
+                rules: this.form.rules,
+                price: this.form.price,
+                maxPeople: this.form.maxPeople,
+                fishingEquipmentList: this.form.fishingEquipmentList,
+                fInstructorBio: this.form.fInstructorBio,
+                imagePaths: this.form.imagePaths,
+                country: this.form.country,
+                city: this.form.city,
+                street: this.form.street,
+                address: this.form.address
+            }).then(function (response) {
+                alert("Successfully added an adventure");
+            }).catch(function (error) {
+                alert("An ERROR occurred while adding an adventure");
+            });
+
         }
     }
 })

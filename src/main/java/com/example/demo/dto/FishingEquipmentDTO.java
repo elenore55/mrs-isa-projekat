@@ -26,6 +26,11 @@ public class FishingEquipmentDTO {
         this.amount = fishingEquipment.getAmount();
     }
 
+    public FishingEquipmentDTO(String name)
+    {
+        this.name = name;
+    }
+
     public Integer getAmount() {
         return amount;
     }

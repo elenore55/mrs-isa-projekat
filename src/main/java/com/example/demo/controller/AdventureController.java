@@ -17,10 +17,15 @@ import java.util.List;
 @RequestMapping(value="api/adventures")
 public class AdventureController {
 
-    @Autowired
     private AdventureService adventureService;
-    @Autowired
     private FishingInstructorService fishingInstructorService;
+
+    @Autowired
+    public AdventureController(AdventureService adventureService, FishingInstructorService fishingInstructorService)
+    {
+        this.adventureService=adventureService;
+        this.fishingInstructorService=fishingInstructorService;
+    }
 
     @GetMapping(value = "/all")
     public ResponseEntity<List<AdventureDTO>> getAllAdventures() {
@@ -49,6 +54,7 @@ public class AdventureController {
         return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.OK);
     }
 
+    @ResponseBody
     @RequestMapping(path = "/addAdventure",method=RequestMethod.POST,consumes = "application/json")
     public ResponseEntity<AdventureDTO> saveAdventure(@RequestBody AdventureDTO adventureDTO) {
 
@@ -56,7 +62,8 @@ public class AdventureController {
 
         adventure.setId(adventureDTO.getId());
         adventure.setName(adventureDTO.getName());
-        adventure.setAddress(adventureDTO.getAddress());
+        adventure.setAddress(new Address(adventureDTO.getAddress().getStreet(),
+                adventureDTO.getAddress().getCity(),adventureDTO.getAddress().getCountry()));
         adventure.setDescription(adventureDTO.getDescription());
 
         PriceList priceList = new PriceList();
@@ -68,21 +75,24 @@ public class AdventureController {
         //treba naci vec postojeceg instruktora => instructor service je potreban
 //        FishingInstructor fishingInstructor = new FishingInstructor();
 //        fishingInstructor.setId(adventureDTO.getfInstructorId());
-        FishingInstructor fishingInstructor = fishingInstructorService.findOne(adventureDTO.getfInstructorId());
+//        FishingInstructor fishingInstructor = fishingInstructorService.findOne(adventureDTO.getfInstructorId());
+        FishingInstructor fishingInstructor = fishingInstructorService.findOne(1);
         adventure.setInstructor(fishingInstructor);
 
-        List<Image> images = new ArrayList<>();
-        for(String imagePath : adventureDTO.getImagePaths())
-            images.add(new Image(imagePath));
-
-
-        List<Rule> rules= new ArrayList<>();
-        for(String ruleTxt : adventureDTO.getRules())
-            rules.add(new Rule(ruleTxt));
+//        List<Image> images = new ArrayList<>();
+//        for(String imagePath : adventureDTO.getImagePaths())
+//            images.add(new Image(imagePath));
+//
+//
+//        List<Rule> rules= new ArrayList<>();
+//        for(String ruleTxt : adventureDTO.getRules())
+//            rules.add(new Rule(ruleTxt));
 
         List<FishingEquipment> fishingEquipmentList = new ArrayList<>();
         for(FishingEquipmentDTO fishingEquipmentListDTO : adventureDTO.getFishingEquipmentList())
-            fishingEquipmentList.add(new FishingEquipment(fishingEquipmentListDTO.getName(), fishingEquipmentListDTO.getAmount()));
+//            fishingEquipmentList.add(new FishingEquipment(fishingEquipmentListDTO.getName(), fishingEquipmentListDTO.getAmount()));
+            fishingEquipmentList.add(new FishingEquipment());
+
 
         adventure = adventureService.save(adventure);
         return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.CREATED);
