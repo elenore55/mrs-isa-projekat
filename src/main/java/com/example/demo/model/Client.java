@@ -1,5 +1,8 @@
 package com.example.demo.model;
 
+import com.example.demo.dto.RegistrationDTO;
+import com.example.demo.model.enums.Category;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +23,16 @@ public class Client extends User {
     public Client() {
         super();
     }
+
+    public Client(RegistrationDTO r)
+    {
+        this.profileData = new ProfileData(r.getEmail(), r.getPassword(), r.getName(), r.getSurname(), r.getTel(),
+                new Address(r.getStreet(), r.getCity(), r.getCountry()));
+        this.numberOfPoints = 0;
+        this.category = Category.REGULAR;
+
+    }
+
 
     public List<Reservation> getReservations() {
         return reservations;

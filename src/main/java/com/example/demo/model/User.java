@@ -28,7 +28,7 @@ public class User {
     }
 
     public User(String email, String password, String name, String surname, String phoneNumber, Address address) {
-        // this.profileData = new ProfileData(email, password, name, surname, phoneNumber, address);
+        this.profileData = new ProfileData(email, password, name, surname, phoneNumber, address);
         this.numberOfPoints = 0;
         this.category = Category.REGULAR;
     }
