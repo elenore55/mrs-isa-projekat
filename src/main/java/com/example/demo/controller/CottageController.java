@@ -40,7 +40,6 @@ public class CottageController {
     @ResponseBody
     @RequestMapping(path = "/updateCottage", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> updateCottage(@RequestBody CottageDTO cottageDTO) {
-        System.out.println("*** UPDATE OF COTTAGE ***");
         Cottage cottage = cottageService.findOne(cottageDTO.getId());
         if (cottage == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -49,6 +48,22 @@ public class CottageController {
         cottage = cottageService.save(cottage);
         return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.OK);
     }
+
+    @ResponseBody
+    @RequestMapping(path = "/updateCottageImages", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<CottageDTO> updateCottageImages(@RequestBody CottageDTO cottageDTO) {
+        Cottage cottage = cottageService.findOne(cottageDTO.getId());
+        if (cottage == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        List<Image> images = new ArrayList<>();
+        for (String path : cottageDTO.getImagePaths())
+            images.add(new Image(path));
+        cottage.setImages(images);
+        cottage = cottageService.save(cottage);
+        return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.OK);
+    }
+
 
     private void setAttributes(Cottage cottage, CottageDTO cottageDTO) {
         cottage.setId(cottageDTO.getId());

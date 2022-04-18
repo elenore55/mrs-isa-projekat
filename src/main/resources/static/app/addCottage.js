@@ -118,8 +118,9 @@ Vue.component("add-cottage", {
         </div>
           <div class="col form-group">
             <label class="form-label h5">Images</label> <br />
-            <div v-for="img in cottage.images" id="images-div-inner">
-               <p>{{ img }}</p>
+            <div v-for="(img, i) in cottage.images" class="mb-2">
+               <span>{{ img }}</span>
+               <button type="button" v-on:click="cottage.images.splice(i, 1)" class="btn btn-outline-danger btn-sm float-end">Delete</button>
             </div>
             <input type="file" class="form-control-file" id="img" name="img" accept="image/*" @change="addImage($event)" multiple>
           </div>
