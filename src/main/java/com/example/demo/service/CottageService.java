@@ -5,6 +5,8 @@ import com.example.demo.repository.CottageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class CottageService {
 
@@ -19,6 +21,7 @@ public class CottageService {
         return cottageRepository.save(cottage);
     }
 
+    @Transactional
     public Cottage findOne(Integer id) {
         return cottageRepository.findById(id).orElseGet(null);
     }
