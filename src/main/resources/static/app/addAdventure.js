@@ -16,7 +16,10 @@ Vue.component("add-adventure",{
                 imagePaths: [],
                 rules: [],
                 fishingEquipmentList: [],
-                maxPeople: 1
+                maxPeople: 1,
+                errors:{
+                    name: false
+                }
             }
         }
     },
@@ -27,7 +30,8 @@ Vue.component("add-adventure",{
             <div class="col">
                 <div class="form-group">
                     <label>Adventure name</label>
-                    <input v-model="form.name" type="text" class="form-control"">
+                    <input v-on:focus="form.errors.name = false" v-model="form.name" type="text" class="form-control" required>
+<!--                    <p v-if="!isValidName && form.errors.name" class="text-danger">Name is required.</p>-->
                 </div>
                 <div class="form-group">
                     <label>Description</label>
@@ -113,24 +117,35 @@ Vue.component("add-adventure",{
     `,
     methods:{
         sendRequest(){
-            axios.post("api/adventures/addAdventure", {
-                name: this.form.name,
-                description: this.form.description,
-                rules: this.form.rules,
-                price: this.form.price,
-                maxPeople: this.form.maxPeople,
-                fishingEquipmentList: this.form.fishingEquipmentList,
-                fInstructorBio: this.form.fInstructorBio,
-                imagePaths: this.form.imagePaths,
-                // country: this.form.country,
-                // city: this.form.city,
-                // street: this.form.street,
-                address: this.form.address
-            }).then(function(response){
-                alert("Successfully added an adventure");
-            }).catch(function(error){
-                alert("An ERROR occurred while adding an adventure");
-            });
+            if(this.isValidName) {
+                axios.post("api/adventures/addAdventure", {
+                    name: this.form.name,
+                    description: this.form.description,
+                    rules: this.form.rules,
+                    price: this.form.price,
+                    maxPeople: this.form.maxPeople,
+                    fishingEquipmentList: this.form.fishingEquipmentList,
+                    fInstructorBio: this.form.fInstructorBio,
+                    imagePaths: this.form.imagePaths,
+                    // country: this.form.country,
+                    // city: this.form.city,
+                    // street: this.form.street,
+                    address: this.form.address
+                }).then(function (response) {
+                    alert("Successfully added an adventure");
+                }).catch(function (error) {
+                    alert("An ERROR occurred while adding an adventure");
+                });
+            }
+            else
+            {
+                this.errors.name = true;
+            }
+        },
+        computed: {
+            isValidName() {
+                return !!this.form.name;
+            }
         }
     }
 })
