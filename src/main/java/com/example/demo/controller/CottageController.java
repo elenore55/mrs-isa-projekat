@@ -46,6 +46,7 @@ public class CottageController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         setAttributes(cottage, cottageDTO);
+        cottage = cottageService.save(cottage);
         return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.OK);
     }
 

@@ -135,6 +135,7 @@ Vue.component("update-cottage", {
         sendRequest() {
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress) {
                 axios.post("api/cottages/updateCottage", {
+                    id: 1,
                     name: this.cottage.name,
                     description: this.cottage.description,
                     address: this.cottage.address,
