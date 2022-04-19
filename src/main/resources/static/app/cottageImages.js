@@ -1,8 +1,9 @@
 Vue.component('cottage-images', {
    data: function() {
        return {
-           paths: ["https://picsum.photos/200", "https://picsum.photos/200", "https://picsum.photos/200",
-           "https://picsum.photos/200", "https://picsum.photos/200", "https://picsum.photos/200", "https://picsum.photos/200", "https://picsum.photos/200"]
+           paths: ["https://picsum.photos/id/23/200/300", "https://picsum.photos/id/217/200/300", "https://picsum.photos/id/2/200/300",
+           "https://picsum.photos/id/81/200/300", "https://picsum.photos/id/55/200/300", "https://picsum.photos/id/7/200/300",
+           "https://picsum.photos/id/212/200/300", "https://picsum.photos/id/100/200/300"]
        }
    },
 
@@ -13,7 +14,7 @@ Vue.component('cottage-images', {
                 <div class="row">
                     <div class="col d-flex justify-content-center flex-wrap">
                         <div v-for="(img, i) in paths" class="m-2">
-                            <img :src="img" class="rounded float-start m-2" width="240"> 
+                            <img :src="img" class="rounded float-start m-2" width="240" height="240"> 
                             <div class="text-end">
                                 <button type="button" class="btn btn-sm btn-danger me-3" v-on:click="paths.splice(i, 1)">Delete</button>
                             </div>
