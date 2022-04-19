@@ -3,7 +3,7 @@ Vue.component("add-adventure",{
     {
         return{
             allEquipments: [],
-            instructorBio_data: "",
+            //instructorBio_data: '',
             form:{
                 name: "",
                 address:{
@@ -25,6 +25,7 @@ Vue.component("add-adventure",{
     },
     mounted: function (){
         this.loadEquipment()
+        this.loadInstructorBio_data()
     },
     template: `
     <form style="width: 1000px; margin: auto">
@@ -75,6 +76,7 @@ Vue.component("add-adventure",{
                 <div class="form-group">
                     <label>Instructor biography</label>
                     <textarea v-model="form.fInstructorBio" class="form-control" style="height: 110px"></textarea>
+<!--                    <p>{{instructorBio_data}}  dasdsadsa</p>-->
                 </div>
                 <div class="form-group">
                     <label>Additional information</label>
@@ -119,12 +121,12 @@ Vue.component("add-adventure",{
               console.log(this.allEquipments)
           })
         },
-        loadInstructorBio_data(){
-            axios.get("api/fishingEquipment/all").then(response => {
-                this.allEquipments = response.data
-                console.log(this.allEquipments)
-            })
-        },
+        // loadInstructorBio_data(){
+        //     axios.get("api/instructors/getInstructorData").then(response => {
+        //         this.instructorBio_data = response.data
+        //         console.log(this.instructorBio_data)
+        //     })
+        // },
         sendRequest(){
             console.log(this.form.fishingEquipmentList)
             axios.post("api/adventures/addAdventure", {
@@ -140,6 +142,7 @@ Vue.component("add-adventure",{
                 // city: this.form.city,
                 // street: this.form.street,
                 address: this.form.address,
+                additionalInfo: this.form.additionalInfo,
                 fInstructorId: 1
             }).then(function (response) {
                 alert("Successfully added an adventure");
