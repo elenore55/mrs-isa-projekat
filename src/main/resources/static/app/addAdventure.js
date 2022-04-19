@@ -3,6 +3,7 @@ Vue.component("add-adventure",{
     {
         return{
             allEquipments: [],
+            instructorBio_data: "",
             form:{
                 name: "",
                 address:{
@@ -26,7 +27,7 @@ Vue.component("add-adventure",{
         this.loadEquipment()
     },
     template: `
-    <form style="width: 800px; margin: auto">
+    <form style="width: 1000px; margin: auto">
         <h2 class="text-center">Add Adventure</h2>
         <div class="row">
             <div class="col">
@@ -41,10 +42,10 @@ Vue.component("add-adventure",{
                 <div class="form-group">
                     <label>Rules</label>
                     <select class="select form-control" multiple v-model="form.rules">
-                      <option value="1">Rule1</option>
-                      <option value="2">Rule2</option>
-                      <option value="3">Rule3</option>
-                      <option value="4">Rule4</option>
+                      <option value="Rule1">Rule1</option>
+                      <option value="Rule2">Rule2</option>
+                      <option value="Rule3">Rule3</option>
+                      <option value="Rule4">Rule4</option>
                     </select>
                 </div>
             </div>
@@ -62,22 +63,22 @@ Vue.component("add-adventure",{
                     <input v-model="form.address.street" type="text" class="form-control"">
                 </div>
             </div>
-            <div class="col">
+            <div class="col-2">
                 <div class="form-group">
                     <label>Fishing equipment</label>
-                        <select class="select form-control" multiple v-model="form.fishingEquipmentList">
+                        <select class="select form-control" multiple v-model="form.fishingEquipmentList" style="height: 250px">
                             <option v-for="equipment in allEquipments">{{equipment.name}}</option>
                         </select>
-                </div>
-                <div class="form-group">
-                    <label>Additional information</label>
-                    <textarea v-model="form.additionalInfo" class="form-control"></textarea>
                 </div>                
             </div>
             <div class="col">
                 <div class="form-group">
                     <label>Instructor biography</label>
-                    <textarea v-model="form.fInstructorBio" class="form-control"></textarea>
+                    <textarea v-model="form.fInstructorBio" class="form-control" style="height: 110px"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Additional information</label>
+                    <textarea v-model="form.additionalInfo" class="form-control" style="height: 115px"></textarea>
                 </div>
             </div> 
         </div>
@@ -88,15 +89,15 @@ Vue.component("add-adventure",{
                     <input v-model="form.price" type="number" step="0.01" min="0" class="form-control"/>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <div class="form-group">
-                        <label>Maximum number of people!!</label>
-                        <input v-model="form.maxPeople" class="form-control">
+                        <label>Maximum number of people</label>
+                        <input v-model="form.maxPeople" class="form-control" style="width: 100px">
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-6">
+            <div class="col-4">
                 <label>Pictures</label>
                 <input accept="image/*" type="file" class="form-control" multiple/>
             </div>
@@ -105,7 +106,7 @@ Vue.component("add-adventure",{
                 <div class="form-group">
                    <br>
 <!--                   <input type="button" class="btn btn-primary form-control" value="Submit">-->
-                   <button type="button" class="btn btn-primary btn-lg" v-on:click="sendRequest">Submit</button>
+                   <button type="button" class="btn btn-primary btn-lg" v-on:click="sendRequest" style="position: relative; right: -220px;bottom: 0px">Submit</button>
                 </div>
             </div>
         </div>
@@ -117,6 +118,12 @@ Vue.component("add-adventure",{
             this.allEquipments = response.data
               console.log(this.allEquipments)
           })
+        },
+        loadInstructorBio_data(){
+            axios.get("api/fishingEquipment/all").then(response => {
+                this.allEquipments = response.data
+                console.log(this.allEquipments)
+            })
         },
         sendRequest(){
             console.log(this.form.fishingEquipmentList)
