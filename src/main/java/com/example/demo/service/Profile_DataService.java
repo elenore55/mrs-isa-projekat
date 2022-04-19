@@ -1,14 +1,14 @@
 package com.example.demo.service;
 
 import com.example.demo.model.ProfileData;
-import com.example.demo.repository.Profile_DataREpository;
+import com.example.demo.repository.Profile_DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class Profile_DataService {
     @Autowired
-    private Profile_DataREpository profile_dataREpository;
+    private Profile_DataRepository profile_dataREpository;
 
     public ProfileData findOne(Integer id) {
         return profile_dataREpository.getById(id);

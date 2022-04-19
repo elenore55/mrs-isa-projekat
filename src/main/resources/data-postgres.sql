@@ -1,3 +1,6 @@
+delete from adventure;
+delete from offer;
+delete from price_list;
 delete from fishing_equipment;
 delete from fishing_instructor;
 delete from my_users;

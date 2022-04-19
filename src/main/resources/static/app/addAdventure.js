@@ -17,7 +17,8 @@ Vue.component("add-adventure",{
                 imagePaths: [],
                 rules: [],
                 fishingEquipmentList: [],
-                maxPeople: 1
+                maxPeople: 1,
+                fInstructorId: 1
             }
         }
     },
@@ -67,8 +68,10 @@ Vue.component("add-adventure",{
                         <select class="select form-control" multiple v-model="form.fishingEquipmentList">
                             <option v-for="equipment in allEquipments">{{equipment.name}}</option>
                         </select>
-                    </select>
-                        
+                </div>
+                <div class="form-group">
+                    <label>Additional information</label>
+                    <textarea v-model="form.additionalInfo" class="form-control"></textarea>
                 </div>                
             </div>
             <div class="col">
@@ -126,10 +129,11 @@ Vue.component("add-adventure",{
                 fishingEquipmentList: this.form.fishingEquipmentList,
                 fInstructorBio: this.form.fInstructorBio,
                 imagePaths: this.form.imagePaths,
-                country: this.form.country,
-                city: this.form.city,
-                street: this.form.street,
-                address: this.form.address
+                // country: this.form.country,
+                // city: this.form.city,
+                // street: this.form.street,
+                address: this.form.address,
+                fInstructorId: 1
             }).then(function (response) {
                 alert("Successfully added an adventure");
             }).catch(function (error) {

@@ -84,15 +84,18 @@ public class AdventureController {
 //            images.add(new Image(imagePath));
 //
 //
-//        List<Rule> rules= new ArrayList<>();
-//        for(String ruleTxt : adventureDTO.getRules())
-//            rules.add(new Rule(ruleTxt));
+        List<Rule> rules= new ArrayList<>();
+        for(String ruleTxt : adventureDTO.getRules())
+            rules.add(new Rule(ruleTxt));
+        adventure.setRules(rules);
 
         List<FishingEquipment> fishingEquipmentList = new ArrayList<>();
         for(FishingEquipmentDTO fishingEquipmentListDTO : adventureDTO.getFishingEquipmentList())
 //            fishingEquipmentList.add(new FishingEquipment(fishingEquipmentListDTO.getName(), fishingEquipmentListDTO.getAmount()));
             fishingEquipmentList.add(new FishingEquipment());
 
+
+        adventure.setMaxPeople(adventureDTO.getMaxPeople());
 
         adventure = adventureService.save(adventure);
         return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.CREATED);
