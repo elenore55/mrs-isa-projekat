@@ -21,10 +21,10 @@ public class FishingInstructorController {
         this.fishingInstructorService=fishingInstructorService;
     }
     @GetMapping(value = "/getInstructorData")
-    public ResponseEntity<String> getFishingInstructorData(){
+    public ResponseEntity<FishingInstructorDTO> getFishingInstructorData(){
         FishingInstructor fishingInstructor = fishingInstructorService.findOne(1);
         FishingInstructorDTO fishingInstructorDTO = new FishingInstructorDTO(fishingInstructor);
 
-        return new ResponseEntity<>(fishingInstructorDTO.getBiography(), HttpStatus.OK);
+        return new ResponseEntity<>(fishingInstructorDTO, HttpStatus.OK);
     }
 }

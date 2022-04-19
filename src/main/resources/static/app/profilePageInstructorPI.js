@@ -6,7 +6,8 @@ Vue.component("profile-page-instructorpi",{
             surname:"",
             email:"",
             phoneNumber:"",
-            address:""
+            address:"",
+            instruktorPI:""
 
         }
     },
@@ -19,7 +20,8 @@ Vue.component("profile-page-instructorpi",{
         <div class="row">
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" class="form-control">          
+                <input type="text" class="form-control" value="{{instruktorPI.biography}}">
+                <p>{{instruktorPI.biography}} NEKI dodatni tekst</p>          
             </div>
             <div class="form-group">
                 <label>Surname</label>
@@ -82,9 +84,9 @@ Vue.component("profile-page-instructorpi",{
     `,
     methods:{
         loadInstructorProfile(){
-            axios.get("api/fishingEquipment/all").then(response => {
-                this.allEquipments = response.data
-                console.log(this.allEquipments)
+            axios.get("api/instructors/getInstructorData").then(response => {
+                this.instruktorPI = response.data
+                console.log(this.instruktorPI)
             })
         }
     }
