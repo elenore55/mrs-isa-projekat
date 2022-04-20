@@ -21,7 +21,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     protected Category category;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL) //dodato zato sto se nije cuvalo -unsaved transient instance poruke posle koje sledi podatak koji se nije sacuvao a treba!!
     protected ProfileData profileData;
 
     public User() {

@@ -17,6 +17,16 @@ public class ProfileDataDTO {
 
     }
 
+    public ProfileDataDTO(Integer id, String email, String name, String password, String phoneNumber, String surname, Address address) {
+        this.id = id;
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.surname = surname;
+        this.address = address;
+    }
+
     public ProfileDataDTO(ProfileData profileData)
     {
         this.id = profileData.getId();
@@ -82,5 +92,18 @@ public class ProfileDataDTO {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "ProfileDataDTO{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", surname='" + surname + '\'' +
+                ", address=" + address +
+                '}';
     }
 }
