@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.example.demo.dto.RegistrationDTO;
 import com.example.demo.model.enums.Category;
 
 import javax.persistence.*;
@@ -31,6 +32,13 @@ public class User {
         // this.profileData = new ProfileData(email, password, name, surname, phoneNumber, address);
         this.numberOfPoints = 0;
         this.category = Category.REGULAR;
+    }
+
+    public User(RegistrationDTO registrationDTO) {
+        this.profileData = new ProfileData(registrationDTO.getEmail(), registrationDTO.getPassword(),
+                registrationDTO.getName(), registrationDTO.getSurname(), registrationDTO.getTel(),
+                new Address(registrationDTO.getStreet(), registrationDTO.getCity(), registrationDTO.getCountry()));
+
     }
 
     public Integer getId() {

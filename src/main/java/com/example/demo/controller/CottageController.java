@@ -30,6 +30,7 @@ public class CottageController {
     public ResponseEntity<CottageDTO> saveCottage(@RequestBody CottageDTO cottageDTO) {
         CottageOwner owner = new CottageOwner("email@gmail.com", "pass", "Pero", "Peric",
                 "12334556", new Address("Milana Rakica 19", "Novi Sad", "Srbija"));
+        System.out.println("BILA SAM U MILICINOM KONTROLERU");
         cottageOwnerService.save(owner);
         Cottage cottage = new Cottage();
         setAttributes(cottage, cottageDTO);
