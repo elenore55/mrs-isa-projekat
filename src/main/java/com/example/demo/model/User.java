@@ -22,7 +22,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     protected Category category;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     protected ProfileData profileData;
 
     public User() {
@@ -35,9 +35,11 @@ public class User {
     }
 
     public User(RegistrationDTO registrationDTO) {
+        Address a = new Address(registrationDTO.getStreet(), registrationDTO.getCity(), registrationDTO.getCountry());
         this.profileData = new ProfileData(registrationDTO.getEmail(), registrationDTO.getPassword(),
-                registrationDTO.getName(), registrationDTO.getSurname(), registrationDTO.getTel(),
-                new Address(registrationDTO.getStreet(), registrationDTO.getCity(), registrationDTO.getCountry()));
+                registrationDTO.getName(), registrationDTO.getSurname(), registrationDTO.getPhone(), a);
+        this.numberOfPoints = 0;
+        this.category = Category.REGULAR;
 
     }
 

@@ -2,14 +2,11 @@ package com.example.demo.service;
 
 import com.example.demo.model.Client;
 import com.example.demo.model.User;
+import com.example.demo.model.enums.Category;
 import com.example.demo.repository.ClientRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class UserService {
@@ -26,10 +23,15 @@ public class UserService {
 
     public User save(User user){
         System.out.println("BILA SAM U SVOM SERVISU             BILA SAM U SVOM SERVISU             BILA SAM U SVOM SERVISU     ");
+        System.out.println("Ime usera " + user.getName());
+        System.out.println("Drzava usera " + user.getProfileData().getAddress().getCountry());
         Client c = new Client();
-        c.setProfileData(user.getProfileData());
 
-        return clientRepository.save(c);
+        c.setProfileData(user.getProfileData());
+        c.setNumberOfPoints(0);
+        c.setCategory(Category.REGULAR);
+        Client retC = clientRepository.save(c);
+        return retC;
     }
 
     public User findOneByEmail(String email)
@@ -46,4 +48,9 @@ public class UserService {
         //    return true;
         return false;
     }
+
+    /*public boolean isAlreadyRegistered(String email) {
+        if (userRepository.isAlreadyRegistered(email))
+        return false;
+    }*/
 }

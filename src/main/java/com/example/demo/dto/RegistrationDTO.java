@@ -12,7 +12,7 @@ public class RegistrationDTO {
     private String street;
     private String city;
     private String country;
-    private String tel;
+    private String phone;
 
 
     public RegistrationDTO()
@@ -20,7 +20,7 @@ public class RegistrationDTO {
 
     }
 
-    public RegistrationDTO(String email, String password, String passwordConfirmation, String name, String surname, String street, String city, String country, String tel) {
+    public RegistrationDTO(String email, String password, String passwordConfirmation, String name, String surname, String street, String city, String country, String phone) {
         this.email = email;
         this.password = password;
         this.passwordConfirmation = passwordConfirmation;
@@ -29,7 +29,7 @@ public class RegistrationDTO {
         this.street = street;
         this.city = city;
         this.country = country;
-        this.tel = tel;
+        this.phone = phone;
     }
 
     public RegistrationDTO(Client c)
@@ -41,7 +41,7 @@ public class RegistrationDTO {
         this.street = c.getAddress().getStreet();
         this.city = c.getAddress().getCity();
         this.country = c.getAddress().getCountry();
-        this.tel = c.getPhoneNumber();
+        this.phone = c.getPhoneNumber();
 
     }
 
@@ -50,7 +50,7 @@ public class RegistrationDTO {
         this.password = u.getPassword();
         this.name = u.getName();
         this.surname = u.getSurname();
-        this.tel = u.getPhoneNumber();
+        this.phone = u.getPhoneNumber();
         this.street = u.getAddress().getStreet();
         this.city = u.getAddress().getCity();
         this.country = u.getAddress().getCountry();
@@ -121,12 +121,12 @@ public class RegistrationDTO {
         this.country = country;
     }
 
-    public String getTel() {
-        return tel;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
 

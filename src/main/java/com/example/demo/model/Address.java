@@ -9,10 +9,10 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "street", nullable = false)
+    @Column(name = "street")
     private String street;
 
-    @Column(name = "city", nullable = false)
+    @Column(name = "city")
     private String city;
 
     @Column(name = "country")

@@ -7,7 +7,7 @@ Vue.component("registration", {
                passwordConfirmation: "",
                name: "",
                surname: "",
-               address:"",
+               street:"",
                city:"",
                country:"",
                phone:""
@@ -50,8 +50,8 @@ Vue.component("registration", {
                                     </div>
 
                                     <div class="form-floating has-validation">
-                                        <input v-model="user.address" type="text" name="" id="" class="form-control my-3 py-2" placeholder="Address" required>
-                                        <label style="color:#C0C0C0" for="adrdess-input">Adress</label>
+                                        <input v-model="user.street" type="text" name="" id="" class="form-control my-3 py-2" placeholder="Address" required>
+                                        <label style="color:#C0C0C0" for="street-input">Address</label>
                                     </div>
 
                                     <div class="form-floating has-validation">
@@ -89,9 +89,9 @@ Vue.component("registration", {
                     passwordConfirmation: this.user.passwordConfirmation,
                     name: this.user.name,
                     surname: this.user.surname,
-                    address: this.user.address,
+                    street: this.user.street,
                     city: this.user.city,
-                    county: this.user.country,
+                    country: this.user.country,
                     phone: this.user.phone
                 }).then(function(response) {
                     alert('User successfully added!');

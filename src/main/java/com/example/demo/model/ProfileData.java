@@ -21,10 +21,10 @@ public class ProfileData {
     @Column(nullable = false)
     private String surname;
 
-    @Column(name = "phoneNumber", nullable = false)
+    @Column(nullable = false)
     private String phoneNumber;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
 

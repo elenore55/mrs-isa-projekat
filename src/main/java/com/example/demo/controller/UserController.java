@@ -23,9 +23,11 @@ public class UserController {
     @ResponseBody
     @RequestMapping(path = "/registration", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<RegistrationDTO> saveUser(@RequestBody RegistrationDTO registrationDTO){
+
+
         User u = new User(registrationDTO);
+        // boolean exists = userService.isAlreadyRegistered(registrationDTO.getEmail());
         u = userService.save(u);
-        System.out.println( "BILA SAM U SVOM KONTROLERU         BILA SAM U SVOM KONTROLERU         BILA SAM U SVOM KONTROLERU         ");
         return new ResponseEntity<>(new RegistrationDTO(u), HttpStatus.CREATED);
     }
 
