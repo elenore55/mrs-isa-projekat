@@ -36,12 +36,6 @@ public class FishingInstructorController {
         System.out.println(fishingInstructorDTO.toString());
         fishingInstructor.setId(fishingInstructorDTO.getId());
         fishingInstructor.setBiography(fishingInstructorDTO.getBiography());
-//        fishingInstructor.setSurname(fishingInstructorDTO.getSurname());
-//        fishingInstructor.setEmail(fishingInstructorDTO.getEmail());
-//        fishingInstructor.setPhoneNumber(fishingInstructorDTO.getPhoneNumber());
-//        fishingInstructor.setAddress(new Address(fishingInstructorDTO.getAddress().getStreet(),
-//                fishingInstructorDTO.getAddress().getCity(),fishingInstructorDTO.getAddress().getCountry()));
-//        fishingInstructor.setPassword(fishingInstructorDTO.getPassword());
         fishingInstructor.getProfileData().setEmail(fishingInstructorDTO.getProfileDataDTO().getEmail());
         fishingInstructor.getProfileData().setAddress(fishingInstructorDTO.getProfileDataDTO().getAddress());
         fishingInstructor.getProfileData().setName(fishingInstructorDTO.getProfileDataDTO().getName());
@@ -49,11 +43,6 @@ public class FishingInstructorController {
         fishingInstructor.getProfileData().setPassword(fishingInstructorDTO.getProfileDataDTO().getPassword());
         fishingInstructor.getProfileData().setPhoneNumber(fishingInstructorDTO.getProfileDataDTO().getPhoneNumber());
         fishingInstructor.getProfileData().setSurname(fishingInstructorDTO.getProfileDataDTO().getSurname());
-//        fishingInstructor.setProfileData(new ProfileData(fishingInstructorDTO.getProfileDataDTO().getEmail(),
-//                fishingInstructorDTO.getProfileDataDTO().getPassword(),fishingInstructorDTO.getProfileDataDTO().getName(),
-//                fishingInstructorDTO.getProfileDataDTO().getSurname(),fishingInstructorDTO.getProfileDataDTO().getPhoneNumber(),
-//                fishingInstructorDTO.getProfileDataDTO().getAddress()));
-
         fishingInstructor = fishingInstructorService.save(fishingInstructor);
         return new ResponseEntity<>(new FishingInstructorDTO(fishingInstructor), HttpStatus.CREATED);
     }

@@ -79,11 +79,6 @@ public class AdventureController {
         FishingInstructor fishingInstructor = fishingInstructorService.findOne(1);
         adventure.setInstructor(fishingInstructor);
 
-//        List<Image> images = new ArrayList<>();
-//        for(String imagePath : adventureDTO.getImagePaths())
-//            images.add(new Image(imagePath));
-//
-//
         List<Rule> rules= new ArrayList<>();
         for(String ruleTxt : adventureDTO.getRules())
             rules.add(new Rule(ruleTxt));
@@ -91,7 +86,6 @@ public class AdventureController {
 
         List<FishingEquipment> fishingEquipmentList = new ArrayList<>();
         for(FishingEquipmentDTO fishingEquipmentListDTO : adventureDTO.getFishingEquipmentList())
-//            fishingEquipmentList.add(new FishingEquipment(fishingEquipmentListDTO.getName(), fishingEquipmentListDTO.getAmount()));
             fishingEquipmentList.add(new FishingEquipment());
 
 
