@@ -6,6 +6,7 @@ const Login = {template: '<login></login>'};
 const Registration = {template: '<registration></registration>'}
 const ClientNavbar = {template: '<client-navbar></client-navbar>'}
 const ClientProfile = {template: '<client-profile></client-profile>'}
+const EditProfile = {template: '<edit-profile></edit-profile>'}
 
 const router = new VueRouter({
     mode: 'hash',
@@ -21,6 +22,10 @@ const router = new VueRouter({
         {
             path: "/clientProfile/",
             component: ClientProfile
+        },
+        {
+            path: "/editProfile/",
+            component: EditProfile
         },
         {
             path: "/login/",
