@@ -43,7 +43,7 @@ public class AdventureDTO {
         this.name = adventure.getName();
         this.address = new AddressDTO(adventure.getAddress());
         this.description = adventure.getDescription();
-        this.price = adventure.getPriceList().getAmount();
+        this.price = adventure.getPriceList();
         this.additionalInfo = adventure.getAdditionalInfo();
         this.fInstructorId = adventure.getInstructor().getId();
 

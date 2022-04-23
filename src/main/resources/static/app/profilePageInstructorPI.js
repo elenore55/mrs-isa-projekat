@@ -81,12 +81,12 @@ Vue.component("profile-page-instructorpi",{
     methods:{
         loadInstructorProfile(){
             axios.get("api/instructors/getInstructorData").then(response => {
-                this.instruktorPI = response.data
+                this.instruktorPI = response.data;
                 console.log(this.instruktorPI)
             })
         },
         sendRequest(){
-            console.log(this.instruktorPI)
+            console.log(this.instruktorPI);
             axios.post("api/instructors/updateInstructorInfo", {
                 biography: this.instruktorPI.biography,
                 profileDataDTO: this.instruktorPI.profileDataDTO,
@@ -98,4 +98,4 @@ Vue.component("profile-page-instructorpi",{
             });
         }
     }
-})
+});

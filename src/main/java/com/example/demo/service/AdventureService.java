@@ -28,7 +28,7 @@ public class AdventureService {
     }
 
     public Adventure save(Adventure adventure) {
-        adventure.getPriceList().setStartDate(LocalDate.now());
+        // adventure.getPriceList().setStartDate(LocalDate.now());
         // dodati proveru DA LI postoji poslata adresa I kako to spreciti da se doda ponovo
         //dventure_fishing_equipments_repository.save(adventure.getId(),adventure.getAddress().getId()); //KAKOOOOO!!!
         return adventureRepository.save(adventure);

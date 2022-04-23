@@ -14,17 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="api/adventures")
+@RequestMapping(value = "api/adventures")
 public class AdventureController {
 
     private AdventureService adventureService;
     private FishingInstructorService fishingInstructorService;
 
     @Autowired
-    public AdventureController(AdventureService adventureService, FishingInstructorService fishingInstructorService)
-    {
-        this.adventureService=adventureService;
-        this.fishingInstructorService=fishingInstructorService;
+    public AdventureController(AdventureService adventureService, FishingInstructorService fishingInstructorService) {
+        this.adventureService = adventureService;
+        this.fishingInstructorService = fishingInstructorService;
     }
 
     @GetMapping(value = "/all")
@@ -55,7 +54,7 @@ public class AdventureController {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/addAdventure",method=RequestMethod.POST,consumes = "application/json")
+    @RequestMapping(path = "/addAdventure", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<AdventureDTO> saveAdventure(@RequestBody AdventureDTO adventureDTO) {
 
         Adventure adventure = new Adventure();
@@ -63,12 +62,9 @@ public class AdventureController {
         adventure.setId(adventureDTO.getId());
         adventure.setName(adventureDTO.getName());
         adventure.setAddress(new Address(adventureDTO.getAddress().getStreet(),
-                adventureDTO.getAddress().getCity(),adventureDTO.getAddress().getCountry()));
+                adventureDTO.getAddress().getCity(), adventureDTO.getAddress().getCountry()));
         adventure.setDescription(adventureDTO.getDescription());
-
-        PriceList priceList = new PriceList();
-        priceList.setAmount(adventureDTO.getPrice());
-        adventure.setPriceList(priceList);
+        adventure.setPriceList(adventureDTO.getPrice());
 
         adventure.setAdditionalInfo(adventureDTO.getAdditionalInfo());
 
@@ -79,13 +75,13 @@ public class AdventureController {
         FishingInstructor fishingInstructor = fishingInstructorService.findOne(1);
         adventure.setInstructor(fishingInstructor);
 
-        List<Rule> rules= new ArrayList<>();
-        for(String ruleTxt : adventureDTO.getRules())
+        List<Rule> rules = new ArrayList<>();
+        for (String ruleTxt : adventureDTO.getRules())
             rules.add(new Rule(ruleTxt));
         adventure.setRules(rules);
 
         List<FishingEquipment> fishingEquipmentList = new ArrayList<>();
-        for(FishingEquipmentDTO fishingEquipmentListDTO : adventureDTO.getFishingEquipmentList())
+        for (FishingEquipmentDTO fishingEquipmentListDTO : adventureDTO.getFishingEquipmentList())
             fishingEquipmentList.add(new FishingEquipment());
 
 
