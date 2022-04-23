@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/AdventureDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/AdventureDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AdventureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AdventureService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/profilePageInstructorPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/profilePageInstructorPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/CottageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/CottageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/Offer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/Offer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/cottageImages.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/cottageImages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/updateCottage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/updateCottage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/vue-router.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/vue-router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/vue.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +62,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/app" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -98,11 +104,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ba72d699-2c15-4087-89c2-5c454030afa5" name="Default Changelist" comment="" />
+      <changelist id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="" />
       <created>1649621033745</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1649621033745</updated>
+      <workItem from="1650741057960" duration="222000" />
     </task>
     <task id="LOCAL-00001" summary="Mergovana grana add_cottage na login&#10;Rijeseni konflikti">
       <created>1650313974543</created>
@@ -111,8 +118,18 @@
       <option name="project" value="LOCAL" />
       <updated>1650313974543</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Popravljen price list">
+      <created>1650722404228</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1650722404228</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -130,9 +147,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'add_cottage' into login&#10;&#10;# Conflicts:&#10;#&#9;src/main/resources/static/app/app.js&#10;#&#9;src/main/resources/static/index.html" />
     <MESSAGE value="Mergovana grana add_cottage na login&#10;Rijeseni konflikti" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mergovana grana add_cottage na login&#10;Rijeseni konflikti" />
+    <MESSAGE value="Popravljen price list" />
+    <option name="LAST_COMMIT_MESSAGE" value="Popravljen price list" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="233" y="0" key="#Notifications" timestamp="1650741185090">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#Notifications/0.0.1280.680@0.0.1280.680" timestamp="1650741185090" />
+    <state x="233" y="0" key="#Project_Structure" timestamp="1650741282176">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1650741282176" />
     <state x="233" y="0" key="#SQL_Dialects" timestamp="1650721189682">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -145,21 +171,37 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="490" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1650720848000" />
-    <state width="1237" height="167" key="GridCell.Tab.0.bottom" timestamp="1650722329305">
+    <state x="225" y="0" key="CommitChangelistDialog2" timestamp="1650722403107">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="167" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1650722329305" />
-    <state width="1237" height="167" key="GridCell.Tab.0.center" timestamp="1650722329305">
+    <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1650722403107" />
+    <state width="1237" height="167" key="GridCell.Tab.0.bottom" timestamp="1650722598546">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="167" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1650722329305" />
-    <state width="1237" height="167" key="GridCell.Tab.0.left" timestamp="1650722329305">
+    <state width="1237" height="167" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1650722598546" />
+    <state width="1237" height="167" key="GridCell.Tab.0.center" timestamp="1650722598546">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="167" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1650722329305" />
-    <state width="1237" height="167" key="GridCell.Tab.0.right" timestamp="1650722329305">
+    <state width="1237" height="167" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1650722598546" />
+    <state width="1237" height="167" key="GridCell.Tab.0.left" timestamp="1650722598546">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="167" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1650722329305" />
+    <state width="1237" height="167" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1650722598546" />
+    <state width="1237" height="167" key="GridCell.Tab.0.right" timestamp="1650722598546">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="167" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1650722598546" />
+    <state x="-121" y="0" key="SettingsEditor" timestamp="1650741226110">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="-121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1650741226110" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1650722579055">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1650722579055" />
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1650741065475">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1650741065475" />
   </component>
 </project>
