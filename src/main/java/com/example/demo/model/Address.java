@@ -15,7 +15,7 @@ public class Address {
     @Column(name = "city", nullable = false)
     private String city;
 
-    @Column(name = "country")
+    @Column(name = "country", nullable = false)
     private String country;
 
     public Address() {

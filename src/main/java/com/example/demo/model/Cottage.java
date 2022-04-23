@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Cottage extends Offer {
 
-    @OneToMany(mappedBy = "cottage", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cottage", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Room> rooms = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -16,6 +16,9 @@ public class Cottage extends Offer {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<FastReservation> fastReservations = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Image> images;
 
     public Cottage() {
         super();
@@ -43,5 +46,13 @@ public class Cottage extends Offer {
 
     public void setFastReservations(List<FastReservation> fastReservations) {
         this.fastReservations = fastReservations;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.example.demo.dto.RegistrationDTO;
 import com.example.demo.model.enums.Category;
 
 import javax.persistence.*;
@@ -21,7 +22,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     protected Category category;
 
-    @OneToOne(cascade = CascadeType.ALL) //dodato zato sto se nije cuvalo -unsaved transient instance poruke posle koje sledi podatak koji se nije sacuvao a treba!!
+    @OneToOne(cascade = CascadeType.ALL)
     protected ProfileData profileData;
 
     public User() {
@@ -31,6 +32,15 @@ public class User {
         // this.profileData = new ProfileData(email, password, name, surname, phoneNumber, address);
         this.numberOfPoints = 0;
         this.category = Category.REGULAR;
+    }
+
+    public User(RegistrationDTO registrationDTO) {
+        Address a = new Address(registrationDTO.getStreet(), registrationDTO.getCity(), registrationDTO.getCountry());
+        this.profileData = new ProfileData(registrationDTO.getEmail(), registrationDTO.getPassword(),
+                registrationDTO.getName(), registrationDTO.getSurname(), registrationDTO.getPhone(), a);
+        this.numberOfPoints = 0;
+        this.category = Category.REGULAR;
+
     }
 
     public Integer getId() {
