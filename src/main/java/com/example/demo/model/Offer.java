@@ -23,6 +23,10 @@ public class Offer {
     @Column
     protected String description;
 
+
+    //@OneToOne(cascade = CascadeType.ALL)        //izmenjeno
+    //protected PriceList priceList;
+
     @Column
     protected BigDecimal priceList;
 

@@ -1,3 +1,5 @@
+const AddAdventure = {template: '<add-adventure></add-adventure>'};
+const ProfilePageInstructorPI = {template: '<profile-page-instructorpi></profile-page-instructorpi>'};
 const CottageImages = {template: '<cottage-images></cottage-images>'};
 const UpdateCottageNav = {template: '<update-cottage-nav></update-cottage-nav>'};
 const UpdateCottage = {template: '<update-cottage></update-cottage>'};
@@ -46,6 +48,14 @@ const router = new VueRouter({
         {
             path: "/addCottage/",
             component: AddCottage
+        },
+        {
+           path: "/addAdventure/",
+           component: AddAdventure
+        },
+        {
+           path: "/profilePageInstructorPI/",
+           component: ProfilePageInstructorPI
         }
 
 
