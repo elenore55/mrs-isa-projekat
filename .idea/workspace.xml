@@ -5,18 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba72d699-2c15-4087-89c2-5c454030afa5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/deleteProfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/editProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/img03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/img04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/img05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/img11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/img12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/img16.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottageImages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageImages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/updateCottage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/updateCottage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

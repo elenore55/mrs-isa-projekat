@@ -111,7 +111,7 @@ Vue.component("update-cottage", {
             </div>
             <div class="row mt-1">
                 <div class="col text-end">
-                    <button type="button" class="btn btn-primary btn-lg" v-on:click="sendRequest">Submit</button>
+                    <button type="button" class="btn btn-primary btn-lg" v-on:click="sendRequest">Save changes</button>
                 </div>
             </div>
         </div>
