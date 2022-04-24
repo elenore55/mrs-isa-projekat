@@ -257,6 +257,20 @@ Vue.component("add-ship", {
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress &&
                 this.isValidLength && this.isValidCapacity && this.isValidNumEngines && this.isValidPower && this.isValidSpeed) {
                 alert('Data valid');
+                axios.post("api/ships/addShip", {
+                    name: this.name,
+                    description: this.description,
+                    address: this.address,
+                    price: this.price,
+                    rules: this.rules,
+                    additionalInfo: this.additionalInfo,
+                    imagePaths: this.images,
+                    ownerId: 1
+                }).then(function(response) {
+                    alert('Cottage successfully added!');
+                }).catch(function (error) {
+                    alert('An error occurred!');
+                });
             } else {
                 this.errors.name = true;
                 this.errors.description = true;
