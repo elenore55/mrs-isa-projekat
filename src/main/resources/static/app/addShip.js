@@ -254,7 +254,22 @@ Vue.component("add-ship", {
         },
 
         sendRequest() {
-            alert('Submitted!');
+            if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress &&
+                this.isValidLength && this.isValidCapacity && this.isValidNumEngines && this.isValidPower && this.isValidSpeed) {
+                alert('Data valid');
+            } else {
+                this.errors.name = true;
+                this.errors.description = true;
+                this.errors.price = true;
+                this.errors.street = true;
+                this.errors.city = true;
+                this.errors.country = true;
+                this.errors.length = true;
+                this.errors.capacity = true;
+                this.errors.num_engines = true;
+                this.errors.power = true;
+                this.errors.max_speed = true;
+            }
         },
     },
 
@@ -290,23 +305,23 @@ Vue.component("add-ship", {
         },
 
         isValidLength() {
-            return true;
+            return this.length > 0;
         },
 
         isValidCapacity() {
-            return true;
+            return this.capacity > 0;
         },
 
         isValidNumEngines() {
-            return true;
+            return this.num_engines > 0;
         },
 
         isValidPower() {
-            return true;
+            return this.engine_power > 0;
         },
 
         isValidSpeed() {
-            return true;
+            return this.max_speed > 0;
         }
     }
 });
