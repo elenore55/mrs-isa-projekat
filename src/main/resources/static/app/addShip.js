@@ -15,7 +15,7 @@ Vue.component("add-ship", {
             nav_equipment: { name: "", amount: null },
             fishing_equipment_list: [],
             fishing_equipment: { name: "", amount: null },
-            ship_type: "",
+            ship_type: 1,
             length: null,
             capacity: null,
             num_engines: null,
@@ -81,7 +81,7 @@ Vue.component("add-ship", {
             </div>
             <div class="row my-4 mx-1">
                 <div class="col form-floating">
-                    <select class="form-select" aria-label="Default select example" id="type-select">
+                    <select class="form-select" v-model="ship_type" aria-label="Default select example" id="type-select">
                         <option value="1" selected>Ship</option>
                         <option value="2">Boat</option>
                     </select>
@@ -256,7 +256,6 @@ Vue.component("add-ship", {
         sendRequest() {
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress &&
                 this.isValidLength && this.isValidCapacity && this.isValidNumEngines && this.isValidPower && this.isValidSpeed) {
-                alert('Data valid');
                 axios.post("api/ships/addShip", {
                     name: this.name,
                     description: this.description,
@@ -274,7 +273,7 @@ Vue.component("add-ship", {
                     maxSpeed: this.max_speed,
                     cancellationConditions: this.conditions,
                     fishingEquipmentList: this.fishing_equipment_list,
-                    navigationEquipmentList: this.navigationEquipmentList
+                    navigationEquipmentList: this.nav_equipment_list
                 }).then(function(response) {
                     alert('Ship successfully added!');
                 }).catch(function (error) {

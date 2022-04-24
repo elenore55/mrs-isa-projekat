@@ -19,7 +19,7 @@ public class ShipDTO {
     private String additionalInfo;
     private Integer ownerId;
     private List<String> imagePaths;
-    private String shipType;
+    private Integer shipType;
     private Double length;
     private Integer capacity;
     private Integer numberOfEngines;
@@ -39,7 +39,7 @@ public class ShipDTO {
         for (Rule rule : ship.getRules()) this.rules.add(rule.getText());
         this.additionalInfo = ship.getAdditionalInfo();
         this.ownerId = ship.getOwner().getId();
-        this.shipType = ship.getShipType().name();
+        this.shipType = ship.getShipType().ordinal();
         this.length = ship.getLength();
         this.capacity = ship.getCapacity();
         this.numberOfEngines = ship.getNumberOfEngines();
@@ -128,11 +128,11 @@ public class ShipDTO {
         this.imagePaths = imagePaths;
     }
 
-    public String getShipType() {
+    public Integer getShipType() {
         return shipType;
     }
 
-    public void setShipType(String shipType) {
+    public void setShipType(Integer shipType) {
         this.shipType = shipType;
     }
 
