@@ -54,6 +54,36 @@ Vue.component("add-ship", {
                     <p v-if="!isValidPrice && errors.price" class="text-danger">Price is required.</p>
                 </div>
             </div>
+            <div class="row justify-content-center my-4 mx-1">
+                <div class="col container">
+                    <label class="form-label h5">Address</label>
+                    <div class="row m-1">
+                        <div class="col form-floating">
+                            <input v-on:focus="errors.street = false" v-model="address.street" type="text" class="form-control" id="street-input" />
+                            <label for="street-input">Street</label>
+                            <p v-if="!isValidStreet && errors.street" class="text-danger">Invalid street name.</p>
+                        </div>
+                    </div>
+                    <div class="row m-1">
+                        <div class="col form-floating">
+                            <input v-on:focus="errors.city = false" v-model="address.city" type="text" class="form-control" id="city-input" />
+                            <label for="city-input">City</label>
+                            <p v-if="!isValidCity && errors.city" class="text-danger">Invalid city name.</p>
+                        </div>
+                    </div>
+                    <div class="row m-1">
+                        <div class="col form-floating">
+                            <input v-on:focus="errors.country = false" v-model="address.country" type="text" class="form-control" id="country-input"/>
+                            <label for="country-input">Country</label>
+                            <p v-if="!isValidCountry && errors.country" class="text-danger">Invalid country name.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col form-floating">
+                    <textarea v-model="additionalInfo" class="form-control mt-5" id="info-textarea" style="height: 150px"></textarea>
+                    <label for="info-textarea" class="mt-5">Additional info</label>
+                </div>
+            </div>
         </div>
     </form>
     `,
