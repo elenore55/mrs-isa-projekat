@@ -1,3 +1,4 @@
+const AddShip = {template: '<add-ship></add-ship>'};
 const ProfilePageInstructorPI = {template: '<profile-page-instructorpi></profile-page-instructorpi>'};
 const AddAdventure = {template: '<add-adventure></add-adventure>'};
 const CottageImages = {template: '<cottage-images></cottage-images>'};
@@ -13,6 +14,10 @@ const EditProfile = {template: '<edit-profile></edit-profile>'};
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/addShip/",
+            component: AddShip
+        },
         {
             path: "/cottageImages/",
             component: CottageImages
