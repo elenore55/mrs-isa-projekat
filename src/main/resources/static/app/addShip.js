@@ -6,7 +6,7 @@ Vue.component("add-ship", {
             address: { street: "", city: "", country: "" },
             price: null,
             rules: [],
-            additionalInfo: "",
+            additional_info: "",
             rule: "",
             imgPath: "",
             images: [],
@@ -75,7 +75,7 @@ Vue.component("add-ship", {
                     </div>
                 </div>
                 <div class="col form-floating">
-                    <textarea v-model="additionalInfo" class="form-control mt-5" id="info-textarea" style="height: 150px"></textarea>
+                    <textarea v-model="additional_info" class="form-control mt-5" id="info-textarea" style="height: 150px"></textarea>
                     <label for="info-textarea" class="mt-5">Additional info</label>
                 </div>
             </div>
@@ -263,11 +263,20 @@ Vue.component("add-ship", {
                     address: this.address,
                     price: this.price,
                     rules: this.rules,
-                    additionalInfo: this.additionalInfo,
+                    additionalInfo: this.additional_info,
                     imagePaths: this.images,
-                    ownerId: 1
+                    ownerId: 1,
+                    shipType: this.ship_type,
+                    length: this.length,
+                    capacity: this.capacity,
+                    numberOfEngines: this.num_engines,
+                    powerOfEngine: this.engine_power,
+                    maxSpeed: this.max_speed,
+                    cancellationConditions: this.conditions,
+                    fishingEquipmentList: this.fishing_equipment_list,
+                    navigationEquipmentList: this.navigationEquipmentList
                 }).then(function(response) {
-                    alert('Cottage successfully added!');
+                    alert('Ship successfully added!');
                 }).catch(function (error) {
                     alert('An error occurred!');
                 });
