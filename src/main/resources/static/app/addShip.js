@@ -116,12 +116,12 @@ Vue.component("add-ship", {
                 </div>
             </div>
             <div class="row my-4 mx-1">
-                <div class="col form-floating container">
+                <div class="col form-floating container me-1">
                     <div class="row">
                         <label class="form-label h5">Navigation equipment</label>                    
                     </div>
                     <div class="row">
-                        <div v-for="(n, i) in nav_equipment_list" class="container card mb-1">
+                        <div v-for="(n, i) in nav_equipment_list" class="container card mb-1 ms-1 me-1">
                             <div class="card-body">
                                 <p class="card-title h6 mt-1">{{ n.name }}</p>
                                 <label>Amount</label>
@@ -146,14 +146,14 @@ Vue.component("add-ship", {
                             <label for="nav-equipment-amount-input">Amount</label>
                         </div>
                     </div>
-                    <button type="button" v-on:click="addNavEquipment" class="btn btn-secondary my-1">Add</button>
+                    <button type="button" v-on:click="addNavEquipment" class="btn btn-secondary my-1">Add equipment</button>
                 </div>
-                <div class="col form-floating container">
+                <div class="col form-floating container ms-1">
                     <div class="row">
                         <label class="form-label h5">Fishing equipment</label>                    
                     </div>
                     <div class="row">
-                        <div v-for="(n, i) in fishing_equipment_list" class="container card mb-1">
+                        <div v-for="(n, i) in fishing_equipment_list" class="container card mb-1 ms-1 me-1">
                             <div class="card-body">
                                 <p class="card-title h6 mt-1">{{ n.name }}</p>
                                 <label>Amount</label>
@@ -178,7 +178,7 @@ Vue.component("add-ship", {
                             <label for="fishing-equipment-amount-input">Amount</label>
                         </div>
                     </div>
-                    <button type="button" v-on:click="addFishingEquipment" class="btn btn-secondary my-1">Add</button>
+                    <button type="button" v-on:click="addFishingEquipment" class="btn btn-secondary my-1">Add equipment</button>
                 </div>
             </div>
             <div class="row mt-5 mx-1">
@@ -202,6 +202,11 @@ Vue.component("add-ship", {
                         <button type="button" v-on:click="images.splice(i, 1)" class="btn btn-outline-danger btn-sm float-end">Delete</button>
                     </div>
                     <input type="file" class="form-control-file" id="img" name="img" accept="image/*" @change="addImage($event)" multiple>
+                </div>
+            </div>
+            <div class="row mt-1 mb-2">
+                <div class="col text-end">
+                    <button type="button" class="btn btn-primary btn-lg" v-on:click="sendRequest">Submit</button>
                 </div>
             </div>
         </div>
@@ -249,7 +254,7 @@ Vue.component("add-ship", {
         },
 
         sendRequest() {
-
+            alert('Submitted!');
         },
     },
 
