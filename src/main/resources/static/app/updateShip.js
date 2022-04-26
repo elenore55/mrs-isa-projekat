@@ -8,6 +8,7 @@ Vue.component("update-ship", {
             price: 1000,
             rules: ["No smoking", "No drinking"],
             additional_info: "This is some additional info",
+            images: ["img1.png", "img2.png"],
             rule: "",
             conditions: "14 days before",
             nav_equipment_list: [{name: "GPD", amount: 3}],
@@ -248,12 +249,14 @@ Vue.component("update-ship", {
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress &&
                 this.isValidLength && this.isValidCapacity && this.isValidNumEngines && this.isValidPower && this.isValidSpeed) {
                 axios.post("api/ships/updateShip", {
+                    id: 1,
                     name: this.name,
                     description: this.description,
                     address: this.address,
                     price: this.price,
                     rules: this.rules,
                     additionalInfo: this.additional_info,
+                    imagePaths: this.images,
                     ownerId: 1,
                     shipType: this.ship_type,
                     length: this.length,

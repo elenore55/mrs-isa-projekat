@@ -37,6 +37,15 @@ public class ShipController {
         return new ResponseEntity<>(new ShipDTO(ship), HttpStatus.CREATED);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/updateShip", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<ShipDTO> updateShip(@RequestBody ShipDTO shipDTO) {
+        Ship ship = shipService.findOne(shipDTO.getId());
+        setAttributes(ship, shipDTO);
+        ship = shipService.save(ship);
+        return new ResponseEntity<>(new ShipDTO(ship), HttpStatus.OK);
+    }
+
     private void setAttributes(Ship ship, ShipDTO dto) {
         ship.setId(dto.getId());
         ship.setName(dto.getName());
