@@ -29,6 +29,7 @@ Vue.component("update-ship", {
 
     template: `
     <form novalidate>
+        <update-ship-nav></update-ship-nav>
         <div class="container">
             <div class="row my-4 mx-1">
                 <div class="col form-floating has-validation">

@@ -1,3 +1,5 @@
+const UpdateShipNav = {template: '<update-ship-nav></update-ship-nav>'};
+const ShipImages = {template: '<ship-images></ship-images>'};
 const UpdateShip = {template: '<update-ship></update-ship>'};
 const AddShip = {template: '<add-ship></add-ship>'};
 const ProfilePageInstructorPI = {template: '<profile-page-instructorpi></profile-page-instructorpi>'};
@@ -15,6 +17,14 @@ const EditProfile = {template: '<edit-profile></edit-profile>'};
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/updateShipNav/",
+            component: UpdateShipNav
+        },
+        {
+            path: "/shipImages/",
+            component: ShipImages
+        },
         {
             path: "/updateShip/",
             component: UpdateShip
