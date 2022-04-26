@@ -64,7 +64,7 @@ public class CottageController {
             images.add(new Image(path));
         cottage.setImages(images);
         cottageService.save(cottage);
-        return new ResponseEntity<>(cottageDTO, HttpStatus.OK);
+        return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.OK);
     }
 
 

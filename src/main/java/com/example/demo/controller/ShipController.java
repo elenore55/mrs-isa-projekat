@@ -41,8 +41,26 @@ public class ShipController {
     @RequestMapping(path = "/updateShip", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<ShipDTO> updateShip(@RequestBody ShipDTO shipDTO) {
         Ship ship = shipService.findOne(shipDTO.getId());
+        if (ship == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         setAttributes(ship, shipDTO);
         ship = shipService.save(ship);
+        return new ResponseEntity<>(new ShipDTO(ship), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/updateShipImages", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<ShipDTO> updateShipImages(@RequestBody ShipDTO shipDTO) {
+        Ship ship = shipService.findOne(shipDTO.getId());
+        if (ship == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        List<Image> images = new ArrayList<>();
+        for (String path : shipDTO.getImagePaths())
+            images.add(new Image(path));
+        ship.setImages(images);
+        shipService.save(ship);
         return new ResponseEntity<>(new ShipDTO(ship), HttpStatus.OK);
     }
 
