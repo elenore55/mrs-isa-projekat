@@ -18,7 +18,7 @@ insert into profile_data (email, name, password, phone_number, surname, address_
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,1);
 insert into ship_owner (id) values (1);
 insert into offer (additional_info, description, name, price_list, address_id) values ('info', 'opis', 'ime', 300, 1);
-insert into ship (capacity, ship_length, max_speed, number_of_engines, power_of_engine, ship_type, id, ship_owner_id) values (5, 5, 10, 3, 100, 1, 1, 1);
+insert into ship (capacity, ship_length, max_speed, number_of_engines, power_of_engine, ship_type, id, ship_owner_id) values (5, 5, 10, 3, 100, 'SHIP', 1, 1);
 -- insert into fishing_instructor (biography,id) values ('Instruktor pecanja I',5);
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Line');
