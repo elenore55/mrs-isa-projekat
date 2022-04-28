@@ -1,3 +1,4 @@
+const CottagesViewOwner = {template: '<cottages-view-owner></cottages-view-owner>'};
 const UpdateShipNav = {template: '<update-ship-nav></update-ship-nav>'};
 const ShipImages = {template: '<ship-images></ship-images>'};
 const UpdateShip = {template: '<update-ship></update-ship>'};
@@ -17,6 +18,10 @@ const EditProfile = {template: '<edit-profile></edit-profile>'};
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/cottagesViewOwner/",
+            component: CottagesViewOwner
+        },
         {
             path: "/updateShipNav/",
             component: UpdateShipNav
