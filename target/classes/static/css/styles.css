@@ -88,4 +88,9 @@ div {
     float: right;
 }
 
+#outer {
+    border: thin solid rgba(87, 83, 83, 0.705);
+    border-radius: 15px;
+}
+
 

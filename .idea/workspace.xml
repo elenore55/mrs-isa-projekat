@@ -5,13 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/AdventureController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/FishingEquipmentController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/FishingInstructorController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/ProfileDataController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/ShipController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/AdventureDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/FishingEquipmentDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/FishingInstructorDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/NavigationEquipmentDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/ProfileDataDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/ShipDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/AddressRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/AdventureRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/Adventure_Fishing_Equipments_Repository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/FishingEquipmentRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/FishingInstructorRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/Profile_DataRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/ShipOwnerRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/ShipRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/AdventureService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/FishingEquipmentService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/FishingInstructorService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/Profile_DataService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/ShipOwnerService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/ShipService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/data-postgres.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/app/addAdventure.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/app/addShip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/app/clientHome.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/app/profilePageInstructorPI.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img16.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/ShipDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/ShipDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addShip.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addShip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +137,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -192,13 +231,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'add_cottage' into login&#10;&#10;# Conflicts:&#10;#&#9;src/main/resources/static/app/app.js&#10;#&#9;src/main/resources/static/index.html" />
@@ -213,83 +251,5 @@
     <MESSAGE value="Kreirani repozitorijum i servis za brod #221.3" />
     <MESSAGE value="axios poziv za dodavanje broda #221.3" />
     <option name="LAST_COMMIT_MESSAGE" value="axios poziv za dodavanje broda #221.3" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="233" y="0" key="#Notifications" timestamp="1650741185090">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="233" y="0" key="#Notifications/0.0.1280.680@0.0.1280.680" timestamp="1650741185090" />
-    <state x="233" y="0" key="#Project_Structure" timestamp="1650741282176">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1650741282176" />
-    <state x="233" y="0" key="#SQL_Dialects" timestamp="1650721189682">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="233" y="0" key="#SQL_Dialects/0.0.1280.680@0.0.1280.680" timestamp="1650721189682" />
-    <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1650826863411">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1650826863411" />
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1650826508607">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1650826508607" />
-    <state x="490" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1650720848000">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="490" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1650720848000" />
-    <state x="396" y="44" key="#xdebugger.evaluate" timestamp="1650828034427">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="396" y="44" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1650828034427" />
-    <state x="225" y="0" key="CommitChangelistDialog2" timestamp="1650826050956">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1650826050956" />
-    <state width="1237" height="288" key="GridCell.Tab.0.bottom" timestamp="1650831838427">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="288" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1650831838427" />
-    <state width="1237" height="288" key="GridCell.Tab.0.center" timestamp="1650831838427">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="288" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1650831838427" />
-    <state width="1237" height="288" key="GridCell.Tab.0.left" timestamp="1650831838427">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="288" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1650831838427" />
-    <state width="1237" height="288" key="GridCell.Tab.0.right" timestamp="1650831838427">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="288" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1650831838427" />
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1650828123649">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1650828123649" />
-    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1650828123648">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1650828123648" />
-    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1650828123647">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1650828123647" />
-    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1650828123648">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1650828123648" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1650829168397">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1650829168397" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1650826055916">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1650826055916" />
-    <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1650741065475">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1650741065475" />
   </component>
 </project>

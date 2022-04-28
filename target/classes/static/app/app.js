@@ -10,6 +10,7 @@ const Registration = {template: '<registration></registration>'};
 const ClientNavbar = {template: '<client-navbar></client-navbar>'};
 const ClientProfile = {template: '<client-profile></client-profile>'};
 const EditProfile = {template: '<edit-profile></edit-profile>'};
+const ClientHome = {template: '<client-home></client-home>'};
 
 const router = new VueRouter({
     mode: 'hash',
@@ -17,6 +18,10 @@ const router = new VueRouter({
         {
             path: "/addShip/",
             component: AddShip
+        },
+        {
+            path: "/clientHome/",
+            component: ClientHome
         },
         {
             path: "/cottageImages/",

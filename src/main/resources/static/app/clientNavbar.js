@@ -9,7 +9,7 @@ Vue.component("client-navbar", {
                 <div>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="#reserve" class="nav-link mx-3">Reserve</a>
+                            <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/clientHome/'})">Home</a>
                         </li>
                         <li class="nav-item">
                             <a href="#past_reservations" class="nav-link mx-3">Past Reservations</a>
