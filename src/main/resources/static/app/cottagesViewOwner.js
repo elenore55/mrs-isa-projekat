@@ -44,7 +44,7 @@ Vue.component("cottages-view-owner", {
                 <div class="d-flex justify-content-end">
                     <div class="input-group me-1 w-25">
                          <input v-model="search_criterion" type="search" id="search-input" class="form-control" placeholder="Search"/>
-                         <button type="button" class="btn btn-primary">
+                         <button type="button" class="btn btn-primary" v-on:click="search">
                             <i class="fas fa-search"></i>
                          </button>
                     </div>
@@ -159,7 +159,11 @@ Vue.component("cottages-view-owner", {
         },
 
         search() {
-
+            axios.get("api/cottageOwner/getCottages/2/" + this.search_criterion).then(response => {
+                this.cottages = response.data;
+            }).catch(function (error) {
+                alert('An error occurred!');
+            });
         },
 
         filter() {

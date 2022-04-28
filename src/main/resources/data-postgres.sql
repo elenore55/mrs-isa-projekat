@@ -30,7 +30,7 @@ insert into cottage_owner (id) values (2);
 insert into offer (additional_info, description, name, price_list, address_id) values ('info', 'ovo je vikendica', 'vikendica', 300, 1);
 insert into cottage (id, cottage_owner_id) values (2, 2);
 
-insert into offer (additional_info, description, name, price_list, address_id) values ('info2', 'ovo je vikendica2', 'vikendica2', 500, 2);
+insert into offer (additional_info, description, name, price_list, address_id) values ('info2', 'this is a cottage', 'vikendica2', 500, 2);
 insert into cottage (id, cottage_owner_id) values (3, 2);
 -- insert into fishing_instructor (biography,id) values ('Instruktor pecanja I',5);
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
