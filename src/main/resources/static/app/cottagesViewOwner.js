@@ -168,7 +168,18 @@ Vue.component("cottages-view-owner", {
 
         filter() {
             if (this.areValidPrices) {
-                alert('all valid');
+                axios.post("api/cottageOwner/filterCottages/2", {
+                    cities: this.cities,
+                    countries: this.countries,
+                    low: this.low_price,
+                    high: this.high_price,
+                    sortParam: this.sort_by,
+                    sortDir: this.direction
+                }).then(response => {
+                    this.cottages = response.data;
+                }).catch(function (error) {
+                    alert('An error occurred!');
+                });
             } else {
                 this.price_error = true;
             }

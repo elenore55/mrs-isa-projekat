@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.CottageDTO;
+import com.example.demo.dto.FilterCottageDTO;
 import com.example.demo.model.Address;
 import com.example.demo.model.Cottage;
 import com.example.demo.model.CottageOwner;
@@ -53,4 +54,18 @@ public class CottageOwnerController {
         return new ResponseEntity<>(dtos, HttpStatus.OK);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/filterCottages/{id}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<List<CottageDTO>> filterCottages(@PathVariable Integer id, @RequestBody FilterCottageDTO filter) {
+        CottageOwner owner = service.findOne(id);
+        List<Cottage> cottages = owner.getCottages();
+        List<CottageDTO> dtos = new ArrayList<>();
+        for (Cottage c : cottages) {
+            Address a = c.getAddress();
+            if (filter.checkCity(a.getCity()) && filter.checkCountry(a.getCountry()) && filter.checkPrice(c.getPriceList())) {
+                dtos.add(new CottageDTO(c));
+            }
+        }
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
 }
