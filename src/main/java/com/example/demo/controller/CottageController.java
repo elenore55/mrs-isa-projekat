@@ -29,7 +29,6 @@ public class CottageController {
     @ResponseBody
     @RequestMapping(path = "/addCottage", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> saveCottage(@RequestBody CottageDTO cottageDTO) {
-        addOwner();
         Cottage cottage = new Cottage();
         setAttributes(cottage, cottageDTO);
         cottage = cottageService.save(cottage);
@@ -39,9 +38,7 @@ public class CottageController {
     @ResponseBody
     @RequestMapping(path = "/updateCottage", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> updateCottage(@RequestBody CottageDTO cottageDTO) {
-        addOwner();
-        addCottage();
-        Cottage cottage = cottageService.findOne(cottageDTO.getId());
+        Cottage cottage = cottageService.findOne(2);
         if (cottage == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -53,9 +50,7 @@ public class CottageController {
     @ResponseBody
     @RequestMapping(path = "/updateCottageImages", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> updateCottageImages(@RequestBody CottageDTO cottageDTO) {
-        addOwner();
-        addCottage();
-        Cottage cottage = cottageService.findOne(cottageDTO.getId());
+        Cottage cottage = cottageService.findOne(2);
         if (cottage == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -69,7 +64,7 @@ public class CottageController {
 
 
     private void setAttributes(Cottage cottage, CottageDTO cottageDTO) {
-        cottage.setId(cottageDTO.getId());
+        cottage.setId(2);
         cottage.setName(cottageDTO.getName());
         cottage.setDescription(cottageDTO.getDescription());
         cottage.setAddress(new Address(cottageDTO.getAddress().getStreet(), cottageDTO.getAddress().getCity(), cottageDTO.getAddress().getCountry()));
@@ -88,36 +83,7 @@ public class CottageController {
         List<Image> images = new ArrayList<>();
         for (String imgPath : cottageDTO.getImagePaths()) images.add(new Image(imgPath));
         cottage.setImages(images);
-        CottageOwner owner = cottageOwnerService.findOne(cottageDTO.getOwnerId());
+        CottageOwner owner = cottageOwnerService.findOne(2);
         if (owner != null) cottage.setOwner(owner);
-    }
-
-    private void addOwner() {
-        CottageOwner owner = new CottageOwner("email@gmail.com", "pass", "Pero", "Peric",
-                "12334556", new Address("Milana Rakica 19", "Novi Sad", "Srbija"));
-        cottageOwnerService.save(owner);
-    }
-
-    private void addCottage() {
-        Cottage cottage = new Cottage();
-        cottage.setName("Vikendica");
-        cottage.setDescription("Ovo je vikendica");
-        cottage.setAddress(new Address("Marka Pola 12", "Novi Sad", "Srbija"));
-        cottage.setPriceList(new BigDecimal(300));
-        List<Rule> rules = new ArrayList<>();
-        rules.add(new Rule("No smoking"));
-        rules.add(new Rule("No drinking"));
-        cottage.setRules(rules);
-        cottage.setAdditionalInfo("This is my additional info");
-        List<Room> rooms = new ArrayList<>();
-        Room room = new Room();
-        room.setNumberOfBeds(3);
-        rooms.add(room);
-        cottage.setRooms(rooms);
-        List<Image> images = new ArrayList<>();
-        cottage.setImages(images);
-        CottageOwner owner = cottageOwnerService.findOne(1);
-        if (owner != null) cottage.setOwner(owner);
-        cottageService.save(cottage);
     }
 }

@@ -2,6 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.CottageDTO;
 import com.example.demo.dto.FilterCottageDTO;
+import com.example.demo.dto.comparators.CottageNameComparator;
+import com.example.demo.dto.comparators.CottagePriceComparator;
+import com.example.demo.dto.comparators.CottageRatingComparator;
+import com.example.demo.dto.comparators.CottageRoomsComparator;
 import com.example.demo.model.Address;
 import com.example.demo.model.Cottage;
 import com.example.demo.model.CottageOwner;
@@ -12,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -66,6 +72,14 @@ public class CottageOwnerController {
                 dtos.add(new CottageDTO(c));
             }
         }
+        boolean reverse = !filter.getSortDir().equalsIgnoreCase("ascending");
+        Comparator<CottageDTO> comparator;
+        if (filter.getSortParam().equalsIgnoreCase("number of rooms")) comparator = new CottageRoomsComparator();
+        else if (filter.getSortParam().equalsIgnoreCase("price")) comparator = new CottagePriceComparator();
+        else if (filter.getSortParam().equalsIgnoreCase("rating")) comparator = new CottageRatingComparator();
+        else comparator = new CottageNameComparator();
+        if (reverse) dtos.sort(Collections.reverseOrder(comparator));
+        else dtos.sort(comparator);
         return new ResponseEntity<>(dtos, HttpStatus.OK);
     }
 }

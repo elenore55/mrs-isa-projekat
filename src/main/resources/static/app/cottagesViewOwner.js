@@ -137,6 +137,7 @@ Vue.component("cottages-view-owner", {
                             <h5 class="card-title">{{ c.name }}</h5>
                             <p class="card-text mt-3">{{ c.address.street }}, {{ c.address.city }}, {{ c.address.country }}</p>
                             <p class="card-text">Price: {{ c.price }} EUR</p>
+                            <p class="card-text">Number of rooms: {{ c.rooms.length }}</p>
                             <div class="d-flex flex-row mt-3">
                                 <a href="/#/updateCottage" class="btn btn-primary me-3 mt-3">View</a>
                                 <button v-on:click="deleteCottage" class="btn btn-danger mt-3">Delete</button>

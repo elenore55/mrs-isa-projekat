@@ -135,7 +135,7 @@ Vue.component("update-cottage", {
         sendRequest() {
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress) {
                 axios.post("api/cottages/updateCottage", {
-                    id: 1,
+                    id: 2,
                     name: this.cottage.name,
                     description: this.cottage.description,
                     address: this.cottage.address,
@@ -144,7 +144,7 @@ Vue.component("update-cottage", {
                     rules: this.cottage.rules,
                     additionalInfo: this.cottage.additionalInfo,
                     imagePaths: this.cottage.images,
-                    ownerId: 1
+                    ownerId: 2
                 }).then(function(response) {
                     alert('Cottage successfully updated!');
                 }).catch(function (error) {
