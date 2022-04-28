@@ -4,8 +4,8 @@ Vue.component("cottages-view-owner", {
             cottages: [],
             sort_by_list: ["Name", "Price", "Number of rooms", "Rating"],
             search_criterion: "",
-            all_cities: ["Novi Sad", "Beograd", "Banja Luka"],
-            all_countries: ["Srbija", "BiH"],
+            all_cities: [],
+            all_countries: [],
             cities: [],
             city: "",
             countries: [],
@@ -13,13 +13,26 @@ Vue.component("cottages-view-owner", {
             low_price: null,
             high_price: null,
             sort_by: "",
-            direction: ""
+            direction: "",
+            price_error: false
         }
     },
 
     mounted() {
         axios.get("api/cottageOwner/getCottages/2").then(response => {
             this.cottages = response.data;
+        }).catch(function (error) {
+            alert('An error occurred!');
+        });
+
+        axios.get("api/addresses/getCities").then(response => {
+            this.all_cities = response.data;
+        }).catch(function (error) {
+            alert('An error occurred!');
+        });
+
+        axios.get("api/addresses/getCountries").then(response => {
+            this.all_countries = response.data;
         }).catch(function (error) {
             alert('An error occurred!');
         });
@@ -42,11 +55,12 @@ Vue.component("cottages-view-owner", {
                         <div class="d-flex flex-row m-2">
                             <!-- Cities -->
                             <div class="form-floating input-group w-25 me-5 pt-3">
-                                <select class="form-select" v-model="city" aria-label="Default select example" id="city-select">
+                                <input v-model="city" class="form-control" list="city-select" id="city-select-input">
+                                <datalist id="city-select">
                                     <option v-for="c in all_cities">{{ c }}</option>
-                                </select>
+                                </datalist>
                                 <button type="button" class="btn btn-secondary" v-on:click="addCity">Add</button>
-                                <label class="form-label mt-3" for="city-select">City</label>
+                                <label class="form-label mt-3" for="city-select-input">City</label>
                             </div>
                             <div class="d-flex flex-row mt-4">
                                 <span v-for="(c, i) in cities" class="input-group" style="width: 170px">
@@ -58,11 +72,12 @@ Vue.component("cottages-view-owner", {
                         <div class="d-flex flex-row m-2">
                             <!-- Countries -->
                             <div class="form-floating input-group w-25 me-5">
-                                <select class="form-select" v-model="country" aria-label="Default select example" id="country-select">
+                                <input v-model="country" class="form-control" list="country-select" id="country-select-input">
+                                <datalist id="country-select">
                                     <option v-for="c in all_countries">{{ c }}</option>
-                                </select>
+                                </datalist>
                                 <button type="button" class="btn btn-secondary" v-on:click="addCountry">Add</button>
-                                <label for="country-select">Country</label>
+                                <label for="country-select-input">Country</label>
                             </div>
                             <div class="d-flex flex-row mt-1">
                                 <span v-for="(c, i) in countries" class="input-group" style="width: 170px">
@@ -75,13 +90,18 @@ Vue.component("cottages-view-owner", {
                             <!-- Price -->
                             <p class="col-1 pt-2">Price</p>
                             <div class="col-2 form-floating">
-                                <input v-model="low_price" type="number" min="0" class="form-control" id="low-price-input"/>
+                                <input v-model="low_price" type="number" min="0" class="form-control" id="low-price-input" 
+                                    oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" 
+                                    v-on:focus="price_error = false" />
                                 <label for="low-price-input">Low</label>
                             </div>
                             <div class="col-2 form-floating">
-                                <input v-model="high_price" type="number" min="0" class="form-control" id="high-price-input"/>
+                                <input v-model="high_price" type="number" min="0" class="form-control" id="high-price-input"
+                                oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" 
+                                v-on:focus="price_error = false" />
                                 <label for="high-price-input">High</label>
                             </div>
+                            <p v-if="price_error" class="text-danger">Low must not be greater than high.</p>
                         </div>
                         <div class="row mt-4 ms-1">
                             <!-- Sort by -->
@@ -93,7 +113,7 @@ Vue.component("cottages-view-owner", {
                             </div>
                             <div class="col-2 form-floating input-group w-25">
                                 <select class="form-select" v-model="direction" aria-label="Default select example" id="direction-select">
-                                    <option selected>Ascending</option>
+                                    <option selected="selected">Ascending</option>
                                     <option>Descending</option>
                                 </select>
                                 <label for="direction-select">Direction</label>
@@ -143,7 +163,11 @@ Vue.component("cottages-view-owner", {
         },
 
         filter() {
-
+            if (this.areValidPrices) {
+                alert('all valid');
+            } else {
+                this.price_error = true;
+            }
         },
 
         addCity() {
@@ -158,6 +182,15 @@ Vue.component("cottages-view-owner", {
                 this.countries.push(this.country);
             }
             this.country = "";
+        }
+    },
+
+    computed: {
+        areValidPrices() {
+            if (this.low_price && this.high_price) {
+                return this.low_price <= this.high_price;
+            }
+            return true;
         }
     }
 });
