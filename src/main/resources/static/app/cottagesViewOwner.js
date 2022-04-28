@@ -2,7 +2,18 @@ Vue.component("cottages-view-owner", {
     data: function () {
         return {
             cottages: [],
-            search_criterion: ""
+            sort_by_list: ["Name", "Price", "Number of rooms", "Rating"],
+            search_criterion: "",
+            all_cities: ["Novi Sad", "Beograd", "Banja Luka"],
+            all_countries: ["Srbija", "BiH"],
+            cities: [],
+            city: "",
+            countries: [],
+            country: "",
+            low_price: null,
+            high_price: null,
+            sort_by: "",
+            direction: ""
         }
     },
 
@@ -24,7 +35,76 @@ Vue.component("cottages-view-owner", {
                             <i class="fas fa-search"></i>
                          </button>
                     </div>
-                    <button type="button" class="btn btn-outline-primary">Filter</button>
+                    <a type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filter-div" role="button" aria-expanded="false" aria-controls="filter-div">Filter</a>
+                </div>
+                <div class="collapse bg-light shadow-sm rounded" id="filter-div">
+                    <div class="container mt-3">
+                        <div class="d-flex flex-row m-2">
+                            <!-- Cities -->
+                            <div class="form-floating input-group w-25 me-5 pt-3">
+                                <select class="form-select" v-model="city" aria-label="Default select example" id="city-select">
+                                    <option v-for="c in all_cities">{{ c }}</option>
+                                </select>
+                                <button type="button" class="btn btn-secondary" v-on:click="addCity">Add</button>
+                                <label class="form-label mt-3" for="city-select">City</label>
+                            </div>
+                            <div class="d-flex flex-row mt-4">
+                                <span v-for="(c, i) in cities" class="input-group" style="width: 170px">
+                                    <span class="p-2"><label class="form-label ms-3">{{ c }}</label></span>
+                                    <span><button class="btn btn-outline-danger" type="button" v-on:click="cities.splice(i, 1)">X</button></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row m-2">
+                            <!-- Countries -->
+                            <div class="form-floating input-group w-25 me-5">
+                                <select class="form-select" v-model="country" aria-label="Default select example" id="country-select">
+                                    <option v-for="c in all_countries">{{ c }}</option>
+                                </select>
+                                <button type="button" class="btn btn-secondary" v-on:click="addCountry">Add</button>
+                                <label for="country-select">Country</label>
+                            </div>
+                            <div class="d-flex flex-row mt-1">
+                                <span v-for="(c, i) in countries" class="input-group" style="width: 170px">
+                                    <span class="p-2"><label class="form-label ms-3">{{ c }}</label></span>
+                                    <span><button class="btn btn-outline-danger" type="button" v-on:click="countries.splice(i, 1)">X</button></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row mt-4 ms-1">
+                            <!-- Price -->
+                            <p class="col-1 pt-2">Price</p>
+                            <div class="col-2 form-floating">
+                                <input v-model="low_price" type="number" min="0" class="form-control" id="low-price-input"/>
+                                <label for="low-price-input">Low</label>
+                            </div>
+                            <div class="col-2 form-floating">
+                                <input v-model="high_price" type="number" min="0" class="form-control" id="high-price-input"/>
+                                <label for="high-price-input">High</label>
+                            </div>
+                        </div>
+                        <div class="row mt-4 ms-1">
+                            <!-- Sort by -->
+                            <div class="col-2 form-floating input-group w-25">
+                                <select class="form-select" v-model="sort_by" aria-label="Default select example" id="sort-by-select">
+                                    <option v-for="s in sort_by_list">{{ s }}</option>
+                                </select>
+                                <label for="sort-by-select">Sort by</label>
+                            </div>
+                            <div class="col-2 form-floating input-group w-25">
+                                <select class="form-select" v-model="direction" aria-label="Default select example" id="direction-select">
+                                    <option selected>Ascending</option>
+                                    <option>Descending</option>
+                                </select>
+                                <label for="direction-select">Direction</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary float-end mb-3 mt-2" v-on:click="filter">Fetch</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="container">
@@ -60,6 +140,24 @@ Vue.component("cottages-view-owner", {
 
         search() {
 
+        },
+
+        filter() {
+
+        },
+
+        addCity() {
+            if (this.city && !this.cities.includes(this.city)) {
+                this.cities.push(this.city);
+            }
+            this.city = "";
+        },
+
+        addCountry() {
+            if (this.country && !this.countries.includes(this.country)) {
+                this.countries.push(this.country);
+            }
+            this.country = "";
         }
     }
 });
