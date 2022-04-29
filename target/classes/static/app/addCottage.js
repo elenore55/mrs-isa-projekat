@@ -24,7 +24,8 @@ Vue.component("add-cottage", {
                    street: false,
                    city: false,
                    country: false
-               }
+               },
+               owner_id: 2
            }
        }
    },
@@ -168,7 +169,7 @@ Vue.component("add-cottage", {
                     rules: this.cottage.rules,
                     additionalInfo: this.cottage.additionalInfo,
                     imagePaths: this.cottage.images,
-                    ownerId: 1
+                    ownerId: this.cottage.owner_id
                 }).then(function(response) {
                     alert('Cottage successfully added!');
                 }).catch(function (error) {

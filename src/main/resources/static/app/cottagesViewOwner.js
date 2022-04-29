@@ -14,16 +14,14 @@ Vue.component("cottages-view-owner", {
             high_price: null,
             sort_by: "",
             direction: "",
-            price_error: false
+            price_error: false,
+            owner_id: 2,
+            current_id: null
         }
     },
 
     mounted() {
-        axios.get("api/cottageOwner/getCottages/2").then(response => {
-            this.cottages = response.data;
-        }).catch(function (error) {
-            alert('An error occurred!');
-        });
+        this.reload();
 
         axios.get("api/addresses/getCities").then(response => {
             this.all_cities = response.data;
@@ -41,6 +39,15 @@ Vue.component("cottages-view-owner", {
     template: `
         <div>
             <div class="container">
+                <div class="d-flex justify-content-center">
+                    <div class="collapse bg-light shadow rounded w-50 mt-3" id="confirm-delete">
+                        <p class=" d-flex justify-content-center mt-5 mb-3">Are you sure you want to delete the cottage?</p>
+                        <div class="d-flex justify-content-center">
+                            <a v-on:click="deleteCottage" class="btn btn-lg btn-outline-secondary m-4" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-controls="confirm-delete">Yes</a>
+                            <a class="btn btn-lg btn-outline-secondary m-4" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-controls="confirm-delete">No</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="d-flex justify-content-end">
                     <div class="input-group me-1 w-25">
                          <input v-model="search_criterion" type="search" id="search-input" class="form-control" placeholder="Search"/>
@@ -140,7 +147,7 @@ Vue.component("cottages-view-owner", {
                             <p class="card-text">Number of rooms: {{ c.rooms.length }}</p>
                             <div class="d-flex flex-row mt-3">
                                 <a href="/#/updateCottage" class="btn btn-primary me-3 mt-3">View</a>
-                                <button v-on:click="deleteCottage" class="btn btn-danger mt-3">Delete</button>
+                                <a @click="setCurrentId(c.id)" class="btn btn-danger mt-3" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-expanded="false" aria-controls="confirm-delete">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -155,12 +162,29 @@ Vue.component("cottages-view-owner", {
     `,
 
     methods: {
-        deleteCottage() {
+        setCurrentId(id) {
+            this.current_id = id;
+        },
 
+        deleteCottage() {
+            axios.delete("api/cottages/deleteCottage/" + this.current_id).then(response => {
+                alert('Cottage successfully deleted');
+                this.reload();
+            }).catch(function (error) {
+                alert('An error occurred!');
+            });
         },
 
         search() {
-            axios.get("api/cottageOwner/getCottages/2/" + this.search_criterion).then(response => {
+            axios.get("api/cottageOwner/getCottages/" + this.owner_id + "/" + this.search_criterion).then(response => {
+                this.cottages = response.data;
+            }).catch(function (error) {
+                alert('An error occurred!');
+            });
+        },
+
+        reload() {
+            axios.get("api/cottageOwner/getCottages/" + this.owner_id).then(response => {
                 this.cottages = response.data;
             }).catch(function (error) {
                 alert('An error occurred!');
@@ -169,7 +193,7 @@ Vue.component("cottages-view-owner", {
 
         filter() {
             if (this.areValidPrices) {
-                axios.post("api/cottageOwner/filterCottages/2", {
+                axios.post("api/cottageOwner/filterCottages/" + this.owner_id, {
                     cities: this.cities,
                     countries: this.countries,
                     low: this.low_price,

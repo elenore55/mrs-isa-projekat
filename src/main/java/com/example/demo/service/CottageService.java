@@ -26,4 +26,7 @@ public class CottageService {
         return cottageRepository.findById(id).orElseGet(null);
     }
 
+    public void remove(Integer id) {
+        cottageRepository.deleteById(id);
+    }
 }

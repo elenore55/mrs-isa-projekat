@@ -38,7 +38,7 @@ public class CottageController {
     @ResponseBody
     @RequestMapping(path = "/updateCottage", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> updateCottage(@RequestBody CottageDTO cottageDTO) {
-        Cottage cottage = cottageService.findOne(2);
+        Cottage cottage = cottageService.findOne(cottageDTO.getId());
         if (cottage == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -50,7 +50,7 @@ public class CottageController {
     @ResponseBody
     @RequestMapping(path = "/updateCottageImages", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> updateCottageImages(@RequestBody CottageDTO cottageDTO) {
-        Cottage cottage = cottageService.findOne(2);
+        Cottage cottage = cottageService.findOne(cottageDTO.getId());
         if (cottage == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -62,9 +62,19 @@ public class CottageController {
         return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.OK);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/deleteCottage/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteCottage(@PathVariable Integer id) {
+        Cottage cottage = cottageService.findOne(id);
+        if (cottage == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        cottageService.remove(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
     private void setAttributes(Cottage cottage, CottageDTO cottageDTO) {
-        cottage.setId(2);
+        cottage.setId(cottageDTO.getId());
         cottage.setName(cottageDTO.getName());
         cottage.setDescription(cottageDTO.getDescription());
         cottage.setAddress(new Address(cottageDTO.getAddress().getStreet(), cottageDTO.getAddress().getCity(), cottageDTO.getAddress().getCountry()));
@@ -83,7 +93,7 @@ public class CottageController {
         List<Image> images = new ArrayList<>();
         for (String imgPath : cottageDTO.getImagePaths()) images.add(new Image(imgPath));
         cottage.setImages(images);
-        CottageOwner owner = cottageOwnerService.findOne(2);
+        CottageOwner owner = cottageOwnerService.findOne(cottageDTO.getOwnerId());
         if (owner != null) cottage.setOwner(owner);
     }
 }
