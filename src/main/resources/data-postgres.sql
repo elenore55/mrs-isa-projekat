@@ -39,7 +39,7 @@ insert into room (number_of_beds, cottage_id) values (2, 2);
 insert into room (number_of_beds, cottage_id) values (3, 2);
 insert into room (number_of_beds, cottage_id) values (5, 2);
 
-insert into offer (additional_info, description, name, price_list, address_id) values ('iadditional nfo', 'opis mog broda', 'naziv mog broda', 500, 4);
+insert into offer (additional_info, description, name, price_list, address_id) values ('additional info', 'opis mog broda', 'naziv mog broda', 500, 4);
 insert into ship (capacity, ship_length, max_speed, number_of_engines, power_of_engine, ship_type, id, ship_owner_id) values (50, 100, 300, 15, 500, 'SHIP', 4, 1);
 -- insert into fishing_instructor (biography,id) values ('Instruktor pecanja I',5);
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
