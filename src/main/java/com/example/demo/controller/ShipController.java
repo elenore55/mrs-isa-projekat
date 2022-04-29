@@ -64,6 +64,18 @@ public class ShipController {
         return new ResponseEntity<>(new ShipDTO(ship), HttpStatus.OK);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/deleteShip/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteShip(@PathVariable Integer id) {
+        Ship ship = shipService.findOne(id);
+        if (ship == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        // if (!shipService.checkReservations(ship))
+            // return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        shipService.remove(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     private void setAttributes(Ship ship, ShipDTO dto) {
         ship.setId(dto.getId());
         ship.setName(dto.getName());

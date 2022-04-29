@@ -37,23 +37,26 @@ Vue.component("ships-view-owner", {
     },
 
     template: `
-        <div class="container">
-            <div v-for="(s, i) in ships" class="container card m-3">
-                <div class="row">
-                    <div class="col-3 mt-2">
-                        <img src="https://picsum.photos/id/80/200/300" class="card-img rounded-3 mt-3" width="200" height="200"  alt="ship image">
-                        <p class="ms-2 mt-3">{{ s.description }}</p>
-                    </div>
-                    <div class="col-4 card-body container">
-                        <h3 class="card-title mb-2">{{ s.name }} ({{ s.shipTypeStr }})</h3>
-                        <p class="card-text mt-2 mb-4 h5">{{ s.address.street }}, {{ s.address.city }}, {{ s.address.country }}</p>
-                        <p class="card-text mb-1">Price: {{ s.price }} EUR</p>
-                        <p class="card-text mb-1">Capacity: {{ s.capacity }} people</p>
-                        <p class="card-text mb-1">Length: {{ s.length }} m</p>
-                        <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
-                        <div class="d-flex flex-row mt-3">
-                            <a :href="'/#/updateShip/' + s.id" class="btn btn-primary me-3 mt-3">View</a>
-                            <a @click="setCurrentId(s.id)" class="btn btn-danger mt-3">Delete</a>
+        <div>
+            <h3 v-if="ships.length == 0" class="text-info ms-5">No ships to show</h3>
+            <div class="container">
+                <div v-for="(s, i) in ships" class="container card m-3">
+                    <div class="row">
+                        <div class="col-3 mt-2">
+                            <img src="https://picsum.photos/id/80/200/300" class="card-img rounded-3 mt-3" width="200" height="200"  alt="ship image">
+                            <p class="ms-2 mt-3">{{ s.description }}</p>
+                        </div>
+                        <div class="col-4 card-body container">
+                            <h3 class="card-title mb-2">{{ s.name }} ({{ s.shipTypeStr }})</h3>
+                            <p class="card-text mt-2 mb-4 h5">{{ s.address.street }}, {{ s.address.city }}, {{ s.address.country }}</p>
+                            <p class="card-text mb-1">Price: {{ s.price }} EUR</p>
+                            <p class="card-text mb-1">Capacity: {{ s.capacity }} people</p>
+                            <p class="card-text mb-1">Length: {{ s.length }} m</p>
+                            <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
+                            <div class="d-flex flex-row mt-3">
+                                <a :href="'/#/updateShip/' + s.id" class="btn btn-primary me-3 mt-3">View</a>
+                                <a @click="deleteShip(s.id)" class="btn btn-danger mt-3">Delete</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,7 +75,16 @@ Vue.component("ships-view-owner", {
 
         setCurrentId(id) {
             this.current_id = id;
-        }
+        },
+
+        deleteShip(id) {
+            axios.delete("api/ships/deleteShip/" + id).then(response => {
+                alert('Ship successfully deleted');
+                this.reload();
+            }).catch(function (error) {
+                alert('It is not possible to delete the ship!');
+            });
+        },
     },
 
 });

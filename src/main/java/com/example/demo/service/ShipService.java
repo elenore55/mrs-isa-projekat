@@ -21,4 +21,8 @@ public class ShipService {
     public Ship save(Ship ship) {
         return this.shipRepository.save(ship);
     }
+
+    public void remove(Integer id) {
+        shipRepository.deleteById(id);
+    }
 }
