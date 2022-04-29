@@ -52,7 +52,7 @@ Vue.component("ships-view-owner", {
                         <p class="card-text mb-1">Length: {{ s.length }} m</p>
                         <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
                         <div class="d-flex flex-row mt-3">
-                            <a href="/#/updateShip" class="btn btn-primary me-3 mt-3">View</a>
+                            <a :href="'/#/updateShip/' + s.id" class="btn btn-primary me-3 mt-3">View</a>
                             <a @click="setCurrentId(s.id)" class="btn btn-danger mt-3">Delete</a>
                         </div>
                     </div>
@@ -73,5 +73,6 @@ Vue.component("ships-view-owner", {
         setCurrentId(id) {
             this.current_id = id;
         }
-    }
+    },
+
 });

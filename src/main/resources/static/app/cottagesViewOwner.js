@@ -147,7 +147,7 @@ Vue.component("cottages-view-owner", {
                             <p class="card-text">Price: {{ c.price }} EUR</p>
                             <p class="card-text">Number of rooms: {{ c.rooms.length }}</p>
                             <div class="d-flex flex-row mt-3">
-                                <a href="/#/updateCottage" class="btn btn-primary me-3 mt-3">View</a>
+                                <a :href="'/#/updateCottage/' + c.id" class="btn btn-primary me-3 mt-3">View</a>
                                 <a @click="setCurrentId(c.id)" class="btn btn-danger mt-3" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-expanded="false" aria-controls="confirm-delete">Delete</a>
                             </div>
                         </div>

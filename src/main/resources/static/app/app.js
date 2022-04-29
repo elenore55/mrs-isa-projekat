@@ -36,7 +36,7 @@ const router = new VueRouter({
             component: ShipImages
         },
         {
-            path: "/updateShip/",
+            path: "/updateShip/:id/",
             component: UpdateShip
         },
         {
@@ -72,7 +72,7 @@ const router = new VueRouter({
             component: UpdateCottageNav
         },
         {
-            path: "/updateCottage/",
+            path: "/updateCottage/:id/",
             component: UpdateCottage
         },
         {
