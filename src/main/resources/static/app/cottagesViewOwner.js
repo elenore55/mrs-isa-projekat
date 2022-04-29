@@ -134,6 +134,7 @@ Vue.component("cottages-view-owner", {
                     </div>
                 </div>
             </div>
+            <h3 v-if="cottages.length == 0" class="text-info ms-5">No cottages to show</h3>
             <div class="container">
                 <div v-for="(c, i) in cottages" class="container card m-3">
                     <div class="row">
@@ -171,7 +172,7 @@ Vue.component("cottages-view-owner", {
                 alert('Cottage successfully deleted');
                 this.reload();
             }).catch(function (error) {
-                alert('An error occurred!');
+                alert('It is not possible to delete the cottage!');
             });
         },
 

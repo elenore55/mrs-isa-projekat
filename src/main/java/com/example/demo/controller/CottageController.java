@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,10 +69,11 @@ public class CottageController {
         Cottage cottage = cottageService.findOne(id);
         if (cottage == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (!cottageService.checkReservations(cottage))
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         cottageService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 
     private void setAttributes(Cottage cottage, CottageDTO cottageDTO) {
         cottage.setId(cottageDTO.getId());
