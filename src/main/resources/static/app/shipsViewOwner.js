@@ -4,18 +4,11 @@ Vue.component("ships-view-owner", {
             ships: [],
             sort_by_list: ["Name", "Price", "Length", "Capacity", "Type", "Maximum speed", "Rating", "City", "Country"],
             search_criterion: "",
-            all_cities: [],
-            all_countries: [],
-            cities: [],
-            countries: [],
-            country: "",
-            low_price: null,
-            high_price: null,
-            sort_by: "",
-            direction: "",
-            price_error: false,
-            owner_id: 1,
-            current_id: null
+            all_cities: [], all_countries: [], cities: [], countries: [],
+            low_price: null, high_price: null, low_len: null, high_len: null, low_cap: null, high_cap: null, low_speed: null, high_speed: null,
+            sort_by: "", direction: "",
+            price_error: false, length_error: false, capacity_error: false, speed_error: false,
+            owner_id: 1, current_id: null
         }
     },
 
@@ -60,7 +53,16 @@ Vue.component("ships-view-owner", {
                     <div class="container mt-3">
                         <city-filter :cities="cities" :all_cities="all_cities"></city-filter>
                         <country-filter :all_countries="all_countries" :countries="countries"></country-filter>
-                        <low-high-filter title="Price" :error="price_error" @updateLowPrice="updateLowPrice($event)" @updateHighPrice="updateHighPrice($event)" @undoErrorPrice="undoErrorPrice"></low-high-filter>
+                        <low-high-filter title="Price" :error="price_error" @updateLowPrice="low_price=$event" @updateHighPrice="high_price=$event" @undoErrorPrice="price_error=false"></low-high-filter>
+                        <low-high-filter title="Length" :error="length_error" @updateLowLength="low_len=$event" @updateHighLength="high_len=$event" @undoErrorLength="length_error=false"></low-high-filter>
+                        <low-high-filter title="Capacity" :error="capacity_error" @updateLowCapacity="low_cap=$event" @updateHighCapacity="high_cap=$event" @undoErrorCapacity="capacity_error=false"></low-high-filter>
+                        <low-high-filter title="Speed" :error="speed_error" @updateLowSpeed="low_speed=$event" @updateHighSpeed="high_speed=$event" @undoErrorSpeed="speed_error=false"></low-high-filter>
+                        <sort-by :sort_by_list="sort_by_list" @updateSortBy="sort_by=$event" @updateDirection="direction=$event"></sort-by>
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary float-end mb-3 mt-2" v-on:click="filter">Fetch</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -116,23 +118,36 @@ Vue.component("ships-view-owner", {
 
         },
 
-        updateLowPrice(price) {
-            this.low_price = price;
-        },
+        filter() {
 
-        updateHighPrice(price) {
-            this.high_price = price;
         },
-
-        undoErrorPrice() {
-            this.price_error = false;
-        }
     },
 
     computed: {
         areValidPrices() {
             if (this.low_price && this.high_price) {
                 return this.low_price <= this.high_price;
+            }
+            return true;
+        },
+
+        areValidLengths() {
+            if (this.low_len && this.high_len) {
+                return this.low_len <= this.high_len;
+            }
+            return true;
+        },
+
+        areValidCapacities() {
+            if (this.low_cap && this.high_cap) {
+                return this.low_cap <= this.high_cap;
+            }
+            return true;
+        },
+
+        areValidSpeeds() {
+            if (this.low_speed && this.high_speed) {
+                return this.low_speed <= this.high_speed;
             }
             return true;
         }

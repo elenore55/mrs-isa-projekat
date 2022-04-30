@@ -61,22 +61,7 @@ Vue.component("cottages-view-owner", {
                         <city-filter :all_cities="all_cities" :cities="cities"></city-filter>
                         <country-filter :all_countries="all_countries" :countries="countries"></country-filter>
                         <low-high-filter title="Price" :error="price_error" @updateLowPrice="updateLowPrice($event)" @updateHighPrice="updateHighPrice($event)" @undoErrorPrice="undoErrorPrice"></low-high-filter>
-                        <div class="row mt-4 ms-1">
-                            <!-- Sort by -->
-                            <div class="col-2 form-floating input-group w-25">
-                                <select class="form-select" v-model="sort_by" aria-label="Default select example" id="sort-by-select">
-                                    <option v-for="s in sort_by_list">{{ s }}</option>
-                                </select>
-                                <label for="sort-by-select">Sort by</label>
-                            </div>
-                            <div class="col-2 form-floating input-group w-25">
-                                <select class="form-select" v-model="direction" aria-label="Default select example" id="direction-select">
-                                    <option selected="selected">Ascending</option>
-                                    <option>Descending</option>
-                                </select>
-                                <label for="direction-select">Direction</label>
-                            </div>
-                        </div>
+                        <sort-by :sort_by_list="sort_by_list" @updateSortBy="sort_by=$event" @updateDirection="direction=$event"></sort-by>
                         <div class="row">
                             <div class="col">
                                 <button type="button" class="btn btn-primary float-end mb-3 mt-2" v-on:click="filter">Fetch</button>
