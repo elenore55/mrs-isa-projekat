@@ -137,4 +137,8 @@ public class CottageDTO {
     public void setImagePaths(List<String> imagePaths) {
         this.imagePaths = imagePaths;
     }
+
+    public Integer getNumberOfBeds() {
+        return rooms.stream().map(RoomDTO::getNumberOfBeds).reduce(0, Integer::sum);
+    }
 }

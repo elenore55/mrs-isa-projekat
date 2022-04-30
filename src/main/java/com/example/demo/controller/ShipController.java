@@ -70,8 +70,8 @@ public class ShipController {
         Ship ship = shipService.findOne(id);
         if (ship == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        // if (!shipService.checkReservations(ship))
-            // return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (!shipService.checkReservations(ship))
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         shipService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
