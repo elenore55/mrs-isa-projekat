@@ -16,7 +16,7 @@ Vue.component("cottages-view-owner", {
             direction: "",
             price_error: false,
             owner_id: 2,
-            current_id: null
+            current_id: null,
         }
     },
 
@@ -134,7 +134,7 @@ Vue.component("cottages-view-owner", {
                     </div>
                 </div>
             </div>
-            <h3 v-if="cottages.length == 0" class="text-info ms-5">No cottages to show</h3>
+            <h3 v-if="cottages.length == 0" class="text-info ms-5 mt-3">No cottages to show</h3>
             <div class="container">
                 <div v-for="(c, i) in cottages" class="container card m-3">
                     <div class="row">
@@ -150,7 +150,7 @@ Vue.component("cottages-view-owner", {
                             <p class="card-text">Number of beds: {{ c.numberOfBeds }}</p>
                             <div class="d-flex flex-row mt-3">
                                 <a :href="'/#/updateCottage/' + c.id" class="btn btn-primary me-3 mt-3">View</a>
-                                <a @click="setCurrentId(c.id)" class="btn btn-danger mt-3" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-expanded="false" aria-controls="confirm-delete">Delete</a>
+                                <a @click="prepareDelete(c.id)" class="btn btn-danger mt-3" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-expanded="false" aria-controls="confirm-delete">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -160,6 +160,11 @@ Vue.component("cottages-view-owner", {
     `,
 
     methods: {
+        prepareDelete(id) {
+            this.setCurrentId(id);
+            window.scrollTo(0, 0);
+        },
+
         setCurrentId(id) {
             this.current_id = id;
         },
@@ -171,6 +176,7 @@ Vue.component("cottages-view-owner", {
             }).catch(function (error) {
                 alert('It is not possible to delete the cottage!');
             });
+            this.of = "auto";
         },
 
         search() {

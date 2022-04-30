@@ -38,7 +38,16 @@ Vue.component("ships-view-owner", {
 
     template: `
         <div>
-            <h3 v-if="ships.length == 0" class="text-info ms-5">No ships to show</h3>
+            <div class="d-flex justify-content-center">
+                <div class="collapse bg-light shadow rounded w-50 mt-3" id="confirm-delete">
+                    <p class=" d-flex justify-content-center mt-5 mb-3">Are you sure you want to delete the ship?</p>
+                    <div class="d-flex justify-content-center">
+                        <a v-on:click="deleteShip" class="btn btn-lg btn-outline-secondary m-4" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-controls="confirm-delete">Yes</a>
+                        <a class="btn btn-lg btn-outline-secondary m-4" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-controls="confirm-delete">No</a>
+                    </div>
+                </div>
+            </div>
+            <h3 v-if="ships.length == 0" class="text-info ms-5 mt-3">No ships to show</h3>
             <div class="container">
                 <div v-for="(s, i) in ships" class="container card m-3">
                     <div class="row">
@@ -55,7 +64,7 @@ Vue.component("ships-view-owner", {
                             <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
                             <div class="d-flex flex-row mt-3">
                                 <a :href="'/#/updateShip/' + s.id" class="btn btn-primary me-3 mt-3">View</a>
-                                <a @click="deleteShip(s.id)" class="btn btn-danger mt-3">Delete</a>
+                                <a @click="setCurrentId(s.id)" class="btn btn-danger mt-3" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-expanded="false" aria-controls="confirm-delete">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -77,8 +86,8 @@ Vue.component("ships-view-owner", {
             this.current_id = id;
         },
 
-        deleteShip(id) {
-            axios.delete("api/ships/deleteShip/" + id).then(response => {
+        deleteShip() {
+            axios.delete("api/ships/deleteShip/" + this.current_id).then(response => {
                 alert('Ship successfully deleted');
                 this.reload();
             }).catch(function (error) {
