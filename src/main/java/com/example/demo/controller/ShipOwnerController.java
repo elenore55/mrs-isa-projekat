@@ -33,4 +33,10 @@ public class ShipOwnerController {
         }
         return new ResponseEntity<>(dtos, HttpStatus.OK);
     }
+
+    @ResponseBody
+    @RequestMapping(path = "/getShips/{id}/{search}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<ShipDTO>> getCottages(@PathVariable Integer id, @PathVariable String search) {
+        return new ResponseEntity<>(service.searchShips(id, search.toLowerCase()), HttpStatus.OK);
+    }
 }

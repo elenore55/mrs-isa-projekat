@@ -115,7 +115,11 @@ Vue.component("ships-view-owner", {
         },
 
         search() {
-
+            axios.get("api/shipOwner/getShips/" + this.owner_id + "/" + this.search_criterion).then(response => {
+                this.ships = response.data;
+            }).catch(function (error) {
+                alert('An error occurred!');
+            });
         },
 
         filter() {

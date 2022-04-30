@@ -1,9 +1,15 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.ShipDTO;
+import com.example.demo.model.Address;
+import com.example.demo.model.Ship;
 import com.example.demo.model.ShipOwner;
 import com.example.demo.repository.ShipOwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ShipOwnerService {
@@ -20,5 +26,20 @@ public class ShipOwnerService {
 
     public ShipOwner save(ShipOwner shipOwner) {
         return this.shipOwnerRepository.save(shipOwner);
+    }
+
+    public List<ShipDTO> searchShips(Integer id, String search) {
+        ShipOwner owner = findOne(id);
+        List<Ship> ships = owner.getShips();
+        List<ShipDTO> dtos = new ArrayList<>();
+        for (Ship s : ships) {
+            Address a = s.getAddress();
+            if (s.getShipType().toString().toLowerCase().contains(search) || s.getName().toLowerCase().contains(search) || s.getDescription().toLowerCase().contains(search) ||
+                s.getAdditionalInfo().toLowerCase().contains(search) || a.getStreet().toLowerCase().contains(search) || a.getCity().toLowerCase().contains(search) ||
+                a.getCountry().toLowerCase().contains(search)) {
+                dtos.add(new ShipDTO(s));
+            }
+        }
+        return dtos;
     }
 }
