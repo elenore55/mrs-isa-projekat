@@ -12,6 +12,7 @@ const ClientProfile = {template: '<client-profile></client-profile>'};
 const EditProfile = {template: '<edit-profile></edit-profile>'};
 const ClientHome = {template: '<client-home></client-home>'};
 const DeleteProfile = {template: '<delete-profile></delete-profile>'};
+const DeleteProfileMessage = {template: '<delete-profile-message></delete-profile-message>'};
 
 const router = new VueRouter({
     mode: 'hash',
@@ -67,6 +68,10 @@ const router = new VueRouter({
         {
            path: "/addAdventure/",
            component: AddAdventure
+        },
+        {
+            path: "/deleteProfileMessage/",
+            component: DeleteProfileMessage
         },
         {
            path: "/profilePageInstructorPI/",
