@@ -38,13 +38,27 @@ Vue.component("ships-view-owner", {
 
     template: `
         <div>
-            <div class="d-flex justify-content-center">
+            <div class="container">
+                <div class="d-flex justify-content-center">
                 <div class="collapse bg-light shadow rounded w-50 mt-3" id="confirm-delete">
                     <p class=" d-flex justify-content-center mt-5 mb-3">Are you sure you want to delete the ship?</p>
                     <div class="d-flex justify-content-center">
                         <a v-on:click="deleteShip" class="btn btn-lg btn-outline-secondary m-4" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-controls="confirm-delete">Yes</a>
                         <a class="btn btn-lg btn-outline-secondary m-4" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-controls="confirm-delete">No</a>
                     </div>
+                </div>
+            </div>
+                <div class="d-flex justify-content-end">
+                    <div class="input-group me-1 w-25">
+                         <input v-model="search_criterion" type="search" id="search-input" class="form-control" placeholder="Search"/>
+                         <button type="button" class="btn btn-primary" v-on:click="search">
+                            <i class="fas fa-search"></i>
+                         </button>
+                    </div>
+                    <a type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filter-div" role="button" aria-expanded="false" aria-controls="filter-div">Filter</a>
+                </div>
+                <div id="filter-div">
+                    FILTER
                 </div>
             </div>
             <h3 v-if="ships.length == 0" class="text-info ms-5 mt-3">No ships to show</h3>
@@ -94,6 +108,10 @@ Vue.component("ships-view-owner", {
                 alert('It is not possible to delete the ship!');
             });
         },
+
+        search() {
+
+        }
     },
 
 });
