@@ -11,6 +11,7 @@ const ClientNavbar = {template: '<client-navbar></client-navbar>'};
 const ClientProfile = {template: '<client-profile></client-profile>'};
 const EditProfile = {template: '<edit-profile></edit-profile>'};
 const ClientHome = {template: '<client-home></client-home>'};
+const DeleteProfile = {template: '<delete-profile></delete-profile>'};
 
 const router = new VueRouter({
     mode: 'hash',
@@ -23,6 +24,10 @@ const router = new VueRouter({
             path: "/clientHome/",
             component: ClientHome
         },
+        {
+             path: "/deleteProfile/",
+             component: DeleteProfile
+                },
         {
             path: "/cottageImages/",
             component: CottageImages
@@ -40,12 +45,12 @@ const router = new VueRouter({
             component: EditProfile
         },
         {
-            path: "/login/",
-            component: Login
+             path: "/registration/",
+             component: Registration
         },
         {
-            path: "/registration/",
-            component: Registration
+            path: "/login/",
+            component: Login
         },
         {
             path: "/updateCottageNav/",

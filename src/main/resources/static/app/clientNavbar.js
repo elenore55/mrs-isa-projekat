@@ -1,7 +1,5 @@
 Vue.component("client-navbar", {
-   data: function() {
 
-   },
    template: `
     <nav class = "navbar navbar-expand-lg bg-dark navbar-dark py-3">
             <div class="container">

@@ -10,7 +10,7 @@ Vue.component("edit-profile", {
                 country: "Srbija",
                 phone: "00381-256-552",
                 category: "Regular",
-
+                penalties: "0",
             }
         }
    },
@@ -91,6 +91,15 @@ Vue.component("edit-profile", {
                   <div class="col-3">
                       <label> {{user.category}}</label>
                   </div>
+              </div>
+
+              <div class="row my-1">
+                   <div class="col-2">
+                        Penalties:
+                   </div>
+                   <div class="col-3">
+                        <label> {{user.penalties}}</label>
+                   </div>
               </div>
 
               <div class="row text-center">

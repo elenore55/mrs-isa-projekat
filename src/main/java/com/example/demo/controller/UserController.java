@@ -22,20 +22,24 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(path = "/registration", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<RegistrationDTO> saveUser(@RequestBody RegistrationDTO registrationDTO){
-
-
+    public ResponseEntity<String> saveUser(@RequestBody RegistrationDTO registrationDTO){
+        boolean exists = userService.isAlreadyRegistered(registrationDTO.getEmail());
+        if (exists){
+            return new ResponseEntity<>("", HttpStatus.OK);
+        }
         User u = new User(registrationDTO);
-        // boolean exists = userService.isAlreadyRegistered(registrationDTO.getEmail());
-        u = userService.save(u);
-        return new ResponseEntity<>(new RegistrationDTO(u), HttpStatus.CREATED);
+        userService.save(u);
+        return new ResponseEntity<>("OK", HttpStatus.CREATED);
     }
 
     @ResponseBody
     @RequestMapping(path = "/login", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<LoginDTO> login_user(@RequestBody LoginDTO loginDTO){
-        boolean exist = userService.checkIfExists(loginDTO.getEmail(), loginDTO.getPassword());
-        return new ResponseEntity<>(loginDTO, HttpStatus.OK);
+    public String login_user(@RequestBody LoginDTO loginDTO) throws InterruptedException {
+        String token = userService.findUserToken(loginDTO.getEmail(), loginDTO.getPassword());
+        System.out.println("Trenutni token je " + token);
+
+        return token;
+
     }
 
 
