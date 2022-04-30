@@ -7,7 +7,6 @@ Vue.component("cottages-view-owner", {
             all_cities: [],
             all_countries: [],
             cities: [],
-            city: "",
             countries: [],
             country: "",
             low_price: null,
@@ -59,40 +58,8 @@ Vue.component("cottages-view-owner", {
                 </div>
                 <div class="collapse bg-light shadow-sm rounded" id="filter-div">
                     <div class="container mt-3">
-                        <div class="d-flex flex-row m-2">
-                            <!-- Cities -->
-                            <div class="form-floating input-group w-25 me-5 pt-3">
-                                <input v-model="city" class="form-control" list="city-select" id="city-select-input">
-                                <datalist id="city-select">
-                                    <option v-for="c in all_cities">{{ c }}</option>
-                                </datalist>
-                                <button type="button" class="btn btn-secondary" v-on:click="addCity">Add</button>
-                                <label class="form-label mt-3" for="city-select-input">City</label>
-                            </div>
-                            <div class="d-flex flex-row mt-4">
-                                <span v-for="(c, i) in cities" class="input-group" style="width: 170px">
-                                    <span class="p-2"><label class="form-label ms-3">{{ c }}</label></span>
-                                    <span><button class="btn btn-outline-danger" type="button" v-on:click="cities.splice(i, 1)">X</button></span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row m-2">
-                            <!-- Countries -->
-                            <div class="form-floating input-group w-25 me-5">
-                                <input v-model="country" class="form-control" list="country-select" id="country-select-input">
-                                <datalist id="country-select">
-                                    <option v-for="c in all_countries">{{ c }}</option>
-                                </datalist>
-                                <button type="button" class="btn btn-secondary" v-on:click="addCountry">Add</button>
-                                <label for="country-select-input">Country</label>
-                            </div>
-                            <div class="d-flex flex-row mt-1">
-                                <span v-for="(c, i) in countries" class="input-group" style="width: 170px">
-                                    <span class="p-2"><label class="form-label ms-3">{{ c }}</label></span>
-                                    <span><button class="btn btn-outline-danger" type="button" v-on:click="countries.splice(i, 1)">X</button></span>
-                                </span>
-                            </div>
-                        </div>
+                        <city-filter :all_cities="all_cities" :cities="cities"></city-filter>
+                        <country-filter :all_countries="all_countries" :countries="countries"></country-filter>
                         <div class="row mt-4 ms-1">
                             <!-- Price -->
                             <p class="col-1 pt-2">Price</p>
@@ -212,20 +179,6 @@ Vue.component("cottages-view-owner", {
             } else {
                 this.price_error = true;
             }
-        },
-
-        addCity() {
-            if (this.city && !this.cities.includes(this.city)) {
-                this.cities.push(this.city);
-            }
-            this.city = "";
-        },
-
-        addCountry() {
-            if (this.country && !this.countries.includes(this.country)) {
-                this.countries.push(this.country);
-            }
-            this.country = "";
         }
     },
 

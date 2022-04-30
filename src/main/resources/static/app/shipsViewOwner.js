@@ -7,7 +7,6 @@ Vue.component("ships-view-owner", {
             all_cities: [],
             all_countries: [],
             cities: [],
-            city: "",
             countries: [],
             country: "",
             low_price: null,
@@ -57,8 +56,11 @@ Vue.component("ships-view-owner", {
                     </div>
                     <a type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filter-div" role="button" aria-expanded="false" aria-controls="filter-div">Filter</a>
                 </div>
-                <div id="filter-div">
-                    FILTER
+                <div id="filter-div" class="collapse bg-light shadow-sm rounded">
+                    <div class="container mt-3">
+                        <city-filter :cities="cities" :all_cities="all_cities"></city-filter>
+                        <country-filter :all_countries="all_countries" :countries="countries"></country-filter>
+                    </div>
                 </div>
             </div>
             <h3 v-if="ships.length == 0" class="text-info ms-5 mt-3">No ships to show</h3>
