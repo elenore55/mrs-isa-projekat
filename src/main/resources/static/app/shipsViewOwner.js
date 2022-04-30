@@ -60,6 +60,7 @@ Vue.component("ships-view-owner", {
                     <div class="container mt-3">
                         <city-filter :cities="cities" :all_cities="all_cities"></city-filter>
                         <country-filter :all_countries="all_countries" :countries="countries"></country-filter>
+                        <low-high-filter title="Price" :error="price_error" @updateLowPrice="updateLowPrice($event)" @updateHighPrice="updateHighPrice($event)" @undoErrorPrice="undoErrorPrice"></low-high-filter>
                     </div>
                 </div>
             </div>
@@ -113,7 +114,27 @@ Vue.component("ships-view-owner", {
 
         search() {
 
+        },
+
+        updateLowPrice(price) {
+            this.low_price = price;
+        },
+
+        updateHighPrice(price) {
+            this.high_price = price;
+        },
+
+        undoErrorPrice() {
+            this.price_error = false;
         }
     },
 
+    computed: {
+        areValidPrices() {
+            if (this.low_price && this.high_price) {
+                return this.low_price <= this.high_price;
+            }
+            return true;
+        }
+    }
 });

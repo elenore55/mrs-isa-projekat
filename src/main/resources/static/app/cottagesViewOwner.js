@@ -60,23 +60,7 @@ Vue.component("cottages-view-owner", {
                     <div class="container mt-3">
                         <city-filter :all_cities="all_cities" :cities="cities"></city-filter>
                         <country-filter :all_countries="all_countries" :countries="countries"></country-filter>
-                        <div class="row mt-4 ms-1">
-                            <!-- Price -->
-                            <p class="col-1 pt-2">Price</p>
-                            <div class="col-2 form-floating">
-                                <input v-model="low_price" type="number" min="0" class="form-control" id="low-price-input" 
-                                    oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" 
-                                    v-on:focus="price_error = false" />
-                                <label for="low-price-input">Low</label>
-                            </div>
-                            <div class="col-2 form-floating">
-                                <input v-model="high_price" type="number" min="0" class="form-control" id="high-price-input"
-                                oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" 
-                                v-on:focus="price_error = false" />
-                                <label for="high-price-input">High</label>
-                            </div>
-                            <p v-if="price_error" class="text-danger">Low must not be greater than high.</p>
-                        </div>
+                        <low-high-filter title="Price" :error="price_error" @updateLowPrice="updateLowPrice($event)" @updateHighPrice="updateHighPrice($event)" @undoErrorPrice="undoErrorPrice"></low-high-filter>
                         <div class="row mt-4 ms-1">
                             <!-- Sort by -->
                             <div class="col-2 form-floating input-group w-25">
@@ -179,6 +163,18 @@ Vue.component("cottages-view-owner", {
             } else {
                 this.price_error = true;
             }
+        },
+
+        updateLowPrice(price) {
+            this.low_price = price;
+        },
+
+        updateHighPrice(price) {
+            this.high_price = price;
+        },
+
+        undoErrorPrice() {
+            this.price_error = false;
         }
     },
 
