@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.FilterShipDTO;
 import com.example.demo.dto.ShipDTO;
 import com.example.demo.model.Ship;
 import com.example.demo.model.ShipOwner;
@@ -38,5 +39,12 @@ public class ShipOwnerController {
     @RequestMapping(path = "/getShips/{id}/{search}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<List<ShipDTO>> getCottages(@PathVariable Integer id, @PathVariable String search) {
         return new ResponseEntity<>(service.searchShips(id, search.toLowerCase()), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/filterShips/{id}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<List<ShipDTO>> filterShips(@PathVariable Integer id, @RequestBody FilterShipDTO filter) {
+        // ShipOwner owner =
+        return null;
     }
 }

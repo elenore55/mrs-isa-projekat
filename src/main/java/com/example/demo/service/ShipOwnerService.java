@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.FilterShipDTO;
 import com.example.demo.dto.ShipDTO;
 import com.example.demo.model.Address;
 import com.example.demo.model.Ship;
@@ -41,5 +42,23 @@ public class ShipOwnerService {
             }
         }
         return dtos;
+    }
+
+    public List<ShipDTO> filterShips(Integer id, FilterShipDTO filter) {
+        ShipOwner owner = findOne(id);
+        List<Ship> ships = owner.getShips();
+        List<ShipDTO> dtos = new ArrayList<>();
+        for (Ship s : ships) {
+            Address a = s.getAddress();
+            if (filter.checkCity(a.getCity()) && filter.checkCountry(a.getCountry()) && filter.checkPrice(s.getPriceList()) &&
+            filter.checkLength(s.getLength()) && filter.checkCapacity(s.getCapacity()) && filter.checkSpeed(s.getMaxSpeed())) {
+                dtos.add(new ShipDTO(s));
+            }
+        }
+        return dtos;
+    }
+
+    private void sortShips(List<ShipDTO> ships, String sortBy, boolean asc) {
+
     }
 }
