@@ -1,3 +1,4 @@
+const CottageReservations = {template: '<cottage-reservations></cottage-reservations>'};
 const ShipsViewOwner = {template: '<ships-view-owner></ships-view-owner>'};
 const CottagesViewOwner = {template: '<cottages-view-owner></cottages-view-owner>'};
 const UpdateShipNav = {template: '<update-ship-nav></update-ship-nav>'};
@@ -16,9 +17,15 @@ const ClientNavbar = {template: '<client-navbar></client-navbar>'};
 const ClientProfile = {template: '<client-profile></client-profile>'};
 const EditProfile = {template: '<edit-profile></edit-profile>'};
 
+Vue.component('vuejs-datepicker', vuejsDatepicker);
+
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/cottageReservations/",
+            component: CottageReservations
+        },
         {
             path: "/shipsViewOwner/",
             component: ShipsViewOwner
@@ -94,5 +101,5 @@ const router = new VueRouter({
 
 var app = new Vue({
     router,
-    el: "#main",
+    el: "#main"
 });

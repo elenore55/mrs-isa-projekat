@@ -9,6 +9,9 @@ Vue.component('update-cottage-nav', {
                     <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/cottageImages/'})">Images</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/cottageReservations/'})">Reservations</a>
+                    </li>
                 </ul>
             </div>
         </nav>
