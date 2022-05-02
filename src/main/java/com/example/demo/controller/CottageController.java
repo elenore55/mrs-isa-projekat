@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,6 @@ public class CottageController {
     @ResponseBody
     @RequestMapping(path = "/addCottage", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> saveCottage(@RequestBody CottageDTO cottageDTO) {
-        addOwner();
         Cottage cottage = new Cottage();
         setAttributes(cottage, cottageDTO);
         cottage = cottageService.save(cottage);
@@ -39,8 +39,6 @@ public class CottageController {
     @ResponseBody
     @RequestMapping(path = "/updateCottage", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> updateCottage(@RequestBody CottageDTO cottageDTO) {
-        addOwner();
-        addCottage();
         Cottage cottage = cottageService.findOne(cottageDTO.getId());
         if (cottage == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -53,8 +51,6 @@ public class CottageController {
     @ResponseBody
     @RequestMapping(path = "/updateCottageImages", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> updateCottageImages(@RequestBody CottageDTO cottageDTO) {
-        addOwner();
-        addCottage();
         Cottage cottage = cottageService.findOne(cottageDTO.getId());
         if (cottage == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -64,9 +60,20 @@ public class CottageController {
             images.add(new Image(path));
         cottage.setImages(images);
         cottageService.save(cottage);
-        return new ResponseEntity<>(cottageDTO, HttpStatus.OK);
+        return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.OK);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/deleteCottage/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteCottage(@PathVariable Integer id) {
+        Cottage cottage = cottageService.findOne(id);
+        if (cottage == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (!cottageService.checkReservations(cottage))
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        cottageService.remove(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     private void setAttributes(Cottage cottage, CottageDTO cottageDTO) {
         cottage.setId(cottageDTO.getId());
@@ -90,34 +97,5 @@ public class CottageController {
         cottage.setImages(images);
         CottageOwner owner = cottageOwnerService.findOne(cottageDTO.getOwnerId());
         if (owner != null) cottage.setOwner(owner);
-    }
-
-    private void addOwner() {
-        CottageOwner owner = new CottageOwner("email@gmail.com", "pass", "Pero", "Peric",
-                "12334556", new Address("Milana Rakica 19", "Novi Sad", "Srbija"));
-        cottageOwnerService.save(owner);
-    }
-
-    private void addCottage() {
-        Cottage cottage = new Cottage();
-        cottage.setName("Vikendica");
-        cottage.setDescription("Ovo je vikendica");
-        cottage.setAddress(new Address("Marka Pola 12", "Novi Sad", "Srbija"));
-        cottage.setPriceList(new BigDecimal(300));
-        List<Rule> rules = new ArrayList<>();
-        rules.add(new Rule("No smoking"));
-        rules.add(new Rule("No drinking"));
-        cottage.setRules(rules);
-        cottage.setAdditionalInfo("This is my additional info");
-        List<Room> rooms = new ArrayList<>();
-        Room room = new Room();
-        room.setNumberOfBeds(3);
-        rooms.add(room);
-        cottage.setRooms(rooms);
-        List<Image> images = new ArrayList<>();
-        cottage.setImages(images);
-        CottageOwner owner = cottageOwnerService.findOne(1);
-        if (owner != null) cottage.setOwner(owner);
-        cottageService.save(cottage);
     }
 }

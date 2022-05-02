@@ -4,6 +4,7 @@ import com.example.demo.model.FishingEquipment;
 import com.example.demo.model.NavigationEquipment;
 import com.example.demo.model.Rule;
 import com.example.demo.model.Ship;
+import com.example.demo.model.enums.ShipType;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class ShipDTO {
     private String cancellationConditions;
     private List<FishingEquipmentDTO> fishingEquipmentList;
     private List<NavigationEquipmentDTO> navigationEquipmentList;
+    private String shipTypeStr;
 
     public ShipDTO(Ship ship) {
         this.id = ship.getId();
@@ -198,5 +200,9 @@ public class ShipDTO {
 
     public void setNavigationEquipmentList(List<NavigationEquipmentDTO> navigationEquipmentList) {
         this.navigationEquipmentList = navigationEquipmentList;
+    }
+
+    public String getShipTypeStr() {
+        return ShipType.values()[shipType].toString();
     }
 }

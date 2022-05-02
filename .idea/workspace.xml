@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageOwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageOwnerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipOwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipOwnerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/CottageOwnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/CottageOwnerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ShipOwnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ShipOwnerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipsViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipsViewOwner.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,11 +34,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="cottages_view" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -57,14 +65,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="consents" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\filters" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static" />
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\css" />
       <recent name="C:\Users\LENOVO\Desktop\faks\VI semestar\ISA\Projekat\mrs-isa-projekat\src\main\resources\static\app" />
     </key>
   </component>
@@ -92,7 +105,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -103,7 +116,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1649621033745</updated>
-      <workItem from="1650741057960" duration="19691000" />
+      <workItem from="1650741057960" duration="20222000" />
+      <workItem from="1650977211221" duration="4713000" />
+      <workItem from="1651225300209" duration="4028000" />
+      <workItem from="1651236126492" duration="6659000" />
+      <workItem from="1651295804136" duration="11086000" />
     </task>
     <task id="LOCAL-00001" summary="Mergovana grana add_cottage na login&#10;Rijeseni konflikti">
       <created>1650313974543</created>
@@ -175,7 +192,203 @@
       <option name="project" value="LOCAL" />
       <updated>1650826051844</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="#221.3 Konverzija podataka i cuvanje broda">
+      <created>1650832044855</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1650832044855</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Prikaz osnovih podataka #222.1">
+      <created>1650978249960</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1650978249960</updated>
+    </task>
+    <task id="LOCAL-00013" summary="#222.1 Forma za prikaz podataka o izabranom brodu">
+      <created>1650978982820</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1650978982820</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Kreiran navbar za profil broda">
+      <created>1650979874614</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1650979874614</updated>
+    </task>
+    <task id="LOCAL-00015" summary="#222.2 Forma za prikaz slika broda">
+      <created>1650980118567</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1650980118567</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Dodavanje broda u SQL">
+      <created>1650981332729</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1650981332729</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Cuvanje azuriranih osnovnih podataka o brodu #222.3">
+      <created>1650981816001</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1650981816001</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Ucitavanje vikendica #250.1">
+      <created>1651137454688</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1651137454688</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Izlistavanje kartica #250.1">
+      <created>1651140202025</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1651140202026</updated>
+    </task>
+    <task id="LOCAL-00020" summary="#250.2 Dodavanje linkova za azuriranje, brisanje i detaljniji prikaz">
+      <created>1651142273367</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1651142273367</updated>
+    </task>
+    <task id="LOCAL-00021" summary="#250.1 Izlistavanje kartica sa osnovnim podacima o vikendici">
+      <created>1651143472679</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1651143472680</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Polja za search i filter #207.1">
+      <created>1651150059579</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1651150059580</updated>
+    </task>
+    <task id="LOCAL-00023" summary="#207.1 Forma za unos parametara pretrage">
+      <created>1651156013260</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1651156013261</updated>
+    </task>
+    <task id="LOCAL-00024" summary="#207.2 Validacija i parsiranje parametara pretrage">
+      <created>1651165998924</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1651165998924</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Pretraga vikendica #207.3">
+      <created>1651170062429</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1651170062429</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Filtriranje #207.3">
+      <created>1651172576496</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1651172576497</updated>
+    </task>
+    <task id="LOCAL-00027" summary="#207.3 Filtriranje vikendica">
+      <created>1651177407420</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1651177407420</updated>
+    </task>
+    <task id="LOCAL-00028" summary="#204.3 Dijalog za potvrdu brisanja vikendice">
+      <created>1651228465847</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1651228465847</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Dobavljanje vlasnikovih brodova #251.1">
+      <created>1651236928652</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1651236928652</updated>
+    </task>
+    <task id="LOCAL-00030" summary="#251.1 Izlistavanje kartica sa osnovnim podacima o brodovima">
+      <created>1651239350550</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1651239350550</updated>
+    </task>
+    <task id="LOCAL-00031" summary="#251.2 Dodavanje linkova za detaljniji prikaz i brisanje brodova">
+      <created>1651244627237</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1651244627237</updated>
+    </task>
+    <task id="LOCAL-00032" summary="#223.1 Uklanjanje broda iz baze podataka">
+      <created>1651245462729</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1651245462729</updated>
+    </task>
+    <task id="LOCAL-00033" summary="#223.2 Provjera zauzetosti broda">
+      <created>1651296727938</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1651296727938</updated>
+    </task>
+    <task id="LOCAL-00034" summary="#223.3 Dijalog za potvrdu brisanja broda">
+      <created>1651298151389</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1651298151389</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Input za search #220.1">
+      <created>1651298843063</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1651298843063</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Odabir gradova i drzava za filtriranje #220.1">
+      <created>1651300635155</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1651300635155</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Unos donje i gornje granice za cijenu #220.1">
+      <created>1651304435294</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1651304435294</updated>
+    </task>
+    <task id="LOCAL-00038" summary="#220.1 Forma sa parametrima za pretragu i filtriranje brodova">
+      <created>1651306258244</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1651306258244</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,25 +399,139 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Merge branch 'add_cottage' into login&#10;&#10;# Conflicts:&#10;#&#9;src/main/resources/static/app/app.js&#10;#&#9;src/main/resources/static/index.html" />
-    <MESSAGE value="Mergovana grana add_cottage na login&#10;Rijeseni konflikti" />
-    <MESSAGE value="Popravljen price list" />
-    <MESSAGE value="Nesto iskonfigurisano" />
-    <MESSAGE value="Polja za unos imena, opisa i cene broda #221.1" />
-    <MESSAGE value="Polja za unos adrese i dodatnih informacija #221.1" />
-    <MESSAGE value="Polja za unos navigacione i ribarske opreme #221.1" />
-    <MESSAGE value="#221.1 Forma za unos podataka o brodu" />
-    <MESSAGE value="#221.2 Validacija unesenih podataka o novom brodu" />
-    <MESSAGE value="Kreirani repozitorijum i servis za brod #221.3" />
-    <MESSAGE value="axios poziv za dodavanje broda #221.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="axios poziv za dodavanje broda #221.3" />
+    <MESSAGE value="Kreiran navbar za profil broda" />
+    <MESSAGE value="#222.2 Forma za prikaz slika broda" />
+    <MESSAGE value="Dodavanje broda u SQL" />
+    <MESSAGE value="Cuvanje azuriranih osnovnih podataka o brodu #222.3" />
+    <MESSAGE value="Ucitavanje vikendica #250.1" />
+    <MESSAGE value="Izlistavanje kartica #250.1" />
+    <MESSAGE value="#250.2 Dodavanje linkova za azuriranje, brisanje i detaljniji prikaz" />
+    <MESSAGE value="#250.1 Izlistavanje kartica sa osnovnim podacima o vikendici" />
+    <MESSAGE value="Polja za search i filter #207.1" />
+    <MESSAGE value="#207.1 Forma za unos parametara pretrage" />
+    <MESSAGE value="#207.2 Validacija i parsiranje parametara pretrage" />
+    <MESSAGE value="Pretraga vikendica #207.3" />
+    <MESSAGE value="Filtriranje #207.3" />
+    <MESSAGE value="#207.3 Filtriranje vikendica" />
+    <MESSAGE value="#204.3 Dijalog za potvrdu brisanja vikendice" />
+    <MESSAGE value="Dobavljanje vlasnikovih brodova #251.1" />
+    <MESSAGE value="#251.1 Izlistavanje kartica sa osnovnim podacima o brodovima" />
+    <MESSAGE value="#251.2 Dodavanje linkova za detaljniji prikaz i brisanje brodova" />
+    <MESSAGE value="#223.1 Uklanjanje broda iz baze podataka" />
+    <MESSAGE value="#223.2 Provjera zauzetosti broda" />
+    <MESSAGE value="#223.3 Dijalog za potvrdu brisanja broda" />
+    <MESSAGE value="Input za search #220.1" />
+    <MESSAGE value="Odabir gradova i drzava za filtriranje #220.1" />
+    <MESSAGE value="Unos donje i gornje granice za cijenu #220.1" />
+    <MESSAGE value="#220.1 Forma sa parametrima za pretragu i filtriranje brodova" />
+    <option name="LAST_COMMIT_MESSAGE" value="#220.1 Forma sa parametrima za pretragu i filtriranje brodova" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="233" y="0" key="#Notifications" timestamp="1650741185090">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#Notifications/0.0.1280.680@0.0.1280.680" timestamp="1650741185090" />
+    <state x="233" y="0" key="#Project_Structure" timestamp="1650741282176">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1650741282176" />
+    <state x="233" y="0" key="#SQL_Dialects" timestamp="1650721189682">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#SQL_Dialects/0.0.1280.680@0.0.1280.680" timestamp="1650721189682" />
+    <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1650826863411">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1650826863411" />
+    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser" timestamp="1651174852364">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651174852364" />
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1650826508607" />
+    <state x="490" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1650720848000">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="490" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1650720848000" />
+    <state x="2610" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1651149038389">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2610" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651149038389" />
+    <state x="396" y="44" key="#xdebugger.evaluate" timestamp="1650828034427">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="396" y="44" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1650828034427" />
+    <state x="2258" y="0" key="CommitChangelistDialog2" timestamp="1651306257390">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2258" y="0" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651306257390" />
+    <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1650826050956" />
+    <state width="1877" height="333" key="GridCell.Tab.0.bottom" timestamp="1651307015860">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="333" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651307015860" />
+    <state width="1237" height="211" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1651257626483" />
+    <state width="1877" height="333" key="GridCell.Tab.0.center" timestamp="1651307015860">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="333" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651307015860" />
+    <state width="1237" height="211" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1651257626482" />
+    <state width="1877" height="333" key="GridCell.Tab.0.left" timestamp="1651307015860">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="333" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651307015860" />
+    <state width="1237" height="211" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1651257626482" />
+    <state width="1877" height="333" key="GridCell.Tab.0.right" timestamp="1651307015860">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="333" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651307015860" />
+    <state width="1237" height="211" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1651257626483" />
+    <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1651179897620">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651179897620" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1650832543498" />
+    <state width="1877" height="347" key="GridCell.Tab.1.center" timestamp="1651179897620">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.1.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651179897620" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1650832543498" />
+    <state width="1877" height="347" key="GridCell.Tab.1.left" timestamp="1651179897620">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.1.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651179897620" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1650832543498" />
+    <state width="1877" height="347" key="GridCell.Tab.1.right" timestamp="1651179897620">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651179897620" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1650832543498" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1650829168397">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1650829168397" />
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1651306261191">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651306261191" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1650826055916" />
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1651295804976">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1651295804976" />
+    <state x="2426" y="252" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651236223753" />
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1650741065475" />
+    <state x="2536" y="240" key="run.anything.popup" timestamp="1651300410895">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2536" y="240" key="run.anything.popup/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651300410895" />
   </component>
 </project>

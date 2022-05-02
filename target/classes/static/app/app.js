@@ -1,3 +1,8 @@
+const ShipsViewOwner = {template: '<ships-view-owner></ships-view-owner>'};
+const CottagesViewOwner = {template: '<cottages-view-owner></cottages-view-owner>'};
+const UpdateShipNav = {template: '<update-ship-nav></update-ship-nav>'};
+const ShipImages = {template: '<ship-images></ship-images>'};
+const UpdateShip = {template: '<update-ship></update-ship>'};
 const AddShip = {template: '<add-ship></add-ship>'};
 const ProfilePageInstructorPI = {template: '<profile-page-instructorpi></profile-page-instructorpi>'};
 const AddAdventure = {template: '<add-adventure></add-adventure>'};
@@ -17,6 +22,26 @@ const DeleteProfileMessage = {template: '<delete-profile-message></delete-profil
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/shipsViewOwner/",
+            component: ShipsViewOwner
+        },
+        {
+            path: "/cottagesViewOwner/",
+            component: CottagesViewOwner
+        },
+        {
+            path: "/updateShipNav/",
+            component: UpdateShipNav
+        },
+        {
+            path: "/shipImages/",
+            component: ShipImages
+        },
+        {
+            path: "/updateShip/:id/",
+            component: UpdateShip
+        },
         {
             path: "/addShip/",
             component: AddShip
@@ -58,7 +83,7 @@ const router = new VueRouter({
             component: UpdateCottageNav
         },
         {
-            path: "/updateCottage/",
+            path: "/updateCottage/:id/",
             component: UpdateCottage
         },
         {

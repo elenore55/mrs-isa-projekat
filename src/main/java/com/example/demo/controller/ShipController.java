@@ -37,6 +37,45 @@ public class ShipController {
         return new ResponseEntity<>(new ShipDTO(ship), HttpStatus.CREATED);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/updateShip", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<ShipDTO> updateShip(@RequestBody ShipDTO shipDTO) {
+        Ship ship = shipService.findOne(shipDTO.getId());
+        if (ship == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        setAttributes(ship, shipDTO);
+        ship = shipService.save(ship);
+        return new ResponseEntity<>(new ShipDTO(ship), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/updateShipImages", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<ShipDTO> updateShipImages(@RequestBody ShipDTO shipDTO) {
+        Ship ship = shipService.findOne(shipDTO.getId());
+        if (ship == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        List<Image> images = new ArrayList<>();
+        for (String path : shipDTO.getImagePaths())
+            images.add(new Image(path));
+        ship.setImages(images);
+        shipService.save(ship);
+        return new ResponseEntity<>(new ShipDTO(ship), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/deleteShip/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteShip(@PathVariable Integer id) {
+        Ship ship = shipService.findOne(id);
+        if (ship == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (!shipService.checkReservations(ship))
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        shipService.remove(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     private void setAttributes(Ship ship, ShipDTO dto) {
         ship.setId(dto.getId());
         ship.setName(dto.getName());

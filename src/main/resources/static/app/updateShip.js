@@ -1,26 +1,26 @@
-Vue.component("add-ship", {
+Vue.component("update-ship", {
     data: function () {
         return {
-            name: "",
-            description: "",
-            address: { street: "", city: "", country: "" },
-            price: null,
-            rules: [],
-            additional_info: "",
+            id: 1,
+            name: "My ship",
+            description: "This is my ship",
+            address: { street: "Marka Pola 12", city: "Beograd", country: "Srbija" },
+            price: 1000,
+            rules: ["No smoking", "No drinking"],
+            additional_info: "This is some additional info",
+            images: ["img1.png", "img2.png"],
             rule: "",
-            imgPath: "",
-            images: [],
-            conditions: "",
-            nav_equipment_list: [],
+            conditions: "14 days before",
+            nav_equipment_list: [{name: "GPD", amount: 3}],
             nav_equipment: { name: "", amount: null },
-            fishing_equipment_list: [],
+            fishing_equipment_list: [{name: "Rod", amount: 5}, {name: "Hook", amount: "30"}],
             fishing_equipment: { name: "", amount: null },
             ship_type: 1,
-            length: null,
-            capacity: null,
-            num_engines: null,
-            engine_power: null,
-            max_speed: null,
+            length: 40,
+            capacity: 100,
+            num_engines: 10,
+            engine_power: 100,
+            max_speed: 150,
             errors: {
                 name: false, description: false, price: false, street: false, city: false, country: false,
                 length: false, capacity: false, num_engines: false, power: false, max_speed: false
@@ -30,7 +30,7 @@ Vue.component("add-ship", {
 
     template: `
     <form novalidate>
-        <h2 class="text-center my-4">Add Ship</h2>
+        <update-ship-nav></update-ship-nav>
         <div class="container">
             <div class="row my-4 mx-1">
                 <div class="col form-floating has-validation">
@@ -195,18 +195,10 @@ Vue.component("add-ship", {
                     <input v-model="rule" id="rule-input" type="text" class="form-control">
                     <button type="button" v-on:click="addRule" class="btn btn-secondary my-1">Add rule</button>
                 </div>
-                <div class="col form-group">
-                    <label class="form-label h5">Images</label> <br />
-                    <div v-for="(img, i) in images" class="mb-2">
-                        <span>{{ img }}</span>
-                        <button type="button" v-on:click="images.splice(i, 1)" class="btn btn-outline-danger btn-sm float-end">Delete</button>
-                    </div>
-                    <input type="file" class="form-control-file" id="img" name="img" accept="image/*" @change="addImage($event)" multiple>
-                </div>
             </div>
             <div class="row mt-1 mb-2">
                 <div class="col text-end">
-                    <button type="button" class="btn btn-primary btn-lg" v-on:click="sendRequest">Submit</button>
+                    <button type="button" class="btn btn-primary btn-lg" v-on:click="sendRequest">Save changes</button>
                 </div>
             </div>
         </div>
@@ -256,7 +248,8 @@ Vue.component("add-ship", {
         sendRequest() {
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress &&
                 this.isValidLength && this.isValidCapacity && this.isValidNumEngines && this.isValidPower && this.isValidSpeed) {
-                axios.post("api/ships/addShip", {
+                axios.post("api/ships/updateShip", {
+                    id: 1,
                     name: this.name,
                     description: this.description,
                     address: this.address,
@@ -275,7 +268,7 @@ Vue.component("add-ship", {
                     fishingEquipmentList: this.fishing_equipment_list,
                     navigationEquipmentList: this.nav_equipment_list
                 }).then(function(response) {
-                    alert('Ship successfully added!');
+                    alert('Ship successfully updated!');
                 }).catch(function (error) {
                     alert('An error occurred!');
                 });
