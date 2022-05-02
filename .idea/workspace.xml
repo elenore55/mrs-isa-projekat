@@ -5,21 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipCapacityComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipCityComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipCountryComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipLengthComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipNameComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipPriceComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipRatingComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipSpeedComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipTypeComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/cottage/CottageCityComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/cottage/CottageCountryComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageOwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageOwnerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/CottageNameComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/cottage/CottageNameComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/CottagePriceComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/cottage/CottagePriceComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/CottageRatingComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/cottage/CottageRatingComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/CottageRoomsComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/cottage/CottageRoomsComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipOwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipOwnerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/cottage/CottageNameComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/cottage/CottageNameComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/cottage/CottagePriceComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/cottage/CottagePriceComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/cottage/CottageRatingComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/cottage/CottageRatingComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/cottage/CottageRoomsComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/cottage/CottageRoomsComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipCapacityComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipCapacityComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipCityComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipCityComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipCountryComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipCountryComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipLengthComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipLengthComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipNameComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipNameComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipRatingComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipRatingComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipSpeedComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipSpeedComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipTypeComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipTypeComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/CottageOwnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/CottageOwnerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ShipOwnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ShipOwnerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottagesViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottagesViewOwner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/CottageOwnerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/CottageOwnerService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,13 +84,13 @@
     <property name="settings.editor.selected.configurable" value="consents" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\filters" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static" />
       <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\css" />
       <recent name="C:\Users\LENOVO\Desktop\faks\VI semestar\ISA\Projekat\mrs-isa-projekat\src\main\resources\static\app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\filters" />
     </key>
   </component>
   <component name="RunManager">
@@ -127,7 +133,7 @@
       <workItem from="1651225300209" duration="4028000" />
       <workItem from="1651236126492" duration="6659000" />
       <workItem from="1651295804136" duration="11269000" />
-      <workItem from="1651482512046" duration="3643000" />
+      <workItem from="1651482512046" duration="6121000" />
     </task>
     <task id="LOCAL-00001" summary="Mergovana grana add_cottage na login&#10;Rijeseni konflikti">
       <created>1650313974543</created>
@@ -409,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651488010821</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Komparatori za brodove #220.4">
+      <created>1651488612134</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1651488612134</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,7 +442,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Dodavanje broda u SQL" />
     <MESSAGE value="Cuvanje azuriranih osnovnih podataka o brodu #222.3" />
     <MESSAGE value="Ucitavanje vikendica #250.1" />
     <MESSAGE value="Izlistavanje kartica #250.1" />
@@ -454,7 +466,8 @@
     <MESSAGE value="#220.1 Forma sa parametrima za pretragu i filtriranje brodova" />
     <MESSAGE value="#220.2 Pretraga brodova" />
     <MESSAGE value="Filtriranje brodova po unesenim kriterijumima #220.4" />
-    <option name="LAST_COMMIT_MESSAGE" value="Filtriranje brodova po unesenim kriterijumima #220.4" />
+    <MESSAGE value="Komparatori za brodove #220.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Komparatori za brodove #220.4" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Notifications" timestamp="1650741185090">
@@ -473,10 +486,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1650826863411" />
-    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser" timestamp="1651488560888">
+    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser" timestamp="1651489389675">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651488560888" />
+    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651489389675" />
     <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1650826508607" />
     <state x="490" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1650720848000">
       <screen x="0" y="0" width="1280" height="680" />
@@ -490,30 +503,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="396" y="44" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1650828034427" />
-    <state x="2258" y="0" key="CommitChangelistDialog2" timestamp="1651488009334">
+    <state x="2258" y="0" key="CommitChangelistDialog2" timestamp="1651488611206">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2258" y="0" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651488009334" />
+    <state x="2258" y="0" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651488611206" />
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1650826050956" />
-    <state width="1877" height="333" key="GridCell.Tab.0.bottom" timestamp="1651486629269">
+    <state width="1877" height="333" key="GridCell.Tab.0.bottom" timestamp="1651491878452">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="333" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651486629269" />
+    <state width="1877" height="333" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651491878452" />
     <state width="1237" height="211" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1651257626483" />
-    <state width="1877" height="333" key="GridCell.Tab.0.center" timestamp="1651486629268">
+    <state width="1877" height="333" key="GridCell.Tab.0.center" timestamp="1651491878452">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="333" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651486629268" />
+    <state width="1877" height="333" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651491878452" />
     <state width="1237" height="211" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1651257626482" />
-    <state width="1877" height="333" key="GridCell.Tab.0.left" timestamp="1651486629268">
+    <state width="1877" height="333" key="GridCell.Tab.0.left" timestamp="1651491878451">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="333" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651486629268" />
+    <state width="1877" height="333" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651491878451" />
     <state width="1237" height="211" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1651257626482" />
-    <state width="1877" height="333" key="GridCell.Tab.0.right" timestamp="1651486629269">
+    <state width="1877" height="333" key="GridCell.Tab.0.right" timestamp="1651491878452">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="333" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651486629269" />
+    <state width="1877" height="333" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651491878452" />
     <state width="1237" height="211" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1651257626483" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1651179897620">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -550,6 +563,10 @@
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1651482524090" />
     <state x="2426" y="252" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651236223753" />
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1650741065475" />
+    <state x="2610" y="275" key="extract.method.dialog" timestamp="1651488915143">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2610" y="275" key="extract.method.dialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651488915143" />
     <state x="2536" y="240" key="run.anything.popup" timestamp="1651300410895">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>

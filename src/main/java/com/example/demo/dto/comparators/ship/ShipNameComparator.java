@@ -1,12 +1,12 @@
 package com.example.demo.dto.comparators.ship;
 
-import com.example.demo.dto.ShipDTO;
+import com.example.demo.model.Ship;
 
 import java.util.Comparator;
 
-public class ShipNameComparator implements Comparator<ShipDTO> {
+public class ShipNameComparator implements Comparator<Ship> {
     @Override
-    public int compare(ShipDTO s1, ShipDTO s2) {
+    public int compare(Ship s1, Ship s2) {
         return s1.getName().compareTo(s2.getName());
     }
 }

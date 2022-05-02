@@ -4,10 +4,9 @@ import com.example.demo.model.Cottage;
 
 import java.util.Comparator;
 
-public class CottagePriceComparator implements Comparator<Cottage> {
-
+public class CottageCityComparator implements Comparator<Cottage> {
     @Override
     public int compare(Cottage c1, Cottage c2) {
-        return c1.getPriceList().compareTo(c2.getPriceList());
+        return c1.getAddress().getCity().compareTo(c2.getAddress().getCity());
     }
 }
