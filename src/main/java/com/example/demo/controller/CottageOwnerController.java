@@ -2,10 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.CottageDTO;
 import com.example.demo.dto.FilterCottageDTO;
-import com.example.demo.dto.comparators.CottageNameComparator;
-import com.example.demo.dto.comparators.CottagePriceComparator;
-import com.example.demo.dto.comparators.CottageRatingComparator;
-import com.example.demo.dto.comparators.CottageRoomsComparator;
+import com.example.demo.dto.comparators.cottage.CottageNameComparator;
+import com.example.demo.dto.comparators.cottage.CottagePriceComparator;
+import com.example.demo.dto.comparators.cottage.CottageRatingComparator;
+import com.example.demo.dto.comparators.cottage.CottageRoomsComparator;
 import com.example.demo.model.Address;
 import com.example.demo.model.Cottage;
 import com.example.demo.model.CottageOwner;

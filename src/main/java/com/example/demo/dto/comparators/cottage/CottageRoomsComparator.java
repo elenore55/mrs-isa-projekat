@@ -1,4 +1,4 @@
-package com.example.demo.dto.comparators;
+package com.example.demo.dto.comparators.cottage;
 
 import com.example.demo.dto.CottageDTO;
 
