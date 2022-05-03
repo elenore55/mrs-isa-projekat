@@ -4,6 +4,7 @@ Vue.component("instructors-adventures",{
         return{
             adventures: [],
             adventureInfo: {},
+            allEquipments:[],
             addressInfo:{
                 countryInfo: "",
                 cityInfo: "",
@@ -28,6 +29,7 @@ Vue.component("instructors-adventures",{
     },
     mounted: function (){
         this.loadInstructorsAdventures()
+        this.loadEquipment()
     },
     // ako hoces custom ponasanja ti stavi button i v-onclick inace ako se koristi forma idemo submit i onsubmit jer nam daje sam mogucnost provere unosa podataka
     template: `
@@ -75,7 +77,7 @@ Vue.component("instructors-adventures",{
                 <div class="form-group">
                     <label>Fishing equipment</label>
                         <select class="select form-control" multiple v-model="fishingEquipmentListInfo" style="height: 250px">
-                            <option v-for="equipment in adventureInfo.fishingEquipmentList">{{equipment.name}}</option>
+                            <option v-for="equipment in allEquipments">{{equipment.name}}</option>
                         </select>
                 </div>
                 <div class="form-group">
@@ -107,6 +109,13 @@ Vue.component("instructors-adventures",{
             //    GRESKA U BAZI, TREBA PRISTUPITI TABELI GDE JE ID OPREME I ID AVANTURE
             })
             // console.log(this.adventure.split(' - ')[0])
+        },
+        loadEquipment(){
+            axios.get("api/fishingEquipment/all").then(response => {
+                this.allEquipments = response.data
+                console.log(this.allEquipments)
+                console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
+            })
         },
         deleteAdventure(){
             console.log(this.adventure.split(' - ')[0])

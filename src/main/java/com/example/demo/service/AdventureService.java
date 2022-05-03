@@ -19,6 +19,9 @@ public class AdventureService {
 //    @Autowired
 //    private Adventure_Fishing_Equipments_Repository adventure_fishing_equipments_repository;
 
+//    @Autowired
+//    private Adventure_Fishing_Equipments_Repository adventure_fishing_equipments_repository;
+
     public Adventure findOne(Integer id) {
         return adventureRepository.getById(id);
     }

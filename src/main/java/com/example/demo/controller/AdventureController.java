@@ -115,4 +115,6 @@ public class AdventureController {
         adventure = adventureService.update(adventure);
         return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.ACCEPTED);
     }
+
+
 }
