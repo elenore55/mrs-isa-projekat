@@ -49,7 +49,7 @@ Vue.component("add-ship", {
                     <p v-if="!isValidPrice && errors.price" class="text-danger">Price is required.</p>
                 </div>
             </div>
-            <div class="row justify-content-center my-4 mx-1">
+            <div class="row my-4 mx-1">
                 <div class="col container">
                     <label class="form-label h5">Address</label>
                     <div class="row m-1">

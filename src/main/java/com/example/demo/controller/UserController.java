@@ -1,13 +1,19 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.LoginDTO;
-import com.example.demo.dto.RegistrationDTO;
+import com.example.demo.dto.*;
+import com.example.demo.model.Address;
+import com.example.demo.model.DeletionRequest;
+import com.example.demo.model.ProfileData;
 import com.example.demo.model.User;
+import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping(value = "api/users")
@@ -37,9 +43,30 @@ public class UserController {
     public String login_user(@RequestBody LoginDTO loginDTO) throws InterruptedException {
         String token = userService.findUserToken(loginDTO.getEmail(), loginDTO.getPassword());
         System.out.println("Trenutni token je " + token);
-
         return token;
+    }
 
+    @Transactional
+    @ResponseBody
+    @RequestMapping(path = "/edit", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<String> saveRequest(@RequestBody EditProfileDTO editProfileDTO)
+    {
+        userService.updateProfileData(editProfileDTO);
+        return new ResponseEntity<>("OK", HttpStatus.OK);
+    }
+
+    @Transactional
+    @ResponseBody
+    @RequestMapping(path = "/changePassword", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<String> changePassword(@RequestBody ChangePasswordDTO changePasswordDTO)
+    {
+        if (userService.isUsersPassword(changePasswordDTO.getOld(), changePasswordDTO.getId()))
+        {
+            System.out.println("Old password je dobro unesena");
+            userService.changePassword(changePasswordDTO);
+            return new ResponseEntity<>("OK", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("ERROR", HttpStatus.OK);
     }
 
 

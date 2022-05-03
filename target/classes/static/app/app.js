@@ -18,6 +18,8 @@ const EditProfile = {template: '<edit-profile></edit-profile>'};
 const ClientHome = {template: '<client-home></client-home>'};
 const DeleteProfile = {template: '<delete-profile></delete-profile>'};
 const DeleteProfileMessage = {template: '<delete-profile-message></delete-profile-message>'};
+const EditProfileMessage = {template: '<edit-profile-message></edit-profile-message>'};
+const ChangePassword = {template: '<change-password></change-password>'};
 
 const router = new VueRouter({
     mode: 'hash',
@@ -71,6 +73,10 @@ const router = new VueRouter({
             component: EditProfile
         },
         {
+            path: "/changePassword/",
+            component: ChangePassword
+        },
+        {
              path: "/registration/",
              component: Registration
         },
@@ -97,6 +103,10 @@ const router = new VueRouter({
         {
             path: "/deleteProfileMessage/",
             component: DeleteProfileMessage
+        },
+        {
+                    path: "/editProfileMessage/",
+                    component: EditProfileMessage
         },
         {
            path: "/profilePageInstructorPI/",

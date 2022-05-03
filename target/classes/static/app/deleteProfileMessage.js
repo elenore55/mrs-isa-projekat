@@ -7,7 +7,7 @@ Vue.component("delete-profile-message", {
                 <div class="row">
                     <div class="col-lg-4 col-sm-8 col-md-6 m-auto">
 
-                        <div class="card">
+                        <div class="card" style=" margin-top: 50px">
                             <div class="card-body text-center bg-warning">
                                 <h3>
                                     Your request has been successfully submitted.

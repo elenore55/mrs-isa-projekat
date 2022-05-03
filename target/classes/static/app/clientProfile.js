@@ -2,15 +2,16 @@ Vue.component("client-profile", {
    data: function() {
         return {
             user: {
-                email: "pera@peric",
-                name: "Pera",
+                email: "email@gmail.com",
+                name: "Pero",
                 surname: "Peric",
-                street: "Zmaj Jovina",
+                street: "Puskinova 6",
                 city: "Novi Sad",
                 country: "Srbija",
-                phone: "00381-256-552",
+                phone: "123345",
                 category: "Regular",
                 penalties: "0",
+                points: "0",
 
             }
         }
@@ -20,7 +21,16 @@ Vue.component("client-profile", {
 
     <div class="w-100">
         <client-navbar></client-navbar>
-        <div class="my-5 mx-5">
+        <div class="my-5 mx-5 pt-5 py-5">
+
+            <div class="row">
+                 <div class="col-2">
+                     Password:
+                 </div>
+                 <div class="col-2">
+                      <a href="http://localhost:8000/#/changePassword/">Change password</a>
+                 </div>
+            </div>
 
             <div class="row">
                 <div class="col-2">
@@ -100,6 +110,15 @@ Vue.component("client-profile", {
                    </div>
                    <div class="col-2">
                         <label> {{user.penalties}}</label>
+                   </div>
+              </div>
+
+              <div class="row">
+                   <div class="col-2">
+                        Points:
+                   </div>
+                   <div class="col-2">
+                        <label> {{user.points}}</label>
                    </div>
               </div>
 
