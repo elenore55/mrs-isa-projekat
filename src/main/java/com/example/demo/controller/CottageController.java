@@ -5,14 +5,17 @@ import com.example.demo.dto.RoomDTO;
 import com.example.demo.model.*;
 import com.example.demo.service.CottageOwnerService;
 import com.example.demo.service.CottageService;
+import org.apache.catalina.mbeans.SparseUserDatabaseMBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -25,6 +28,14 @@ public class CottageController {
     public CottageController(CottageService cottageService, CottageOwnerService cottageOwnerService) {
         this.cottageService = cottageService;
         this.cottageOwnerService = cottageOwnerService;
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getCottage/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<CottageDTO> getCottage(@PathVariable Integer id) {
+        Cottage cottage = cottageService.findOne(id);
+        if (cottage == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.OK);
     }
 
     @ResponseBody
@@ -64,6 +75,20 @@ public class CottageController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/updateReservationPeriod", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<CottageDTO> updateReservationPeriod(@RequestBody CottageDTO cottageDTO) {
+        Cottage cottage = cottageService.findOne(cottageDTO.getId());
+        if (cottage == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Availability a = new Availability(cottageDTO.getAvailableStart(), cottageDTO.getAvailableEnd());
+        a.setOffer(cottage);
+        cottage.setAvailabilities(Arrays.asList(a));
+        cottageService.save(cottage);
+        return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.OK);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/deleteCottage/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteCottage(@PathVariable Integer id) {
         Cottage cottage = cottageService.findOne(id);
@@ -95,6 +120,11 @@ public class CottageController {
         List<Image> images = new ArrayList<>();
         for (String imgPath : cottageDTO.getImagePaths()) images.add(new Image(imgPath));
         cottage.setImages(images);
+        if (cottageDTO.getAvailableStart() != null && cottageDTO.getAvailableEnd() != null) {
+            Availability a = new Availability(cottageDTO.getAvailableStart(), cottageDTO.getAvailableStart());
+            a.setOffer(cottage);
+            cottage.setAvailabilities(Arrays.asList(a));
+        }
         CottageOwner owner = cottageOwnerService.findOne(cottageDTO.getOwnerId());
         if (owner != null) cottage.setOwner(owner);
     }

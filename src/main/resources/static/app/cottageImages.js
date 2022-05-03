@@ -1,11 +1,24 @@
 Vue.component('cottage-images', {
    data: function() {
        return {
+           id: null,
            paths: ["https://picsum.photos/id/23/200/300", "https://picsum.photos/id/217/200/300", "https://picsum.photos/id/2/200/300",
            "https://picsum.photos/id/81/200/300", "https://picsum.photos/id/55/200/300", "https://picsum.photos/id/7/200/300",
            "https://picsum.photos/id/212/200/300", "https://picsum.photos/id/100/200/300"]
        }
    },
+
+    mounted() {
+        this.id = this.$route.params.id;
+
+        axios.get("api/cottages/getCottage/" + this.cottage.id).then(response => {
+            for (const path of response.data.imagePaths) {
+                this.paths.push(path);
+            }
+        }).catch(function (error) {
+            alert('An error occurred!');
+        });
+    },
 
     template: `
         <div>
@@ -48,7 +61,7 @@ Vue.component('cottage-images', {
 
         sendRequest() {
             axios.post("api/cottages/updateCottageImages", {
-                id: 1,
+                id: this.id,
                 imagePaths: this.paths
             }).then(function(response) {
                 alert('Cottage successfully updated!');

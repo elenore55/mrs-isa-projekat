@@ -23,7 +23,7 @@ const router = new VueRouter({
     mode: 'hash',
     routes: [
         {
-            path: "/cottageReservations/",
+            path: "/cottageReservations/:id/",
             component: CottageReservations
         },
         {
@@ -51,7 +51,7 @@ const router = new VueRouter({
             component: AddShip
         },
         {
-            path: "/cottageImages/",
+            path: "/cottageImages/:id/",
             component: CottageImages
         },
         {

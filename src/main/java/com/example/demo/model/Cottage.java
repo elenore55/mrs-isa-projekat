@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Cottage extends Offer {
 
-    @OneToMany(mappedBy = "cottage", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cottage", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Room> rooms = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER)

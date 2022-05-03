@@ -105,6 +105,10 @@ Vue.component("cottages-view-owner", {
             this.current_id = id;
         },
 
+        getCurrentCottageId() {
+            return this.current_id;
+        },
+
         deleteCottage() {
             axios.delete("api/cottages/deleteCottage/" + this.current_id).then(response => {
                 alert('Cottage successfully deleted');
