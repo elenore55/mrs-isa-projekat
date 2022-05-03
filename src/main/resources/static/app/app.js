@@ -15,10 +15,15 @@ const Registration = {template: '<registration></registration>'};
 const ClientNavbar = {template: '<client-navbar></client-navbar>'};
 const ClientProfile = {template: '<client-profile></client-profile>'};
 const EditProfile = {template: '<edit-profile></edit-profile>'};
+const InstructorsAdventures = {template: '<instructors-adventures></instructors-adventures>'};
 
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/instructorsAdventures/",
+            component: InstructorsAdventures
+        },
         {
             path: "/shipsViewOwner/",
             component: ShipsViewOwner

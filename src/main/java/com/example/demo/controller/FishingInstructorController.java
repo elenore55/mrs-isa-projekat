@@ -23,7 +23,7 @@ public class FishingInstructorController {
     }
     @GetMapping(value = "/getInstructorData")
     public ResponseEntity<FishingInstructorDTO> getFishingInstructorData(){
-        FishingInstructor fishingInstructor = fishingInstructorService.findOne(5);
+        FishingInstructor fishingInstructor = fishingInstructorService.findOne(1);
         FishingInstructorDTO fishingInstructorDTO = new FishingInstructorDTO(fishingInstructor);
 
         return new ResponseEntity<>(fishingInstructorDTO, HttpStatus.OK);
@@ -43,6 +43,7 @@ public class FishingInstructorController {
         fishingInstructor.getProfileData().setPassword(fishingInstructorDTO.getProfileDataDTO().getPassword());
         fishingInstructor.getProfileData().setPhoneNumber(fishingInstructorDTO.getProfileDataDTO().getPhoneNumber());
         fishingInstructor.getProfileData().setSurname(fishingInstructorDTO.getProfileDataDTO().getSurname());
+
         fishingInstructor = fishingInstructorService.save(fishingInstructor);
         return new ResponseEntity<>(new FishingInstructorDTO(fishingInstructor), HttpStatus.CREATED);
     }

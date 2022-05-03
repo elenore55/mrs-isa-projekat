@@ -34,6 +34,10 @@ public class AdventureService {
         return adventureRepository.save(adventure);
     }
 
+    public Adventure update(Adventure adventure){
+        return adventureRepository.save(adventure);
+    }
+
     public void remove(Integer id) {
         adventureRepository.deleteById(id);
     }

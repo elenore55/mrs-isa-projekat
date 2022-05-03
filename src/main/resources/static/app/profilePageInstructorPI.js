@@ -87,15 +87,19 @@ Vue.component("profile-page-instructorpi",{
         },
         sendRequest(){
             console.log(this.instruktorPI);
-            axios.post("api/instructors/updateInstructorInfo", {
-                biography: this.instruktorPI.biography,
-                profileDataDTO: this.instruktorPI.profileDataDTO,
-                id: 5
-            }).then(function (response) {
-                alert("Successfully updated your personal information");
-            }).catch(function (error) {
-                alert("An ERROR occurred while updating your personal information");
-            });
+            if(this.instruktorPI.profileDataDTO.password == this.passwordRE) {
+                axios.post("api/instructors/updateInstructorInfo", {
+                    biography: this.instruktorPI.biography,
+                    profileDataDTO: this.instruktorPI.profileDataDTO,
+                    id: 1
+                }).then(function (response) {
+                    alert("Successfully updated your personal information");
+                }).catch(function (error) {
+                    alert("An ERROR occurred while updating your personal information");
+                });
+            }
+            else
+                alert("New password doesnt match the old password");
         }
     }
 });

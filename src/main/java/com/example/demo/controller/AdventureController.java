@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.AdventureDTO;
 import com.example.demo.dto.FishingEquipmentDTO;
+import com.example.demo.dto.FishingInstructorDTO;
 import com.example.demo.model.*;
 import com.example.demo.service.AdventureService;
 import com.example.demo.service.FishingInstructorService;
@@ -38,6 +39,15 @@ public class AdventureController {
         }
 
         return new ResponseEntity<>(adventuresDTO, HttpStatus.OK);
+    }
+    @GetMapping(path = "/deleteAdventure/{id}")
+    public ResponseEntity<Void> deleteAdventure(@PathVariable Integer id) {
+        Adventure adventure = adventureService.findOne(id);
+        if (adventure == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        // dodati proveru ako je napravljena rezervacija!!!
+        adventureService.remove(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
@@ -89,5 +99,20 @@ public class AdventureController {
 
         adventure = adventureService.save(adventure);
         return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.CREATED);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/updateAdventureInfo",method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<AdventureDTO> updateInstructorInfo(@RequestBody AdventureDTO adventureDTO){
+        Adventure adventure = adventureService.findOne(adventureDTO.getId());
+        adventure.setAddress(adventureDTO.getAddress());
+        adventure.setName(adventureDTO.getName());
+        adventure.setDescription(adventureDTO.getDescription());
+        adventure.setPriceList(adventureDTO.getPrice());
+        adventure.setAdditionalInfo(adventureDTO.getAdditionalInfo());
+        adventure.setMaxPeople(adventureDTO.getMaxPeople());
+
+        adventure = adventureService.update(adventure);
+        return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.ACCEPTED);
     }
 }
