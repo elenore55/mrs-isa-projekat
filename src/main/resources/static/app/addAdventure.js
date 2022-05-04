@@ -67,8 +67,8 @@ Vue.component("add-adventure",{
             <div class="col-2">
                 <div class="form-group">
                     <label>Fishing equipment</label>
-                        <select class="select form-control" multiple v-model="form.fishingEquipmentList" style="height: 250px">
-                            <option v-for="equipment in allEquipments">{{equipment.name}}</option>
+                        <select class="select form-control browser-default" multiple v-model="form.fishingEquipmentList" style="height: 250px">
+                            <option v-for="equipment in allEquipments" v-bind:value="equipment">{{equipment.name}}</option>
                         </select>
                 </div>                
             </div>
@@ -128,7 +128,9 @@ Vue.component("add-adventure",{
         //     })
         // },
         sendRequest(){
+            console.log("JEDAN1")
             console.log(this.form.fishingEquipmentList)
+            console.log("JEDAN2")
             axios.post("api/adventures/addAdventure", {
                 name: this.form.name,
                 description: this.form.description,

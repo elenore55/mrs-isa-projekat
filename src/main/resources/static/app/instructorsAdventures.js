@@ -104,8 +104,9 @@ Vue.component("instructors-adventures",{
                 this.addressInfo.cityInfo=this.adventureInfo.address.city;
                 this.addressInfo.streetInfo=this.adventureInfo.address.street;
                 this.addressInfo.countryInfo=this.adventureInfo.address.country;
-                console.log(this.adventureInfo)
-                console.log(this.addressInfo.cityInfo)
+                console.log(this.adventureInfo);
+                console.log(this.adventureInfo.fishingEquipmentList);
+                console.log("AAAAAAAAAAAAAAAAAAAAAAAAB");
             //    GRESKA U BAZI, TREBA PRISTUPITI TABELI GDE JE ID OPREME I ID AVANTURE
             })
             // console.log(this.adventure.split(' - ')[0])
@@ -114,7 +115,6 @@ Vue.component("instructors-adventures",{
             axios.get("api/fishingEquipment/all").then(response => {
                 this.allEquipments = response.data
                 console.log(this.allEquipments)
-                console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
             })
         },
         deleteAdventure(){

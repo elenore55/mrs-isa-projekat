@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="#15, #16, #17, #344, #336">
+    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="#14 dodat prikaz fishing equipmenta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/Adventure_Fishing_Equipments_Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/Adventure_Fishing_Equipments_Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Adventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Adventure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FishingEquipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FishingEquipment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AdventureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AdventureService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/FishingEquipmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/FishingEquipmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addAdventure.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addAdventure.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/instructorsAdventures.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/instructorsAdventures.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/deleteProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/deleteProfile.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,17 +111,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -158,7 +151,8 @@
       <workItem from="1651236126492" duration="6659000" />
       <workItem from="1651295804136" duration="11269000" />
       <workItem from="1651482512046" duration="6121000" />
-      <workItem from="1651583197848" duration="19549000" />
+      <workItem from="1651583197848" duration="19713000" />
+      <workItem from="1651698272329" duration="8052000" />
     </task>
     <task id="LOCAL-00001" summary="Mergovana grana add_cottage na login&#10;Rijeseni konflikti">
       <created>1650313974543</created>
@@ -454,7 +448,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651605466896</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="#14 dodat prikaz fishing equipmenta">
+      <created>1651609480120</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1651609480120</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -473,7 +474,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ucitavanje vikendica #250.1" />
     <MESSAGE value="Izlistavanje kartica #250.1" />
     <MESSAGE value="#250.2 Dodavanje linkova za azuriranje, brisanje i detaljniji prikaz" />
     <MESSAGE value="#250.1 Izlistavanje kartica sa osnovnim podacima o vikendici" />
@@ -498,6 +498,7 @@
     <MESSAGE value="Filtriranje brodova po unesenim kriterijumima #220.4" />
     <MESSAGE value="Komparatori za brodove #220.4" />
     <MESSAGE value="#15, #16, #17, #344, #336" />
-    <option name="LAST_COMMIT_MESSAGE" value="#15, #16, #17, #344, #336" />
+    <MESSAGE value="#14 dodat prikaz fishing equipmenta" />
+    <option name="LAST_COMMIT_MESSAGE" value="#14 dodat prikaz fishing equipmenta" />
   </component>
 </project>
