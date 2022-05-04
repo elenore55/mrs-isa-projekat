@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.Cottage;
 import com.example.demo.model.Reservation;
+import com.example.demo.model.Room;
 import com.example.demo.repository.CottageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

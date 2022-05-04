@@ -5,6 +5,7 @@ import com.example.demo.dto.RoomDTO;
 import com.example.demo.model.*;
 import com.example.demo.service.CottageOwnerService;
 import com.example.demo.service.CottageService;
+import com.example.demo.service.RoomService;
 import org.apache.catalina.mbeans.SparseUserDatabaseMBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,11 +24,13 @@ import java.util.List;
 public class CottageController {
     private CottageService cottageService;
     private CottageOwnerService cottageOwnerService;
+    private RoomService roomService;
 
     @Autowired
-    public CottageController(CottageService cottageService, CottageOwnerService cottageOwnerService) {
+    public CottageController(CottageService cottageService, CottageOwnerService cottageOwnerService, RoomService roomService) {
         this.cottageService = cottageService;
         this.cottageOwnerService = cottageOwnerService;
+        this.roomService = roomService;
     }
 
     @ResponseBody
@@ -111,8 +114,10 @@ public class CottageController {
         cottage.setRules(rules);
         cottage.setAdditionalInfo(cottageDTO.getAdditionalInfo());
         List<Room> rooms = new ArrayList<>();
+        roomService.deleteRooms(cottageDTO.getId());
         for (RoomDTO dto : cottageDTO.getRooms()) {
             Room room = new Room();
+            room.setCottage(cottage);
             room.setNumberOfBeds(dto.getNumberOfBeds());
             rooms.add(room);
         }
