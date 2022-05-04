@@ -32,6 +32,7 @@ public class CottageOwnerController {
         List<CottageDTO> dtos = new ArrayList<>();
         for (Cottage c : cottages) {
             c.getRules();
+            c.getImages();
             dtos.add(new CottageDTO(c));
         }
         return new ResponseEntity<>(dtos, HttpStatus.OK);

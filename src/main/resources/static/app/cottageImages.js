@@ -2,19 +2,15 @@ Vue.component('cottage-images', {
    data: function() {
        return {
            id: null,
-           paths: ["https://picsum.photos/id/23/200/300", "https://picsum.photos/id/217/200/300", "https://picsum.photos/id/2/200/300",
-           "https://picsum.photos/id/81/200/300", "https://picsum.photos/id/55/200/300", "https://picsum.photos/id/7/200/300",
-           "https://picsum.photos/id/212/200/300", "https://picsum.photos/id/100/200/300"]
+           paths: []
        }
    },
 
     mounted() {
         this.id = this.$route.params.id;
 
-        axios.get("api/cottages/getCottage/" + this.cottage.id).then(response => {
-            for (const path of response.data.imagePaths) {
-                this.paths.push(path);
-            }
+        axios.get("api/cottages/getCottageImages/" + this.$route.params.id).then(response => {
+            this.paths = response.data;
         }).catch(function (error) {
             alert('An error occurred!');
         });
@@ -23,6 +19,7 @@ Vue.component('cottage-images', {
     template: `
         <div>
             <update-cottage-nav></update-cottage-nav>
+            <h3 v-if="paths.length == 0" class="text-info">No images to show</h3>
             <div class="container px-2">
                 <div class="row">
                     <div class="col d-flex justify-content-center flex-wrap">
@@ -55,7 +52,7 @@ Vue.component('cottage-images', {
             if (!files.length)
                 return;
             for (let file of files) {
-                this.paths.push(file.name);
+                this.paths.push("images/" + file.name);
             }
         },
 

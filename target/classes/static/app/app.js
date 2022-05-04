@@ -39,7 +39,7 @@ const router = new VueRouter({
             component: UpdateShipNav
         },
         {
-            path: "/shipImages/",
+            path: "/shipImages/:id/",
             component: ShipImages
         },
         {

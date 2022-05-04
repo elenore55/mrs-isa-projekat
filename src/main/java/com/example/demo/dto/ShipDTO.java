@@ -1,9 +1,6 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.FishingEquipment;
-import com.example.demo.model.NavigationEquipment;
-import com.example.demo.model.Rule;
-import com.example.demo.model.Ship;
+import com.example.demo.model.*;
 import com.example.demo.model.enums.ShipType;
 
 import java.math.BigDecimal;
@@ -41,7 +38,7 @@ public class ShipDTO {
         for (Rule rule : ship.getRules()) this.rules.add(rule.getText());
         this.additionalInfo = ship.getAdditionalInfo();
         this.ownerId = ship.getOwner().getId();
-        this.shipType = ship.getShipType().ordinal();
+        this.shipType = ship.getShipType().ordinal() + 1;
         this.length = ship.getLength();
         this.capacity = ship.getCapacity();
         this.numberOfEngines = ship.getNumberOfEngines();
@@ -54,9 +51,14 @@ public class ShipDTO {
         this.navigationEquipmentList = new ArrayList<>();
         for (NavigationEquipment ne : ship.getNavigationEquipmentList())
             navigationEquipmentList.add(new NavigationEquipmentDTO(ne));
+        this.imagePaths = new ArrayList<>();
+        for (Image img : ship.getImages()) {
+            imagePaths.add(img.getPath());
+        }
     }
 
-    public ShipDTO() {}
+    public ShipDTO() {
+    }
 
     public Integer getId() {
         return id;
@@ -203,6 +205,6 @@ public class ShipDTO {
     }
 
     public String getShipTypeStr() {
-        return ShipType.values()[shipType].toString();
+        return ShipType.values()[shipType - 1].toString();
     }
 }

@@ -16,6 +16,8 @@ Vue.component("cottages-view-owner", {
             price_error: false,
             owner_id: 2,
             current_id: null,
+            default_image: "images/cottage_icon.jpg",
+            profilePictures: []
         }
     },
 
@@ -51,7 +53,7 @@ Vue.component("cottages-view-owner", {
                     <div class="input-group me-1 w-25">
                          <input v-model="search_criterion" type="search" id="search-input" class="form-control" placeholder="Search"/>
                          <button type="button" class="btn btn-primary" v-on:click="search">
-                            <i class="fas fa-search"></i>
+                            <i class="fa fa-search"></i>
                          </button>
                     </div>
                     <a type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filter-div" role="button" aria-expanded="false" aria-controls="filter-div">Filter</a>
@@ -75,7 +77,7 @@ Vue.component("cottages-view-owner", {
                 <div v-for="(c, i) in cottages" class="container card m-3">
                     <div class="row">
                         <div class="col-3 mt-2">
-                            <img src="https://picsum.photos/id/81/200/300" class="card-img rounded-3 mt-3" width="200" height="200"  alt="cottage image">
+                            <img :src="profilePictures.at(i)" class="card-img rounded-3 mt-3" width="200" height="200"  alt="cottage image">
                             <p class="ms-2 mt-3">{{ c.description }}</p>
                         </div>
                         <div class="col-4 card-body container">
@@ -130,6 +132,13 @@ Vue.component("cottages-view-owner", {
         reload() {
             axios.get("api/cottageOwner/getCottages/" + this.owner_id).then(response => {
                 this.cottages = response.data;
+                for (const c of this.cottages) {
+                    if (!c.imagePaths || c.imagePaths.length === 0) {
+                        this.profilePictures.push(this.default_image);
+                    } else {
+                        this.profilePictures.push(c.imagePaths.at(0));
+                    }
+                }
             }).catch(function (error) {
                 alert('An error occurred!');
             });

@@ -174,7 +174,7 @@ Vue.component("add-cottage", {
             if (!files.length)
                 return;
             for (let file of files) {
-                this.cottage.images.push(file.name);
+                this.cottage.images.push("images/" + file.name);
             }
         },
 

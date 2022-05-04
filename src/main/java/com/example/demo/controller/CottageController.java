@@ -38,7 +38,21 @@ public class CottageController {
     public ResponseEntity<CottageDTO> getCottage(@PathVariable Integer id) {
         Cottage cottage = cottageService.findOne(id);
         if (cottage == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        cottage.getImages();
+        cottage.getRules();
         return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getCottageImages/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<String>> getCottageImages(@PathVariable Integer id) {
+        Cottage cottage = cottageService.findOne(id);
+        if (cottage == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        List<String> result = new ArrayList<>();
+        for (Image img : cottage.getImages()) {
+            result.add(img.getPath());
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @ResponseBody
