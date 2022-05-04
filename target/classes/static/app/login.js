@@ -63,8 +63,6 @@ Vue.component("login", {
           }
         },
 
-    computed: {
 
-    }
 
 });
