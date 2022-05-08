@@ -77,7 +77,7 @@ Vue.component("instructors-adventures",{
                 <div class="form-group">
                     <label>Fishing equipment</label>
                         <select class="select form-control" multiple v-model="fishingEquipmentListInfo" style="height: 250px">
-                            <option v-for="equipment in allEquipments">{{equipment.name}}</option>
+                            <option v-for="equipment in adventureInfo.fishingEquipmentList">{{equipment.name}}</option>
                         </select>
                 </div>
                 <div class="form-group">
@@ -104,19 +104,14 @@ Vue.component("instructors-adventures",{
                 this.addressInfo.cityInfo=this.adventureInfo.address.city;
                 this.addressInfo.streetInfo=this.adventureInfo.address.street;
                 this.addressInfo.countryInfo=this.adventureInfo.address.country;
-                console.log(this.adventureInfo);
-                console.log(this.adventureInfo.fishingEquipmentList);
-                console.log("AAAAAAAAAAAAAAAAAAAAAAAAB");
-            //    GRESKA U BAZI, TREBA PRISTUPITI TABELI GDE JE ID OPREME I ID AVANTURE
-            })
-            // console.log(this.adventure.split(' - ')[0])
-        },
-        loadEquipment(){
-            axios.get("api/fishingEquipment/all").then(response => {
-                this.allEquipments = response.data
-                console.log(this.allEquipments)
             })
         },
+        // loadEquipment(){
+        //     axios.get("api/fishingEquipment/all").then(response => {
+        //         this.allEquipments = response.data
+        //         console.log(this.allEquipments)
+        //     })
+        // },
         deleteAdventure(){
             console.log(this.adventure.split(' - ')[0])
             axios.get("api/adventures/deleteAdventure/"+this.adventure.split(' - ')[0]).then(response => {
@@ -129,22 +124,29 @@ Vue.component("instructors-adventures",{
         loadInstructorsAdventures(){
             axios.get("api/adventures/all").then(response => {
                 this.adventures = response.data;
-                console.log(this.adventures)
+                // console.log(this.adventures)
             })
         },
         sendRequest(){
-            console.log(this.adventureInfo)
-            console.log(this.fishingEquipmentListInfo)
+            // console.log(this.adventureInfo) // se nalazi ceo objekat fishingequipmenta
+            // console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
+            // console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
+            // console.log(this.fishingEquipmentListInfo)  // ovde ne
             console.log(this.addressInfo)
+            this.adventureInfo.address.city = this.addressInfo.cityInfo;
+            this.adventureInfo.address.country = this.addressInfo.countryInfo;
+            this.adventureInfo.address.street = this.addressInfo.streetInfo;
             axios.post("api/adventures/updateAdventureInfo", {
                 // ovde se nalaze podaci iz dto-a
+                id: this.adventureInfo.id,
                 name: this.adventureInfo.name,
                 description: this.adventureInfo.description,
                 rules: this.adventureInfo.rules,
                 price: this.adventureInfo.price,
                 maxPeople: this.adventureInfo.maxPeople,
-                fishingEquipmentList: this.fishingEquipmentListInfo,
-                address: this.addressInfo,
+                // fishingEquipmentList: this.fishingEquipmentListInfo,
+                fishingEquipmentList: this.adventureInfo.fishingEquipmentList,
+                address: this.adventureInfo.address,
                 additionalInfo: this.adventureInfo.additionalInfo,
                 fInstructorId: this.adventureInfo.fInstructorId,
                 imagePaths: this.adventureInfo.imagePaths

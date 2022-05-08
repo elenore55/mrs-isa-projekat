@@ -113,12 +113,21 @@ public class AdventureController {
     @RequestMapping(path = "/updateAdventureInfo",method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<AdventureDTO> updateInstructorInfo(@RequestBody AdventureDTO adventureDTO){
         Adventure adventure = adventureService.findOne(adventureDTO.getId());
+        adventure.setId(adventureDTO.getId());
         adventure.setAddress(adventureDTO.getAddress());
         adventure.setName(adventureDTO.getName());
         adventure.setDescription(adventureDTO.getDescription());
         adventure.setPriceList(adventureDTO.getPrice());
         adventure.setAdditionalInfo(adventureDTO.getAdditionalInfo());
         adventure.setMaxPeople(adventureDTO.getMaxPeople());
+
+        List<FishingEquipment> fishingEquipmentList = new ArrayList<>();
+//        List<FishingEquipment> fishingEquipmentListALL = fishingEquipmentService.findAll();
+        for (FishingEquipmentDTO fishingEquipmentListDTO : adventureDTO.getFishingEquipmentList()) {
+
+            fishingEquipmentList.add(fishingEquipmentService.findOne(fishingEquipmentListDTO.getId()));
+        }
+        adventure.setFishingEquipments(fishingEquipmentList);
 
         adventure = adventureService.update(adventure);
         return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.ACCEPTED);
