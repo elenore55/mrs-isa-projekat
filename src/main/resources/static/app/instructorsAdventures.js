@@ -64,11 +64,11 @@ Vue.component("instructors-adventures",{
                 </div>
                 <div class="form-group">
                     <label>Country</label>
-                    <input v-model="addressInfo.countryInfo" type="text" class="form-control" pattern="([A-Z])([A-Za-z]+)$">
+                    <input v-model="addressInfo.countryInfo" type="text" class="form-control" pattern="((([A-Z])([a-z]+) ?)+)$">
                 </div>
                 <div class="form-group">
                     <label>City</label>
-                    <input v-model="addressInfo.cityInfo" type="text" class="form-control" pattern="([A-Z])([A-Za-z]+)$">
+                    <input v-model="addressInfo.cityInfo" type="text" class="form-control" pattern="((([A-Z])([a-z]+) ?)+)$">
                 </div>
                 <div class="form-group">
                     <label>Street</label>

@@ -3,7 +3,8 @@ Vue.component("profile-page-instructorpi",{
     {
         return{
             instruktorPI: {},
-            passwordRE:""
+            passwordRE:"",
+            ogpassword:[]
         }
     },
     mounted: function (){
@@ -35,13 +36,13 @@ Vue.component("profile-page-instructorpi",{
             <div class="col">
                 <div class="form-group">
                     <label>Country</label>
-                    <input type="text" class="form-control" v-model="instruktorPI.profileDataDTO.address.country" pattern="([A-Z])([A-Za-z]+)$">          
+                    <input type="text" class="form-control" v-model="instruktorPI.profileDataDTO.address.country" pattern="((([A-Z])([a-z]+) ?)+)$">          
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label>City</label>
-                    <input type="text" class="form-control" v-model="instruktorPI.profileDataDTO.address.city" pattern="([A-Z])([A-Za-z]+)$">          
+                    <input type="text" class="form-control" v-model="instruktorPI.profileDataDTO.address.city" pattern="((([A-Z])([a-z]+) ?)+)$">          
                 </div>
             </div>
             <div class="col">
@@ -82,12 +83,13 @@ Vue.component("profile-page-instructorpi",{
         loadInstructorProfile(){
             axios.get("api/instructors/getInstructorData").then(response => {
                 this.instruktorPI = response.data;
+                this.ogpassword = this.instruktorPI.profileDataDTO.password;
                 console.log(this.instruktorPI)
             })
         },
         sendRequest(){
             console.log(this.instruktorPI);
-            if(this.instruktorPI.profileDataDTO.password == this.passwordRE) {
+            if(this.instruktorPI.profileDataDTO.password == this.passwordRE || (this.passwordRE=="" && this.instruktorPI.profileDataDTO.password == this.ogpassword)) {
                 axios.post("api/instructors/updateInstructorInfo", {
                     biography: this.instruktorPI.biography,
                     profileDataDTO: this.instruktorPI.profileDataDTO,

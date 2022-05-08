@@ -53,11 +53,11 @@ Vue.component("add-adventure",{
             <div class="col">
                 <div class="form-group">
                     <label>Country</label>
-                    <input v-model="form.address.country" type="text" class="form-control" pattern="([A-Z])([A-Za-z]+)$">
+                    <input v-model="form.address.country" type="text" class="form-control" pattern="((([A-Z])([a-z]+) ?)+)$">
                 </div>
                 <div class="form-group">
                     <label>City</label>
-                    <input v-model="form.address.city" type="text" class="form-control" pattern="([A-Z])([A-Za-z]+)$">
+                    <input v-model="form.address.city" type="text" class="form-control" pattern="((([A-Z])([a-z]+) ?)+)$">
                 </div>
                 <div class="form-group">
                     <label>Street</label>
@@ -86,8 +86,8 @@ Vue.component("add-adventure",{
         <div class="row">
             <div class="col-2">
                 <div class="form-group">
-                    <label>Price</label>
-                    <input v-model="form.price" type="number" step="0.01" min="0" class="form-control"/>
+                    <label>Price in €</label>
+                    <input v-model="form.price" type="number" step="1" min="0" class="form-control"/>
                 </div>
             </div>
             <div class="col-3">
