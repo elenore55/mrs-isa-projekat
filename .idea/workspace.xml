@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="Prepravka bagova pri dodavanju avanture">
+    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="#16 Kao instruktor pecanja zelim da menjam svoje usluge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addAdventure.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addAdventure.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/instructorsAdventures.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/instructorsAdventures.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/Adventure.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/Adventure.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/FishingEquipment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/FishingEquipment.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +146,7 @@
       <workItem from="1651583197848" duration="19713000" />
       <workItem from="1651698272329" duration="8379000" />
       <workItem from="1651945679380" duration="2754000" />
-      <workItem from="1651998216659" duration="4539000" />
+      <workItem from="1651998216659" duration="7490000" />
     </task>
     <task id="LOCAL-00001" summary="Mergovana grana add_cottage na login&#10;Rijeseni konflikti">
       <created>1650313974543</created>
@@ -459,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651707088037</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="#16 Kao instruktor pecanja zelim da menjam svoje usluge">
+      <created>1652003169717</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1652003169717</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -478,7 +482,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="#250.2 Dodavanje linkova za azuriranje, brisanje i detaljniji prikaz" />
     <MESSAGE value="#250.1 Izlistavanje kartica sa osnovnim podacima o vikendici" />
     <MESSAGE value="Polja za search i filter #207.1" />
     <MESSAGE value="#207.1 Forma za unos parametara pretrage" />
@@ -503,7 +506,8 @@
     <MESSAGE value="#15, #16, #17, #344, #336" />
     <MESSAGE value="#14 dodat prikaz fishing equipmenta" />
     <MESSAGE value="Prepravka bagova pri dodavanju avanture" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prepravka bagova pri dodavanju avanture" />
+    <MESSAGE value="#16 Kao instruktor pecanja zelim da menjam svoje usluge" />
+    <option name="LAST_COMMIT_MESSAGE" value="#16 Kao instruktor pecanja zelim da menjam svoje usluge" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -3,7 +3,7 @@ Vue.component("add-adventure",{
     {
         return{
             allEquipments: [],
-            //instructorBio_data: '',
+            instructorBio_data: [],
             form:{
                 name: "",
                 address:{
@@ -25,7 +25,7 @@ Vue.component("add-adventure",{
     },
     mounted: function (){
         this.loadEquipment()
-        // this.loadInstructorBio_data()
+        this.loadInstructorBio_data()
     },
     template: `
     <form style="width: 1000px; margin: auto" v-on:submit="sendRequest">
@@ -75,8 +75,7 @@ Vue.component("add-adventure",{
             <div class="col">
                 <div class="form-group">
                     <label>Instructor biography</label>
-                    <textarea v-model="form.fInstructorBio" class="form-control" style="height: 110px"></textarea>
-<!--                    <p>{{instructorBio_data}}  dasdsadsa</p>-->
+                    <textarea v-model="instructorBio_data.biography" disabled class="form-control" style="height: 110px"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Additional information</label>
@@ -121,12 +120,12 @@ Vue.component("add-adventure",{
               console.log(this.allEquipments)
           })
         },
-        // loadInstructorBio_data(){
-        //     axios.get("api/instructors/getInstructorData").then(response => {
-        //         this.instructorBio_data = response.data
-        //         console.log(this.instructorBio_data)
-        //     })
-        // },
+        loadInstructorBio_data(){
+            axios.get("api/instructors/getInstructorData").then(response => {
+                this.instructorBio_data = response.data // dobijamo FishingInstructorDTO
+                console.log(this.instructorBio_data)
+            })
+        },
         sendRequest(){
             console.log("JEDAN1")
             console.log(this.form.fishingEquipmentList)

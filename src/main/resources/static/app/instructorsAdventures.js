@@ -75,10 +75,18 @@ Vue.component("instructors-adventures",{
                     <input v-model="addressInfo.streetInfo" type="text" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Fishing equipment</label>
-                        <select class="select form-control" multiple v-model="fishingEquipmentListInfo" style="height: 250px">
-                            <option v-for="equipment in adventureInfo.fishingEquipmentList">{{equipment.name}}</option>
-                        </select>
+                    <div class="form-group" style="float: left; margin-right: 32px">
+                        <label>Adventures fishing equipment</label>
+                            <select class="select form-control" multiple disabled v-model="fishingEquipmentListInfo" style="height: 150px; width: 155px">
+                                <option v-for="equipment in adventureInfo.fishingEquipmentList">{{equipment.name}}</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label>All Fishing equipment</label>
+                            <select class="select form-control" multiple v-model="fishingEquipmentListInfo" style="height: 150px; width: 155px">
+                                <option v-for="equipment in allEquipments" v-bind:value="equipment">{{equipment.name}}</option>
+                            </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Additional information</label>
@@ -106,12 +114,12 @@ Vue.component("instructors-adventures",{
                 this.addressInfo.countryInfo=this.adventureInfo.address.country;
             })
         },
-        // loadEquipment(){
-        //     axios.get("api/fishingEquipment/all").then(response => {
-        //         this.allEquipments = response.data
-        //         console.log(this.allEquipments)
-        //     })
-        // },
+        loadEquipment(){
+            axios.get("api/fishingEquipment/all").then(response => {
+                this.allEquipments = response.data
+                console.log(this.allEquipments)
+            })
+        },
         deleteAdventure(){
             console.log(this.adventure.split(' - ')[0])
             axios.get("api/adventures/deleteAdventure/"+this.adventure.split(' - ')[0]).then(response => {
@@ -129,9 +137,7 @@ Vue.component("instructors-adventures",{
         },
         sendRequest(){
             // console.log(this.adventureInfo) // se nalazi ceo objekat fishingequipmenta
-            // console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
-            // console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
-            // console.log(this.fishingEquipmentListInfo)  // ovde ne
+            console.log(this.fishingEquipmentListInfo)  // sad i ovde
             console.log(this.addressInfo)
             this.adventureInfo.address.city = this.addressInfo.cityInfo;
             this.adventureInfo.address.country = this.addressInfo.countryInfo;
@@ -144,8 +150,8 @@ Vue.component("instructors-adventures",{
                 rules: this.adventureInfo.rules,
                 price: this.adventureInfo.price,
                 maxPeople: this.adventureInfo.maxPeople,
-                // fishingEquipmentList: this.fishingEquipmentListInfo,
-                fishingEquipmentList: this.adventureInfo.fishingEquipmentList,
+                fishingEquipmentList: this.fishingEquipmentListInfo,
+                // fishingEquipmentList: this.adventureInfo.fishingEquipmentList,
                 address: this.adventureInfo.address,
                 additionalInfo: this.adventureInfo.additionalInfo,
                 fInstructorId: this.adventureInfo.fInstructorId,
