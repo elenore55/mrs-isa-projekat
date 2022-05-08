@@ -40,7 +40,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(path = "/login", method = RequestMethod.POST, consumes = "application/json")
-    public String login_user(@RequestBody LoginDTO loginDTO) throws InterruptedException {
+    public String login_user(@RequestBody LoginDTO loginDTO){
         String token = userService.findUserToken(loginDTO.getEmail(), loginDTO.getPassword());
         System.out.println("Trenutni token je " + token);
         return token;

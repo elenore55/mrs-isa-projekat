@@ -5,19 +5,17 @@ Vue.component("client-home", {
              cottages: [],
              ships: [],
              adventures: [],
-             ship_owner_id: 1,
-             cottage_owner_id: 2,
              all_cities: [],
              all_countries: [],
              city: "",
              country: "",
-             sort_by: "",
+             rate: "",
+             sortBy: "",
+             sortByList: ["...", "Name", "Rate", "Address", "Price"],
              direction: "",
-             cottageRadio: false,
-             shipRadio: false,
-             adventureRadio: false,
              fromDate: "",
              toDate: "",
+             rate: "",
              error: false,
            }
         },
@@ -36,17 +34,17 @@ mounted() {
                    <form @submit.prevent class="p-3" style="border:1px solid rgb(156, 151, 151); border-radius: 10px;">
                        <h3> Search entities </h3>
                        <div class="form-check">
-                           <input v-model="cottageRadio" name = "et"
+                           <input v-model="entityType" name = "et"
                            type="radio" id="cottageRadioButton" value="cottage">
                            <label for="cottageRadioButton">Cottage</label>
                        </div>
                        <div class="form-check ">
-                           <input v-model="shipRadio" name = "et"
+                           <input v-model="entityType" name = "et"
                            type="radio" id="shipRadioButton" value="ship">
                            <label for="shipRadioButton">Ship</label>
                        </div>
                        <div class="form-check">
-                           <input v-model="adventureRadio" name = "et"
+                           <input v-model="entityType" name = "et"
                            type="radio" id="adventureRadioButton" value="adventure">
                            <label for="adventureRadioButton">Adventure</label>
                        </div>
@@ -65,21 +63,21 @@ mounted() {
                        </div>
 
                        <div class="p-2">
-                           <div class="form-group ">
+                           <div class="form-group">
                                <label for="country" class="control-label">Country</label>
-                               <input type="text" value='' class="" id="country">
+                               <input v-model="country" type="text" value='' class="" id="country">
                            </div>
 
                            <div class="form-group">
                                <label for="city" class="control-label">City</label>
-                               <input type="text" value='' class=" " id="city">
+                               <input v-model="city" type="text" value='' class=" " id="city">
                            </div>
                        </div>
 
                        <div class="row py-3">
                            <div class="">
                                <label for="rate"> Rate (from)</label>
-                               <input type="number" value='' min="0" max="10" class="col-md-4" id="rate">
+                               <input v-model="rate" type="number" value='' min="0" max="10" class="col-md-4" id="rate">
                            </div>
                        </div>
 
@@ -88,12 +86,12 @@ mounted() {
                        <div class="row py-3">
                            <div class="">
                                <label for="sort"> Sort by</label>
-                               <select class="mdb-select md-form">
+                               <select v-model="sortBy" class="mdb-select md-form">
                                    <option value="" disabled selected>...</option>
-                                   <option value="1">Name</option>
-                                   <option value="2">Rate</option>
-                                   <option value="3">Address</option>
-                                   <option value="4">Price</option>
+                                   <option value="1">sortByList[1]</option>
+                                   <option value="2">sortByList[2]</option>
+                                   <option value="3">sortByList[3]</option>
+                                   <option value="4">sortByList[4]</option>
                                  </select>
                            </div>
                        </div>
@@ -113,15 +111,19 @@ mounted() {
                                     <img src="https://picsum.photos/id/237/200/200" class="card-img rounded-3 mt-3" width="200" height="200"  alt="cottage image">
                                     <p class="ms-2 mt-3">{{ c.description }}</p>
                               </div>
-                              <div class="col-3 card-body container">
+                              <div class="col-5 card-body container">
                                    <h3 class="card-title mb-2">{{ c.name }}</h3>
                                    <p class="card-text mt-2 mb-4 h5">{{ c.address.street }}, {{ c.address.city }}, {{ c.address.country }}</p>
-                                   <p class="card-text mb-2">Price: {{ c.price }} EUR</p>
+
                                    <p class="card-text mb-2">Number of rooms: {{ c.rooms.length }}</p>
                                    <p class="card-text">Number of beds: {{ c.numberOfBeds }}</p>
                                    <div class="d-flex flex-row mt-3">
                                         <a :href="'/#/updateCottage/' + c.id" class="btn btn-primary me-3 mt-3">View</a>
                                    </div>
+                              </div>
+                              <div class="col-1 card-body container">
+                                    <div class="row"> Rate: <h1> {{c.rate}}</h1> </div>
+                                     <p class="card-text mb-2 align-text-bottom">Price per night: {{ c.price }} EUR</p>
                               </div>
                          </div>
                     </div>
@@ -157,13 +159,13 @@ mounted() {
 methods: {
 
         reload() {
-            axios.get("api/cottageOwner/getCottages/" + this.cottage_owner_id).then(response => {
+            axios.get("api/cottages/getCottagesWithRate/").then(response => {
                 this.cottages = response.data;
             }).catch(function (error) {
                 alert('An error occurred!');
             });
 
-            axios.get("api/shipOwner/getShips/" + this.ship_owner_id).then(response => {
+            axios.get("api/ships/getShipsWithRate/").then(response => {
                  this.ships = response.data;
             }).catch(function (error) {
                  alert('An error occurred!');
@@ -171,16 +173,52 @@ methods: {
         },
 
         searchEntites() {
-            if (this.fromDate && this.toDate && (this.cottageRadio || this.shipRadio || this.adventureRadio))
+            if (this.fromDate && this.toDate && (this.entityType))
             {
+                this.cottages = [];
+                this.ships = [];
+                this.adventures = [];
                 this.error = false;
-                alert("Sve je uneseno kako treba ");
-                alert(this.entityType);
+                if (this.entityType=="cottage")      // ako su odabrane vikendice, nuliracemo ostale i samo njih prikazati
+                {
+                    axios.post("api/cottages/filter", {
+                         fromDate: this.fromDate,
+                         toDate: this.toDate,
+                         country: this.country,
+                         city: this.city,
+                         rate: this.rate,
+                         sortByList: this.sortByList,
+                         sortBy: this.sortBy,
+                         direction: this.direction,
+                    }).then(response => {
+                    this.cottages = response.data;
+                    }).catch(function (error) {
+                         alert('An error occurred!');
+                    });
+
+                }
+                else if (this.entityType=="ship")
+                    {
+                        axios.post("api/ships/filter", {
+                             fromDate: this.fromDate,
+                             toDate: this.toDate,
+                             country: this.country,
+                             city: this.city,
+                             rate: this.rate,
+                             sortByList: this.sortByList,
+                             sortBy: this.sortBy,
+                             direction: this.direction,
+                        }).then(response => {
+                        this.ships = response.data;
+                        }).catch(function (error) {
+                             alert('An error occurred!');
+                        });
+                    }
             }
+
             else {
             this.error = true;
-
             }
-            }
-        },
+        }
+          },
     });

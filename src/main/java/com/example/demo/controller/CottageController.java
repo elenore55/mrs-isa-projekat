@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.CottageDTO;
-import com.example.demo.dto.RoomDTO;
+import com.example.demo.dto.*;
 import com.example.demo.model.*;
 import com.example.demo.service.CottageOwnerService;
 import com.example.demo.service.CottageService;
@@ -73,6 +72,39 @@ public class CottageController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         cottageService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getCottages", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<CottageDTO>> getCottages() {
+        List<Cottage> cottages = cottageService.getCottages();
+        List<CottageDTO> dtos = new ArrayList<>();
+        for (Cottage c : cottages) {
+            dtos.add(new CottageDTO(c));
+        }
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getCottagesWithRate", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<CottageWithRateDTO>> getCottagesWithRate() {
+        List<Cottage> cottages = cottageService.getCottages();
+        List<CottageWithRateDTO> dtos = new ArrayList<>();
+        for (Cottage c : cottages) {
+            dtos.add(new CottageWithRateDTO(c));
+        }
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/filter", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    public ResponseEntity<List<CottageDTO>> filterCottages(@RequestBody UserFilterDTO userFilterDTO) {
+        List<Cottage> cottages = cottageService.filter(userFilterDTO);
+        List<CottageDTO> dtos = new ArrayList<>();
+        for (Cottage c : cottages) {
+            dtos.add(new CottageDTO(c));
+        }
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
     }
 
     private void setAttributes(Cottage cottage, CottageDTO cottageDTO) {

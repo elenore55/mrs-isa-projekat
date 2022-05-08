@@ -55,4 +55,20 @@ public class Cottage extends Offer {
     public void setImages(List<Image> images) {
         this.images = images;
     }
+
+    public double getRateOrNegativeOne()
+    {
+        double sum = 0;
+        int n = 0;
+        for(Reservation r : getReservations())
+        {
+            if (r.getFeedback()!= null)
+            {
+                sum += r.getFeedback().getRating();
+                n++;
+            }
+        }
+        if (n==0) return -1;
+        return sum/n;
+    }
 }
