@@ -1,7 +1,7 @@
 Vue.component('add-cottage-reservation', {
     data: function () {
         return {
-            cottage_id: null,
+            id: null,
             start: null, end: null,
             name: "",
             email: '',
@@ -10,7 +10,7 @@ Vue.component('add-cottage-reservation', {
     },
 
     mounted() {
-        this.cottage_id = this.$route.params.id;
+        this.id = this.$route.params.id;
 
         axios.get("api/cottages/getCottage/" + this.$route.params.id).then(response => {
             this.name = response.data.name;
@@ -60,6 +60,17 @@ Vue.component('add-cottage-reservation', {
     methods: {
         addReservation() {
             this.input_started = true;
+
+            axios.post("api/reservations/addReservation", {
+                id: this.id,
+                startDate: this.start,
+                endDate: this.end,
+                email: this.email
+            }).then(function(response) {
+                alert('Cottage reservation successfully added!');
+            }).catch(function (error) {
+                alert('An error occurred!');
+            });
         }
     },
 
