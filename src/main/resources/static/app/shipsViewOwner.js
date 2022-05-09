@@ -42,14 +42,17 @@ Vue.component("ships-view-owner", {
                     </div>
                 </div>
             </div>
-                <div class="d-flex justify-content-end">
-                    <div class="input-group me-1 w-25">
-                         <input v-model="search_criterion" type="search" id="search-input" class="form-control" placeholder="Search"/>
-                         <button type="button" class="btn btn-primary" v-on:click="search">
-                            <i class="fa fa-search"></i>
-                         </button>
+                <div>
+                    <div class="d-flex justify-content-end">
+                        <div class="input-group me-1 w-25">
+                             <input v-model="search_criterion" type="search" id="search-input" class="form-control" placeholder="Search"/>
+                             <button type="button" class="btn btn-primary" v-on:click="search">
+                                <i class="fa fa-search"></i>
+                             </button>
+                        </div>
+                        <a type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filter-div" role="button" aria-expanded="false" aria-controls="filter-div">Filter</a>
                     </div>
-                    <a type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filter-div" role="button" aria-expanded="false" aria-controls="filter-div">Filter</a>
+                    <a type="button" class="btn btn-primary" href="/#/addShip/">Add ship</a>
                 </div>
                 <div id="filter-div" class="collapse bg-light shadow-sm rounded">
                     <div class="container mt-3">
