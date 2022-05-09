@@ -1,3 +1,4 @@
+const AddCottageReservation = {template: '<add-cottage-reservation></add-cottage-reservation>'};
 const CottageReservations = {template: '<cottage-reservations></cottage-reservations>'};
 const ShipsViewOwner = {template: '<ships-view-owner></ships-view-owner>'};
 const CottagesViewOwner = {template: '<cottages-view-owner></cottages-view-owner>'};
@@ -22,6 +23,10 @@ Vue.component('vuejs-datepicker', vuejsDatepicker);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/addCottageReservation/:cottageId/",
+            component: AddCottageReservation
+        },
         {
             path: "/cottageReservations/:id/",
             component: CottageReservations

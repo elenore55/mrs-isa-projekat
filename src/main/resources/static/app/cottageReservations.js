@@ -19,26 +19,30 @@ Vue.component("cottage-reservations", {
 
     template: `
     <div>
-        <update-cottage-nav></update-cottage-nav>
-        <div class="container card mt-4">
-            <div class="m-3 card-title">
-                <h5>Regular reservation period</h5>
-            </div>
-            <div class="d-flex justify-content-start card-body">
-                <div class="me-3 mb-4">
-                    <label for="start-date">Start</label>
-                    <vuejs-datepicker v-model="cottage.availableStart" format="dd.MM." id="start-date"></vuejs-datepicker>
+        <div>
+            <update-cottage-nav></update-cottage-nav>
+            <div class="d-flex justify-content-center">
+                <div class="container card mt-4 w-50">
+                    <div class="m-3 card-title d-flex justify-content-center">
+                        <h5>Regular reservation period</h5>
+                    </div>
+                    <div class="d-flex justify-content-center card-body">
+                        <div class="me-3 mb-4">
+                            <label for="start-date">Start</label>
+                            <vuejs-datepicker v-model="cottage.availableStart" format="dd.MM." id="start-date"></vuejs-datepicker>
+                        </div>
+                        <div class="mb-4">
+                            <label for="end-date">End</label>                
+                            <vuejs-datepicker v-model="cottage.availableEnd" format="dd.MM." id="end-date"></vuejs-datepicker>
+                        </div>
+                    </div>
+                    <div class="row mb-3 me-3">
+                        <div class="col text-end">
+                            <button type="button" class="btn btn-primary" v-on:click="updateReservationPeriod">Save changes</button>
+                        </div>
+                    </div>
+                    <p v-if="!areValidDates" class="ms-3 text-danger">Dates are required and must be in ascending order!</p>
                 </div>
-                <div class="mb-4">
-                    <label for="end-date">End</label>                
-                    <vuejs-datepicker v-model="cottage.availableEnd" format="dd.MM." id="end-date"></vuejs-datepicker>
-                </div>
-            </div>
-            <p v-if="!areValidDates" class="ms-3 text-danger">Dates are required and must be in ascending order!</p>
-        </div>
-        <div class="row mt-1 mb-2 me-5">
-            <div class="col text-end">
-                <button type="button" class="btn btn-primary btn-lg" v-on:click="updateReservationPeriod">Save changes</button>
             </div>
         </div>
     </div>
