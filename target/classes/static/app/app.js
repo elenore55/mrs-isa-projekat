@@ -24,7 +24,7 @@ const router = new VueRouter({
     mode: 'hash',
     routes: [
         {
-            path: "/addCottageReservation/:cottageId/",
+            path: "/addCottageReservation/:id/",
             component: AddCottageReservation
         },
         {

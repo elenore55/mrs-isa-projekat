@@ -3,8 +3,19 @@ Vue.component('add-cottage-reservation', {
         return {
             cottage_id: null,
             start: null, end: null,
-            name: "Vikendica"
+            name: "",
+            email: ''
         }
+    },
+
+    mounted() {
+        this.cottage_id = this.$route.params.id;
+
+        axios.get("api/cottages/getCottage/" + this.$route.params.id).then(response => {
+            this.name = response.data.name;
+        }).catch(function (error) {
+            alert('An error occurred!');
+        });
     },
 
     template: `
@@ -18,7 +29,7 @@ Vue.component('add-cottage-reservation', {
                 <div class="card-body">
                     <div class="row m-3">
                         <div class="col form-floating">
-                            <input type="email" id="client-mail-input" class="form-control">
+                            <input type="email" id="client-mail-input" v-model="email" class="form-control">
                             <label for="client-mail-input">Client email</label>
                         </div>
                     </div>
