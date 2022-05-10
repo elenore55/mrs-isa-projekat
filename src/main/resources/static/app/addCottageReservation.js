@@ -60,28 +60,29 @@ Vue.component('add-cottage-reservation', {
     methods: {
         addReservation() {
             this.input_started = true;
-
-            axios.post("api/reservations/addReservation", {
-                offerId: this.id,
-                startDate: this.start,
-                endDate: this.end,
-                clientEmail: this.email
-            }).then(function(response) {
-                alert('Cottage reservation successfully added!');
-            }).catch(function (error) {
-                if(error.response.status === 404) {
-                    alert('Client not found');
-                } else {
-                    alert('Cottage already reserved')
-                }
-            });
+            if (this.isValidEmail && this.areValidDates) {
+                axios.post("api/reservations/addReservation", {
+                    offerId: this.id,
+                    startDate: this.start,
+                    endDate: this.end,
+                    clientEmail: this.email
+                }).then(function(response) {
+                    alert('Cottage reservation successfully added!');
+                }).catch(function (error) {
+                    if(error.response.status === 404) {
+                        alert('Client not found');
+                    } else {
+                        alert('Cottage already reserved')
+                    }
+                });
+            }
         }
     },
 
     computed: {
         areValidDates() {
             if (!this.input_started) return true;
-            return !!(this.start && this.end && this.cottage.availableStart < this.cottage.availableEnd);
+            return !!(this.start && this.end && this.start < this.end);
         },
 
         isValidEmail() {

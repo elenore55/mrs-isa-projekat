@@ -34,6 +34,8 @@ public class ReservationController {
         setAttributes(reservation, dto);
         if (reservation.getClient() == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (!reservationService.isPossibleReservation(reservation))
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         reservation.setReservationStatus(ReservationStatus.PENDING);
         reservation = reservationService.save(reservation);
         return new ResponseEntity<>(new ReservationDTO(reservation), HttpStatus.OK);
