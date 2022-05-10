@@ -16,6 +16,8 @@ const ClientNavbar = {template: '<client-navbar></client-navbar>'};
 const ClientProfile = {template: '<client-profile></client-profile>'};
 const EditProfile = {template: '<edit-profile></edit-profile>'};
 const InstructorsAdventures = {template: '<instructors-adventures></instructors-adventures>'};
+const AddAdmin = {template: '<add-admin></add-admin>'};
+const UpdateAdminInfo = {template: '<update-admin-info></update-admin-info>'};
 
 const router = new VueRouter({
     mode: 'hash',
@@ -91,6 +93,14 @@ const router = new VueRouter({
         {
            path: "/profilePageInstructorPI/",
            component: ProfilePageInstructorPI
+        },
+        {
+            path: "/addAdmin/",
+            component: AddAdmin
+        },
+        {
+            path: "/updateAdminInfo/",
+            component: UpdateAdminInfo
         }
 
 

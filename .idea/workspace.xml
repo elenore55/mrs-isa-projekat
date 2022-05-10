@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="Prepravljanje pattern-a">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/AdminDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/AdminRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AdminService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/addAdmin.js" afterDir="false" />
+    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="#349.1, #349.2, #349.3">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/updateAdminInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/ProfileData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/ProfileData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/ProfileData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/ProfileData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,9 +37,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -165,7 +165,7 @@
       <workItem from="1651945679380" duration="2754000" />
       <workItem from="1651998216659" duration="7515000" />
       <workItem from="1652014592327" duration="3690000" />
-      <workItem from="1652202785462" duration="8186000" />
+      <workItem from="1652202785462" duration="12835000" />
     </task>
     <task id="LOCAL-00001" summary="Mergovana grana add_cottage na login&#10;Rijeseni konflikti">
       <created>1650313974543</created>
@@ -496,7 +496,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652018686327</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="#349.1, #349.2, #349.3">
+      <created>1652211501130</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1652211501130</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -515,7 +522,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Polja za search i filter #207.1" />
     <MESSAGE value="#207.1 Forma za unos parametara pretrage" />
     <MESSAGE value="#207.2 Validacija i parsiranje parametara pretrage" />
     <MESSAGE value="Pretraga vikendica #207.3" />
@@ -540,7 +546,8 @@
     <MESSAGE value="Prepravka bagova pri dodavanju avanture" />
     <MESSAGE value="#16 Kao instruktor pecanja zelim da menjam svoje usluge" />
     <MESSAGE value="Prepravljanje pattern-a" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prepravljanje pattern-a" />
+    <MESSAGE value="#349.1, #349.2, #349.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="#349.1, #349.2, #349.3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
