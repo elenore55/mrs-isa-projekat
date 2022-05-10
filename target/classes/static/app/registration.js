@@ -96,15 +96,11 @@ Vue.component("registration", {
                     country: this.user.country,
                     phone: this.user.phone
                 }).then(function(response) {
-                    if (response.data == "")
+                    if (response.data == "OK")
                     {
-
+                        alert("User succesfully added");
+                        window.location = 'http://localhost:8000/#/login';
                     }
-                    else {
-                    alert('User successfully added!');
-                    window.location = 'http://localhost:8000/#/clientHome';
-                    }
-
 
                 }).catch(function (error) {
                     alert('An error occurred!');

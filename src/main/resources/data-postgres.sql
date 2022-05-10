@@ -39,6 +39,40 @@ insert into room (number_of_beds, cottage_id) values (2, 2);
 insert into room (number_of_beds, cottage_id) values (3, 2);
 insert into room (number_of_beds, cottage_id) values (5, 2);
 
+
+insert into image (path) values ('images/img_c1.jpeg');
+insert into image (path) values ('images/img_c2.jpg');
+insert into image (path) values ('images/img_c3.jpg');
+insert into image (path) values ('images/img_c4.jpg');
+insert into image (path) values ('images/img_c5.jpg');
+
+insert into image (path) values ('images/room1.jpg');
+insert into image (path) values ('images/room3.jpg');
+insert into image (path) values ('images/room5.jpg');
+insert into image (path) values ('images/room6.jpg');
+insert into image (path) values ('images/room7.webp');
+insert into image (path) values ('images/room9.webp');
+insert into image (path) values ('images/room10.jpg');
+
+insert into image (path) values ('images/ship1.jpg');
+insert into image (path) values ('images/ship3.jpg');
+insert into image (path) values ('images/ship5.jpg');
+
+insert into image (path) values ('images/inside1.jpg');
+insert into image (path) values ('images/inside2.jpg');
+insert into image (path) values ('images/inside3.jpg');
+insert into image (path) values ('images/inside4.jpg');
+insert into image (path) values ('images/inside5.jpg');
+
+insert into cottage_images (cottage_id, images_id) values (2, 1);
+insert into cottage_images (cottage_id, images_id) values (2, 6);
+insert into cottage_images (cottage_id, images_id) values (3, 7);
+insert into cottage_images (cottage_id, images_id) values (3, 8);
+insert into cottage_images (cottage_id, images_id) values (3, 9);
+insert into cottage_images (cottage_id, images_id) values (3, 10);
+insert into cottage_images (cottage_id, images_id) values (3, 12);
+
+
 insert into offer (additional_info, description, name, price_list, address_id) values ('additional info', 'opis mog broda', 'naziv mog broda', 500, 4);
 insert into ship (capacity, ship_length, max_speed, number_of_engines, power_of_engine, ship_type, id, ship_owner_id) values (50, 100, 300, 15, 500, 'SHIP', 4, 1);
 -- insert into fishing_instructor (biography,id) values ('Instruktor pecanja I',5);

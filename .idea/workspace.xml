@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="" />
+    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageDetailedView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/changePassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/changePassword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/editProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/editProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/registration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/CottageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/CottageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/changePassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/changePassword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/editProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/editProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/registration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +65,11 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/cottageDetailedView.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/editProfile.js" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="27cYjQ1e3NzOwAQ24PyXbWbINx3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -58,7 +84,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../milicina_grana/mrs-isa-projekat-cottage_reservations" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -98,7 +124,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -433,32 +459,6 @@
     <MESSAGE value="#220.1 Forma sa parametrima za pretragu i filtriranje brodova" />
     <MESSAGE value="Mergovana grana ships_view na search_entities" />
     <option name="LAST_COMMIT_MESSAGE" value="Mergovana grana ships_view na search_entities" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="235" y="0" key="CommitChangelistDialog2" timestamp="1651655049603">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="235" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1651655049603" />
-    <state width="1237" height="195" key="GridCell.Tab.0.bottom" timestamp="1651654740461">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="195" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1651654740461" />
-    <state width="1237" height="195" key="GridCell.Tab.0.center" timestamp="1651654740460">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="195" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1651654740460" />
-    <state width="1237" height="195" key="GridCell.Tab.0.left" timestamp="1651654740459">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="195" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1651654740459" />
-    <state width="1237" height="195" key="GridCell.Tab.0.right" timestamp="1651654740460">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="195" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1651654740460" />
-    <state x="354" y="57" key="MultipleFileMergeDialog" timestamp="1651655068213">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="354" y="57" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1651655068213" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

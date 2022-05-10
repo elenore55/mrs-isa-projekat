@@ -27,12 +27,34 @@ public class CottageController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/getCottage/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<CottageDTO> getCottage(@PathVariable Integer id) {
+        Cottage cottage = cottageService.findOne(id);
+        if (cottage == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        cottage.getImages();
+        cottage.getRules();
+        return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.OK);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/addCottage", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> saveCottage(@RequestBody CottageDTO cottageDTO) {
         Cottage cottage = new Cottage();
         setAttributes(cottage, cottageDTO);
         cottage = cottageService.save(cottage);
         return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.CREATED);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getCottageImages/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<String>> getCottageImages(@PathVariable Integer id) {
+        Cottage cottage = cottageService.findOne(id);
+        if (cottage == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        List<String> result = new ArrayList<>();
+        for (Image img : cottage.getImages()) {
+            result.add(img.getPath());
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @ResponseBody
@@ -46,6 +68,15 @@ public class CottageController {
         cottage = cottageService.save(cottage);
         return new ResponseEntity<>(new CottageDTO(cottage), HttpStatus.OK);
     }
+
+    @ResponseBody
+    @RequestMapping(path = "/detailViewCottage/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> detailViewCottage(@PathVariable Integer id) {
+        Cottage cottage = cottageService.findOne(id);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
     @ResponseBody
     @RequestMapping(path = "/updateCottageImages", method = RequestMethod.POST, consumes = "application/json")
@@ -101,6 +132,8 @@ public class CottageController {
     public ResponseEntity<List<CottageDTO>> filterCottages(@RequestBody UserFilterDTO userFilterDTO) {
         List<Cottage> cottages = cottageService.filter(userFilterDTO);
         List<CottageDTO> dtos = new ArrayList<>();
+        System.out.println("######################################## Sortirnje" + userFilterDTO.getSortBy());
+
         for (Cottage c : cottages) {
             dtos.add(new CottageDTO(c));
         }

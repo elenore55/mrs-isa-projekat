@@ -11,11 +11,13 @@ Vue.component("change-password", {
        }
    },
    template: `
-    <section>
+   <div class="w-100">
+        <client-navbar></client-navbar>
+        <section>
             <div class="container mt-5 pt-5">
-                        <div class="row">
-                            <div class="col-lg-4 col-sm-8 col-md-6 m-auto">
-                                <h1 class="text-center">Change password</h1>
+                        <div class="row mt-5">
+                            <div class="col-lg-4 col-sm-8 col-md-6 m-auto mt-3">
+                                <h1 class="text-center mb-5">Change password</h1>
                                 <div class="card">
                                     <div class="card-body">
                                         <form @submit.prevent >
@@ -38,6 +40,7 @@ Vue.component("change-password", {
                         </div>
                     </div>
         </section>
+   </div>
    `,
     methods: {
 
