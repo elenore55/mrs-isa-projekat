@@ -62,10 +62,10 @@ Vue.component('add-cottage-reservation', {
             this.input_started = true;
 
             axios.post("api/reservations/addReservation", {
-                id: this.id,
+                offerId: this.id,
                 startDate: this.start,
                 endDate: this.end,
-                email: this.email
+                clientEmail: this.email
             }).then(function(response) {
                 alert('Cottage reservation successfully added!');
             }).catch(function (error) {
