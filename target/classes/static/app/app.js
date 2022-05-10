@@ -21,6 +21,7 @@ const DeleteProfileMessage = {template: '<delete-profile-message></delete-profil
 const EditProfileMessage = {template: '<edit-profile-message></edit-profile-message>'};
 const ChangePassword = {template: '<change-password></change-password>'};
 const CottageDetailedView = {template: '<cottage-detailed-view></cottage-detailed-view>'};
+const ShipDetailedView = {template: '<ship-detailed-view></ship-detailed-view>'};
 
 const router = new VueRouter({
     mode: 'hash',
@@ -88,6 +89,10 @@ const router = new VueRouter({
         {
             path: "/cottageDetailedView/:id",
             component: CottageDetailedView
+        },
+        {
+            path: "/shipDetailedView/:id",
+            component: ShipDetailedView
         },
         {
             path: "/updateCottageNav/",

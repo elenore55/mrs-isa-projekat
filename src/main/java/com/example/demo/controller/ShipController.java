@@ -78,6 +78,15 @@ public class ShipController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/getShip/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<ShipDTO> getShip(@PathVariable Integer id) {
+        Ship ship = shipService.findOne(id);
+        if (ship == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new ShipDTO(ship), HttpStatus.OK);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/getShips", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<List<ShipDTO>> getShips() {
         List<Ship> ships = shipService.getShips();
@@ -86,6 +95,18 @@ public class ShipController {
             dtos.add(new ShipDTO(s));
         }
         return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getShipImages/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<String>> getShipImages(@PathVariable Integer id) {
+        Ship ship = shipService.findOne(id);
+        if (ship == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        List<String> result = new ArrayList<>();
+        for (Image img : ship.getImages())
+            result.add(img.getPath());
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @ResponseBody

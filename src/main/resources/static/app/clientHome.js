@@ -131,7 +131,7 @@ mounted() {
                                       </div>
                                   </div>
                              </div>
-                             <div class="col-4 flex-column mt-auto mx-auto py-2>
+                             <div class="col-4 flex-column mt-auto mx-auto py-2">
                                  <p class="">Price per night: {{c.price}} EUR</p>
                                  <div class="text-center">
                                      <a :href="'/#/cottageDetailedView/' + c.id" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
@@ -163,7 +163,7 @@ mounted() {
                                         </div>
                                     </div>
                              </div>
-                             <div class="col-4 flex-column mt-auto mx-auto py-2>
+                             <div class="col-4 flex-column mt-auto mx-auto py-2">
                                   <p class="" style="text-align:center;">Price: {{s.price}} EUR</p>
                                   <div class="text-center">
                                       <a :href="'/#/shipDetailedView/' + s.id" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
@@ -172,6 +172,37 @@ mounted() {
                         </div>
                    </div>
               </div>
+
+               <div class="container col">
+                     <div v-for="(a, i) in adventures" class="container card m-3 border-warning border-2">
+                         <div class="row pb-3">
+                             <div class="col-3 mt-2">
+                                 <img :src="adventure_pictures.at(i)" class="card-img rounded-3 mt-3" width="200" height="200">
+                                  <p class="ms-2 mt-3">{{a.description}}
+                                  </p>
+                             </div>
+                             <div class="col-5 card-body container">
+                                  <h3 class="card-title mb-2">{{a.name}}</h3>
+                                  <p class="card-text mt-2 mb-4 h5">{{a.address.street}}, {{a.address.city}}, {{a.address.country}}</p>
+                                  <p class="card-text mb-2">Max number of people: {{a.maxPeople}}</p>
+                                  <div class="row ">
+                                       <div class="col-2 my-auto">
+                                           <p> Rate:  </p>
+                                       </div>
+                                       <div class="col-8">
+                                           <h1> 9.45 </h1>
+                                       </div>
+                                  </div>
+                             </div>
+                             <div class="col-4 flex-column mt-auto mx-auto py-2">
+                                  <p class="" style="text-align:center;">Price: {{a.price}} EUR</p>
+                                  <div class="text-center">
+                                      <a :href="'/#/adventureDetailedView/' + a.id" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
+                                  </div>
+                             </div>
+                         </div>
+                    </div>
+               </div>
            </div>
        </div>
    </div>
@@ -196,10 +227,24 @@ methods: {
             axios.get("api/ships/getShips/").then(response => {
                  this.ships = response.data;
                  for (const s of this.ships) {
+                     alert("Broj slika u ovom brodu je " + s.imagePaths);
                      if (!s.imagePaths || s.imagePaths.length === 0) {
                          this.ship_pictures.push(this.default_ship);
                      } else {
                          this.ship_pictures.push(s.imagePaths.at(0));
+                     }
+                 }
+            }).catch(function (error) {
+                 alert('An error occurred!');
+            });
+
+            axios.get("api/adventures/all/").then(response => {
+                 this.adventures = response.data;
+                 for (const a of this.adventures) {
+                     if (!a.imagePaths || a.imagePaths.length === 0) {
+                         this.adventure_pictures.push(this.default_adventure);
+                     } else {
+                         this.adventure_pictures.push(a.imagePaths.at(0));
                      }
                  }
             }).catch(function (error) {
@@ -256,7 +301,6 @@ methods: {
                         });
                     }
             }
-
             else {
             this.error = true;
             }

@@ -79,3 +79,18 @@ insert into ship (capacity, ship_length, max_speed, number_of_engines, power_of_
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Line');
 -- insert into fishing_equipment (amount, name) values (10,'Hooks');
+
+
+insert into profile_data (email,name,password,phone_number,surname,address_id) values ('instruktor@gmail.com','ImeInstruktora','11223344','06444124214','PrezimeInstruktora',1);
+insert into fishing_instructor (biography, id) values ('Instruktor pecanja I',1);
+insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
+insert into fishing_equipment (amount, name) values (10,'Fishing Line');
+insert into fishing_equipment (amount, name) values (10,'Hooks');
+
+insert into offer (additional_info, description, name, price_list, address_id) values ('additional info', 'Avanture za sve, a narocito za najmladje', 'Avantura "Popaj"', 50, 4);
+insert into adventure (max_people, id, fishing_instructor_id) values (10, 5, 1);
+
+insert into ship_images (ship_id, images_id) values (1, 14);
+insert into ship_images (ship_id, images_id) values (1, 16);
+insert into ship_images (ship_id, images_id) values (1, 17);
+insert into ship_images (ship_id, images_id) values (1, 18);
