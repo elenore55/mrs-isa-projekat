@@ -10,7 +10,8 @@ Vue.component("registration", {
                street:"",
                city:"",
                country:"",
-               phone:""
+               phone:"",
+               error: false,
            }
        }
    },
@@ -22,7 +23,7 @@ Vue.component("registration", {
                         <h1 class="text-center">Registration</h1>
                         <div class="card">
                             <div class="card-body">
-                                <form action="">
+                                <form @submit.prevent action="">
                                     <div class="form-floating has-validation">
                                         <input v-model="user.email"  type="email"  class="form-control my-3 py-2" placeholder="Email"required>
                                         <label style="color:#C0C0C0" for="email-input">Email</label>
@@ -68,6 +69,7 @@ Vue.component("registration", {
                                         <input v-model="user.phone" type="tel" name="" id="" class="form-control my-3 py-2" placeholder="Phone number" required>
                                         <label style="color:#C0C0C0" for="phone-input">Phone</label>
                                     </div>
+                                    <p v-if="user.error" class="text-danger">User with this email is already registered.</p>
                                     <div class="text-center mt-3">
                                         <button class="btn btn-primary" v-on:click="sendRequest">Submit</button>
                                     </div>
@@ -82,7 +84,7 @@ Vue.component("registration", {
     methods: {
 
         sendRequest() {
-        if (this.isValidConfirmationPassword) {
+        if (this.isValidConfirmationPassword && this.allFieldsAreFilled) {
                 axios.post("api/users/registration", {
                     email: this.user.email,
                     password: this.user.password,
@@ -94,22 +96,28 @@ Vue.component("registration", {
                     country: this.user.country,
                     phone: this.user.phone
                 }).then(function(response) {
-                    alert('User successfully added!');
+                    if (response.data == "OK")
+                    {
+                        alert("User succesfully added");
+                        window.location = 'http://localhost:8000/#/login';
+                    }
 
                 }).catch(function (error) {
                     alert('An error occurred!');
                 });
-            } else {
-                this.user.errors.password = true;
-                this.user.errors.passwordConfirmation = true;
+                this.user.error = true;
             }
-        },
+        }
     },
 
     computed: {
         isValidConfirmationPassword() {
                    return this.user.password == this.user.passwordConfirmation;
-               }
+               },
+        allFieldsAreFilled() {
+            return this.user.email && this.user.password && this.user.passwordConfirmation && this.user.name &&
+            this.user.surname && this.user.city && this.user.country && this.user.street && this.user.phone;
+        }
     }
 
 });

@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dto.FishingEquipmentDTO;
 import com.example.demo.dto.NavigationEquipmentDTO;
 import com.example.demo.dto.ShipDTO;
+import com.example.demo.dto.UserFilterDTO;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ShipType;
 import com.example.demo.service.AdventureService;
@@ -95,6 +96,28 @@ public class ShipController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         shipService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getShips", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<ShipDTO>> getShips() {
+        List<Ship> ships = shipService.getShips();
+        List<ShipDTO> dtos = new ArrayList<>();
+        for (Ship s : ships) {
+            dtos.add(new ShipDTO(s));
+        }
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/filter", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    public ResponseEntity<List<ShipDTO>> filterShips(UserFilterDTO userFilterDTO) {
+        List<Ship> ships = shipService.getShips();
+        List<ShipDTO> dtos = new ArrayList<>();
+        for (Ship s : ships) {
+            dtos.add(new ShipDTO(s));
+        }
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
     }
 
     private void setAttributes(Ship ship, ShipDTO dto) {

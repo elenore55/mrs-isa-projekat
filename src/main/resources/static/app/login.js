@@ -4,6 +4,7 @@ Vue.component("login", {
            user: {
                email: "",
                password: "",
+               error: false,
            }
        }
    },
@@ -15,41 +16,53 @@ Vue.component("login", {
                         <h1 class="text-center">Login</h1>
                         <div class="card">
                             <div class="card-body">
-                                <form action="">
+                                <form @submit.prevent >
 
                                     <input v-model="user.email" type="email"  class="form-control my-3 py-2" placeholder="Email" required>
 
                                     <input v-model="user.password" type="password" name="" id="" class="form-control my-3 py-2" placeholder="Password" required>
 
+                                    <p v-if="user.error" class="text-danger">Invalid email or password.</p>
                                     <div class="text-center mt-3">
-                                        <button class="btn btn-primary" v-on:click="sendRequest">Login</button>
+                                        <button type="submit" class="btn btn-primary" v-on:click="sendLoginRequest">Login</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
    `,
     methods: {
 
-        sendRequest() {
+        sendLoginRequest() {
+            if (this.user.email && this.user.password)
+            {
                 axios.post("api/users/login", {
-                    email: this.user.email,
-                    password: this.user.password,
+                     email: this.user.email,
+                     password: this.user.password,
 
-                }).then(function(response) {
-                    alert('Cottage successfully added!');
-                }).catch(function (error) {
-                    alert('An error occurred!');
-                });
+                     }).then(function(response) {
+                     if(response.data=="")
+                     {
+                        // preusmjeri na stranicu za login sa greskom
+                        //console.log("trebalo je da se ispsie");
+                        //location.replace('http://localhost:8000/#/registration');
+                     } else
+                     {
+                        console.log("trebalo je da se ispise");
+                        location.replace('http://localhost:8000/#/clientHome');
+                     }
+                         }).catch(function (error) {
+                             alert('An error occurred!');
+                             // preusmjeri na stranicu za login sa greskom
+                         });
+                    this.user.error = true;
             }
+          }
         },
 
-    computed: {
 
-    }
 
 });

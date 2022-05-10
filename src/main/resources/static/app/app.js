@@ -17,6 +17,12 @@ const Registration = {template: '<registration></registration>'};
 const ClientNavbar = {template: '<client-navbar></client-navbar>'};
 const ClientProfile = {template: '<client-profile></client-profile>'};
 const EditProfile = {template: '<edit-profile></edit-profile>'};
+const ClientHome = {template: '<client-home></client-home>'};
+const DeleteProfile = {template: '<delete-profile></delete-profile>'};
+const DeleteProfileMessage = {template: '<delete-profile-message></delete-profile-message>'};
+const EditProfileMessage = {template: '<edit-profile-message></edit-profile-message>'};
+const ChangePassword = {template: '<change-password></change-password>'};
+const CottageDetailedView = {template: '<cottage-detailed-view></cottage-detailed-view>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -56,6 +62,14 @@ const router = new VueRouter({
             component: AddShip
         },
         {
+            path: "/clientHome/",
+            component: ClientHome
+        },
+        {
+            path: "/deleteProfile/",
+            component: DeleteProfile
+        },
+        {
             path: "/cottageImages/:id/",
             component: CottageImages
         },
@@ -72,12 +86,20 @@ const router = new VueRouter({
             component: EditProfile
         },
         {
+            path: "/changePassword/",
+            component: ChangePassword
+        },
+        {
+             path: "/registration/",
+             component: Registration
+        },
+        {
             path: "/login/",
             component: Login
         },
         {
-            path: "/registration/",
-            component: Registration
+            path: "/cottageDetailedView/:id",
+            component: CottageDetailedView
         },
         {
             path: "/updateCottageNav/",
@@ -94,6 +116,14 @@ const router = new VueRouter({
         {
            path: "/addAdventure/",
            component: AddAdventure
+        },
+        {
+            path: "/deleteProfileMessage/",
+            component: DeleteProfileMessage
+        },
+        {
+            path: "/editProfileMessage/",
+            component: EditProfileMessage
         },
         {
            path: "/profilePageInstructorPI/",
