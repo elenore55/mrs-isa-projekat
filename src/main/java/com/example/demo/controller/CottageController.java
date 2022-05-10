@@ -5,15 +5,11 @@ import com.example.demo.model.*;
 import com.example.demo.service.CottageOwnerService;
 import com.example.demo.service.CottageService;
 import com.example.demo.service.RoomService;
-import org.apache.catalina.mbeans.SparseUserDatabaseMBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -158,6 +154,19 @@ public class CottageController {
             dtos.add(new CottageDTO(c));
         }
         return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getFastReservations/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<FastReservationDTO>> getFastReservations(@PathVariable Integer id) {
+        Cottage c = cottageService.findOne(id);
+        if (c == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        List<FastReservationDTO> result = new ArrayList<>();
+        for (FastReservation fr : c.getFastReservations()) {
+            result.add(new FastReservationDTO(fr));
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     private void setAttributes(Cottage cottage, CottageDTO cottageDTO) {

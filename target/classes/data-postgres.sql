@@ -136,7 +136,7 @@ insert into ship_images (ship_id, images_id) values (1, 20);
 insert into ship_images (ship_id, images_id) values (4, 13);
 insert into ship_images (ship_id, images_id) values (8, 15);
 
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email3@gmail.com', 'Marko', 'pass3', '1233456', 'Markovic', 3);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic55@hotmail.com', 'Marko', 'pass3', '1233456', 'Markovic', 3);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,3);
 insert into client (id) values (3);
 
