@@ -10,29 +10,26 @@ Vue.component('fast-reservations', {
 
     mounted(){
         this.id = this.$route.params.id;
-
-        axios.get("api/cottages/getFastReservations/" + this.$route.params.id).then(response => {
-            this.actions = response.data;
-        }).catch(function (error) {
-            alert('An error occurred!');
-        });
+        this.reload();
     },
 
     template: `
     <div>
         <update-cottage-nav></update-cottage-nav>
         <h3 class="mt-2 ms-3">Fast reservations</h3>
-        <div class="d-flex justify-content-left">
+        <div class="w-50">
             <div v-for="(fr, i) in actions" class="card mt-3 ms-3">
-                <div class="card-body">
+                <div class="card-body ms-3">
                     <h5>Stay period</h5>
-                    <label>Start date: {{ fr.start }} Duration: {{ fr.duration }} days</label>
-                    <h5>Action period</h5>
-                    <label>Start date: {{ fr.actionStart }} Duration: {{ fr.actionDuration }} days</label>
-                    <button type="button" v-on:click="actions.splice(i, 1)" class="btn btn-outline-danger">Delete</button>
+                    <label>Start date: {{ formatDate(fr.start) }} Duration: {{ fr.duration }} days</label>
+                    <h5 class="mt-3">Action period</h5>
+                    <label>Start date: {{ formatDate(fr.actionStart) }} Duration: {{ fr.actionDuration }} days</label>
+                    <div class="text-end mb-1 me-1 mt-1">
+                        <button type="button" v-on:click="deleteAction(i)" class="btn btn-outline-danger btn-sm">Delete</button>
+                    </div>
                 </div>
             </div>
-            <div class="card position-fixed bottom-0 end-0 mb-2">
+            <div class="card position-fixed bottom-0 end-0 mb-5">
                 <div class="card-body">
                     <h5 class="ms-3 mt-2">Stay period</h5>
                     <div class="d-flex justify-content-left ms-3 mt-4 me-3 mb-1">
@@ -86,10 +83,47 @@ Vue.component('fast-reservations', {
     methods: {
         addAction() {
             this.input_started = true;
+            let fr = {
+                start: this.start,
+                duration: this.duration,
+                actionStart: this.actionStart,
+                actionDuration: this.actionDuration,
+                price: this.price,
+                maxPeople: this.maxPeople
+            };
             if (this.isValidActionDate && this.isValidActionDuration && this.isValidPrice && this.isValidMaxPeople &&
                 this.isValidStayDate && this.isValidStayDuration) {
-                alert('Adding');
+                axios.post("api/cottages/addFastReservation/" + this.$route.params.id, fr).then(response => {
+                    this.reload();
+                }).catch(function (error) {
+                    alert('An error occurred!');
+                });
             }
+        },
+
+        formatDate(dt) {
+            let startStr = new Date(dt).toISOString();
+            let y = startStr.slice(0, 4);
+            let m = startStr.slice(5, 7);
+            let d = startStr.slice(8, 10);
+            return d + '.' + m + '.' + y + '.';
+        },
+
+        deleteAction(index) {
+            let actionId = this.actions[index].id;
+            axios.delete("api/cottages/deleteFastReservation/" + this.$route.params.id + "/" + actionId).then(response => {
+                this.actions.splice(index, 1)
+            }).catch(function (error) {
+                alert('An error occurred!');
+            });
+        },
+
+        reload() {
+            axios.get("api/cottages/getFastReservations/" + this.$route.params.id).then(response => {
+                this.actions = response.data;
+            }).catch(function (error) {
+                alert('An error occurred!');
+            });
         }
     },
 

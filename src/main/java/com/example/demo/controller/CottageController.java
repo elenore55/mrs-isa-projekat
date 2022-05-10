@@ -169,6 +169,44 @@ public class CottageController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/addFastReservation/{id}", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<FastReservationDTO> addFastReservation(@PathVariable Integer id, @RequestBody FastReservationDTO dto) {
+        Cottage c = cottageService.findOne(id);
+        if (c == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        List<FastReservation> res = c.getFastReservations();
+        FastReservation fr = new FastReservation();
+        fr.setStart(dto.getStart());
+        fr.setDuration(dto.getDuration());
+        fr.setActionStart(dto.getActionStart());
+        fr.setActionDuration(dto.getActionDuration());
+        fr.setPrice(dto.getPrice());
+        fr.setMaxPeople(dto.getMaxPeople());
+        res.add(fr);
+        c.setFastReservations(res);
+        cottageService.save(c);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/deleteFastReservation/{cottageId}/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteFastReservation(@PathVariable Integer cottageId,  @PathVariable Integer id) {
+        Cottage c = cottageService.findOne(cottageId);
+        if (c == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        List<FastReservation> res = c.getFastReservations();
+        for (FastReservation fr : res) {
+            if (fr.getId().equals(id)) {
+                res.remove(fr);
+                break;
+            }
+        }
+        c.setFastReservations(res);
+        cottageService.save(c);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     private void setAttributes(Cottage cottage, CottageDTO cottageDTO) {
         cottage.setId(cottageDTO.getId());
         cottage.setName(cottageDTO.getName());

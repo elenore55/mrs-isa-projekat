@@ -4,6 +4,7 @@ import com.example.demo.model.FastReservation;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class FastReservationDTO {
     private Integer id;
@@ -13,6 +14,8 @@ public class FastReservationDTO {
     private Integer actionDuration;
     private BigDecimal price;
     private Integer maxPeople;
+    private String startStr;
+    private String actionStartStr;
 
     public FastReservationDTO() {
     }
@@ -81,5 +84,23 @@ public class FastReservationDTO {
 
     public void setMaxPeople(Integer maxPeople) {
         this.maxPeople = maxPeople;
+    }
+
+    public String getStartStr() {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+        return dateTimeFormatter.format(start);
+    }
+
+    public void setStartStr(String startStr) {
+        this.startStr = startStr;
+    }
+
+    public String getActionStartStr() {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+        return dateTimeFormatter.format(actionStart);
+    }
+
+    public void setActionStartStr(String actionStartStr) {
+        this.actionStartStr = actionStartStr;
     }
 }
