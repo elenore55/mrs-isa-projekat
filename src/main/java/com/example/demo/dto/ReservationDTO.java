@@ -16,7 +16,8 @@ public class ReservationDTO {
 
     public ReservationDTO(Reservation r) {
         this.id = r.getId();
-        this.clientEmail = r.getClient().getEmail();
+        if (r.getClient() != null)
+            this.clientEmail = r.getClient().getEmail();
         this.offerId = r.getOffer().getId();
         this.startDate = r.getStart();
         this.endDate =  r.getEnd();

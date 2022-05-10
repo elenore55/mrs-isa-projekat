@@ -1,27 +1,47 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.ReservationDTO;
+import com.example.demo.model.Client;
+import com.example.demo.model.Offer;
+import com.example.demo.model.Reservation;
+import com.example.demo.model.enums.ReservationStatus;
+import com.example.demo.service.OfferService;
 import com.example.demo.service.ReservationService;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "api/reservations")
 public class ReservationController {
-    private ReservationService service;
+    private ReservationService reservationService;
+    private UserService userService;
+    private OfferService offerService;
 
     @Autowired
-    public ReservationController(ReservationService service) {
-        this.service = service;
+    public ReservationController(ReservationService reservationService, UserService userService, OfferService offerService) {
+        this.reservationService = reservationService;
+        this.userService = userService;
+        this.offerService = offerService;
     }
 
     @ResponseBody
-    @RequestMapping(path = "/addReservation", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<ReservationDTO> addReservation() {
-        return null;
+    @RequestMapping(path = "/addReservation", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<ReservationDTO> addReservation(@RequestBody ReservationDTO dto) {
+        Reservation reservation = new Reservation();
+        setAttributes(reservation, dto);
+        reservation.setReservationStatus(ReservationStatus.PENDING);
+        reservation = reservationService.save(reservation);
+        return new ResponseEntity<>(new ReservationDTO(reservation), HttpStatus.OK);
+    }
+
+    private void setAttributes(Reservation r, ReservationDTO dto) {
+        r.setId(dto.getId());
+        r.setStart(dto.getStartDate());
+        r.setEnd(dto.getEndDate());
+        Offer offer = offerService.findOne(dto.getOfferId());
+        r.setOffer(offer);
     }
 }
