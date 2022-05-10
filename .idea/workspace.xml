@@ -5,151 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DeletionRequestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/EntityController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/ChangePasswordDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/CottageWithRateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/DeletionRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/EditProfileDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/UserFilterDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/DeletionRequestRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/DeletionRequestService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/changePassword.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageDetailedView.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/deleteProfileMessage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/editProfileMessage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/fishing_icon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/AddressController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/AdventureController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/CottageOwnerController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/DeletionRequestController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/EntityController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/FishingEquipmentController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/FishingInstructorController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/ProfileDataController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/ShipController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/ShipOwnerController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/AdventureDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/ChangePasswordDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/CottageWithRateDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/DeletionRequestDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/EditProfileDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/FilterCottageDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/FishingEquipmentDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/FishingInstructorDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/NavigationEquipmentDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/ProfileDataDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/ShipDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/UserFilterDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/CottageNameComparator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/CottagePriceComparator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/CottageRatingComparator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/CottageRoomsComparator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/AddressRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/AdventureRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/Adventure_Fishing_Equipments_Repository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/DeletionRequestRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/FishingEquipmentRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/FishingInstructorRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/Profile_DataRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/ShipOwnerRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/ShipRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/AddressService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/AdventureService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/DeletionRequestService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/FishingEquipmentService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/FishingInstructorService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/Profile_DataService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/ShipOwnerService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/ShipService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/data-postgres.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/addAdventure.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/addShip.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/changePassword.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/clientHome.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/cottageDetailedView.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/cottagesViewOwner.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/deleteProfileMessage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/editProfileMessage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/filters/cityFilter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/filters/countryFilter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/filters/lowHighFilter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/filters/sort-by.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/profilePageInstructorPI.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/shipImages.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/shipsViewOwner.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/updateShip.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/app/updateShipNav.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/cottage_icon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/fishing_icon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img05.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img16.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img_c1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img_c2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img_c3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img_c4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/img_c5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/inside1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/inside2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/inside3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/inside4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/inside5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/inside6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/room1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/room10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/room11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/room2.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/room3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/room4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/room5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/room6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/room7.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/room8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/room9.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/ship1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/ship2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/ship3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/ship4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/ship5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/ship6.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/images/ship_icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipOwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipOwnerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Cottage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Cottage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/AddressRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/AddressRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/Profile_DataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/Profile_DataRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/CottageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/CottageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ShipService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ShipService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/ClientRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/deleteProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/deleteProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/editProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/editProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/registration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/CottageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/CottageService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addCottageReservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addCottageReservation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/repository/ClientRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/ClientRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/deleteProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/deleteProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/editProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/editProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/registration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data-postgres.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,13 +130,6 @@
       <workItem from="1651695404600" duration="11884000" />
       <workItem from="1651947458358" duration="9052000" />
       <workItem from="1652110981483" duration="7963000" />
-    </task>
-    <task id="LOCAL-00003" summary="Nesto iskonfigurisano">
-      <created>1650741383748</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1650741383748</updated>
     </task>
     <task id="LOCAL-00004" summary="Polja za unos imena, opisa i cene broda #221.1">
       <created>1650799520044</created>
@@ -610,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652166596282</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Merge branch 'searchEntities' into cottage_reservations">
+      <created>1652200070307</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1652200070307</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -630,7 +494,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="#207.3 Filtriranje vikendica" />
     <MESSAGE value="#204.3 Dijalog za potvrdu brisanja vikendice" />
     <MESSAGE value="Dobavljanje vlasnikovih brodova #251.1" />
     <MESSAGE value="#251.1 Izlistavanje kartica sa osnovnim podacima o brodovima" />
@@ -655,7 +518,8 @@
     <MESSAGE value="#212.2 Validacija podataka o rezervaciji" />
     <MESSAGE value="Kreirani repozitorijum, servis i kontroler za rezervacije" />
     <MESSAGE value="Kreiran DTO za rezervaciju" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kreiran DTO za rezervaciju" />
+    <MESSAGE value="Merge branch 'searchEntities' into cottage_reservations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'searchEntities' into cottage_reservations" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Notifications" timestamp="1650741185090">
@@ -697,30 +561,30 @@
     </state>
     <state x="2514" y="67" key="#xdebugger.evaluate/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651706579916" />
     <state x="396" y="44" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1650828034427" />
-    <state x="2722" y="150" key="CommitChangelistDialog2" timestamp="1652166595385">
+    <state x="2722" y="9" key="CommitChangelistDialog2" timestamp="1652200067983">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2722" y="150" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652166595385" />
+    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652200067983" />
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1650826050956" />
-    <state width="1877" height="332" key="GridCell.Tab.0.bottom" timestamp="1652199988748">
+    <state width="1877" height="332" key="GridCell.Tab.0.bottom" timestamp="1652201612187">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652199988748" />
+    <state width="1877" height="332" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652201612187" />
     <state width="1237" height="211" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1651257626483" />
-    <state width="1877" height="332" key="GridCell.Tab.0.center" timestamp="1652199988748">
+    <state width="1877" height="332" key="GridCell.Tab.0.center" timestamp="1652201612186">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652199988748" />
+    <state width="1877" height="332" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652201612186" />
     <state width="1237" height="211" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1651257626482" />
-    <state width="1877" height="332" key="GridCell.Tab.0.left" timestamp="1652199988747">
+    <state width="1877" height="332" key="GridCell.Tab.0.left" timestamp="1652201612186">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652199988747" />
+    <state width="1877" height="332" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652201612186" />
     <state width="1237" height="211" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1651257626482" />
-    <state width="1877" height="332" key="GridCell.Tab.0.right" timestamp="1652199988748">
+    <state width="1877" height="332" key="GridCell.Tab.0.right" timestamp="1652201612187">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652199988748" />
+    <state width="1877" height="332" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652201612187" />
     <state width="1237" height="211" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1651257626483" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1652168743469">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -755,10 +619,10 @@
     </state>
     <state x="2133" y="0" width="1562" height="851" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652111187396" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1650829168397" />
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1652166599401">
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1652200075352">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652166599401" />
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652200075352" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1650826055916" />
     <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1651698474168">
       <screen x="1920" y="0" width="1920" height="1040" />

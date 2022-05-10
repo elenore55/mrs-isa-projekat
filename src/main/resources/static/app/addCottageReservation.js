@@ -69,7 +69,11 @@ Vue.component('add-cottage-reservation', {
             }).then(function(response) {
                 alert('Cottage reservation successfully added!');
             }).catch(function (error) {
-                alert('An error occurred!');
+                if(error.response.status === 404) {
+                    alert('Client not found');
+                } else {
+                    alert('Cottage already reserved')
+                }
             });
         }
     },

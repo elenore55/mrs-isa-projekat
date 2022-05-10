@@ -85,4 +85,10 @@ public class UserService {
         String currentPassword = userRepository.getById(Integer.parseInt(id)).getPassword();    // ovo nam je dalo trenutnu hesiranu lozinku
         return isValidPassword(old, currentPassword);
     }
+
+    public Client findClientByEmail(String email) {
+        ProfileData pd = profileDataRepository.getByEmail(email);
+        if (pd == null) return null;
+        return clientRepository.findByProfileDataId(pd.getId());
+    }
 }

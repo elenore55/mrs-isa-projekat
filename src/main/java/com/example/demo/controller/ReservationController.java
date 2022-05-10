@@ -32,6 +32,8 @@ public class ReservationController {
     public ResponseEntity<ReservationDTO> addReservation(@RequestBody ReservationDTO dto) {
         Reservation reservation = new Reservation();
         setAttributes(reservation, dto);
+        if (reservation.getClient() == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         reservation.setReservationStatus(ReservationStatus.PENDING);
         reservation = reservationService.save(reservation);
         return new ResponseEntity<>(new ReservationDTO(reservation), HttpStatus.OK);
@@ -43,5 +45,7 @@ public class ReservationController {
         r.setEnd(dto.getEndDate());
         Offer offer = offerService.findOne(dto.getOfferId());
         r.setOffer(offer);
+        Client client = userService.findClientByEmail(dto.getClientEmail());
+        r.setClient(client);
     }
 }
