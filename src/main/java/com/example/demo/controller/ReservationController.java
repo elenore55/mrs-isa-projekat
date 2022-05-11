@@ -49,8 +49,10 @@ public class ReservationController {
         if (reservation == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        reservation.setReservationStatus(ReservationStatus.ACTIVE);
-        reservationService.save(reservation);
+        if (reservation.getReservationStatus() == ReservationStatus.PENDING) {
+            reservation.setReservationStatus(ReservationStatus.ACTIVE);
+            reservationService.save(reservation);
+        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

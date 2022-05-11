@@ -186,6 +186,7 @@ public class CottageController {
         res.add(fr);
         c.setFastReservations(res);
         cottageService.save(c);
+        cottageService.notifySubscribers(c);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 

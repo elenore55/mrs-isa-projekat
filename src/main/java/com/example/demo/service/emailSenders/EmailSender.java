@@ -1,8 +1,10 @@
 package com.example.demo.service.emailSenders;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +16,7 @@ public class EmailSender {
         this.mailSender = mailSender;
     }
 
+    @Async
     public void send(String to, String subject, String content) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("milica.popovic720@gmail.com");

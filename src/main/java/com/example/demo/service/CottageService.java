@@ -123,8 +123,10 @@ public class CottageService {
     }
 
     public void notifySubscribers(Cottage cottage) {
+        String title = "Subscription update";
+        String content = "There is a new fast reservation available for " + cottage.getName();
         for (Client s : cottage.getSubscribers()) {
-            emailSender.send(s.getEmail(), "subject", "content");
+            emailSender.send(s.getEmail(), title, content);
         }
     }
 }
