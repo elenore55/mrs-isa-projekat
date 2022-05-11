@@ -20,8 +20,16 @@ Vue.component('fast-reservations', {
         <div class="w-50">
             <div v-for="(fr, i) in actions" class="card mt-3 ms-3">
                 <div class="card-body ms-3">
-                    <h5>Stay period</h5>
-                    <label>Start date: {{ formatDate(fr.start) }} Duration: {{ fr.duration }} days</label>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h5>Stay period</h5>
+                            <label class="form-label">Start date: {{ formatDate(fr.start) }} Duration: {{ fr.duration }} days</label>
+                        </div>
+                        <div class="text-end me-1">
+                            <h3 class="text-success">{{ fr.price }} EUR</h3>
+                            <h6 class="text-success">{{ fr.maxPeople }} people</h6>
+                        </div>
+                    </div>
                     <h5 class="mt-3">Action period</h5>
                     <label>Start date: {{ formatDate(fr.actionStart) }} Duration: {{ fr.actionDuration }} days</label>
                     <div class="text-end mb-1 me-1 mt-1">
@@ -62,7 +70,7 @@ Vue.component('fast-reservations', {
                     <div class="d-flex justify-content-evenly mt-3 mb-4">
                         <div class="form-floating">
                             <input type="number" v-model="price" step="0.01" id="price-input" class="form-control">
-                            <label for="price-input">Price</label>
+                            <label for="price-input">Price (EUR)</label>
                             <p v-if="!isValidPrice" class="text-danger">Price must be positive</p>
                         </div>
                         <div class="form-floating">
