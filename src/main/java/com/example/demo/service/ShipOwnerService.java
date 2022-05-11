@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.ShipDTO;
+import com.example.demo.dto.FilterShipDTO;
+import com.example.demo.dto.comparators.ship.*;
 import com.example.demo.model.Address;
 import com.example.demo.model.Ship;
 import com.example.demo.model.ShipOwner;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -28,18 +31,60 @@ public class ShipOwnerService {
         return this.shipOwnerRepository.save(shipOwner);
     }
 
-    public List<ShipDTO> searchShips(Integer id, String search) {
+    public List<Ship> searchShips(Integer id, String search) {
         ShipOwner owner = findOne(id);
         List<Ship> ships = owner.getShips();
-        List<ShipDTO> dtos = new ArrayList<>();
+        List<Ship> result = new ArrayList<>();
         for (Ship s : ships) {
             Address a = s.getAddress();
             if (s.getShipType().toString().toLowerCase().contains(search) || s.getName().toLowerCase().contains(search) || s.getDescription().toLowerCase().contains(search) ||
-                s.getAdditionalInfo().toLowerCase().contains(search) || a.getStreet().toLowerCase().contains(search) || a.getCity().toLowerCase().contains(search) ||
-                a.getCountry().toLowerCase().contains(search)) {
-                dtos.add(new ShipDTO(s));
+                    s.getAdditionalInfo().toLowerCase().contains(search) || a.getStreet().toLowerCase().contains(search) || a.getCity().toLowerCase().contains(search) ||
+                    a.getCountry().toLowerCase().contains(search)) {
+                result.add(s);
             }
         }
-        return dtos;
+        return result;
+    }
+
+    public List<Ship> filterShips(Integer id, FilterShipDTO filter) {
+        ShipOwner owner = findOne(id);
+        List<Ship> ships = owner.getShips();
+        List<Ship> result = new ArrayList<>();
+        for (Ship s : ships) {
+            Address a = s.getAddress();
+            if (filter.checkCity(a.getCity()) && filter.checkCountry(a.getCountry()) && filter.checkPrice(s.getPriceList()) &&
+                    filter.checkLength(s.getLength()) && filter.checkCapacity(s.getCapacity()) && filter.checkSpeed(s.getMaxSpeed())) {
+                result.add(s);
+            }
+        }
+        sortShips(result, filter.getSortParam().toLowerCase(), filter.getSortDir().equalsIgnoreCase("descending"));
+        return result;
+    }
+
+    private void sortShips(List<Ship> ships, String sortBy, boolean desc) {
+        Comparator<Ship> comparator = SelectComparator(sortBy);
+        if (desc) ships.sort(Collections.reverseOrder(comparator));
+        else ships.sort(comparator);
+    }
+
+    private Comparator<Ship> SelectComparator(String sortBy) {
+        switch (sortBy) {
+            case "price":
+                return new ShipLengthComparator();
+            case "capacity":
+                return new ShipCapacityComparator();
+            case "maximum speed":
+                return new ShipSpeedComparator();
+            case "type":
+                return new ShipTypeComparator();
+            case "city":
+                return new ShipCityComparator();
+            case "country":
+                return new ShipCountryComparator();
+            case "rating":
+                return new ShipRatingComparator();
+            default:
+                return new ShipNameComparator();
+        }
     }
 }

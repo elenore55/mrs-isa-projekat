@@ -3,7 +3,7 @@ Vue.component("add-adventure",{
     {
         return{
             allEquipments: [],
-            //instructorBio_data: '',
+            instructorBio_data: [],
             form:{
                 name: "",
                 address:{
@@ -25,7 +25,7 @@ Vue.component("add-adventure",{
     },
     mounted: function (){
         this.loadEquipment()
-        // this.loadInstructorBio_data()
+        this.loadInstructorBio_data()
     },
     template: `
     <form style="width: 1000px; margin: auto" v-on:submit="sendRequest">
@@ -53,11 +53,11 @@ Vue.component("add-adventure",{
             <div class="col">
                 <div class="form-group">
                     <label>Country</label>
-                    <input v-model="form.address.country" type="text" class="form-control" pattern="([A-Z])([A-Za-z]+)$">
+                    <input v-model="form.address.country" type="text" class="form-control" pattern="((([A-Z])([a-z]+) ?)+)$">
                 </div>
                 <div class="form-group">
                     <label>City</label>
-                    <input v-model="form.address.city" type="text" class="form-control" pattern="([A-Z])([A-Za-z]+)$">
+                    <input v-model="form.address.city" type="text" class="form-control" pattern="((([A-Z])([a-z]+) ?)+)$">
                 </div>
                 <div class="form-group">
                     <label>Street</label>
@@ -67,16 +67,15 @@ Vue.component("add-adventure",{
             <div class="col-2">
                 <div class="form-group">
                     <label>Fishing equipment</label>
-                        <select class="select form-control" multiple v-model="form.fishingEquipmentList" style="height: 250px">
-                            <option v-for="equipment in allEquipments">{{equipment.name}}</option>
+                        <select class="select form-control browser-default" multiple v-model="form.fishingEquipmentList" style="height: 250px">
+                            <option v-for="equipment in allEquipments" v-bind:value="equipment">{{equipment.name}}</option>
                         </select>
                 </div>                
             </div>
             <div class="col">
                 <div class="form-group">
                     <label>Instructor biography</label>
-                    <textarea v-model="form.fInstructorBio" class="form-control" style="height: 110px"></textarea>
-<!--                    <p>{{instructorBio_data}}  dasdsadsa</p>-->
+                    <textarea v-model="instructorBio_data.biography" disabled class="form-control" style="height: 110px"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Additional information</label>
@@ -87,8 +86,8 @@ Vue.component("add-adventure",{
         <div class="row">
             <div class="col-2">
                 <div class="form-group">
-                    <label>Price</label>
-                    <input v-model="form.price" type="number" step="0.01" min="0" class="form-control"/>
+                    <label>Price in €</label>
+                    <input v-model="form.price" type="number" step="1" min="0" class="form-control"/>
                 </div>
             </div>
             <div class="col-3">
@@ -121,14 +120,16 @@ Vue.component("add-adventure",{
               console.log(this.allEquipments)
           })
         },
-        // loadInstructorBio_data(){
-        //     axios.get("api/instructors/getInstructorData").then(response => {
-        //         this.instructorBio_data = response.data
-        //         console.log(this.instructorBio_data)
-        //     })
-        // },
+        loadInstructorBio_data(){
+            axios.get("api/instructors/getInstructorData").then(response => {
+                this.instructorBio_data = response.data // dobijamo FishingInstructorDTO
+                console.log(this.instructorBio_data)
+            })
+        },
         sendRequest(){
+            console.log("JEDAN1")
             console.log(this.form.fishingEquipmentList)
+            console.log("JEDAN2")
             axios.post("api/adventures/addAdventure", {
                 name: this.form.name,
                 description: this.form.description,

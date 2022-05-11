@@ -13,7 +13,7 @@ public class FishingEquipmentService {
     private FishingEquipmentRepository fishingEquipmentRepository;
 
     public FishingEquipment findOne(Integer id){
-        return fishingEquipmentRepository.getById(id);
+        return fishingEquipmentRepository.findById(id).orElse(null);
     }
 
     public List<FishingEquipment> findAll(){

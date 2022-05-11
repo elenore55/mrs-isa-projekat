@@ -23,10 +23,20 @@ const ChangePassword = {template: '<change-password></change-password>'};
 const CottageDetailedView = {template: '<cottage-detailed-view></cottage-detailed-view>'};
 const ShipDetailedView = {template: '<ship-detailed-view></ship-detailed-view>'};
 const UnregisteredNavbar = {template: '<unregistered-navbar></unregistered-navbar>'};
+const InstructorsAdventures = {template: '<instructors-adventures></instructors-adventures>'};
+const AddAdmin = {template: '<add-admin></add-admin>'};
+const UpdateAdminInfo = {template: '<update-admin-info></update-admin-info>'};
+const AvailabilityInstructor = {template: '<availability-instructor></availability-instructor>'};
+
+Vue.component('vuejs-datepicker', vuejsDatepicker);
 
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/instructorsAdventures/",
+            component: InstructorsAdventures
+        },
         {
             path: "/shipsViewOwner/",
             component: ShipsViewOwner
@@ -126,6 +136,18 @@ const router = new VueRouter({
         {
            path: "/profilePageInstructorPI/",
            component: ProfilePageInstructorPI
+        },
+        {
+            path: "/addAdmin/",
+            component: AddAdmin
+        },
+        {
+            path: "/updateAdminInfo/",
+            component: UpdateAdminInfo
+        },
+        {
+            path: "/availabilityInstructor/",
+            component: AvailabilityInstructor
         }
 
 

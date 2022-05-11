@@ -123,35 +123,58 @@ Vue.component("ships-view-owner", {
         },
 
         filter() {
-
+            if (this.areValidPrices && this.areValidCapacities && this.areValidLengths && this.areValidSpeeds) {
+                axios.post("api/shipOwner/filterShips/" + this.owner_id, {
+                    cities: this.cities,
+                    countries: this.countries,
+                    lowPrice: this.low_price,
+                    highPrice: this.high_price,
+                    lowLength: this.low_len,
+                    highLength: this.high_len,
+                    lowCapacity: this.low_cap,
+                    highCapacity: this.high_cap,
+                    lowSpeed: this.low_speed,
+                    highSpeed: this.high_speed,
+                    sortParam: this.sort_by,
+                    sortDir: this.direction
+                }).then(response => {
+                    this.ships = response.data;
+                }).catch(function (error) {
+                    alert('An error occurred!');
+                });
+            }
         },
     },
 
     computed: {
         areValidPrices() {
-            if (this.low_price && this.high_price) {
-                return this.low_price <= this.high_price;
+            if (this.low_price > 0 && this.high_price > 0 && this.low_price > this.high_price) {
+                this.price_error = true;
+                return false;
             }
             return true;
         },
 
         areValidLengths() {
-            if (this.low_len && this.high_len) {
-                return this.low_len <= this.high_len;
+            if (this.low_len && this.high_len && this.low_len > this.high_len) {
+                this.length_error = true;
+                return false;
             }
             return true;
         },
 
         areValidCapacities() {
-            if (this.low_cap && this.high_cap) {
-                return this.low_cap <= this.high_cap;
+            if (this.low_cap && this.high_cap && this.low_cap > this.high_cap) {
+                this.capacity_error = true;
+                return false;
             }
             return true;
         },
 
         areValidSpeeds() {
-            if (this.low_speed && this.high_speed) {
-                return this.low_speed <= this.high_speed;
+            if (this.low_speed && this.high_speed && this.low_speed > this.high_speed) {
+                this.speed_error = true;
+                return false;
             }
             return true;
         }
