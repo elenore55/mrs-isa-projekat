@@ -22,6 +22,7 @@ const EditProfileMessage = {template: '<edit-profile-message></edit-profile-mess
 const ChangePassword = {template: '<change-password></change-password>'};
 const CottageDetailedView = {template: '<cottage-detailed-view></cottage-detailed-view>'};
 const ShipDetailedView = {template: '<ship-detailed-view></ship-detailed-view>'};
+const UnregisteredNavbar = {template: '<unregistered-navbar></unregistered-navbar>'};
 
 const router = new VueRouter({
     mode: 'hash',
@@ -65,6 +66,10 @@ const router = new VueRouter({
         {
             path: "/clientNavbar/",
             component: ClientNavbar
+        },
+        {
+            path: "/unregisteredNavbar/",
+            component: UnregisteredNavbar
         },
         {
             path: "/clientProfile/",
@@ -115,8 +120,8 @@ const router = new VueRouter({
             component: DeleteProfileMessage
         },
         {
-                    path: "/editProfileMessage/",
-                    component: EditProfileMessage
+              path: "/editProfileMessage/",
+              component: EditProfileMessage
         },
         {
            path: "/profilePageInstructorPI/",

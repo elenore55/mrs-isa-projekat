@@ -83,6 +83,8 @@ public class ShipController {
         Ship ship = shipService.findOne(id);
         if (ship == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        ship.getImages();
+        ship.getRules();
         return new ResponseEntity<>(new ShipDTO(ship), HttpStatus.OK);
     }
 

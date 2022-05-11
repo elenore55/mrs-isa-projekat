@@ -1,9 +1,6 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.FishingEquipment;
-import com.example.demo.model.NavigationEquipment;
-import com.example.demo.model.Rule;
-import com.example.demo.model.Ship;
+import com.example.demo.model.*;
 import com.example.demo.model.enums.ShipType;
 
 import java.math.BigDecimal;
@@ -54,6 +51,10 @@ public class ShipDTO {
         this.navigationEquipmentList = new ArrayList<>();
         for (NavigationEquipment ne : ship.getNavigationEquipmentList())
             navigationEquipmentList.add(new NavigationEquipmentDTO(ne));
+        this.imagePaths = new ArrayList<>();
+        for (Image img : ship.getImages()) {
+            imagePaths.add(img.getPath());
+        }
     }
 
     public ShipDTO() {}

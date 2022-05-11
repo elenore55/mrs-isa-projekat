@@ -14,7 +14,7 @@ Vue.component("ship-detailed-view", {
                 price: "",
                 image_number: 0,
                 additionalInfo: "",
-                shipType: "",
+
                 length: "",
                 numberOfEngines: "",
                 powerOfEngine: "",
@@ -48,7 +48,7 @@ Vue.component("ship-detailed-view", {
                this.additionalInfo = response.data.additionalInfo;
                this.shipType = response.data.shipType;
                this.length = response.data.length;
-               this.num_people = response.data.maxPeople;
+               this.num_people = response.data.capacity;
                this.numberOfEngines = response.data.numberOfEngines;
                this.powerOfEngine = response.data.powerOfEngine;
                this.maxSpeed = response.data.maxSpeed;
@@ -56,6 +56,7 @@ Vue.component("ship-detailed-view", {
                this.fishingEquipmentList = response.data.fishingEquipmentList;
                this.navigationEquipmentList = response.data.navigationEquipmentList;
                this.shipTypeStr = response.data.shipTypeStr;
+
 
                this.rate = this.getRate(this.id);
                this.price = response.data.price;
@@ -74,7 +75,7 @@ Vue.component("ship-detailed-view", {
        <client-navbar></client-navbar>
         <div class="row mx-3 mt-5 ">
                 <div class= "d-flex align-items-center justify-content-center mt-5 mb-1">
-                    <h1>{{name}}</h1>
+                    <h1>{{name}}, ({{shipTypeStr}})</h1>
                 </div>
                 <div class="col-1">
                 </div>
@@ -85,10 +86,16 @@ Vue.component("ship-detailed-view", {
                             <tr> <td >Description: </td> <td> {{description}}</td> </tr>
                             <tr> <td>Address: </td> <td>{{street}}, {{city}}, {{country}}</td> </tr>
                             <tr> <td> Capacity: </td> <td>{{num_people}}</td> </tr>
+                            <tr> <td> Length: </td> <td>{{length}} m</td> </tr>
+                            <tr> <td> Max speed: </td> <td>{{maxSpeed}}</td> </tr>
+
+                            <tr> <td> Capacity: </td> <td>{{num_people}}</td> </tr>
+
                             <tr> <td>Rate:</td> <td> {{rate}}</td> </tr>
                             <tr> <td> Price:</td> <td> {{price}}</td> </tr>
                             <tr> <td></td> <td> <button class="btn btn-primary"> Reserve </button></td> </tr>
                         </table>
+
                     </div>
                 </div>
 

@@ -227,7 +227,6 @@ methods: {
             axios.get("api/ships/getShips/").then(response => {
                  this.ships = response.data;
                  for (const s of this.ships) {
-                     alert("Broj slika u ovom brodu je " + s.imagePaths);
                      if (!s.imagePaths || s.imagePaths.length === 0) {
                          this.ship_pictures.push(this.default_ship);
                      } else {
