@@ -2,7 +2,7 @@ Vue.component("cottages-view-owner", {
     data: function () {
         return {
             cottages: [],
-            sort_by_list: ["Name", "Price", "Number of rooms", "Rating"],
+            sort_by_list: ["Name", "Price", "Number of rooms", "Rating", "City", "Country"],
             search_criterion: "",
             all_cities: [],
             all_countries: [],
