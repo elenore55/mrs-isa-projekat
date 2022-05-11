@@ -7,13 +7,17 @@ import com.example.demo.service.emailSenders.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
+
 @Service
 public class ReservationService {
     private ReservationRepository repository;
+    private EmailSender emailSender;
 
     @Autowired
-    public ReservationService(ReservationRepository repository) {
+    public ReservationService(ReservationRepository repository, EmailSender emailSender) {
         this.repository = repository;
+        this.emailSender = emailSender;
     }
 
     public Reservation save(Reservation reservation) {
@@ -34,10 +38,11 @@ public class ReservationService {
     }
 
     public void notifyClient(Reservation reservation) {
-        String from = "milica.popovic55@hotmail.com";
         String to = reservation.getClient().getEmail();
         String subject = "Reservation confirmation";
-        String text = "Do you confirm";
-        new EmailSender(from, to, subject, text).start();
+        String text = "To confirm reservation for\n";
+        text += reservation.getOffer().getName() + "\nPlease click the link below\n";
+        text += "http://localhost:8000/#/confirmReservation/" + reservation.getId().toString();
+        emailSender.send(to, subject, text);
     }
 }

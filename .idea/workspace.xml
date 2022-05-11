@@ -5,8 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/reservationConfirmation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/fastReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/fastReservations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/demo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/CottageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/CottageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ReservationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/emailSenders/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/emailSenders/EmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/CottageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/CottageService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +44,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JavaScript File" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -130,13 +143,6 @@
       <workItem from="1651695404600" duration="11884000" />
       <workItem from="1651947458358" duration="9052000" />
       <workItem from="1652110981483" duration="7963000" />
-    </task>
-    <task id="LOCAL-00009" summary="Kreirani repozitorijum i servis za brod #221.3">
-      <created>1650816191774</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1650816191774</updated>
     </task>
     <task id="LOCAL-00010" summary="axios poziv za dodavanje broda #221.3">
       <created>1650826051843</created>
@@ -474,7 +480,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652221391468</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Prikaz cijene i max broja ljudi">
+      <created>1652245145470</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1652245145473</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -494,7 +507,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="#223.2 Provjera zauzetosti broda" />
     <MESSAGE value="#223.3 Dijalog za potvrdu brisanja broda" />
     <MESSAGE value="Input za search #220.1" />
     <MESSAGE value="Odabir gradova i drzava za filtriranje #220.1" />
@@ -519,7 +531,8 @@
     <MESSAGE value="#202.1 Forma za unos podataka o akciji" />
     <MESSAGE value="#202.2 Validacija podataka o akciji" />
     <MESSAGE value="#202.3 Cuvanje kreirane akcije" />
-    <option name="LAST_COMMIT_MESSAGE" value="#202.3 Cuvanje kreirane akcije" />
+    <MESSAGE value="Prikaz cijene i max broja ljudi" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prikaz cijene i max broja ljudi" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Notifications" timestamp="1650741185090">
@@ -561,30 +574,30 @@
     </state>
     <state x="2514" y="67" key="#xdebugger.evaluate/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651706579916" />
     <state x="396" y="44" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1650828034427" />
-    <state x="2722" y="9" key="CommitChangelistDialog2" timestamp="1652221390012">
+    <state x="2722" y="9" key="CommitChangelistDialog2" timestamp="1652245144536">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652221390012" />
+    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652245144536" />
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1650826050956" />
-    <state width="1877" height="332" key="GridCell.Tab.0.bottom" timestamp="1652245060884">
+    <state width="1877" height="332" key="GridCell.Tab.0.bottom" timestamp="1652248914973">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652245060884" />
+    <state width="1877" height="332" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652248914973" />
     <state width="1237" height="211" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1651257626483" />
-    <state width="1877" height="332" key="GridCell.Tab.0.center" timestamp="1652245060884">
+    <state width="1877" height="332" key="GridCell.Tab.0.center" timestamp="1652248914972">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652245060884" />
+    <state width="1877" height="332" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652248914972" />
     <state width="1237" height="211" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1651257626482" />
-    <state width="1877" height="332" key="GridCell.Tab.0.left" timestamp="1652245060884">
+    <state width="1877" height="332" key="GridCell.Tab.0.left" timestamp="1652248914972">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652245060884" />
+    <state width="1877" height="332" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652248914972" />
     <state width="1237" height="211" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1651257626482" />
-    <state width="1877" height="332" key="GridCell.Tab.0.right" timestamp="1652245060884">
+    <state width="1877" height="332" key="GridCell.Tab.0.right" timestamp="1652248914972">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652245060884" />
+    <state width="1877" height="332" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652248914972" />
     <state width="1237" height="211" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1651257626483" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1652216739426">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -606,10 +619,10 @@
     </state>
     <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652216739426" />
     <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1650832543498" />
-    <state x="2410" y="175" key="Maven.ArtifactSearchDialog" timestamp="1652203573373">
+    <state x="2410" y="175" key="Maven.ArtifactSearchDialog" timestamp="1652246192884">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2410" y="175" key="Maven.ArtifactSearchDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652203573373" />
+    <state x="2410" y="175" key="Maven.ArtifactSearchDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652246192884" />
     <state x="2360" y="0" width="1274" height="990" key="MergeDialog" timestamp="1652199872791">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -623,10 +636,10 @@
     </state>
     <state x="2133" y="0" width="1562" height="851" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652111187396" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1650829168397" />
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1652221394469">
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1652245149056">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652221394469" />
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652245149056" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1650826055916" />
     <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1651698474168">
       <screen x="1920" y="0" width="1920" height="1040" />

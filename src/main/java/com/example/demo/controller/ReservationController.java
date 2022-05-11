@@ -38,8 +38,20 @@ public class ReservationController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         reservation.setReservationStatus(ReservationStatus.PENDING);
         reservation = reservationService.save(reservation);
-        // reservationService.notifyClient(reservation);
+        reservationService.notifyClient(reservation);
         return new ResponseEntity<>(new ReservationDTO(reservation), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/confirmReservation/{id}", method = RequestMethod.POST)
+    public ResponseEntity<Void> confirmReservation(@PathVariable Integer id) {
+        Reservation reservation = reservationService.findOne(id);
+        if (reservation == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        reservation.setReservationStatus(ReservationStatus.ACTIVE);
+        reservationService.save(reservation);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     private void setAttributes(Reservation r, ReservationDTO dto) {
