@@ -18,6 +18,9 @@ const EditProfile = {template: '<edit-profile></edit-profile>'};
 const InstructorsAdventures = {template: '<instructors-adventures></instructors-adventures>'};
 const AddAdmin = {template: '<add-admin></add-admin>'};
 const UpdateAdminInfo = {template: '<update-admin-info></update-admin-info>'};
+const AvailabilityInstructor = {template: '<availability-instructor></availability-instructor>'};
+
+Vue.component('vuejs-datepicker', vuejsDatepicker);
 
 const router = new VueRouter({
     mode: 'hash',
@@ -101,6 +104,10 @@ const router = new VueRouter({
         {
             path: "/updateAdminInfo/",
             component: UpdateAdminInfo
+        },
+        {
+            path: "/availabilityInstructor/",
+            component: AvailabilityInstructor
         }
 
 
