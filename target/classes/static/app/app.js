@@ -1,3 +1,4 @@
+const ShipReservations = {template: '<ship-reservations></ship-reservations>'};
 const ReservationConfirmation = {template: '<reservation-confirmation></reservation-confirmation>'};
 const FastReservations = {template: '<fast-reservations></fast-reservations>'};
 const AddCottageReservation = {template: '<add-cottage-reservation></add-cottage-reservation>'};
@@ -31,6 +32,10 @@ Vue.component('vuejs-datepicker', vuejsDatepicker);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/shipReservations/:id/",
+            component: ShipReservations
+        },
         {
             path: "/confirmReservation/:id/",
             component: ReservationConfirmation

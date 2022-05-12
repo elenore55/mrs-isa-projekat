@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -153,6 +154,12 @@ public class ShipController {
         List<Image> images = new ArrayList<>();
         for (String imgPath : dto.getImagePaths()) images.add(new Image(imgPath));
         ship.setImages(images);
+        // availabilities
+        if (dto.getAvailableStart() != null && dto.getAvailableEnd() != null) {
+            Availability a = new Availability(dto.getAvailableStart(), dto.getAvailableStart());
+            a.setOffer(ship);
+            ship.setAvailabilities(Arrays.asList(a));
+        }
         // owner
         ShipOwner owner = shipOwnerService.findOne(dto.getOwnerId());
         if (owner != null) ship.setOwner(owner);

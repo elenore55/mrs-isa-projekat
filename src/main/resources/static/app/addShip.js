@@ -21,6 +21,7 @@ Vue.component("add-ship", {
             num_engines: null,
             engine_power: null,
             max_speed: null,
+            start_av: null, end_av: null, input_started: false,
             errors: {
                 name: false, description: false, price: false, street: false, city: false, country: false,
                 length: false, capacity: false, num_engines: false, power: false, max_speed: false
@@ -181,7 +182,7 @@ Vue.component("add-ship", {
                     <button type="button" v-on:click="addFishingEquipment" class="btn btn-secondary my-1">Add equipment</button>
                 </div>
             </div>
-            <div class="row mt-5 mx-1">
+            <div class="row my-4 mx-1">
                 <div class="col form-floating">
                     <textarea v-model="conditions" class="form-control" id="conditions-textarea" style="height: 150px"></textarea>
                     <label for="conditions-textarea">Cancellation conditions</label>
@@ -194,6 +195,24 @@ Vue.component("add-ship", {
                     </div>
                     <input v-model="rule" id="rule-input" type="text" class="form-control">
                     <button type="button" v-on:click="addRule" class="btn btn-secondary my-1">Add rule</button>
+                </div>
+            </div>
+            <div class="row mt-5 mx-1">
+                <div class="col">
+                    <div class="m-3">
+                        <h5>Regular reservation period</h5>
+                    </div>
+                    <div class="d-flex justify-content-start">
+                        <div class="me-3 mb-4">
+                            <label for="start-date">Start</label>
+                            <vuejs-datepicker v-model="start_av" format="dd.MM." id="start-date"></vuejs-datepicker>
+                        </div>
+                        <div class="mb-4">
+                            <label for="end-date">End</label>                
+                            <vuejs-datepicker v-model="end_av" format="dd.MM." id="end-date"></vuejs-datepicker>
+                        </div>
+                    </div>
+                    <p v-if="!areValidDates" class="ms-3 text-danger">Dates are required and must be in ascending order!</p>
                 </div>
                 <div class="col form-group">
                     <label class="form-label h5">Images</label> <br />
@@ -254,8 +273,10 @@ Vue.component("add-ship", {
         },
 
         sendRequest() {
+            this.input_started = true;
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress &&
-                this.isValidLength && this.isValidCapacity && this.isValidNumEngines && this.isValidPower && this.isValidSpeed) {
+                this.isValidLength && this.isValidCapacity && this.isValidNumEngines && this.isValidPower &&
+                this.isValidSpeed && this.areValidDates) {
                 axios.post("api/ships/addShip", {
                     name: this.name,
                     description: this.description,
@@ -273,7 +294,9 @@ Vue.component("add-ship", {
                     maxSpeed: this.max_speed,
                     cancellationConditions: this.conditions,
                     fishingEquipmentList: this.fishing_equipment_list,
-                    navigationEquipmentList: this.nav_equipment_list
+                    navigationEquipmentList: this.nav_equipment_list,
+                    availableStart: this.start_av,
+                    availableEnd: this.end_av
                 }).then(function(response) {
                     alert('Ship successfully added!');
                 }).catch(function (error) {
@@ -344,6 +367,11 @@ Vue.component("add-ship", {
 
         isValidSpeed() {
             return this.max_speed > 0;
+        },
+
+        areValidDates() {
+            if (!this.input_started) return true;
+            return !!(this.start_av && this.end_av && this.start_av < this.end_av);
         }
     }
 });

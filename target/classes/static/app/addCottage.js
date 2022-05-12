@@ -243,7 +243,6 @@ Vue.component("add-cottage", {
         areValidDates() {
             if (!this.input_started) return true;
             return !!(this.cottage.start_av && this.cottage.end_av && this.cottage.start_av < this.cottage.end_av);
-
         }
     }
 

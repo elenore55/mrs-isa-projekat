@@ -12,6 +12,9 @@ Vue.component('update-ship-nav', {
                     <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/shipImages/' + $route.params.id})">Images</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/shipReservations/' + $route.params.id})">Reservations</a>
+                    </li>
                 </ul>
             </div>
         </nav>

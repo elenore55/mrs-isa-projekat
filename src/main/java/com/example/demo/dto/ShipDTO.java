@@ -4,6 +4,7 @@ import com.example.demo.model.*;
 import com.example.demo.model.enums.ShipType;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,8 @@ public class ShipDTO {
     private List<FishingEquipmentDTO> fishingEquipmentList;
     private List<NavigationEquipmentDTO> navigationEquipmentList;
     private String shipTypeStr;
+    private LocalDateTime availableStart;
+    private LocalDateTime availableEnd;
 
     public ShipDTO(Ship ship) {
         this.id = ship.getId();
@@ -54,6 +57,12 @@ public class ShipDTO {
         this.imagePaths = new ArrayList<>();
         for (Image img : ship.getImages()) {
             imagePaths.add(img.getPath());
+        }
+        List<Availability> avs = ship.getAvailabilities();
+        if (avs != null && avs.size() > 0) {
+            Availability av = ship.getAvailabilities().get(avs.size() - 1);
+            this.availableStart = av.getStart();
+            this.availableEnd = av.getEnd();
         }
     }
 
@@ -206,5 +215,21 @@ public class ShipDTO {
 
     public String getShipTypeStr() {
         return ShipType.values()[shipType - 1].toString();
+    }
+
+    public LocalDateTime getAvailableStart() {
+        return availableStart;
+    }
+
+    public void setAvailableStart(LocalDateTime availableStart) {
+        this.availableStart = availableStart;
+    }
+
+    public LocalDateTime getAvailableEnd() {
+        return availableEnd;
+    }
+
+    public void setAvailableEnd(LocalDateTime availableEnd) {
+        this.availableEnd = availableEnd;
     }
 }
