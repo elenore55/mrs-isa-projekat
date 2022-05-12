@@ -53,11 +53,13 @@ Vue.component("cottage-reservations", {
     methods: {
         updateReservationPeriod() {
             this.input_started = true;
-            axios.post("api/cottages/updateReservationPeriod", this.cottage).then(function(response) {
-                alert('Cottage successfully updated!');
-            }).catch(function (error) {
-                alert('An error occurred!');
-            });
+            if (this.areValidDates) {
+                axios.post("api/cottages/updateReservationPeriod", this.cottage).then(function(response) {
+                    alert('Cottage successfully updated!');
+                }).catch(function (error) {
+                    alert('An error occurred!');
+                });
+            }
         }
     },
 
