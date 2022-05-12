@@ -52,7 +52,7 @@ Vue.component("ship-reservations", {
         updateReservationPeriod() {
             this.input_started = true;
             if (this.areValidDates) {
-                axios.post("api/ships/updateReservationPeriod", this.cottage).then(function(response) {
+                axios.post("api/ships/updateReservationPeriod", this.ship).then(function(response) {
                     alert('Ship successfully updated!');
                 }).catch(function (error) {
                     alert('An error occurred!');
@@ -64,7 +64,7 @@ Vue.component("ship-reservations", {
     computed: {
         areValidDates() {
             if (!this.input_started) return true;
-            return !!(this.ship.availableStart && this.ship.availableEnd && this.ship.availableStart < this.ship.availableEnd);
+            return !!(this.ship.availableStart && this.ship.availableEnd && (new Date(this.ship.availableStart) < new Date(this.ship.availableEnd)));
         }
     }
 

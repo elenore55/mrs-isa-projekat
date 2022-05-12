@@ -66,7 +66,7 @@ Vue.component("cottage-reservations", {
     computed: {
         areValidDates() {
             if (!this.input_started) return true;
-            return !!(this.cottage.availableStart && this.cottage.availableEnd && this.cottage.availableStart < this.cottage.availableEnd);
+            return !!(this.cottage.availableStart && this.cottage.availableEnd && (new Date(this.cottage.availableStart) < new Date(this.cottage.availableEnd)));
         },
     }
 });

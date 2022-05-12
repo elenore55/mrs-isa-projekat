@@ -77,7 +77,7 @@ Vue.component("cottages-view-owner", {
             </div>
             <h3 v-if="cottages.length == 0" class="text-info ms-5 mt-3">No cottages to show</h3>
             <div class="container">
-                <div v-for="(c, i) in cottages" class="container card m-3 w-75">
+                <div v-for="(c, i) in cottages" class="container card m-3">
                     <div class="row">
                         <div class="col-3 mt-2">
                             <img :src="profilePictures.at(i)" class="card-img rounded-3 mt-3" width="200" height="200"  alt="cottage image">

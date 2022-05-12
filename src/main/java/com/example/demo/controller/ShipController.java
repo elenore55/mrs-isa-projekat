@@ -6,7 +6,6 @@ import com.example.demo.dto.ShipDTO;
 import com.example.demo.dto.UserFilterDTO;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ShipType;
-import com.example.demo.service.AdventureService;
 import com.example.demo.service.ShipOwnerService;
 import com.example.demo.service.ShipService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -119,6 +118,20 @@ public class ShipController {
             dtos.add(new ShipDTO(s));
         }
         return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/updateReservationPeriod", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<ShipDTO> updateReservationPeriod(@RequestBody ShipDTO dto) {
+        Ship ship = shipService.findOne(dto.getId());
+        if (ship == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Availability a = new Availability(dto.getAvailableStart(), dto.getAvailableEnd());
+        a.setOffer(ship);
+        ship.setAvailabilities(Arrays.asList(a));
+        shipService.save(ship);
+        return new ResponseEntity<>(new ShipDTO(ship), HttpStatus.OK);
     }
 
     private void setAttributes(Ship ship, ShipDTO dto) {
