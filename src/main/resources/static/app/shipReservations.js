@@ -26,16 +26,19 @@ Vue.component("ship-reservations", {
                     <h5>Regular reservation period</h5>
                 </div>
                 <div class="d-flex justify-content-center card-body">
-                    <div class="me-3 mb-4">
+                    <div class="me-3 mb-1">
                         <label for="start-date">Start</label>
                         <vuejs-datepicker v-model="ship.availableStart" format="dd.MM." id="start-date"></vuejs-datepicker>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-1">
                         <label for="end-date">End</label>                
                         <vuejs-datepicker v-model="ship.availableEnd" format="dd.MM." id="end-date"></vuejs-datepicker>
                     </div>
                 </div>
-                <div class="row mb-3 me-3">
+                <div class="d-flex justify-content-center">
+                    <p v-if="!areValidDates" class="text-danger">Dates are required and must be in ascending order!</p>
+                </div>
+                <div class="row mb-3 me-3 mt-3">
                     <div class="col text-end">
                         <button type="button" class="btn btn-primary" v-on:click="updateReservationPeriod">Save changes</button>
                     </div>
@@ -47,7 +50,18 @@ Vue.component("ship-reservations", {
 
     methods: {
         updateReservationPeriod() {
-            alert('Updating');
+            this.input_started = true;
+            if (this.areValidDates) {
+                alert('Updating');
+            }
+
+        }
+    },
+
+    computed: {
+        areValidDates() {
+            if (!this.input_started) return true;
+            return !!(this.ship.availableStart && this.ship.availableEnd && this.ship.availableStart < this.ship.availableEnd);
         }
     }
 

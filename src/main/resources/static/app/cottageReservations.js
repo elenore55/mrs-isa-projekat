@@ -36,12 +36,14 @@ Vue.component("cottage-reservations", {
                             <vuejs-datepicker v-model="cottage.availableEnd" format="dd.MM." id="end-date"></vuejs-datepicker>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-center">
+                        <p v-if="!areValidDates" class="text-danger">Dates are required and must be in ascending order!</p>
+                    </div>
                     <div class="row mb-3 me-3">
                         <div class="col text-end">
                             <button type="button" class="btn btn-primary" v-on:click="updateReservationPeriod">Save changes</button>
                         </div>
                     </div>
-                    <p v-if="!areValidDates" class="ms-3 text-danger">Dates are required and must be in ascending order!</p>
                 </div>
             </div>
         </div>
