@@ -5,7 +5,8 @@ Vue.component("add-reservation", {
             start: null, end: null,
             name: "",
             email: '',
-            input_started: false
+            input_started: false,
+            value: ''
         }
     },
 
@@ -36,11 +37,21 @@ Vue.component("add-reservation", {
                 <div class="d-flex justify-content-around ms-3 mt-4 me-3 mb-1">
                     <div class="mt-1 ms-3 me-4 mb-1">
                         <label for="start-date">Start date</label>
-                        <vuejs-datepicker v-model="start" format="dd.MM.yyyy." id="start-date"></vuejs-datepicker>
+                        <div class="input-group" v-on:click="setStartPicker">
+                            <span class="input-group-text" v-on:click="setStartPicker">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            <input type="text" class="form-control" v-model="start" id="start-date-pick" v-on:click="setStartPicker">
+                        </div>
                     </div>
                     <div class="mt-1 mb-1 me-3">
                         <label for="end-date">End date</label>                
-                        <vuejs-datepicker v-model="end" format="dd.MM.yyyy." id="end-date"></vuejs-datepicker>
+                        <div class="input-group" v-on:click="setEndPicker">
+                            <span class="input-group-text" v-on:click="setEndPicker">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            <input type="text" class="form-control" v-model="end" id="end-date-pick" v-on:click="setEndPicker">
+                        </div>
                     </div>
                 </div>
                 <p v-if="!areValidDates" class="ms-4 text-danger">Dates are required and must be in ascending order!</p>
@@ -63,16 +74,42 @@ Vue.component("add-reservation", {
                     startDate: this.start,
                     endDate: this.end,
                     clientEmail: this.email
-                }).then(function(response) {
+                }).then(function (response) {
                     alert('Reservation successfully added!');
                 }).catch(function (error) {
-                    if(error.response.status === 404) {
+                    if (error.response.status === 404) {
                         alert('Client not found');
                     } else {
                         alert('Already reserved')
                     }
                 });
             }
+        },
+
+        setStartPicker() {
+            $(function () {
+                $('#start-date-pick').datetimepicker({
+                    minuteStep: 5,
+                    pickerPosition: 'bottom-right',
+                    initialDate: new Date(),
+                    format: 'dd.mm.yyyy. HH:mm',
+                    todayBtn: true,
+                    todayHighlight: true
+                })
+            })
+        },
+
+        setEndPicker() {
+            $(function () {
+                $('#end-date-pick').datetimepicker({
+                    minuteStep: 5,
+                    pickerPosition: 'bottom-right',
+                    initialDate: new Date(),
+                    format: 'dd.mm.yyyy. HH:mm',
+                    todayBtn: true,
+                    todayHighlight: true
+                });
+            })
         }
     },
 
