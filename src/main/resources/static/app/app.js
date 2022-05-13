@@ -1,7 +1,7 @@
 const ShipReservations = {template: '<ship-reservations></ship-reservations>'};
 const ReservationConfirmation = {template: '<reservation-confirmation></reservation-confirmation>'};
 const FastReservations = {template: '<fast-reservations></fast-reservations>'};
-const AddCottageReservation = {template: '<add-cottage-reservation></add-cottage-reservation>'};
+const AddReservation = {template: '<add-reservation></add-reservation>'};
 const CottageReservations = {template: '<cottage-reservations></cottage-reservations>'};
 const ShipsViewOwner = {template: '<ships-view-owner></ships-view-owner>'};
 const CottagesViewOwner = {template: '<cottages-view-owner></cottages-view-owner>'};
@@ -45,8 +45,8 @@ const router = new VueRouter({
             component: FastReservations
         },
         {
-            path: "/addCottageReservation/:id/",
-            component: AddCottageReservation
+            path: "/addReservation/:id/",
+            component: AddReservation
         },
         {
             path: "/cottageReservations/:id/",
