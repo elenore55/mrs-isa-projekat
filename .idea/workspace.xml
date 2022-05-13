@@ -5,57 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap-datetimepicker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap-datetimepicker.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/bootstrap-datetimepicker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/bootstrap-datetimepicker.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.ar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.bg.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.ca.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.cs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.da.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.de.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.ee.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.el.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.es.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.fi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.fr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.he.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.hr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.hu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.hy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.id.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.is.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.it.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.ja.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.ko.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.lt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.lv.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.ms.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.nb.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.nl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.no.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.pl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.pt-BR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.pt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.ro.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.rs-latin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.rs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.ru.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.sk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.sl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.sv.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.sw.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.th.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.tr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.ua.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.uk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.zh-CN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/locales/bootstrap-datetimepicker.zh-TW.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addReservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addReservation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,13 +137,6 @@
       <workItem from="1651695404600" duration="11884000" />
       <workItem from="1651947458358" duration="9052000" />
       <workItem from="1652110981483" duration="7963000" />
-    </task>
-    <task id="LOCAL-00016" summary="Dodavanje broda u SQL">
-      <created>1650981332729</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1650981332729</updated>
     </task>
     <task id="LOCAL-00017" summary="Cuvanje azuriranih osnovnih podataka o brodu #222.3">
       <created>1650981816001</created>
@@ -530,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652425210677</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Datetime pickeri umjesto date pickera">
+      <created>1652431166885</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1652431166885</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,7 +501,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Filtriranje brodova po unesenim kriterijumima #220.4" />
     <MESSAGE value="Komparatori za brodove #220.4" />
     <MESSAGE value="#210.1 Forma za unos pocetnog i krajnjeg datuma" />
     <MESSAGE value="#210.2 Validacija unesenih podataka" />
@@ -575,7 +525,8 @@
     <MESSAGE value="Axios poziv za azuriranje perioda dostupnosti" />
     <MESSAGE value="#225.3 Cuvanje perioda dostupnosti" />
     <MESSAGE value="Kreirana genericna komponenta za rezervaciju" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kreirana genericna komponenta za rezervaciju" />
+    <MESSAGE value="Datetime pickeri umjesto date pickera" />
+    <option name="LAST_COMMIT_MESSAGE" value="Datetime pickeri umjesto date pickera" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Notifications" timestamp="1650741185090">
@@ -617,30 +568,30 @@
     </state>
     <state x="2514" y="67" key="#xdebugger.evaluate/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651706579916" />
     <state x="396" y="44" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1650828034427" />
-    <state x="2722" y="9" key="CommitChangelistDialog2" timestamp="1652425209720">
+    <state x="2722" y="9" key="CommitChangelistDialog2" timestamp="1652431165438">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652425209720" />
+    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431165438" />
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1650826050956" />
-    <state width="1877" height="190" key="GridCell.Tab.0.bottom" timestamp="1652431067088">
+    <state width="1877" height="190" key="GridCell.Tab.0.bottom" timestamp="1652431192996">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="190" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431067088" />
+    <state width="1877" height="190" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431192996" />
     <state width="1237" height="211" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1651257626483" />
-    <state width="1877" height="190" key="GridCell.Tab.0.center" timestamp="1652431067088">
+    <state width="1877" height="190" key="GridCell.Tab.0.center" timestamp="1652431192996">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="190" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431067088" />
+    <state width="1877" height="190" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431192996" />
     <state width="1237" height="211" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1651257626482" />
-    <state width="1877" height="190" key="GridCell.Tab.0.left" timestamp="1652431067088">
+    <state width="1877" height="190" key="GridCell.Tab.0.left" timestamp="1652431192995">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="190" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431067088" />
+    <state width="1877" height="190" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431192995" />
     <state width="1237" height="211" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1651257626482" />
-    <state width="1877" height="190" key="GridCell.Tab.0.right" timestamp="1652431067088">
+    <state width="1877" height="190" key="GridCell.Tab.0.right" timestamp="1652431192996">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="190" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431067088" />
+    <state width="1877" height="190" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431192996" />
     <state width="1237" height="211" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1651257626483" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1652386809670">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -679,10 +630,10 @@
     </state>
     <state x="2133" y="0" width="1562" height="851" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652111187396" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1650829168397" />
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1652425215310">
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1652431170072">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652425215310" />
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431170072" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1650826055916" />
     <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1651698474168">
       <screen x="1920" y="0" width="1920" height="1040" />

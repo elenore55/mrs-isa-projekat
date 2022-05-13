@@ -14,7 +14,7 @@ Vue.component("add-reservation", {
         this.id = this.$route.params.id;
 
         axios.get("api/offers/getName/" + this.$route.params.id).then(response => {
-            this.name = response.data.name;
+            this.name = response.data;
         }).catch(function (error) {
             alert('An error occurred!');
         });
