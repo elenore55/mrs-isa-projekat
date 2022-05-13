@@ -41,7 +41,7 @@ Vue.component("add-reservation", {
                             <span class="input-group-text" v-on:click="setStartPicker">
                                 <i class="fa fa-calendar"></i>
                             </span>
-                            <input type="text" class="form-control" v-model="start" id="start-date-pick" v-on:click="setStartPicker">
+                            <input type="text" class="form-control" id="start-date-pick" v-on:click="setStartPicker">
                         </div>
                     </div>
                     <div class="mt-1 mb-1 me-3">
@@ -50,7 +50,7 @@ Vue.component("add-reservation", {
                             <span class="input-group-text" v-on:click="setEndPicker">
                                 <i class="fa fa-calendar"></i>
                             </span>
-                            <input type="text" class="form-control" v-model="end" id="end-date-pick" v-on:click="setEndPicker">
+                            <input type="text" class="form-control" id="end-date-pick" v-on:click="setEndPicker">
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,6 @@ Vue.component("add-reservation", {
         setStartPicker() {
             $(function () {
                 $('#start-date-pick').datetimepicker({
-                    minuteStep: 5,
                     pickerPosition: 'bottom-right',
                     initialDate: new Date(),
                     format: 'dd.mm.yyyy. HH:mm',
@@ -102,7 +101,6 @@ Vue.component("add-reservation", {
         setEndPicker() {
             $(function () {
                 $('#end-date-pick').datetimepicker({
-                    minuteStep: 5,
                     pickerPosition: 'bottom-right',
                     initialDate: new Date(),
                     format: 'dd.mm.yyyy. HH:mm',
@@ -116,6 +114,8 @@ Vue.component("add-reservation", {
     computed: {
         areValidDates() {
             if (!this.input_started) return true;
+            this.start = $('#start-date-pick').datetimepicker('getDate');
+            this.end = $('#end-date-pick').datetimepicker('getDate');
             return !!(this.start && this.end && new Date(this.start) < new Date(this.end));
         },
 

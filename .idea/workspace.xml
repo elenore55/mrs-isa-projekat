@@ -138,13 +138,6 @@
       <workItem from="1651947458358" duration="9052000" />
       <workItem from="1652110981483" duration="7963000" />
     </task>
-    <task id="LOCAL-00017" summary="Cuvanje azuriranih osnovnih podataka o brodu #222.3">
-      <created>1650981816001</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1650981816001</updated>
-    </task>
     <task id="LOCAL-00018" summary="Ucitavanje vikendica #250.1">
       <created>1651137454688</created>
       <option name="number" value="00018" />
@@ -481,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652431166885</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="#229.1 Forma za unos podataka o rezervaciji">
+      <created>1652431264826</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1652431264826</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,7 +501,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Komparatori za brodove #220.4" />
     <MESSAGE value="#210.1 Forma za unos pocetnog i krajnjeg datuma" />
     <MESSAGE value="#210.2 Validacija unesenih podataka" />
     <MESSAGE value="Popravljeno ucitavanje soba" />
@@ -526,7 +525,8 @@
     <MESSAGE value="#225.3 Cuvanje perioda dostupnosti" />
     <MESSAGE value="Kreirana genericna komponenta za rezervaciju" />
     <MESSAGE value="Datetime pickeri umjesto date pickera" />
-    <option name="LAST_COMMIT_MESSAGE" value="Datetime pickeri umjesto date pickera" />
+    <MESSAGE value="#229.1 Forma za unos podataka o rezervaciji" />
+    <option name="LAST_COMMIT_MESSAGE" value="#229.1 Forma za unos podataka o rezervaciji" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Notifications" timestamp="1650741185090">
@@ -568,30 +568,30 @@
     </state>
     <state x="2514" y="67" key="#xdebugger.evaluate/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651706579916" />
     <state x="396" y="44" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1650828034427" />
-    <state x="2722" y="9" key="CommitChangelistDialog2" timestamp="1652431165438">
+    <state x="2722" y="9" key="CommitChangelistDialog2" timestamp="1652431264142">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431165438" />
+    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431264142" />
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1650826050956" />
-    <state width="1877" height="190" key="GridCell.Tab.0.bottom" timestamp="1652431192996">
+    <state width="1877" height="190" key="GridCell.Tab.0.bottom" timestamp="1652431696079">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="190" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431192996" />
+    <state width="1877" height="190" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431696079" />
     <state width="1237" height="211" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1651257626483" />
-    <state width="1877" height="190" key="GridCell.Tab.0.center" timestamp="1652431192996">
+    <state width="1877" height="190" key="GridCell.Tab.0.center" timestamp="1652431696079">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="190" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431192996" />
+    <state width="1877" height="190" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431696079" />
     <state width="1237" height="211" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1651257626482" />
-    <state width="1877" height="190" key="GridCell.Tab.0.left" timestamp="1652431192995">
+    <state width="1877" height="190" key="GridCell.Tab.0.left" timestamp="1652431696079">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="190" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431192995" />
+    <state width="1877" height="190" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431696079" />
     <state width="1237" height="211" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1651257626482" />
-    <state width="1877" height="190" key="GridCell.Tab.0.right" timestamp="1652431192996">
+    <state width="1877" height="190" key="GridCell.Tab.0.right" timestamp="1652431696079">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="190" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431192996" />
+    <state width="1877" height="190" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431696079" />
     <state width="1237" height="211" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1651257626483" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1652386809670">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -630,10 +630,10 @@
     </state>
     <state x="2133" y="0" width="1562" height="851" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652111187396" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1650829168397" />
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1652431170072">
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1652431268630">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431170072" />
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652431268630" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1650826055916" />
     <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1651698474168">
       <screen x="1920" y="0" width="1920" height="1040" />
