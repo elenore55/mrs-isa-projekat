@@ -38,7 +38,7 @@ public class ShipDTO {
         for (Rule rule : ship.getRules()) this.rules.add(rule.getText());
         this.additionalInfo = ship.getAdditionalInfo();
         this.ownerId = ship.getOwner().getId();
-        this.shipType = ship.getShipType().ordinal();
+        this.shipType = ship.getShipType().ordinal() + 1;
         this.length = ship.getLength();
         this.capacity = ship.getCapacity();
         this.numberOfEngines = ship.getNumberOfEngines();
@@ -57,7 +57,8 @@ public class ShipDTO {
         }
     }
 
-    public ShipDTO() {}
+    public ShipDTO() {
+    }
 
     public Integer getId() {
         return id;
@@ -204,6 +205,6 @@ public class ShipDTO {
     }
 
     public String getShipTypeStr() {
-        return ShipType.values()[shipType].toString();
+        return ShipType.values()[shipType - 1].toString();
     }
 }

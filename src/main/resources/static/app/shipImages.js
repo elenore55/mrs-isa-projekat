@@ -1,10 +1,19 @@
 Vue.component("ship-images", {
     data: function () {
         return {
-            paths: ["https://picsum.photos/id/23/200/300", "https://picsum.photos/id/217/200/300", "https://picsum.photos/id/2/200/300",
-                "https://picsum.photos/id/81/200/300", "https://picsum.photos/id/55/200/300", "https://picsum.photos/id/7/200/300",
-                "https://picsum.photos/id/212/200/300", "https://picsum.photos/id/100/200/300"]
+            id: null,
+            paths: []
         }
+    },
+
+    mounted() {
+        this.id = this.$route.params.id;
+
+        axios.get("api/ships/getShipImages/" + this.$route.params.id).then(response => {
+            this.paths = response.data;
+        }).catch(function (error) {
+            alert('An error occurred!');
+        });
     },
 
     template: `
@@ -42,13 +51,13 @@ Vue.component("ship-images", {
             if (!files.length)
                 return;
             for (let file of files) {
-                this.paths.push(file.name);
+                this.paths.push("images/" + file.name);
             }
         },
 
         sendRequest() {
             axios.post("api/ships/updateShipImages", {
-                id: 1,
+                id: this.id,
                 imagePaths: this.paths
             }).then(function(response) {
                 alert('Ship successfully updated!');

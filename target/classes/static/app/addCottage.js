@@ -17,6 +17,7 @@ Vue.component("add-cottage", {
                numBeds: null,
                imgPath: "",
                images: [],
+               start_av: null, end_av: null,
                errors: {
                    name: false,
                    description: false,
@@ -26,7 +27,8 @@ Vue.component("add-cottage", {
                    country: false
                },
                owner_id: 2
-           }
+           },
+           input_started: false
        }
    },
    template: `
@@ -117,14 +119,32 @@ Vue.component("add-cottage", {
                 <input v-model="cottage.numBeds" id="room-input" type="number" min="1" placeholder="Number of beds" class="form-control">            
                 <button type="button" v-on:click="addRoom" class="btn btn-secondary my-1">Add room</button>
         </div>
-          <div class="col form-group">
-            <label class="form-label h5">Images</label> <br />
-            <div v-for="(img, i) in cottage.images" class="mb-2">
-               <span>{{ img }}</span>
-               <button type="button" v-on:click="cottage.images.splice(i, 1)" class="btn btn-outline-danger btn-sm float-end">Delete</button>
+        </div>
+        <div class="row mt-5 mx-1">
+            <div class="col">
+                <div class="m-3">
+                    <h5>Regular reservation period</h5>
+                </div>
+                <div class="d-flex justify-content-start">
+                    <div class="me-3 mb-4">
+                        <label for="start-date">Start</label>
+                        <vuejs-datepicker v-model="cottage.start_av" format="dd.MM." id="start-date"></vuejs-datepicker>
+                    </div>
+                    <div class="mb-4">
+                        <label for="end-date">End</label>                
+                        <vuejs-datepicker v-model="cottage.end_av" format="dd.MM." id="end-date"></vuejs-datepicker>
+                    </div>
+                </div>
+                <p v-if="!areValidDates" class="ms-3 text-danger">Dates are required and must be in ascending order!</p>
             </div>
-            <input type="file" class="form-control-file" id="img" name="img" accept="image/*" @change="addImage($event)" multiple>
-          </div>
+             <div class="col form-group">
+                <label class="form-label h5">Images</label> <br />
+                <div v-for="(img, i) in cottage.images" class="mb-2">
+                   <span>{{ img }}</span>
+                   <button type="button" v-on:click="cottage.images.splice(i, 1)" class="btn btn-outline-danger btn-sm float-end">Delete</button>
+                </div>
+                <input type="file" class="form-control-file" id="img" name="img" accept="image/*" @change="addImage($event)" multiple>
+              </div>
         </div>
         <div class="row mt-1">
             <div class="col text-end">
@@ -154,11 +174,12 @@ Vue.component("add-cottage", {
             if (!files.length)
                 return;
             for (let file of files) {
-                this.cottage.images.push(file.name);
+                this.cottage.images.push("images/" + file.name);
             }
         },
 
         sendRequest() {
+            this.input_started = true;
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress) {
                 axios.post("api/cottages/addCottage", {
                     name: this.cottage.name,
@@ -169,6 +190,8 @@ Vue.component("add-cottage", {
                     rules: this.cottage.rules,
                     additionalInfo: this.cottage.additionalInfo,
                     imagePaths: this.cottage.images,
+                    availableStart: this.start_av,
+                    availableEnd: this.end_av,
                     ownerId: this.cottage.owner_id
                 }).then(function(response) {
                     alert('Cottage successfully added!');
@@ -215,7 +238,13 @@ Vue.component("add-cottage", {
 
        isValidAddress() {
            return this.isValidStreet && this.isValidCity && this.isValidCountry;
-       }
+       },
+
+        areValidDates() {
+            if (!this.input_started) return true;
+            return !!(this.cottage.start_av && this.cottage.end_av && this.cottage.start_av < this.cottage.end_av);
+
+        }
     }
 
 });

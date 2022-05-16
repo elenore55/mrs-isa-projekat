@@ -65,6 +65,7 @@ public class ShipController {
         return new ResponseEntity<>(new ShipDTO(ship), HttpStatus.OK);
     }
 
+
     @ResponseBody
     @RequestMapping(path = "/deleteShip/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteShip(@PathVariable Integer id) {

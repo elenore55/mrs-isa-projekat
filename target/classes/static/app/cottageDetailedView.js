@@ -24,12 +24,8 @@ Vue.component("cottage-detailed-view", {
 
    mounted() {
            this.id = this.$route.params.id;
-           alert("Id ovdje glasi " + this.id);
-           alert("Duzina parametara je " + this.$route.params.length)
            this.fromDate = this.$route.params.fromDate;
-           alert("From date ovdje glasi ", this.fromDate);
            this.toDate = this.$route.params.dto;
-           alert("To date ovdje glasi ", this.toDate);
            axios.get("api/cottages/getCottageImages/" + this.id ).then(response => {
                  this.images = response.data;
 
@@ -144,13 +140,7 @@ methods: {
 
         makeReservation()
         {
-        // ovdje treba poslati zahtjev da se napravi nova rezervacija
-        // trenutno mi od podataka fali: id korisnika, start date, end date
-        // client id - napisan da fali
-        // offer id - imam
-        // recenzija id - prazno
-        // rezervacija - bice automatski
-            axios.get("api/cottages/makeReservation/" + this.id ).then(response => {
+            axios.get("api/reservation/makeReservation/" + this.id ).then(response => {
                  alert("Rezervacija usojesno napravljena");
 
             }).catch(function (error) {

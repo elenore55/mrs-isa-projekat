@@ -1,10 +1,14 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.UserFilterDTO;
+import com.example.demo.model.Client;
 import com.example.demo.model.Cottage;
 import com.example.demo.model.Reservation;
+import com.example.demo.model.Room;
 import com.example.demo.repository.CottageRepository;
+import com.example.demo.service.emailSenders.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -19,10 +23,12 @@ import java.util.List;
 public class CottageService {
 
     private final CottageRepository cottageRepository;
+    private EmailSender emailSender;
 
     @Autowired
-    public CottageService(CottageRepository cottageRepository) {
+    public CottageService(CottageRepository cottageRepository, EmailSender emailSender) {
         this.cottageRepository = cottageRepository;
+        this.emailSender = emailSender;
     }
 
     public Cottage save(Cottage cottage) {
@@ -116,5 +122,11 @@ public class CottageService {
         return localDateTimeStart.isBefore(cottageDate) && cottageDate.isBefore(localDateTimeEnd);
     }
 
-
+    public void notifySubscribers(Cottage cottage) {
+        String title = "Subscription update";
+        String content = "There is a new fast reservation available for " + cottage.getName();
+        for (Client s : cottage.getSubscribers()) {
+            emailSender.send(s.getEmail(), title, content);
+        }
+    }
 }

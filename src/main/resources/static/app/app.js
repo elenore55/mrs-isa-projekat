@@ -1,3 +1,7 @@
+const ReservationConfirmation = {template: '<reservation-confirmation></reservation-confirmation>'};
+const FastReservations = {template: '<fast-reservations></fast-reservations>'};
+const AddCottageReservation = {template: '<add-cottage-reservation></add-cottage-reservation>'};
+const CottageReservations = {template: '<cottage-reservations></cottage-reservations>'};
 const ShipsViewOwner = {template: '<ships-view-owner></ships-view-owner>'};
 const CottagesViewOwner = {template: '<cottages-view-owner></cottages-view-owner>'};
 const UpdateShipNav = {template: '<update-ship-nav></update-ship-nav>'};
@@ -30,9 +34,27 @@ const AvailabilityInstructor = {template: '<availability-instructor></availabili
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
+Vue.component('vuejs-datepicker', vuejsDatepicker);
+
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/confirmReservation/:id/",
+            component: ReservationConfirmation
+        },
+        {
+            path: "/fastReservations/:id/",
+            component: FastReservations
+        },
+        {
+            path: "/addCottageReservation/:id/",
+            component: AddCottageReservation
+        },
+        {
+            path: "/cottageReservations/:id/",
+            component: CottageReservations
+        },
         {
             path: "/instructorsAdventures/",
             component: InstructorsAdventures
@@ -50,7 +72,7 @@ const router = new VueRouter({
             component: UpdateShipNav
         },
         {
-            path: "/shipImages/",
+            path: "/shipImages/:id/",
             component: ShipImages
         },
         {
@@ -66,11 +88,11 @@ const router = new VueRouter({
             component: ClientHome
         },
         {
-             path: "/deleteProfile/",
-             component: DeleteProfile
-                },
+            path: "/deleteProfile/",
+            component: DeleteProfile
+        },
         {
-            path: "/cottageImages/",
+            path: "/cottageImages/:id/",
             component: CottageImages
         },
         {
@@ -156,5 +178,5 @@ const router = new VueRouter({
 
 var app = new Vue({
     router,
-    el: "#main",
+    el: "#main"
 });

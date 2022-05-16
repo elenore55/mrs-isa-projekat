@@ -1,52 +1,49 @@
 Vue.component("update-cottage", {
     data: function() {
         return {
-            cottage: {
-                name: "Ime vikendice",
-                description: "Ovo je neki opis",
-                address: {
-                    street: "Marka Pola 1",
-                    city: "Novi Sad",
-                    country: "Srbija"
-                },
-                price: 300,
-                rules: ["No smoking", "Pets allowed"],
-                additionalInfo: "This is my info.",
-                rooms: [{numberOfBeds: 3}, {numberOfBeds: 4}],
-                rule: "",
-                numBeds: null,
-                imgPath: "",
-                images: ["img1.png", "img2.png"],
-                errors: {
-                    name: false,
-                    description: false,
-                    price: false,
-                    street: false,
-                    city: false,
-                    country: false
-                }
+            cottage: {},
+            rule: "",
+            numBeds: null,
+            errors: {
+                name: false,
+                description: false,
+                price: false,
+                street: false,
+                city: false,
+                country: false
             }
         }
     },
+
+    mounted() {
+        this.cottage.id = this.$route.params.id;
+
+        axios.get("api/cottages/getCottage/" + this.cottage.id).then(response => {
+            this.cottage = response.data;
+        }).catch(function (error) {
+            alert('An error occurred!');
+        });
+    },
+
     template: `
     <form novalidate>  
         <update-cottage-nav></update-cottage-nav>
         <div class="container">
             <div class="row my-4 mx-1">
                 <div class="col form-floating has-validation">
-                    <input v-on:focus="cottage.errors.name = false" v-model="cottage.name" type="text" class="form-control" id="name-input" required/>
+                    <input v-on:focus="errors.name = false" v-model="cottage.name" type="text" class="form-control" id="name-input" required/>
                     <label for="name-input">Name</label>
-                    <p v-if="!isValidName && cottage.errors.name" class="text-danger">Name is required.</p>
+                    <p v-if="!isValidName && errors.name" class="text-danger">Name is required.</p>
                 </div>
                 <div class="col form-floating has-validation">
-                    <input v-on:focus="cottage.errors.description = false" v-model="cottage.description" type="text" class="form-control" id="desc-input" required/>
+                    <input v-on:focus="errors.description = false" v-model="cottage.description" type="text" class="form-control" id="desc-input" required/>
                     <label for="desc-input">Description</label>
-                    <p v-if="!isValidDescription && cottage.errors.description" class="text-danger">Description is required.</p>
+                    <p v-if="!isValidDescription && errors.description" class="text-danger">Description is required.</p>
                 </div>
                 <div class="col form-floating has-validation">
-                    <input v-on:focus="cottage.errors.price = false" v-model="cottage.price" type="number" step="0.01" min="0" class="form-control" id="price-input" required/>
+                    <input v-on:focus="errors.price = false" v-model="cottage.price" type="number" step="0.01" min="0" class="form-control" id="price-input" required/>
                     <label for="price-input">Price (EUR)</label>
-                    <p v-if="!isValidPrice && cottage.errors.price" class="text-danger">Price is required.</p>
+                    <p v-if="!isValidPrice && errors.price" class="text-danger">Price is required.</p>
                 </div>
             </div>
             <div class="row justify-content-center my-4 mx-1">
@@ -54,23 +51,23 @@ Vue.component("update-cottage", {
                     <label class="form-label h5">Address</label>
                     <div class="row m-1">
                         <div class="col form-floating">
-                            <input v-on:focus="cottage.errors.street = false" v-model="cottage.address.street" type="text" class="form-control" id="street-input" />
+                            <input v-on:focus="errors.street = false" v-model="cottage.address.street" type="text" class="form-control" id="street-input" />
                             <label for="street-input">Street</label>
-                            <p v-if="!isValidStreet && cottage.errors.street" class="text-danger">Invalid street name.</p> 
+                            <p v-if="!isValidStreet && errors.street" class="text-danger">Invalid street name.</p> 
                         </div>
                     </div>
                     <div class="row m-1">
                         <div class="col form-floating">
-                            <input v-on:focus="cottage.errors.city = false" v-model="cottage.address.city" type="text" class="form-control" id="city-input" />
+                            <input v-on:focus="errors.city = false" v-model="cottage.address.city" type="text" class="form-control" id="city-input" />
                             <label for="city-input">City</label>
-                            <p v-if="!isValidCity && cottage.errors.city" class="text-danger">Invalid city name.</p>
+                            <p v-if="!isValidCity && errors.city" class="text-danger">Invalid city name.</p>
                         </div>
                     </div>
                     <div class="row m-1">
                         <div class="col form-floating">
-                            <input v-on:focus="cottage.errors.country = false" v-model="cottage.address.country" type="text" class="form-control" id="country-input"/>
+                            <input v-on:focus="errors.country = false" v-model="cottage.address.country" type="text" class="form-control" id="country-input"/>
                             <label for="country-input">Country</label>
-                            <p v-if="!isValidCountry && cottage.errors.country" class="text-danger">Invalid country name.</p>
+                            <p v-if="!isValidCountry && errors.country" class="text-danger">Invalid country name.</p>
                         </div>
                     </div>
                 </div>
@@ -86,7 +83,7 @@ Vue.component("update-cottage", {
                         <span>{{ i + 1 }}. {{ r }}</span>
                         <button type="button" v-on:click="cottage.rules.splice(i, 1)" class="btn btn-outline-danger btn-sm float-end">Delete</button>
                     </div>
-                    <input v-model="cottage.rule" id="rule-input" type="text" class="form-control">
+                    <input v-model="rule" id="rule-input" type="text" class="form-control">
                     <button type="button" v-on:click="addRule" class="btn btn-secondary my-1">Add rule</button>
                 </div>
                 <div class="col">
@@ -105,7 +102,7 @@ Vue.component("update-cottage", {
                             </div>
                         </div>
                     </div>
-                        <input v-model="cottage.numBeds" id="room-input" type="number" min="1" placeholder="Number of beds" class="form-control">            
+                        <input v-model="numBeds" id="room-input" type="number" min="1" placeholder="Number of beds" class="form-control">            
                         <button type="button" v-on:click="addRoom" class="btn btn-secondary my-1">Add room</button>
                 </div>
             </div>
@@ -119,44 +116,33 @@ Vue.component("update-cottage", {
    `,
     methods: {
         addRule() {
-            if (this.cottage.rule) {
-                this.cottage.rules.push(this.cottage.rule);
+            if (this.rule) {
+                this.cottage.rules.push(this.rule);
             }
-            this.cottage.rule = "";
+            this.rule= "";
         },
 
         addRoom() {
-            if (this.cottage.numBeds) {
-                this.cottage.rooms.push({numberOfBeds: this.cottage.numBeds});
+            if (this.numBeds) {
+                this.cottage.rooms.push({numberOfBeds: this.numBeds});
             }
-            this.cottage.numBeds = null;
+            this.numBeds = null;
         },
 
         sendRequest() {
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress) {
-                axios.post("api/cottages/updateCottage", {
-                    id: 2,
-                    name: this.cottage.name,
-                    description: this.cottage.description,
-                    address: this.cottage.address,
-                    rooms: this.cottage.rooms,
-                    price: this.cottage.price,
-                    rules: this.cottage.rules,
-                    additionalInfo: this.cottage.additionalInfo,
-                    imagePaths: this.cottage.images,
-                    ownerId: 2
-                }).then(function(response) {
+                axios.post("api/cottages/updateCottage", this.cottage).then(function(response) {
                     alert('Cottage successfully updated!');
                 }).catch(function (error) {
                     alert('An error occurred!');
                 });
             } else {
-                this.cottage.errors.name = true;
-                this.cottage.errors.description = true;
-                this.cottage.errors.price = true;
-                this.cottage.errors.street = true;
-                this.cottage.errors.city = true;
-                this.cottage.errors.country = true;
+                this.errors.name = true;
+                this.errors.description = true;
+                this.errors.price = true;
+                this.errors.street = true;
+                this.errors.city = true;
+                this.errors.country = true;
             }
         }
     },

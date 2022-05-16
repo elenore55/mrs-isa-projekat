@@ -1,15 +1,25 @@
 Vue.component('cottage-images', {
    data: function() {
        return {
-           paths: ["https://picsum.photos/id/23/200/300", "https://picsum.photos/id/217/200/300", "https://picsum.photos/id/2/200/300",
-           "https://picsum.photos/id/81/200/300", "https://picsum.photos/id/55/200/300", "https://picsum.photos/id/7/200/300",
-           "https://picsum.photos/id/212/200/300", "https://picsum.photos/id/100/200/300"]
+           id: null,
+           paths: []
        }
    },
+
+    mounted() {
+        this.id = this.$route.params.id;
+
+        axios.get("api/cottages/getCottageImages/" + this.$route.params.id).then(response => {
+            this.paths = response.data;
+        }).catch(function (error) {
+            alert('An error occurred!');
+        });
+    },
 
     template: `
         <div>
             <update-cottage-nav></update-cottage-nav>
+            <h3 v-if="paths.length == 0" class="text-info">No images to show</h3>
             <div class="container px-2">
                 <div class="row">
                     <div class="col d-flex justify-content-center flex-wrap">
@@ -42,13 +52,13 @@ Vue.component('cottage-images', {
             if (!files.length)
                 return;
             for (let file of files) {
-                this.paths.push(file.name);
+                this.paths.push("images/" + file.name);
             }
         },
 
         sendRequest() {
             axios.post("api/cottages/updateCottageImages", {
-                id: 1,
+                id: this.id,
                 imagePaths: this.paths
             }).then(function(response) {
                 alert('Cottage successfully updated!');
