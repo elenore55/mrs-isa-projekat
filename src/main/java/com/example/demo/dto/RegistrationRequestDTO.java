@@ -94,4 +94,12 @@ public class RegistrationRequestDTO {
     public void setReason(String reason) {
         this.reason = reason;
     }
+
+    public RegistrationType getRegistrationType() {
+        if (type.equalsIgnoreCase("Cottage owner"))
+            return RegistrationType.COTTAGE_OWNER;
+        else if(type.equalsIgnoreCase("Ship owner"))
+            return RegistrationType.SHIP_OWNER;
+        return null;
+    }
 }
