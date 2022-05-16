@@ -16,7 +16,7 @@ Vue.component("owners-registration", {
     template: `
     <div>
         <div class="d-flex justify-content-center">
-            <div class="card mt-4">
+            <div class="card my-5 px-4">
                 <h3 class="card-title d-flex justify-content-center mt-3">Registration</h3>
                 <div class="container card-body">
                     <div class="row my-2">
@@ -77,6 +77,9 @@ Vue.component("owners-registration", {
                             </select>
                             <label for="type-select" class="form-label ms-2" style="color:#C0C0C0">Type</label>
                         </div>
+                    </div>
+                    <div class="my-4 d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary btn-lg">Submit</button>                    
                     </div>
                 </div>    
             </div>
