@@ -41,6 +41,7 @@ public class RegistrationRequestController {
         request.setReason(dto.getReason());
         request.setRegistrationType(dto.getRegistrationType());
         request = service.save(request);
+        service.notifyAdmins(request.getId());
         return new ResponseEntity<>(request, HttpStatus.OK);
     }
 }

@@ -154,7 +154,6 @@ Vue.component("owners-registration", {
             this.input_started = true;
             if (this.isValidName && this.isValidSurname && this.isValidEmail && this.areValidPasswords && !this.isWeakPassword
                 && this.isValidStreet && this.isValidCity && this.isValidCountry && this.isValidPhone && this.isValidType) {
-                alert("valid");
                 axios.post("api/registrationRequests/addRequest", {
                     name: this.name,
                     surname: this.surname,
