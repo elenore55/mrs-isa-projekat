@@ -8,8 +8,15 @@ Vue.component("login", {
            }
        }
    },
+
+   mounted() {
+        main_image = $("body").css("background-image", "url('images/login3.jpg')");
+        main_image = $("body").css("background-size", "100% 200%");
+       },
+
    template: `
-    <section>
+    <div>
+        <unregistered-navbar> </unregistered-navbar>
             <div class="container mt-5 pt-5">
                 <div class="row">
                     <div class="col-lg-4 col-sm-8 col-md-6 m-auto">
@@ -32,9 +39,10 @@ Vue.component("login", {
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
    `,
     methods: {
+
 
         sendLoginRequest() {
             if (this.user.email && this.user.password)

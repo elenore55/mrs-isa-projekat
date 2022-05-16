@@ -37,6 +37,25 @@ public class CottageController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/getCottageWithRate/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<CottageWithRateDTO> getCottageWithRate(@PathVariable Integer id) {
+        Cottage cottage = cottageService.findOne(id);
+        if (cottage == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        cottage.getImages();
+        cottage.getRules();
+        return new ResponseEntity<>(new CottageWithRateDTO(cottage), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getCottageRate/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<Double> getCottageRate(@PathVariable Integer id) {
+        Cottage cottage = cottageService.findOne(id);
+        if (cottage == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        double rate = cottage.getRateOrNegativeOne();
+        return new ResponseEntity<Double>(rate, HttpStatus.OK);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/addCottage", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CottageDTO> saveCottage(@RequestBody CottageDTO cottageDTO) {
         Cottage cottage = new Cottage();
@@ -73,7 +92,6 @@ public class CottageController {
     @RequestMapping(path = "/detailViewCottage/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> detailViewCottage(@PathVariable Integer id) {
         Cottage cottage = cottageService.findOne(id);
-
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

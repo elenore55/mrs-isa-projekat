@@ -62,7 +62,11 @@ insert into image (path) values ('images/inside3.jpg');
 insert into image (path) values ('images/inside4.jpg');
 insert into image (path) values ('images/inside5.jpg');
 
-insert into offer (additional_info, description, name, price_list, address_id) values ('Smeštaj je pogodan za više ljudi (u isto vremena na splavu može maksimalno boraviti 20 osoba) koji žele da imaju odvojen prostor za spavanje, odvojen prostor za druženje, a i mesto za odmaranje na reci uz sav komoditet splava.', 'Ovo je dosta autentican prostor.', 'Frida River House', 300, 1);
+insert into image (path) values ('images/img_a1.jpg');
+insert into image (path) values ('images/img_a2.jpg');
+insert into image (path) values ('images/img_a3.jpg');
+
+insert into offer (additional_info, description, name, price_list, address_id) values ('Smeštaj je pogodan za više ljudi (u isto vremena na splavu može maksimalno boraviti 20 osoba) koji žele da imaju odvojen prostor za spavanje, odvojen prostor za druženje, a i mesto za odmaranje na reci uz sav komoditet splava.', 'Ovo je dosta autentican prostor. Treba mi jos neki opis da zauzme vise prostora, jer kad je opis kratak, ne vidi da je opis. Sad kad je opis malo duzi, izgleda realisticno.', 'Frida River House', 300, 1);
 insert into offer_rules (offer_id, rules_id) values (2, 1);
 insert into offer_rules (offer_id, rules_id) values (2, 3);
 insert into offer_rules (offer_id, rules_id) values (1, 5);
@@ -146,3 +150,18 @@ insert into sub (user_id, offer_id) values (3, 2);
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Line');
 -- insert into fishing_equipment (amount, name) values (10,'Hooks');
+
+insert into profile_data (email,name,password,phone_number,surname,address_id) values ('emailAdmin@gmail.com','ImeAnstruktora','sifra','06444144444','PrezimeAdmin',2);
+insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,1);
+insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,2);
+insert into admin (is_main, id) values (true , 2);
+insert into fishing_instructor (biography, id) values ('Instruktor pecanja I',1);
+insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
+insert into fishing_equipment (amount, name) values (10,'Fishing Line');
+insert into fishing_equipment (amount, name) values (10,'Hooks');
+insert into offer (additional_info, description, name, price_list, address_id) values ( 'Mozda bi trebalo neki dodatni opis da stavim', 'Ovo je jedina avantura koju sam ubacila u bazu', 'Pecanje sa Mickom', 10, 2);
+insert into adventure(max_people, id, fishing_instructor_id) values (8, 10,1);
+
+insert into adventure_images (adventure_id, images_id) values (10, 21);
+insert into adventure_images (adventure_id, images_id) values (10, 22);
+

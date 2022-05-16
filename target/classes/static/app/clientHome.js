@@ -22,7 +22,9 @@ Vue.component("client-home", {
              adventure_pictures: [],
              default_cottage: "images/cottage_icon.jpg",
              default_ship: "images/ship_icon.png",
-             default_adventure: "images/fishing_icon.jpg"
+             default_adventure: "images/fishing_icon.jpg",
+             dto: 5
+
            }
         },
 
@@ -127,14 +129,14 @@ mounted() {
                                           <p>Rate:  </p>
                                       </div>
                                       <div class="col-8">
-                                          <h1> 9.9 </h1>
+                                          <h1> {{adjustRate(c.rate)}} </h1>
                                       </div>
                                   </div>
                              </div>
                              <div class="col-4 flex-column mt-auto mx-auto py-2">
-                                 <p class="">Price per night: {{c.price}} EUR</p>
+                                 <p class="">Price: {{c.price}} EUR</p>
                                  <div class="text-center">
-                                     <a :href="'/#/cottageDetailedView/' + c.id" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
+                                     <a :href="'/#/cottageDetailedView/' + c.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
                                  </div>
                             </div>
                         </div>
@@ -221,7 +223,7 @@ methods: {
                     }
                 }
             }).catch(function (error) {
-                alert('An error occurred!');
+                alert('Greska u get cottages');
             });
 
             axios.get("api/ships/getShips/").then(response => {
@@ -251,11 +253,13 @@ methods: {
             });
         },
 
-        viewCottage() {
-            // ovdje ce za sada ici samo preusmjeravanje na narednu stranicu, a poslije cemo vidjeti kako dalje
-            //location.replace('http://localhost:8000/#/cottageDetailedView');
-        },
+        adjustRate(rate)
+        {
+            if (rate==-1)
+            return "Not rated";
+            return rate;
 
+        },
 
         searchEntites() {
             if (this.fromDate && this.toDate && (this.entityType))

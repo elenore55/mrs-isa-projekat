@@ -102,7 +102,7 @@ const router = new VueRouter({
             component: Login
         },
         {
-            path: "/cottageDetailedView/:id",
+            path: "/cottageDetailedView/:id/:fromDate/:toDate",
             component: CottageDetailedView
         },
         {
