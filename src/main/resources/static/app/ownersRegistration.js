@@ -155,6 +155,24 @@ Vue.component("owners-registration", {
             if (this.isValidName && this.isValidSurname && this.isValidEmail && this.areValidPasswords && !this.isWeakPassword
                 && this.isValidStreet && this.isValidCity && this.isValidCountry && this.isValidPhone && this.isValidType) {
                 alert("valid");
+                axios.post("api/registrationRequests/addRequest", {
+                    name: this.name,
+                    surname: this.surname,
+                    email: this.email,
+                    password: this.password,
+                    address: {
+                        street: this.street,
+                        city: this.city,
+                        country: this.country
+                    },
+                    type: this.type,
+                    phoneNumber: this.phone,
+                    reason: this.reason
+                }).then(function(response) {
+                    alert("Registration request sent!");
+                }).catch(function (error) {
+                    alert('An error occurred!');
+                });
             }
         }
     },
