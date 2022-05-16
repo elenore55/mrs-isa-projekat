@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/RegistrationRequestDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/ownersRegistration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/ownersRegistration.js" afterDir="false" />
     </list>
@@ -31,8 +32,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -137,13 +138,6 @@
       <workItem from="1651695404600" duration="11884000" />
       <workItem from="1651947458358" duration="9052000" />
       <workItem from="1652110981483" duration="7963000" />
-    </task>
-    <task id="LOCAL-00020" summary="#250.2 Dodavanje linkova za azuriranje, brisanje i detaljniji prikaz">
-      <created>1651142273367</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1651142273367</updated>
     </task>
     <task id="LOCAL-00021" summary="#250.1 Izlistavanje kartica sa osnovnim podacima o vikendici">
       <created>1651143472679</created>
@@ -481,7 +475,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652704891524</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="#209.2 Validacija podataka o korisniku">
+      <created>1652717399164</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1652717399165</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,7 +502,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Popravljeno ucitavanje soba" />
     <MESSAGE value="Upotreba slika iz foldera" />
     <MESSAGE value="Upis podataka iz SQL" />
     <MESSAGE value="#212.1 Forma za unos podataka o rezervaciji" />
@@ -526,7 +526,8 @@
     <MESSAGE value="#229.1 Forma za unos podataka o rezervaciji" />
     <MESSAGE value="Polja za unos podataka o vlasniku" />
     <MESSAGE value="#209.1 Forma za registraciju" />
-    <option name="LAST_COMMIT_MESSAGE" value="#209.1 Forma za registraciju" />
+    <MESSAGE value="#209.2 Validacija podataka o korisniku" />
+    <option name="LAST_COMMIT_MESSAGE" value="#209.2 Validacija podataka o korisniku" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Notifications" timestamp="1650741185090">
@@ -546,10 +547,10 @@
     </state>
     <state x="2270" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651698446731" />
     <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1650826863411" />
-    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser" timestamp="1652385543754">
+    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser" timestamp="1652718781663">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652385543754" />
+    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652718781663" />
     <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1650826508607" />
     <state x="490" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1650720848000">
       <screen x="0" y="0" width="1280" height="680" />
@@ -568,30 +569,30 @@
     </state>
     <state x="2514" y="67" key="#xdebugger.evaluate/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651706579916" />
     <state x="396" y="44" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1650828034427" />
-    <state x="2722" y="9" key="CommitChangelistDialog2" timestamp="1652704890216">
+    <state x="2722" y="9" key="CommitChangelistDialog2" timestamp="1652717398005">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652704890216" />
+    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652717398005" />
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1650826050956" />
-    <state width="1877" height="190" key="GridCell.Tab.0.bottom" timestamp="1652717351665">
+    <state width="1877" height="190" key="GridCell.Tab.0.bottom" timestamp="1652719147130">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="190" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652717351665" />
+    <state width="1877" height="190" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652719147130" />
     <state width="1237" height="211" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1651257626483" />
-    <state width="1877" height="190" key="GridCell.Tab.0.center" timestamp="1652717351664">
+    <state width="1877" height="190" key="GridCell.Tab.0.center" timestamp="1652719147130">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="190" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652717351664" />
+    <state width="1877" height="190" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652719147130" />
     <state width="1237" height="211" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1651257626482" />
-    <state width="1877" height="190" key="GridCell.Tab.0.left" timestamp="1652717351664">
+    <state width="1877" height="190" key="GridCell.Tab.0.left" timestamp="1652719147130">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="190" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652717351664" />
+    <state width="1877" height="190" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652719147130" />
     <state width="1237" height="211" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1651257626482" />
-    <state width="1877" height="190" key="GridCell.Tab.0.right" timestamp="1652717351664">
+    <state width="1877" height="190" key="GridCell.Tab.0.right" timestamp="1652719147130">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="190" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652717351664" />
+    <state width="1877" height="190" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652719147130" />
     <state width="1237" height="211" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1651257626483" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1652386809670">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -630,10 +631,10 @@
     </state>
     <state x="2133" y="0" width="1562" height="851" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652111187396" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1650829168397" />
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1652704402395">
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1652717402542">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652704402395" />
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652717402542" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1650826055916" />
     <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1651698474168">
       <screen x="1920" y="0" width="1920" height="1040" />

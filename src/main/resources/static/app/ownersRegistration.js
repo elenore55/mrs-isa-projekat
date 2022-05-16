@@ -15,7 +15,8 @@ Vue.component("owners-registration", {
             pass_type: "password",
             eye_class: "fa fa-eye",
             pass_type_confirm: "password",
-            eye_class_confirm: "fa fa-eye"
+            eye_class_confirm: "fa fa-eye",
+            reason: ""
         }
     },
 
@@ -110,8 +111,15 @@ Vue.component("owners-registration", {
                             <p v-if="!isValidType" class="text-danger">Invalid type</p>
                         </div>
                     </div>
+                    <div class="row my-2">
+                        <div class="col form-floating">
+                            <textarea id="reason-input" v-model="reason" class="form-control" placeholder="Reason for registration" style="height: 100px"></textarea>
+                            <label for="reason-input" class="form-label ms-2" style="color:#C0C0C0">Reason for registration</label>
+                            <p v-if="!isValidReason" class="text-danger">Reason for registration is required</p>
+                        </div>
+                    </div>
                     <div class="my-4 d-flex justify-content-end">
-                        <button type="button" class="btn btn-primary btn-lg">Submit</button>                    
+                        <button type="button" class="btn btn-primary btn-lg" v-on:click="sendRequest">Submit</button>                    
                     </div>
                 </div>    
             </div>
@@ -139,6 +147,14 @@ Vue.component("owners-registration", {
             else {
                 this.pass_type_confirm = "password";
                 this.eye_class_confirm = "fa fa-eye"
+            }
+        },
+
+        sendRequest() {
+            this.input_started = true;
+            if (this.isValidName && this.isValidSurname && this.isValidEmail && this.areValidPasswords && !this.isWeakPassword
+                && this.isValidStreet && this.isValidCity && this.isValidCountry && this.isValidPhone && this.isValidType) {
+                alert("valid");
             }
         }
     },
@@ -207,6 +223,11 @@ Vue.component("owners-registration", {
             if (!this.input_started) return true;
             const re = new RegExp(/[0-9]{3}-[0-9]{3}-[0-9]{3,4}$/);
             return this.phone && re.test(this.phone);
+        },
+
+        isValidReason() {
+            if (!this.input_started) return true;
+            return !!(this.reason);
         }
     }
 
