@@ -14,11 +14,14 @@ Vue.component('fast-reservations', {
     },
 
     template: `
-    <div>
-        <update-cottage-nav></update-cottage-nav>
-        <h3 class="mt-2 ms-3">Fast reservations</h3>
-        <div class="w-50">
-            <div v-for="(fr, i) in actions" class="card mt-3 ms-3">
+    <div style="background-color: #f2e488">
+        <update-ship-nav></update-ship-nav>
+        <div class="d-flex justify-content-start ms-3 mt-3">
+            <h2 class="mt-2 ms-3">Fast reservations</h2>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div>
+                <div v-for="(fr, i) in actions" class="card mt-3 ms-3 shadow">
                 <div class="card-body ms-3">
                     <div class="d-flex justify-content-between">
                         <div>
@@ -37,7 +40,8 @@ Vue.component('fast-reservations', {
                     </div>
                 </div>
             </div>
-            <div class="card position-fixed bottom-0 end-0 mb-5">
+            </div>
+            <div class="card sticky-top shadow">
                 <div class="card-body">
                     <h5 class="ms-3 mt-2">Stay period</h5>
                     <div class="d-flex justify-content-left ms-3 mt-4 me-3 mb-1">
@@ -101,7 +105,7 @@ Vue.component('fast-reservations', {
             };
             if (this.isValidActionDate && this.isValidActionDuration && this.isValidPrice && this.isValidMaxPeople &&
                 this.isValidStayDate && this.isValidStayDuration) {
-                axios.post("api/cottages/addFastReservation/" + this.$route.params.id, fr).then(response => {
+                axios.post("api/offers/addFastReservation/" + this.$route.params.id, fr).then(response => {
                     this.reload();
                 }).catch(function (error) {
                     alert('An error occurred!');
@@ -127,7 +131,7 @@ Vue.component('fast-reservations', {
         },
 
         reload() {
-            axios.get("api/cottages/getFastReservations/" + this.$route.params.id).then(response => {
+            axios.get("api/offers/getFastReservations/" + this.$route.params.id).then(response => {
                 this.actions = response.data;
             }).catch(function (error) {
                 alert('An error occurred!');

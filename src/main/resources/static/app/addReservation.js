@@ -22,9 +22,9 @@ Vue.component("add-reservation", {
 
     template: `
     <div class="d-flex justify-content-center">
-        <div class="container w-50 m-5 card">
-            <div class="mt-4 ms-3 mb-2 card-title">
-                <h5>Reservation for {{ name }}</h5>
+        <div class="container w-50 m-5 card shadow-lg">
+            <div class="mt-4 ms-3 mb-2 card-title d-flex justify-content-center">
+                <h5>Add a reservation for {{ name }}</h5>
             </div>
             <div class="card-body">
                 <div class="row mt-3 ms-3 me-3 mb-1">

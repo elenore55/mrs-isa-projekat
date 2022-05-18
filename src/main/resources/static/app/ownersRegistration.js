@@ -22,13 +22,13 @@ Vue.component("owners-registration", {
 
     template: `
     <div>
-        <div class="d-flex justify-content-center">
-            <div class="card my-5 px-4">
-                <h3 class="card-title d-flex justify-content-center mt-3">Registration</h3>
+        <div class="d-flex justify-content-center bg-gradient" style="background-color: #ddc8fb">
+            <div class="card my-5 px-4 shadow-lg" style="background-color: #fff9e8; border-radius: 15px">
+                <h3 class="card-title d-flex justify-content-center mt-3">Create an account</h3>
                 <div class="container card-body">
                     <div class="row my-2">
                         <div class="col form-floating">
-                            <input type="text" class="form-control" v-model="name" id="name-input" placeholder="Name">
+                            <input type="text" class="form-control shadow-sm" v-model="name" id="name-input" placeholder="Name">
                             <label style="color:#C0C0C0" for="name-input" class="ms-2">Name</label>
                             <p v-if="!isValidName" class="text-danger">Name is required</p>
                         </div>
@@ -118,9 +118,10 @@ Vue.component("owners-registration", {
                             <p v-if="!isValidReason" class="text-danger">Reason for registration is required</p>
                         </div>
                     </div>
-                    <div class="my-4 d-flex justify-content-end">
-                        <button type="button" class="btn btn-primary btn-lg" v-on:click="sendRequest">Submit</button>                    
+                    <div class="mt-4 mb-2 d-flex flex-column">
+                        <button type="button" class="btn btn-success btn-lg bg-gradient text-center" v-on:click="sendRequest">Submit</button>                    
                     </div>
+                    <p class="text-center text-muted my-3">Already have an account? <a href="/#/login" class="fw-bold text-body"><u>Login here</u></a></p>
                 </div>    
             </div>
         </div>
@@ -132,8 +133,7 @@ Vue.component("owners-registration", {
             if (this.pass_type === "password") {
                 this.pass_type = "text";
                 this.eye_class = "fa fa-eye-slash"
-            }
-            else {
+            } else {
                 this.pass_type = "password";
                 this.eye_class = "fa fa-eye"
             }
@@ -143,8 +143,7 @@ Vue.component("owners-registration", {
             if (this.pass_type_confirm === "password") {
                 this.pass_type_confirm = "text";
                 this.eye_class_confirm = "fa fa-eye-slash"
-            }
-            else {
+            } else {
                 this.pass_type_confirm = "password";
                 this.eye_class_confirm = "fa fa-eye"
             }
@@ -167,10 +166,10 @@ Vue.component("owners-registration", {
                     type: this.type,
                     phoneNumber: this.phone,
                     reason: this.reason
-                }).then(function(response) {
+                }).then(function (response) {
                     alert("Registration request sent!");
                 }).catch(function (error) {
-                    alert('An error occurred!');
+                    alert('Email already taken!');
                 });
             }
         }

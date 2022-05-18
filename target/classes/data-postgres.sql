@@ -142,6 +142,10 @@ insert into client (id) values (3);
 
 insert into sub (user_id, offer_id) values (3, 2);
 
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic55+2@hotmail.com', 'Mirko', 'pass3', '1233456', 'Mirkovic', 4);
+insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,3);
+insert into admin (id) values (4);
+
 -- insert into fishing_instructor (biography,id) values ('Instruktor pecanja I',5);
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Line');

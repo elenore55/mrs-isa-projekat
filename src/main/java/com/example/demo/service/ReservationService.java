@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.model.Availability;
 import com.example.demo.model.Offer;
 import com.example.demo.model.Reservation;
 import com.example.demo.repository.ReservationRepository;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Service
 public class ReservationService {
@@ -34,7 +36,13 @@ public class ReservationService {
             if (!(r.getStart().compareTo(reservation.getEnd()) > 0 || r.getEnd().compareTo(reservation.getStart()) < 0))
                 return false;
         }
-        return true;
+        List<Availability> avs = offer.getAvailabilities();
+        for (Availability a : avs) {
+            if (a.getStart().compareTo(reservation.getStart()) <= 0 && a.getEnd().compareTo(reservation.getEnd()) >= 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void notifyClient(Reservation reservation) {

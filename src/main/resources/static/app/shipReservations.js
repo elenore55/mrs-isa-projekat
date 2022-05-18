@@ -18,10 +18,13 @@ Vue.component("ship-reservations", {
     },
 
     template: `
-    <div>
+    <div style="background-color: #f2e488">
         <update-ship-nav></update-ship-nav>
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-secondary btn-lg me-3 mt-3" href="javascript:void(0)" @click="$router.push({path: '/fastReservations/' + $route.params.id})">Fast reservations</a>
+        </div>
         <div class="d-flex justify-content-center">
-            <div class="container card mt-4 w-50">
+            <div class="container card mt-4 w-50 shadow-lg">
                 <div class="m-3 card-title d-flex justify-content-center">
                     <h5>Regular reservation period</h5>
                 </div>
@@ -45,6 +48,7 @@ Vue.component("ship-reservations", {
                 </div>
             </div>
         </div>
+        <add-reservation></add-reservation>
     </div>
     `,
 
