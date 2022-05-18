@@ -31,7 +31,7 @@ Vue.component("ships-view-owner", {
     },
 
     template: `
-        <div>
+        <div style="background-color: #fff9e8">
             <div class="container">
                 <div class="d-flex justify-content-center">
                 <div class="collapse bg-light shadow rounded w-50 mt-3" id="confirm-delete">
@@ -42,7 +42,7 @@ Vue.component("ships-view-owner", {
                     </div>
                 </div>
             </div>
-                <div>
+                <div class="mt-3">
                     <div class="d-flex justify-content-end">
                         <div class="input-group me-1 w-25">
                              <input v-model="search_criterion" type="search" id="search-input" class="form-control" placeholder="Search"/>
@@ -50,9 +50,10 @@ Vue.component("ships-view-owner", {
                                 <i class="fa fa-search"></i>
                              </button>
                         </div>
-                        <a type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filter-div" role="button" aria-expanded="false" aria-controls="filter-div">Filter</a>
+                        <a type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filter-div" role="button" 
+                        aria-expanded="false" aria-controls="filter-div" style="background-color: white">Filter</a>
                     </div>
-                    <a type="button" class="btn btn-primary" href="/#/addShip/">Add ship</a>
+                    <a type="button" class="btn btn-primary shadow" href="/#/addShip/">Add ship</a>
                 </div>
                 <div id="filter-div" class="collapse bg-light shadow-sm rounded">
                     <div class="container mt-3">
@@ -73,7 +74,7 @@ Vue.component("ships-view-owner", {
             </div>
             <h3 v-if="ships.length == 0" class="text-info ms-5 mt-3">No ships to show</h3>
             <div class="container">
-                <div v-for="(s, i) in ships" class="container card m-3">
+                <div v-for="(s, i) in ships" class="container card m-3 shadow" style="border-radius: 10px">
                     <div class="row">
                         <div class="col-3 mt-2">
                             <img :src="profilePictures.at(i)" class="card-img rounded-3 mt-3" width="200" height="200"  alt="ship image">
