@@ -19,6 +19,8 @@ const InstructorsAdventures = {template: '<instructors-adventures></instructors-
 const AddAdmin = {template: '<add-admin></add-admin>'};
 const UpdateAdminInfo = {template: '<update-admin-info></update-admin-info>'};
 const AvailabilityInstructor = {template: '<availability-instructor></availability-instructor>'};
+const InstructorsCalendar = {template: '<instructor-calendar></instructor-calendar>'};
+const AdventureHistory = {template: '<adventure-history></adventure-history>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -108,6 +110,14 @@ const router = new VueRouter({
         {
             path: "/availabilityInstructor/",
             component: AvailabilityInstructor
+        },
+        {
+            path: "/instructorsCalendar/",
+            component: InstructorsCalendar
+        },
+        {
+            path: "/adventureHistory/",
+            component: AdventureHistory
         }
 
 

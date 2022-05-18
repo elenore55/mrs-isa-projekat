@@ -1,28 +1,26 @@
-Vue.component("availability-instructor",{
+Vue.component("adventure-history",{
     data:function ()
     {
         return{
             availabilities: [],
-            start:null,
-            end:null,
-            calendar:[],
             adventure:[],
             adventures:[],
-            offer:[]
+            start:null,
+            end:null
         }
     },
     mounted: function (){
         this.loadAllInstructorAvailability()
         this.loadInstructorsAdventures()
-        this.getOfferFromAdventure()
     },
     template: `
     <form style="width: 600px; margin: auto"  v-on:submit ="sendRequest">
-        <h2 class="text-center">Add adventure available time</h2>
+        <h2 class="text-center">Instructors adventures</h2>
         <div class="row">
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col">   
+<!--            ostavljamo zbog potreba sortiranja vremena-->
                 <vuejs-datepicker v-model="start" format="dd.MM.yyyy." id="start-date"></vuejs-datepicker>
                 <label>start date</label>   
             </div>
@@ -30,6 +28,10 @@ Vue.component("availability-instructor",{
                 <vuejs-datepicker v-model="end" format="dd.MM.yyyy." id="end-date"></vuejs-datepicker>
                 <label>end date</label>
             </div>
+        </div>
+        <div class = "row">
+            <p> ovde prikazati rezervacije avantura</p>
+<!--            <p v-for="ava in availabilities">{{ava}}</p>-->
         </div>
         <div class = "row">
             <h2 class="text-center">Instructors adventures</h2>
@@ -41,7 +43,7 @@ Vue.component("availability-instructor",{
             <div class="col">
                 <br>
 <!--                <button type="submit" class="btn btn-primary btn-lg" v-on:submit="sendRequest" style="width: 200px; position: relative; bottom: 0px; right: -400px">Update your info</button>-->
-                <button type="submit" class="btn btn-primary btn-lg" style="width: 200px; position: relative; bottom: 0px; right: -400px">Add</button>
+                <button type="submit" class="btn btn-primary btn-lg" style="width: 200px; position: relative; bottom: 0px; right: -400px">Load</button>
             </div>
         </div>
     </form>
@@ -54,34 +56,20 @@ Vue.component("availability-instructor",{
                 // console.log("BBBB")
             })
         },
-        getOfferFromAdventure(){
-            // axios.get("api/offers/getOffer/"+this.adventure.id).then(response => {
-            axios.get("api/offers/getOffer/1").then(response => {
-                this.offer = response.data;
-                console.log(this.offer)
-                console.log("WWWWWWWWWWWWWW")
-            })
-        },
         loadInstructorsAdventures(){
             axios.get("api/adventures/all").then(response => {
                 this.adventures = response.data;
                 // console.log(this.adventures)
             })
         },
+
         sendRequest(){
-            this.getOfferFromAdventure()
-            console.log(this.offer)
             console.log("AAAAAAAAAAAAA")
-            axios.post("api/availability/addAvailability", {
-                // availabilityDTO: this.availabilityDTO
-                start: this.start,
-                end:this.end,
-                offer: this.offer
-            }).then(function (response) {
-                alert("Successfully updated your personal information");
-            }).catch(function (error) {
-                alert("An ERROR occurred while updating your personal information");
-            });
+            axios.get("api/availability/betweenDates").then(response => {
+                this.availabilities = response.data;
+                // console.log(this.availabilities)
+                // console.log("BBBB")
+            })
         }
     }
 });

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class AvailabilityController {
         List<AvailabilityDTO> availabilityDTOS = new ArrayList<>();
 
         for (Availability availability : availabilities) {
-            if(availability.getId() == id)
+            if(availability.getId().equals(id))
                 availabilityDTOS.add(new AvailabilityDTO(availability));
         }
 
@@ -55,8 +56,24 @@ public class AvailabilityController {
     public ResponseEntity<AvailabilityDTO> saveAvailability(@RequestBody AvailabilityDTO availabilityDTO) {
         Availability availability = new Availability();
         availability.setStart(availabilityDTO.getStart());
-        availability.setEnd(availability.getEnd());
+        availability.setEnd(availabilityDTO.getEnd());
         availability.setOffer(availabilityDTO.getOffer());
+
+        availability = availabilityService.save(availability);
         return new ResponseEntity<>(new AvailabilityDTO(availability), HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/betweenDates")
+    public ResponseEntity<List<AvailabilityDTO>> getBetweenAvailabilities(LocalDateTime start, LocalDateTime end) {
+
+        List<Availability> availabilities = availabilityService.findAll();
+        List<AvailabilityDTO> availabilityDTOS = new ArrayList<>();
+
+        for (Availability availability : availabilities) {
+            if(availability.getStart().isAfter(start) && availability.getEnd().isBefore(end))
+                availabilityDTOS.add(new AvailabilityDTO(availability));
+        }
+
+        return new ResponseEntity<>(availabilityDTOS, HttpStatus.OK);
     }
 }
