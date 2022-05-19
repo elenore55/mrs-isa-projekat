@@ -12,7 +12,6 @@ import com.example.demo.repository.Profile_DataRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
 import java.util.List;
 
@@ -26,15 +25,14 @@ public class UserService {
 
     @Autowired
     public UserService(UserRepository userRepository, ClientRepository clientRepository,
-                       Profile_DataRepository profileDataRepository, AddressRepository addressRepository)
-    {
+                       Profile_DataRepository profileDataRepository, AddressRepository addressRepository) {
         this.userRepository = userRepository;
         this.clientRepository = clientRepository;
         this.profileDataRepository = profileDataRepository;
         this.addressRepository = addressRepository;
     }
 
-    public User save(User user){
+    public User save(User user) {
         Client c = new Client();
         c.setProfileData(user.getProfileData());
         c.setNumberOfPoints(0);
@@ -46,7 +44,7 @@ public class UserService {
 
     public String findUserToken(String email, String password) {
         ProfileData pd = profileDataRepository.getByEmail(email);
-        if (pd==null) return "";
+        if (pd == null) return "";
         if (isValidPassword(password, pd.getPassword())) return generateTokenById(pd.getId());
         return "";
     }
@@ -90,5 +88,9 @@ public class UserService {
         ProfileData pd = profileDataRepository.getByEmail(email);
         if (pd == null) return null;
         return clientRepository.findByProfileDataId(pd.getId());
+    }
+
+    public User findOne(Integer id) {
+        return userRepository.findById(id).orElseGet(null);
     }
 }

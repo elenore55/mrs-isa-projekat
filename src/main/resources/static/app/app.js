@@ -1,3 +1,4 @@
+const OwnersProfile = {template: '<owners-profile></owners-profile>'};
 const OwnersRegistration = {template: '<owners-registration></owners-registration>'};
 const ShipReservations = {template: '<ship-reservations></ship-reservations>'};
 const ReservationConfirmation = {template: '<reservation-confirmation></reservation-confirmation>'};
@@ -33,6 +34,10 @@ Vue.component('vuejs-datepicker', vuejsDatepicker);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/ownersProfile/:id/",
+            component: OwnersProfile
+        },
         {
             path: "/ownersRegistration/",
             component: OwnersRegistration
