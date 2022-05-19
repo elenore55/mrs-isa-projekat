@@ -41,7 +41,7 @@ Vue.component('owners-profile', {
                         <label class="ms-1 fw-bold h6">{{ owner.numberOfPoints }}</label> <label>points</label>
                     </div>
                     <div class="mt-5 d-flex justify-content-evenly">
-                        <a class="btn btn-success me-1" href="#" style="width: 50%">Edit</a>
+                        <a class="btn btn-success me-1" href="javascript:void(0)" @click="$router.push({path: '/updateOwnersProfile/' + $route.params.id})" style="width: 50%">Edit</a>
                         <a class="btn btn-danger ms-1" href="#" style="width: 50%">Delete</a>
                     </div>
                 </div>

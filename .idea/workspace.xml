@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/updateOwnersProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/ownersProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/ownersProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +33,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JavaScript File" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -143,13 +144,6 @@
       <workItem from="1651947458358" duration="9052000" />
       <workItem from="1652110981483" duration="7963000" />
       <workItem from="1652874895112" duration="221000" />
-    </task>
-    <task id="LOCAL-00028" summary="#204.3 Dijalog za potvrdu brisanja vikendice">
-      <created>1651228465847</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1651228465847</updated>
     </task>
     <task id="LOCAL-00029" summary="Dobavljanje vlasnikovih brodova #251.1">
       <created>1651236928652</created>
@@ -487,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652958488799</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Prikaz podataka o vlasniku">
+      <created>1652961675918</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1652961675918</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,7 +508,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Merge branch 'searchEntities' into cottage_reservations" />
     <MESSAGE value="Pronalazak klijenta preko maila" />
     <MESSAGE value="212.3 Cuvanje rezervacije" />
     <MESSAGE value="#202.1 Forma za unos podataka o akciji" />
@@ -532,7 +532,8 @@
     <MESSAGE value="#209.3 Slanje zahteva za registraciju administratoru" />
     <MESSAGE value="Front" />
     <MESSAGE value="Dobavljanje podataka o vlasniku" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dobavljanje podataka o vlasniku" />
+    <MESSAGE value="Prikaz podataka o vlasniku" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prikaz podataka o vlasniku" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Notifications" timestamp="1650741185090">
@@ -574,30 +575,30 @@
     </state>
     <state x="2514" y="67" key="#xdebugger.evaluate/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651706579916" />
     <state x="396" y="44" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1650828034427" />
-    <state x="2722" y="9" key="CommitChangelistDialog2" timestamp="1652958487919">
+    <state x="2722" y="9" key="CommitChangelistDialog2" timestamp="1652961675197">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652958487919" />
+    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652961675197" />
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1650826050956" />
-    <state width="1877" height="128" key="GridCell.Tab.0.bottom" timestamp="1652961602184">
+    <state width="1877" height="128" key="GridCell.Tab.0.bottom" timestamp="1652961947809">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="128" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652961602184" />
+    <state width="1877" height="128" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652961947809" />
     <state width="1877" height="347" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1652869687367" />
-    <state width="1877" height="128" key="GridCell.Tab.0.center" timestamp="1652961602184">
+    <state width="1877" height="128" key="GridCell.Tab.0.center" timestamp="1652961947808">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="128" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652961602184" />
+    <state width="1877" height="128" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652961947808" />
     <state width="1877" height="347" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1652869687366" />
-    <state width="1877" height="128" key="GridCell.Tab.0.left" timestamp="1652961602184">
+    <state width="1877" height="128" key="GridCell.Tab.0.left" timestamp="1652961947808">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="128" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652961602184" />
+    <state width="1877" height="128" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652961947808" />
     <state width="1877" height="347" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1652869687366" />
-    <state width="1877" height="128" key="GridCell.Tab.0.right" timestamp="1652961602184">
+    <state width="1877" height="128" key="GridCell.Tab.0.right" timestamp="1652961947809">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="128" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652961602184" />
+    <state width="1877" height="128" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652961947809" />
     <state width="1877" height="347" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1652869687367" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1652869687367">
       <screen x="0" y="0" width="1280" height="680" />
@@ -636,10 +637,10 @@
     </state>
     <state x="2133" y="0" width="1562" height="851" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652111187396" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1650829168397" />
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1652958492250">
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1652961708781">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652958492250" />
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652961708781" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1650826055916" />
     <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1651698474168">
       <screen x="1920" y="0" width="1920" height="1040" />
