@@ -19,7 +19,7 @@ public class EmailSender {
     @Async
     public void send(String to, String subject, String content) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("milica.popovic720@gmail.com");
+        message.setFrom("jelenababic142@gmail.com");
         message.setTo(to);
         message.setSubject(subject);
         message.setText(content);

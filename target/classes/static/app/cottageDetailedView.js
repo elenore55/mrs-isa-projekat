@@ -6,6 +6,7 @@ Vue.component("cottage-detailed-view", {
                 toDate: "",
                 name: "",
                 description: "",
+                additionalInfo: "",
                 street: "",
                 city: "",
                 country: "",
@@ -25,7 +26,7 @@ Vue.component("cottage-detailed-view", {
    mounted() {
            this.id = this.$route.params.id;
            this.fromDate = this.$route.params.fromDate;
-           this.toDate = this.$route.params.dto;
+           this.toDate = this.$route.params.toDate;
            axios.get("api/cottages/getCottageImages/" + this.id ).then(response => {
                  this.images = response.data;
 
@@ -37,6 +38,7 @@ Vue.component("cottage-detailed-view", {
            axios.get("api/cottages/getCottageWithRate/" + this.id).then(response => {
                this.name = response.data.name;
                this.description = response.data.description;
+               this.additionalInfo = response.data.additionalInfo;
                this.street = response.data.address.street;
                this.city = response.data.address.city;
                this.country = response.data.address.country;
@@ -51,8 +53,6 @@ Vue.component("cottage-detailed-view", {
            }).catch(function (error) {
                alert('An error occurred!');
            });
-
-
        },
 
    template: `
@@ -82,6 +82,9 @@ Vue.component("cottage-detailed-view", {
                 <div class= "d-flex mt-3 mb-5">
                     {{description}}
                 </div>
+                <div class= "d-flex mt-3 mb-5">
+                    {{additionalInfo}}
+                </div>
 
                 <div class = "row mx-3">
                     <div class="col-5 border border-secondary rounded bg-warning p-3 mb-3" style="font-size: 18px;">
@@ -104,7 +107,6 @@ Vue.component("cottage-detailed-view", {
                 </div>
             </div>
         </div>
-
    </div>
    `,
 
@@ -140,13 +142,25 @@ methods: {
 
         makeReservation()
         {
-            axios.get("api/reservation/makeReservation/" + this.id ).then(response => {
-                 alert("Rezervacija usojesno napravljena");
+            this.clientEmail = "jelenababic142@gmail.com";
+            //this.clientEmail = "milica.popovic55@hotmail.com";
+            this.offerId = 6;
+            this.fromDate = String(this.fromDate);
+            this.toDate = String(this.toDate);
+            axios.post("api/reservations/addReservationStringDate", {
+                 id: 6,
+                 clientEmail: this.clientEmail,
+                 offerId: this.id,
+                 fromDate: this.fromDate,
+                 toDate: this.toDate,
 
-            }).catch(function (error) {
-                  alert('An error occurred!');
-            });
-
+                 }).then(function(response) {
+                     alert("Sve je proslo dobro");
+                     location.replace('http://localhost:8000/#/clientHome');
+                     }).catch(function (error) {
+                         alert('Greska u cottage detailed');
+                         // preusmjeri na stranicu za login sa greskom
+                     });
         }
 
 

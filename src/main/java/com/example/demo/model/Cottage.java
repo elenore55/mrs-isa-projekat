@@ -56,19 +56,11 @@ public class Cottage extends Offer {
         this.images = images;
     }
 
-    public double getRateOrNegativeOne()
-    {
-        double sum = 0;
-        int n = 0;
-        for(Reservation r : getReservations())
-        {
-            if (r.getFeedback()!= null)
-            {
-                sum += r.getFeedback().getRating();
-                n++;
-            }
+    public int getNumOfBeds() {
+        int numOfBeds = 0;
+        for (Room room : this.rooms) {
+            numOfBeds += room.getNumberOfBeds();
         }
-        if (n==0) return -1;
-        return sum/n;
+        return numOfBeds;
     }
 }

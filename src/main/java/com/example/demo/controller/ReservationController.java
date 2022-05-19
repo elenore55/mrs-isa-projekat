@@ -1,7 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.CottageDTO;
 import com.example.demo.dto.ReservationDTO;
+import com.example.demo.dto.ReservationDTOstring;
+import com.example.demo.dto.ReservationExtendedDTO;
 import com.example.demo.model.Client;
+import com.example.demo.model.Cottage;
 import com.example.demo.model.Offer;
 import com.example.demo.model.Reservation;
 import com.example.demo.model.enums.ReservationStatus;
@@ -12,6 +16,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/reservations")
@@ -42,6 +52,17 @@ public class ReservationController {
         return new ResponseEntity<>(new ReservationDTO(reservation), HttpStatus.OK);
     }
 
+
+    @ResponseBody
+    @RequestMapping(path = "/addReservationStringDate", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<String> addReservationStringDate(@RequestBody ReservationDTOstring dto) {
+        Reservation r = new Reservation();
+        setAttributes(r, dto);
+        r = reservationService.save(r);
+        reservationService.notifyClient(r);
+        return new ResponseEntity<>("OK", HttpStatus.OK);
+        }
+
     @ResponseBody
     @RequestMapping(path = "/confirmReservation/{id}", method = RequestMethod.POST)
     public ResponseEntity<Void> confirmReservation(@PathVariable Integer id) {
@@ -56,6 +77,17 @@ public class ReservationController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/getClientUpcomingReservations/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<ReservationExtendedDTO>> getClientsReservations(@PathVariable Integer id) {
+        List<Reservation> reservations = reservationService.getClientsUpcomingReservations(id);
+        List<ReservationExtendedDTO> dtos = new ArrayList<>();
+        for (Reservation r : reservations) {
+            dtos.add(new ReservationExtendedDTO(r));
+        }
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
     private void setAttributes(Reservation r, ReservationDTO dto) {
         r.setId(dto.getId());
         r.setStart(dto.getStartDate());
@@ -64,5 +96,26 @@ public class ReservationController {
         r.setOffer(offer);
         Client client = userService.findClientByEmail(dto.getClientEmail());
         r.setClient(client);
+    }
+
+
+    private void setAttributes(Reservation r, ReservationDTOstring dto) {
+        r.setId(dto.getId());
+
+        r.setStart(getLocalDatetimeFromVuePicker(dto.getFromDate()));
+        r.setEnd(getLocalDatetimeFromVuePicker(dto.getToDate()));
+        Offer offer = offerService.findOne(dto.getOfferId());
+        r.setOffer(offer);
+        Client client = userService.findClientByEmail(dto.getClientEmail());
+        r.setClient(client);
+        r.setReservationStatus(ReservationStatus.PENDING);
+    }
+
+    private LocalDateTime getLocalDatetimeFromVuePicker(String d)
+    {
+        String sub = d.substring(0, 24);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd yyyy kk:mm:ss");
+        LocalDateTime localDateTime = LocalDateTime.parse(sub, formatter);
+        return localDateTime;
     }
 }

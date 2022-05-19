@@ -165,3 +165,12 @@ insert into adventure(max_people, id, fishing_instructor_id) values (8, 10,1);
 insert into adventure_images (adventure_id, images_id) values (10, 21);
 insert into adventure_images (adventure_id, images_id) values (10, 22);
 
+insert into profile_data (email,name,password,phone_number,surname,address_id) values ('jelenababic142@gmail.com','Jelena','lazni*2lazni','065726298','Babic',2);
+insert into my_users (category, number_of_points, profile_data_id) values ('REGULAR', 0, 5);
+insert into client (id) values (6);
+
+insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-05-26 20:39:00', 'PENDING', '2022-05-24 04:20:00', 6, 2);
+--insert into reservation (id, end_date_time, reservation_status, start_date_time, client_id, offer_id) values (2, '2022-06-10 20:39:00', 'APPROVED', '2022-06-04 20:39:00', 6, 2);
+insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-06-04 20:39:00', 'ACTIVE', '2022-05-19 04:20:00', 6, 1);
+insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-05-30 20:39:00', 'ACTIVE', '2022-05-29 20:39:00', 6, 5);
+insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-06-14 20:39:00', 'PENDING', '2022-06-10 20:39:00', 3, 1);

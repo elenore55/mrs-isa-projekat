@@ -9,6 +9,7 @@ public class UserFilterDTO {
     private String country;
     private String city;
     private int rate;
+    private int numberOfPeople;
     private List<String> sortByList;
     private int sortBy;
     private int direction;
@@ -17,12 +18,13 @@ public class UserFilterDTO {
 
 
 
-    public UserFilterDTO(String fromDate, String toDate, String country, String city, int rate, List<String> sortByList, int sortBy, int direction) {
+    public UserFilterDTO(String fromDate, String toDate, String country, String city, int rate, int numberOfPeople, List<String> sortByList, int sortBy, int direction) {
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.country = country;
         this.city = city;
         this.rate = rate;
+        this.numberOfPeople = numberOfPeople;
         this.sortByList = sortByList;
         this.sortBy = sortBy;
         this.direction = direction;
@@ -90,5 +92,13 @@ public class UserFilterDTO {
 
     public void setDirection(int direction) {
         this.direction = direction;
+    }
+
+    public int getNumberOfPeople() {
+        return numberOfPeople;
+    }
+
+    public void setNumberOfPeople(int numberOfPeople) {
+        this.numberOfPeople = numberOfPeople;
     }
 }

@@ -31,8 +31,7 @@ const InstructorsAdventures = {template: '<instructors-adventures></instructors-
 const AddAdmin = {template: '<add-admin></add-admin>'};
 const UpdateAdminInfo = {template: '<update-admin-info></update-admin-info>'};
 const AvailabilityInstructor = {template: '<availability-instructor></availability-instructor>'};
-
-Vue.component('vuejs-datepicker', vuejsDatepicker);
+const UpcomingReservations = {template: '<upcoming-reservations></upcoming-reservations>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -126,6 +125,10 @@ const router = new VueRouter({
         {
             path: "/cottageDetailedView/:id/:fromDate/:toDate",
             component: CottageDetailedView
+        },
+        {
+            path: "/upcomingReservations/:id",
+            component: UpcomingReservations
         },
         {
             path: "/shipDetailedView/:id",

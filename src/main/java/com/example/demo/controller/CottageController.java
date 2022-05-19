@@ -166,8 +166,6 @@ public class CottageController {
     public ResponseEntity<List<CottageDTO>> filterCottages(@RequestBody UserFilterDTO userFilterDTO) {
         List<Cottage> cottages = cottageService.filter(userFilterDTO);
         List<CottageDTO> dtos = new ArrayList<>();
-        System.out.println("######################################## Sortirnje" + userFilterDTO.getSortBy());
-
         for (Cottage c : cottages) {
             dtos.add(new CottageDTO(c));
         }

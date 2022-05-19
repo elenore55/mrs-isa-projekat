@@ -87,6 +87,11 @@ public class UserService {
     }
 
     public Client findClientByEmail(String email) {
+        List<ProfileData> li = profileDataRepository.findAll();
+        for (ProfileData p: li) {
+            System.out.println(p.getEmail());
+        }
+        System.out.println("Ovaj koji ja trazim je " + email);
         ProfileData pd = profileDataRepository.getByEmail(email);
         if (pd == null) return null;
         return clientRepository.findByProfileDataId(pd.getId());

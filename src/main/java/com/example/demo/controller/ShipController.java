@@ -1,9 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.FishingEquipmentDTO;
-import com.example.demo.dto.NavigationEquipmentDTO;
-import com.example.demo.dto.ShipDTO;
-import com.example.demo.dto.UserFilterDTO;
+import com.example.demo.dto.*;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ShipType;
 import com.example.demo.service.AdventureService;
@@ -101,6 +98,17 @@ public class ShipController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/getShipsWithRate", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<ShipWithRateDTO>> getShipsWithRate() {
+        List<Ship> ships = shipService.getShips();
+        List<ShipWithRateDTO> dtos = new ArrayList<>();
+        for (Ship s : ships) {
+            dtos.add(new ShipWithRateDTO(s));
+        }
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/getShipImages/{id}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<List<String>> getShipImages(@PathVariable Integer id) {
         Ship ship = shipService.findOne(id);
@@ -114,8 +122,8 @@ public class ShipController {
 
     @ResponseBody
     @RequestMapping(path = "/filter", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    public ResponseEntity<List<ShipDTO>> filterShips(UserFilterDTO userFilterDTO) {
-        List<Ship> ships = shipService.getShips();
+    public ResponseEntity<List<ShipDTO>> filterShips(@RequestBody UserFilterDTO userFilterDTO) {
+        List<Ship> ships = shipService.filter(userFilterDTO);
         List<ShipDTO> dtos = new ArrayList<>();
         for (Ship s : ships) {
             dtos.add(new ShipDTO(s));

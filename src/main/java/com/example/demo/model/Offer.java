@@ -128,4 +128,18 @@ public class Offer {
         this.reservations = reservations;
     }
 
+    public Double getRateOrNegativeOne() {
+        double sum = 0;
+        int n = 0;
+        for(Reservation r : getReservations())
+        {
+            if (r.getFeedback()!= null)
+            {
+                sum += r.getFeedback().getRating();
+                n++;
+            }
+        }
+        if (n==0) return -1.0;
+        return sum/n;
+    }
 }
