@@ -18,6 +18,15 @@ Vue.component('owners-profile', {
     template: `
     <div style="background-color: #ddc8fb; height: 100%">
         <div class="d-flex justify-content-center">
+            <div class="collapse bg-light shadow rounded w-50 mt-3" id="confirm-delete">
+                <p class=" d-flex justify-content-center mt-5 mb-3 fw-bold" style="font-size: 1.2em">Are you sure you want to delete your account?</p>
+                <div class="d-flex justify-content-center">
+                    <a v-on:click="deleteAccount" class="btn btn-lg btn-outline-secondary m-4" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-controls="confirm-delete">Yes</a>
+                    <a class="btn btn-lg btn-outline-secondary m-4" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-controls="confirm-delete">No</a>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
             <div class="card px-3 py-2 m-5 shadow-lg" style="background-color: #fff9e8; border-radius: 15px; width: 33%">
                 <div class="card-body m-3">
                     <h2 class="card-title d-flex justify-content-center mb-4 fw-bold">{{ owner.name }} {{ owner.surname }}</h2>
@@ -42,11 +51,18 @@ Vue.component('owners-profile', {
                     </div>
                     <div class="mt-5 d-flex justify-content-evenly">
                         <a class="btn btn-success me-1" href="javascript:void(0)" @click="$router.push({path: '/updateOwnersProfile/' + $route.params.id})" style="width: 50%">Edit</a>
-                        <a class="btn btn-danger ms-1" href="#" style="width: 50%">Delete</a>
+                        <a @click="window.scrollTo(0, 0)" class="btn btn-danger ms-1" data-bs-toggle="collapse" href="#confirm-delete" 
+                        role="button" aria-expanded="false" aria-controls="confirm-delete" style="width: 50%">Delete</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    `
+    `,
+
+    methods: {
+        deleteAccount() {
+            alert('Deleting');
+        }
+    }
 });
