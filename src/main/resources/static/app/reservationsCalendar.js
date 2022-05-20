@@ -5,6 +5,8 @@ Vue.component("reservations-calendar", {
         }
     },
 
+    props: ['id'],
+
     mounted() {
         var el = document.getElementById("calendar");
         var calendar = new FullCalendar.Calendar(el, {
@@ -18,10 +20,8 @@ Vue.component("reservations-calendar", {
     },
 
     template: `
-    <div class="m-3">
-        <div id="calendar">
-       
-        </div>
+    <div class="m-4">
+        <div id="calendar" class="p-4 shadow-lg" style="background-color: white; border-radius: 10px"></div>
     </div>
     `
 });

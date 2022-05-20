@@ -37,7 +37,7 @@ const router = new VueRouter({
     mode: 'hash',
     routes: [
         {
-            path: "/reservationsCalendar/:id/",
+            path: "/reservationsCalendar/",
             component: ReservationsCalendar
         },
         {
