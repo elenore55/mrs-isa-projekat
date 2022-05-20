@@ -12,13 +12,28 @@ Vue.component("reservations-calendar", {
             this.reservations = response.data;
             let events = [];
             for (const r of this.reservations) {
+                let color = "#36b5e3";
+                switch (r.status) {
+                    case "ACTIVE":
+                        color = "#1d9e11";
+                        break;
+                    case "FINISHED":
+                        color = "#441c80";
+                        break;
+                    case "CLIENT_NOT_ARRIVED":
+                        color = "#bf2b17";
+                        break;
+                    case "CANCELLED":
+                        color = "#5a5a5e";
+                        break;
+                }
                 events.push({
                     title: r.clientEmail,
                     start: new Date(r.startDate),
-                    end: new Date(r.endDate)
+                    end: new Date(r.endDate),
+                    backgroundColor: color
                 })
             }
-            alert(events.length);
             var el = document.getElementById("calendar");
             var calendar = new FullCalendar.Calendar(el, {
                 plugins: ['dayGrid', 'timeGrid', 'list', 'bootstrap'],
