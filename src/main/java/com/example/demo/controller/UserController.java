@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.*;
+import com.example.demo.model.Address;
 import com.example.demo.model.CottageOwner;
 import com.example.demo.model.ShipOwner;
 import com.example.demo.model.User;
@@ -71,6 +72,23 @@ public class UserController {
         if (!(user instanceof CottageOwner) && !(user instanceof ShipOwner)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
+    }
+
+    @Transactional
+    @ResponseBody
+    @RequestMapping(path = "/updateUser/{id}", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<UserDTO> updateUser(@PathVariable Integer id, @RequestBody UserDTO dto) {
+        User user = userService.findOne(id);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        user.setName(dto.getName());
+        user.setSurname(dto.getSurname());
+        user.setPhoneNumber(dto.getPhoneNumber());
+        Address a = new Address(dto.getAddress().getStreet(), dto.getAddress().getCity(), dto.getAddress().getCountry());
+        user.setAddress(a);
+        user = userService.save(user);
         return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
     }
 }

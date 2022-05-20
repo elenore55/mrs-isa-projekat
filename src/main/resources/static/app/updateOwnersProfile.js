@@ -73,7 +73,13 @@ Vue.component('update-owners-profile', {
             this.input_started = true;
             if (this.isValidName && this.isValidSurname && this.isValidStreet && this.isValidCity &&
                 this.isValidCountry && this.isValidPhone) {
-                alert('All valid');
+                axios.post('api/users/updateUser/' + this.$route.params.id, this.owner).then(response => {
+                    this.owner = response.data;
+                    alert('Profile data successfully updated');
+                    this.$router.push({path: '/ownersProfile/' + this.$route.params.id});
+                }).catch(function (error) {
+                    alert('An error occurred!');
+                });
             }
         }
     },
