@@ -21,11 +21,20 @@ Vue.component("reservations-calendar", {
             alert(events.length);
             var el = document.getElementById("calendar");
             var calendar = new FullCalendar.Calendar(el, {
-                plugins: ['dayGrid', 'bootstrap'],
+                plugins: ['dayGrid', 'timeGrid', 'list', 'bootstrap'],
                 themeSystem: 'bootstrap',
                 weekNumbers: false,
                 eventLimit: true,
-                events: events
+                events: events,
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                },
+                footer: {
+                    left: 'prev,next today',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listYear'
+                },
             });
             calendar.render();
         }).catch(function (error) {
