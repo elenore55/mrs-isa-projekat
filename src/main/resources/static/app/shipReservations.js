@@ -53,7 +53,7 @@ Vue.component("ship-reservations", {
                 </div>
             </div>
         </div>
-        <reservations-calendar id="$route.params.id"></reservations-calendar>
+        <reservations-calendar id="1"></reservations-calendar>
     </div>
     `,
 

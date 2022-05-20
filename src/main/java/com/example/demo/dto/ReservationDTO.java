@@ -10,6 +10,7 @@ public class ReservationDTO {
     private Integer offerId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    private Integer ownerId;
 
     public ReservationDTO() {
     }
@@ -61,5 +62,13 @@ public class ReservationDTO {
 
     public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 }

@@ -8,15 +8,29 @@ Vue.component("reservations-calendar", {
     props: ['id'],
 
     mounted() {
-        var el = document.getElementById("calendar");
-        var calendar = new FullCalendar.Calendar(el, {
-            plugins: ['dayGrid', 'bootstrap'],
-            themeSystem: 'bootstrap',
-            weekNumbers: true,
-            eventLimit: true,
-            events: 'https://fullcalendar.io/demo-events.json'
+        axios.get("api/users/getOwnersReservations/" + this.id).then(response => {
+            this.reservations = response.data;
+            let events = [];
+            for (const r of this.reservations) {
+                events.push({
+                    title: r.clientEmail,
+                    start: new Date(r.startDate),
+                    end: new Date(r.endDate)
+                })
+            }
+            alert(events.length);
+            var el = document.getElementById("calendar");
+            var calendar = new FullCalendar.Calendar(el, {
+                plugins: ['dayGrid', 'bootstrap'],
+                themeSystem: 'bootstrap',
+                weekNumbers: false,
+                eventLimit: true,
+                events: events
+            });
+            calendar.render();
+        }).catch(function (error) {
+            alert('An error occurred!');
         });
-        calendar.render();
     },
 
     template: `

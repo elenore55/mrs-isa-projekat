@@ -2,9 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.ChangePasswordDTO;
 import com.example.demo.dto.EditProfileDTO;
-import com.example.demo.model.Client;
-import com.example.demo.model.ProfileData;
-import com.example.demo.model.User;
+import com.example.demo.model.*;
 import com.example.demo.model.enums.Category;
 import com.example.demo.repository.AddressRepository;
 import com.example.demo.repository.ClientRepository;
@@ -92,5 +90,22 @@ public class UserService {
 
     public User findOne(Integer id) {
         return userRepository.findById(id).orElseGet(null);
+    }
+
+    public void addReservation(Integer id, Reservation reservation) {
+        User user = findOne(id);
+        if (user instanceof CottageOwner) {
+            CottageOwner c = (CottageOwner)user;
+            List<Reservation> reservations = c.getReservations();
+            reservations.add(reservation);
+            c.setReservations(reservations);
+            userRepository.save(c);
+        } else if (user instanceof ShipOwner) {
+            ShipOwner c = (ShipOwner)user;
+            List<Reservation> reservations = c.getReservations();
+            reservations.add(reservation);
+            c.setReservations(reservations);
+            userRepository.save(c);
+        }
     }
 }

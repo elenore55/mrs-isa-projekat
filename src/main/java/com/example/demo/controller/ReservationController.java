@@ -38,6 +38,7 @@ public class ReservationController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         reservation.setReservationStatus(ReservationStatus.PENDING);
         reservation = reservationService.save(reservation);
+        userService.addReservation(dto.getOwnerId(), reservation);
         reservationService.notifyClient(reservation);
         return new ResponseEntity<>(new ReservationDTO(reservation), HttpStatus.OK);
     }

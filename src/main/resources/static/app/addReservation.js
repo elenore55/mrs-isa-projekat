@@ -73,7 +73,8 @@ Vue.component("add-reservation", {
                     offerId: this.id,
                     startDate: this.start,
                     endDate: this.end,
-                    clientEmail: this.email
+                    clientEmail: this.email,
+                    ownerId: 1
                 }).then(function (response) {
                     alert('Reservation successfully added!');
                 }).catch(function (error) {

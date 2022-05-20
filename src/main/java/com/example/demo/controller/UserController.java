@@ -1,16 +1,16 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.*;
-import com.example.demo.model.Address;
-import com.example.demo.model.CottageOwner;
-import com.example.demo.model.ShipOwner;
-import com.example.demo.model.User;
+import com.example.demo.model.*;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/users")
@@ -90,5 +90,23 @@ public class UserController {
         user.setAddress(a);
         user = userService.save(user);
         return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
+    }
+
+    @Transactional
+    @ResponseBody
+    @RequestMapping(path = "/getOwnersReservations/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<ReservationDTO>> getOwnersReservations(@PathVariable Integer id) {
+        User user = userService.findOne(id);
+        if (!(user instanceof CottageOwner) && !(user instanceof ShipOwner)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        List<Reservation> reservations;
+        List<ReservationDTO> result = new ArrayList<>();
+        if (user instanceof CottageOwner) reservations = ((CottageOwner)user).getReservations();
+        else reservations = ((ShipOwner)user).getReservations();
+        for (Reservation r : reservations) {
+            result.add(new ReservationDTO(r));
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
