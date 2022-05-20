@@ -60,7 +60,7 @@ Vue.component('update-owners-profile', {
                         </div>
                     </div>
                     <div class="mt-4 mb-2 d-flex flex-column">
-                        <button type="button" class="btn btn-success btn-lg bg-gradient text-center">Save changes</button>                    
+                        <button type="button" class="btn btn-success btn-lg bg-gradient text-center" v-on:click="updateData">Save changes</button>                    
                     </div>
                 </div>
             </div>
@@ -68,30 +68,50 @@ Vue.component('update-owners-profile', {
     </div>
     `,
 
+    methods: {
+        updateData() {
+            this.input_started = true;
+            if (this.isValidName && this.isValidSurname && this.isValidStreet && this.isValidCity &&
+                this.isValidCountry && this.isValidPhone) {
+                alert('All valid');
+            }
+        }
+    },
+
+
     computed: {
         isValidName() {
-            return true;
+            if (!this.input_started) return true;
+            return !!(this.owner.name);
         },
 
         isValidSurname() {
-            return true;
+            if (!this.input_started) return true;
+            return !!(this.owner.surname);
         },
 
         isValidStreet() {
-            return true;
+            if (!this.input_started) return true;
+            return !!(this.owner.address.street);
         },
 
         isValidCity() {
-            return true;
+            if (!this.input_started) return true;
+            const re = new RegExp(/([A-Z])([A-Za-z]+)$/);
+            return !!this.owner.address.city && re.test(this.owner.address.city);
         },
 
         isValidCountry() {
-            return true;
+            if (!this.input_started) return true;
+            const re = new RegExp(/([A-Z])([A-Za-z]+)$/);
+            return !!this.owner.address.country && re.test(this.owner.address.country);
         },
 
         isValidPhone() {
-            return true;
-        }
+            if (!this.input_started) return true;
+            const re = new RegExp(/[0-9]{3}-[0-9]{3}-[0-9]{3,4}$/);
+            return this.owner.phoneNumber && re.test(this.owner.phoneNumber);
+        },
     }
 
 });

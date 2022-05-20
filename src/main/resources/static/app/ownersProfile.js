@@ -25,17 +25,17 @@ Vue.component('owners-profile', {
                         <i class="fa fa-envelope"></i>
                         <label class="h6 fw-bold">Email</label>
                     </div>
-                    <p class="h5 ms-1 mb-4">{{ owner.email }}</p>
+                    <p class="ms-1 mb-4" style="font-size: 1.2em">{{ owner.email }}</p>
                     <div>
                         <i class="fa fa-phone"></i>
                         <label class="h6 fw-bold">Phone number</label>
                     </div>
-                    <p class="ms-1 h5 mb-4">{{ owner.phoneNumber }}</p>
+                    <p class="ms-1 mb-4" style="font-size: 1.2em">{{ owner.phoneNumber }}</p>
                     <div>
                         <i class="fa fa-home"></i>
                         <label class="fw-bold h6">Address</label>
                     </div>
-                    <p class="ms-1 h5 mb-4">{{ owner.address.street }}, {{ owner.address.city }}, {{ owner.address.country }}</p>
+                    <p class="ms-1 mb-4" style="font-size: 1.2em">{{ owner.address.street }}, {{ owner.address.city }}, {{ owner.address.country }}</p>
                     <div style="font-size: 1.2em">
                         <label class="mt-2 ms-1 fw-bold h6">{{ owner.category }}</label> <label>user</label> <br/>
                         <label class="ms-1 fw-bold h6">{{ owner.numberOfPoints }}</label> <label>points</label>
