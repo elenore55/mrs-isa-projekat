@@ -26,7 +26,7 @@ Vue.component("owners-registration", {
             <div class="card my-5 px-4 shadow-lg" style="background-color: #fff9e8; border-radius: 15px">
                 <h3 class="card-title d-flex justify-content-center mt-3">Create an account</h3>
                 <div class="container card-body">
-                    <div class="row my-2">
+                    <div class="row mt-2 mb-3">
                         <div class="col form-floating">
                             <input type="text" class="form-control shadow-sm" v-model="name" id="name-input" placeholder="Name">
                             <label style="color:#C0C0C0" for="name-input" class="ms-2">Name</label>
@@ -38,7 +38,7 @@ Vue.component("owners-registration", {
                             <p v-if="!isValidSurname" class="text-danger">Surname is required</p>
                         </div>
                     </div>
-                    <div class="row my-2">
+                    <div class="row mt-3 mb-2">
                         <div class="col form-floating">
                             <input type="email" class="form-control" id="email-input" v-model="email" placeholder="Email">
                             <label for="email-input" class="ms-2" style="color:#C0C0C0">Email</label>
@@ -61,7 +61,7 @@ Vue.component("owners-registration", {
                             <p v-if="isStrongPassword" class="text-success">Strong password</p>
                         </div>
                     </div>
-                    <div class="row my-2">
+                    <div class="row mt-2 mb-3">
                         <div class="col">
                             <div class="input-group">
                                 <div class="form-floating flex-grow-1">
@@ -75,14 +75,14 @@ Vue.component("owners-registration", {
                             <p v-if="!areValidPasswords" class="text-danger">Passwords are required and must be matching</p>
                         </div>
                     </div>
-                    <div class="row my-2">
+                    <div class="row mb-2 mt-3">
                         <div class="col form-floating">
                             <input type="text" class="form-control" id="street-input" v-model="street" placeholder="Street">
                             <label for="street-input" class="ms-2" style="color:#C0C0C0">Address</label>
                             <p v-if="!isValidStreet" class="text-danger">Invalid address</p>
                         </div>
                     </div>
-                    <div class="row my-2">
+                    <div class="row mt-2 mb-3">
                         <div class="col form-floating">
                             <input type="text" class="form-control" id="city-input" v-model="city" placeholder="City">
                             <label for="city-input" class="ms-2" style="color:#C0C0C0">City</label>
@@ -94,14 +94,14 @@ Vue.component("owners-registration", {
                             <p v-if="!isValidCountry" class="text-danger">Invalid country</p>
                         </div>
                     </div>
-                    <div class="row my-2">
+                    <div class="row my-3">
                         <div class="col form-floating">
                             <input type="tel" id="phone-input" class="form-control" v-model="phone" placeholder="Phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3,4}"/>
                             <label for="phone-input" class="form-label ms-2" style="color:#C0C0C0">Phone number</label>
                             <p v-if="!isValidPhone" class="text-danger">Invalid phone number</p>
                         </div>
                     </div>
-                    <div class="row my-2">
+                    <div class="row my-3">
                         <div class="col form-floating">
                             <select class="form-select form-control" id="type-select" v-model="type">
                                 <option selected>Cottage owner</option>
@@ -111,7 +111,7 @@ Vue.component("owners-registration", {
                             <p v-if="!isValidType" class="text-danger">Invalid type</p>
                         </div>
                     </div>
-                    <div class="row my-2">
+                    <div class="row my-3">
                         <div class="col form-floating">
                             <textarea id="reason-input" v-model="reason" class="form-control" placeholder="Reason for registration" style="height: 100px"></textarea>
                             <label for="reason-input" class="form-label ms-2" style="color:#C0C0C0">Reason for registration</label>

@@ -20,7 +20,7 @@ insert into address (city,country,street) values ('London','Velika Britanija','B
 insert into address (city,country,street) values ('Rim','Italija','Balzakova 20');
 insert into address (city,country,street) values ('Venecija','Italija','Marka Pola 20');
 
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email@gmail.com', 'Pero', 'pass1', '123345', 'Peric', 1);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email@gmail.com', 'Pero', 'pass1', '065-111-5555', 'Peric', 1);
 -- insert into profile_data (email,name,password,phone_number,surname,address_id) values ('email@gmail.com','ImeInstruktora','11223344','06444124214','PrezimeInstruktora',11);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,1);
 insert into ship_owner (id) values (1);
@@ -136,7 +136,7 @@ insert into ship_images (ship_id, images_id) values (1, 20);
 insert into ship_images (ship_id, images_id) values (4, 13);
 insert into ship_images (ship_id, images_id) values (8, 15);
 
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic55@hotmail.com', 'Marko', 'pass3', '1233456', 'Markovic', 3);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic55@hotmail.com', 'Marko', 'pass3', '066-321-3443', 'Markovic', 3);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,3);
 insert into client (id) values (3);
 
