@@ -85,7 +85,7 @@ Vue.component("reservations-calendar", {
             });
             calendar.render();
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 

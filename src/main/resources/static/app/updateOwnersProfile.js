@@ -11,7 +11,7 @@ Vue.component('update-owners-profile', {
         axios.get("api/users/getOwner/" + this.$route.params.id).then(response => {
             this.owner = response.data;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -75,10 +75,10 @@ Vue.component('update-owners-profile', {
                 this.isValidCountry && this.isValidPhone) {
                 axios.post('api/users/updateUser/' + this.$route.params.id, this.owner).then(response => {
                     this.owner = response.data;
-                    alert('Profile data successfully updated');
+                    Swal.fire('Success', 'Profile data updated!', 'success');
                     this.$router.push({path: '/ownersProfile/' + this.$route.params.id});
                 }).catch(function (error) {
-                    alert('An error occurred!');
+                    Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }
         }

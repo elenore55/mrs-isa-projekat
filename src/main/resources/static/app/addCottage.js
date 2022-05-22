@@ -203,9 +203,9 @@ Vue.component("add-cottage", {
                     availableEnd: this.end_av,
                     ownerId: this.cottage.owner_id
                 }).then(function(response) {
-                    alert('Cottage successfully added!');
+                    Swal.fire('Success', 'Cottage added!', 'success');
                 }).catch(function (error) {
-                    alert('An error occurred!');
+                    Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             } else {
                 this.cottage.errors.name = true;

@@ -15,7 +15,7 @@ Vue.component('add-cottage-reservation', {
         axios.get("api/cottages/getCottage/" + this.$route.params.id).then(response => {
             this.name = response.data.name;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -67,12 +67,12 @@ Vue.component('add-cottage-reservation', {
                     endDate: this.end,
                     clientEmail: this.email
                 }).then(function(response) {
-                    alert('Cottage reservation successfully added!');
+                    Swal.fire('Success', 'Reservation added!', 'success');
                 }).catch(function (error) {
                     if(error.response.status === 404) {
-                        alert('Client not found');
+                        Swal.fire('Error', 'Client not found!', 'error');
                     } else {
-                        alert('Cottage already reserved')
+                        Swal.fire('Error', 'Cottage already reserved!', 'error');
                     }
                 });
             }

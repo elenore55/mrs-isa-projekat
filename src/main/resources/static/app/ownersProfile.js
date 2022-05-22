@@ -66,9 +66,9 @@ Vue.component('owners-profile', {
                id: this.$route.params.id,
                reason: this.reason
             }).then(response => {
-                alert('Request for account deletion sent!');
+                Swal.fire('Success', 'Request for account deletion sent!', 'success');
             }).catch(function (error) {
-                alert('An error occurred!');
+                Swal.fire('Error', 'Something went wrong!', 'error');
             });
         }
     }

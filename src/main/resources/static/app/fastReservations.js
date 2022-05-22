@@ -108,7 +108,7 @@ Vue.component('fast-reservations', {
                 axios.post("api/offers/addFastReservation/" + this.$route.params.id, fr).then(response => {
                     this.reload();
                 }).catch(function (error) {
-                    alert('An error occurred!');
+                    Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }
         },
@@ -126,7 +126,7 @@ Vue.component('fast-reservations', {
             axios.delete("api/cottages/deleteFastReservation/" + this.$route.params.id + "/" + actionId).then(response => {
                 this.actions.splice(index, 1)
             }).catch(function (error) {
-                alert('An error occurred!');
+                Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
@@ -134,7 +134,7 @@ Vue.component('fast-reservations', {
             axios.get("api/offers/getFastReservations/" + this.$route.params.id).then(response => {
                 this.actions = response.data;
             }).catch(function (error) {
-                alert('An error occurred!');
+                Swal.fire('Error', 'Something went wrong!', 'error');
             });
         }
     },

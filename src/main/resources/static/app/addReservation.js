@@ -16,7 +16,7 @@ Vue.component("add-reservation", {
         axios.get("api/offers/getName/" + this.$route.params.id).then(response => {
             this.name = response.data;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -78,12 +78,12 @@ Vue.component("add-reservation", {
                     clientEmail: this.email,
                     ownerId: 1
                 }).then(function (response) {
-                    alert('Reservation successfully added!');
+                    Swal.fire('Success', 'Reservation added!', 'success');
                 }).catch(function (error) {
                     if (error.response.status === 404) {
-                        alert('Client not found');
+                        Swal.fire('Error', 'Client not found!', 'error');
                     } else {
-                        alert('Already reserved')
+                        Swal.fire('Error', 'Already reserved!', 'error');
                     }
                 });
             }

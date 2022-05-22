@@ -27,13 +27,13 @@ Vue.component("cottages-view-owner", {
         axios.get("api/addresses/getCities").then(response => {
             this.all_cities = response.data;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
 
         axios.get("api/addresses/getCountries").then(response => {
             this.all_countries = response.data;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -92,7 +92,7 @@ Vue.component("cottages-view-owner", {
                             <p class="card-text">Number of beds: {{ c.numberOfBeds }}</p>
                             <div class="d-flex flex-row mt-3">
                                 <a :href="'/#/updateCottage/' + c.id" class="btn btn-primary me-3 mt-3">View</a>
-                                <a @click="prepareDelete(c.id)" class="btn btn-danger mt-3" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-expanded="false" aria-controls="confirm-delete">Delete</a>
+                                <button type="button" class="btn btn-danger mt-3" v-on:click="setCurrentId(c.id)">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -109,6 +109,17 @@ Vue.component("cottages-view-owner", {
 
         setCurrentId(id) {
             this.current_id = id;
+            Swal.fire({
+                title: 'Are you sure you want to delete the cottage?',
+                showDenyButton: true,
+                confirmButtonText: 'Yes, delete it',
+                denyButtonText: `Cancel`,
+                icon: 'warning'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.deleteCottage();
+                }
+            });
         },
 
         getCurrentCottageId() {
@@ -117,10 +128,10 @@ Vue.component("cottages-view-owner", {
 
         deleteCottage() {
             axios.delete("api/cottages/deleteCottage/" + this.current_id).then(response => {
-                alert('Cottage successfully deleted');
+                Swal.fire('Success', 'Cottage deleted!', 'success');
                 this.reload();
             }).catch(function (error) {
-                alert('It is not possible to delete the cottage!');
+                Swal.fire('Error', 'It is not possible to delete the cottage!', 'error');
             });
             this.of = "auto";
         },
@@ -129,7 +140,7 @@ Vue.component("cottages-view-owner", {
             axios.get("api/cottageOwner/getCottages/" + this.owner_id + "/" + this.search_criterion).then(response => {
                 this.cottages = response.data;
             }).catch(function (error) {
-                alert('An error occurred!');
+                Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
@@ -144,7 +155,7 @@ Vue.component("cottages-view-owner", {
                     }
                 }
             }).catch(function (error) {
-                alert('An error occurred!');
+                Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
@@ -160,7 +171,7 @@ Vue.component("cottages-view-owner", {
                 }).then(response => {
                     this.cottages = response.data;
                 }).catch(function (error) {
-                    alert('An error occurred!');
+                    Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             } else {
                 this.price_error = true;

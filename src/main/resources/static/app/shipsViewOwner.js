@@ -20,13 +20,13 @@ Vue.component("ships-view-owner", {
         axios.get("api/addresses/getCities").then(response => {
             this.all_cities = response.data;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
 
         axios.get("api/addresses/getCountries").then(response => {
             this.all_countries = response.data;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -89,7 +89,7 @@ Vue.component("ships-view-owner", {
                             <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
                             <div class="d-flex flex-row mt-3">
                                 <a :href="'/#/updateShip/' + s.id" class="btn btn-primary me-3 mt-3">View</a>
-                                <a @click="setCurrentId(s.id)" class="btn btn-danger mt-3" data-bs-toggle="collapse" href="#confirm-delete" role="button" aria-expanded="false" aria-controls="confirm-delete">Delete</a>
+                                <button type="button" class="btn btn-danger mt-3" v-on:click="setCurrentId(s.id)">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -110,20 +110,31 @@ Vue.component("ships-view-owner", {
                     }
                 }
             }).catch(function (error) {
-                alert('An error occurred!');
+                Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
         setCurrentId(id) {
             this.current_id = id;
+            Swal.fire({
+                title: 'Are you sure you want to delete the ship?',
+                showDenyButton: true,
+                confirmButtonText: 'Yes, delete it',
+                denyButtonText: `Cancel`,
+                icon: 'warning'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.deleteShip();
+                }
+            });
         },
 
         deleteShip() {
             axios.delete("api/ships/deleteShip/" + this.current_id).then(response => {
-                alert('Ship successfully deleted');
+                Swal.fire('Success', 'Ship deleted!', 'success');
                 this.reload();
             }).catch(function (error) {
-                alert('It is not possible to delete the ship!');
+                Swal.fire('Error', 'It is not possible to delete the ship!', 'error');
             });
         },
 
@@ -131,7 +142,7 @@ Vue.component("ships-view-owner", {
             axios.get("api/shipOwner/getShips/" + this.owner_id + "/" + this.search_criterion).then(response => {
                 this.ships = response.data;
             }).catch(function (error) {
-                alert('An error occurred!');
+                Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
@@ -153,7 +164,7 @@ Vue.component("ships-view-owner", {
                 }).then(response => {
                     this.ships = response.data;
                 }).catch(function (error) {
-                    alert('An error occurred!');
+                    Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }
         },

@@ -167,9 +167,9 @@ Vue.component("owners-registration", {
                     phoneNumber: this.phone,
                     reason: this.reason
                 }).then(function (response) {
-                    alert("Registration request sent!");
+                    Swal.fire('Success', 'Registration request sent!', 'success');
                 }).catch(function (error) {
-                    alert('Email already taken!');
+                    Swal.fire('Error', 'Email already taken!', 'error');
                 });
             }
         }

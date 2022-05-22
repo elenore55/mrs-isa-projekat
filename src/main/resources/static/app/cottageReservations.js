@@ -13,7 +13,7 @@ Vue.component("cottage-reservations", {
         axios.get("api/cottages/getCottage/" + this.$route.params.id).then(response => {
             this.cottage = response.data;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -62,9 +62,9 @@ Vue.component("cottage-reservations", {
             this.input_started = true;
             if (this.areValidDates) {
                 axios.post("api/cottages/updateReservationPeriod", this.cottage).then(function(response) {
-                    alert('Cottage successfully updated!');
+                    Swal.fire('Success', 'Cottage updated!', 'success');
                 }).catch(function (error) {
-                    alert('An error occurred!');
+                    Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }
         }

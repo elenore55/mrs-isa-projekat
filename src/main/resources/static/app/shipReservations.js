@@ -13,7 +13,7 @@ Vue.component("ship-reservations", {
         axios.get("api/ships/getShip/" + this.$route.params.id).then(response => {
             this.ship = response.data;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -62,9 +62,9 @@ Vue.component("ship-reservations", {
             this.input_started = true;
             if (this.areValidDates) {
                 axios.post("api/ships/updateReservationPeriod", this.ship).then(function(response) {
-                    alert('Ship successfully updated!');
+                    Swal.fire('Success', 'Ship updated!', 'success');
                 }).catch(function (error) {
-                    alert('An error occurred!');
+                    Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }
         }
