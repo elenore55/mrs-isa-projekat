@@ -146,6 +146,10 @@ insert into profile_data (email, name, password, phone_number, surname, address_
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,3);
 insert into admin (id) values (4);
 
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (1, 3, 'PENDING', '20220523 10:05:00 AM', '20220528 10:05:00 AM');
+insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 1);
+insert into availability (offer_id, star_date_time, end_date_time) values (1, '20220501 00:00:01 AM', '20220731 11:59:59 PM')
+
 -- insert into fishing_instructor (biography,id) values ('Instruktor pecanja I',5);
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Line');

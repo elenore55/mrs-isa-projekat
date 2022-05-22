@@ -21,43 +21,45 @@ Vue.component("add-reservation", {
     },
 
     template: `
-    <div class="d-flex justify-content-center">
-        <div class="container w-50 m-5 card shadow-lg">
-            <div class="mt-4 ms-3 mb-2 card-title d-flex justify-content-center">
-                <h5>Add a reservation for {{ name }}</h5>
-            </div>
-            <div class="card-body">
-                <div class="row mt-3 ms-3 me-3 mb-1">
-                    <div class="col form-floating">
-                        <input type="email" id="client-mail-input" v-model="email" class="form-control">
-                        <label for="client-mail-input">Client email</label>
-                    </div>
+    <div style="background-color: #f2e488; height: 100vh">
+        <div class="d-flex justify-content-center">
+            <div class="container w-50 m-5 card shadow-lg" style="border-radius: 10px">
+                <div class="mt-4 ms-3 mb-2 card-title d-flex justify-content-center">
+                    <h4>Add a reservation for {{ name }}</h4>
                 </div>
-                <p v-if="!isValidEmail" class="ms-4 text-danger">Client's email is required!</p>
-                <div class="d-flex justify-content-around ms-3 mt-4 me-3 mb-1">
-                    <div class="mt-1 ms-3 me-4 mb-1">
-                        <label for="start-date">Start date</label>
-                        <div class="input-group" v-on:click="setStartPicker">
-                            <span class="input-group-text" v-on:click="setStartPicker">
-                                <i class="fa fa-calendar"></i>
-                            </span>
-                            <input type="text" class="form-control" id="start-date-pick" v-on:click="setStartPicker">
+                <div class="card-body">
+                    <div class="row mt-3 ms-3 me-3 mb-1">
+                        <div class="col form-floating">
+                            <input type="email" id="client-mail-input" v-model="email" class="form-control">
+                            <label for="client-mail-input">Client email</label>
                         </div>
                     </div>
-                    <div class="mt-1 mb-1 me-3">
-                        <label for="end-date">End date</label>                
-                        <div class="input-group" v-on:click="setEndPicker">
-                            <span class="input-group-text" v-on:click="setEndPicker">
-                                <i class="fa fa-calendar"></i>
-                            </span>
-                            <input type="text" class="form-control" id="end-date-pick" v-on:click="setEndPicker">
+                    <p v-if="!isValidEmail" class="ms-4 text-danger">Client's email is required!</p>
+                    <div class="d-flex justify-content-around ms-3 mt-4 me-3 mb-1">
+                        <div class="mt-1 ms-3 me-4 mb-1">
+                            <label for="start-date">Start date</label>
+                            <div class="input-group" v-on:click="setStartPicker">
+                                <span class="input-group-text" v-on:click="setStartPicker">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                <input type="text" class="form-control" id="start-date-pick" v-on:click="setStartPicker">
+                            </div>
+                        </div>
+                        <div class="mt-1 mb-1 me-3">
+                            <label for="end-date">End date</label>                
+                            <div class="input-group" v-on:click="setEndPicker">
+                                <span class="input-group-text" v-on:click="setEndPicker">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                <input type="text" class="form-control" id="end-date-pick" v-on:click="setEndPicker">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <p v-if="!areValidDates" class="ms-4 text-danger">Dates are required and must be in ascending order!</p>
-                <div class="row mt-4 mb-3 me-3">
-                    <div class="col text-end">
-                        <button type="button" class="btn btn-primary" v-on:click="addReservation">Submit</button>
+                    <p v-if="!areValidDates" class="ms-4 text-danger">Dates are required and must be in ascending order!</p>
+                    <div class="row mt-4 mb-3 me-3">
+                        <div class="col text-end">
+                            <button type="button" class="btn btn-primary" v-on:click="addReservation">Submit</button>
+                        </div>
                     </div>
                 </div>
             </div>

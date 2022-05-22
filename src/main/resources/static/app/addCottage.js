@@ -32,127 +32,136 @@ Vue.component("add-cottage", {
        }
    },
    template: `
-    <form novalidate>
-      <h2 class="text-center my-4">Add Cottage</h2>
-      <div class="container">
-        <div class="row my-4 mx-1">
-          <div class="col">
-              <div class="form-floating has-validation">
-                <input v-on:focus="cottage.errors.name = false" v-model="cottage.name" type="text" class="form-control" id="name-input" required/>
-                <p v-if="!isValidName && cottage.errors.name" class="text-danger">Name is required.</p>
-                <label for="name-input">Name</label>
-              </div>
-          </div>
-          <div class="col">
-              <div class="form-floating">
-                <input v-on:focus="cottage.errors.description = false" v-model="cottage.description" type="text" class="form-control" id="desc-input" required/>
-                <label for="desc-input">Description</label>
-                <p v-if="!isValidDescription && cottage.errors.description" class="text-danger">Description is required.</p>
-              </div>
-          </div>
-          <div class="col">
-              <div class="form-floating">
-                <input v-on:focus="cottage.errors.price = false" v-model="cottage.price" type="number" step="0.01" min="0" class="form-control" id="price-input" required/>
-                <label for="price-input">Price (EUR)</label>
-                <p v-if="!isValidPrice && cottage.errors.price" class="text-danger">Price is required.</p>
-              </div>
-          </div>
-        </div>
-        <div class="row justify-content-center my-4 mx-1">
-          <div class="col"">
-            <div class="container">
-            <label class="form-label h5">Address</label>
-              <div class="row m-1">
-                <div class="col form-floating">
-                    <input v-on:focus="cottage.errors.street = false" v-model="cottage.address.street" type="text" class="form-control" id="street-input" />
-                    <label for="street-input">Street</label>
-                    <p v-if="!isValidStreet && cottage.errors.street" class="text-danger">Invalid street name.</p> 
-                </div>
-              </div>
-              <div class="row m-1">
-                <div class="col form-floating">
-                    <input v-on:focus="cottage.errors.city = false" v-model="cottage.address.city" type="text" class="form-control" id="city-input" />
-                    <label for="city-input">City</label>
-                    <p v-if="!isValidCity && cottage.errors.city" class="text-danger">Invalid city name.</p>
-                </div>
-              </div>
-              <div class="row m-1">
-                <div class="col form-floating">
-                    <input v-on:focus="cottage.errors.country = false" v-model="cottage.address.country" type="text" class="form-control" id="country-input"/>
-                    <label for="country-input">Country</label>
-                    <p v-if="!isValidCountry && cottage.errors.country" class="text-danger">Invalid country name.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col form-floating">
-            <textarea v-model="cottage.additionalInfo" class="form-control mt-5" id="info-textarea" style="height: 150px"></textarea>
-            <label for="info-textarea" class="mt-5">Additional info</label>
-          </div>
-        </div>      
-        <div class="row mt-5 mx-1">
-          <div class="col">
-            <label class="form-label h5">Rules</label>
-            <div v-for="(r, i) in cottage.rules" class="mb-2">
-                <span>{{ i + 1 }}. {{ r }}</span>
-                <button type="button" v-on:click="cottage.rules.splice(i, 1)" class="btn btn-outline-danger btn-sm float-end">Delete</button>
-            </div>
-            <input v-model="cottage.rule" id="rule-input" type="text" class="form-control">
-            <button type="button" v-on:click="addRule" class="btn btn-secondary my-1">Add rule</button>
-          </div>
-          <div class="col">
-            <label class="form-label h5">Rooms</label>
-            <div v-for="(r, i) in cottage.rooms" class="container mb-1 card">
-                <div class="card-body">
-                    <p class="card-title h6 mt-1">Room number {{ i + 1 }}</p>
-                    <label>Number of beds</label>
-                    <div class="row">
+    <div style="background-color: #f2e488; height: 100%" class="p-4">
+        <div class="container card mt-3 shadow-lg w-75 px-2">
+            <div class="card-body">
+                <h2 class="text-center mb-4 card-title">Add Cottage</h2>
+                <div class="container">
+                    <div class="row my-4 mx-1">
                         <div class="col">
-                            <input v-model="r.numberOfBeds" type="number" min="1" class="form-control w-75">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa fa-user icon"></i></span>
+                                <div class="form-floating has-validation flex-grow-1">
+                                    <input v-on:focus="cottage.errors.name = false" v-model="cottage.name" type="text" class="form-control" id="name-input"/>
+                                    <label for="name-input">Name</label>
+                                </div>
+                            </div>
+                            <p v-if="!isValidName && cottage.errors.name" class="text-danger">Name is required.</p>
                         </div>
                         <div class="col">
-                            <button type="button" v-on:click="cottage.rooms.splice(i, 1)" class="btn btn-sm btn-outline-danger float-end">Delete</button>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa fa-eur icon"></i></span>
+                                <div class="form-floating flex-grow-1">
+                                    <input v-on:focus="cottage.errors.price = false" v-model="cottage.price" type="number" step="0.01" min="0" class="form-control" id="price-input"/>
+                                    <label for="price-input">Price (EUR)</label>
+                                </div>
+                            </div>
+                            <p v-if="!isValidPrice && cottage.errors.price" class="text-danger">Price is required.</p>
+                        </div>
+                    </div>
+                    <div class="row my-4 mx-1">
+                        <div class="col">
+                            <div class="form-floating">
+                                <textarea v-on:focus="cottage.errors.description = false" v-model="cottage.description" class="form-control" id="desc-input" style="height: 150px"/>
+                                <label for="desc-input">Description</label>
+                                <p v-if="!isValidDescription && cottage.errors.description" class="text-danger">Description is required.</p>
+                            </div>
+                        </div>
+                        <div class="col form-floating">
+                            <textarea v-model="cottage.additionalInfo" class="form-control" id="info-textarea" style="height: 150px"></textarea>
+                            <label for="info-textarea">Additional info</label>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center my-4 mx-1">
+                        <div class="col container">
+                            <i class="fa fa-home"></i>
+                            <label class="form-label h5 ms-1">Address</label>
+                            <div class="row my-2">
+                                <div class="col form-floating">
+                                    <input v-on:focus="cottage.errors.street = false" v-model="cottage.address.street" type="text" class="form-control" id="street-input" />
+                                    <label for="street-input">Street</label>
+                                    <p v-if="!isValidStreet && cottage.errors.street" class="text-danger">Invalid street name.</p> 
+                                </div>
+                            </div>
+                            <div class="row my-2">
+                                <div class="col form-floating">
+                                    <input v-on:focus="cottage.errors.city = false" v-model="cottage.address.city" type="text" class="form-control" id="city-input" />
+                                    <label for="city-input">City</label>
+                                    <p v-if="!isValidCity && cottage.errors.city" class="text-danger">Invalid city name.</p>
+                                </div>
+                                <div class="col form-floating">
+                                    <input v-on:focus="cottage.errors.country = false" v-model="cottage.address.country" type="text" class="form-control" id="country-input"/>
+                                    <label for="country-input">Country</label>
+                                    <p v-if="!isValidCountry && cottage.errors.country" class="text-danger">Invalid country name.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>      
+                    <div class="row mt-5 mx-1">
+                        <div class="col">
+                            <label class="form-label h5">Rules</label>
+                            <div v-for="(r, i) in cottage.rules" class="mb-2">
+                                <span>{{ i + 1 }}. {{ r }}</span>
+                                <button type="button" v-on:click="cottage.rules.splice(i, 1)" class="btn btn-outline-danger btn-sm float-end">Delete</button>
+                            </div>
+                            <input v-model="cottage.rule" id="rule-input" type="text" class="form-control">
+                            <button type="button" v-on:click="addRule" class="btn btn-secondary my-1">Add rule</button>
+                        </div>
+                        <div class="col">
+                            <label class="form-label h5">Rooms</label>
+                            <div v-for="(r, i) in cottage.rooms" class="container mb-1 card">
+                                <div class="card-body">
+                                    <p class="card-title h6 mt-1">Room number {{ i + 1 }}</p>
+                                    <label>Number of beds</label>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input v-model="r.numberOfBeds" type="number" min="1" class="form-control w-75">
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" v-on:click="cottage.rooms.splice(i, 1)" class="btn btn-sm btn-outline-danger float-end">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input v-model="cottage.numBeds" id="room-input" type="number" min="1" placeholder="Number of beds" class="form-control">            
+                            <button type="button" v-on:click="addRoom" class="btn btn-secondary my-1">Add room</button>
+                        </div>
+                    </div>
+                    <div class="row mt-5 mx-1">
+                        <div class="col">
+                            <div class="m-3">
+                                <h5>Regular reservation period</h5>
+                            </div>
+                            <div class="d-flex justify-content-start">
+                                <div class="me-3 mb-4">
+                                    <label for="start-date">Start</label>
+                                    <vuejs-datepicker v-model="cottage.start_av" format="dd.MM." id="start-date"></vuejs-datepicker>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="end-date">End</label>                
+                                    <vuejs-datepicker v-model="cottage.end_av" format="dd.MM." id="end-date"></vuejs-datepicker>
+                                </div>
+                            </div>
+                            <p v-if="!areValidDates" class="ms-3 text-danger">Dates are required and must be in ascending order!</p>
+                        </div>
+                         <div class="col form-group">
+                            <label class="form-label h5">Images</label> <br />
+                            <div v-for="(img, i) in cottage.images" class="mb-2">
+                               <span>{{ img }}</span>
+                               <button type="button" v-on:click="cottage.images.splice(i, 1)" class="btn btn-outline-danger btn-sm float-end">Delete</button>
+                            </div>
+                            <input type="file" class="form-control-file" id="img" name="img" accept="image/*" @change="addImage($event)" multiple>
+                          </div>
+                    </div>
+                    <div class="row my-3">
+                        <div class="col text-end">
+                            <button type="button" class="btn btn-primary btn-lg" v-on:click="sendRequest">Submit</button>
                         </div>
                     </div>
                 </div>
             </div>
-                <input v-model="cottage.numBeds" id="room-input" type="number" min="1" placeholder="Number of beds" class="form-control">            
-                <button type="button" v-on:click="addRoom" class="btn btn-secondary my-1">Add room</button>
         </div>
-        </div>
-        <div class="row mt-5 mx-1">
-            <div class="col">
-                <div class="m-3">
-                    <h5>Regular reservation period</h5>
-                </div>
-                <div class="d-flex justify-content-start">
-                    <div class="me-3 mb-4">
-                        <label for="start-date">Start</label>
-                        <vuejs-datepicker v-model="cottage.start_av" format="dd.MM." id="start-date"></vuejs-datepicker>
-                    </div>
-                    <div class="mb-4">
-                        <label for="end-date">End</label>                
-                        <vuejs-datepicker v-model="cottage.end_av" format="dd.MM." id="end-date"></vuejs-datepicker>
-                    </div>
-                </div>
-                <p v-if="!areValidDates" class="ms-3 text-danger">Dates are required and must be in ascending order!</p>
-            </div>
-             <div class="col form-group">
-                <label class="form-label h5">Images</label> <br />
-                <div v-for="(img, i) in cottage.images" class="mb-2">
-                   <span>{{ img }}</span>
-                   <button type="button" v-on:click="cottage.images.splice(i, 1)" class="btn btn-outline-danger btn-sm float-end">Delete</button>
-                </div>
-                <input type="file" class="form-control-file" id="img" name="img" accept="image/*" @change="addImage($event)" multiple>
-              </div>
-        </div>
-        <div class="row mt-1">
-            <div class="col text-end">
-                <button type="button" class="btn btn-primary btn-lg" v-on:click="sendRequest">Submit</button>
-            </div>
-        </div>
-      </div>
-    </form>
+    </div>
    `,
     methods: {
         addRule() {
