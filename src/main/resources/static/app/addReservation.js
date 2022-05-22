@@ -6,7 +6,8 @@ Vue.component("add-reservation", {
             name: "",
             email: '',
             input_started: false,
-            value: ''
+            value: '',
+            tdStart: null
         }
     },
 
@@ -15,6 +16,9 @@ Vue.component("add-reservation", {
 
         axios.get("api/offers/getName/" + this.$route.params.id).then(response => {
             this.name = response.data;
+            this.tdStart = new tempusDominus.TempusDominus(document.getElementById('startPicker'));
+            this.tdEnd = new tempusDominus.TempusDominus(document.getElementById('endPicker'));
+
         }).catch(function (error) {
             Swal.fire('Error', 'Something went wrong!', 'error');
         });
@@ -38,20 +42,20 @@ Vue.component("add-reservation", {
                     <div class="d-flex justify-content-around ms-3 mt-4 me-3 mb-1">
                         <div class="mt-1 ms-3 me-4 mb-1">
                             <label for="start-date">Start date</label>
-                            <div class="input-group" v-on:click="setStartPicker">
-                                <span class="input-group-text" v-on:click="setStartPicker">
-                                    <i class="fa fa-calendar"></i>
-                                </span>
-                                <input type="text" class="form-control" id="start-date-pick" v-on:click="setStartPicker">
+                            <div class='input-group' id='startPicker' data-td-target-input='nearest' data-td-target-toggle='nearest'>
+                                <input id='startPickerInput' type='text' class='form-control' data-td-target='#startPicker' />
+                                <span class='input-group-text' data-td-target='#startPicker' data-td-toggle='datetimepicker'>
+                                    <span class='fa-solid fa-calendar'></span>
+                               </span>
                             </div>
                         </div>
                         <div class="mt-1 mb-1 me-3">
                             <label for="end-date">End date</label>                
-                            <div class="input-group" v-on:click="setEndPicker">
-                                <span class="input-group-text" v-on:click="setEndPicker">
-                                    <i class="fa fa-calendar"></i>
-                                </span>
-                                <input type="text" class="form-control" id="end-date-pick" v-on:click="setEndPicker">
+                            <div class='input-group' id='endPicker' data-td-target-input='nearest' data-td-target-toggle='nearest'>
+                                <input id='endPickerInput' type='text' class='form-control' data-td-target='#endPicker' />
+                                <span class='input-group-text' data-td-target='#endPicker' data-td-toggle='datetimepicker'>
+                                    <span class='fa-solid fa-calendar'></span>
+                               </span>
                             </div>
                         </div>
                     </div>
@@ -71,6 +75,8 @@ Vue.component("add-reservation", {
         addReservation() {
             this.input_started = true;
             if (this.isValidEmail && this.areValidDates) {
+                this.start.setTime(this.start.getTime() + 2 * 60 * 60 * 1000);
+                this.end.setTime(this.end.getTime() + 2 * 60 * 60 * 1000);
                 axios.post("api/reservations/addReservation", {
                     offerId: this.id,
                     startDate: this.start,
@@ -88,39 +94,13 @@ Vue.component("add-reservation", {
                 });
             }
         },
-
-        setStartPicker() {
-            $(function () {
-                $('#start-date-pick').datetimepicker({
-                    pickerPosition: 'bottom-right',
-                    initialDate: new Date(),
-                    format: 'dd.mm.yyyy. HH:mm',
-                    todayBtn: true,
-                    todayHighlight: true,
-                    weekStart: 1
-                })
-            })
-        },
-
-        setEndPicker() {
-            $(function () {
-                $('#end-date-pick').datetimepicker({
-                    pickerPosition: 'bottom-right',
-                    initialDate: new Date(),
-                    format: 'dd.mm.yyyy. HH:mm',
-                    todayBtn: true,
-                    todayHighlight: true,
-                    weekStart: 1
-                });
-            })
-        }
     },
 
     computed: {
         areValidDates() {
             if (!this.input_started) return true;
-            this.start = $('#start-date-pick').datetimepicker('getDate');
-            this.end = $('#end-date-pick').datetimepicker('getDate');
+            this.start = this.tdStart.viewDate;
+            this.end = this.tdEnd.viewDate;
             return !!(this.start && this.end && new Date(this.start) < new Date(this.end));
         },
 
