@@ -21,7 +21,7 @@ Vue.component("update-cottage", {
         axios.get("api/cottages/getCottage/" + this.cottage.id).then(response => {
             this.cottage = response.data;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -145,9 +145,9 @@ Vue.component("update-cottage", {
         sendRequest() {
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress) {
                 axios.post("api/cottages/updateCottage", this.cottage).then(function(response) {
-                    alert('Cottage successfully updated!');
+                    Swal.fire('Success', 'Cottage updated!', 'success');
                 }).catch(function (error) {
-                    alert('An error occurred!');
+                    Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             } else {
                 this.errors.name = true;

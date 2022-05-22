@@ -37,9 +37,17 @@ Vue.component('owners-profile', {
                         <label class="fw-bold h6">Address</label>
                     </div>
                     <p class="ms-1 mb-4" style="font-size: 1.2em">{{ owner.address.street }}, {{ owner.address.city }}, {{ owner.address.country }}</p>
-                    <div style="font-size: 1.2em">
-                        <label class="mt-2 ms-1 fw-bold h6">{{ owner.category }}</label> <label>user</label> <br/>
-                        <label class="ms-1 fw-bold h6">{{ owner.numberOfPoints }}</label> <label>points</label>
+                    <hr>
+                    <div>
+                        <h4 class="text-success mb-4">Loyalty program</h4>
+                        <div style="font-size: 1.2em">
+                            <div class="d-flex justify-content-left">
+                                <span><i class="fa fa-medal mx-2"></i></span><p>Status: &nbsp</p> <p class="ms-1 fw-bold">{{ owner.category }}</p>
+                            </div>
+                            <div class="d-flex justify-content-left">
+                                <span><i class="fa fa-star mx-2"></i></span><p>Points: &nbsp</p> <p class="ms-1 fw-bold">{{ owner.numberOfPoints }}</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="mt-5 d-flex justify-content-evenly">
                         <a class="btn btn-success me-1" href="javascript:void(0)" @click="$router.push({path: '/updateOwnersProfile/' + $route.params.id})" style="width: 50%">Edit</a>
@@ -68,7 +76,10 @@ Vue.component('owners-profile', {
             }).then(response => {
                 Swal.fire('Success', 'Request for account deletion sent!', 'success');
             }).catch(function (error) {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Deletion request already sent'
+                });
             });
         }
     }

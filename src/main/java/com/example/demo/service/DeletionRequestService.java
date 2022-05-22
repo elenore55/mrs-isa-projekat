@@ -38,6 +38,16 @@ public class DeletionRequestService {
         return userRepository.getById(n);
     }
 
+    public boolean isDeletePossible(String id) {
+        int n = Integer.parseInt(id);
+        for (DeletionRequest dr : deletionRequestRepository.findAll()) {
+            if (dr.getSentBy().getId() == n) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private void notifyAdmins(Integer id) {
         List<Admin> admins = adminRepository.findAll();
         for (Admin admin : admins) {

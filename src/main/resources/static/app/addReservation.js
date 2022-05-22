@@ -96,7 +96,8 @@ Vue.component("add-reservation", {
                     initialDate: new Date(),
                     format: 'dd.mm.yyyy. HH:mm',
                     todayBtn: true,
-                    todayHighlight: true
+                    todayHighlight: true,
+                    weekStart: 1
                 })
             })
         },
@@ -108,7 +109,8 @@ Vue.component("add-reservation", {
                     initialDate: new Date(),
                     format: 'dd.mm.yyyy. HH:mm',
                     todayBtn: true,
-                    todayHighlight: true
+                    todayHighlight: true,
+                    weekStart: 1
                 });
             })
         }

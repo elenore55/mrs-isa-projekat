@@ -27,6 +27,9 @@ public class DeletionRequestController {
     @RequestMapping(path = "/deleteProfile", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<String> saveRequest(@RequestBody DeletionRequestDTO deletionRequestDTO)
     {
+        if (!deletionRequestService.isDeletePossible(deletionRequestDTO.getId())) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         User u = deletionRequestService.findById(deletionRequestDTO.getId());
         LocalDateTime now = LocalDateTime.now();
         DeletionRequest d = new DeletionRequest(u, now, AdminApprovalStatus.PENDING);

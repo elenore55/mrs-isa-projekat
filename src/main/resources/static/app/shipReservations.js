@@ -53,7 +53,7 @@ Vue.component("ship-reservations", {
                 </div>
             </div>
         </div>
-        <reservations-calendar id="1"></reservations-calendar>
+        <reservations-calendar id="1" rangeStart="ship.availableStart" rangeEnd="ship.availableEnd"></reservations-calendar>
     </div>
     `,
 

@@ -12,7 +12,7 @@ Vue.component("ship-images", {
         axios.get("api/ships/getShipImages/" + this.$route.params.id).then(response => {
             this.paths = response.data;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -60,9 +60,9 @@ Vue.component("ship-images", {
                 id: this.id,
                 imagePaths: this.paths
             }).then(function(response) {
-                alert('Ship successfully updated!');
+                Swal.fire('Success', 'Ship updated!', 'success');
             }).catch(function (error) {
-                alert('An error occurred!');
+                Swal.fire('Error', 'Something went wrong!', 'error');
             });
         }
     }

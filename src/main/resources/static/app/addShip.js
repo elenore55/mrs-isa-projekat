@@ -317,9 +317,9 @@ Vue.component("add-ship", {
                     availableStart: this.start_av,
                     availableEnd: this.end_av
                 }).then(function(response) {
-                    alert('Ship successfully added!');
+                    Swal.fire('Success', 'Ship added!', 'success');
                 }).catch(function (error) {
-                    alert('An error occurred!');
+                    Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             } else {
                 this.errors.name = true;

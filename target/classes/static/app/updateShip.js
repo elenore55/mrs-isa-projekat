@@ -19,14 +19,14 @@ Vue.component("update-ship", {
         axios.get("api/ships/getShip/" + this.$route.params.id).then(response => {
             this.ship = response.data;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
     template: `
     <form novalidate style="background-color: #f2e488">
         <update-ship-nav></update-ship-nav>
-        <div class="container  card mt-3 shadow-lg w-75 px-1">
+        <div class="container card mt-3 shadow-lg w-75 px-1">
             <div class="card-body">
                 <div class="row my-4 mx-1">
                     <div class="col">
@@ -88,7 +88,7 @@ Vue.component("update-ship", {
                     </div>
                 </div>
                 
-                <div class="row my-4 mx-1">
+                <div class="row mt-4 mb-2 mx-1">
                     <div class="col form-floating">
                         <select class="form-select" v-model="ship.shipType" aria-label="Default select example" id="type-select">
                             <option value="1" selected>Ship</option>
@@ -107,7 +107,7 @@ Vue.component("update-ship", {
                         <p v-if="!isValidCapacity && errors.capacity" class="text-danger">Capacity is required.</p>
                     </div>
                 </div>
-                <div class="row my-4 mx-1">
+                <div class="row mb-4 mt-2 mx-1">
                     <div class="col form-floating">
                         <input v-on:focus="errors.num_engines = false" v-model="ship.numberOfEngines" type="number" min="0" class="form-control" id="num-engines-input" required/>
                         <label for="num-engines-input" class="ms-2">Number of engines</label>
@@ -249,9 +249,9 @@ Vue.component("update-ship", {
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress &&
                 this.isValidLength && this.isValidCapacity && this.isValidNumEngines && this.isValidPower && this.isValidSpeed) {
                 axios.post("api/ships/updateShip", this.ship).then(function(response) {
-                    alert('Ship successfully updated!');
+                    Swal.fire('Success', 'Ship updated!', 'success');
                 }).catch(function (error) {
-                    alert('An error occurred!');
+                    Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             } else {
                 this.errors.name = true;

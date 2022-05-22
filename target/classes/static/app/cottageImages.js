@@ -12,7 +12,7 @@ Vue.component('cottage-images', {
         axios.get("api/cottages/getCottageImages/" + this.$route.params.id).then(response => {
             this.paths = response.data;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -61,9 +61,9 @@ Vue.component('cottage-images', {
                 id: this.id,
                 imagePaths: this.paths
             }).then(function(response) {
-                alert('Cottage successfully updated!');
+                Swal.fire('Success', 'Cottage updated!', 'success');
             }).catch(function (error) {
-                alert('An error occurred!');
+                Swal.fire('Error', 'Something went wrong!', 'error');
             });
         }
     }

@@ -5,7 +5,7 @@ Vue.component("reservations-calendar", {
         }
     },
 
-    props: ['id'],
+    props: ['id', 'rangeStart', 'rangeEnd'],
 
     mounted() {
         axios.get("api/users/getOwnersReservations/" + this.id).then(response => {
@@ -48,7 +48,7 @@ Vue.component("reservations-calendar", {
                 weekNumbers: false,
                 eventLimit: true,
                 events: events,
-                headerToolbar: {
+                header: {
                     left: 'prev,next today',
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
@@ -57,8 +57,11 @@ Vue.component("reservations-calendar", {
                     left: 'prev,next today',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay,listYear'
                 },
+                visibleRange: {
+                    start: '2022-05-01',
+                    end: '2022-07-01'
+                },
                 firstDay: 1,
-                weekNumberCalculation: 'ISO',
                 editable: true,
                 selectable: true,
                 eventClick: function (info) {
