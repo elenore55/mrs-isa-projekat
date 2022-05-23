@@ -109,4 +109,24 @@ public class UserController {
         }
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+    @Transactional
+    @ResponseBody
+    @RequestMapping(path = "/getOwnersReservations/{id}/{offerId}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<ReservationDTO>> getOwnersReservations(@PathVariable Integer id, @PathVariable Integer offerId) {
+        User user = userService.findOne(id);
+        if (!(user instanceof CottageOwner) && !(user instanceof ShipOwner)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        List<Reservation> reservations;
+        List<ReservationDTO> result = new ArrayList<>();
+        if (user instanceof CottageOwner) reservations = ((CottageOwner)user).getReservations();
+        else reservations = ((ShipOwner)user).getReservations();
+        for (Reservation r : reservations) {
+            if (r.getOffer().getId().equals(offerId)) {
+                result.add(new ReservationDTO(r));
+            }
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 }
