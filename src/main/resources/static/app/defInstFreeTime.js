@@ -2,7 +2,7 @@ Vue.component("availability-instructor",{
     data:function ()
     {
         return{
-            availabilities: [],
+            // availabilities: [],
             start:null,
             end:null,
             calendar:[],
@@ -12,9 +12,9 @@ Vue.component("availability-instructor",{
         }
     },
     mounted: function (){
-        this.loadAllInstructorAvailability()
+        // this.loadAllInstructorAvailability()
         this.loadInstructorsAdventures()
-        this.getOfferFromAdventure()
+        // this.getOfferFromAdventure()
     },
     template: `
     <form style="width: 600px; margin: auto"  v-on:submit ="sendRequest">
@@ -47,21 +47,13 @@ Vue.component("availability-instructor",{
     </form>
     `,
     methods:{
-        loadAllInstructorAvailability(){
-            axios.get("api/availability/all").then(response => {
-                this.availabilities = response.data;
-                // console.log(this.availabilities)
-                // console.log("BBBB")
-            })
-        },
-        getOfferFromAdventure(){
-            // axios.get("api/offers/getOffer/"+this.adventure.id).then(response => {
-            axios.get("api/offers/getOffer/1").then(response => {
-                this.offer = response.data;
-                console.log(this.offer)
-                console.log("WWWWWWWWWWWWWW")
-            })
-        },
+        // loadAllInstructorAvailability(){
+        //     axios.get("api/availability/all").then(response => {
+        //         this.availabilities = response.data;
+        //         // console.log(this.availabilities)
+        //         // console.log("BBBB")
+        //     })
+        // },
         loadInstructorsAdventures(){
             axios.get("api/adventures/all").then(response => {
                 this.adventures = response.data;
@@ -69,19 +61,19 @@ Vue.component("availability-instructor",{
             })
         },
         sendRequest(){
-            this.getOfferFromAdventure()
-            console.log(this.offer)
-            console.log("AAAAAAAAAAAAA")
-            axios.post("api/availability/addAvailability", {
-                // availabilityDTO: this.availabilityDTO
-                start: this.start,
-                end:this.end,
-                offer: this.offer
-            }).then(function (response) {
-                alert("Successfully updated your personal information");
-            }).catch(function (error) {
-                alert("An ERROR occurred while updating your personal information");
-            });
+            axios.get("api/offers/getOffer/" + this.adventure.id).then(response => {
+                this.offer = response.data;
+                axios.post("api/availability/addAvailability", {
+                    // availabilityDTO: this.availabilityDTO
+                    start: this.start,
+                    end:this.end,
+                    offer: this.offer
+                }).then(function (response) {
+                    alert("Successfully updated your personal information");
+                }).catch(function (error) {
+                    alert("An ERROR occurred while updating your personal information");
+                });
+            })
         }
     }
 });

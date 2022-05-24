@@ -31,7 +31,8 @@ public class AvailabilityController {
         List<AvailabilityDTO> availabilityDTOS = new ArrayList<>();
 
         for (Availability availability : availabilities) {
-            availabilityDTOS.add(new AvailabilityDTO(availability));
+            if(availability.getOffer() == null)
+                availabilityDTOS.add(new AvailabilityDTO(availability));
         }
 
         return new ResponseEntity<>(availabilityDTOS, HttpStatus.OK);
