@@ -54,9 +54,6 @@ Vue.component("login", {
                      }).then(function(response) {
                      if(response.data=="")
                      {
-                        // preusmjeri na stranicu za login sa greskom
-                        //console.log("trebalo je da se ispsie");
-                        //location.replace('http://localhost:8000/#/registration');
                      } else
                      {
                         console.log("trebalo je da se ispise");

@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.model.Cottage;
 import com.example.demo.model.Offer;
 import com.example.demo.model.Reservation;
+import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.repository.ReservationRepository;
 import com.example.demo.service.emailSenders.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,4 +76,34 @@ public class ReservationService {
         LocalDateTime now = LocalDateTime.now();
         return now.isBefore(d);
     }
+
+    public void cancelReservation(Integer id) {
+        repository.cancelReservation(id);
+    }
+
+    public List<Reservation> getClientsPastReservations(Integer id) {
+        List<Reservation> retVal = new ArrayList<>();
+        List<Reservation> reservations = repository.findAll();
+        for(Reservation r : reservations)
+        {
+            if (r.getClient().getId().equals(id) && isInPast(r))
+            {
+                retVal.add(r);
+            }
+        }
+        return retVal;
+    }
+
+    private boolean isAdequateStatus(ReservationStatus r) {
+        // ova funkcija se ne poziva nigdje, a mogla bi da se pozove, ali o tome drugi put
+        return r.equals(ReservationStatus.FINISHED);
+    }
+
+    private boolean isInPast(Reservation r) {
+        LocalDateTime d = r.getStart();
+        LocalDateTime now = LocalDateTime.now();
+        return now.isAfter(d);
+    }
+
+
 }

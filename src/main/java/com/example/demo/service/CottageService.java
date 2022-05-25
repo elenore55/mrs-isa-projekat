@@ -5,17 +5,13 @@ import com.example.demo.dto.comparators.cottage.*;
 import com.example.demo.model.Client;
 import com.example.demo.model.Cottage;
 import com.example.demo.model.Reservation;
-import com.example.demo.model.Room;
+import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.repository.CottageRepository;
 import com.example.demo.service.emailSenders.EmailSender;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import javax.xml.bind.SchemaOutputResolver;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -124,13 +120,28 @@ public class CottageService {
     private boolean isValidDate(Cottage c, UserFilterDTO userFilterDTO) {
         for(Reservation r : c.getReservations())
         {
+            if (r.getReservationStatus()!= ReservationStatus.CANCELLED)
+            {
+                if (isInMidDate(r.getStart(), userFilterDTO) || isInMidDate(r.getEnd(), userFilterDTO) || isAround(r, userFilterDTO)) return false;
+            }
             // ako nadjes bar jednu rezervaciju da joj je pcetni ili krajnji datum unutar nase, vrati false
             // ako nadjes bar jednu rezervaciju da joj je pocetni datum prije nase, a krajni poslije, vrati false
-            if (isInMidDate(r.getStart(), userFilterDTO) || isInMidDate(r.getEnd(), userFilterDTO) || isAround(r, userFilterDTO)) return false;
+            else
+            {
+                // za one koje nisu aktivne gledamo jel bila ista takva
+                if (parametersAreSame(r, userFilterDTO)) return false;
+            }
         }
         return true;
     }
 
+    private boolean parametersAreSame(Reservation r, UserFilterDTO userFilterDTO) {
+        LocalDateTime r1 = r.getStart();
+        LocalDateTime r2 = r.getEnd();
+        LocalDateTime u1 = getLocalDatetimeFromVuePicker(userFilterDTO.getFromDate());
+        LocalDateTime u2 = getLocalDatetimeFromVuePicker(userFilterDTO.getToDate());
+        return r1==u1 && r2==u2;
+    }
     private boolean isAround(Reservation r, UserFilterDTO userFilterDTO) {
         LocalDateTime rStart = r.getStart();
         LocalDateTime rEnd = r.getEnd();

@@ -17,6 +17,7 @@ public class ReservationExtendedDTO{
     private long price;
     private ReservationStatus status;
     private String link;
+    private String name;
 
     public ReservationExtendedDTO() {}
 
@@ -125,5 +126,13 @@ public class ReservationExtendedDTO{
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

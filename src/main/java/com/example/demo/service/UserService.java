@@ -96,4 +96,8 @@ public class UserService {
         if (pd == null) return null;
         return clientRepository.findByProfileDataId(pd.getId());
     }
+
+    public User findById(Integer id) {
+        return userRepository.findById(id).orElseGet(null);
+    }
 }

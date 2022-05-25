@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.example.demo.dto.ComplaintDTO;
 import com.example.demo.model.enums.AdminApprovalStatus;
 
 import javax.persistence.*;
@@ -31,6 +32,12 @@ public class Complaint {
         this.dateTime = dateTime;
         this.content = content;
         this.status = status;
+    }
+
+    public Complaint(ComplaintDTO complaintDTO) {
+        this.dateTime = LocalDateTime.now();
+        this.content = complaintDTO.getContent();
+        this.status = AdminApprovalStatus.PENDING;
     }
 
     public LocalDateTime getDateTime() {

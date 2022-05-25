@@ -176,9 +176,9 @@ mounted() {
                                  <div class="col-4 flex-column mt-auto mx-auto py-2">
                                       <p class="" style="text-align:center;">Price: {{s.price}} EUR</p>
                                       <div class="text-center">
-                                          <a :href="'/#/shipDetailedView/' + s.id" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
+                                          <a :href="'/#/shipDetailedView/' + s.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
                                       </div>
-                                 </div>
+                                 </div> 
                             </div>
                        </div>
                     </div>

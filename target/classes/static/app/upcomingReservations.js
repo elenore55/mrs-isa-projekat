@@ -3,24 +3,30 @@ Vue.component("upcoming-reservations", {
        return {
            reservations: [],
            id: "",
-
        }
    },
 
    mounted() {
-        this.id = this.$route.params.id;
-        axios.get("api/reservations/getClientUpcomingReservations/" + this.id).then(response => {
-            this.reservations = response.data;
-        }).catch(function (error) {
-            alert('Greska u get cottages');
-        });
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 250%");
+        this.reload();
        },
 
    template: `
     <div>
         <client-navbar> </client-navbar>
             <div class="container mt-5 pt-5">
-                <div class="row p-3 mt-5">
+
+                <div class="d-flex justify-content-center">
+                    <div class="collapse bg-light shadow rounded w-50 mt-3" id="confirm-cancel">
+                        <p class=" d-flex justify-content-center mt-5 mb-3"> Reservation successfully cancelled</p>
+                        <div class="d-flex justify-content-center">
+                            <a class="btn btn-lg btn-outline-secondary m-4" role="button" v-on:click="hideItself">OK</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row p-3 mt-5" style="background-color: white">
                     <div class="col-2">
                         VIEW DETAILS
                     </div>
@@ -45,9 +51,9 @@ Vue.component("upcoming-reservations", {
 
                     </div>
                 </div>
-                <div v-for="(r, i) in reservations" class="row p-2 m-3" style="border:1px solid rgb(156, 151, 151); border-radius: 5px;">
+                <div v-for="(r, i) in reservations" class="row p-3 my-2" style="border:1px solid rgb(156, 151, 151); border-radius: 5px;"  style="background-color: white">
                     <div class="col-2">
-                        <a v-on:click="viewDetails(r.link)" style="color:blue;"><u> View Details </u></a>
+                        <a v-on:click="viewDetails(r.link)" style="color:blue;"><u> {{r.name}} </u></a>
                     </div>
 
                     <div class="col-2">
@@ -67,7 +73,8 @@ Vue.component("upcoming-reservations", {
                     </div>
 
                     <div class="col-3">
-                        <button v-if="notInThreeDays(r)" class="btn btn-danger"> Cancel reservation</button>
+                        <button v-if="canCancel(r)" class="btn btn-danger" v-on:click="cancel(r)"> Cancel reservation</button>
+                        <button v-if="cantCancel(r)" class="btn btn-danger" disabled> Cancel reservation</button>
                     </div>
                </div>
             </div>
@@ -75,11 +82,38 @@ Vue.component("upcoming-reservations", {
    `,
     methods: {
 
-        notInThreeDays(reservation)
+        reload() {
+            this.id = this.$route.params.id;
+            axios.get("api/reservations/getClientUpcomingReservations/" + this.id).then(response => {
+                this.reservations = response.data;
+            }).catch(function (error) {
+                alert('Greska u get cottages');
+            });
+           },
+
+        canCancel(reservation)
         {
-            return true;
-            alert("U narednim danima" + reservation.isInThreeDays) ;
-            return reservation.isInThreeDays;
+            //alert("Trenutno stanje rezervacije je " + reservation.reservationStatus);
+            if (!reservation.inThreeDays && reservation.status!="CANCELLED" ) return true;
+            return false;
+        },
+
+        cantCancel(reservation)
+        {
+            return !this.canCancel(reservation);
+        },
+
+        cancel(reservation)
+        {
+            axios.post("api/reservations/cancelReservation/" + reservation.id).then(response => {
+            // ovdje treba neka poruka da je uspjesno otkazano
+            // sad treba ovo aktivirati
+
+                this.reload();
+                $("#confirm-cancel").show(200);
+            }).catch(function (error) {
+                alert('Greska u brisanju rezervacija');
+            });
         },
 
         findPaths(reservations)
@@ -90,6 +124,11 @@ Vue.component("upcoming-reservations", {
                 paths.push(onePath);
             }
             return paths;
+        },
+
+        hideItself()
+        {
+            $("#confirm-cancel").hide(200);
         },
 
         viewDetails(link)

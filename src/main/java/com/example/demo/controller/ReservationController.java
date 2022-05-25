@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -40,6 +41,7 @@ public class ReservationController {
     @ResponseBody
     @RequestMapping(path = "/addReservation", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<ReservationDTO> addReservation(@RequestBody ReservationDTO dto) {
+
         Reservation reservation = new Reservation();
         setAttributes(reservation, dto);
         if (reservation.getClient() == null)
@@ -79,13 +81,36 @@ public class ReservationController {
 
     @ResponseBody
     @RequestMapping(path = "/getClientUpcomingReservations/{id}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<ReservationExtendedDTO>> getClientsReservations(@PathVariable Integer id) {
+    public ResponseEntity<List<ReservationExtendedDTO>> getClientsUpcomingReservations(@PathVariable Integer id) {
         List<Reservation> reservations = reservationService.getClientsUpcomingReservations(id);
         List<ReservationExtendedDTO> dtos = new ArrayList<>();
         for (Reservation r : reservations) {
-            dtos.add(new ReservationExtendedDTO(r));
+            ReservationExtendedDTO red = new ReservationExtendedDTO(r);
+            red.setName(offerService.getNameForReservationView(r.getOffer().getId()));
+            dtos.add(red);
         }
         return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getClientPastReservations/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<ReservationExtendedDTO>> getClientsPastReservations(@PathVariable Integer id) {
+        List<Reservation> reservations = reservationService.getClientsPastReservations(id);
+        List<ReservationExtendedDTO> dtos = new ArrayList<>();
+        for (Reservation r : reservations) {
+            ReservationExtendedDTO red = new ReservationExtendedDTO(r);
+            red.setName(offerService.getNameForReservationView(r.getOffer().getId()));
+            dtos.add(red);
+        }
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
+    @Transactional
+    @ResponseBody
+    @RequestMapping(path = "/cancelReservation/{id}", method = RequestMethod.POST)
+    public ResponseEntity<String> cancelReservation(@PathVariable Integer id) {
+        reservationService.cancelReservation(id);
+        return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
     private void setAttributes(Reservation r, ReservationDTO dto) {

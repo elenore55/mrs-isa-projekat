@@ -32,6 +32,9 @@ const AddAdmin = {template: '<add-admin></add-admin>'};
 const UpdateAdminInfo = {template: '<update-admin-info></update-admin-info>'};
 const AvailabilityInstructor = {template: '<availability-instructor></availability-instructor>'};
 const UpcomingReservations = {template: '<upcoming-reservations></upcoming-reservations>'};
+const PastReservations = {template: '<past-reservations></past-reservations>'};
+const ClientComplain = {template: '<client-complain></client-complain>'}
+const ClientRate = {template: '<client-rate></client-rate>'}
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -131,7 +134,19 @@ const router = new VueRouter({
             component: UpcomingReservations
         },
         {
-            path: "/shipDetailedView/:id",
+            path: "/clientComplain/:id",
+            component: ClientComplain
+        },
+        {
+            path: "/clientRate/:id",
+            component: ClientRate
+        },
+        {
+            path: "/pastReservations/:id",
+            component: PastReservations
+        },
+        {
+            path: "/shipDetailedView/:id/:fromDate/:toDate",
             component: ShipDetailedView
         },
         {

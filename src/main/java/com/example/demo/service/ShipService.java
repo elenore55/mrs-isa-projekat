@@ -63,7 +63,7 @@ public class ShipService {
                 retVal.add(s);
             }
         }
-        sortShips(retVal, getStringSortBy(userFilterDTO));
+        //sortShips(retVal, getStringSortBy(userFilterDTO));
         return retVal;
     }
 

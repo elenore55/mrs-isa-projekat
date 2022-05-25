@@ -171,6 +171,10 @@ insert into client (id) values (6);
 
 insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-05-26 20:39:00', 'PENDING', '2022-05-24 04:20:00', 6, 2);
 --insert into reservation (id, end_date_time, reservation_status, start_date_time, client_id, offer_id) values (2, '2022-06-10 20:39:00', 'APPROVED', '2022-06-04 20:39:00', 6, 2);
-insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-06-04 20:39:00', 'ACTIVE', '2022-05-19 04:20:00', 6, 1);
-insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-05-30 20:39:00', 'ACTIVE', '2022-05-29 20:39:00', 6, 5);
+insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-06-04 20:39:00', 'ACTIVE', '2022-05-31 04:20:00', 6, 1);
+insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-05-30 20:39:00', 'ACTIVE', '2022-05-27 20:39:00', 6, 5);
+insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-05-29 20:39:00', 'ACTIVE', '2022-05-26 20:39:00', 6, 5);
 insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-06-14 20:39:00', 'PENDING', '2022-06-10 20:39:00', 3, 1);
+
+insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2021-06-14 20:39:00', 'FINISHED', '2021-06-10 20:39:00', 6, 2);
+insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2021-09-14 20:39:00', 'FINISHED', '2021-09-10 20:39:00', 6, 2);
