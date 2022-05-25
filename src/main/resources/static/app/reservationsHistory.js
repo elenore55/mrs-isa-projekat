@@ -6,8 +6,8 @@ Vue.component("reservations-history", {
             end_date: null,
             reservations: [],
             sort_list: ['Date', 'Cottage'],
-            sort_by: '',
-            direction: ''
+            sort_by: 'Date',
+            direction: 'Ascending'
         }
     },
 
@@ -46,11 +46,11 @@ Vue.component("reservations-history", {
                 </div>
             </div>
         </div>
-        <div>
+        <div class="w-50 d-flex justify-content-end my-3">
             <button class="btn btn-primary" v-on:click="getReservations">Show</button>
         </div>
         <div class="d-flex justify-content-center w-50" v-for="(r, i) in reservations">
-        
+            reservation
         </div>
     </div>
    `,
@@ -58,7 +58,12 @@ Vue.component("reservations-history", {
     methods: {
         getReservations() {
             let desc = this.direction === 'Descending';
-            axios.get('api/users/getOwnersReservations/' + this.$route.params.id + '/' + this.sort_by + '/' + desc).then(response => {
+            axios.get('api/users/getOwnersReservations/' + this.$route.params.id, {
+                startDate: this.start_date,
+                endDate: this.end_date,
+                sortBy: this.sort_by,
+                desc: desc
+            }).then(response => {
                 this.reservations = response.data;
             }).catch(error => {
                 alert('Something went wrong');

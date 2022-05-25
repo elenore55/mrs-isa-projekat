@@ -140,8 +140,8 @@ public class UserController {
 
     @Transactional
     @ResponseBody
-    @RequestMapping(path = "/getOwnersReservations/{id}/{sortBy}/{desc}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<ReservationDTO>> getOwnersReservations(@PathVariable Integer id, @PathVariable String sortBy, @PathVariable boolean desc) {
+    @RequestMapping(path = "/getOwnersReservations/{id}", method = RequestMethod.GET, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<List<ReservationDTO>> getOwnersReservations(@PathVariable Integer id, @RequestBody ReservationsFilterDTO dto) {
         User user = userService.findOne(id);
         if (!(user instanceof CottageOwner) && !(user instanceof ShipOwner)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -150,10 +150,12 @@ public class UserController {
         List<ReservationDTO> result = new ArrayList<>();
         if (user instanceof CottageOwner) reservations = ((CottageOwner) user).getReservations();
         else reservations = ((ShipOwner) user).getReservations();
-        sortReservations(reservations, sortBy, desc);
+        sortReservations(reservations, dto.getSortBy(), dto.getDesc());
         for (Reservation r : reservations) {
-            setReservationStatus(r);
-            result.add(new ReservationDTO(r));
+            if (r.getStart().compareTo(dto.getStartDate()) >= 0 && r.getEnd().compareTo(dto.getEndDate()) <= 0) {
+                setReservationStatus(r);
+                result.add(new ReservationDTO(r));
+            }
         }
         return new ResponseEntity<>(result, HttpStatus.OK);
     }

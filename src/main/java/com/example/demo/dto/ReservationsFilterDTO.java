@@ -1,28 +1,36 @@
 package com.example.demo.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ReservationsFilterDTO {
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     private String sortBy;
     private Boolean desc;
 
-    public ReservationsFilterDTO() {}
+    public ReservationsFilterDTO() {
+    }
 
-    public LocalDate getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(LocalDateTime startDate) {
+        if (startDate == null) {
+            startDate = LocalDateTime.MIN;
+        }
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(LocalDateTime endDate) {
+        if (endDate == null) {
+            endDate = LocalDateTime.MAX;
+        }
         this.endDate = endDate;
     }
 
