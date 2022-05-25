@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.*;
+import com.example.demo.dto.comparators.reservation.ReservationDateComparator;
+import com.example.demo.dto.comparators.reservation.ReservationOfferComparator;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.service.UserService;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -104,8 +108,8 @@ public class UserController {
         }
         List<Reservation> reservations;
         List<ReservationDTO> result = new ArrayList<>();
-        if (user instanceof CottageOwner) reservations = ((CottageOwner)user).getReservations();
-        else reservations = ((ShipOwner)user).getReservations();
+        if (user instanceof CottageOwner) reservations = ((CottageOwner) user).getReservations();
+        else reservations = ((ShipOwner) user).getReservations();
         for (Reservation r : reservations) {
             setReservationStatus(r);
             result.add(new ReservationDTO(r));
@@ -122,9 +126,9 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         List<Reservation> reservations;
+        if (user instanceof CottageOwner) reservations = ((CottageOwner) user).getReservations();
+        else reservations = ((ShipOwner) user).getReservations();
         List<ReservationDTO> result = new ArrayList<>();
-        if (user instanceof CottageOwner) reservations = ((CottageOwner)user).getReservations();
-        else reservations = ((ShipOwner)user).getReservations();
         for (Reservation r : reservations) {
             if (r.getOffer().getId().equals(offerId)) {
                 setReservationStatus(r);
@@ -134,8 +138,37 @@ public class UserController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @Transactional
+    @ResponseBody
+    @RequestMapping(path = "/getOwnersReservations/{id}/{sortBy}/{desc}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<ReservationDTO>> getOwnersReservations(@PathVariable Integer id, @PathVariable String sortBy, @PathVariable boolean desc) {
+        User user = userService.findOne(id);
+        if (!(user instanceof CottageOwner) && !(user instanceof ShipOwner)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        List<Reservation> reservations;
+        List<ReservationDTO> result = new ArrayList<>();
+        if (user instanceof CottageOwner) reservations = ((CottageOwner) user).getReservations();
+        else reservations = ((ShipOwner) user).getReservations();
+        sortReservations(reservations, sortBy, desc);
+        for (Reservation r : reservations) {
+            setReservationStatus(r);
+            result.add(new ReservationDTO(r));
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    private void sortReservations(List<Reservation> reservations, String sortBy, boolean desc) {
+        Comparator<Reservation> comparator;
+        if (sortBy.equalsIgnoreCase("Date")) comparator = new ReservationDateComparator();
+        else comparator = new ReservationOfferComparator();
+        if (desc) reservations.sort(Collections.reverseOrder(comparator));
+        else reservations.sort(comparator);
+    }
+
     private void setReservationStatus(Reservation r) {
-        if (r.getReservationStatus() == ReservationStatus.CLIENT_NOT_ARRIVED || r.getReservationStatus() == ReservationStatus.CANCELLED) return;
+        if (r.getReservationStatus() == ReservationStatus.CLIENT_NOT_ARRIVED || r.getReservationStatus() == ReservationStatus.CANCELLED)
+            return;
         LocalDateTime today = LocalDateTime.now();
         if (r.getEnd().compareTo(today) < 0) r.setReservationStatus(ReservationStatus.FINISHED);
         else if (r.getStart().compareTo(today) > 0) r.setReservationStatus(ReservationStatus.PENDING);

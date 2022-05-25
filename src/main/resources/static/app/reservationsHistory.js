@@ -11,6 +11,10 @@ Vue.component("reservations-history", {
         }
     },
 
+    mounted() {
+
+    },
+
     template: `
     <div>
         <div class="d-flex justify-content-center">
@@ -42,6 +46,24 @@ Vue.component("reservations-history", {
                 </div>
             </div>
         </div>
+        <div>
+            <button class="btn btn-primary" v-on:click="getReservations">Show</button>
+        </div>
+        <div class="d-flex justify-content-center w-50" v-for="(r, i) in reservations">
+        
+        </div>
     </div>
-   `
+   `,
+
+    methods: {
+        getReservations() {
+            let desc = this.direction === 'Descending';
+            axios.get('api/users/getOwnersReservations/' + this.$route.params.id + '/' + this.sort_by + '/' + desc).then(response => {
+                this.reservations = response.data;
+            }).catch(error => {
+                alert('Something went wrong');
+            });
+        }
+
+    }
 });
