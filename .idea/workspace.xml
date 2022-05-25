@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientReadonlyProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/ClientDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientReadonlyProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientReadonlyProfile.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -149,13 +147,6 @@
       <workItem from="1653247514379" duration="11823000" />
       <workItem from="1653293442403" duration="6345000" />
       <workItem from="1653460082039" duration="1313000" />
-    </task>
-    <task id="LOCAL-00054" summary="212.3 Cuvanje rezervacije">
-      <created>1652202505861</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1652202505862</updated>
     </task>
     <task id="LOCAL-00055" summary="#202.1 Forma za unos podataka o akciji">
       <created>1652216157310</created>
@@ -493,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653515856758</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="Kreirana komponenta za prikaz profila klijenta">
+      <created>1653516415845</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1653516415845</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +511,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Kreirana komponenta za azuriranje profila" />
     <MESSAGE value="#215.1 Forma za prikaz licnih podataka o korisniku" />
     <MESSAGE value="#215.2 Validacija izmenjenih podataka" />
     <MESSAGE value="#215.3 Cuvanje izmenjenih podataka o vlasniku" />
@@ -538,7 +535,8 @@
     <MESSAGE value="Dobavljanje rezervacija" />
     <MESSAGE value="#203.1 Forma za izlistavanje rezervacija" />
     <MESSAGE value="#203.3 Prikaz podataka o jednoj rezervaciji" />
-    <option name="LAST_COMMIT_MESSAGE" value="#203.3 Prikaz podataka o jednoj rezervaciji" />
+    <MESSAGE value="Kreirana komponenta za prikaz profila klijenta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kreirana komponenta za prikaz profila klijenta" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Notifications" timestamp="1650741185090">
@@ -558,10 +556,10 @@
     </state>
     <state x="2270" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652959397213" />
     <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1653482169560" />
-    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser" timestamp="1653502810092">
+    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser" timestamp="1653516870450">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653502810092" />
+    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653516870450" />
     <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1650826508607" />
     <state x="490" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1650720848000">
       <screen x="0" y="0" width="1280" height="680" />
@@ -584,10 +582,10 @@
     </state>
     <state x="2514" y="67" key="#xdebugger.evaluate/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651706579916" />
     <state x="396" y="44" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1650828034427" />
-    <state x="2722" y="9" key="CommitChangelistDialog2" timestamp="1653515855974">
+    <state x="2722" y="9" key="CommitChangelistDialog2" timestamp="1653516415150">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653515855974" />
+    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653516415150" />
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1650826050956" />
     <state width="1877" height="150" key="GridCell.Tab.0.bottom" timestamp="1653516345616">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -646,10 +644,10 @@
     </state>
     <state x="2133" y="0" width="1562" height="851" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652111187396" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1650829168397" />
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1653515859938">
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1653516419479">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653515859938" />
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653516419479" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1650826055916" />
     <state x="451" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1653482195464">
       <screen x="0" y="0" width="1280" height="680" />
