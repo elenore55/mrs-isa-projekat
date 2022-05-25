@@ -140,7 +140,7 @@ public class UserController {
 
     @Transactional
     @ResponseBody
-    @RequestMapping(path = "/getOwnersReservations/{id}", method = RequestMethod.GET, produces = "application/json", consumes = "application/json")
+    @RequestMapping(path = "/getFilteredOwnersReservations/{id}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<List<ReservationDTO>> getOwnersReservations(@PathVariable Integer id, @RequestBody ReservationsFilterDTO dto) {
         User user = userService.findOne(id);
         if (!(user instanceof CottageOwner) && !(user instanceof ShipOwner)) {

@@ -12,7 +12,7 @@ Vue.component("reservations-history", {
     },
 
     template: `
-    <div style="background-color: #fff9e8; height: 100vh">
+    <div style="background-color: #fff9e8">
         <div class="d-flex justify-content-center" style="background-color: #ddc8fb">
             <div class="w-25 d-flex justify-content-evenly my-3">
                 <div class="mt-1 ms-3 me-4 mb-1">
@@ -45,10 +45,24 @@ Vue.component("reservations-history", {
         </div>
         <div>
             <div class="d-flex justify-content-center" v-for="(r, i) in reservations">
-                <div class="card w-50 my-3">
-                    <div class="card-body">
-                        <h3 class="card-title">{{ r.offerName }}</h3>
-                        <h4>Client: {{ r.clientEmail }}</h4>
+                <div class="card w-50 my-4 shadow px-1" style="border-radius: 10px">
+                    <div class="card-body mx-2">
+                        <h3 class="card-title d-flex justify-content-center my-3">{{ r.offerName }}</h3>
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5 class="my-3">Client: {{ r.clientEmail }}</h5>
+                            <a class="btn btn-primary btn-sm h-50 mt-3" href="#">View profile</a>
+                        </div>
+                        <table>
+                            <tr class="mt-3">
+                                <td><h5>From: &nbsp</h5></td>
+                                <td><h5>{{ getFormattedDate(r.startDate) }} at {{ getFormattedTime(r.startDate) }}h</h5></td>
+                            </tr>
+                            <tr class="mb-3">
+                                <td><h5>To: &nbsp</h5></td>
+                                <td><h5>{{ getFormattedDate(r.endDate) }} at {{ getFormattedTime(r.endDate) }}h</h5></td>
+                            </tr>
+                        </table>
+                        <h5 class="my-3"><span class="badge" style="background-color: purple">{{ r.status }}</span></h5>
                     </div>
                 </div>
             </div>
@@ -59,7 +73,7 @@ Vue.component("reservations-history", {
     methods: {
         getReservations() {
             let desc = this.direction === 'Descending';
-            axios.get('api/users/getOwnersReservations/' + this.$route.params.id, {
+            axios.post('api/users/getFilteredOwnersReservations/' + this.$route.params.id, {
                 startDate: this.start_date,
                 endDate: this.end_date,
                 sortBy: this.sort_by,
@@ -69,6 +83,21 @@ Vue.component("reservations-history", {
             }).catch(error => {
                 alert('Something went wrong');
             });
+        },
+
+        getFormattedDate(date) {
+            let dateStr = new Date(date).toISOString();
+            let year = dateStr.substring(0, 4);
+            let month = dateStr.substring(5, 7);
+            let day = dateStr.substring(8, 10);
+            return day + '.' + month + '.' + year + '.';
+        },
+
+        getFormattedTime(date) {
+            let dateStr = new Date(date).toISOString();
+            let hours = dateStr.substring(11, 13);
+            let minutes = dateStr.substring(14, 16);
+            return hours + ':' + minutes;
         }
 
     }
