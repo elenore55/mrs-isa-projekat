@@ -1,3 +1,4 @@
+const ReservationsHistory = {template: '<reservations-history></reservations-history>'};
 const ReservationsCalendar = {template: '<reservations-calendar></reservations-calendar>'};
 const UpdateOwnersProfile = {template: '<update-owners-profile></update-owners-profile>'};
 const OwnersProfile = {template: '<owners-profile></owners-profile>'};
@@ -36,6 +37,10 @@ Vue.component('vuejs-datepicker', vuejsDatepicker);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/reservationsHistory/:id/",
+            component: ReservationsHistory
+        },
         {
             path: "/reservationsCalendar/",
             component: ReservationsCalendar
