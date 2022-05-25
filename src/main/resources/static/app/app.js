@@ -21,6 +21,9 @@ const UpdateAdminInfo = {template: '<update-admin-info></update-admin-info>'};
 const AvailabilityInstructor = {template: '<availability-instructor></availability-instructor>'};
 const InstructorsCalendar = {template: '<instructor-calendar></instructor-calendar>'};
 const AdventureHistory = {template: '<adventure-history></adventure-history>'};
+const AdventureQuickReserv = {template: '<adventure-quick></adventure-quick>'};
+const AdveReservWithClient = {template: '<advreserv-with-client></advreserv-with-client>'};
+
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -118,6 +121,14 @@ const router = new VueRouter({
         {
             path: "/adventureHistory/",
             component: AdventureHistory
+        },
+        {
+            path: "/adventureQuickReserv/",
+            component: AdventureQuickReserv
+        },
+        {
+            path: "/advReservWithClient/",
+            component: AdveReservWithClient
         }
 
 

@@ -23,6 +23,12 @@ public class FastReservation {
     protected Integer duration;
 
     @Column
+    protected LocalDateTime actionStart;
+
+    @Column
+    protected Integer actionDuration;
+
+    @Column
     protected Integer maxPeople;
 
     @Column
@@ -89,5 +95,21 @@ public class FastReservation {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public LocalDateTime getActionStart() {
+        return actionStart;
+    }
+
+    public void setActionStart(LocalDateTime actionStart) {
+        this.actionStart = actionStart;
+    }
+
+    public Integer getActionDuration() {
+        return actionDuration;
+    }
+
+    public void setActionDuration(Integer actionDuration) {
+        this.actionDuration = actionDuration;
     }
 }

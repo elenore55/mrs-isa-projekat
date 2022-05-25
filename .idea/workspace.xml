@@ -5,12 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="#338.1,#338.2,#338.3; #343.1,#343.2,#343.3; #339.1,#339.2,#339.3">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/FastAdventureReservDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/FastReservationDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/advReservWithClient.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/adventureQuickReserv.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AvailabilityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AvailabilityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Availability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Availability.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Offer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/AvailabilityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/AvailabilityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/defInstFreeTime.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/defInstFreeTime.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FastReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FastReservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/Availability.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/Availability.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/FastReservation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/FastReservation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/Offer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/Offer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +43,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -106,6 +114,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -156,14 +175,8 @@
       <workItem from="1652250263698" duration="5184000" />
       <workItem from="1652793211063" duration="11091000" />
       <workItem from="1652854496714" duration="2989000" />
-      <workItem from="1653393672989" duration="4042000" />
-    </task>
-    <task id="LOCAL-00003" summary="Nesto iskonfigurisano">
-      <created>1650741383748</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1650741383748</updated>
+      <workItem from="1653393672989" duration="4906000" />
+      <workItem from="1653453636539" duration="6200000" />
     </task>
     <task id="LOCAL-00004" summary="Polja za unos imena, opisa i cene broda #221.1">
       <created>1650799520044</created>
@@ -501,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652857375988</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="#338.1,#338.2,#338.3; #343.1,#343.2,#343.3; #339.1,#339.2,#339.3">
+      <created>1653397792033</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1653397792034</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
