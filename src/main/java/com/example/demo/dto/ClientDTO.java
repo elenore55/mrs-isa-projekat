@@ -23,9 +23,9 @@ public class ClientDTO {
         this.address = new AddressDTO(client.getAddress());
         this.category = client.getCategory().toString();
         this.numberOfPoints = client.getNumberOfPoints();
-        this.numberOfPoints = 0;
+        this.numberOfPenalties = 0;
         if (client.getPenalties() != null)
-            this.numberOfPoints = client.getPenalties().size();
+            this.numberOfPenalties = client.getPenalties().size();
     }
 
     public String getEmail() {

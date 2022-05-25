@@ -81,7 +81,7 @@ Vue.component("reservations-history", {
             }).then(response => {
                 this.reservations = response.data;
             }).catch(error => {
-                alert('Something went wrong');
+                Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 

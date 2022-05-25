@@ -160,6 +160,15 @@ public class UserController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @Transactional
+    @ResponseBody
+    @RequestMapping(path = "/getClientByEmail/{email}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<ClientDTO> getClientByEmail(@PathVariable String email) {
+        Client client = userService.findClientByEmail(email);
+        if (client == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new ClientDTO(client), HttpStatus.OK);
+    }
+
     private void sortReservations(List<Reservation> reservations, String sortBy, boolean desc) {
         Comparator<Reservation> comparator;
         if (sortBy.equalsIgnoreCase("Date")) comparator = new ReservationDateComparator();
