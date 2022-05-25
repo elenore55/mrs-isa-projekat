@@ -12,6 +12,7 @@ public class ReservationDTO {
     private LocalDateTime endDate;
     private Integer ownerId;
     private String status;
+    private String offerName;
 
     public ReservationDTO() {
     }
@@ -24,6 +25,7 @@ public class ReservationDTO {
         this.startDate = r.getStart();
         this.endDate = r.getEnd();
         this.status = r.getReservationStatus().toString();
+        this.offerName = r.getOffer().getName();
     }
 
     public Integer getId() {
@@ -80,5 +82,13 @@ public class ReservationDTO {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getOfferName() {
+        return offerName;
+    }
+
+    public void setOfferName(String offerName) {
+        this.offerName = offerName;
     }
 }
