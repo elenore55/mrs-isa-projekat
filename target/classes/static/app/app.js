@@ -1,3 +1,4 @@
+const OwnersReservationsCalendar = {template: '<owners-reservations-calendar></owners-reservations-calendar>'};
 const ClientReadonlyProfile = {template: '<client-readonly-profile></client-readonly-profile>'};
 const ReservationsHistory = {template: '<reservations-history></reservations-history>'};
 const ReservationsCalendar = {template: '<reservations-calendar></reservations-calendar>'};
@@ -38,6 +39,10 @@ Vue.component('vuejs-datepicker', vuejsDatepicker);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/ownersReservationsCalendar/:id",
+            component: OwnersReservationsCalendar
+        },
         {
             path: "/clientReadonlyProfile/:email/",
             component: ClientReadonlyProfile

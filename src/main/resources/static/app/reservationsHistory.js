@@ -7,7 +7,8 @@ Vue.component("reservations-history", {
             reservations: [],
             sort_list: ['Date', 'Cottage'],
             sort_by: 'Date',
-            direction: 'Ascending'
+            direction: 'Ascending',
+            calendarDisplay: false
         }
     },
 
@@ -43,7 +44,10 @@ Vue.component("reservations-history", {
                 <button class="btn btn-success px-3 mx-2" v-on:click="getReservations">Display</button>
             </div>
         </div>
-        <div>
+        <div class="w-100 d-flex justify-content-end" v-if="input_started">
+            <button class="btn btn-primary mx-4 my-2" v-on:click="calendarDisplay = !calendarDisplay">{{ btnCalendarText }}</button>
+        </div>
+        <div v-if="!calendarDisplay">
             <div class="d-flex justify-content-center" v-for="(r, i) in reservations">
                 <div class="card w-50 my-4 shadow px-1" style="border-radius: 10px">
                     <div class="card-body mx-2">
@@ -67,11 +71,15 @@ Vue.component("reservations-history", {
                 </div>
             </div>
         </div>
+        <div v-if="calendarDisplay">
+            <owners-reservations-calendar :reservations="reservations"></owners-reservations-calendar>
+        </div>
     </div>
    `,
 
     methods: {
         getReservations() {
+            this.input_started = true;
             let desc = this.direction === 'Descending';
             axios.post('api/users/getFilteredOwnersReservations/' + this.$route.params.id, {
                 startDate: this.start_date,
@@ -98,6 +106,13 @@ Vue.component("reservations-history", {
             let hours = dateStr.substring(11, 13);
             let minutes = dateStr.substring(14, 16);
             return hours + ':' + minutes;
+        }
+    },
+
+    computed: {
+        btnCalendarText() {
+            if (this.calendarDisplay) return "Hide calendar";
+            return "Show calendar";
         }
     }
 });
