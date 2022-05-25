@@ -23,7 +23,8 @@ Vue.component("ship-images", {
             <div class="row">
                 <div class="col d-flex justify-content-center flex-wrap">
                     <div v-for="(img, i) in paths" class="m-2">
-                        <img :src="img" class="rounded float-start m-2" width="240" height="240"> 
+                        <button type="button" v-on:click="showImage(i)">
+                        <img :src="img" class="rounded float-start m-2" width="240" height="240"> </button>
                         <div class="text-end">
                             <button type="button" class="btn btn-sm btn-danger me-3" v-on:click="paths.splice(i, 1)">Delete</button>
                         </div>
@@ -63,6 +64,14 @@ Vue.component("ship-images", {
                 Swal.fire('Success', 'Ship updated!', 'success');
             }).catch(function (error) {
                 Swal.fire('Error', 'Something went wrong!', 'error');
+            });
+        },
+
+        showImage(index) {
+            Swal.fire({
+                imageUrl: this.imagePaths[index],
+                imageWidth: 400,
+                imageHeight: 400
             });
         }
     }

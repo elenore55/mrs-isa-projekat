@@ -19,7 +19,7 @@ Vue.component('owners-profile', {
     template: `
     <div style="background-color: #ddc8fb; height: 100%">
         <div class="d-flex justify-content-center">
-            <div class="card px-3 py-2 m-5 shadow-lg" style="background-color: #fff9e8; border-radius: 15px; width: 33%">
+            <div class="card px-3 py-2 m-5 shadow-lg" style="background-color: #fff9e8; border-radius: 15px; width: 40%">
                 <div class="card-body m-3">
                     <h2 class="card-title d-flex justify-content-center mb-4 fw-bold">{{ owner.name }} {{ owner.surname }}</h2>
                     <div>
@@ -38,17 +38,16 @@ Vue.component('owners-profile', {
                     </div>
                     <p class="ms-1 mb-4" style="font-size: 1.2em">{{ owner.address.street }}, {{ owner.address.city }}, {{ owner.address.country }}</p>
                     <hr>
-                    <div>
-                        <h4 class="text-success mb-4">Loyalty program</h4>
-                        <div style="font-size: 1.2em">
-                            <div class="d-flex justify-content-left">
-                                <span><i class="fa fa-medal mx-2"></i></span><p>Status: &nbsp</p> <p class="ms-1 fw-bold">{{ owner.category }}</p>
-                            </div>
-                            <div class="d-flex justify-content-left">
-                                <span><i class="fa fa-star mx-2"></i></span><p>Points: &nbsp</p> <p class="ms-1 fw-bold">{{ owner.numberOfPoints }}</p>
-                            </div>
+                    <h4 class="text-success mb-5">Loyalty program</h4>
+                    <div style="font-size: 1.2em">
+                        <div class="d-flex justify-content-left">
+                            <span><i class="fa fa-medal mx-2"></i></span><p>Status: &nbsp</p> <p class="ms-1 fw-bold">{{ owner.category }}</p>
+                        </div>
+                        <div class="d-flex justify-content-left">
+                            <span><i class="fa fa-star mx-2"></i></span><p>Points: &nbsp</p> <p class="ms-1 fw-bold">{{ owner.numberOfPoints }}</p>
                         </div>
                     </div>
+
                     <div class="mt-5 d-flex justify-content-evenly">
                         <a class="btn btn-success me-1" href="javascript:void(0)" @click="$router.push({path: '/updateOwnersProfile/' + $route.params.id})" style="width: 50%">Edit</a>
                         <a @click="window.scrollTo(0, document.body.scrollHeight);" class="btn btn-danger ms-1" data-bs-toggle="collapse" href="#confirm-delete" 

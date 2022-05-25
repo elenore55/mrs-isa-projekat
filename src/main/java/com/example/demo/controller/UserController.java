@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.*;
 import com.example.demo.model.*;
+import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,6 +107,7 @@ public class UserController {
         if (user instanceof CottageOwner) reservations = ((CottageOwner)user).getReservations();
         else reservations = ((ShipOwner)user).getReservations();
         for (Reservation r : reservations) {
+            setReservationStatus(r);
             result.add(new ReservationDTO(r));
         }
         return new ResponseEntity<>(result, HttpStatus.OK);
@@ -124,9 +127,18 @@ public class UserController {
         else reservations = ((ShipOwner)user).getReservations();
         for (Reservation r : reservations) {
             if (r.getOffer().getId().equals(offerId)) {
+                setReservationStatus(r);
                 result.add(new ReservationDTO(r));
             }
         }
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    private void setReservationStatus(Reservation r) {
+        if (r.getReservationStatus() == ReservationStatus.CLIENT_NOT_ARRIVED || r.getReservationStatus() == ReservationStatus.CANCELLED) return;
+        LocalDateTime today = LocalDateTime.now();
+        if (r.getEnd().compareTo(today) < 0) r.setReservationStatus(ReservationStatus.FINISHED);
+        else if (r.getStart().compareTo(today) > 0) r.setReservationStatus(ReservationStatus.PENDING);
+        else r.setReservationStatus(ReservationStatus.ACTIVE);
     }
 }
