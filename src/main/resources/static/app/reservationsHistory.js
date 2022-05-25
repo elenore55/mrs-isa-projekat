@@ -50,7 +50,7 @@ Vue.component("reservations-history", {
                         <h3 class="card-title d-flex justify-content-center my-3">{{ r.offerName }}</h3>
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="my-3">Client: {{ r.clientEmail }}</h5>
-                            <a class="btn btn-primary btn-sm h-50 mt-3" href="#">View profile</a>
+                            <a class="btn btn-primary btn-sm h-50 mt-3" href="javascript:void(0)" @click="$router.push({path: '/clientReadonlyProfile/' + r.clientEmail})">View profile</a>
                         </div>
                         <table>
                             <tr class="mt-3">
@@ -99,6 +99,5 @@ Vue.component("reservations-history", {
             let minutes = dateStr.substring(14, 16);
             return hours + ':' + minutes;
         }
-
     }
 });
