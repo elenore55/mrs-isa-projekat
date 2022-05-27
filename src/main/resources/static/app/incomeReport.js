@@ -7,8 +7,29 @@ Vue.component('income-report', {
             disabled: {
                 from: new Date()
             },
-            chart_displayed: false
+            ch: null
         }
+    },
+
+    mounted() {
+        let chart = document.getElementById('bar-plot').getContext('2d');
+        this.ch = new Chart(chart, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Income',
+                    data: []
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
     },
 
     template: `
@@ -28,7 +49,7 @@ Vue.component('income-report', {
                 </div>
             </div>
         </div>    
-        <div class="container-fluid" v-if="chart_displayed">
+        <div class="container">
             <canvas id="bar-plot"></canvas>
         </div>
     </div>
@@ -36,14 +57,19 @@ Vue.component('income-report', {
 
     methods: {
         getReports() {
-            this.chart_displayed = true;
             axios.post("api/users/getIncomeReport/" + this.$route.params.id, {
                 start: this.start_date,
                 end: this.end_date
             }).then(response => {
                 this.reports = response.data;
-                let chart = document.getElementById('bar-plot').getContext('2d');
-                let incomeChart = new Chart(chart, {
+                this.ch.data.labels = this.getChartLabels();
+                this.ch.data.datasets = [{
+                   label: 'Income',
+                   data: this.getChartData()
+                }];
+                this.ch.update();
+                /*let chart = document.getElementById('bar-plot').getContext('2d');
+                this.ch = new Chart(chart, {
                     type: 'bar',
                     data: {
                         labels: this.getChartLabels(),
@@ -65,13 +91,19 @@ Vue.component('income-report', {
                                 'rgba(75, 192, 192, 1)',
                                 'rgba(153, 102, 255, 1)',
                                 'rgba(255, 159, 64, 1)'
-                            ],*/
+                            ],
                             borderWidth: 1,
                             hoverBorderWidth: 3
                         }]
                     },
-                    options: {}
-                });
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                }); */
             }).catch(error => {
                 Swal.fire('Error', 'Something went wrong!', 'error');
             })
