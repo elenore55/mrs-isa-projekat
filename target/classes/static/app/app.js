@@ -1,3 +1,4 @@
+const IncomeReport = {template: '<income-report></income-report>'};
 const OwnersReservationsCalendar = {template: '<owners-reservations-calendar></owners-reservations-calendar>'};
 const ClientReadonlyProfile = {template: '<client-readonly-profile></client-readonly-profile>'};
 const ReservationsHistory = {template: '<reservations-history></reservations-history>'};
@@ -39,6 +40,10 @@ Vue.component('vuejs-datepicker', vuejsDatepicker);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/incomeReport/:id",
+            component: IncomeReport
+        },
         {
             path: "/ownersReservationsCalendar/:id",
             component: OwnersReservationsCalendar
