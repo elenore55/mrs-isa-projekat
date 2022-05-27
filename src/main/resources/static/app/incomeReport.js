@@ -7,7 +7,11 @@ Vue.component('income-report', {
             disabled: {
                 from: new Date()
             },
-            ch: null
+            ch: null,
+            colors: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)',
+                     'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
+            border_colors: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)']
         }
     },
 
@@ -18,7 +22,7 @@ Vue.component('income-report', {
             data: {
                 labels: [],
                 datasets: [{
-                    label: 'Income',
+                    label: 'EUR',
                     data: []
                 }]
             },
@@ -27,6 +31,10 @@ Vue.component('income-report', {
                     y: {
                         beginAtZero: true
                     }
+                },
+                title: {
+                    display: true,
+                    text: "Income during the chosen period"
                 }
             }
         });
@@ -49,7 +57,7 @@ Vue.component('income-report', {
                 </div>
             </div>
         </div>    
-        <div class="container">
+        <div class="container w-75">
             <canvas id="bar-plot"></canvas>
         </div>
     </div>
@@ -64,46 +72,18 @@ Vue.component('income-report', {
                 this.reports = response.data;
                 this.ch.data.labels = this.getChartLabels();
                 this.ch.data.datasets = [{
-                   label: 'Income',
-                   data: this.getChartData()
+                    label: 'EUR',
+                    data: this.getChartData(),
+                    backgroundColor: this.getBgColors(),
+                    borderColor: this.getBorderColors(),
+                    borderWidth: 1,
+                    hoverBorderWidth: 3
                 }];
+                this.ch.options.title = {
+                    display: true,
+                    text: "Income during the chosen period"
+                };
                 this.ch.update();
-                /*let chart = document.getElementById('bar-plot').getContext('2d');
-                this.ch = new Chart(chart, {
-                    type: 'bar',
-                    data: {
-                        labels: this.getChartLabels(),
-                        datasets: [{
-                            label: 'Income',
-                            data: this.getChartData(),
-                            /*backgroundColor: [
-                                '#ff0000',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                '#ff0000',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1,
-                            hoverBorderWidth: 3
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                }); */
             }).catch(error => {
                 Swal.fire('Error', 'Something went wrong!', 'error');
             })
@@ -123,6 +103,26 @@ Vue.component('income-report', {
                 chartData.push(report.income);
             }
             return chartData;
+        },
+
+        getBgColors() {
+            let bgColors = [];
+            const n = this.colors.length;
+            if (n === 0) return [];
+            for (let i in this.reports) {
+                bgColors.push(this.colors[i % n]);
+            }
+            return bgColors;
+        },
+
+        getBorderColors() {
+            let borderColors = [];
+            const n = this.border_colors.length;
+            if (n === 0) return [];
+            for (let i in this.reports) {
+                borderColors.push(this.border_colors[i % n]);
+            }
+            return borderColors;
         }
     }
 });
