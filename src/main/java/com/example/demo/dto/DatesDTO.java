@@ -14,6 +14,7 @@ public class DatesDTO {
     }
 
     public void setStart(LocalDateTime start) {
+        if (start == null) start = LocalDateTime.MIN;
         this.start = start;
     }
 
@@ -22,6 +23,7 @@ public class DatesDTO {
     }
 
     public void setEnd(LocalDateTime end) {
+        if (end == null) end = LocalDateTime.MAX;
         this.end = end;
     }
 }

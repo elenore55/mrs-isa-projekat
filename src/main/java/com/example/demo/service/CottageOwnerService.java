@@ -60,6 +60,7 @@ public class CottageOwnerService {
     public List<IncomeReportDTO> calculateIncome(CottageOwner owner, LocalDateTime start, LocalDateTime end) {
         Map<String, IncomeReportDTO> result = new HashMap<>();
         for (Reservation r : owner.getReservations()) {
+            if (r.getStart().compareTo(start) < 0 || r.getStart().compareTo(end) > 0) continue;
             boolean isFast = false;
             Cottage c = (Cottage) r.getOffer();
             IncomeReportDTO dto;
