@@ -1,18 +1,16 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.FilterCottageDTO;
+import com.example.demo.dto.IncomeReportDTO;
 import com.example.demo.dto.comparators.cottage.*;
-import com.example.demo.model.Address;
-import com.example.demo.model.Cottage;
-import com.example.demo.model.CottageOwner;
+import com.example.demo.model.*;
 import com.example.demo.repository.CottageOwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Service
 public class CottageOwnerService {
@@ -57,6 +55,31 @@ public class CottageOwnerService {
         }
         sortCottages(result, filter.getSortParam().toLowerCase(), filter.getSortDir().equalsIgnoreCase("descending"));
         return result;
+    }
+
+    public List<IncomeReportDTO> calculateIncome(CottageOwner owner, LocalDateTime start, LocalDateTime end) {
+        Map<String, IncomeReportDTO> result = new HashMap<>();
+        for (Reservation r : owner.getReservations()) {
+            boolean isFast = false;
+            Cottage c = (Cottage) r.getOffer();
+            IncomeReportDTO dto;
+            if (result.containsKey(c.getName())) dto = result.get(c.getName());
+            else dto = new IncomeReportDTO(c.getId(), c.getName(), BigDecimal.valueOf(0));
+
+            for (FastReservation fr : c.getFastReservations()) {
+                if (fr.getStart().equals(r.getStart()) && fr.getEnd().equals(r.getEnd())) {
+                    isFast = true;
+                    dto.setIncome(dto.getIncome().add(fr.getPrice()));
+                    break;
+                }
+            }
+            if (!isFast) {
+                BigDecimal newIncome = c.getPriceList().multiply(r.getDuration());
+                dto.setIncome(dto.getIncome().add(newIncome));
+            }
+            result.put(c.getName(), dto);
+        }
+        return new ArrayList<>(result.values());
     }
 
     private void sortCottages(List<Cottage> cottages, String sortBy, boolean desc) {

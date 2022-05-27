@@ -2,7 +2,8 @@ Vue.component('income-report', {
     data() {
         return {
             start_date: null,
-            end_date: null
+            end_date: null,
+            reports: []
         }
     },
 
@@ -33,7 +34,15 @@ Vue.component('income-report', {
 
     methods: {
         getReports() {
-
+            axios.post("api/users/getIncomeReport/" + this.$route.params.id, {
+                start: this.start_date,
+                end: this.end_date
+            }).then(response => {
+                this.reports = response.data;
+                alert(this.reports.length);
+            }).catch(error => {
+                Swal.fire('Error', 'Something went wrong!', 'error');
+            })
         }
     }
 });

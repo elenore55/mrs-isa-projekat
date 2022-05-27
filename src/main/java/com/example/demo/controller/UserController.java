@@ -5,6 +5,8 @@ import com.example.demo.dto.comparators.reservation.ReservationDateComparator;
 import com.example.demo.dto.comparators.reservation.ReservationOfferComparator;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ReservationStatus;
+import com.example.demo.service.CottageOwnerService;
+import com.example.demo.service.ShipOwnerService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,10 +24,14 @@ import java.util.List;
 @RequestMapping(value = "api/users")
 public class UserController {
     private UserService userService;
+    private CottageOwnerService cottageOwnerService;
+    private ShipOwnerService shipOwnerService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, CottageOwnerService cottageOwnerService, ShipOwnerService shipOwnerService) {
         this.userService = userService;
+        this.cottageOwnerService = cottageOwnerService;
+        this.shipOwnerService = shipOwnerService;
     }
 
     @ResponseBody
@@ -167,6 +173,23 @@ public class UserController {
         Client client = userService.findClientByEmail(email);
         if (client == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(new ClientDTO(client), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getIncomeReport/{id}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<List<IncomeReportDTO>> getIncomeReport(@PathVariable Integer id, @RequestBody DatesDTO dto) {
+        User user = userService.findOne(id);
+        if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (user instanceof CottageOwner) {
+            CottageOwner co = (CottageOwner) user;
+            return new ResponseEntity<>(cottageOwnerService.calculateIncome(co, dto.getStart(), dto.getEnd()), HttpStatus.OK);
+        }
+        if (user instanceof ShipOwner) {
+            ShipOwner so = (ShipOwner) user;
+            List<IncomeReportDTO> result = shipOwnerService.calculateIncome(so, dto.getStart(), dto.getEnd());
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     private void sortReservations(List<Reservation> reservations, String sortBy, boolean desc) {

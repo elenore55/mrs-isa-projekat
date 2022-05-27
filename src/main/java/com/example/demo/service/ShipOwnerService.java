@@ -1,18 +1,17 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.FilterShipDTO;
+import com.example.demo.dto.IncomeReportDTO;
 import com.example.demo.dto.comparators.ship.*;
-import com.example.demo.model.Address;
-import com.example.demo.model.Ship;
-import com.example.demo.model.ShipOwner;
+import com.example.demo.model.*;
+import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.repository.ShipOwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Service
 public class ShipOwnerService {
@@ -59,6 +58,34 @@ public class ShipOwnerService {
         }
         sortShips(result, filter.getSortParam().toLowerCase(), filter.getSortDir().equalsIgnoreCase("descending"));
         return result;
+    }
+
+    public List<IncomeReportDTO> calculateIncome(ShipOwner owner, LocalDateTime start, LocalDateTime end) {
+        Map<String, IncomeReportDTO> result = new HashMap<>();
+        for (Reservation r : owner.getReservations()) {
+//            if (r.getReservationStatus() != ReservationStatus.ACTIVE && r.getReservationStatus() != ReservationStatus.FINISHED)
+//                continue;
+
+            boolean isFast = false;
+            Ship s = (Ship) r.getOffer();
+            IncomeReportDTO dto;
+            if (result.containsKey(s.getName())) dto = result.get(s.getName());
+            else dto = new IncomeReportDTO(s.getId(), s.getName(), BigDecimal.valueOf(0));
+
+            for (FastReservation fr : s.getFastReservations()) {
+                if (fr.getStart().equals(r.getStart()) && fr.getEnd().equals(r.getEnd())) {
+                    isFast = true;
+                    dto.setIncome(dto.getIncome().add(fr.getPrice()));
+                    break;
+                }
+            }
+            if (!isFast) {
+                BigDecimal newIncome = s.getPriceList().multiply(r.getDuration());
+                dto.setIncome(dto.getIncome().add(newIncome));
+            }
+            result.put(s.getName(), dto);
+        }
+        return new ArrayList<>(result.values());
     }
 
     private void sortShips(List<Ship> ships, String sortBy, boolean desc) {

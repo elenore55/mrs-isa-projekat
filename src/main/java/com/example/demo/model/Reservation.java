@@ -3,7 +3,9 @@ package com.example.demo.model;
 import com.example.demo.model.enums.ReservationStatus;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 public class Reservation {
@@ -97,5 +99,9 @@ public class Reservation {
 
     public void setOffer(Offer offer) {
         this.offer = offer;
+    }
+
+    public BigDecimal getDuration() {
+        return BigDecimal.valueOf(ChronoUnit.DAYS.between(start, end));
     }
 }

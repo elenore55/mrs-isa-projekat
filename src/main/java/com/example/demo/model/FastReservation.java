@@ -112,4 +112,8 @@ public class FastReservation {
     public void setActionDuration(Integer actionDuration) {
         this.actionDuration = actionDuration;
     }
+
+    public LocalDateTime getEnd() {
+        return start.plusDays(duration);
+    }
 }

@@ -12,7 +12,7 @@ Vue.component('owners-profile', {
         axios.get("api/users/getOwner/" + this.$route.params.id).then(response => {
             this.owner = response.data;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
