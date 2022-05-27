@@ -23,7 +23,7 @@ public class DatesDTO {
     }
 
     public void setEnd(LocalDateTime end) {
-        if (end == null) end = LocalDateTime.MAX;
+        if (end == null) end = LocalDateTime.now();
         this.end = end;
     }
 }

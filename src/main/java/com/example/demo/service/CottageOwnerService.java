@@ -4,6 +4,7 @@ import com.example.demo.dto.FilterCottageDTO;
 import com.example.demo.dto.IncomeReportDTO;
 import com.example.demo.dto.comparators.cottage.*;
 import com.example.demo.model.*;
+import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.repository.CottageOwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,6 +62,8 @@ public class CottageOwnerService {
         Map<String, IncomeReportDTO> result = new HashMap<>();
         for (Reservation r : owner.getReservations()) {
             if (r.getStart().compareTo(start) < 0 || r.getStart().compareTo(end) > 0) continue;
+            if (r.getReservationStatus() == ReservationStatus.CANCELLED || r.getReservationStatus() == ReservationStatus.CLIENT_NOT_ARRIVED)
+                continue;
             boolean isFast = false;
             Cottage c = (Cottage) r.getOffer();
             IncomeReportDTO dto;
