@@ -22,9 +22,9 @@ Vue.component('cottage-images', {
             <h3 v-if="paths.length == 0" class="text-info">No images to show</h3>
             <div class="container px-2">
                 <div class="row">
-                    <div class="col d-flex justify-content-center flex-wrap">
+                    <div class="col d-flex justify-content-center flex-wrap" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <div v-for="(img, i) in paths" class="m-2">
-                            <img :src="img" class="rounded float-start m-2" width="240" height="240"> 
+                            <img :src="img" class="rounded float-start m-2" width="240" height="240" data-bs-target="#carouselExample" :data-bs-slide-to="i">
                             <div class="text-end">
                                 <button type="button" class="btn btn-sm btn-danger me-3" v-on:click="paths.splice(i, 1)">Delete</button>
                             </div>
@@ -43,6 +43,40 @@ Vue.component('cottage-images', {
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div id="carouselExample" class="carousel slide" data-bs-interval="false">
+                                <div class="carousel-indicators">
+                                    <div v-for="(img, i) in paths">
+                                        <button type="button" data-bs-target="#carouselExample" :data-bs-slide-to="i" class="active" aria-current="true"></button>
+                                    </div>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" :src="paths[0]" style="height: 450px">
+                                    </div>
+                                    <div class="carousel-item" v-for="(img, i) in paths.slice(1)">
+                                        <img class="d-block w-100" :src="img" style="height: 450px">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" data-bs-target="#carouselExample" type="button" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" data-bs-target="#carouselExample" role="button" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
    `,
 
@@ -54,6 +88,10 @@ Vue.component('cottage-images', {
             for (let file of files) {
                 this.paths.push("images/" + file.name);
             }
+        },
+
+        imageClicked(index) {
+            alert('Clicked ' + index);
         },
 
         sendRequest() {

@@ -167,6 +167,9 @@ insert into fast_reservation (type, action_duration, action_start, duration, res
     values ('OTH', 5, '20220505 00:00:01 AM', 5, '20220512 11:00:00 AM', 3, 50);
 insert into ship_fast_reservations (ship_id, fast_reservations_id) values (1, 1);
 
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (4, 3, 'FINISHED', '20220423 10:05:00 AM', '20220428 10:05:00 AM');
+insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 6);
+
 -- insert into fishing_instructor (biography,id) values ('Instruktor pecanja I',5);
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Line');
