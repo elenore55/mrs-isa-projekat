@@ -59,15 +59,28 @@ Vue.component("advreserv-with-client",{
                 // console.log(this.adventures)
             })
         },
+        zeroPad(num, places) {
+            var zero = places - num.toString().length + 1;
+            return Array(+(zero > 0 && zero)).join("0") + num;
+        },
+        dateForBackend(date){
+            return date.getFullYear()+'-'+this.zeroPad(date.getMonth()+1, 2)+'-'+this.zeroPad(date.getDate(), 2)+'T'+this.zeroPad(date.getHours(), 2)+':'+this.zeroPad(date.getMinutes(), 2)+':'+this.zeroPad(date.getSeconds(), 2)
+        },
         sendRequest(){
+            //2018-09-16T08:00:00
+            this.start = this.dateForBackend(this.start);
+            this.end = this.dateForBackend(this.end);
+
+            console.log(this.start);
+            console.log(this.end);
             axios.get("api/offers/getOffer/" + this.adventure.id).then(response => {
                 this.offer = response.data;
                 axios.post("api/adventures/addReservationClient", {
                     // availabilityDTO: this.availabilityDTO
-                    start: this.start,
-                    end: this.duration,
-                    adventure: this.adventure.id,
-                    email: this.client_email
+                    startDate: this.start,
+                    endDate: this.end,
+                    offerId: this.offer.id,
+                    clientEmail: this.client_email
                 }).then(function (response) {
                     alert("Successfully updated your personal information");
                 }).catch(function (error) {

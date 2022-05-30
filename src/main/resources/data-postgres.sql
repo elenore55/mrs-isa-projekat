@@ -70,3 +70,12 @@ insert into fishing_instructor (biography, id) values ('Instruktor pecanja I',1)
 insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
 insert into fishing_equipment (amount, name) values (10,'Fishing Line');
 insert into fishing_equipment (amount, name) values (10,'Hooks');
+
+
+insert into offer (additional_info, description, name, price_list, address_id) values ('additional info', 'neki opis', 'PonudaSQL', 500, 1);
+insert into adventure (max_people,id,fishing_instructor_id) values (10,1,1);
+insert into adventure_fishing_equipments(adventure_id,fishing_equipments_id) values(1,2);
+
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('aleksadsimic@gmail.com', 'Aleksa', 'sifra', '064440044', 'Prezimic', 1);
+insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,3);
+insert into client (id) values (3);

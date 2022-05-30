@@ -3,10 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dto.*;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ReservationStatus;
-import com.example.demo.service.AdventureService;
-import com.example.demo.service.FishingEquipmentService;
-import com.example.demo.service.FishingInstructorService;
-import com.example.demo.service.ReservationService;
+import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +20,19 @@ public class AdventureController {
     private FishingInstructorService fishingInstructorService;
     private FishingEquipmentService fishingEquipmentService;
     private ReservationService reservationService;
+    private OfferService offerService;
+    private UserService userService;
 
     @Autowired
-    public AdventureController(AdventureService adventureService, FishingInstructorService fishingInstructorService, FishingEquipmentService fishingEquipmentService, ReservationService reservationService) {
+    public AdventureController(AdventureService adventureService, FishingInstructorService fishingInstructorService,
+                               FishingEquipmentService fishingEquipmentService, ReservationService reservationService,
+                               OfferService offerService, UserService userService) {
         this.adventureService = adventureService;
         this.fishingInstructorService = fishingInstructorService;
         this.fishingEquipmentService = fishingEquipmentService;
         this.reservationService = reservationService;
+        this.offerService = offerService;
+        this.userService = userService;
     }
 
     @GetMapping(value = "/all")
@@ -164,10 +167,12 @@ public class AdventureController {
     @RequestMapping(path = "/addReservationClient", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<ReservationDTO> addResevClient(@RequestBody ReservationDTO dto) {
         Reservation reservation = new Reservation();
-        reservation.setClient(new Client()); // dopuni
+        reservation.setClient(userService.findClientByEmail(dto.getClientEmail())); // dopuni - dopunjeno
+        System.out.println(dto.getEndDate());
         reservation.setEnd(dto.getEndDate());
+        System.out.println(dto.getStartDate());
         reservation.setStart(dto.getStartDate());
-        reservation.setOffer(new Offer()); // dopuni
+        reservation.setOffer(offerService.findOne(dto.getOfferId())); // dopuni - dopunjeno
 
         if (reservation.getClient() == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

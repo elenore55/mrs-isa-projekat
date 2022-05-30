@@ -4,6 +4,8 @@ Vue.component("adventure-quick",{
         return{
             start:null,
             duration:null,
+            action_start:null,
+            action_duration:null,
             maxPeople:[],
             adventure:[],
             adventures:[],
@@ -32,13 +34,23 @@ Vue.component("adventure-quick",{
         </div>
         <div class="row">
             <div class="col">
-                <label>start date</label>  
+                <label>Start date</label>  
                 <vuejs-datepicker v-model="start" format="dd.MM.yyyy." id="start-date" class="form-control"></vuejs-datepicker> 
             </div>
             <div class="col">
                 <label>Duration</label>
                 <input v-model="duration" type="number" step="1" min="0" class="form-control"/>
             </div>
+            
+            <div class="col">
+                <label>Action start date</label>  
+                <vuejs-datepicker v-model="action_start" format="dd.MM.yyyy." id="start-date" class="form-control"></vuejs-datepicker> 
+            </div>
+            <div class="col">
+                <label>Action duration</label>
+                <input v-model="action_duration" type="number" step="1" min="0" class="form-control"/>
+            </div>
+            
         </div>
         <div class="row">
             <div class="col">
@@ -82,6 +94,10 @@ Vue.component("adventure-quick",{
                     // availabilityDTO: this.availabilityDTO
                     start: this.start,
                     duration: this.duration,
+
+                    action_start: this.action_start,
+                    action_duration: this.action_duration,
+
                     maxPeople: this.maxPeople,
                     price: this.price,
                     adventure: this.adventure.id
