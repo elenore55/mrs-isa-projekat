@@ -139,9 +139,9 @@ public class AdventureController {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/addFastReservation", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<FastReservationDTO> addFastReservation(@RequestBody FastAdventureReservDTO dto) {
-        Adventure adventure = adventureService.findOne(dto.getAdventure_id());
+    @RequestMapping(path = "/addFastReservation/{id}", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<FastReservationDTO> addFastReservation(@PathVariable Integer id,@RequestBody FastReservationDTO dto) {
+        Adventure adventure = adventureService.findOne(id);
         if (adventure == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
@@ -150,10 +150,10 @@ public class AdventureController {
         FastAdventureReservation far = new FastAdventureReservation();
         far.setStart(dto.getStart());
         far.setDuration(dto.getDuration());
-//        far.setActionStart();
-//        far.setActionDuration();
+        far.setActionStart(dto.getActionStart());
+        far.setActionDuration(dto.getActionDuration());
 
-
+        far.setAdditionalServices(adventure.getAdditionalInfo());
         far.setPrice(dto.getPrice());
         far.setMaxPeople(dto.getMaxPeople());
         far.setPlace(adventure.getAddress());

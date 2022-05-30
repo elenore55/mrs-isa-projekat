@@ -90,13 +90,13 @@ Vue.component("adventure-quick",{
         sendRequest(){
             axios.get("api/offers/getOffer/" + this.adventure.id).then(response => {
                 this.offer = response.data;
-                axios.post("api/adventures/addFastReservation", {
+                axios.post("api/adventures/addFastReservation/"+this.offer.id, {
                     // availabilityDTO: this.availabilityDTO
                     start: this.start,
                     duration: this.duration,
 
-                    action_start: this.action_start,
-                    action_duration: this.action_duration,
+                    actionStart: this.action_start,
+                    actionDuration: this.action_duration,
 
                     maxPeople: this.maxPeople,
                     price: this.price,
