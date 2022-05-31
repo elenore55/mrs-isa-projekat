@@ -6,21 +6,23 @@ Vue.component("adventure-history",{
             adventure:[],
             adventures:[],
             start:null,
-            end:null
+            end:null,
+            reservations:[]
         }
     },
     mounted: function (){
-        this.loadAllInstructorAvailability()
         this.loadInstructorsAdventures()
+        //this.loadAllReservationHistory()
+        //this.loadReservationHistory()
     },
-    template: `
-    <form style="width: 600px; margin: auto"  v-on:submit ="sendRequest">
+    template: ` 
+    <form style="width: 900px; margin: auto">
+<!--        <form style="width: 900px; margin: auto"  v-on:submit ="loadReservationHistory">-->
         <h2 class="text-center">Instructors adventures</h2>
         <div class="row">
         </div>
         <div class="row">
             <div class="col">   
-<!--            ostavljamo zbog potreba sortiranja vremena-->
                 <vuejs-datepicker v-model="start" format="dd.MM.yyyy." id="start-date"></vuejs-datepicker>
                 <label>start date</label>   
             </div>
@@ -30,37 +32,65 @@ Vue.component("adventure-history",{
             </div>
         </div>
         <div class = "row">
-            <p> ovde prikazati rezervacije avantura</p>
-<!--            <p v-for="ava in availabilities">{{ava}}</p>-->
+            <div class="col">
+                <h3 class="text-center">Choose your adventure</h3>
+                    <select class="select form-control" @change="loadReservationHistory()" v-model="adventure" style="height: 50px">
+                        <option v-for="adv in adventures" v-bind:value="adv"> {{adv.name}}</option>
+                    </select>
+            </div>
         </div>
         <div class = "row">
-            <h2 class="text-center">Instructors adventures</h2>
-                <select class="select form-control" v-model="adventure" style="height: 50px">
-                    <option v-for="adv in adventures" v-bind:value="adv"> {{adv.name}}</option>
-                </select>
-        </div>
-        <div class="row">
-            <div class="col">
-                <br>
-<!--                <button type="submit" class="btn btn-primary btn-lg" v-on:submit="sendRequest" style="width: 200px; position: relative; bottom: 0px; right: -400px">Update your info</button>-->
-                <button type="submit" class="btn btn-primary btn-lg" style="width: 200px; position: relative; bottom: 0px; right: -400px">Load</button>
-            </div>
+            <table class="table table-striped" style="width: 1000px" v-if="this.adventure">
+              <thead>
+                <tr>
+                  <th scope="col">Clients email</th>
+                  <th scope="col">Start date</th>
+                  <th scope="col">End date</th>
+                  <th scope="col">Reservation status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="reservation in reservations">
+                    <td> {{reservation.clientEmail}}  </td>
+                    <td> {{reservation.startDate}}  </td>
+                    <td> {{reservation.endDate}}  </td>
+                    <td> {{reservation.status}}  </td>
+                </tr>
+              </tbody>
+            </table>
         </div>
     </form>
     `,
     methods:{
-        loadAllInstructorAvailability(){
-            axios.get("api/availability/all").then(response => {
-                this.availabilities = response.data;
-                // console.log(this.availabilities)
-                // console.log("BBBB")
-            })
-        },
         loadInstructorsAdventures(){
             axios.get("api/adventures/all").then(response => {
                 this.adventures = response.data;
                 // console.log(this.adventures)
             })
+        },
+
+        loadAllReservationHistory(){
+            axios.get("api/reservations/all").then(response => {
+                this.reservations = response.data;
+                console.log(this.reservations)
+            })
+        },
+
+        // msm sta da ti kazem ti trazi pomoc :)
+        loadReservationHistory(){   //onde nam 1 predstavlja id instruktora zasad ne znam o kojem je rec
+            axios.get("api/reservations/advreser/"+this.adventure.id+"/1").then(response => {
+                this.reservations = response.data;
+                console.log(this.reservations)
+            })
+        },
+
+        zeroPad(num, places) {
+            var zero = places - num.toString().length + 1;
+            return Array(+(zero > 0 && zero)).join("0") + num;
+        },
+
+        dateForBackend(date){
+            return date.getFullYear()+'-'+this.zeroPad(date.getMonth()+1, 2)+'-'+this.zeroPad(date.getDate(), 2)+' '+this.zeroPad(date.getHours(), 2)+':'+this.zeroPad(date.getMinutes(), 2)+':'+this.zeroPad(date.getSeconds(), 2)
         },
 
         sendRequest(){

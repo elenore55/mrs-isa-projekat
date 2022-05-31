@@ -1,14 +1,14 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Client;
-import com.example.demo.model.ProfileData;
-import com.example.demo.model.User;
+import com.example.demo.model.*;
 import com.example.demo.model.enums.Category;
 import com.example.demo.repository.ClientRepository;
 import com.example.demo.repository.Profile_DataRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -26,9 +26,6 @@ public class UserService {
     }
 
     public User save(User user){
-        System.out.println("BILA SAM U SVOM SERVISU             BILA SAM U SVOM SERVISU             BILA SAM U SVOM SERVISU     ");
-        System.out.println("Ime usera " + user.getName());
-        System.out.println("Drzava usera " + user.getProfileData().getAddress().getCountry());
         Client c = new Client();
 
         c.setProfileData(user.getProfileData());
@@ -57,4 +54,31 @@ public class UserService {
         if (userRepository.isAlreadyRegistered(email))
         return false;
     }*/
+
+    public User findOne(Integer id) {
+        return userRepository.findById(id).orElseGet(null);
+    }
+
+    public void addReservation(Integer id, Reservation reservation) {
+        User user = findOne(id);
+        if (user instanceof CottageOwner) {
+            CottageOwner c = (CottageOwner)user;
+            List<Reservation> reservations = c.getReservations();
+            reservations.add(reservation);
+            c.setReservations(reservations);
+            userRepository.save(c);
+        } else if (user instanceof ShipOwner) {
+            ShipOwner c = (ShipOwner)user;
+            List<Reservation> reservations = c.getReservations();
+            reservations.add(reservation);
+            c.setReservations(reservations);
+            userRepository.save(c);
+        } else if (user instanceof FishingInstructor) {
+            FishingInstructor fi = (FishingInstructor) user;
+            List<Reservation> reservations = fi.getReservations();
+            reservations.add(reservation);
+            fi.setReservations(reservations);
+            userRepository.save(fi);
+        }
+    }
 }

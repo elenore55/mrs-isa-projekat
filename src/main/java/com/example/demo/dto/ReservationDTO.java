@@ -10,6 +10,8 @@ public class ReservationDTO {
     private Integer offerId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    private Integer ownerId;
+    private String status;
 
     public ReservationDTO() {
     }
@@ -20,7 +22,8 @@ public class ReservationDTO {
             this.clientEmail = r.getClient().getEmail();
         this.offerId = r.getOffer().getId();
         this.startDate = r.getStart();
-        this.endDate =  r.getEnd();
+        this.endDate = r.getEnd();
+        this.status = r.getReservationStatus().toString();
     }
 
     public Integer getId() {
@@ -61,5 +64,21 @@ public class ReservationDTO {
 
     public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

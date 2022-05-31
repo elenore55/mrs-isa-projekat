@@ -167,17 +167,16 @@ public class AdventureController {
     @RequestMapping(path = "/addReservationClient", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<ReservationDTO> addResevClient(@RequestBody ReservationDTO dto) {
         Reservation reservation = new Reservation();
-        reservation.setClient(userService.findClientByEmail(dto.getClientEmail())); // dopuni - dopunjeno
-        System.out.println(dto.getEndDate());
+        reservation.setClient(userService.findClientByEmail(dto.getClientEmail()));
         reservation.setEnd(dto.getEndDate());
-        System.out.println(dto.getStartDate());
         reservation.setStart(dto.getStartDate());
-        reservation.setOffer(offerService.findOne(dto.getOfferId())); // dopuni - dopunjeno
+        reservation.setOffer(offerService.findOne(dto.getOfferId()));
 
         if (reservation.getClient() == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         reservation.setReservationStatus(ReservationStatus.PENDING);
         reservation = reservationService.save(reservation);
+        userService.addReservation(dto.getOwnerId(),reservation);
 
         return new ResponseEntity<>(new ReservationDTO(reservation), HttpStatus.OK);
     }

@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="#342 Kao instruktor pecanja zelim da pravim novu rezervaciju u dogovoru sa klijentom">
+    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="#337 Kao instruktor pecanja zelim da definisem slobodne termine rezervacije avanture za potrebe brze rezervacije">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adventureQuickReserv.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adventureQuickReserv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/FastAdventureReservDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/ReservationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/ReservationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/advReservWithClient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/advReservWithClient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adveHistReserv.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adveHistReserv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/UserService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,13 +162,7 @@
       <workItem from="1652854496714" duration="2989000" />
       <workItem from="1653393672989" duration="4906000" />
       <workItem from="1653453636539" duration="6200000" />
-    </task>
-    <task id="LOCAL-00005" summary="Polja za unos adrese i dodatnih informacija #221.1">
-      <created>1650802073499</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1650802073499</updated>
+      <workItem from="1654006763954" duration="10900000" />
     </task>
     <task id="LOCAL-00006" summary="Polja za unos navigacione i ribarske opreme #221.1">
       <created>1650810073975</created>
@@ -500,7 +500,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653942021837</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="#337 Kao instruktor pecanja zelim da definisem slobodne termine rezervacije avanture za potrebe brze rezervacije">
+      <created>1653942810400</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1653942810400</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,7 +526,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="#207.3 Filtriranje vikendica" />
     <MESSAGE value="#204.3 Dijalog za potvrdu brisanja vikendice" />
     <MESSAGE value="Dobavljanje vlasnikovih brodova #251.1" />
     <MESSAGE value="#251.1 Izlistavanje kartica sa osnovnim podacima o brodovima" />
@@ -544,16 +550,7 @@
     <MESSAGE value="#338.2 Forma za popunjavanje dostupnosti" />
     <MESSAGE value="#338.1,#338.2,#338.3; #343.1,#343.2,#343.3; #339.1,#339.2,#339.3" />
     <MESSAGE value="#342 Kao instruktor pecanja zelim da pravim novu rezervaciju u dogovoru sa klijentom" />
-    <option name="LAST_COMMIT_MESSAGE" value="#342 Kao instruktor pecanja zelim da pravim novu rezervaciju u dogovoru sa klijentom" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
-          <option name="timeStamp" value="2" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="#337 Kao instruktor pecanja zelim da definisem slobodne termine rezervacije avanture za potrebe brze rezervacije" />
+    <option name="LAST_COMMIT_MESSAGE" value="#337 Kao instruktor pecanja zelim da definisem slobodne termine rezervacije avanture za potrebe brze rezervacije" />
   </component>
 </project>

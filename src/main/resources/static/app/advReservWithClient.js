@@ -77,6 +77,7 @@ Vue.component("advreserv-with-client",{
                 this.offer = response.data;
                 axios.post("api/adventures/addReservationClient", {
                     // availabilityDTO: this.availabilityDTO
+                    ownerId: 1, //zasad
                     startDate: this.start,
                     endDate: this.end,
                     offerId: this.offer.id,
