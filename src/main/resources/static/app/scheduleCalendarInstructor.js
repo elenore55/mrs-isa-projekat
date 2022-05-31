@@ -1,59 +1,43 @@
 Vue.component("instructor-calendar",{
-    data:function ()
-    {
-        return{
-            reservations: [],
-            start:null,
-            end:null
+    data() {
+        return {
+            reservations: []
         }
     },
-    mounted: function (){
-        this.loadAllInstructorsReservations()
+    mounted() {
+        this.loadInstructorsReservations()
     },
     template: `
-    <form style="width: 600px; margin: auto"  v-on:submit ="sendRequest">
-        <h2 class="text-center">Instructorsss calendar</h2>
-        <div class="row">
-        </div>
-        <div class="row">
-            <div class="col">   
-<!--            ostavljamo zbog potreba sortiranja vremena-->
-                <vuejs-datepicker v-model="start" format="dd.MM.yyyy." id="start-date"></vuejs-datepicker>
-                <label>start date</label>   
-            </div>
-            <div class="col">
-                <vuejs-datepicker v-model="end" format="dd.MM.yyyy." id="end-date"></vuejs-datepicker>
-                <label>end date</label>
-            </div>
-        </div>
-        <div class = "row">
-            <p> ovde prikazati rezervacije u zadatom opsegu</p>
-<!--            <p v-for="ava in availabilities">{{ava}}</p>-->
-        </div>
-        <div class="row">
-            <div class="col">
-                <br>
-<!--                <button type="submit" class="btn btn-primary btn-lg" v-on:submit="sendRequest" style="width: 200px; position: relative; bottom: 0px; right: -400px">Update your info</button>-->
-                <button type="submit" class="btn btn-primary btn-lg" style="width: 200px; position: relative; bottom: 0px; right: -400px">Load</button>
-            </div>
-        </div>
-    </form>
+    <div class="m-4">
+        <div id="calendar" class="p-4 shadow-lg" style="background-color: white; border-radius: 10px"></div>
+    </div>
     `,
-    methods:{
-        loadAllInstructorsReservations(){
-            axios.get("api/reservations/all").then(response => {
+    methods: {
+        loadInstructorsReservations() { //zasad nek bude postavljen na 1
+            // axios.get("api/users/getOwnersReservations/" + this.id).then(response => {
+            axios.get("api/users/getOwnersReservations/" + "1").then(response => {
                 this.reservations = response.data;
-                // console.log(this.availabilities)
-                // console.log("BBBB")
-            })
-        },
-        sendRequest(){
-            console.log("AAAAAAAAAAAAA")
-            axios.get("api/reservations/allBetween").then(response => {
-                this.reservations = response.data;
-                // console.log(this.availabilities)
-                // console.log("BBBB")
-            })
+                let events = [];
+                for (const r of this.reservations) {
+                    events.push({
+                        title: r.clientEmail,
+                        start: new Date(r.startDate),
+                        end: new Date(r.endDate)
+                    })
+                }
+                alert(events.length);
+                var el = document.getElementById("calendar");
+                var calendar = new FullCalendar.Calendar(el, {
+                    plugins: ['dayGrid', 'bootstrap'],
+                    themeSystem: 'bootstrap',
+                    weekNumbers: false,
+                    eventLimit: true,
+                    events: events
+                });
+                calendar.render();
+            }).catch(function (error) {
+                alert('An error occurred!');
+            });
         }
     }
 });
