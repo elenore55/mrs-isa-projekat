@@ -192,6 +192,16 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/getOfferType/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<String> getOfferType (@PathVariable Integer id) {
+        User user = userService.findOne(id);
+        if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (user instanceof CottageOwner) return new ResponseEntity<>("cottages", HttpStatus.OK);
+        if (user instanceof ShipOwner) return new ResponseEntity<>("ships", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     private void sortReservations(List<Reservation> reservations, String sortBy, boolean desc) {
         Comparator<Reservation> comparator;
         if (sortBy.equalsIgnoreCase("Date")) comparator = new ReservationDateComparator();

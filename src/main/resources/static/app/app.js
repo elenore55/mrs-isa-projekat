@@ -93,11 +93,11 @@ const router = new VueRouter({
             component: CottageReservations
         },
         {
-            path: "/shipsViewOwner/",
+            path: "/shipsViewOwner/:id/",
             component: ShipsViewOwner
         },
         {
-            path: "/cottagesViewOwner/",
+            path: "/cottagesViewOwner/:id/",
             component: CottagesViewOwner
         },
         {

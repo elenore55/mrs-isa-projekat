@@ -21,10 +21,9 @@ Vue.component("ship-images", {
         <update-ship-nav></update-ship-nav>
         <div class="container px-2">
             <div class="row">
-                <div class="col d-flex justify-content-center flex-wrap">
+                <div class="col d-flex justify-content-center flex-wrap" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <div v-for="(img, i) in paths" class="m-2">
-                        <button type="button" v-on:click="showImage(i)">
-                        <img :src="img" class="rounded float-start m-2" width="240" height="240"> </button>
+                        <img :src="img" class="rounded float-start m-2" width="240" height="240" data-bs-target="#carouselExample" :data-bs-slide-to="i">
                         <div class="text-end">
                             <button type="button" class="btn btn-sm btn-danger me-3" v-on:click="paths.splice(i, 1)">Delete</button>
                         </div>
@@ -40,6 +39,40 @@ Vue.component("ship-images", {
             <div class="row mt-4">
                 <div class="col text-end">
                     <button class="btn btn-primary" v-on:click="sendRequest">Save changes</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="carouselExample" class="carousel slide" data-bs-interval="false">
+                            <div class="carousel-indicators">
+                                <div v-for="(img, i) in paths">
+                                    <button type="button" data-bs-target="#carouselExample" :data-bs-slide-to="i" class="active" aria-current="true"></button>
+                                </div>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" :src="paths[0]" style="height: 450px">
+                                </div>
+                                <div class="carousel-item" v-for="(img, i) in paths.slice(1)">
+                                    <img class="d-block w-100" :src="img" style="height: 450px">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" data-bs-target="#carouselExample" type="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" data-bs-target="#carouselExample" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -64,14 +97,6 @@ Vue.component("ship-images", {
                 Swal.fire('Success', 'Ship updated!', 'success');
             }).catch(function (error) {
                 Swal.fire('Error', 'Something went wrong!', 'error');
-            });
-        },
-
-        showImage(index) {
-            Swal.fire({
-                imageUrl: this.imagePaths[index],
-                imageWidth: 400,
-                imageHeight: 400
             });
         }
     }

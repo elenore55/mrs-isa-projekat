@@ -39,6 +39,7 @@ Vue.component("cottages-view-owner", {
 
     template: `
         <div style="background-color: #fff9e8">
+            <owners-nav offer="cottages"></owners-nav>
             <div class="container">
                 <div class="d-flex justify-content-center">
                     <div class="collapse bg-light shadow rounded w-50 mt-3" id="confirm-delete">

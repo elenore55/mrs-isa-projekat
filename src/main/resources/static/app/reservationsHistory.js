@@ -8,12 +8,22 @@ Vue.component("reservations-history", {
             sort_list: ['Date', 'Cottage'],
             sort_by: 'Date',
             direction: 'Ascending',
-            calendarDisplay: false
+            calendarDisplay: false,
+            offer_type: ""
         }
+    },
+
+    mounted() {
+        axios.get("api/users/getOfferType/" + this.$route.params.id).then(response => {
+            this.offer_type = response.data;
+        }).catch(error => {
+            Swal.fire('Error', 'Owner not found!', 'error');
+        });
     },
 
     template: `
     <div style="background-color: #fff9e8">
+        <owners-nav :offer="offer_type"></owners-nav>
         <div class="d-flex justify-content-center" style="background-color: #ddc8fb">
             <div class="w-25 d-flex justify-content-evenly my-3">
                 <div class="mt-1 ms-3 me-4 mb-1">
