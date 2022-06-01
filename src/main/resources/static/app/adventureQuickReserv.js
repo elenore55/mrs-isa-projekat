@@ -102,7 +102,7 @@ Vue.component("adventure-quick",{
                     price: this.price,
                     adventure: this.adventure.id
                 }).then(function (response) {
-                    alert("Successfully updated your personal information");
+                    alert("Successful");
                 }).catch(function (error) {
                     alert("An ERROR occurred while updating your personal information");
                 });

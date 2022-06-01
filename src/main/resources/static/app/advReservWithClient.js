@@ -83,7 +83,7 @@ Vue.component("advreserv-with-client",{
                     offerId: this.offer.id,
                     clientEmail: this.client_email
                 }).then(function (response) {
-                    alert("Successfully updated your personal information");
+                    alert("Successful");
                 }).catch(function (error) {
                     alert("An ERROR occurred while updating your personal information");
                 });

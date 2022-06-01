@@ -62,7 +62,7 @@ delete from address;
 insert into address (city,country,street) values ('Novi Sad','Srbija','Puskinova 6');
 insert into address (city,country,street) values ('Beograd','Srbija','Puskinova 69');
 insert into profile_data (email,name,password,phone_number,surname,address_id) values ('email@gmail.com','ImeInstruktora','11223344','06444124214','PrezimeInstruktora',1);
-insert into profile_data (email,name,password,phone_number,surname,address_id) values ('emailAdmin@gmail.com','ImeAnstruktora','sifra','06444144444','PrezimeAdmin',2);
+insert into profile_data (email,name,password,phone_number,surname,address_id) values ('emailAdmin@gmail.com','Imeadmin','sifra','06444144444','PrezimeAdmin',2);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,1);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,2);
 insert into admin (is_main, id) values (true , 2);

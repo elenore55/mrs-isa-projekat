@@ -69,9 +69,9 @@ Vue.component("availability-instructor",{
                     end:this.end,
                     offer: this.offer
                 }).then(function (response) {
-                    alert("Successfully updated your personal information");
+                    alert("Successfully added availability period");
                 }).catch(function (error) {
-                    alert("An ERROR occurred while updating your personal information");
+                    alert("An ERROR occurred while adding an availability");
                 });
             })
         }
