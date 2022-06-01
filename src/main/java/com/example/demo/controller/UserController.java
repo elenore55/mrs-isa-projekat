@@ -75,8 +75,6 @@ public class UserController {
     public ResponseEntity<List<UserDTO>> getAllUsers() {
 
         List<User> users = userService.findAll();
-
-
         List<UserDTO> userDTOS = new ArrayList<>();
         for (User user : users) {
             userDTOS.add(new UserDTO(user));
