@@ -32,7 +32,8 @@ Vue.component('owners-reservations-calendar', {
                 backgroundColor: color,
                 id: r.id,
                 groupId: 1,
-                description: reservationText
+                description: reservationText,
+                offerName: r.offerName
             });
         }
         var el = document.getElementById("calendar");
@@ -68,7 +69,7 @@ Vue.component('owners-reservations-calendar', {
                 let endTime = endDateTime.toISOString().split('T')[1];
                 endTime = endTime.substring(0, 5);
                 Swal.fire({
-                    title: info.event.extendedProps.description + ' reservation',
+                    title: info.event.extendedProps.description + ' reservation for ' + info.event.extendedProps.offerName,
                     html: '<p>Client: ' + info.event.title + '</a></p><p>Start: ' + startDate + ' ' + startTime + '</p><p>End: ' + endDate + ' ' + endTime + '</p>',
                     icon: 'info',
                     backdrop: `rgba(106, 124, 137, 0.4)`

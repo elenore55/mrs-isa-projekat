@@ -5,7 +5,7 @@ Vue.component("reservations-history", {
             start_date: null,
             end_date: null,
             reservations: [],
-            sort_list: ['Date', 'Cottage'],
+            sort_list: ['Date', 'Name'],
             sort_by: 'Date',
             direction: 'Ascending',
             calendarDisplay: false,
@@ -76,7 +76,7 @@ Vue.component("reservations-history", {
                                 <td><h5>{{ getFormattedDate(r.endDate) }} at {{ getFormattedTime(r.endDate) }}h</h5></td>
                             </tr>
                         </table>
-                        <h5 class="my-3"><span class="badge" style="background-color: purple">{{ r.status }}</span></h5>
+                        <h5 class="my-3"><span class="badge" style="background-color: purple">{{ reservationStatus(r.status) }}</span></h5>
                     </div>
                 </div>
             </div>
@@ -116,6 +116,13 @@ Vue.component("reservations-history", {
             let hours = dateStr.substring(11, 13);
             let minutes = dateStr.substring(14, 16);
             return hours + ':' + minutes;
+        },
+
+        reservationStatus(status) {
+            if (status === "CLIENT_NOT_ARRIVED") {
+                return "MISSED";
+            }
+            return status;
         }
     },
 

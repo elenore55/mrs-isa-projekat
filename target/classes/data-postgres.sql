@@ -170,6 +170,24 @@ insert into ship_fast_reservations (ship_id, fast_reservations_id) values (1, 1)
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (4, 3, 'FINISHED', '20220423 10:05:00 AM', '20220428 10:05:00 AM');
 insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 6);
 
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (3, 3, 'FINISHED', '20220423 10:05:00 AM', '20220428 10:05:00 AM');
+insert into cottage_owner_reservations (cottage_owner_id, reservations_id) values (2, 7);
+
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (5, 3, 'FINISHED', '20220420 10:05:00 AM', '20220430 10:05:00 AM');
+insert into cottage_owner_reservations (cottage_owner_id, reservations_id) values (2, 8);
+
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (6, 3, 'FINISHED', '20220415 10:05:00 AM', '20220430 10:05:00 AM');
+insert into cottage_owner_reservations (cottage_owner_id, reservations_id) values (2, 9);
+
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (1, 3, 'CLIENT_NOT_ARRIVED', '20220514 10:05:00 AM', '20220517 10:05:00 AM');
+insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 10);
+
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (9, 3, 'FINISHED', '20220511 10:05:00 AM', '20220515 10:05:00 AM');
+insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 11);
+
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (8, 3, 'FINISHED', '20220520 10:05:00 AM', '20220525 10:05:00 AM');
+insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 12);
+
 -- insert into fishing_instructor (biography,id) values ('Instruktor pecanja I',5);
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
 -- insert into fishing_equipment (amount, name) values (10,'Fishing Line');
