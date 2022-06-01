@@ -59,6 +59,8 @@ public class UserService {
         return userRepository.findById(id).orElseGet(null);
     }
 
+    public List<User> findAll() { return userRepository.findAll();}
+
     public void addReservation(Integer id, Reservation reservation) {
         User user = findOne(id);
         if (user instanceof CottageOwner) {

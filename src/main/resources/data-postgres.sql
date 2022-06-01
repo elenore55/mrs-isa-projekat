@@ -79,3 +79,19 @@ insert into adventure_fishing_equipments(adventure_id,fishing_equipments_id) val
 insert into profile_data (email, name, password, phone_number, surname, address_id) values ('aleksadsimic@gmail.com', 'Aleksa', 'sifra', '064440044', 'Prezimic', 1);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,3);
 insert into client (id) values (3);
+
+
+
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email@gmail.com', 'Pero', 'pass1', '065-111-5555', 'Peric', 1);
+insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,4);
+insert into ship_owner (id) values (4);
+insert into offer (additional_info, description, name, price_list, address_id) values ('Pruža mogućnosti za organizovanje poslovnih ručkova, koktela, prezentacija i promocija, kao i za neobavezno druženje. Brod ima profesionalno ozvučenje i prostranu otvorenu terasu na gornjoj palubi.', 'Brod je na dva nivoa', 'Sirena', 150, 1);
+insert into ship (capacity, ship_length, max_speed, number_of_engines, power_of_engine, ship_type, id, ship_owner_id) values (70, 25, 40, 4, 100, 'SHIP', 1, 4);
+
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email2@gmail.com', 'Djuro', 'pass2', '1233456', 'Djuric', 1);
+insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,5);
+insert into cottage_owner (id) values (5);
+insert into cottage (id, cottage_owner_id) values (1, 5);
+insert into room (number_of_beds, cottage_id) values (5, 1);
+insert into room (number_of_beds, cottage_id) values (3, 1);
+insert into room (number_of_beds, cottage_id) values (2, 1);

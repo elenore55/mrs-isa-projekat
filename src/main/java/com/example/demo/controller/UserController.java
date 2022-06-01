@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.LoginDTO;
-import com.example.demo.dto.RegistrationDTO;
-import com.example.demo.dto.ReservationDTO;
+import com.example.demo.dto.*;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.service.UserService;
@@ -71,6 +69,20 @@ public class UserController {
         if (r.getEnd().compareTo(today) < 0) r.setReservationStatus(ReservationStatus.FINISHED);
         else if (r.getStart().compareTo(today) > 0) r.setReservationStatus(ReservationStatus.PENDING);
         else r.setReservationStatus(ReservationStatus.ACTIVE);
+    }
+
+    @GetMapping(value = "/allUsers")
+    public ResponseEntity<List<UserDTO>> getAllUsers() {
+
+        List<User> users = userService.findAll();
+
+
+        List<UserDTO> userDTOS = new ArrayList<>();
+        for (User user : users) {
+            userDTOS.add(new UserDTO(user));
+        }
+
+        return new ResponseEntity<>(userDTOS, HttpStatus.OK);
     }
 
 

@@ -4,12 +4,24 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="#339 Kao instruktor pecanja zelim da imam uvid u istoriju rezervacija svojih avantura">
+    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="#343 Kao instruktor pecanja zelim da imam uvid u svoj kalendar">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/RoomRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/RoomService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminAllEntities.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FishingInstructorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FishingInstructorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/scheduleCalendarInstructor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/scheduleCalendarInstructor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/CottageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/CottageDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/dto/CottageDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/CottageDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +46,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -106,6 +118,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -158,14 +181,7 @@
       <workItem from="1652854496714" duration="2989000" />
       <workItem from="1653393672989" duration="4906000" />
       <workItem from="1653453636539" duration="6200000" />
-      <workItem from="1654006763954" duration="13333000" />
-    </task>
-    <task id="LOCAL-00007" summary="#221.1 Forma za unos podataka o brodu">
-      <created>1650810650844</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1650810650844</updated>
+      <workItem from="1654006763954" duration="19853000" />
     </task>
     <task id="LOCAL-00008" summary="#221.2 Validacija unesenih podataka o novom brodu">
       <created>1650815547050</created>
@@ -503,7 +519,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654018667563</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="#343 Kao instruktor pecanja zelim da imam uvid u svoj kalendar">
+      <created>1654022158348</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1654022158349</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,7 +545,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Dobavljanje vlasnikovih brodova #251.1" />
     <MESSAGE value="#251.1 Izlistavanje kartica sa osnovnim podacima o brodovima" />
     <MESSAGE value="#251.2 Dodavanje linkova za detaljniji prikaz i brisanje brodova" />
     <MESSAGE value="#223.1 Uklanjanje broda iz baze podataka" />
@@ -547,6 +569,7 @@
     <MESSAGE value="#342 Kao instruktor pecanja zelim da pravim novu rezervaciju u dogovoru sa klijentom" />
     <MESSAGE value="#337 Kao instruktor pecanja zelim da definisem slobodne termine rezervacije avanture za potrebe brze rezervacije" />
     <MESSAGE value="#339 Kao instruktor pecanja zelim da imam uvid u istoriju rezervacija svojih avantura" />
-    <option name="LAST_COMMIT_MESSAGE" value="#339 Kao instruktor pecanja zelim da imam uvid u istoriju rezervacija svojih avantura" />
+    <MESSAGE value="#343 Kao instruktor pecanja zelim da imam uvid u svoj kalendar" />
+    <option name="LAST_COMMIT_MESSAGE" value="#343 Kao instruktor pecanja zelim da imam uvid u svoj kalendar" />
   </component>
 </project>

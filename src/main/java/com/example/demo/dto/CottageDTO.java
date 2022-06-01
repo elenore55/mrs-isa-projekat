@@ -1,11 +1,9 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.Cottage;
-import com.example.demo.model.Image;
-import com.example.demo.model.Room;
-import com.example.demo.model.Rule;
+import com.example.demo.model.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +18,8 @@ public class CottageDTO {
     private String additionalInfo;
     private Integer ownerId;
     private List<String> imagePaths;
+    private LocalDateTime availableStart;
+    private LocalDateTime availableEnd;
 
     public CottageDTO() {
     }
@@ -55,6 +55,12 @@ public class CottageDTO {
         this.imagePaths = new ArrayList<>();
         for (Image img : cottage.getImages()) {
             imagePaths.add(img.getPath());
+        }
+        List<Availability> avs = cottage.getAvailabilities();
+        if (avs != null && avs.size() > 0) {
+            Availability av = cottage.getAvailabilities().get(avs.size() - 1);
+            this.availableStart = av.getStart();
+            this.availableEnd = av.getEnd();
         }
     }
 
@@ -140,5 +146,21 @@ public class CottageDTO {
 
     public Integer getNumberOfBeds() {
         return rooms.stream().map(RoomDTO::getNumberOfBeds).reduce(0, Integer::sum);
+    }
+
+    public LocalDateTime getAvailableStart() {
+        return availableStart;
+    }
+
+    public void setAvailableStart(LocalDateTime availableStart) {
+        this.availableStart = availableStart;
+    }
+
+    public LocalDateTime getAvailableEnd() {
+        return availableEnd;
+    }
+
+    public void setAvailableEnd(LocalDateTime availableEnd) {
+        this.availableEnd = availableEnd;
     }
 }
