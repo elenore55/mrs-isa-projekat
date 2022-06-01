@@ -178,7 +178,7 @@ mounted() {
                                       <div class="text-center">
                                           <a :href="'/#/shipDetailedView/' + s.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
                                       </div>
-                                 </div> 
+                                 </div>
                             </div>
                        </div>
                     </div>

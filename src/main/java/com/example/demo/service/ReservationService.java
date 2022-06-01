@@ -1,8 +1,10 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Cottage;
-import com.example.demo.model.Offer;
-import com.example.demo.model.Reservation;
+import com.example.demo.dto.FilterPastDTO;
+import com.example.demo.dto.comparators.reservations.ReservationDurationComparator;
+import com.example.demo.dto.comparators.reservations.ReservationPriceComparator;
+import com.example.demo.dto.comparators.reservations.ReservationStartDateComparator;
+import com.example.demo.model.*;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.repository.ReservationRepository;
 import com.example.demo.service.emailSenders.EmailSender;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -81,17 +84,32 @@ public class ReservationService {
         repository.cancelReservation(id);
     }
 
-    public List<Reservation> getClientsPastReservations(Integer id) {
+    public List<Reservation> getClientsPastReservations(FilterPastDTO filterPastDTO) {
         List<Reservation> retVal = new ArrayList<>();
         List<Reservation> reservations = repository.findAll();
         for(Reservation r : reservations)
         {
-            if (r.getClient().getId().equals(id) && isInPast(r))
+            if (r.getClient().getId().equals(filterPastDTO.getId()) && isInPast(r) && isEntityType(r, filterPastDTO.getSortEntity()))
             {
                 retVal.add(r);
             }
         }
         return retVal;
+    }
+
+    private boolean isEntityType(Reservation r, int sortEntity) {
+        Offer o = r.getOffer();
+        switch (sortEntity)
+        {
+            case 1:
+                return o instanceof Cottage;
+            case 2:
+                return o instanceof Ship;
+            case 3:
+                return o instanceof Adventure;
+            default:
+                return true;
+        }
     }
 
     private boolean isAdequateStatus(ReservationStatus r) {
@@ -106,4 +124,21 @@ public class ReservationService {
     }
 
 
+    public void sortPastReservations(List<Reservation> reservations, int sortBy) {
+        Comparator<Reservation> comparator = selectReservationComparator(sortBy);
+        reservations.sort(comparator);
+        // ovdje potencijalno dodati smjer sortiranja
+    }
+
+    private Comparator<Reservation> selectReservationComparator(int sortBy) {
+        switch (sortBy)
+        {
+            case 1:
+                return new ReservationStartDateComparator();
+            case 2:
+                return new ReservationDurationComparator();
+            default:
+                return new ReservationPriceComparator();
+        }
+    }
 }

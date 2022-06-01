@@ -35,6 +35,8 @@ const UpcomingReservations = {template: '<upcoming-reservations></upcoming-reser
 const PastReservations = {template: '<past-reservations></past-reservations>'};
 const ClientComplain = {template: '<client-complain></client-complain>'}
 const ClientRate = {template: '<client-rate></client-rate>'}
+const ClientSubs = {template: '<client-sub></client-sub>'}
+const ClientActions = {template: '<client-actions></client-actions>'}
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -142,7 +144,15 @@ const router = new VueRouter({
             component: ClientRate
         },
         {
-            path: "/pastReservations/:id",
+            path: "/clientSubs/:id",
+            component: ClientSubs
+        },
+        {
+            path: "/clientActions/:id",
+            component: ClientActions
+        },
+        {
+            path: "/pastReservations/",
             component: PastReservations
         },
         {

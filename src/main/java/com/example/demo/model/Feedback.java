@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.example.demo.dto.FeedbackDTO;
 import com.example.demo.model.enums.AdminApprovalStatus;
 
 import javax.persistence.*;
@@ -24,6 +25,13 @@ public class Feedback {
     private Reservation reservation;
 
     public Feedback() {
+    }
+
+    public Feedback(FeedbackDTO feedbackDTO) {
+        this.rating = feedbackDTO.getRating();
+        this.comment = feedbackDTO.getComment();
+        this.status = AdminApprovalStatus.PENDING;
+        // nisam postavila rezervaciju
     }
 
     public Integer getId() {

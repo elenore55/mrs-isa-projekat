@@ -51,7 +51,7 @@ Vue.component("upcoming-reservations", {
 
                     </div>
                 </div>
-                <div v-for="(r, i) in reservations" class="row p-3 my-2" style="border:1px solid rgb(156, 151, 151); border-radius: 5px;"  style="background-color: white">
+                <div v-for="(r, i) in reservations" class="row p-3 my-2" style="border:1px solid rgb(156, 151, 151); border-radius: 5px; background-color: white">
                     <div class="col-2">
                         <a v-on:click="viewDetails(r.link)" style="color:blue;"><u> {{r.name}} </u></a>
                     </div>

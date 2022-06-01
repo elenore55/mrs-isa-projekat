@@ -53,7 +53,7 @@ Vue.component("client-complain", {
                         content: this.reason,
                         id: this.id
                     }).then(function (response) {
-                        alert("Poslala sam feedabck");
+                        alert("Poslala sam feedback");
                     }).catch(function (error) {
                         alert("An ERROR occurred while sending feedback");
                     });

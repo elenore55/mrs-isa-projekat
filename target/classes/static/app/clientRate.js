@@ -2,13 +2,17 @@ Vue.component("client-rate", {
    data: function() {
        return {
             reason: "",
-            error: false,
+            errorRadio: false,
+            errorRate: false,
             type: "",
-            id: 1,
+            clientId: 6,
+            reservationId: "",
+            rate: "",
        }
    },
 
    mounted() {
+        this.reservationId = this.$route.params.id;
         main_image = $("body").css("background-image", "");
         main_image = $("body").css("background-size", "100% 200%");
        },
@@ -32,14 +36,15 @@ Vue.component("client-rate", {
                                     <label for="offer">Offer</label><br>
                                   </div>
                                 </div>
-                                    <p v-if="error" class="text-danger">You must choose one option</p>
+                                <p v-if="errorRadio" class="text-danger">You must choose one option</p>
                                  <div class="rating">
-                                    <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                    <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                    <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                    <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                    <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                                    <input type="radio" v-model="rate" name="rating" value="5" id="5"><label for="5">☆</label>
+                                    <input type="radio" v-model="rate" name="rating" value="4" id="4"><label for="4">☆</label>
+                                    <input type="radio" v-model="rate" name="rating" value="3" id="3"><label for="3">☆</label>
+                                    <input type="radio" v-model="rate" name="rating" value="2" id="2"><label for="2">☆</label>
+                                    <input type="radio" v-model="rate" name="rating" value="1" id="1"><label for="1">☆</label>
                                  </div>
+                              <p v-if="errorRate" class="text-danger">You must input rate</p>
 
                               <h4 class="text-center my-3"> Write a review: </h4>
                               <textarea v-model="reason" class = "" name="textarea" rows="10" cols="70"></textarea>
@@ -54,22 +59,41 @@ Vue.component("client-rate", {
    `,
     methods: {
             sendFeedback(){
-            // prvo provjeri da li je sve poslano kako treba
-                if (this.reason && this.type)
+            // mora unijeti koga ocjenjuje i broj zvjezdica
+            // ne mora razlog
+                if (this.rate && this.type)
                 {
-                    this.error = false;
-                    axios.post("api/complaint/add", {
-                        content: this.reason,
-                        id: this.id
+                    this.errorRate = false;
+                    this.errorRadio = false;
+                    axios.post("api/feedback/add", {
+                        comment: this.reason,
+                        rating: this.rate,
+                        reservationId: this.reservationId,
                     }).then(function (response) {
-                        alert("Poslala sam feedabck");
+                        alert("Poslala sam feedback");
                     }).catch(function (error) {
                         alert("An ERROR occurred while sending feedback");
                     });
                 }
                 else
                 {
-                    this.error = true;
+                    if (!this.rate)
+                    {
+                        this.errorRate = true;
+                    }
+                    else {
+                        this.errorRate = false;
+                    }
+
+                    if (!this.type)
+                    {
+                        this.errorRadio = true;
+                    }
+                    else
+                    {
+                        this.errorRadio = false;
+                    }
+
                 }
             },
 

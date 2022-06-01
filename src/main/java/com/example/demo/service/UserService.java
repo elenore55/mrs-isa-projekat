@@ -100,4 +100,8 @@ public class UserService {
     public User findById(Integer id) {
         return userRepository.findById(id).orElseGet(null);
     }
+
+    public void unfollow(Client c) {
+        clientRepository.save(c);
+    }
 }

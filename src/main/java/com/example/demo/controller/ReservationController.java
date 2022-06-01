@@ -1,13 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.CottageDTO;
-import com.example.demo.dto.ReservationDTO;
-import com.example.demo.dto.ReservationDTOstring;
-import com.example.demo.dto.ReservationExtendedDTO;
-import com.example.demo.model.Client;
-import com.example.demo.model.Cottage;
-import com.example.demo.model.Offer;
-import com.example.demo.model.Reservation;
+import com.example.demo.dto.*;
+import com.example.demo.model.*;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.service.OfferService;
 import com.example.demo.service.ReservationService;
@@ -30,6 +24,7 @@ public class ReservationController {
     private ReservationService reservationService;
     private UserService userService;
     private OfferService offerService;
+
 
     @Autowired
     public ReservationController(ReservationService reservationService, UserService userService, OfferService offerService) {
@@ -80,6 +75,38 @@ public class ReservationController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/getClientsSubs/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<SubDTO>> getClientsSubs(@PathVariable Integer id) {
+        Client c = (Client) userService.findById(id);
+
+        List<Offer> subs = c.getSubscriptions();
+        List<SubDTO> dtos = new ArrayList<>();
+        for (Offer o : subs) {
+            SubDTO s = new SubDTO(o);
+            offerService.setImage(o, s);
+            dtos.add(s);
+        }
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/unfollow/{clientId}/{offerId}", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity<String> unfollow(@PathVariable Integer clientId, @PathVariable Integer offerId) {
+        Client c = (Client) userService.findById(clientId);
+        List<Offer> subs = c.getSubscriptions();
+        for (Offer o : c.getSubscriptions())
+        {
+            if (o.getId().equals(offerId))
+            {
+                subs.remove(o);
+                break;
+            }
+        }
+        userService.unfollow(c);
+        return new ResponseEntity<>("OK", HttpStatus.OK);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/getClientUpcomingReservations/{id}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<List<ReservationExtendedDTO>> getClientsUpcomingReservations(@PathVariable Integer id) {
         List<Reservation> reservations = reservationService.getClientsUpcomingReservations(id);
@@ -93,9 +120,11 @@ public class ReservationController {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/getClientPastReservations/{id}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<ReservationExtendedDTO>> getClientsPastReservations(@PathVariable Integer id) {
-        List<Reservation> reservations = reservationService.getClientsPastReservations(id);
+    @RequestMapping(path = "/getClientPastReservations/", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    public ResponseEntity<List<ReservationExtendedDTO>> getClientsPastReservations(@RequestBody FilterPastDTO filterPastDTO) {
+        System.err.println("SKRETANJE PAZNJE");
+        List<Reservation> reservations = reservationService.getClientsPastReservations(filterPastDTO);
+        reservationService.sortPastReservations(reservations, filterPastDTO.getSortBy());
         List<ReservationExtendedDTO> dtos = new ArrayList<>();
         for (Reservation r : reservations) {
             ReservationExtendedDTO red = new ReservationExtendedDTO(r);
@@ -103,6 +132,7 @@ public class ReservationController {
             dtos.add(red);
         }
         return new ResponseEntity<>(dtos, HttpStatus.OK);
+
     }
 
     @Transactional

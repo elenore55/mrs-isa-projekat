@@ -178,3 +178,14 @@ insert into reservation (end_date_time, reservation_status, start_date_time, cli
 
 insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2021-06-14 20:39:00', 'FINISHED', '2021-06-10 20:39:00', 6, 2);
 insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2021-09-14 20:39:00', 'FINISHED', '2021-09-10 20:39:00', 6, 2);
+
+
+insert into sub (user_id, offer_id) values (6, 1);
+insert into sub (user_id, offer_id) values (6, 3);
+insert into fast_reservation (type, action_duration, action_start, duration, reservation_start, max_people, price)
+    values ('OTH', 5, '20220505 00:00:01 AM', 5, '20220512 11:00:00 AM', 3, 50);
+insert into ship_fast_reservations (ship_id, fast_reservations_id) values (1, 1);
+
+insert into fast_reservation (type, action_duration, action_start, duration, reservation_start, max_people, price)
+    values ('OTH', 10, '20220606 00:00:01 AM', 7, '20220612 11:00:00 AM', 10, 500);
+insert into cottage_fast_reservations (cottage_id, fast_reservations_id) values (3, 2);

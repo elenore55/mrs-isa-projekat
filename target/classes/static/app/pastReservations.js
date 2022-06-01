@@ -2,7 +2,9 @@ Vue.component("past-reservations", {
    data: function() {
        return {
            reservations: [],
-           id: "",
+           id: 6,
+           sortEntity: "",
+           sortBy: "",
        }
    },
 
@@ -16,7 +18,37 @@ Vue.component("past-reservations", {
     <div>
         <client-navbar> </client-navbar>
             <div class="container mt-5 pt-5">
+
+                <div class="row">
+                    <div class="col-md-2 col-sm-6">
+                        <label> Select entity </label>
+                        <select v-model="sortEntity" class="mdb-select md-form">
+                            <option value="" disabled selected>...</option>
+                            <option value="1">Cottages</option>
+                            <option value="2">Ships</option>
+                            <option value="3">Adventures</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2 col-sm-6">
+                        <label> Sort by </label>
+                        <select v-model="sortBy" class="mdb-select md-form">
+                            <option value="" disabled selected>...</option>
+                            <option value="1">Start date</option>
+                            <option value="2">Duration</option>
+                            <option value="3">Price</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2 col-sm-6">
+                        <button class="btn btn-primary" v-on:click="filter">Search</button>
+                    </div>
+                </div>
+
+
+
                 <div class="row p-3 mt-5" style="background-color: white">
+
                     <div class="col-2">
                         VIEW DETAILS
                     </div>
@@ -37,7 +69,7 @@ Vue.component("past-reservations", {
 
                     </div>
                 </div>
-                <div v-for="(r, i) in reservations" class="row p-3 my-2" style="border:1px solid rgb(156, 151, 151); border-radius: 5px;" style="background-color: white">
+                <div v-for="(r, i) in reservations" class="row p-3 my-2" style="border:1px solid rgb(156, 151, 151); border-radius: 5px; background-color: white" >
                     <div class="col-2">
                         <a v-on:click="viewDetails(r.link)" style="color:blue;"><u> {{r.name}} </u></a>
                     </div>
@@ -68,8 +100,11 @@ Vue.component("past-reservations", {
     methods: {
 
         reload() {
-            this.id = this.$route.params.id;
-            axios.get("api/reservations/getClientPastReservations/" + this.id).then(response => {
+            axios.post("api/reservations/getClientPastReservations/", {
+                sortEntity: this.sortEntity,
+                sortBy: this.sortBy,
+                id: this.id,
+            }).then(response => {
             this.reservations = response.data;
             }).catch(function (error) {
                 alert('Greska u get past reservations');
@@ -80,17 +115,22 @@ Vue.component("past-reservations", {
         rate(reservation)
             {
                 // treba da ga usmjerim na novu stranicu i proslijedim
-                location.replace('http://localhost:8000/#/clientRate/1');
+                location.replace('http://localhost:8000/#/clientRate/' + reservation.id);
             },
 
         complain(reservation)
                 {
-                    location.replace('http://localhost:8000/#/clientComplain/1');
+                    location.replace('http://localhost:8000/#/clientComplain/' + reservation.id);
                 },
 
         viewDetails(link)
         {
             window.location.href = 'http://localhost:8000/' + link;
+        },
+
+        filter()
+        {
+            this.reload();
         }
     },
 

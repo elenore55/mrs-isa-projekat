@@ -18,13 +18,13 @@ Vue.component("client-navbar", {
                             <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/clientHome/'})">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/pastReservations/6'})">Past Reservations</a>
+                            <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/pastReservations'})">Past Reservations</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/upcomingReservations/6'})">Upcoming Reservations</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#actions" class="nav-link mx-3">Actions</a>
+                            <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/clientSubs/6'})">My Actions </a>
                         </li>
 
                         <li class="nav-item">
