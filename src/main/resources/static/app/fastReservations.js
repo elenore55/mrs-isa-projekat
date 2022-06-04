@@ -14,7 +14,7 @@ Vue.component('fast-reservations', {
     },
 
     template: `
-    <div style="background-color: #f2e488">
+    <div style="background-color: #f2e488;height: 1000px">
         <update-ship-nav></update-ship-nav>
         <div class="d-flex justify-content-start ms-3 mt-3">
             <h2 class="mt-2 ms-3">Fast reservations</h2>

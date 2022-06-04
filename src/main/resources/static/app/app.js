@@ -1,3 +1,4 @@
+const MyMap = {template: '<my-map></my-map>'};
 const IncomeReport = {template: '<income-report></income-report>'};
 const OwnersReservationsCalendar = {template: '<owners-reservations-calendar></owners-reservations-calendar>'};
 const ClientReadonlyProfile = {template: '<client-readonly-profile></client-readonly-profile>'};
@@ -40,6 +41,10 @@ Vue.component('vuejs-datepicker', vuejsDatepicker);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/myMap",
+            component: MyMap
+        },
         {
             path: "/incomeReport/:id",
             component: IncomeReport
