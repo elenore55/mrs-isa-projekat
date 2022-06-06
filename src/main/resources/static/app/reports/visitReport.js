@@ -77,11 +77,59 @@ Vue.component('visit-report', {
                 end: this.end_date
             }).then(response => {
                 this.reports = response.data;
-                alert(this.reports.length);
+                this.ch.data.labels = this.getChartLabels();
+                this.ch.data.datasets = [{
+                    label: 'Days',
+                    data: this.getChartData(),
+                    backgroundColor: this.getBgColors(),
+                    borderColor: this.getBorderColors(),
+                    borderWidth: 1,
+                    hoverBorderWidth: 3
+                }];
+                this.ch.options.title = {
+                    display: true,
+                    text: "Visit frequency during the chosen period"
+                };
+                this.ch.update();
             }).catch(error => {
                 Swal.fire('Error', 'Something went wrong!', 'error');
             })
         },
-    }
 
+        getChartLabels() {
+            let labels = [];
+            for (const report of this.reports) {
+                labels.push(report.offerName);
+            }
+            return labels;
+        },
+
+        getChartData() {
+            let chartData = [];
+            for (const report of this.reports) {
+                chartData.push(report.daysVisited);
+            }
+            return chartData;
+        },
+
+        getBgColors() {
+            let bgColors = [];
+            const n = this.colors.length;
+            if (n === 0) return [];
+            for (let i in this.reports) {
+                bgColors.push(this.colors[i % n]);
+            }
+            return bgColors;
+        },
+
+        getBorderColors() {
+            let borderColors = [];
+            const n = this.border_colors.length;
+            if (n === 0) return [];
+            for (let i in this.reports) {
+                borderColors.push(this.border_colors[i % n]);
+            }
+            return borderColors;
+        }
+    }
 });
