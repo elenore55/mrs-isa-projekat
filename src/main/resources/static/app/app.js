@@ -1,3 +1,4 @@
+const ShipProfile = {template: '<ship-profile></ship-profile>'};
 const CottageProfile = {template: '<cottage-profile></cottage-profile>'};
 const SearchMap = {template: '<search-map></search-map>'};
 const MyMap = {template: '<my-map></my-map>'};
@@ -43,6 +44,10 @@ Vue.component('vuejs-datepicker', vuejsDatepicker);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/shipProfile/:id",
+            component: ShipProfile
+        },
         {
             path: "/cottageProfile/:id",
             component: CottageProfile

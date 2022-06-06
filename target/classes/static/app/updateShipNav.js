@@ -26,7 +26,7 @@ Vue.component('update-ship-nav', {
         },
 
         shipProfile() {
-            return "/#/updateShip/" + this.$route.params.id;
+            return "/#/shipProfile/" + this.$route.params.id;
         },
 
         shipImages() {

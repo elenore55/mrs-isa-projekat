@@ -1,13 +1,13 @@
-Vue.component('cottage-profile', {
+Vue.component('ship-profile', {
     data() {
         return {
-            cottage: {}
+            ship: {}
         }
     },
 
     mounted() {
-        axios.get("api/cottages/getCottage/" + this.$route.params.id).then(response => {
-            this.cottage = response.data;
+        axios.get("api/ships/getShip/" + this.$route.params.id).then(response => {
+            this.ship = response.data;
         }).catch(function (error) {
             Swal.fire('Error', 'Something went wrong!', 'error');
         });
@@ -15,46 +15,55 @@ Vue.component('cottage-profile', {
 
     template: `
     <div style="background-color: #f2e488">
-        <update-cottage-nav></update-cottage-nav>
+        <update-ship-nav></update-ship-nav>
         <div class="d-flex justify-content-center">
             <div class="card shadow-lg my-3">
                 <div class="container card-body">
                 
-                    <h2 class="card-title mb-5 ms-5 mt-3">{{ cottage.name }}</h2>
+                    <h2 class="card-title mb-5 ms-5 mt-3">{{ ship.name }}</h2>
 
                     <div class="d-flex justify-content-evenly  mb-4">
                         <div class="w-50">
                             <div class="d-flex justify-content-start">
                                 <div class="mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    <img :src="cottage.imagePaths[0]" style="width: 250px;height: 250px" data-bs-target="#carouselExample" data-bs-slide-to="0">
+                                    <img :src="ship.imagePaths[0]" style="width: 250px;height: 250px" data-bs-target="#carouselExample" data-bs-slide-to="0">
                                 </div>
                                 <div class="ms-4">   
-                                    <h1 class="text-success ">{{ cottage.price }} <i class="fa fa-eur"></i></h1>
-                                    <h2>{{ cottage.rate }}</h2>
-                                    <p class="h6"> {{ cottage.description }}</p>
+                                    <h1 class="text-success ">{{ ship.price }} <i class="fa fa-eur"></i></h1>
+                                    <h2>{{ ship.rate }}</h2>
+                                    <p class="h6"> {{ ship.description }}</p>
+                                    <div class="mt-4">
+                                        <p class="h6">Length: {{ ship.length }}m</p>
+                                        <p class="h6">Capacity: {{ ship.capacity }} people</p>
+                                        <p class="h6">Maximum speed: {{ ship.maxSpeed }}km/h</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="w-100 mt-1">
-                                <p>{{ cottage.additionalInfo }}</p>
+                                <p>{{ ship.additionalInfo }}</p>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <address-map my_style="width:370px;height:330px" :street_init="cottage.address.street" :city_init="cottage.address.city" :country_init="cottage.address.country"></address-map>
+                            <address-map my_style="width:370px;height:330px" :street_init="ship.address.street" :city_init="ship.address.city" :country_init="ship.address.country"></address-map>
                         </div>
                     </div>
                     
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between mb-4">
                         <div class="d-flex justify-content-left">
-                            <div class="mx-5 ps-3">
+                            <div class="ms-5 ps-3">
                                 <!-- Rules -->
                                 <h4 class="mb-3"><i class="fa fa-check"></i> Rules</h4>
-                                <p v-for="(r, i) in cottage.rules" style="font-size: 1.1em">{{ r }}</p>
+                                <p class="mb-1" v-for="(r, i) in ship.rules" style="font-size: 1.1em">{{ r }}</p>
                             </div>
                             <div class="ms-5">
-                                <!-- Rooms -->
-                                <h4 class="mb-2"><i class="fa fa-bed"></i> Accommodation</h4>
-                                <p class="h5">{{ cottage.rooms.length }} rooms</p>
-                                <p class="h5">{{ numberOfBeds }} beds</p>
+                                <!-- Navigation -->
+                                <h4 class="mb-2"><i class="fa fa-compass"></i> Navigation equipment</h4>
+                                <p class="ms-5 mb-1" v-for="(n, i) in ship.navigationEquipmentList">{{ n.name }}</p>
+                            </div>
+                            <div class="ms-5">
+                                <!-- Navigation -->
+                                <h4 class="mb-2"><i class="fa fa-fish"></i> Fishing equipment</h4>
+                                <p class="ms-5 mb-1" v-for="(f, i) in ship.fishingEquipmentList">{{ f.name }}</p>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end align-items-end me-4 mb-2">
@@ -70,15 +79,15 @@ Vue.component('cottage-profile', {
                     <div class="modal-body">
                         <div id="carouselExample" class="carousel slide" data-bs-interval="false">
                             <div class="carousel-indicators">
-                                <div v-for="(img, i) in cottage.imagePaths">
+                                <div v-for="(img, i) in ship.imagePaths">
                                     <button type="button" data-bs-target="#carouselExample" :data-bs-slide-to="i" class="active" aria-current="true"></button>
                                 </div>
                             </div>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img class="d-block w-100" :src="cottage.imagePaths[0]" style="height: 450px">
+                                    <img class="d-block w-100" :src="ship.imagePaths[0]" style="height: 450px">
                                 </div>
-                                <div class="carousel-item" v-for="(img, i) in cottage.imagePaths.slice(1)">
+                                <div class="carousel-item" v-for="(img, i) in ship.imagePaths.slice(1)">
                                     <img class="d-block w-100" :src="img" style="height: 450px">
                                 </div>
                             </div>
@@ -103,16 +112,8 @@ Vue.component('cottage-profile', {
 
     computed: {
         updateLink() {
-            return "/#/updateCottage/" + this.$route.params.id;
-        },
-
-        numberOfBeds() {
-            let cnt = 0;
-            for (let room of this.cottage.rooms) {
-                cnt += room.numberOfBeds;
-            }
-            return cnt;
+            return "/#/updateShip/" + this.$route.params.id;
         }
-
     }
+    
 });

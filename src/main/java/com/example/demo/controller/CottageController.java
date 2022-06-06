@@ -212,7 +212,11 @@ public class CottageController {
         cottage.setId(cottageDTO.getId());
         cottage.setName(cottageDTO.getName());
         cottage.setDescription(cottageDTO.getDescription());
-        cottage.setAddress(new Address(cottageDTO.getAddress().getStreet(), cottageDTO.getAddress().getCity(), cottageDTO.getAddress().getCountry()));
+        Address address = cottage.getAddress();
+        address.setStreet(cottageDTO.getAddress().getStreet());
+        address.setCity(cottageDTO.getAddress().getCity());
+        address.setCountry(cottageDTO.getAddress().getCountry());
+        cottage.setAddress(address);
         cottage.setPriceList(cottageDTO.getPrice());
         List<Rule> rules = new ArrayList<>();
         for (String ruleText : cottageDTO.getRules()) rules.add(new Rule(ruleText));

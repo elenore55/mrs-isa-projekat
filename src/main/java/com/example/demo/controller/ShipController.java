@@ -148,7 +148,12 @@ public class ShipController {
         ship.setShipType(ShipType.values()[dto.getShipType() - 1]);
         ship.setMaxSpeed(dto.getMaxSpeed());
         // address
-        ship.setAddress(new Address(dto.getAddress().getStreet(), dto.getAddress().getCity(), dto.getAddress().getCountry()));
+        Address address = ship.getAddress();
+        address.setStreet(dto.getAddress().getStreet());
+        address.setCity(dto.getAddress().getCity());
+        address.setCountry(dto.getAddress().getCountry());
+        ship.setAddress(address);
+        // ship.setAddress(new Address(dto.getAddress().getStreet(), dto.getAddress().getCity(), dto.getAddress().getCountry()));
         // navigation eq
         List<NavigationEquipment> navigationEquipmentList = new ArrayList<>();
         for (NavigationEquipmentDTO n : dto.getNavigationEquipmentList())

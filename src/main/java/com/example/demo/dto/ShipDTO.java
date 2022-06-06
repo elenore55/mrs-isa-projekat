@@ -30,6 +30,7 @@ public class ShipDTO {
     private String shipTypeStr;
     private LocalDateTime availableStart;
     private LocalDateTime availableEnd;
+    private Double rate;
 
     public ShipDTO(Ship ship) {
         this.id = ship.getId();
@@ -64,6 +65,7 @@ public class ShipDTO {
             this.availableStart = av.getStart();
             this.availableEnd = av.getEnd();
         }
+        this.rate = ship.getRateOrNegativeOne();
     }
 
     public ShipDTO() {
@@ -231,5 +233,13 @@ public class ShipDTO {
 
     public void setAvailableEnd(LocalDateTime availableEnd) {
         this.availableEnd = availableEnd;
+    }
+
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
     }
 }
