@@ -51,6 +51,7 @@ Vue.component('visit-report', {
                 end: this.end_date
             }).then(response => {
                 this.reports = response.data;
+                alert(this.reports.length);
             }).catch(error => {
                 Swal.fire('Error', 'Something went wrong!', 'error');
             })

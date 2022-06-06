@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 @Service
@@ -90,7 +91,20 @@ public class ShipOwnerService {
     }
 
     public List<VisitReportDTO> calculateVisitReport(ShipOwner owner, LocalDateTime start, LocalDateTime end) {
-        return new ArrayList<VisitReportDTO>();
+        Map<String, VisitReportDTO> result = new HashMap<>();
+        for (Reservation r : owner.getReservations()) {
+            if (r.getStart().compareTo(start) < 0 || r.getStart().compareTo(end) > 0) continue;
+            if (r.getReservationStatus() == ReservationStatus.CANCELLED || r.getReservationStatus() == ReservationStatus.CLIENT_NOT_ARRIVED)
+                continue;
+            Ship s = (Ship) r.getOffer();
+            VisitReportDTO dto;
+            if (result.containsKey(s.getName())) dto = result.get(s.getName());
+            else dto = new VisitReportDTO(s.getId(), s.getName(), (long) 0);
+            long days = ChronoUnit.DAYS.between(r.getStart(), r.getEnd());
+            dto.setDaysVisited(dto.getDaysVisited() + days);
+            result.put(s.getName(), dto);
+        }
+        return new ArrayList<>(result.values());
     }
 
     private void sortShips(List<Ship> ships, String sortBy, boolean desc) {
