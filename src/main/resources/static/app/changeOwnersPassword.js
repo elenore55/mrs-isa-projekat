@@ -100,6 +100,22 @@ Vue.component('change-pw-owner', {
 
         saveChanges() {
             this.input_started = true;
+            if (!this.isWeakPassword && this.areValidPasswords) {
+                axios.post("api/users/changePassword", {
+                    old: this.old_password,
+                    newPass: this.password,
+                    id: this.$route.params.id,
+
+                }).then(function(response) {
+                    if(response.data === "OK")
+                    {
+
+                    }
+                }).catch(function (error) {
+                    alert('An error occurred!');
+
+                });
+            }
         }
 
 
