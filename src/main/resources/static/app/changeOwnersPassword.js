@@ -105,20 +105,17 @@ Vue.component('change-pw-owner', {
                     old: this.old_password,
                     newPass: this.password,
                     id: this.$route.params.id,
-
                 }).then(function(response) {
-                    if(response.data === "OK")
-                    {
-
+                    if(response.data === "OK") {
+                        Swal.fire('Success', 'Password changed!', 'success');
+                    } else {
+                        Swal.fire('Error', 'Incorrect old password!', 'error');
                     }
                 }).catch(function (error) {
-                    alert('An error occurred!');
-
+                    Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }
         }
-
-
     },
 
     computed: {
