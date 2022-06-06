@@ -51,17 +51,14 @@ Vue.component('ship-profile', {
                     <div class="d-flex justify-content-between mb-4">
                         <div class="d-flex justify-content-left">
                             <div class="ms-5 ps-3">
-                                <!-- Rules -->
                                 <h4 class="mb-3"><i class="fa fa-check"></i> Rules</h4>
                                 <p class="mb-1" v-for="(r, i) in ship.rules" style="font-size: 1.1em">{{ r }}</p>
                             </div>
                             <div class="ms-5">
-                                <!-- Navigation -->
                                 <h4 class="mb-2"><i class="fa fa-compass"></i> Navigation equipment</h4>
                                 <p class="ms-5 mb-1" v-for="(n, i) in ship.navigationEquipmentList">{{ n.name }}</p>
                             </div>
                             <div class="ms-5">
-                                <!-- Navigation -->
                                 <h4 class="mb-2"><i class="fa fa-fish"></i> Fishing equipment</h4>
                                 <p class="ms-5 mb-1" v-for="(f, i) in ship.fishingEquipmentList">{{ f.name }}</p>
                             </div>

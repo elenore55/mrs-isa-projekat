@@ -1,3 +1,4 @@
+const ChangePasswordOwner = {template: '<change-pw-owner></change-pw-owner>'};
 const ShipProfile = {template: '<ship-profile></ship-profile>'};
 const CottageProfile = {template: '<cottage-profile></cottage-profile>'};
 const SearchMap = {template: '<search-map></search-map>'};
@@ -44,6 +45,10 @@ Vue.component('vuejs-datepicker', vuejsDatepicker);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/changePwOwner/:id",
+            component: ChangePasswordOwner
+        },
         {
             path: "/shipProfile/:id",
             component: ShipProfile
