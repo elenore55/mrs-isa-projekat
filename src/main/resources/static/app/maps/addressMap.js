@@ -1,4 +1,14 @@
-Vue.component("search-map", {
+Vue.component("address-map", {
+    /*data() {
+        return {
+            street: '',
+            city: '',
+            country: ''
+        }
+    },*/
+
+    props: ['my_style', 'street_init', 'city_init', 'country_init'],
+
     mounted() {
         const map = new ol.Map({ target: "map" });
 
@@ -10,20 +20,15 @@ Vue.component("search-map", {
         );
 
         const apiKey = "AAPK183f27d7692c493a86caa4dd5402b70f_wuRtUoWdfhqf7qDyzMLOW8mXf2UB_2J8adyU20EiQ1zlxhgq4li3uMzzsoDRp2q";
-
         const basemapId = "ArcGIS:Navigation";
-
         const basemapURL = "https://basemaps-api.arcgis.com/arcgis/rest/services/styles/" + basemapId + "?type=style&token=" + apiKey;
-
         olms(map, basemapURL);
 
         const popup = new Popup({closeButton: false, closeOnClick: false, closeOnMove: false});
         map.addOverlay(popup);
-        popup.show(ol.proj.fromLonLat([151.2093, -33.8688]), "This is a label of mine");
 
-        document.getElementById("geocode-button").addEventListener("click", () => {
-
-            const query = document.getElementById("geocode-input").value;
+        if (this.street_init && this.city_init && this.country_init) {
+            const query = this.street_init + ', ' + this.city_init + ', ' + this.country_init;
             const authentication = arcgisRest.ApiKeyManager.fromKey(apiKey);
             const center = ol.proj.transform(map.getView().getCenter(), "EPSG:3857", "EPSG:4326");
             arcgisRest
@@ -46,17 +51,24 @@ Vue.component("search-map", {
                     popup.show(coords, result.attributes.LongLabel);
                     map.getView().setCenter(coords);
                 })
-        });
+        }
+
+
+        // popup.show(ol.proj.fromLonLat([151.2093, -33.8688]), "This is a label of mine");
+
+        // document.getElementById("geocode-button").addEventListener("click", () => {
+
+
+        // });
     },
 
     template: `
     <div>
-        <div id="map" style="width: 800px;height: 500px"></div>
-        <div class="search">
-          <input id="geocode-input" type="text" placeholder="Enter an address or place e.g. 1 York St" size="50" />
-          <button id="geocode-button">Geocode</button>
-        </div>
+        <div id="map" :style="my_style"></div>
     </div>
-    `
+    `,
 
+    methods: {
+
+    }
 });

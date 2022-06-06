@@ -1,3 +1,4 @@
+const CottageProfile = {template: '<cottage-profile></cottage-profile>'};
 const SearchMap = {template: '<search-map></search-map>'};
 const MyMap = {template: '<my-map></my-map>'};
 const IncomeReport = {template: '<income-report></income-report>'};
@@ -42,6 +43,10 @@ Vue.component('vuejs-datepicker', vuejsDatepicker);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/cottageProfile/:id",
+            component: CottageProfile
+        },
         {
             path: "/searchMap",
             component: SearchMap

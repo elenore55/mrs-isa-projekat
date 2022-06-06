@@ -26,7 +26,7 @@ Vue.component('update-cottage-nav', {
         },
 
         cottageProfile() {
-            return "/#/updateCottage/" + this.$route.params.id;
+            return "/#/cottageProfile/" + this.$route.params.id;
         },
 
         cottageImages() {

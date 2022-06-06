@@ -20,6 +20,7 @@ public class CottageDTO {
     private List<String> imagePaths;
     private LocalDateTime availableStart;
     private LocalDateTime availableEnd;
+    private Double rate;
 
     public CottageDTO() {
     }
@@ -62,6 +63,7 @@ public class CottageDTO {
             this.availableStart = av.getStart();
             this.availableEnd = av.getEnd();
         }
+        this.rate = cottage.getRateOrNegativeOne();
     }
 
     public Integer getId() {
@@ -162,5 +164,13 @@ public class CottageDTO {
 
     public void setAvailableEnd(LocalDateTime availableEnd) {
         this.availableEnd = availableEnd;
+    }
+
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
     }
 }

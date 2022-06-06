@@ -42,6 +42,7 @@ Vue.component('owners-profile', {
                     <div>
                         <i class="fa fa-home"></i>
                         <label class="fw-bold h6">Address</label>
+                        <!--<address-map my_style="width:500px;height:400px" street_init="Jevrejska 2" city_init="Novi Sad" country_init="Srbija"></address-map>-->
                     </div>
                     <p class="ms-1 mb-4" style="font-size: 1.2em">{{ owner.address.street }}, {{ owner.address.city }}, {{ owner.address.country }}</p>
                     <hr>
