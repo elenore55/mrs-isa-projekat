@@ -193,6 +193,23 @@ public class UserController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/getVisitReport/{id}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<List<IncomeReportDTO>> getVisitReport(@PathVariable Integer id, @RequestBody DatesDTO dto) {
+        User user = userService.findOne(id);
+        if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (user instanceof CottageOwner) {
+            CottageOwner co = (CottageOwner) user;
+            // return new ResponseEntity<>(cottageOwnerService.calculateIncome(co, dto.getStart(), dto.getEnd()), HttpStatus.OK);
+        }
+        if (user instanceof ShipOwner) {
+            ShipOwner so = (ShipOwner) user;
+            // List<IncomeReportDTO> result = shipOwnerService.calculateIncome(so, dto.getStart(), dto.getEnd());
+            // return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/getOfferType/{id}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<String> getOfferType (@PathVariable Integer id) {
         User user = userService.findOne(id);

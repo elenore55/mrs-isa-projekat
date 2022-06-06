@@ -42,6 +42,19 @@ Vue.component('visit-report', {
             <canvas id="bar-plot"></canvas>
         </div>
     </div>
-    `
+    `,
+
+    methods: {
+        getReports() {
+            axios.post("api/users/getVisitReport/" + this.$route.params.id, {
+                start: this.start_date,
+                end: this.end_date
+            }).then(response => {
+                this.reports = response.data;
+            }).catch(error => {
+                Swal.fire('Error', 'Something went wrong!', 'error');
+            })
+        },
+    }
 
 });
