@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.FilterShipDTO;
 import com.example.demo.dto.IncomeReportDTO;
+import com.example.demo.dto.VisitReportDTO;
 import com.example.demo.dto.comparators.ship.*;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ReservationStatus;
@@ -86,6 +87,10 @@ public class ShipOwnerService {
             result.put(s.getName(), dto);
         }
         return new ArrayList<>(result.values());
+    }
+
+    public List<VisitReportDTO> calculateVisitReport(ShipOwner owner, LocalDateTime start, LocalDateTime end) {
+        return new ArrayList<VisitReportDTO>();
     }
 
     private void sortShips(List<Ship> ships, String sortBy, boolean desc) {

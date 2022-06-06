@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.FilterCottageDTO;
 import com.example.demo.dto.IncomeReportDTO;
+import com.example.demo.dto.VisitReportDTO;
 import com.example.demo.dto.comparators.cottage.*;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ReservationStatus;
@@ -84,6 +85,10 @@ public class CottageOwnerService {
             result.put(c.getName(), dto);
         }
         return new ArrayList<>(result.values());
+    }
+
+    public List<VisitReportDTO> calculateVisitReport(CottageOwner owner, LocalDateTime start, LocalDateTime end) {
+        return new ArrayList<VisitReportDTO>();
     }
 
     private void sortCottages(List<Cottage> cottages, String sortBy, boolean desc) {
