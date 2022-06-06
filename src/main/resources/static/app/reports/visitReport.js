@@ -17,7 +17,33 @@ Vue.component('visit-report', {
     },
 
     mounted() {
-
+        axios.get("api/users/getOfferType/" + this.$route.params.id).then(response => {
+            this.offer_type = response.data;
+        }).catch(error => {
+            Swal.fire('Error', 'Owner not found!', 'error');
+        });
+        let chart = document.getElementById('bar-plot').getContext('2d');
+        this.ch = new Chart(chart, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Days',
+                    data: []
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                title: {
+                    display: true,
+                    text: "Visit frequency during the chosen period"
+                }
+            }
+        });
     },
 
     template: `
