@@ -56,6 +56,7 @@ Vue.component('change-pw-owner', {
                                 <i :class="eye_class_confirm" style="cursor: pointer" v-on:click="togglePassConfirm"></i>
                             </span>
                         </div>
+                        <p v-if="!areValidPasswords" class="text-danger">Passwords are required and must be matching</p>
                     </div>
                     <div class="m-4 d-flex justify-content-end">
                         <button type="button" class="btn btn-success" v-on:click="saveChanges">Confirm</button>
@@ -98,8 +99,10 @@ Vue.component('change-pw-owner', {
         },
 
         saveChanges() {
-
+            this.input_started = true;
         }
+
+
     },
 
     computed: {
@@ -117,7 +120,12 @@ Vue.component('change-pw-owner', {
         isWeakPassword() {
             if (!this.input_started && this.password.length === 0) return false;
             return !this.isMediumPassword && !this.isStrongPassword;
-        }
+        },
+
+        areValidPasswords() {
+            if (!this.input_started) return true;
+            return this.password && this.confirm_password && this.password === this.confirm_password;
+        },
     }
 
 });
