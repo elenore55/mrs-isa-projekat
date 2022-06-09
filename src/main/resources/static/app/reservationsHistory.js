@@ -9,7 +9,14 @@ Vue.component("reservations-history", {
             sort_by: 'Date',
             direction: 'Ascending',
             calendarDisplay: false,
-            offer_type: ""
+            offer_type: "",
+            focused_reservation: {
+                startDate: new Date(),
+                endDate: new Date(),
+                clientEmail: '',
+                offerName: ''
+            },
+            review: ''
         }
     },
 
@@ -65,6 +72,7 @@ Vue.component("reservations-history", {
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="my-3">Client: {{ r.clientEmail }}</h5>
                             <a class="btn btn-primary btn-sm h-50 mt-3" href="javascript:void(0)" @click="$router.push({path: '/clientReadonlyProfile/' + r.clientEmail})">View profile</a>
+                            
                         </div>
                         <table>
                             <tr class="mt-3">
@@ -76,13 +84,40 @@ Vue.component("reservations-history", {
                                 <td><h5>{{ getFormattedDate(r.endDate) }} at {{ getFormattedTime(r.endDate) }}h</h5></td>
                             </tr>
                         </table>
-                        <h5 class="my-3"><span class="badge" style="background-color: purple">{{ reservationStatus(r.status) }}</span></h5>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="my-3"><span class="badge" style="background-color: purple">{{ reservationStatus(r.status) }}</span></h5>
+                            <button class="btn btn-success btn-sm h-50 my-3" v-on:click="setFocusedReservation(r)" type="button">Leave a review</button>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
         <div v-if="calendarDisplay">
             <owners-reservations-calendar :reservations="reservations"></owners-reservations-calendar>
+        </div>
+        <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h5>Reservation for {{ focused_reservation.offerName }}</h5>
+                        <h5>Client: {{ focused_reservation.clientEmail }}</h5>
+                        <h6>
+                            {{ getFormattedDate(focused_reservation.startDate) }} at {{ getFormattedTime(focused_reservation.startDate) }}h - 
+                            {{ getFormattedDate(focused_reservation.endDate) }} at {{ getFormattedTime(focused_reservation.endDate) }}h
+                        </h6>
+                        <hr>
+                        <div class="form-floating">
+                            <textarea v-model="review" class="form-control" id="review-input" style="height: 150px"/>
+                            <label for="review-input">Leave a review</label>
+                            <!--<p v-if="!isValidDescription && cottage.errors.description" class="text-danger">Description is required.</p>-->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
    `,
@@ -123,6 +158,12 @@ Vue.component("reservations-history", {
                 return "MISSED";
             }
             return status;
+        },
+
+        setFocusedReservation(r) {
+            this.focused_reservation = r;
+            let myModal = new bootstrap.Modal(document.getElementById("reportModal"), {});
+            myModal.show();
         }
     },
 
