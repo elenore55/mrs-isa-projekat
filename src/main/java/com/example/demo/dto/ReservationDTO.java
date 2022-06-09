@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 public class ReservationDTO {
     private Integer id;
     private String clientEmail;
+    private ClientDTO client;
     private Integer offerId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
@@ -19,8 +20,10 @@ public class ReservationDTO {
 
     public ReservationDTO(Reservation r) {
         this.id = r.getId();
-        if (r.getClient() != null)
+        if (r.getClient() != null) {
             this.clientEmail = r.getClient().getEmail();
+            this.client = new ClientDTO(r.getClient());
+        }
         this.offerId = r.getOffer().getId();
         this.startDate = r.getStart();
         this.endDate = r.getEnd();
@@ -90,5 +93,13 @@ public class ReservationDTO {
 
     public void setOfferName(String offerName) {
         this.offerName = offerName;
+    }
+
+    public ClientDTO getClient() {
+        return client;
+    }
+
+    public void setClient(ClientDTO client) {
+        this.client = client;
     }
 }

@@ -15,7 +15,10 @@ Vue.component("reservations-history", {
                 startDate: new Date(),
                 endDate: new Date(),
                 clientEmail: '',
-                offerName: ''
+                offerName: '',
+                client: {
+                    name: '', surname: ''
+                }
             },
             review: '',
             receives_penalty: false
@@ -100,13 +103,16 @@ Vue.component("reservations-history", {
         <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-body">
-                        <h5 class="m-2">Reservation for {{ focused_reservation.offerName }}</h5>
-                        <h5 class="m-2">Client: {{ focused_reservation.clientEmail }}</h5>
-                        <h6 class="mx-2 my-3">
+                    <div class="modal-body" style="background-color: #fff9e8">
+                        <h5 class="d-flex justify-content-center my-2">Reservation for {{ focused_reservation.offerName }}</h5>
+                        <h6 class="d-flex justify-content-center mb-4 mt-3">
                             {{ getFormattedDate(focused_reservation.startDate) }} at {{ getFormattedTime(focused_reservation.startDate) }}h - 
                             {{ getFormattedDate(focused_reservation.endDate) }} at {{ getFormattedTime(focused_reservation.endDate) }}h
                         </h6>
+                        <h5 class="m-2">Client: </h5>
+                        <h4 class="ms-4">{{ focused_reservation.client.name }} {{ focused_reservation.client.surname }}</h4>
+                        <h5 class="ms-4">({{ focused_reservation.clientEmail }})</h5>
+                        
                         <hr>
                         <div class="form-floating">
                             <textarea v-model="review" class="form-control" id="review-input" style="height: 150px"/>
