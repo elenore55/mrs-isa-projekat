@@ -33,7 +33,7 @@ public class RegistrationRequestService {
             String title = "Registration request";
             String content = "Please review the following registration request:\n";
             content += "http://localhost:8000/#/reviewRequest/" + id.toString();
-            emailSender.send("milica.popovic55@hotmail.com", title, content);
+            emailSender.send(admin.getEmail(), title, content);
         }
     }
 }
