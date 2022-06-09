@@ -21,7 +21,8 @@ Vue.component("reservations-history", {
                 }
             },
             review: '',
-            receives_penalty: false
+            receives_penalty: false,
+            my_modal: null
         }
     },
 
@@ -31,6 +32,7 @@ Vue.component("reservations-history", {
         }).catch(error => {
             Swal.fire('Error', 'Owner not found!', 'error');
         });
+        this.my_modal =  new bootstrap.Modal(document.getElementById("reportModal"), {});
     },
 
     template: `
@@ -126,7 +128,7 @@ Vue.component("reservations-history", {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" v-on:click="submitReview">Submit</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetModalData">Close</button>
                     </div>
                 </div>
             </div>
@@ -174,12 +176,32 @@ Vue.component("reservations-history", {
 
         setFocusedReservation(r) {
             this.focused_reservation = r;
-            let myModal = new bootstrap.Modal(document.getElementById("reportModal"), {});
-            myModal.show();
+            this.my_modal.show();
         },
 
         submitReview() {
             this.review_input_started = true;
+            if (this.isValidReview) {
+                axios.put("api/clientReviews/addReview", {
+                    content: this.review,
+                    penaltyRequested: this.receives_penalty,
+                    clientEmail: this.focused_reservation.clientEmail,
+                    ownerId: this.$route.params.id,
+                    reservationId: this.focused_reservation.id
+                }).then(response => {
+                    this.my_modal.hide();
+                    this.resetModalData();
+                    Swal.fire("Success", "Review submitted", "success");
+                }).catch(error => {
+                    Swal.fire("Error", "Something went wrong", "error");
+                });
+            }
+        },
+
+        resetModalData() {
+            this.review = '';
+            this.receives_penalty = false;
+            this.review_input_started = false;
         }
     },
 
@@ -193,6 +215,5 @@ Vue.component("reservations-history", {
             if (!this.review_input_started) return true;
             return !!(this.review);
         }
-
     }
 });

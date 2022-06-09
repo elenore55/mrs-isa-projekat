@@ -22,6 +22,9 @@ public class ClientReview {
     @ManyToOne(fetch = FetchType.EAGER)
     private Client client;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Reservation reservation;
+
     @Column
     private Boolean penaltyRequested;
 
@@ -82,5 +85,13 @@ public class ClientReview {
 
     public void setPenaltyRequested(Boolean penaltyRequested) {
         this.penaltyRequested = penaltyRequested;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
     }
 }

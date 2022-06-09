@@ -11,6 +11,7 @@ public class ClientReviewDTO {
     private String clientEmail;
     private Integer ownerId;
     private Boolean penaltyRequested;
+    private Integer reservationId;
 
     public ClientReviewDTO() {
     }
@@ -22,6 +23,7 @@ public class ClientReviewDTO {
         this.clientEmail = cr.getClient().getEmail();
         this.ownerId = cr.getIssuedBy().getId();
         this.penaltyRequested = cr.getPenaltyRequested();
+        this.reservationId = cr.getReservation().getId();
     }
 
     public Integer getId() {
@@ -70,5 +72,13 @@ public class ClientReviewDTO {
 
     public void setPenaltyRequested(Boolean penaltyRequested) {
         this.penaltyRequested = penaltyRequested;
+    }
+
+    public Integer getReservationId() {
+        return reservationId;
+    }
+
+    public void setReservationId(Integer reservationId) {
+        this.reservationId = reservationId;
     }
 }
