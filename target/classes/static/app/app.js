@@ -1,3 +1,4 @@
+const PriceHistoryReport = {template: '<price-history-report></price-history-report>'};
 const VisitReport = {template: '<visit-report></visit-report>'};
 const ChangePasswordOwner = {template: '<change-pw-owner></change-pw-owner>'};
 const ShipProfile = {template: '<ship-profile></ship-profile>'};
@@ -46,6 +47,10 @@ Vue.component('vuejs-datepicker', vuejsDatepicker);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/priceHistoryReport/:id",
+            component: PriceHistoryReport
+        },
         {
             path: "/visitReport/:id",
             component: VisitReport

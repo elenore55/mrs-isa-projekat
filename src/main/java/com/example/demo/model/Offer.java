@@ -24,8 +24,8 @@ public class Offer {
     protected String description;
 
 
-    //@OneToOne(cascade = CascadeType.ALL)        //izmenjeno
-    //protected PriceList priceList;
+    @OneToMany(cascade = CascadeType.ALL)        //izmenjeno
+    protected List<PriceList> priceHistory;
 
     @Column
     protected BigDecimal priceList;
@@ -126,5 +126,13 @@ public class Offer {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
+    }
+
+    public List<PriceList> getPriceHistory() {
+        return priceHistory;
+    }
+
+    public void setPriceHistory(List<PriceList> priceHistory) {
+        this.priceHistory = priceHistory;
     }
 }
