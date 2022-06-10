@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.FilterCottageDTO;
 import com.example.demo.dto.IncomeReportDTO;
+import com.example.demo.dto.ReportEntryDTO;
 import com.example.demo.dto.VisitReportDTO;
 import com.example.demo.dto.comparators.cottage.*;
 import com.example.demo.model.*;
@@ -11,7 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.YearMonth;
+import java.time.chrono.ChronoLocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
@@ -103,6 +109,52 @@ public class CottageOwnerService {
             result.put(c.getName(), dto);
         }
         return new ArrayList<>(result.values());
+    }
+
+    public List<ReportEntryDTO> calculateMonthlyPriceHistoryReport(CottageOwner owner, LocalDateTime start, LocalDateTime end) {
+        List<Cottage> cottages = owner.getCottages();
+        Month month = start.getMonth();
+        int year = start.getYear();
+        start = LocalDateTime.of(year, month, 1, 0, 0);
+
+        Map<String, List<BigDecimal>> amountsPerMonth = new HashMap<>();
+        while (true) {
+            String monthStr = start.getMonth().toString() + " " + start.getYear();
+            amountsPerMonth.put(monthStr, new ArrayList<>());
+            LocalDateTime next = start.plusMonths(1);
+            if (next.compareTo(end) >= 0) break;
+            start = next;
+        }
+
+        List<ReportEntryDTO> result = new ArrayList<>();
+
+        for (Cottage c : cottages) {
+            List<PriceList> history = c.getPriceHistory();
+            for (int i = 0; i < history.size(); i++) {
+                LocalDate priceStart = history.get(i).getStartDate();
+                LocalDate priceEnd;
+                if (i == history.size() - 1) priceEnd = LocalDate.now();
+                else priceEnd = history.get(i + 1).getStartDate();
+                while (priceStart.compareTo(priceEnd) < 0) {
+                    String priceMonthStr = priceStart.getMonth().toString() + " " + priceStart.getYear();
+                    List<BigDecimal> amounts = amountsPerMonth.get(priceMonthStr);
+                    amounts.add(history.get(i).getAmount());
+                    amountsPerMonth.put(priceMonthStr, amounts);
+                    priceStart = priceStart.plusDays(1);
+                }
+            }
+        }
+
+        for (String m : amountsPerMonth.keySet()) {
+            List<BigDecimal> prices = amountsPerMonth.get(m);
+            BigDecimal sum = prices.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+            if (sum.equals(BigDecimal.valueOf(0))) result.add(new ReportEntryDTO(m, BigDecimal.valueOf(0)));
+            else {
+                BigDecimal avg = sum.divide(BigDecimal.valueOf(prices.size()), 2, RoundingMode.CEILING);
+                result.add(new ReportEntryDTO(m, avg));
+            }
+        }
+        return result;
     }
 
     private void sortCottages(List<Cottage> cottages, String sortBy, boolean desc) {
