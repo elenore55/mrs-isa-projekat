@@ -4,6 +4,7 @@ import com.example.demo.dto.FilterCottageDTO;
 import com.example.demo.dto.IncomeReportDTO;
 import com.example.demo.dto.ReportEntryDTO;
 import com.example.demo.dto.VisitReportDTO;
+import com.example.demo.dto.comparators.ReportEntryDaysComparator;
 import com.example.demo.dto.comparators.cottage.*;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ReservationStatus;
@@ -13,10 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.YearMonth;
+import java.time.*;
 import java.time.chrono.ChronoLocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -111,6 +109,14 @@ public class CottageOwnerService {
         return new ArrayList<>(result.values());
     }
 
+    public List<ReportEntryDTO> calculatePriceHistoryReport(CottageOwner owner, LocalDateTime start, LocalDateTime end, String kind) {
+        if (kind.equalsIgnoreCase("Monthly")) {
+            return calculateMonthlyPriceHistoryReport(owner, start, end);
+        } else if (kind.equalsIgnoreCase("Weekly")) {
+            return calculateWeeklyPriceHistoryReport(owner, start, end);
+        } else return calculateDailyPriceHistoryReport(owner, start, end);
+    }
+
     public List<ReportEntryDTO> calculateMonthlyPriceHistoryReport(CottageOwner owner, LocalDateTime start, LocalDateTime end) {
         List<Cottage> cottages = owner.getCottages();
         Month month = start.getMonth();
@@ -137,6 +143,10 @@ public class CottageOwnerService {
                 else priceEnd = history.get(i + 1).getStartDate();
                 while (priceStart.compareTo(priceEnd) < 0) {
                     String priceMonthStr = priceStart.getMonth().toString() + " " + priceStart.getYear();
+                    if (!amountsPerMonth.containsKey(priceMonthStr)) {
+                        priceStart = priceStart.plusDays(1);
+                        continue;
+                    }
                     List<BigDecimal> amounts = amountsPerMonth.get(priceMonthStr);
                     amounts.add(history.get(i).getAmount());
                     amountsPerMonth.put(priceMonthStr, amounts);
@@ -154,6 +164,108 @@ public class CottageOwnerService {
                 result.add(new ReportEntryDTO(m, avg));
             }
         }
+        result.sort(new ReportEntryDaysComparator());
+        return result;
+    }
+
+    public List<ReportEntryDTO> calculateDailyPriceHistoryReport(CottageOwner owner, LocalDateTime start, LocalDateTime end) {
+        List<Cottage> cottages = owner.getCottages();
+
+        Map<String, List<BigDecimal>> amountsPerDay = new HashMap<>();
+        while (true) {
+            String dayStr = start.getDayOfMonth() + " " + start.getMonth().toString() + " " + start.getYear();
+            amountsPerDay.put(dayStr, new ArrayList<>());
+            LocalDateTime next = start.plusDays(1);
+            if (next.compareTo(end) >= 0) break;
+            start = next;
+        }
+
+        List<ReportEntryDTO> result = new ArrayList<>();
+
+        for (Cottage c : cottages) {
+            List<PriceList> history = c.getPriceHistory();
+            for (int i = 0; i < history.size(); i++) {
+                LocalDate priceStart = history.get(i).getStartDate();
+                LocalDate priceEnd;
+                if (i == history.size() - 1) priceEnd = LocalDate.now();
+                else priceEnd = history.get(i + 1).getStartDate();
+
+                while (priceStart.compareTo(priceEnd) < 0) {
+                    String priceDayStr = priceStart.getDayOfMonth() + " " + priceStart.getMonth().toString() + " " + priceStart.getYear();
+                    if (!amountsPerDay.containsKey(priceDayStr)) {
+                        priceStart = priceStart.plusDays(1);
+                        continue;
+                    }
+                    List<BigDecimal> amounts = amountsPerDay.get(priceDayStr);
+                    amounts.add(history.get(i).getAmount());
+                    amountsPerDay.put(priceDayStr, amounts);
+                    priceStart = priceStart.plusDays(1);
+                }
+            }
+        }
+
+        for (String m : amountsPerDay.keySet()) {
+            List<BigDecimal> prices = amountsPerDay.get(m);
+            BigDecimal sum = prices.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+            if (sum.equals(BigDecimal.valueOf(0))) result.add(new ReportEntryDTO(m, BigDecimal.valueOf(0)));
+            else {
+                BigDecimal avg = sum.divide(BigDecimal.valueOf(prices.size()), 2, RoundingMode.CEILING);
+                result.add(new ReportEntryDTO(m, avg));
+            }
+        }
+        result.sort(new ReportEntryDaysComparator());
+        return result;
+    }
+
+    public List<ReportEntryDTO> calculateWeeklyPriceHistoryReport(CottageOwner owner, LocalDateTime start, LocalDateTime end) {
+        List<Cottage> cottages = owner.getCottages();
+        DayOfWeek dayOfWeek = start.getDayOfWeek();
+        start = start.minusDays(dayOfWeek.getValue() - 1);
+
+        Map<String, List<BigDecimal>> amountsPerWeek = new HashMap<>();
+        while (true) {
+            String weekStr = start.getDayOfMonth() + " " + start.getMonth().toString() + " " + start.getYear();
+            amountsPerWeek.put(weekStr, new ArrayList<>());
+            LocalDateTime next = start.plusDays(7);
+            if (next.compareTo(end) >= 0) break;
+            start = next;
+        }
+
+        List<ReportEntryDTO> result = new ArrayList<>();
+
+        for (Cottage c : cottages) {
+            List<PriceList> history = c.getPriceHistory();
+            for (int i = 0; i < history.size(); i++) {
+                LocalDate priceStart = history.get(i).getStartDate();
+                LocalDate priceEnd;
+                if (i == history.size() - 1) priceEnd = LocalDate.now();
+                else priceEnd = history.get(i + 1).getStartDate();
+
+                while (priceStart.compareTo(priceEnd) < 0) {
+                    LocalDate startOfWeek = priceStart.minusDays(priceStart.getDayOfWeek().getValue() - 1);
+                    String priceWeekStr = startOfWeek.getDayOfMonth() + " " + startOfWeek.getMonth().toString() + " " + startOfWeek.getYear();
+                    if (!amountsPerWeek.containsKey(priceWeekStr)) {
+                        priceStart = priceStart.plusDays(1);
+                        continue;
+                    }
+                    List<BigDecimal> amounts = amountsPerWeek.get(priceWeekStr);
+                    amounts.add(history.get(i).getAmount());
+                    amountsPerWeek.put(priceWeekStr, amounts);
+                    priceStart = priceStart.plusDays(1);
+                }
+            }
+        }
+
+        for (String m : amountsPerWeek.keySet()) {
+            List<BigDecimal> prices = amountsPerWeek.get(m);
+            BigDecimal sum = prices.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+            if (sum.equals(BigDecimal.valueOf(0))) result.add(new ReportEntryDTO(m, BigDecimal.valueOf(0)));
+            else {
+                BigDecimal avg = sum.divide(BigDecimal.valueOf(prices.size()), 2, RoundingMode.CEILING);
+                result.add(new ReportEntryDTO(m, avg));
+            }
+        }
+        result.sort(new ReportEntryDaysComparator());
         return result;
     }
 

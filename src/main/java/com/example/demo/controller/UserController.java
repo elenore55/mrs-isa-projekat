@@ -216,12 +216,11 @@ public class UserController {
         if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         if (user instanceof CottageOwner) {
             CottageOwner co = (CottageOwner) user;
-            return new ResponseEntity<>(cottageOwnerService.calculateMonthlyPriceHistoryReport(co, dto.getStart(), dto.getEnd()), HttpStatus.OK);
+            return new ResponseEntity<>(cottageOwnerService.calculatePriceHistoryReport(co, dto.getStart(), dto.getEnd(), kind), HttpStatus.OK);
         }
         if (user instanceof ShipOwner) {
             ShipOwner so = (ShipOwner) user;
-            // List<VisitReportDTO> result = shipOwnerService.calculateVisitReport(so, dto.getStart(), dto.getEnd());
-            // return new ResponseEntity<>(result, HttpStatus.OK);
+            return new ResponseEntity<>(shipOwnerService.calculatePriceHistoryReport(so, dto.getStart(), dto.getEnd(), kind), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
