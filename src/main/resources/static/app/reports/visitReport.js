@@ -12,7 +12,8 @@ Vue.component('visit-report', {
             colors: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)',
                 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
             border_colors: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)']
+                'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+            period_select: 'Monthly'
         }
     },
 
@@ -28,7 +29,7 @@ Vue.component('visit-report', {
             data: {
                 labels: [],
                 datasets: [{
-                    label: 'Days',
+                    label: 'Visits',
                     data: []
                 }]
             },
@@ -59,6 +60,14 @@ Vue.component('visit-report', {
                     <label for="end-date">End date</label>
                     <vuejs-datepicker v-model="end_date" format="dd.MM.yyyy." id="end-date" :disabled-dates="disabled"></vuejs-datepicker>
                 </div>
+                <div class="mt-1 ms-3 me-4 mb-1 d-flex align-items-end">
+                    <select v-model="period_select" class="px-2 py-1">
+                        <option selected>Monthly</option>
+                        <option>Weekly</option>
+                        <option>Daily</option>
+                        <option>By offer</option>
+                    </select>
+                </div>
                 <div class="d-flex align-items-end">
                     <button class="btn btn-success px-3 mx-2 h-75 my-1" v-on:click="getReports">Display</button>
                 </div>
@@ -72,14 +81,14 @@ Vue.component('visit-report', {
 
     methods: {
         getReports() {
-            axios.post("api/users/getVisitReport/" + this.$route.params.id, {
+            axios.post("api/users/getVisitReport/" + this.$route.params.id + "/" + this.period_select, {
                 start: this.start_date,
                 end: this.end_date
             }).then(response => {
                 this.reports = response.data;
                 this.ch.data.labels = this.getChartLabels();
                 this.ch.data.datasets = [{
-                    label: 'Days',
+                    label: 'Visits',
                     data: this.getChartData(),
                     backgroundColor: this.getBgColors(),
                     borderColor: this.getBorderColors(),
@@ -99,7 +108,7 @@ Vue.component('visit-report', {
         getChartLabels() {
             let labels = [];
             for (const report of this.reports) {
-                labels.push(report.offerName);
+                labels.push(report.x);
             }
             return labels;
         },
@@ -107,7 +116,7 @@ Vue.component('visit-report', {
         getChartData() {
             let chartData = [];
             for (const report of this.reports) {
-                chartData.push(report.daysVisited);
+                chartData.push(report.y);
             }
             return chartData;
         },
