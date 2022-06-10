@@ -29,11 +29,11 @@ Vue.component("ship-reservations", {
                     <div class="d-flex justify-content-center card-body">
                         <div class="me-3 mb-1">
                             <label for="start-date">Start</label>
-                            <vuejs-datepicker v-model="ship.availableStart" format="dd.MM." id="start-date"></vuejs-datepicker>
+                            <vuejs-datepicker v-model="ship.availableStart" format="dd.MM." id="start-date" monday-first="true"></vuejs-datepicker>
                         </div>
                         <div class="mb-1">
                             <label for="end-date">End</label>                
-                            <vuejs-datepicker v-model="ship.availableEnd" format="dd.MM." id="end-date"></vuejs-datepicker>
+                            <vuejs-datepicker v-model="ship.availableEnd" format="dd.MM." id="end-date" monday-first="true"></vuejs-datepicker>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">

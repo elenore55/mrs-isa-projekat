@@ -135,11 +135,11 @@ Vue.component("add-cottage", {
                             <div class="d-flex justify-content-start">
                                 <div class="me-3 mb-4">
                                     <label for="start-date">Start</label>
-                                    <vuejs-datepicker v-model="cottage.start_av" format="dd.MM." id="start-date"></vuejs-datepicker>
+                                    <vuejs-datepicker v-model="cottage.start_av" format="dd.MM." id="start-date" monday-first="true"></vuejs-datepicker>
                                 </div>
                                 <div class="mb-4">
                                     <label for="end-date">End</label>                
-                                    <vuejs-datepicker v-model="cottage.end_av" format="dd.MM." id="end-date"></vuejs-datepicker>
+                                    <vuejs-datepicker v-model="cottage.end_av" format="dd.MM." id="end-date" monday-first="true"></vuejs-datepicker>
                                 </div>
                             </div>
                             <p v-if="!areValidDates" class="ms-3 text-danger">Dates are required and must be in ascending order!</p>

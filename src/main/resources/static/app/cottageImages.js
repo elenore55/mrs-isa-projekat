@@ -24,7 +24,7 @@ Vue.component('cottage-images', {
                 <div class="row">
                     <div class="col d-flex justify-content-center flex-wrap" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <div v-for="(img, i) in paths" class="m-2">
-                            <img :src="img" class="rounded float-start m-2" width="240" height="240" data-bs-target="#carouselExample" :data-bs-slide-to="i">
+                            <img :src="img" class="rounded float-start m-2" width="240" height="240" data-bs-target="#carouselExample" :data-bs-slide-to="i" style="cursor: pointer">
                             <div class="text-end">
                                 <button type="button" class="btn btn-sm btn-danger me-3" v-on:click="paths.splice(i, 1)">Delete</button>
                             </div>
@@ -90,8 +90,8 @@ Vue.component('cottage-images', {
             }
         },
 
-        imageClicked(index) {
-            alert('Clicked ' + index);
+        imageHovered() {
+            alert('Hover');
         },
 
         sendRequest() {

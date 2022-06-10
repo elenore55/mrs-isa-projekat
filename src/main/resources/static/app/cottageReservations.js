@@ -29,11 +29,11 @@ Vue.component("cottage-reservations", {
                     <div class="d-flex justify-content-center card-body">
                         <div class="me-3 mb-4">
                             <label for="start-date">Start</label>
-                            <vuejs-datepicker v-model="cottage.availableStart" format="dd.MM." id="start-date"></vuejs-datepicker>
+                            <vuejs-datepicker v-model="cottage.availableStart" format="dd.MM." id="start-date" monday-first="true"></vuejs-datepicker>
                         </div>
                         <div class="mb-4">
                             <label for="end-date">End</label>                
-                            <vuejs-datepicker v-model="cottage.availableEnd" format="dd.MM." id="end-date"></vuejs-datepicker>
+                            <vuejs-datepicker v-model="cottage.availableEnd" format="dd.MM." id="end-date" monday-first="true"></vuejs-datepicker>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
@@ -53,7 +53,7 @@ Vue.component("cottage-reservations", {
                 </div>
             </div>
         </div>
-        <reservations-calendar id="2" :offerId="$route.params.id" rangeStart="cottage.availableStart" rangeEnd="cottage.availableEnd"></reservations-calendar>
+        <reservations-calendar id="2" :offerId="$route.params.id" rangeStart="cottage.availableStart" :rangeEnd="cottage.availableEnd"></reservations-calendar>
     </div>
     `,
 
