@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -149,6 +150,7 @@ public class ShipController {
         ship.setMaxSpeed(dto.getMaxSpeed());
         // address
         Address address = ship.getAddress();
+        if (address == null) address = new Address();
         address.setStreet(dto.getAddress().getStreet());
         address.setCity(dto.getAddress().getCity());
         address.setCountry(dto.getAddress().getCountry());
@@ -178,6 +180,22 @@ public class ShipController {
             a.setOffer(ship);
             ship.setAvailabilities(Arrays.asList(a));
         }
+
+        // price history
+        if (ship.getPriceHistory() == null || ship.getPriceHistory().size() == 0) {
+            List<PriceList> priceHistory = new ArrayList<>();
+            priceHistory.add(new PriceList(LocalDate.now(), dto.getPrice()));
+            ship.setPriceHistory(priceHistory);
+        } else {
+            List<PriceList> priceHistory = ship.getPriceHistory();
+            PriceList last = priceHistory.get(priceHistory.size() - 1);
+            if (!last.getAmount().equals(dto.getPrice())) {
+                PriceList newPrice = new PriceList(LocalDate.now(), dto.getPrice());
+                priceHistory.add(newPrice);
+                ship.setPriceHistory(priceHistory);
+            }
+        }
+
         // owner
         ShipOwner owner = shipOwnerService.findOne(dto.getOwnerId());
         if (owner != null) ship.setOwner(owner);

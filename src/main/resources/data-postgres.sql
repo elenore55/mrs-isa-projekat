@@ -26,6 +26,10 @@ insert into my_users (category,number_of_points,profile_data_id) values ('REGULA
 insert into ship_owner (id) values (1);
 insert into offer (additional_info, description, name, price_list, address_id) values ('Pruža mogućnosti za organizovanje poslovnih ručkova, koktela, prezentacija i promocija, kao i za neobavezno druženje. Brod ima profesionalno ozvučenje i prostranu otvorenu terasu na gornjoj palubi.', 'Brod je na dva nivoa', 'Sirena', 150, 1);
 insert into ship (capacity, ship_length, max_speed, number_of_engines, power_of_engine, ship_type, id, ship_owner_id) values (70, 25, 40, 4, 100, 'SHIP', 1, 1);
+insert into price_list (amount, start_date) values (130, '20220501 00:00:01 AM');
+insert into offer_price_history (offer_id, price_history_id) values (1, 1);
+insert into price_list (amount, start_date) values (150, '20220515 00:00:01 AM');
+insert into offer_price_history (offer_id, price_history_id) values (1, 2);
 
 insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email2@gmail.com', 'Djuro', 'pass2', '1233456', 'Djuric', 1);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,2);
@@ -66,7 +70,13 @@ insert into offer (additional_info, description, name, price_list, address_id) v
 insert into offer_rules (offer_id, rules_id) values (2, 1);
 insert into offer_rules (offer_id, rules_id) values (2, 3);
 insert into offer_rules (offer_id, rules_id) values (1, 5);
+insert into price_list (amount, start_date) values (100, '20220501 00:00:01 AM');
+insert into offer_price_history (offer_id, price_history_id) values (2, 3);
 insert into cottage (id, cottage_owner_id) values (2, 2);
+insert into price_list (amount, start_date) values (150, '20220520 00:00:01 AM');
+insert into offer_price_history (offer_id, price_history_id) values (2, 4);
+insert into price_list (amount, start_date) values (300, '20220530 00:00:01 AM');
+insert into offer_price_history (offer_id, price_history_id) values (2, 5);
 
 insert into cottage_images (cottage_id, images_id) values (2, 1);
 insert into cottage_images (cottage_id, images_id) values (2, 6);
@@ -80,6 +90,8 @@ insert into offer (additional_info, description, name, price_list, address_id) v
 insert into offer_rules (offer_id, rules_id) values (3, 4);
 insert into cottage (id, cottage_owner_id) values (3, 2);
 insert into cottage_images (cottage_id, images_id) values (3, 2);
+insert into price_list (amount, start_date) values (500, '20220501 00:00:01 AM');
+insert into offer_price_history (offer_id, price_history_id) values (3, 6);
 
 insert into room (number_of_beds, cottage_id) values (5, 3);
 insert into room (number_of_beds, cottage_id) values (3, 3);
@@ -89,6 +101,8 @@ insert into room (number_of_beds, cottage_id) values (5, 2);
 
 insert into offer (additional_info, description, name, price_list, address_id) values ('additional info', 'opis mog broda', 'Maria', 500, 4);
 insert into ship (capacity, ship_length, max_speed, number_of_engines, power_of_engine, ship_type, id, ship_owner_id) values (50, 100, 300, 15, 500, 'SHIP', 4, 1);
+insert into price_list (amount, start_date) values (500, '20220501 00:00:01 AM');
+insert into offer_price_history (offer_id, price_history_id) values (4, 7);
 
 
 insert into offer (additional_info, description, name, price_list, address_id) values ('Enterijer apartmana predstvalja spoj planinskog dekora i svih potrebnih savremenih pogodnosti, koje će zadovoljiti krtiterijume i najzahtevnijih turista.', 'Ovo je apartman iz kog ćete najbrže početi da skijate.', 'Apartman Gondola', 60, 7);
@@ -97,18 +111,24 @@ insert into offer (additional_info, description, name, price_list, address_id) v
 --insert into offer_rules (offer_id, rules_id) values (5, 5);
 insert into cottage (id, cottage_owner_id) values (5, 2);
 insert into cottage_images (cottage_id, images_id) values (5, 3);
+insert into price_list (amount, start_date) values (60, '20220501 00:00:01 AM');
+insert into offer_price_history (offer_id, price_history_id) values (5, 8);
 
 insert into offer (additional_info, description, name, price_list, address_id) values ('Prostrano dvorište objekta krasi veliki bazen dimenzija 12x6m, dubine 1.6m, sa izdvojenim djakuzi delom.', 'Vila Siesta je građena u meksičkom stilu. Idealna je za važe druženje i u hladnijim danima, kuhinju, trpezariju i kupatilo.', 'Vila Siesta', 240, 6);
 --insert into offer_rules (offer_id, rules_id) values (6, 1);
 --insert into offer_rules (offer_id, rules_id) values (6, 4);
 insert into cottage (id, cottage_owner_id) values (6, 2);
 insert into cottage_images (cottage_id, images_id) values (6, 4);
+insert into price_list (amount, start_date) values (240, '20220501 00:00:01 AM');
+insert into offer_price_history (offer_id, price_history_id) values (6, 9);
 
 insert into offer (additional_info, description, name, price_list, address_id) values ('Kupatilo ima tuš kabinu.', 'Ispred kuće se nalazi bazen sa lepo uređenim dvorištem oko njega.', 'Vikendica Sunset', 150, 1);
 --insert into offer_rules (offer_id, rules_id) values (7, 1);
 --insert into offer_rules (offer_id, rules_id) values (7, 4);
 insert into cottage (id, cottage_owner_id) values (7, 2);
 --insert into cottage_images (cottage_id, images_id) values (7, 5);
+insert into price_list (amount, start_date) values (150, '20220501 00:00:01 AM');
+insert into offer_price_history (offer_id, price_history_id) values (7, 10);
 
 
 insert into room (number_of_beds, cottage_id) values (5, 5);
@@ -123,9 +143,13 @@ insert into room (number_of_beds, cottage_id) values (3, 7);
 
 insert into offer (additional_info, description, name, price_list, address_id) values ('Zbog komfora koji pruža predstavlja idealan izbor za dnevna i noćna krstarenja, kao i sve vrste proslava!', 'Ekskluzivan katamaran za rentiranje', 'Ariel', 300, 7);
 insert into ship (capacity, ship_length, max_speed, number_of_engines, power_of_engine, ship_type, id, ship_owner_id) values (50, 20, 35, 2, 120, 'BOAT', 8, 1);
+insert into price_list (amount, start_date) values (300, '20220501 00:00:01 AM');
+insert into offer_price_history (offer_id, price_history_id) values (8, 11);
 
 insert into offer (additional_info, description, name, price_list, address_id) values ('Poseduje kuhinju i toalet.', 'Moj camac za rentiranje', 'Narval', 100, 6);
 insert into ship (capacity, ship_length, max_speed, number_of_engines, power_of_engine, ship_type, id, ship_owner_id) values (7, 10, 35, 2, 70, 'BOAT', 9, 1);
+insert into price_list (amount, start_date) values (100, '20220501 00:00:01 AM');
+insert into offer_price_history (offer_id, price_history_id) values (9, 12);
 
 insert into ship_images (ship_id, images_id) values (1, 14);
 insert into ship_images (ship_id, images_id) values (1, 16);

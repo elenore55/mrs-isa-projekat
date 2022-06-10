@@ -29,6 +29,11 @@ public class PriceList {
         this.amount = amount;
     }
 
+    public PriceList(LocalDate startDate, BigDecimal amount) {
+        this.startDate = startDate;
+        this.amount = amount;
+    }
+
     public Integer getId() {
         return id;
     }
