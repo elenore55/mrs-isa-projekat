@@ -27,7 +27,8 @@ public class Reservation {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "feedback_id", referencedColumnName = "id")
     private Feedback feedback;
 
     @ManyToOne(fetch = FetchType.EAGER)

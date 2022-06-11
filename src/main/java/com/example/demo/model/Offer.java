@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.model.enums.ReservationStatus;
 
 import javax.persistence.*;
@@ -60,6 +61,14 @@ public class Offer {
         return false;
     }
 
+    public List<Feedback> getReviews() {
+        List<Feedback> reviews = new ArrayList<>();
+        for (Reservation r : reservations) {
+            Feedback fb = r.getFeedback();
+            if (fb != null && fb.getStatus() == AdminApprovalStatus.APPROVED) reviews.add(r.getFeedback());
+        }
+        return reviews;
+    }
 
     public Integer getId() {
         return id;

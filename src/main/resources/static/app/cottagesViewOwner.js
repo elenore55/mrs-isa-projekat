@@ -88,8 +88,17 @@ Vue.component("cottages-view-owner", {
                                 <p class="ms-2 mt-3">{{ c.description }}</p>
                             </div>
                             <div class="col-4 card-body container">
-                                <h3 class="card-title mb-2">{{ c.name }}</h3>
-                                <p class="card-text mt-2 mb-4 h5">{{ c.address.street }}, {{ c.address.city }}, {{ c.address.country }}</p>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h3 class="card-title mb-2">{{ c.name }}</h3>
+                                        <p class="card-text mt-2 mb-4 h5">{{ c.address.street }}, {{ c.address.city }}, {{ c.address.country }}</p>
+                                    </div>
+                                    <div class="me-5">
+                                        <h2 v-if="c.rate != -1"><span class="badge bg-primary">{{ c.rate }}</span></h2>
+                                        <h6 v-if="c.rate != -1">{{ c.reviews.length }} reviews</h6>
+                                        <h3 v-if="c.rate == -1">No reviews</h3>
+                                    </div>
+                                </div>
                                 <p class="card-text mb-2">Price: {{ c.price }} EUR</p>
                                 <p class="card-text mb-2">Number of rooms: {{ c.rooms.length }}</p>
                                 <p class="card-text">Number of beds: {{ c.numberOfBeds }}</p>

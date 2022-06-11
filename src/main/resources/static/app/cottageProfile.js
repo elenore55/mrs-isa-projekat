@@ -30,8 +30,10 @@ Vue.component('cottage-profile', {
                                 </div>
                                 <div class="ms-4">   
                                     <h1 class="text-success ">{{ cottage.price }} <i class="fa fa-eur"></i></h1>
-                                    <h2>{{ cottage.rate }}</h2>
-                                    <p class="h6"> {{ cottage.description }}</p>
+                                    <p class="h6 my-2"> {{ cottage.description }}</p>
+                                    <h2 v-if="cottage.rate != -1"><span class="badge bg-primary">{{ cottage.rate }}</span></h2>
+                                    <h6 v-if="cottage.rate != -1">{{ cottage.reviews.length }} reviews</h6>
+                                    <h3 v-if="cottage.rate == -1">No reviews</h3>
                                 </div>
                             </div>
                             <div class="w-100 mt-1">

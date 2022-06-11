@@ -30,8 +30,10 @@ Vue.component('ship-profile', {
                                 </div>
                                 <div class="ms-4">   
                                     <h1 class="text-success ">{{ ship.price }} <i class="fa fa-eur"></i></h1>
-                                    <h2>{{ ship.rate }}</h2>
-                                    <p class="h6"> {{ ship.description }}</p>
+                                    <p class="h6 my-2"> {{ ship.description }}</p>
+                                    <h2 v-if="ship.rate != -1"><span class="badge bg-primary">{{ ship.rate }}</span></h2>
+                                    <h6 v-if="ship.rate != -1">{{ ship.reviews.length }} reviews</h6>
+                                    <h3 v-if="ship.rate == -1">No reviews</h3>
                                     <div class="mt-4">
                                         <p class="h6">Length: {{ ship.length }}m</p>
                                         <p class="h6">Capacity: {{ ship.capacity }} people</p>

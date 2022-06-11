@@ -170,15 +170,18 @@ insert into profile_data (email, name, password, phone_number, surname, address_
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,3);
 insert into admin (id) values (4);
 
-insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (1, 3, 'PENDING', '20220523 10:05:00 AM', '20220528 10:05:00 AM');
+insert into feedback (comment, rating, status) values ('Very pretty boat', 10, 'APPROVED');
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (1, 3, 'PENDING', '20220523 10:05:00 AM', '20220528 10:05:00 AM', 1);
 insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 1);
 insert into availability (offer_id, star_date_time, end_date_time) values (1, '20220501 00:00:01 AM', '20220731 11:59:59 PM');
 
-insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (2, 3, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM');
+insert into feedback (comment, rating, status) values ('Very pretty cottage', 10, 'APPROVED');
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (2, 3, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM', 2);
 insert into cottage_owner_reservations (cottage_owner_id, reservations_id) values (2, 2);
 insert into availability (offer_id, star_date_time, end_date_time) values (2, '20220401 00:00:01 AM', '20220831 11:59:59 PM');
 
-insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (2, 3, 'PENDING', '20220602 09:10:00 AM', '20220605 04:00:00 PM');
+insert into feedback (comment, rating, status) values ('Very nice cottage', 9, 'APPROVED');
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (2, 3, 'PENDING', '20220602 09:10:00 AM', '20220605 04:00:00 PM', 3);
 insert into cottage_owner_reservations (cottage_owner_id, reservations_id) values (2, 3);
 
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (1, 3, 'FINISHED', '20220502 09:10:00 AM', '20220506 04:00:00 PM');

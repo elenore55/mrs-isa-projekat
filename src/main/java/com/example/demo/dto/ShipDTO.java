@@ -32,6 +32,7 @@ public class ShipDTO {
     private LocalDateTime availableEnd;
     private Double rate;
     private Boolean editable;
+    private List<ReviewDTO> reviews;
 
     public ShipDTO(Ship ship) {
         this.id = ship.getId();
@@ -68,6 +69,10 @@ public class ShipDTO {
         }
         this.rate = ship.getRateOrNegativeOne();
         this.editable = ship.hasFutureReservations();
+        this.reviews = new ArrayList<>();
+        for (Feedback fb : ship.getReviews()) {
+            this.reviews.add(new ReviewDTO(fb));
+        }
     }
 
     public ShipDTO() {
@@ -251,5 +256,13 @@ public class ShipDTO {
 
     public void setEditable(Boolean editable) {
         this.editable = editable;
+    }
+
+    public List<ReviewDTO> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<ReviewDTO> reviews) {
+        this.reviews = reviews;
     }
 }

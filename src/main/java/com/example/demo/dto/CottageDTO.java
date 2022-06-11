@@ -22,6 +22,7 @@ public class CottageDTO {
     private LocalDateTime availableEnd;
     private Double rate;
     private Boolean editable;
+    private List<ReviewDTO> reviews;
 
     public CottageDTO() {
     }
@@ -66,6 +67,10 @@ public class CottageDTO {
         }
         this.rate = cottage.getRateOrNegativeOne();
         this.editable = cottage.hasFutureReservations();
+        this.reviews = new ArrayList<>();
+        for (Feedback fb : cottage.getReviews()) {
+            this.reviews.add(new ReviewDTO(fb));
+        }
     }
 
     public Integer getId() {
@@ -182,5 +187,13 @@ public class CottageDTO {
 
     public void setEditable(Boolean editable) {
         this.editable = editable;
+    }
+
+    public List<ReviewDTO> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<ReviewDTO> reviews) {
+        this.reviews = reviews;
     }
 }
