@@ -75,22 +75,25 @@ Vue.component("ships-view-owner", {
             </div>
             <h3 v-if="ships.length == 0" class="text-info ms-5 mt-3">No ships to show</h3>
             <div class="container">
-                <div v-for="(s, i) in ships" class="container card m-3 shadow" style="border-radius: 10px">
-                    <div class="row">
-                        <div class="col-3 mt-2">
-                            <img :src="profilePictures.at(i)" class="card-img rounded-3 mt-3" width="200" height="200"  alt="ship image">
-                            <p class="ms-2 mt-3">{{ s.description }}</p>
-                        </div>
-                        <div class="col-4 card-body container">
-                            <h3 class="card-title mb-2">{{ s.name }} ({{ s.shipTypeStr }})</h3>
-                            <p class="card-text mt-2 mb-4 h5">{{ s.address.street }}, {{ s.address.city }}, {{ s.address.country }}</p>
-                            <p class="card-text mb-1">Price: {{ s.price }} EUR</p>
-                            <p class="card-text mb-1">Capacity: {{ s.capacity }} people</p>
-                            <p class="card-text mb-1">Length: {{ s.length }} m</p>
-                            <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
-                            <div class="d-flex flex-row mt-3">
-                                <a :href="'/#/updateShip/' + s.id" class="btn btn-primary me-3 mt-3">View</a>
-                                <button type="button" class="btn btn-danger mt-3" v-on:click="setCurrentId(s.id)">Delete</button>
+                <div v-for="(s, i) in ships">
+                    <div class="container card my-5 ms-2 me-5 shadow" :id="cardId(i)" style="border-radius: 10px"
+                            v-on:mouseover="cardMouseOver(i)" v-on:mouseleave="cardMouseLeave(i)">
+                        <div class="row">
+                            <div class="col-3 mt-2">
+                                <img :src="profilePictures.at(i)" class="card-img rounded-3 mt-3" width="200" height="200"  alt="ship image">
+                                <p class="ms-2 mt-3">{{ s.description }}</p>
+                            </div>
+                            <div class="col-4 card-body container">
+                                <h3 class="card-title mb-2">{{ s.name }} ({{ s.shipTypeStr }})</h3>
+                                <p class="card-text mt-2 mb-4 h5">{{ s.address.street }}, {{ s.address.city }}, {{ s.address.country }}</p>
+                                <p class="card-text mb-1">Price: {{ s.price }} EUR</p>
+                                <p class="card-text mb-1">Capacity: {{ s.capacity }} people</p>
+                                <p class="card-text mb-1">Length: {{ s.length }} m</p>
+                                <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
+                                <div class="d-flex flex-row mt-3">
+                                    <a :href="'/#/updateShip/' + s.id" class="btn btn-primary me-3 mt-3">View</a>
+                                    <button type="button" class="btn btn-danger mt-3" v-on:click="setCurrentId(s.id)">Delete</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -137,6 +140,18 @@ Vue.component("ships-view-owner", {
             }).catch(function (error) {
                 Swal.fire('Error', 'It is not possible to delete the ship!', 'error');
             });
+        },
+
+        cardId(i) {
+            return "card-div-" + i;
+        },
+
+        cardMouseOver(i) {
+            $("#card-div-" + i).css('transform', 'scale(1.06)');
+        },
+
+        cardMouseLeave(i) {
+            $("#card-div-" + i).css('transform', 'scale(1)');
         },
 
         search() {
