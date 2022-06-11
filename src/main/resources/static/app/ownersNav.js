@@ -6,7 +6,7 @@ Vue.component('owners-nav', {
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" :href="ownersProfile">My Profile</a>
+                        <a class="nav-link" :href="ownersProfile"><i class="fa fa-user me-2"></i>My Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" :href="offers">Offers</a>
@@ -14,8 +14,15 @@ Vue.component('owners-nav', {
                     <li class="nav-item">
                         <a class="nav-link" :href="reservationsHistory">Reservations</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" :href="reports">Reports</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reports
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" :href="incomeReport">Income</a></li>
+                            <li><a class="dropdown-item" :href="visitReport">Visits</a></li>
+                            <li><a class="dropdown-item" :href="priceHistoryReport">Average prices</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -35,9 +42,16 @@ Vue.component('owners-nav', {
             return "/#/reservationsHistory/" + this.$route.params.id;
         },
 
-        reports() {
+        incomeReport() {
             return "/#/incomeReport/" + this.$route.params.id;
+        },
+
+        visitReport() {
+            return "/#/visitReport/" + this.$route.params.id;
+        },
+
+        priceHistoryReport() {
+            return "/#/priceHistoryReport/" + this.$route.params.id;
         }
     }
-
 });
