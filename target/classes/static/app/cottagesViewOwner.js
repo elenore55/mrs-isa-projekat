@@ -93,7 +93,7 @@ Vue.component("cottages-view-owner", {
                                         <h3 class="card-title mb-2">{{ c.name }}</h3>
                                         <p class="card-text mt-2 mb-4 h5">{{ c.address.street }}, {{ c.address.city }}, {{ c.address.country }}</p>
                                     </div>
-                                    <div class="me-5">
+                                    <div class="me-4">
                                         <h2 v-if="c.rate != -1"><span class="badge bg-primary">{{ c.rate }}</span></h2>
                                         <h6 v-if="c.rate != -1">{{ c.reviews.length }} reviews</h6>
                                         <h3 v-if="c.rate == -1">No reviews</h3>
@@ -103,7 +103,7 @@ Vue.component("cottages-view-owner", {
                                 <p class="card-text mb-2">Number of rooms: {{ c.rooms.length }}</p>
                                 <p class="card-text">Number of beds: {{ c.numberOfBeds }}</p>
                                 <div class="d-flex flex-row mt-3">
-                                    <a :href="'/#/updateCottage/' + c.id" class="btn btn-primary me-3 mt-3">View</a>
+                                    <a :href="'/#/cottageProfile/' + c.id" class="btn btn-primary me-3 mt-3">View</a>
                                     <button type="button" class="btn btn-danger mt-3" v-on:click="setCurrentId(c.id)">Delete</button>
                                 </div>
                             </div>

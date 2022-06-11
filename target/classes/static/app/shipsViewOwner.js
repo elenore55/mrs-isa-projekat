@@ -89,7 +89,7 @@ Vue.component("ships-view-owner", {
                                         <h3 class="card-title mb-2">{{ s.name }} ({{ s.shipTypeStr }})</h3>
                                         <p class="card-text mt-2 mb-4 h5">{{ s.address.street }}, {{ s.address.city }}, {{ s.address.country }}</p>
                                     </div>
-                                    <div>
+                                    <div class="me-4">
                                         <h2 v-if="s.rate != -1"><span class="badge bg-primary">{{ s.rate }}</span></h2>
                                         <h6 v-if="s.rate != -1">{{ s.reviews.length }} reviews</h6>
                                         <h3 v-if="s.rate == -1">No reviews</h3>

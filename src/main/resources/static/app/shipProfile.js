@@ -26,13 +26,13 @@ Vue.component('ship-profile', {
                         <div class="w-50">
                             <div class="d-flex justify-content-start">
                                 <div class="mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    <img :src="ship.imagePaths[0]" style="width: 250px;height: 250px" data-bs-target="#carouselExample" data-bs-slide-to="0">
+                                    <img :src="ship.imagePaths[0]" style="width: 250px;height: 250px; cursor: pointer" data-bs-target="#carouselExample" data-bs-slide-to="0">
                                 </div>
                                 <div class="ms-4">   
                                     <h1 class="text-success ">{{ ship.price }} <i class="fa fa-eur"></i></h1>
                                     <p class="h6 my-2"> {{ ship.description }}</p>
                                     <h2 v-if="ship.rate != -1"><span class="badge bg-primary">{{ ship.rate }}</span></h2>
-                                    <h6 v-if="ship.rate != -1">{{ ship.reviews.length }} reviews</h6>
+                                    <u><a data-bs-toggle="modal" data-bs-target="#reviewsModal" style="cursor: pointer; color: #0a53be"><h6 v-if="ship.rate != -1">{{ ship.reviews.length }} reviews</h6></a></u>
                                     <h3 v-if="ship.rate == -1">No reviews</h3>
                                     <div class="mt-4">
                                         <p class="h6">Length: {{ ship.length }}m</p>
@@ -107,8 +107,40 @@ Vue.component('ship-profile', {
                 </div>
             </div>
         </div>
+        
+        <div class="modal fade" id="reviewsModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div v-for="(r, i) in ship.reviews">
+                            <div class="d-flex justify-content-start my-3">
+                                <h3><i class="fa fa-user mx-3"></i>{{ r.client.name }} {{ r.client.surname }}</h3>
+                            </div>
+                            <div class="d-flex justify-content-start ms-5 my-2">
+                                <h4 class="mt-2 me-2"><i :class="getEmoji(r.rating)" style="color: #fd7e14"></i></h4>
+                                <h2><span class="badge bg-primary ms-3">{{ r.rating }}</span></h2> <h5 class="mt-3">&nbsp; / 10</h5>
+                            </div>
+                            <div class="ms-5 my-2">{{ r.comment }}</div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     `,
+
+    methods: {
+        getEmoji(rating) {
+            if (rating >= 8.5) return "fa fa-grin-beam";
+            if (rating >= 6.) return "fa fa-smile";
+            if (rating >= 4.5) return "fa fa-meh";
+            return "fa fa-frown";
+        }
+    },
 
     computed: {
         updateLink() {
