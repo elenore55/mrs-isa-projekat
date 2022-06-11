@@ -64,7 +64,8 @@ Vue.component('ship-profile', {
                             </div>
                         </div>
                         <div class="d-flex justify-content-end align-items-end me-4 mb-2">
-                            <a class="btn btn-primary btn-lg" :href="updateLink">Update</a>
+                            <a v-if="!ship.editable" class="btn btn-primary btn-lg" role="link" aria-disabled="true" style="cursor: not-allowed; opacity: 50%">Update</a>
+                            <a v-if="ship.editable" class="btn btn-primary btn-lg" :href="updateLink">Update</a>
                         </div>
                     </div>
                 </div>

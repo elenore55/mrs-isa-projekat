@@ -31,6 +31,7 @@ public class ShipDTO {
     private LocalDateTime availableStart;
     private LocalDateTime availableEnd;
     private Double rate;
+    private Boolean editable;
 
     public ShipDTO(Ship ship) {
         this.id = ship.getId();
@@ -66,6 +67,7 @@ public class ShipDTO {
             this.availableEnd = av.getEnd();
         }
         this.rate = ship.getRateOrNegativeOne();
+        this.editable = ship.hasFutureReservations();
     }
 
     public ShipDTO() {
@@ -241,5 +243,13 @@ public class ShipDTO {
 
     public void setRate(Double rate) {
         this.rate = rate;
+    }
+
+    public Boolean getEditable() {
+        return editable;
+    }
+
+    public void setEditable(Boolean editable) {
+        this.editable = editable;
     }
 }

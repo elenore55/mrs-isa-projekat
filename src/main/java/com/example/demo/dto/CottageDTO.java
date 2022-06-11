@@ -21,6 +21,7 @@ public class CottageDTO {
     private LocalDateTime availableStart;
     private LocalDateTime availableEnd;
     private Double rate;
+    private Boolean editable;
 
     public CottageDTO() {
     }
@@ -64,6 +65,7 @@ public class CottageDTO {
             this.availableEnd = av.getEnd();
         }
         this.rate = cottage.getRateOrNegativeOne();
+        this.editable = cottage.hasFutureReservations();
     }
 
     public Integer getId() {
@@ -172,5 +174,13 @@ public class CottageDTO {
 
     public void setRate(Double rate) {
         this.rate = rate;
+    }
+
+    public Boolean getEditable() {
+        return editable;
+    }
+
+    public void setEditable(Boolean editable) {
+        this.editable = editable;
     }
 }

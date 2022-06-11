@@ -1,7 +1,10 @@
 package com.example.demo.model;
 
+import com.example.demo.model.enums.ReservationStatus;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +50,16 @@ public class Offer {
 
     public Offer() {
     }
+
+    public Boolean hasFutureReservations() {
+        for (Reservation r : reservations) {
+            if (r.getEnd().compareTo(LocalDateTime.now()) >= 0 && r.getReservationStatus() != ReservationStatus.CANCELLED) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public Integer getId() {
         return id;
