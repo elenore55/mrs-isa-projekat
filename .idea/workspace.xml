@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="#351.1, #351.2, #352.1, #352.2">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addAdmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/advReservWithClient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/advReservWithClient.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adventureQuickReserv.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adventureQuickReserv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/defInstFreeTime.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/defInstFreeTime.js" afterDir="false" />
-    </list>
+    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="#351.1, #351.2, #352.1, #352.2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,14 +154,7 @@
       <workItem from="1653453636539" duration="6200000" />
       <workItem from="1654006763954" duration="19937000" />
       <workItem from="1654064448274" duration="5285000" />
-      <workItem from="1654081861354" duration="3363000" />
-    </task>
-    <task id="LOCAL-00010" summary="axios poziv za dodavanje broda #221.3">
-      <created>1650826051843</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1650826051844</updated>
+      <workItem from="1654081861354" duration="3388000" />
     </task>
     <task id="LOCAL-00011" summary="#221.3 Konverzija podataka i cuvanje broda">
       <created>1650832044855</created>
@@ -506,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654069605153</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="#351.1, #351.2, #352.1, #352.2">
+      <created>1654085462393</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1654085462393</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
