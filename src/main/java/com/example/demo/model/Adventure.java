@@ -17,7 +17,7 @@ public class Adventure extends Offer {
     @JoinColumn(name = "fishing_instructor_id")
     private FishingInstructor instructor;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<FishingEquipment> fishingEquipments = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

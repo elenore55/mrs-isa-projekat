@@ -5,7 +5,139 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AvailabilityController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/AdminDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/AvailabilityDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/OfferDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/AvailabilityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AdminService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AvailabilityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/addAdmin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminAllEntities.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/advReservWithClient.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/adveHistReserv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/adventureQuickReserv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/defInstFreeTime.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/instructorsAdventures.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/scheduleCalendarInstructor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/updateAdminInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/AdminController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/AvailabilityController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/OfferController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/ReservationController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/AdminDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/AvailabilityDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/FastReservationDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/FilterShipDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/OfferDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/ReservationDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/UserDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/cottage/CottageCityComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/cottage/CottageCountryComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/cottage/CottageNameComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/cottage/CottagePriceComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/cottage/CottageRatingComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/cottage/CottageRoomsComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/ship/ShipCapacityComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/ship/ShipCityComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/ship/ShipCountryComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/ship/ShipLengthComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/ship/ShipNameComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/ship/ShipPriceComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/ship/ShipRatingComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/ship/ShipSpeedComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/comparators/ship/ShipTypeComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/AdminRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/AvailabilityRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/OfferRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/ReservationRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/RoomRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/AdminService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/AvailabilityService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/OfferService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/ReservationService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/RoomService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/app/addAdmin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/app/adminAllEntities.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/app/advReservWithClient.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/app/adveHistReserv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/app/adventureQuickReserv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/app/defInstFreeTime.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/app/instructorsAdventures.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/app/scheduleCalendarInstructor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/app/updateAdminInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/js/vuejs-datepicker.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/demo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FishingInstructorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FishingInstructorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/OfferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/OfferController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/AdventureDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/AdventureDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/CottageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/CottageDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/FastReservationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/FastReservationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/ReservationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/ReservationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Adventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Adventure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Availability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Availability.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FastReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FastReservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FishingEquipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FishingEquipment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Offer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/ProfileData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/ProfileData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/Adventure_Fishing_Equipments_Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/Adventure_Fishing_Equipments_Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/ClientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/OfferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/OfferRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/Profile_DataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/Profile_DataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/ReservationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/ReservationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/RoomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/RoomRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AdventureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AdventureService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/FishingEquipmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/FishingEquipmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/OfferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/OfferService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ReservationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/RoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/RoomService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addAdventure.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addAdventure.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/deleteProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/deleteProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/profilePageInstructorPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/profilePageInstructorPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/vuejs-datepicker.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/vuejs-datepicker.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/AdventureController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/AdventureController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/FishingInstructorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/FishingInstructorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/ShipController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/ShipController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/ShipOwnerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/ShipOwnerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/dto/AdventureDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/AdventureDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/dto/ShipDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/ShipDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/Adventure.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/Adventure.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/Availability.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/Availability.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/FishingEquipment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/FishingEquipment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/Offer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/Offer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/ProfileData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/ProfileData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/repository/AddressRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/AddressRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/repository/Profile_DataRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/Profile_DataRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/AdventureService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/AdventureService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/FishingEquipmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/FishingEquipmentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/ShipService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/ShipService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/addAdventure.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/addAdventure.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/addShip.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/addShip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/cottagesViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/cottagesViewOwner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/deleteProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/deleteProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/profilePageInstructorPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/profilePageInstructorPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/shipImages.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/shipImages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/shipsViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/shipsViewOwner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/updateShip.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/updateShip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/updateShipNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/updateShipNav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +161,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="Interface" />
         <option value="Class" />
         <option value="JavaScript File" />
@@ -38,10 +171,18 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="login" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/editProfile.js" root0="FORCE_HIGHLIGHTING" />
@@ -62,12 +203,15 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/js" />
     <property name="project.structure.last.edited" value="Libraries" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="consents" />
   </component>
   <component name="RecentsManager">
@@ -105,7 +249,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DemoApplication" />
+        <item itemvalue="Spring Boot.DemoApplication" />
         <item itemvalue="Application.DemoApplication" />
         <item itemvalue="Application.DemoApplication" />
         <item itemvalue="Application.DemoApplication" />
@@ -487,7 +631,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
