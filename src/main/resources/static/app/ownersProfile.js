@@ -3,7 +3,8 @@ Vue.component('owners-profile', {
         return {
             id: null,
             owner: {},
-            reason: ""
+            reason: "",
+            offer_type: ""
         }
     },
 
@@ -12,12 +13,18 @@ Vue.component('owners-profile', {
         axios.get("api/users/getOwner/" + this.$route.params.id).then(response => {
             this.owner = response.data;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
+        });
+        axios.get("api/users/getOfferType/" + this.$route.params.id).then(response => {
+            this.offer_type = response.data;
+        }).catch(error => {
+            Swal.fire('Error', 'Owner not found!', 'error');
         });
     },
 
     template: `
     <div style="background-color: #ddc8fb; height: 100%">
+        <owners-nav :offer="offer_type"></owners-nav>
         <div class="d-flex justify-content-center">
             <div class="card px-3 py-2 m-5 shadow-lg" style="background-color: #fff9e8; border-radius: 15px; width: 40%">
                 <div class="card-body m-3">
@@ -35,6 +42,7 @@ Vue.component('owners-profile', {
                     <div>
                         <i class="fa fa-home"></i>
                         <label class="fw-bold h6">Address</label>
+                        <!--<address-map my_style="width:500px;height:400px" street_init="Jevrejska 2" city_init="Novi Sad" country_init="Srbija"></address-map>-->
                     </div>
                     <p class="ms-1 mb-4" style="font-size: 1.2em">{{ owner.address.street }}, {{ owner.address.city }}, {{ owner.address.country }}</p>
                     <hr>

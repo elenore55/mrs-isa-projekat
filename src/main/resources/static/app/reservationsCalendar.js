@@ -6,7 +6,7 @@ Vue.component("reservations-calendar", {
         }
     },
 
-    props: ['id', 'rangeStart', 'rangeEnd', 'offerId'],
+    props: ['rangeStart', 'id', 'rangeEnd', 'offerId'],
 
     mounted() {
         let events = [];
@@ -43,6 +43,13 @@ Vue.component("reservations-calendar", {
                     description: reservationText
                 });
             }
+            /*events.push({
+                start: new Date(-8640000000),
+                end: new Date(this.rangeStart),
+                rendering: 'background',
+                allDay: true,
+                color: "#6Bf251"
+            });*/
             axios.get("api/offers/getFastReservations/" + this.offerId).then(response => {
                 this.fast = response.data;
                 for (const f of this.fast) {
@@ -78,10 +85,6 @@ Vue.component("reservations-calendar", {
                     footer: {
                         left: 'prev,next today',
                         right: 'dayGridMonth,timeGridWeek,timeGridDay,listYear'
-                    },
-                    visibleRange: {
-                        start: '2022-05-01',
-                        end: '2022-07-01'
                     },
                     firstDay: 1,
                     editable: true,

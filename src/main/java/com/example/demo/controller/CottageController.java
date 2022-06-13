@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -212,8 +213,28 @@ public class CottageController {
         cottage.setId(cottageDTO.getId());
         cottage.setName(cottageDTO.getName());
         cottage.setDescription(cottageDTO.getDescription());
-        cottage.setAddress(new Address(cottageDTO.getAddress().getStreet(), cottageDTO.getAddress().getCity(), cottageDTO.getAddress().getCountry()));
+        Address address = cottage.getAddress();
+        if (address == null) address = new Address();
+        address.setStreet(cottageDTO.getAddress().getStreet());
+        address.setCity(cottageDTO.getAddress().getCity());
+        address.setCountry(cottageDTO.getAddress().getCountry());
+        cottage.setAddress(address);
         cottage.setPriceList(cottageDTO.getPrice());
+
+        if (cottage.getPriceHistory() == null || cottage.getPriceHistory().size() == 0) {
+            List<PriceList> priceHistory = new ArrayList<>();
+            priceHistory.add(new PriceList(LocalDate.now(), cottageDTO.getPrice()));
+            cottage.setPriceHistory(priceHistory);
+        } else {
+            List<PriceList> priceHistory = cottage.getPriceHistory();
+            PriceList last = priceHistory.get(priceHistory.size() - 1);
+            if (!last.getAmount().equals(cottageDTO.getPrice())) {
+                PriceList newPrice = new PriceList(LocalDate.now(), cottageDTO.getPrice());
+                priceHistory.add(newPrice);
+                cottage.setPriceHistory(priceHistory);
+            }
+        }
+
         List<Rule> rules = new ArrayList<>();
         for (String ruleText : cottageDTO.getRules()) rules.add(new Rule(ruleText));
         cottage.setRules(rules);

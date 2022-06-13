@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/countrypicker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottageProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottagesViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottagesViewOwner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/ownersRegistration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/ownersRegistration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipsViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipsViewOwner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/Feedback.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/Feedback.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/app/cottagesViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/cottagesViewOwner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/shipsViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/shipsViewOwner.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,15 +94,17 @@
     <property name="settings.editor.selected.configurable" value="consents" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\filters" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\js" />
       <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\css" />
       <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\images" />
       <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static" />
       <recent name="C:\Users\LENOVO\Desktop\faks\VI semestar\ISA\Projekat\mrs-isa-projekat\src\main\resources\static\app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\maps" />
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\reports" />
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\filters" />
     </key>
   </component>
   <component name="RunManager" selected="Application.DemoApplication">
@@ -158,351 +164,359 @@
       <workItem from="1653247514379" duration="11823000" />
       <workItem from="1653293442403" duration="6345000" />
       <workItem from="1653460082039" duration="1313000" />
+      <workItem from="1653650577135" duration="13924000" />
+      <workItem from="1653918558112" duration="8420000" />
+      <workItem from="1654010138662" duration="5699000" />
+      <workItem from="1654070368068" duration="936000" />
+      <workItem from="1654330940526" duration="3312000" />
+      <workItem from="1654366468195" duration="8158000" />
+      <workItem from="1654502811918" duration="21916000" />
+      <workItem from="1654803114806" duration="52939000" />
     </task>
-    <task id="LOCAL-00047" summary="#212.1 Forma za unos podataka o rezervaciji">
-      <created>1652130122651</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
+    <task id="LOCAL-00104" summary="Kreiran ClientDTO">
+      <created>1653516883643</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
       <option name="project" value="LOCAL" />
-      <updated>1652130122651</updated>
+      <updated>1653516883643</updated>
     </task>
-    <task id="LOCAL-00048" summary="Dobavljanje imena vikendice">
-      <created>1652130405869</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
+    <task id="LOCAL-00105" summary="Prikaz profila klijenta">
+      <created>1653517615884</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
       <option name="project" value="LOCAL" />
-      <updated>1652130405869</updated>
+      <updated>1653517615884</updated>
     </task>
-    <task id="LOCAL-00049" summary="#212.2 Validacija podataka o rezervaciji">
-      <created>1652130972691</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
+    <task id="LOCAL-00106" summary="#203.4 Omogucavanje prikaza profila klijenta koji je rezervisao vikendicu/brod">
+      <created>1653518272258</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
       <option name="project" value="LOCAL" />
-      <updated>1652130972691</updated>
+      <updated>1653518272258</updated>
     </task>
-    <task id="LOCAL-00050" summary="Kreirani repozitorijum, servis i kontroler za rezervacije">
-      <created>1652131790878</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
+    <task id="LOCAL-00107" summary="#203.2 Prikaz svih rezervacija na kalendaru">
+      <created>1653520193174</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
       <option name="project" value="LOCAL" />
-      <updated>1652131790878</updated>
+      <updated>1653520193174</updated>
     </task>
-    <task id="LOCAL-00051" summary="Kreiran DTO za rezervaciju">
-      <created>1652166596282</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
+    <task id="LOCAL-00108" summary="Kreirana komponenta za prikaz izvjestaja o prihodima">
+      <created>1653651029565</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
       <option name="project" value="LOCAL" />
-      <updated>1652166596282</updated>
+      <updated>1653651029566</updated>
     </task>
-    <task id="LOCAL-00052" summary="Merge branch 'searchEntities' into cottage_reservations">
-      <created>1652200070307</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
+    <task id="LOCAL-00109" summary="#238.1 Izbor vremenskog perioda">
+      <created>1653652128029</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
       <option name="project" value="LOCAL" />
-      <updated>1652200070307</updated>
+      <updated>1653652128029</updated>
     </task>
-    <task id="LOCAL-00053" summary="Pronalazak klijenta preko maila">
-      <created>1652201702174</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
+    <task id="LOCAL-00110" summary="Kreiran IncomeReportDTO">
+      <created>1653652430461</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
       <option name="project" value="LOCAL" />
-      <updated>1652201702175</updated>
+      <updated>1653652430461</updated>
     </task>
-    <task id="LOCAL-00054" summary="212.3 Cuvanje rezervacije">
-      <created>1652202505861</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
+    <task id="LOCAL-00111" summary="Izracunavanje za sve rezervacije">
+      <created>1653677632534</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
       <option name="project" value="LOCAL" />
-      <updated>1652202505862</updated>
+      <updated>1653677632535</updated>
     </task>
-    <task id="LOCAL-00055" summary="#202.1 Forma za unos podataka o akciji">
-      <created>1652216157310</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
+    <task id="LOCAL-00112" summary="Dodata provera datuma">
+      <created>1653677834022</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
       <option name="project" value="LOCAL" />
-      <updated>1652216157311</updated>
+      <updated>1653677834022</updated>
     </task>
-    <task id="LOCAL-00056" summary="#202.2 Validacija podataka o akciji">
-      <created>1652217054253</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
+    <task id="LOCAL-00113" summary="#238.2 Izracunavanje prihoda po vikendici/brodu">
+      <created>1653678931806</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
       <option name="project" value="LOCAL" />
-      <updated>1652217054255</updated>
+      <updated>1653678931806</updated>
     </task>
-    <task id="LOCAL-00057" summary="#202.3 Cuvanje kreirane akcije">
-      <created>1652221391464</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
+    <task id="LOCAL-00114" summary="Prikaz osnovnih podataka">
+      <created>1653681885271</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
       <option name="project" value="LOCAL" />
-      <updated>1652221391468</updated>
+      <updated>1653681885271</updated>
     </task>
-    <task id="LOCAL-00058" summary="Prikaz cijene i max broja ljudi">
-      <created>1652245145470</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
+    <task id="LOCAL-00115" summary="Update-ovanje grafika">
+      <created>1653683391120</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
       <option name="project" value="LOCAL" />
-      <updated>1652245145473</updated>
+      <updated>1653683391120</updated>
     </task>
-    <task id="LOCAL-00059" summary="#212.4 Slanje maila klijentu o potvrdi rezervacije">
-      <created>1652249128356</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
+    <task id="LOCAL-00116" summary="Namestene boje">
+      <created>1653685015314</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
       <option name="project" value="LOCAL" />
-      <updated>1652249128357</updated>
+      <updated>1653685015315</updated>
     </task>
-    <task id="LOCAL-00060" summary="#225.1 Forma za unos perioda dostupnosti">
-      <created>1652386889151</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
+    <task id="LOCAL-00117" summary="#238.3 Prikaz rezultata izvestaja">
+      <created>1653918884300</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
       <option name="project" value="LOCAL" />
-      <updated>1652386889152</updated>
+      <updated>1653918884300</updated>
     </task>
-    <task id="LOCAL-00061" summary="#225.2 Validacija perioda dostupnosti">
-      <created>1652387992017</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
+    <task id="LOCAL-00118" summary="Omoguceno listanje slika brodova i vikendica">
+      <created>1653927630688</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
       <option name="project" value="LOCAL" />
-      <updated>1652387992017</updated>
+      <updated>1653927630688</updated>
     </task>
-    <task id="LOCAL-00062" summary="Axios poziv za azuriranje perioda dostupnosti">
-      <created>1652388181401</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
+    <task id="LOCAL-00119" summary="Dodat navbar za vlasnika">
+      <created>1654012885827</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
       <option name="project" value="LOCAL" />
-      <updated>1652388181401</updated>
+      <updated>1654012885827</updated>
     </task>
-    <task id="LOCAL-00063" summary="#225.3 Cuvanje perioda dostupnosti">
-      <created>1652389044447</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
+    <task id="LOCAL-00120" summary="Popravljen navbar za brodove i vikendice">
+      <created>1654013674087</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
       <option name="project" value="LOCAL" />
-      <updated>1652389044447</updated>
+      <updated>1654013674087</updated>
     </task>
-    <task id="LOCAL-00064" summary="Kreirana genericna komponenta za rezervaciju">
-      <created>1652425210677</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
+    <task id="LOCAL-00121" summary="Probna komponenta za mapu">
+      <created>1654335755714</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
       <option name="project" value="LOCAL" />
-      <updated>1652425210677</updated>
+      <updated>1654335755715</updated>
     </task>
-    <task id="LOCAL-00065" summary="Datetime pickeri umjesto date pickera">
-      <created>1652431166885</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
+    <task id="LOCAL-00122" summary="Prikaz trazene adrese na mapi">
+      <created>1654376898657</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
       <option name="project" value="LOCAL" />
-      <updated>1652431166885</updated>
+      <updated>1654376898657</updated>
     </task>
-    <task id="LOCAL-00066" summary="#229.1 Forma za unos podataka o rezervaciji">
-      <created>1652431264826</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
+    <task id="LOCAL-00123" summary="Dodata mapa na profil vikedice">
+      <created>1654513748824</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
       <option name="project" value="LOCAL" />
-      <updated>1652431264826</updated>
+      <updated>1654513748824</updated>
     </task>
-    <task id="LOCAL-00067" summary="Polja za unos podataka o vlasniku">
-      <created>1652704392896</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
+    <task id="LOCAL-00124" summary="Dodata mapa na profil broda">
+      <created>1654520979409</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
       <option name="project" value="LOCAL" />
-      <updated>1652704392897</updated>
+      <updated>1654520979409</updated>
     </task>
-    <task id="LOCAL-00068" summary="#209.1 Forma za registraciju">
-      <created>1652704891523</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
+    <task id="LOCAL-00125" summary="#217.1 Forma za unos stare i nove lozinke">
+      <created>1654527718988</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
       <option name="project" value="LOCAL" />
-      <updated>1652704891524</updated>
+      <updated>1654527718989</updated>
     </task>
-    <task id="LOCAL-00069" summary="#209.2 Validacija podataka o korisniku">
-      <created>1652717399164</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
+    <task id="LOCAL-00126" summary="Provjera poklavanje nove i potvrdjene nove lozinke">
+      <created>1654527976959</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
       <option name="project" value="LOCAL" />
-      <updated>1652717399165</updated>
+      <updated>1654527976959</updated>
     </task>
-    <task id="LOCAL-00070" summary="DTO za zahtev za registraciju">
-      <created>1652719202330</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
+    <task id="LOCAL-00127" summary="#217.2 Validacija podataka">
+      <created>1654528256981</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
       <option name="project" value="LOCAL" />
-      <updated>1652719202330</updated>
+      <updated>1654528256981</updated>
     </task>
-    <task id="LOCAL-00071" summary="Kontroler, servis i repozitorijum za RegistrationRequest">
-      <created>1652719493363</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
+    <task id="LOCAL-00128" summary="#217.3 Cuvanje nove lozinke">
+      <created>1654535135033</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
       <option name="project" value="LOCAL" />
-      <updated>1652719493363</updated>
+      <updated>1654535135033</updated>
     </task>
-    <task id="LOCAL-00072" summary="Axios poziv za slanje zahteva za registraciju">
-      <created>1652720265699</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
+    <task id="LOCAL-00129" summary="#237.1 Forma za unos vremenskog opsega">
+      <created>1654535690228</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
       <option name="project" value="LOCAL" />
-      <updated>1652720265700</updated>
+      <updated>1654535690228</updated>
     </task>
-    <task id="LOCAL-00073" summary="Cuvanje zahteva za registraciju">
-      <created>1652721859153</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
+    <task id="LOCAL-00130" summary="Kreiran VisitReportDTO">
+      <created>1654536278132</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
       <option name="project" value="LOCAL" />
-      <updated>1652721859156</updated>
+      <updated>1654536278132</updated>
     </task>
-    <task id="LOCAL-00074" summary="#209.3 Slanje zahteva za registraciju administratoru">
-      <created>1652722804558</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
+    <task id="LOCAL-00131" summary="Slanje axios poziva">
+      <created>1654536810237</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
       <option name="project" value="LOCAL" />
-      <updated>1652722804558</updated>
+      <updated>1654536810237</updated>
     </task>
-    <task id="LOCAL-00075" summary="Front">
-      <created>1652857703714</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
+    <task id="LOCAL-00132" summary="Filtriranje rezultata za vikendice">
+      <created>1654537226586</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
       <option name="project" value="LOCAL" />
-      <updated>1652857703714</updated>
+      <updated>1654537226587</updated>
     </task>
-    <task id="LOCAL-00076" summary="Dobavljanje podataka o vlasniku">
-      <created>1652958488799</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
+    <task id="LOCAL-00133" summary="#237.2 Filtriranje podataka">
+      <created>1654537424534</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
       <option name="project" value="LOCAL" />
-      <updated>1652958488799</updated>
+      <updated>1654537424534</updated>
     </task>
-    <task id="LOCAL-00077" summary="Prikaz podataka o vlasniku">
-      <created>1652961675918</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
+    <task id="LOCAL-00134" summary="Iscrtavanje praznog grafika">
+      <created>1654539623610</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
       <option name="project" value="LOCAL" />
-      <updated>1652961675918</updated>
+      <updated>1654539623610</updated>
     </task>
-    <task id="LOCAL-00078" summary="Kreirana komponenta za azuriranje profila">
-      <created>1652962004838</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
+    <task id="LOCAL-00135" summary="#237.3 Iscrtavanje grafika">
+      <created>1654539865188</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
       <option name="project" value="LOCAL" />
-      <updated>1652962004838</updated>
+      <updated>1654539865188</updated>
     </task>
-    <task id="LOCAL-00079" summary="#215.1 Forma za prikaz licnih podataka o korisniku">
-      <created>1653031592504</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
+    <task id="LOCAL-00136" summary="Prikaz modalnog dijaloga za unos izvestaja">
+      <created>1654805455781</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
       <option name="project" value="LOCAL" />
-      <updated>1653031592504</updated>
+      <updated>1654805455782</updated>
     </task>
-    <task id="LOCAL-00080" summary="#215.2 Validacija izmenjenih podataka">
-      <created>1653033057275</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
+    <task id="LOCAL-00137" summary="Validacija za izvjestaj o klijentu">
+      <created>1654806413473</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
       <option name="project" value="LOCAL" />
-      <updated>1653033057277</updated>
+      <updated>1654806413473</updated>
     </task>
-    <task id="LOCAL-00081" summary="#215.3 Cuvanje izmenjenih podataka o vlasniku">
-      <created>1653033858433</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
+    <task id="LOCAL-00138" summary="#211.1 Forma za unos izvestaja o zavrsenoj rezervaciji">
+      <created>1654807590439</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
       <option name="project" value="LOCAL" />
-      <updated>1653033858433</updated>
+      <updated>1654807590440</updated>
     </task>
-    <task id="LOCAL-00082" summary="#216.1 Provera da li je korisnik siguran da zeli obrisati nalog">
-      <created>1653039813696</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
+    <task id="LOCAL-00139" summary="Kreiran ClientReviewDTO">
+      <created>1654810791600</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
       <option name="project" value="LOCAL" />
-      <updated>1653039813698</updated>
+      <updated>1654810791600</updated>
     </task>
-    <task id="LOCAL-00083" summary="Kreirana komponenta za prikaz kalendara">
-      <created>1653049581365</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
+    <task id="LOCAL-00140" summary="#211.3 Cuvanje podataka">
+      <created>1654812959922</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
       <option name="project" value="LOCAL" />
-      <updated>1653049581366</updated>
+      <updated>1654812959922</updated>
     </task>
-    <task id="LOCAL-00084" summary="Iscrtavanje praznog kalendara">
-      <created>1653051596643</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
+    <task id="LOCAL-00141" summary="#211.4 Slanje maila administratoru u slucaju zahteva za sankcionisanje">
+      <created>1654814146287</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
       <option name="project" value="LOCAL" />
-      <updated>1653051596644</updated>
+      <updated>1654814146287</updated>
     </task>
-    <task id="LOCAL-00085" summary="#213.1 Prikaz kalendara">
-      <created>1653054500204</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
+    <task id="LOCAL-00142" summary="#236.1 Forma za unos vremenskog perioda">
+      <created>1654846535683</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
       <option name="project" value="LOCAL" />
-      <updated>1653054500205</updated>
+      <updated>1654846535683</updated>
     </task>
-    <task id="LOCAL-00086" summary="Prikaz rezervacije">
-      <created>1653085016359</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
+    <task id="LOCAL-00143" summary="Dodat priceHistory u Offer">
+      <created>1654849750416</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
       <option name="project" value="LOCAL" />
-      <updated>1653085016360</updated>
+      <updated>1654849750416</updated>
     </task>
-    <task id="LOCAL-00087" summary="Prikaz na dnevnom i sedmicnom nivou">
-      <created>1653085936182</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
+    <task id="LOCAL-00144" summary="Upisivanje istorije cijena iz SQL">
+      <created>1654852010161</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
       <option name="project" value="LOCAL" />
-      <updated>1653085936184</updated>
+      <updated>1654852010162</updated>
     </task>
-    <task id="LOCAL-00088" summary="Promjena boje u zavisnosti od statusa rezervacije">
-      <created>1653087045257</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
+    <task id="LOCAL-00145" summary="#236.3 Graficki prikaz rezultata">
+      <created>1654857933953</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
       <option name="project" value="LOCAL" />
-      <updated>1653087045259</updated>
+      <updated>1654857933953</updated>
     </task>
-    <task id="LOCAL-00089" summary="Prikaz rezervacije na klik">
-      <created>1653233408602</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
+    <task id="LOCAL-00146" summary="#236.2 Filtriranje podataka">
+      <created>1654862273817</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
       <option name="project" value="LOCAL" />
-      <updated>1653233408603</updated>
+      <updated>1654862273818</updated>
     </task>
-    <task id="LOCAL-00090" summary="Upis rezervacije iz SQL">
-      <created>1653236090276</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
+    <task id="LOCAL-00147" summary="Dnevni, sedmicni i mjesecni izvjestaji">
+      <created>1654877797499</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
       <option name="project" value="LOCAL" />
-      <updated>1653236090277</updated>
+      <updated>1654877797499</updated>
     </task>
-    <task id="LOCAL-00091" summary="#213.2 Prikaz zauzetih termina u okviru kalendara">
-      <created>1653238900429</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
+    <task id="LOCAL-00148" summary="Prikaz datuma od ponedeljka">
+      <created>1654899533662</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
       <option name="project" value="LOCAL" />
-      <updated>1653238900430</updated>
+      <updated>1654899533663</updated>
     </task>
-    <task id="LOCAL-00092" summary="Alert poruke zamenjene sa sweetalert porukama">
-      <created>1653246666450</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
+    <task id="LOCAL-00149" summary="Dodati navbar linkovi za sve izvjestaje">
+      <created>1654942772794</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
       <option name="project" value="LOCAL" />
-      <updated>1653246666451</updated>
+      <updated>1654942772794</updated>
     </task>
-    <task id="LOCAL-00093" summary="Popravljen prikaz loyalty programa">
-      <created>1653253846421</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
+    <task id="LOCAL-00150" summary="MouseOver i MouseLeave za kartice">
+      <created>1654944453481</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
       <option name="project" value="LOCAL" />
-      <updated>1653253846422</updated>
+      <updated>1654944453481</updated>
     </task>
-    <task id="LOCAL-00094" summary="Promenjena biblioteka za datetime">
-      <created>1653259976335</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
+    <task id="LOCAL-00151" summary="Onemoguceno azuriranje rezervisanih vikendica i brodova">
+      <created>1654946716902</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
       <option name="project" value="LOCAL" />
-      <updated>1653259976335</updated>
+      <updated>1654946716903</updated>
     </task>
-    <task id="LOCAL-00095" summary="Dodati termini za brzu rezervaciju na kalendar">
-      <created>1653296604603</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
+    <task id="LOCAL-00152" summary="Prikaz ratinga">
+      <created>1654951789120</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
       <option name="project" value="LOCAL" />
-      <updated>1653296604609</updated>
+      <updated>1654951789121</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <option name="localTasksCounter" value="153" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,32 +536,32 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Kontroler, servis i repozitorijum za RegistrationRequest" />
-    <MESSAGE value="Axios poziv za slanje zahteva za registraciju" />
-    <MESSAGE value="Cuvanje zahteva za registraciju" />
-    <MESSAGE value="#209.3 Slanje zahteva za registraciju administratoru" />
-    <MESSAGE value="Front" />
-    <MESSAGE value="Dobavljanje podataka o vlasniku" />
-    <MESSAGE value="Prikaz podataka o vlasniku" />
-    <MESSAGE value="Kreirana komponenta za azuriranje profila" />
-    <MESSAGE value="#215.1 Forma za prikaz licnih podataka o korisniku" />
-    <MESSAGE value="#215.2 Validacija izmenjenih podataka" />
-    <MESSAGE value="#215.3 Cuvanje izmenjenih podataka o vlasniku" />
-    <MESSAGE value="#216.1 Provera da li je korisnik siguran da zeli obrisati nalog" />
-    <MESSAGE value="Kreirana komponenta za prikaz kalendara" />
-    <MESSAGE value="Iscrtavanje praznog kalendara" />
-    <MESSAGE value="#213.1 Prikaz kalendara" />
-    <MESSAGE value="Prikaz rezervacije" />
-    <MESSAGE value="Prikaz na dnevnom i sedmicnom nivou" />
-    <MESSAGE value="Promjena boje u zavisnosti od statusa rezervacije" />
-    <MESSAGE value="Prikaz rezervacije na klik" />
-    <MESSAGE value="Upis rezervacije iz SQL" />
-    <MESSAGE value="#213.2 Prikaz zauzetih termina u okviru kalendara" />
-    <MESSAGE value="Alert poruke zamenjene sa sweetalert porukama" />
-    <MESSAGE value="Popravljen prikaz loyalty programa" />
-    <MESSAGE value="Promenjena biblioteka za datetime" />
-    <MESSAGE value="Dodati termini za brzu rezervaciju na kalendar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dodati termini za brzu rezervaciju na kalendar" />
+    <MESSAGE value="#217.3 Cuvanje nove lozinke" />
+    <MESSAGE value="#237.1 Forma za unos vremenskog opsega" />
+    <MESSAGE value="Kreiran VisitReportDTO" />
+    <MESSAGE value="Slanje axios poziva" />
+    <MESSAGE value="Filtriranje rezultata za vikendice" />
+    <MESSAGE value="#237.2 Filtriranje podataka" />
+    <MESSAGE value="Iscrtavanje praznog grafika" />
+    <MESSAGE value="#237.3 Iscrtavanje grafika" />
+    <MESSAGE value="Prikaz modalnog dijaloga za unos izvestaja" />
+    <MESSAGE value="Validacija za izvjestaj o klijentu" />
+    <MESSAGE value="#211.1 Forma za unos izvestaja o zavrsenoj rezervaciji" />
+    <MESSAGE value="Kreiran ClientReviewDTO" />
+    <MESSAGE value="#211.3 Cuvanje podataka" />
+    <MESSAGE value="#211.4 Slanje maila administratoru u slucaju zahteva za sankcionisanje" />
+    <MESSAGE value="#236.1 Forma za unos vremenskog perioda" />
+    <MESSAGE value="Dodat priceHistory u Offer" />
+    <MESSAGE value="Upisivanje istorije cijena iz SQL" />
+    <MESSAGE value="#236.3 Graficki prikaz rezultata" />
+    <MESSAGE value="#236.2 Filtriranje podataka" />
+    <MESSAGE value="Dnevni, sedmicni i mjesecni izvjestaji" />
+    <MESSAGE value="Prikaz datuma od ponedeljka" />
+    <MESSAGE value="Dodati navbar linkovi za sve izvjestaje" />
+    <MESSAGE value="MouseOver i MouseLeave za kartice" />
+    <MESSAGE value="Onemoguceno azuriranje rezervisanih vikendica i brodova" />
+    <MESSAGE value="Prikaz ratinga" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prikaz ratinga" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Notifications" timestamp="1650741185090">
@@ -562,16 +576,16 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="0" key="#SQL_Dialects/0.0.1280.680@0.0.1280.680" timestamp="1650721189682" />
-    <state x="2270" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1652959397213">
+    <state x="2270" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1654850856516">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2270" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652959397213" />
-    <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1650826863411" />
-    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser" timestamp="1653086491377">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="2270" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654850856516" />
+    <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1653482169560" />
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1654948809646">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653086491377" />
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1650826508607" />
+    <state x="2589" y="38" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654860867299" />
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1654948809646" />
     <state x="490" y="230" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1650720848000">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -580,10 +594,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2676" y="379" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653081674103" />
-    <state x="2491" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1652167173220">
+    <state x="2491" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1654852228553">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2491" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652167173220" />
+    <state x="2491" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654852228553" />
     <state x="2610" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1651503917452">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -593,51 +607,59 @@
     </state>
     <state x="2514" y="67" key="#xdebugger.evaluate/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651706579916" />
     <state x="396" y="44" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1650828034427" />
-    <state x="2722" y="9" key="CommitChangelistDialog2" timestamp="1653296603581">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="225" y="0" key="CommitChangelistDialog2" timestamp="1654951788103">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653296603581" />
-    <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1650826050956" />
-    <state width="1877" height="317" key="GridCell.Tab.0.bottom" timestamp="1655111145305">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="2722" y="9" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654899532651" />
+    <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1654951788103" />
+    <state width="1237" height="132" key="GridCell.Tab.0.bottom" timestamp="1654975107619">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1877" height="317" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655111145305" />
-    <state width="1237" height="150" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1653461163731" />
-    <state width="1877" height="317" key="GridCell.Tab.0.center" timestamp="1655111145305">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1237" height="137" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1654092350277" />
+    <state width="1877" height="268" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654899453650" />
+    <state width="1237" height="132" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1654975107619" />
+    <state width="1237" height="132" key="GridCell.Tab.0.center" timestamp="1654975107619">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1877" height="317" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655111145305" />
-    <state width="1237" height="150" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1653461163731" />
-    <state width="1877" height="317" key="GridCell.Tab.0.left" timestamp="1655111145304">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1237" height="137" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1654092350277" />
+    <state width="1877" height="268" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654899453649" />
+    <state width="1237" height="132" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1654975107619" />
+    <state width="1237" height="132" key="GridCell.Tab.0.left" timestamp="1654975107619">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1877" height="317" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655111145304" />
-    <state width="1237" height="150" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1653461163731" />
-    <state width="1877" height="317" key="GridCell.Tab.0.right" timestamp="1655111145305">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1237" height="137" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1654092350277" />
+    <state width="1877" height="268" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654899453649" />
+    <state width="1237" height="132" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1654975107619" />
+    <state width="1237" height="132" key="GridCell.Tab.0.right" timestamp="1654975107619">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1877" height="317" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655111145305" />
-    <state width="1237" height="150" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1653461163731" />
-    <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1653290080025">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1237" height="137" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1654092350277" />
+    <state width="1877" height="268" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654899453650" />
+    <state width="1237" height="132" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1654975107619" />
+    <state width="1237" height="92" key="GridCell.Tab.1.bottom" timestamp="1654950908739">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653290080025" />
-    <state width="1877" height="347" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1652869687367" />
-    <state width="1877" height="347" key="GridCell.Tab.1.center" timestamp="1653290080024">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="347" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1653845002465" />
+    <state width="1877" height="347" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654877596899" />
+    <state width="1237" height="92" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1654950908739" />
+    <state width="1237" height="92" key="GridCell.Tab.1.center" timestamp="1654950908739">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653290080024" />
-    <state width="1877" height="347" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1652869687367" />
-    <state width="1877" height="347" key="GridCell.Tab.1.left" timestamp="1653290080024">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="347" key="GridCell.Tab.1.center/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1653845002465" />
+    <state width="1877" height="347" key="GridCell.Tab.1.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654877596899" />
+    <state width="1237" height="92" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1654950908739" />
+    <state width="1237" height="92" key="GridCell.Tab.1.left" timestamp="1654950908739">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653290080024" />
-    <state width="1877" height="347" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1652869687367" />
-    <state width="1877" height="347" key="GridCell.Tab.1.right" timestamp="1653290080025">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="347" key="GridCell.Tab.1.left/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1653845002464" />
+    <state width="1877" height="347" key="GridCell.Tab.1.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654877596899" />
+    <state width="1237" height="92" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1654950908739" />
+    <state width="1237" height="92" key="GridCell.Tab.1.right" timestamp="1654950908739">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653290080025" />
-    <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1652869687367" />
+    <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1653845002465" />
+    <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654877596899" />
+    <state width="1237" height="92" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1654950908739" />
     <state x="2410" y="175" key="Maven.ArtifactSearchDialog" timestamp="1652246192884">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -655,33 +677,44 @@
     </state>
     <state x="2133" y="0" width="1562" height="851" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652111187396" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1650829168397" />
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2" timestamp="1653296608085">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653296608085" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1650826055916" />
-    <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1651698474168">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651698474168" />
-    <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1653460095062">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1654951793259">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1653030131761" />
-    <state x="2426" y="252" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653293444232" />
+    <state x="2270" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654899535667" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1654951793259" />
+    <state x="451" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1653482195464">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651698474168" />
+    <state x="451" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1280.680@0.0.1280.680" timestamp="1653482195464" />
+    <state x="2426" y="252" key="com.intellij.ide.util.TipDialog" timestamp="1654803123016">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1654330953373" />
+    <state x="2426" y="252" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654803123016" />
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1653460095062" />
-    <state x="2610" y="275" key="extract.method.dialog" timestamp="1651488915143">
+    <state x="2610" y="275" key="extract.method.dialog" timestamp="1653501103005">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2610" y="275" key="extract.method.dialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651488915143" />
-    <state x="2536" y="240" key="run.anything.popup" timestamp="1651300410895">
+    <state x="2610" y="275" key="extract.method.dialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653501103005" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1654956183322">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.0.1280.680@0.0.1280.680" timestamp="1654956183322" />
+    <state x="2586" y="148" key="refactoring.ChangeSignatureDialog" timestamp="1654875866058">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2536" y="240" key="run.anything.popup/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651300410895" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1653258405187">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="2586" y="148" key="refactoring.ChangeSignatureDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654875866058" />
+    <state x="411" y="157" key="run.anything.popup" timestamp="1654539728615">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653258405187" />
+    <state x="2536" y="240" key="run.anything.popup/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1653920760985" />
+    <state x="411" y="157" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1654539728615" />
+    <state x="415" y="147" width="672" height="444" key="search.everywhere.popup" timestamp="1654949772000">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1654896952946" />
+    <state x="415" y="147" width="672" height="444" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1654949772000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -8,7 +8,7 @@ Vue.component("owners-registration", {
             surname: "",
             street: "",
             city: "",
-            country: "",
+            country: "Serbia",
             phone: "",
             input_started: false,
             type: "",
@@ -88,9 +88,9 @@ Vue.component("owners-registration", {
                             <label for="city-input" class="ms-2" style="color:#C0C0C0">City</label>
                             <p v-if="!isValidCity" class="text-danger">Invalid city</p>
                         </div>
-                        <div class="col form-floating">
-                            <input type="text" class="form-control" id="country-input" v-model="country" placeholder="Country">
-                            <label for="country-input" class="form-label ms-2" style="color:#C0C0C0">Country</label>
+                        <div class="col">
+                            <label for="country-input" class="ms-2" style="color:#C0C0C0">Country</label>
+                            <select id="country-input" v-model="country" class="selectpicker countrypicker" data-live-search="true" data-default="Serbia"></select>
                             <p v-if="!isValidCountry" class="text-danger">Invalid country</p>
                         </div>
                     </div>
@@ -151,6 +151,7 @@ Vue.component("owners-registration", {
 
         sendRequest() {
             this.input_started = true;
+            alert(this.country);
             if (this.isValidName && this.isValidSurname && this.isValidEmail && this.areValidPasswords && !this.isWeakPassword
                 && this.isValidStreet && this.isValidCity && this.isValidCountry && this.isValidPhone && this.isValidType && this.isValidReason) {
                 axios.post("api/registrationRequests/addRequest", {

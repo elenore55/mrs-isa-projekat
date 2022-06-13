@@ -25,7 +25,7 @@ Vue.component("sort-by", {
     data: function() {
         return {
             sort_by: "",
-            direction: ""
+            direction: "Ascending"
         }
     },
 

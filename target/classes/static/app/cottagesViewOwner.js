@@ -39,6 +39,7 @@ Vue.component("cottages-view-owner", {
 
     template: `
         <div style="background-color: #fff9e8">
+            <owners-nav offer="cottages"></owners-nav>
             <div class="container">
                 <div class="d-flex justify-content-center">
                     <div class="collapse bg-light shadow rounded w-50 mt-3" id="confirm-delete">
@@ -78,21 +79,33 @@ Vue.component("cottages-view-owner", {
             </div>
             <h3 v-if="cottages.length == 0" class="text-info ms-5 mt-3">No cottages to show</h3>
             <div class="container">
-                <div v-for="(c, i) in cottages" class="container card m-3 shadow" style="border-radius: 10px">
-                    <div class="row">
-                        <div class="col-3 mt-2">
-                            <img :src="profilePictures.at(i)" class="card-img rounded-3 mt-3" width="200" height="200"  alt="cottage image">
-                            <p class="ms-2 mt-3">{{ c.description }}</p>
-                        </div>
-                        <div class="col-4 card-body container">
-                            <h3 class="card-title mb-2">{{ c.name }}</h3>
-                            <p class="card-text mt-2 mb-4 h5">{{ c.address.street }}, {{ c.address.city }}, {{ c.address.country }}</p>
-                            <p class="card-text mb-2">Price: {{ c.price }} EUR</p>
-                            <p class="card-text mb-2">Number of rooms: {{ c.rooms.length }}</p>
-                            <p class="card-text">Number of beds: {{ c.numberOfBeds }}</p>
-                            <div class="d-flex flex-row mt-3">
-                                <a :href="'/#/updateCottage/' + c.id" class="btn btn-primary me-3 mt-3">View</a>
-                                <button type="button" class="btn btn-danger mt-3" v-on:click="setCurrentId(c.id)">Delete</button>
+                <div v-for="(c, i) in cottages">
+                    <div class="container card my-5 ms-2 me-5 shadow" :id="cardId(i)" style="border-radius: 10px" 
+                            v-on:mouseover="cardMouseOver(i)" v-on:mouseleave="cardMouseLeave(i)">
+                        <div class="row">
+                            <div class="col-3 mt-2">
+                                <img :src="profilePictures.at(i)" class="card-img rounded-3 mt-3" width="200" height="200" alt="cottage image">
+                                <p class="ms-2 mt-3">{{ c.description }}</p>
+                            </div>
+                            <div class="col-4 card-body container">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h3 class="card-title mb-2">{{ c.name }}</h3>
+                                        <p class="card-text mt-2 mb-4 h5">{{ c.address.street }}, {{ c.address.city }}, {{ c.address.country }}</p>
+                                    </div>
+                                    <div class="me-4">
+                                        <h2 v-if="c.rate != -1"><span class="badge bg-primary">{{ c.rate }}</span></h2>
+                                        <h6 v-if="c.rate != -1">{{ c.reviews.length }} reviews</h6>
+                                        <h3 v-if="c.rate == -1">No reviews</h3>
+                                    </div>
+                                </div>
+                                <p class="card-text mb-2">Price: {{ c.price }} EUR</p>
+                                <p class="card-text mb-2">Number of rooms: {{ c.rooms.length }}</p>
+                                <p class="card-text">Number of beds: {{ c.numberOfBeds }}</p>
+                                <div class="d-flex flex-row mt-3">
+                                    <a :href="'/#/cottageProfile/' + c.id" class="btn btn-primary me-3 mt-3">View</a>
+                                    <button type="button" class="btn btn-danger mt-3" v-on:click="setCurrentId(c.id)">Delete</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -105,6 +118,18 @@ Vue.component("cottages-view-owner", {
         prepareDelete(id) {
             this.setCurrentId(id);
             window.scrollTo(0, 0);
+        },
+
+        cardId(i) {
+            return "card-div-" + i;
+        },
+
+        cardMouseOver(i) {
+            $("#card-div-" + i).css('transform', 'scale(1.06)');
+        },
+
+        cardMouseLeave(i) {
+            $("#card-div-" + i).css('transform', 'scale(1)');
         },
 
         setCurrentId(id) {

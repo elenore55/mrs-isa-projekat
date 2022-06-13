@@ -20,6 +20,9 @@ public class CottageDTO {
     private List<String> imagePaths;
     private LocalDateTime availableStart;
     private LocalDateTime availableEnd;
+    private Double rate;
+    private Boolean editable;
+    private List<ReviewDTO> reviews;
 
     public CottageDTO() {
     }
@@ -61,6 +64,12 @@ public class CottageDTO {
             Availability av = cottage.getAvailabilities().get(avs.size() - 1);
             this.availableStart = av.getStart();
             this.availableEnd = av.getEnd();
+        }
+        this.rate = cottage.getRateOrNegativeOne();
+        this.editable = cottage.hasFutureReservations();
+        this.reviews = new ArrayList<>();
+        for (Feedback fb : cottage.getReviews()) {
+            this.reviews.add(new ReviewDTO(fb));
         }
     }
 
@@ -163,4 +172,29 @@ public class CottageDTO {
     public void setAvailableEnd(LocalDateTime availableEnd) {
         this.availableEnd = availableEnd;
     }
+
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
+    }
+
+    public Boolean getEditable() {
+        return editable;
+    }
+
+    public void setEditable(Boolean editable) {
+        this.editable = editable;
+    }
+
+    public List<ReviewDTO> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<ReviewDTO> reviews) {
+        this.reviews = reviews;
+    }
 }
+
