@@ -18,7 +18,6 @@ Vue.component("cottages-view-owner", {
             current_id: null,
             default_image: "images/cottage_icon.jpg",
             profilePictures: []
-
         }
     },
 

@@ -27,17 +27,12 @@ public class ReservationController {
     private FishingInstructorService fishingInstructorService;
 
     @Autowired
-    public ReservationController(ReservationService reservationService, UserService userService, OfferService offerService) {
-        this.reservationService = reservationService;
-        this.userService = userService;
-        this.offerService = offerService;
-
-    @Autowired
     public ReservationController(ReservationService reservationService, UserService userService, OfferService offerService,FishingInstructorService fishingInstructorService) {
         this.reservationService = reservationService;
         this.userService = userService;
         this.offerService = offerService;
         this.fishingInstructorService = fishingInstructorService;
+
     }
 
     @ResponseBody

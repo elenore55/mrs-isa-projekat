@@ -70,14 +70,6 @@ public class UserController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    private void setReservationStatus(Reservation r) {
-        if (r.getReservationStatus() == ReservationStatus.CLIENT_NOT_ARRIVED || r.getReservationStatus() == ReservationStatus.CANCELLED) return;
-        LocalDateTime today = LocalDateTime.now();
-        if (r.getEnd().compareTo(today) < 0) r.setReservationStatus(ReservationStatus.FINISHED);
-        else if (r.getStart().compareTo(today) > 0) r.setReservationStatus(ReservationStatus.PENDING);
-        else r.setReservationStatus(ReservationStatus.ACTIVE);
-    }
-
     @GetMapping(value = "/allUsers")
     public ResponseEntity<List<UserDTO>> getAllUsers() {
 
@@ -130,46 +122,6 @@ public class UserController {
         user.setAddress(a);
         user = userService.save(user);
         return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
-    }
-
-    @Transactional
-    @ResponseBody
-    @RequestMapping(path = "/getOwnersReservations/{id}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<ReservationDTO>> getOwnersReservations(@PathVariable Integer id) {
-        User user = userService.findOne(id);
-        if (!(user instanceof CottageOwner) && !(user instanceof ShipOwner)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        List<Reservation> reservations;
-        List<ReservationDTO> result = new ArrayList<>();
-        if (user instanceof CottageOwner) reservations = ((CottageOwner)user).getReservations();
-        else reservations = ((ShipOwner)user).getReservations();
-        for (Reservation r : reservations) {
-            setReservationStatus(r);
-            result.add(new ReservationDTO(r));
-        }
-        return new ResponseEntity<>(result, HttpStatus.OK);
-    }
-
-    @Transactional
-    @ResponseBody
-    @RequestMapping(path = "/getOwnersReservations/{id}/{offerId}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<ReservationDTO>> getOwnersReservations(@PathVariable Integer id, @PathVariable Integer offerId) {
-        User user = userService.findOne(id);
-        if (!(user instanceof CottageOwner) && !(user instanceof ShipOwner)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        List<Reservation> reservations;
-        List<ReservationDTO> result = new ArrayList<>();
-        if (user instanceof CottageOwner) reservations = ((CottageOwner)user).getReservations();
-        else reservations = ((ShipOwner)user).getReservations();
-        for (Reservation r : reservations) {
-            if (r.getOffer().getId().equals(offerId)) {
-                setReservationStatus(r);
-                result.add(new ReservationDTO(r));
-            }
-        }
-        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     private void setReservationStatus(Reservation r) {

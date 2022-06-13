@@ -48,12 +48,12 @@
 
 
 
-delete from adventure;
-delete from offer_rules;
-delete from rule;
-delete from offer;
-delete from price_list;
-delete from fishing_equipment;
+-- delete from adventure;
+-- delete from offer_rules;
+-- delete from rule;
+-- delete from offer;
+-- delete from price_list;
+-- delete from fishing_equipment;
 
 -- delete from ship;
 -- delete from ship_owner;
@@ -130,10 +130,10 @@ insert into offer_rules (offer_id, rules_id) values (3, 4);
 insert into cottage (id, cottage_owner_id) values (3, 2);
 insert into cottage_images (cottage_id, images_id) values (3, 2);
 
-delete from fishing_instructor;
+-- delete from fishing_instructor;
 -- delete from my_users; nzm za ovo da li trabam da ostavim MERGE
 -- delete from profile_data;  nzm za ovo da li trabam da ostavim MERGE
-delete from address;
+-- delete from address;
 insert into address (city,country,street) values ('Novi Sad','Srbija','Puskinova 6');
 insert into address (city,country,street) values ('Beograd','Srbija','Puskinova 69');
 insert into profile_data (email,name,password,phone_number,surname,address_id) values ('email@gmail.com','ImeInstruktora','11223344','06444124214','PrezimeInstruktora',1);
@@ -237,8 +237,8 @@ insert into ship_fast_reservations (ship_id, fast_reservations_id) values (1, 1)
 -- insert into fishing_equipment (amount, name) values (10,'Hooks');
 
 insert into profile_data (email, name, password, phone_number, surname, address_id) values ('aleksadsimic@gmail.com', 'Aleksa', 'sifra', '064440044', 'Prezimic', 1);
-insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,3);
-insert into client (id) values (3);
+insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,4);
+insert into client (id) values (4);
 
 
 -- insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email@gmail.com', 'Pero', 'pass1', '065-111-5555', 'Peric', 1);

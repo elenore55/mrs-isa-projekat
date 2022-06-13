@@ -30,15 +30,6 @@ public class UserService {
         this.addressRepository = addressRepository;
     }
 
-
-    @Autowired
-    public UserService(UserRepository userRepository, ClientRepository clientRepository, Profile_DataRepository profileDataRepository)
-    {
-        this.userRepository = userRepository;
-        this.clientRepository = clientRepository;
-        this.profileDataRepository = profileDataRepository;
-    }
-
     public User save(User user){
         Client c = new Client();
         c.setProfileData(user.getProfileData());
@@ -94,12 +85,6 @@ public class UserService {
     public boolean isUsersPassword(String old, String id) {
         String currentPassword = userRepository.getById(Integer.parseInt(id)).getPassword();    // ovo nam je dalo trenutnu hesiranu lozinku
         return isValidPassword(old, currentPassword);
-    }
-
-    public Client findClientByEmail(String email) {
-        ProfileData pd = profileDataRepository.getByEmail(email);
-        if (pd == null) return null;
-        return clientRepository.findByProfileDataId(pd.getId());
     }
 
     public User findOne(Integer id) {
