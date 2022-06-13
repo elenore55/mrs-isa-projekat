@@ -61,7 +61,7 @@
 -- delete from profile_data;
 -- delete from address;
 
-insert into address (city,country,street) values ('Novi Sad','Srbija','Puskinova 6'); --nemo ubacivati id pls brt
+insert into address (city,country,street) values ('Novi Sad','Srbija','Puskinova 6');
 insert into address (city,country,street) values ('Beograd','Srbija','Marka Pola 10');
 insert into address (city,country,street) values ('Novi Sad','Srbija','Bulevar oslobodjenja 105');
 insert into address (city,country,street) values ('Pariz','Francuska','Puskinova 50');
@@ -142,17 +142,11 @@ insert into cottage_images (cottage_id, images_id) values (3, 2);
 insert into price_list (amount, start_date) values (500, '20220501 00:00:01 AM');
 insert into offer_price_history (offer_id, price_history_id) values (3, 6);
 
--- delete from fishing_instructor;
--- delete from my_users; nzm za ovo da li trabam da ostavim MERGE
--- delete from profile_data;  nzm za ovo da li trabam da ostavim MERGE
--- delete from address;
 insert into address (city,country,street) values ('Novi Sad','Srbija','Puskinova 6');
 insert into address (city,country,street) values ('Beograd','Srbija','Puskinova 69');
 insert into profile_data (email,name,password,phone_number,surname,address_id) values ('email@gmail.com','ImeInstruktora','11223344','06444124214','PrezimeInstruktora',1);
 insert into profile_data (email,name,password,phone_number,surname,address_id) values ('emailAdmin@gmail.com','Imeadmin','sifra','06444144444','PrezimeAdmin',2);
-insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,1);
-insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,2);
-insert into admin (is_main, id) values (true , 2);
+
 insert into fishing_instructor (biography, id) values ('Instruktor pecanja I',1);
 insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
 insert into fishing_equipment (amount, name) values (10,'Fishing Line');
@@ -170,27 +164,19 @@ insert into offer_price_history (offer_id, price_history_id) values (4, 7);
 
 
 insert into offer (additional_info, description, name, price_list, address_id) values ('Enterijer apartmana predstvalja spoj planinskog dekora i svih potrebnih savremenih pogodnosti, koje će zadovoljiti krtiterijume i najzahtevnijih turista.', 'Ovo je apartman iz kog ćete najbrže početi da skijate.', 'Apartman Gondola', 60, 7);
---insert into offer_rules (offer_id, rules_id) values (5, 1);
---insert into offer_rules (offer_id, rules_id) values (5, 4);
---insert into offer_rules (offer_id, rules_id) values (5, 5);
 insert into cottage (id, cottage_owner_id) values (5, 2);
 insert into cottage_images (cottage_id, images_id) values (5, 3);
 insert into price_list (amount, start_date) values (60, '20220501 00:00:01 AM');
 insert into offer_price_history (offer_id, price_history_id) values (5, 8);
 
 insert into offer (additional_info, description, name, price_list, address_id) values ('Prostrano dvorište objekta krasi veliki bazen dimenzija 12x6m, dubine 1.6m, sa izdvojenim djakuzi delom.', 'Vila Siesta je građena u meksičkom stilu. Idealna je za važe druženje i u hladnijim danima, kuhinju, trpezariju i kupatilo.', 'Vila Siesta', 240, 6);
---insert into offer_rules (offer_id, rules_id) values (6, 1);
---insert into offer_rules (offer_id, rules_id) values (6, 4);
 insert into cottage (id, cottage_owner_id) values (6, 2);
 insert into cottage_images (cottage_id, images_id) values (6, 4);
 insert into price_list (amount, start_date) values (240, '20220501 00:00:01 AM');
 insert into offer_price_history (offer_id, price_history_id) values (6, 9);
 
 insert into offer (additional_info, description, name, price_list, address_id) values ('Kupatilo ima tuš kabinu.', 'Ispred kuće se nalazi bazen sa lepo uređenim dvorištem oko njega.', 'Vikendica Sunset', 150, 1);
---insert into offer_rules (offer_id, rules_id) values (7, 1);
---insert into offer_rules (offer_id, rules_id) values (7, 4);
 insert into cottage (id, cottage_owner_id) values (7, 2);
---insert into cottage_images (cottage_id, images_id) values (7, 5);
 insert into price_list (amount, start_date) values (150, '20220501 00:00:01 AM');
 insert into offer_price_history (offer_id, price_history_id) values (7, 10);
 
@@ -228,11 +214,14 @@ insert into profile_data (email, name, password, phone_number, surname, address_
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,3);
 insert into client (id) values (3);
 
+insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,2);
+insert into admin (is_main, id) values (true , 4);
+
 insert into sub (user_id, offer_id) values (3, 2);
 
 insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic55+2@hotmail.com', 'Mirko', 'pass3', '1233456', 'Mirkovic', 4);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,3);
-insert into admin (id) values (4);
+insert into admin (id) values (5);
 
 insert into feedback (comment, rating, status) values ('Very pretty boat', 10, 'APPROVED');
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (1, 3, 'PENDING', '20220523 10:05:00 AM', '20220528 10:05:00 AM', 1);
@@ -286,7 +275,7 @@ insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 
 
 insert into profile_data (email, name, password, phone_number, surname, address_id) values ('aleksadsimic@gmail.com', 'Aleksa', 'sifra', '064440044', 'Prezimic', 1);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,4);
-insert into client (id) values (4);
+insert into client (id) values (6);
 
 
 -- insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email@gmail.com', 'Pero', 'pass1', '065-111-5555', 'Peric', 1);

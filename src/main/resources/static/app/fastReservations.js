@@ -47,7 +47,7 @@ Vue.component('fast-reservations', {
                     <div class="d-flex justify-content-left ms-3 mt-4 me-3 mb-1">
                         <div class="mt-1 ms-3 me-4 mb-1">
                             <label for="start-date">Start date</label>
-                            <vuejs-datepicker v-model="start" format="dd.MM.yyyy." id="start-date" monday-first="true"></vuejs-datepicker>
+                            <vuejs-datepicker v-model="start" format="dd.MM.yyyy." id="start-date" :monday-first="true"></vuejs-datepicker>
                             <p v-if="!isValidStayDate" class="text-danger">Date must not be empty</p>
                         </div>
                         <div class="mt-1 mb-1 me-3 form-floating">
@@ -61,7 +61,7 @@ Vue.component('fast-reservations', {
                     <div class="d-flex justify-content-left ms-3 mt-4 me-3 mb-1">
                         <div class="mt-1 ms-3 me-4 mb-1">
                             <label for="start-action-date">Start date</label>
-                            <vuejs-datepicker v-model="actionStart" format="dd.MM.yyyy." id="start-action-date" monday-first="true"></vuejs-datepicker>
+                            <vuejs-datepicker v-model="actionStart" format="dd.MM.yyyy." id="start-action-date" :monday-first="true"></vuejs-datepicker>
                             <p v-if="!isValidActionDate" class="text-danger">Date must not be empty</p>
                         </div>
                         <div class="mt-1 mb-1 me-3 form-floating">               
