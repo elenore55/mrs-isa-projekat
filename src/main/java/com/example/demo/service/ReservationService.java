@@ -5,6 +5,7 @@ import com.example.demo.model.Offer;
 import com.example.demo.model.Reservation;
 import com.example.demo.repository.ReservationRepository;
 import com.example.demo.service.emailSenders.EmailSender;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,10 @@ public class ReservationService {
 
     public Reservation save(Reservation reservation) {
         return repository.save(reservation);
+    }
+
+    public List<Reservation> findAll() {
+        return repository.findAll();
     }
 
     public Reservation findOne(Integer id) {

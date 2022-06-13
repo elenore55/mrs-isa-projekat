@@ -197,3 +197,4 @@ public class CottageDTO {
         this.reviews = reviews;
     }
 }
+

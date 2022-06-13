@@ -9,7 +9,7 @@ import java.util.List;
 public class AdventureDTO {
     private Integer id;
     private String name;
-    private AddressDTO address;
+    private Address address;
     private String description;
     private BigDecimal price;
     private String additionalInfo;
@@ -23,7 +23,7 @@ public class AdventureDTO {
     {
 
     }
-    public AdventureDTO(Integer id, String name, AddressDTO address, String description, BigDecimal price, String additionalInfo, Integer fInstructorId, List<String> imagePaths, List<String> rules, List<FishingEquipmentDTO> fishingEquipmentList, Integer maxPeople) {
+    public AdventureDTO(Integer id, String name, Address address, String description, BigDecimal price, String additionalInfo, Integer fInstructorId, List<String> imagePaths, List<String> rules, List<FishingEquipmentDTO> fishingEquipmentList, Integer maxPeople) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -41,7 +41,7 @@ public class AdventureDTO {
     {
         this.id = adventure.getId();
         this.name = adventure.getName();
-        this.address = new AddressDTO(adventure.getAddress());
+        this.address = adventure.getAddress();
         this.description = adventure.getDescription();
         this.price = adventure.getPriceList();
         this.additionalInfo = adventure.getAdditionalInfo();
@@ -77,11 +77,11 @@ public class AdventureDTO {
         this.name = name;
     }
 
-    public AddressDTO getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(AddressDTO address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

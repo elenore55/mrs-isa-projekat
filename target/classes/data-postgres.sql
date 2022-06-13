@@ -215,7 +215,37 @@ insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (8, 3, 'FINISHED', '20220520 10:05:00 AM', '20220525 10:05:00 AM');
 insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 12);
 
--- insert into fishing_instructor (biography,id) values ('Instruktor pecanja I',5);
--- insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
--- insert into fishing_equipment (amount, name) values (10,'Fishing Line');
--- insert into fishing_equipment (amount, name) values (10,'Hooks');
+
+
+delete from adventure;
+delete from offer_rules;
+delete from rule;
+delete from offer;
+delete from price_list;
+delete from fishing_equipment;
+
+delete from fishing_instructor;
+delete from my_users;
+delete from profile_data;
+delete from address;
+insert into address (city,country,street) values ('Novi Sad','Srbija','Puskinova 6');
+insert into address (city,country,street) values ('Beograd','Srbija','Puskinova 69');
+insert into profile_data (email,name,password,phone_number,surname,address_id) values ('email@gmail.com','ImeInstruktora','11223344','06444124214','PrezimeInstruktora',1);
+insert into profile_data (email,name,password,phone_number,surname,address_id) values ('emailAdmin@gmail.com','Imeadmin','sifra','06444144444','PrezimeAdmin',2);
+insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,1);
+insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,2);
+insert into admin (is_main, id) values (true , 2);
+insert into fishing_instructor (biography, id) values ('Instruktor pecanja I',1);
+insert into fishing_equipment (amount, name) values (10,'Fishing Rod');
+insert into fishing_equipment (amount, name) values (10,'Fishing Line');
+insert into fishing_equipment (amount, name) values (10,'Hooks');
+
+
+insert into offer (additional_info, description, name, price_list, address_id) values ('additional info', 'neki opis', 'PonudaSQL', 500, 1);
+insert into adventure (max_people,id,fishing_instructor_id) values (10,1,1);
+insert into adventure_fishing_equipments(adventure_id,fishing_equipments_id) values(1,2);
+
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('aleksadsimic@gmail.com', 'Aleksa', 'sifra', '064440044', 'Prezimic', 1);
+insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,3);
+insert into client (id) values (3);
+

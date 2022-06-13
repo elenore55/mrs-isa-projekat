@@ -62,6 +62,36 @@ public class UserController {
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/getOwnersReservations/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<ReservationDTO>> getOwnersReservations(@PathVariable Integer id) {
+        User user = userService.findOne(id);
+        if (!(user instanceof CottageOwner) && !(user instanceof ShipOwner) && !(user instanceof FishingInstructor)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        List<Reservation> reservations;
+        List<ReservationDTO> result = new ArrayList<>();
+        if (user instanceof CottageOwner) reservations = ((CottageOwner)user).getReservations();
+        else if (user instanceof ShipOwner) reservations = ((ShipOwner)user).getReservations();
+        else reservations = ((FishingInstructor)user).getReservations();
+        for (Reservation r : reservations) {
+            setReservationStatus(r);
+            result.add(new ReservationDTO(r));
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/allUsers")
+    public ResponseEntity<List<UserDTO>> getAllUsers() {
+
+        List<User> users = userService.findAll();
+        List<UserDTO> userDTOS = new ArrayList<>();
+        for (User user : users) {
+            userDTOS.add(new UserDTO(user));
+        }
+
+        return new ResponseEntity<>(userDTOS, HttpStatus.OK);
+    }
+
     @Transactional
     @ResponseBody
     @RequestMapping(path = "/changePassword", method = RequestMethod.POST, consumes = "application/json")
@@ -102,25 +132,6 @@ public class UserController {
         user.setAddress(a);
         user = userService.save(user);
         return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
-    }
-
-    @Transactional
-    @ResponseBody
-    @RequestMapping(path = "/getOwnersReservations/{id}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<ReservationDTO>> getOwnersReservations(@PathVariable Integer id) {
-        User user = userService.findOne(id);
-        if (!(user instanceof CottageOwner) && !(user instanceof ShipOwner)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        List<Reservation> reservations;
-        List<ReservationDTO> result = new ArrayList<>();
-        if (user instanceof CottageOwner) reservations = ((CottageOwner) user).getReservations();
-        else reservations = ((ShipOwner) user).getReservations();
-        for (Reservation r : reservations) {
-            setReservationStatus(r);
-            result.add(new ReservationDTO(r));
-        }
-        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @Transactional

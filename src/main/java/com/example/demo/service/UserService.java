@@ -30,7 +30,7 @@ public class UserService {
         this.addressRepository = addressRepository;
     }
 
-    public User save(User user) {
+    public User save(User user){
         Client c = new Client();
         c.setProfileData(user.getProfileData());
         c.setNumberOfPoints(0);
@@ -39,12 +39,17 @@ public class UserService {
         return retC;
     }
 
-
     public String findUserToken(String email, String password) {
         ProfileData pd = profileDataRepository.getByEmail(email);
         if (pd == null) return "";
         if (isValidPassword(password, pd.getPassword())) return generateTokenById(pd.getId());
         return "";
+    }
+
+    public Client findClientByEmail(String email) {
+        ProfileData pd = profileDataRepository.getByEmail(email);
+        if (pd == null) return null;
+        return clientRepository.findByProfileDataId(pd.getId());
     }
 
     private String generateTokenById(Integer id) {
@@ -82,15 +87,10 @@ public class UserService {
         return isValidPassword(old, currentPassword);
     }
 
-    public Client findClientByEmail(String email) {
-        ProfileData pd = profileDataRepository.getByEmail(email);
-        if (pd == null) return null;
-        return clientRepository.findByProfileDataId(pd.getId());
-    }
-
     public User findOne(Integer id) {
         return userRepository.findById(id).orElseGet(null);
     }
+    public List<User> findAll() { return userRepository.findAll();}
 
     public void addReservation(Integer id, Reservation reservation) {
         User user = findOne(id);
@@ -106,6 +106,12 @@ public class UserService {
             reservations.add(reservation);
             c.setReservations(reservations);
             userRepository.save(c);
+        } else if (user instanceof FishingInstructor) {
+            FishingInstructor fi = (FishingInstructor) user;
+            List<Reservation> reservations = fi.getReservations();
+            reservations.add(reservation);
+            fi.setReservations(reservations);
+            userRepository.save(fi);
         }
     }
 }

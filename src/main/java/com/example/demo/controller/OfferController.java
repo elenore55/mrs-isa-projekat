@@ -5,6 +5,7 @@ import com.example.demo.model.Cottage;
 import com.example.demo.model.FastReservation;
 import com.example.demo.model.Offer;
 import com.example.demo.model.Ship;
+import com.example.demo.dto.OfferDTO;
 import com.example.demo.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
 @RestController
 @RequestMapping(value = "api/offers")
 public class OfferController {
@@ -86,4 +86,16 @@ public class OfferController {
         }
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
+
+    @ResponseBody
+    @RequestMapping(path = "/getOffer/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<OfferDTO> getOffer(@PathVariable Integer id) {
+        Offer offer = offerService.findOne(id);
+        if (offer == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(new OfferDTO(offer), HttpStatus.OK);
+    }
+
+
 }

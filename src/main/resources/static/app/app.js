@@ -41,6 +41,15 @@ const DeleteProfileMessage = {template: '<delete-profile-message></delete-profil
 const EditProfileMessage = {template: '<edit-profile-message></edit-profile-message>'};
 const ChangePassword = {template: '<change-password></change-password>'};
 const CottageDetailedView = {template: '<cottage-detailed-view></cottage-detailed-view>'};
+const InstructorsAdventures = {template: '<instructors-adventures></instructors-adventures>'};
+const AddAdmin = {template: '<add-admin></add-admin>'};
+const UpdateAdminInfo = {template: '<update-admin-info></update-admin-info>'};
+const AvailabilityInstructor = {template: '<availability-instructor></availability-instructor>'};
+const InstructorsCalendar = {template: '<instructor-calendar></instructor-calendar>'};
+const AdventureHistory = {template: '<adventure-history></adventure-history>'};
+const AdventureQuickReserv = {template: '<adventure-quick></adventure-quick>'};
+const AdveReservWithClient = {template: '<advreserv-with-client></advreserv-with-client>'};
+const AdminEntities = {template: '<admin-entities></admin-entities>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -126,6 +135,10 @@ const router = new VueRouter({
         {
             path: "/cottageReservations/:id/",
             component: CottageReservations
+        },
+        {
+            path: "/instructorsAdventures/",
+            component: InstructorsAdventures
         },
         {
             path: "/shipsViewOwner/:id/",
@@ -218,6 +231,38 @@ const router = new VueRouter({
         {
            path: "/profilePageInstructorPI/",
            component: ProfilePageInstructorPI
+        },
+        {
+            path: "/addAdmin/",
+            component: AddAdmin
+        },
+        {
+            path: "/updateAdminInfo/",
+            component: UpdateAdminInfo
+        },
+        {
+            path: "/availabilityInstructor/",
+            component: AvailabilityInstructor
+        },
+        {
+            path: "/instructorsCalendar/",
+            component: InstructorsCalendar
+        },
+        {
+            path: "/adventureHistory/",
+            component: AdventureHistory
+        },
+        {
+            path: "/adventureQuickReserv/",
+            component: AdventureQuickReserv
+        },
+        {
+            path: "/advReservWithClient/",
+            component: AdveReservWithClient
+        },
+        {
+            path: "/adminEntities/",
+            component: AdminEntities
         }
 
 

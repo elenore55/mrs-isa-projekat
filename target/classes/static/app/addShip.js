@@ -272,6 +272,7 @@ Vue.component("add-ship", {
                 return;
             for (let file of files) {
                 this.images.push("images/" + file.name);
+
             }
         },
 

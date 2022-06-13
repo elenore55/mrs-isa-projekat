@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.example.demo.dto.ProfileDataDTO;
+
 import javax.persistence.*;
 
 @Entity
@@ -38,6 +40,16 @@ public class ProfileData {
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.address = address;
+    }
+
+    public  ProfileData(ProfileDataDTO profileDataDTO)
+    {
+        this.email = profileDataDTO.getEmail();
+        this.password = profileDataDTO.getPassword();
+        this.name = profileDataDTO.getName();
+        this.surname = profileDataDTO.getSurname();
+        this.phoneNumber = profileDataDTO.getPhoneNumber();
+        this.address = profileDataDTO.getAddress();
     }
 
     public Integer getId() {
