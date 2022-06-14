@@ -114,7 +114,6 @@ Vue.component("past-reservations", {
 
         rate(reservation)
             {
-                // treba da ga usmjerim na novu stranicu i proslijedim
                 location.replace('http://localhost:8000/#/clientRate/' + reservation.id);
             },
 

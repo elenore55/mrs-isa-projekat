@@ -66,7 +66,7 @@ insert into image (path) values ('images/img_a1.jpg');
 insert into image (path) values ('images/img_a2.jpg');
 insert into image (path) values ('images/img_a3.jpg');
 
-insert into offer (additional_info, description, name, price_list, address_id) values ('Smeštaj je pogodan za više ljudi (u isto vremena na splavu može maksimalno boraviti 20 osoba) koji žele da imaju odvojen prostor za spavanje, odvojen prostor za druženje, a i mesto za odmaranje na reci uz sav komoditet splava.', 'Ovo je dosta autentican prostor. Treba mi jos neki opis da zauzme vise prostora, jer kad je opis kratak, ne vidi da je opis. Sad kad je opis malo duzi, izgleda realisticno.', 'Frida River House', 300, 1);
+insert into offer (additional_info, description, name, price_list, address_id) values ('Smeštaj je pogodan za više ljudi (u isto vremena na splavu može maksimalno boraviti 20 osoba) koji žele da imaju odvojen prostor za spavanje, odvojen prostor za druženje, a i mesto za odmaranje na reci uz sav komoditet splava.', 'Ovo je dosta autentican prostor. Treba mi jos neki opis da zauzme vise prostora, ', 'Frida River House', 300, 1);
 insert into offer_rules (offer_id, rules_id) values (2, 1);
 insert into offer_rules (offer_id, rules_id) values (2, 3);
 insert into offer_rules (offer_id, rules_id) values (1, 5);
@@ -175,6 +175,11 @@ insert into reservation (end_date_time, reservation_status, start_date_time, cli
 insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-05-30 20:39:00', 'ACTIVE', '2022-05-27 20:39:00', 6, 5);
 insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-05-29 20:39:00', 'ACTIVE', '2022-05-26 20:39:00', 6, 5);
 insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-06-14 20:39:00', 'PENDING', '2022-06-10 20:39:00', 3, 1);
+
+insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-06-14 20:39:00', 'PENDING', '2022-06-04 20:39:00', 6, 3);
+insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-06-14 20:39:00', 'PENDING', '2022-06-03 20:39:00', 6, 2);
+insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-06-14 20:39:00', 'PENDING', '2022-06-14 20:39:00', 6, 3);
+insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2022-06-14 20:39:00', 'PENDING', '2022-06-13 20:39:00', 6, 2);
 
 insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2021-06-14 20:39:00', 'FINISHED', '2021-06-10 20:39:00', 6, 2);
 insert into reservation (end_date_time, reservation_status, start_date_time, client_id, offer_id) values ('2021-09-14 20:39:00', 'FINISHED', '2021-09-10 20:39:00', 6, 2);

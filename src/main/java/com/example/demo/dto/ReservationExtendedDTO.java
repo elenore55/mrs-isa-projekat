@@ -35,7 +35,7 @@ public class ReservationExtendedDTO{
     }
 
     private String createLink() {
-        String link = "#cottageDetailedView/" + this.offerId + "/" + this.startDate + "/" + this.endDate;
+        String link = "#shipDetailedView/" + this.offerId + "/" + this.startDate + "/" + this.endDate;
         return link;
     }
 

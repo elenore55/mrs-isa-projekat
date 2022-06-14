@@ -20,6 +20,14 @@ Vue.component("client-rate", {
    template: `
     <div>
         <client-navbar> </client-navbar>
+        <div class="d-flex justify-content-center mt-5">
+           <div class="collapse bg-light shadow rounded w-50 mt-5" id="confirm-cancel">
+               <p class=" d-flex justify-content-center mt-5 mb-3"> Your feedback has been saved! </p>
+               <div class="d-flex justify-content-center">
+                   <a class="btn btn-lg btn-outline-secondary m-4" role="button" v-on:click="hideItself">OK</a>
+               </div>
+           </div>
+               </div>
             <div class="container mt-5 pt-5">
                 <div my-5 mx-5 pt-5 align-items-center>
                     <div class = "my-5 d-flex align-items-center justify-content-center">
@@ -58,6 +66,12 @@ Vue.component("client-rate", {
     </div>
    `,
     methods: {
+
+            hideItself()
+                {
+                    $("#confirm-cancel").hide(200);
+                },
+
             sendFeedback(){
             // mora unijeti koga ocjenjuje i broj zvjezdica
             // ne mora razlog
@@ -70,7 +84,8 @@ Vue.component("client-rate", {
                         rating: this.rate,
                         reservationId: this.reservationId,
                     }).then(function (response) {
-                        alert("Poslala sam feedback");
+                        //alert("Poslala sam feedback");
+                        $("#confirm-cancel").show(200);
                     }).catch(function (error) {
                         alert("An ERROR occurred while sending feedback");
                     });

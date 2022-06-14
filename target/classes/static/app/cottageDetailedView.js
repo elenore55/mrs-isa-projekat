@@ -27,6 +27,10 @@ Vue.component("cottage-detailed-view", {
            this.id = this.$route.params.id;
            this.fromDate = this.$route.params.fromDate;
            this.toDate = this.$route.params.toDate;
+
+           main_image = $("body").css("background-image", "");
+           //main_image = $("body").css("background-size", "100% 210%");
+
            axios.get("api/cottages/getCottageImages/" + this.id ).then(response => {
                  this.images = response.data;
 
@@ -58,6 +62,17 @@ Vue.component("cottage-detailed-view", {
    template: `
    <div class="w-100">
        <client-navbar></client-navbar>
+
+       <div class="d-flex justify-content-center mt-5">
+           <div class="collapse bg-light shadow rounded w-50 mt-5" id="confirm-cancel">
+               <p class=" d-flex justify-content-center mt-5 mb-3"> Reservation successfully added</p>
+               <div class="d-flex justify-content-center">
+                   <a class="btn btn-lg btn-outline-secondary m-4" role="button" v-on:click="hideItself">OK</a>
+               </div>
+           </div>
+       </div>
+
+
         <div class = "d-flex align-items-center justify-content-center mt-5">
             <div class="col-7">
                 <div class= "d-flex align-items-center justify-content-center mt-5 mb-1">
@@ -72,7 +87,7 @@ Vue.component("cottage-detailed-view", {
                 <div class="my-3">
                     <div class= "d-flex align-items-center justify-content-center mt-3">
                         <div class="d-flex align-items-left justify-content-left mt-3">
-                            <button v-on:click="getPrevious" class="btn btn-white rounded-0 border-secondary" style="height:500px;width:50px;"><</button>
+                            <button v-on:click="getPrevious" class="btn btn-secondary rounded-0 border-secondary" style="height:500px;width:50px;"><</button>
                             <img id="main_image" class="mx-0 px-0" style="height:500px;width:770px;">
                             <button v-on:click="getNext" class="btn btn-secondary rounded-0" style="height:500px;width:50px;"> > </button>
                         </div>
@@ -87,7 +102,7 @@ Vue.component("cottage-detailed-view", {
                 </div>
 
                 <div class = "row mx-3">
-                    <div class="col-5 border border-secondary rounded bg-warning p-3 mb-3" style="font-size: 18px;">
+                    <div class="col-5 border border-secondary rounded p-3 mb-3 shadow-lg" style="font-size: 18px;">
                         <label class="form-label h5">Rules</label>
                         <div v-for="(r, i) in rules" class="mb-2">
                             <p> {{r}} </p>
@@ -95,7 +110,7 @@ Vue.component("cottage-detailed-view", {
                     </div>
                     <div class="col-1">
                     </div>
-                    <div class = "col-6 border border-secondary rounded bg-warning mb-3" style="font-size: 18px;">
+                    <div class = "col-6 border border-secondary rounded shadow-lg mb-3" style="font-size: 18px;">
                         <table style="border-collapse:separate; border-spacing:1em; ">
                             <tr> <td>Number of rooms:</td> <td> {{num_rooms}} </td> </tr>
                             <tr> <td> Number of beds:</td> <td>{{num_bed}}</td> </tr>
@@ -140,6 +155,11 @@ methods: {
             return rate;
         },
 
+        hideItself()
+            {
+                $("#confirm-cancel").hide(200);
+            },
+
         makeReservation()
         {
             this.clientEmail = "jelenababic142@gmail.com";
@@ -155,8 +175,9 @@ methods: {
                  toDate: this.toDate,
 
                  }).then(function(response) {
-                     alert("Sve je proslo dobro");
-                     location.replace('http://localhost:8000/#/clientHome');
+                     //alert("Sve je proslo dobro");
+                     $("#confirm-cancel").show(200);
+                     //location.replace('http://localhost:8000/#/clientHome');
                      }).catch(function (error) {
                          alert('Greska u cottage detailed');
                          // preusmjeri na stranicu za login sa greskom

@@ -1,4 +1,4 @@
-Vue.component("client-sub", {
+Vue.component("client-subs", {
    data: function() {
        return {
            subs: [],
@@ -7,7 +7,7 @@ Vue.component("client-sub", {
    },
 
    mounted() {
-        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-image", "url('images/set2.png')");
         main_image = $("body").css("background-size", "100% 270%");
         this.reload();
        },
@@ -15,6 +15,7 @@ Vue.component("client-sub", {
    template: `
     <div>
         <client-navbar> </client-navbar>
+
             <div class="container mt-5 pt-5">
 
                 <div v-for="(s, i) in subs" class="row p-3 my-2" style="border:1px solid rgb(156, 151, 151); border-radius: 5px; background-color: white">
@@ -33,6 +34,7 @@ Vue.component("client-sub", {
                         <div class="my-3">
                         </div>
                         <div class="text-center">
+
                             <button class="btn btn-primary" v-on:click="viewActions(s)" style="height:40px;width:130px;"> View Actions</button>
                             <button class="btn btn-danger" v-on:click="unfollow(s)" style="height:40px;width:130px;"> Unsubscribe</button>
                         </div>
@@ -52,30 +54,19 @@ Vue.component("client-sub", {
             });
            },
 
-        viewDetails(link)
-        {
-            window.location.href = 'http://localhost:8000/' + link;
 
+        viewActions(sub)
+        {
+            window.location.href = 'http://localhost:8000/#/clientActions/' + sub.id;
         },
 
         unfollow(sub)
         {
             axios.post("api/reservations/unfollow/" + this.id + "/" + sub.id).then(response => {
-                alert("Dobro sam se odjavila");
                 this.reload();
             }).catch(function (error) {
                 alert('Greska u get subs');
             });
         },
-
-        viewActions(sub)
-        {
-            alert("Treba da predjem");
-            window.location.href = 'http://localhost:8000/clientActions/' + sub.id;
-        }
-
     },
-
-
-
 });

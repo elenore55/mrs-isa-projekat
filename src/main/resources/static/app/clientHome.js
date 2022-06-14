@@ -137,7 +137,7 @@ mounted() {
                                               <p>Rate:  </p>
                                           </div>
                                           <div class="col-8">
-                                              <h1> {{adjustRate(c.rate)}} </h1>
+                                              <h6> {{adjustRate(c.rate)}} </h6>
                                           </div>
                                       </div>
                                  </div>
@@ -164,12 +164,12 @@ mounted() {
                                       <p class="card-text mb-1">Capacity: {{ s.capacity }} people</p>
                                       <p class="card-text mb-1">Length: {{ s.length }} m</p>
                                       <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
-                                      <div class="row ">
+                                      <div class="row">
                                             <div class="col-2 my-auto">
                                                 <p>Rate:  </p>
                                             </div>
                                             <div class="col-8">
-                                                <h1> {{adjustRate(s.rate)}}  </h1>
+                                                <h6> {{adjustRate(s.rate)}}  </h6>
                                             </div>
                                         </div>
                                  </div>

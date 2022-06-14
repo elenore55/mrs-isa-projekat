@@ -16,6 +16,15 @@ Vue.component("client-complain", {
    template: `
     <div>
         <client-navbar> </client-navbar>
+        <div class="d-flex justify-content-center mt-5">
+           <div class="collapse bg-light shadow rounded w-50 mt-5" id="confirm-cancel">
+               <p class=" d-flex justify-content-center mt-5 mb-3"> Your complaint has been saved!</p>
+               <div class="d-flex justify-content-center">
+                   <a class="btn btn-lg btn-outline-secondary m-4" role="button" v-on:click="hideItself">OK</a>
+               </div>
+           </div>
+       </div>
+
             <div class="container mt-5 pt-5">
                 <div my-5 mx-5 pt-5 align-items-center>
                     <div class = "my-5 d-flex align-items-center justify-content-center">
@@ -44,6 +53,11 @@ Vue.component("client-complain", {
     </div>
    `,
     methods: {
+
+            hideItself()
+                {
+                    $("#confirm-cancel").hide(200);
+                },
             sendFeedback(){
             // prvo provjeri da li je sve poslano kako treba
                 if (this.reason && this.type)
@@ -53,7 +67,8 @@ Vue.component("client-complain", {
                         content: this.reason,
                         id: this.id
                     }).then(function (response) {
-                        alert("Poslala sam feedback");
+                        //alert("Poslala sam feedback");
+                        $("#confirm-cancel").show(200);
                     }).catch(function (error) {
                         alert("An ERROR occurred while sending feedback");
                     });

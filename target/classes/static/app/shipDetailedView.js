@@ -97,7 +97,7 @@ Vue.component("ship-detailed-view", {
                         <div class="my-3">
                             <div class= "d-flex align-items-center justify-content-center mt-3">
                                 <div class="d-flex align-items-left justify-content-left mt-3">
-                                    <button v-on:click="getPrevious" class="btn btn-white rounded-0 border-secondary" style="height:500px;width:50px;"><</button>
+                                    <button v-on:click="getPrevious" class="btn btn-secondary rounded-0 border-secondary" style="height:500px;width:50px;"><</button>
                                     <img id="main_image" class="mx-0 px-0" style="height:500px;width:770px;">
                                     <button v-on:click="getNext" class="btn btn-secondary rounded-0" style="height:500px;width:50px;"> > </button>
                                 </div>

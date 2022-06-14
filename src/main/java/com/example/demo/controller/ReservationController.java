@@ -90,6 +90,33 @@ public class ReservationController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/getOfferActions/{offerId}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<FastReservationDTO>> getOfferActions(@PathVariable Integer offerId) {
+        List<FastReservation> fast = getFastReservations(offerId);
+        List<FastReservationDTO> dtos = new ArrayList<>();
+        for (FastReservation f : fast) {
+            FastReservationDTO dto = new FastReservationDTO(f);
+            dtos.add(dto);
+        }
+        return new ResponseEntity<List<FastReservationDTO>>(dtos, HttpStatus.OK);
+    }
+
+
+    private List<FastReservation> getFastReservations(Integer offerId) {
+        List<FastReservation> retVal = new ArrayList<>();
+        Offer o = offerService.findOne(offerId);
+        if (o instanceof Cottage)
+        {
+            retVal = ((Cottage) o).getFastReservations();
+        }
+        else if (o instanceof Ship)
+        {
+            retVal = ((Ship) o).getFastReservations();
+        }
+        return retVal;
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/unfollow/{clientId}/{offerId}", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<String> unfollow(@PathVariable Integer clientId, @PathVariable Integer offerId) {
         Client c = (Client) userService.findById(clientId);

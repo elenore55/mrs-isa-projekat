@@ -1,13 +1,13 @@
-Vue.component("client-sub", {
+Vue.component("client-actions", {
    data: function() {
        return {
-           subs: [],
-           id: "",
+           actions: [],
+           offerId: "",
        }
    },
 
    mounted() {
-        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-image", "url('images/set2.png')");
         main_image = $("body").css("background-size", "100% 270%");
         this.reload();
        },
@@ -16,63 +16,107 @@ Vue.component("client-sub", {
     <div>
         <client-navbar> </client-navbar>
             <div class="container mt-5 pt-5">
+                <div class="justify-content-center">
 
-                <div v-for="(s, i) in subs" class="row p-3 my-2" style="border:1px solid rgb(156, 151, 151); border-radius: 5px; background-color: white">
-                    <div class="col-3">
-                         <img :src="s.image" class="card-img rounded-3 my-3" width="100" height="150"  alt="cottage image">
+                    <div class="card mt-3 ms-3 shadow col-6">
+                    <div class="card-body ms-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-inline-block">
+                                <h5>Start date:  5.5.2022 </h5>
+                                <h5>Duration: 7 days </h5>
+                            </div>
+                            <div class="text-end me-1">
+                                <h6 class="text-"> Old price: <s> 500 EUR </s></h6>
+                                <h5>New price: </h5> <h3 class="text-success">300 EUR</h3>
+                                <h5 class="text-secondary">3 people</h5>
+                            </div>
+                        </div>
+
+                        <div class="text-end mb-1 me-1 mt-1">
+                            <button type="button" style="width:3cm; font-size: 18px;" v-on:click="deleteAction(i)" class="btn btn-primary btn-sm">RESERVE</button>
+                        </div>
                     </div>
+                </div>
 
-                   <div class="col-5 card-body container">
-                        <h3 class="card-title mb-2">{{s.name}}</h3>
-                        <div class="my-2">
+                <div class="justify-content-center">
+                    <div class="card mt-3 ms-3 shadow col-6">
+                    <div class="card-body ms-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-inline-block">
+                                <h5>Start date:  7.6.2022 </h5>
+                                <h5>Duration: 2 days </h5>
+                            </div>
+                            <div class="text-end me-1">
+                                <h6 class="text-"> Old price: <s> 40 EUR </s></h6>
+                                <h5>New price: </h5> <h3 class="text-success">10 EUR</h3>
+                                <h5 class="text-secondary">1 people</h5>
+                            </div>
                         </div>
-                        <p class="card-text mt-2 mb-4 h5">{{s.address.street}}, {{s.address.city}}, {{s.address.country}}</p>
-                   </div>
-                   <div class="col-4 mt-5">
 
-                        <div class="my-3">
+                        <div class="text-end mb-1 me-1 mt-1">
+                            <button type="button" style="width:3cm; font-size: 18px;" v-on:click="deleteAction(i)" class="btn btn-primary btn-sm">RESERVE</button>
                         </div>
-                        <div class="text-center">
-                            <button class="btn btn-primary" v-on:click="viewActions(s)" style="height:40px;width:130px;"> View Actions</button>
-                            <button class="btn btn-danger" v-on:click="unfollow(s)" style="height:40px;width:130px;"> Unsubscribe</button>
+                    </div>
+                </div>
+
+                <div class="justify-content-center">
+                    <div class="card mt-3 ms-3 shadow col-6">
+                    <div class="card-body ms-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-inline-block">
+                                <h5>Start date: 11.8.2022 </h5>
+                                <h5>Duration: 4 days </h5>
+                            </div>
+                            <div class="text-end me-1">
+                                <h6 class="text-"> Old price: <s> 150 EUR </s></h6>
+                                <h5>New price: </h5> <h3 class="text-success">100 EUR</h3>
+                                <h5 class="text-secondary">2 people</h5>
+                            </div>
                         </div>
 
-                   </div>
-               </div>
+                        <div class="text-end mb-1 me-1 mt-1">
+                            <button type="button" style="width:3cm; font-size: 18px;" v-on:click="deleteAction(i)" class="btn btn-primary btn-sm">RESERVE</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="justify-content-center">
+                    <div class="card mt-3 ms-3 shadow col-6">
+                    <div class="card-body ms-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-inline-block">
+                                <h5>Start date: 8.8.2022 </h5>
+                                <h5>Duration: 8 days </h5>
+                            </div>
+                            <div class="text-end me-1">
+                                <h6 class="text-"> Old price: <s> 500 EUR </s></h6>
+                                <h5>New price: </h5> <h3 class="text-success">400 EUR</h3>
+                                <h5 class="text-secondary">3 people</h5>
+                            </div>
+                        </div>
+
+                        <div class="text-end mb-1 me-1 mt-1">
+                            <button type="button" style="width:3cm; font-size: 18px;" v-on:click="deleteAction(i)" class="btn btn-primary btn-sm">RESERVE</button>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
    `,
     methods: {
 
         reload() {
-            this.id = this.$route.params.id;
-            axios.get("api/reservations/getClientsSubs/" + this.id).then(response => {
-                this.subs = response.data;
+            this.offerId = this.$route.params.id;
+            axios.get("api/reservations/getOfferActions/" + this.offerId).then(response => {
+                this.actions = response.data;
             }).catch(function (error) {
-                alert('Greska u get subs');
+                alert('Greska u get actions');
             });
            },
 
-        viewDetails(link)
-        {
-            window.location.href = 'http://localhost:8000/' + link;
 
-        },
-
-        unfollow(sub)
-        {
-            axios.post("api/reservations/unfollow/" + this.id + "/" + sub.id).then(response => {
-                alert("Dobro sam se odjavila");
-                this.reload();
-            }).catch(function (error) {
-                alert('Greska u get subs');
-            });
-        },
-
-        viewActions(sub)
-        {
-
-        }
 
     },
 
