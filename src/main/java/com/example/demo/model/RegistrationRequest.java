@@ -16,7 +16,7 @@ public class RegistrationRequest {
     @Column(nullable = false)
     private LocalDateTime dateTime;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private ProfileData profileData;
 
     @Column

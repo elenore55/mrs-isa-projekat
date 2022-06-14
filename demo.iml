@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
-    <facet type="Spring" name="Spring">
-      <configuration />
+    <facet type="web" name="Web">
+      <configuration>
+        <webroots />
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
+        </sourceRoots>
+      </configuration>
     </facet>
     <facet type="jpa" name="JPA">
       <configuration>
@@ -14,14 +20,8 @@
         <naming-strategy-map />
       </configuration>
     </facet>
-    <facet type="web" name="Web">
-      <configuration>
-        <webroots />
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-        </sourceRoots>
-      </configuration>
+    <facet type="Spring" name="Spring">
+      <configuration />
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
@@ -35,6 +35,21 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: javax.mail:mail:1.4" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-mail:2.5.6" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:5.3.18" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.mail:jakarta.mail:1.6.7" level="project" />
+    <orderEntry type="library" name="Maven: javax.mail:mail:1.4" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-mail:2.5.6" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:5.3.18" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.mail:jakarta.mail:1.6.7" level="project" />
+    <orderEntry type="library" name="Maven: javax.mail:mail:1.4" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-mail:2.5.6" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:5.3.18" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.mail:jakarta.mail:1.6.7" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:2.6.6" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.6.6" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.18" level="project" />

@@ -21,7 +21,7 @@ public class Feedback {
     @Enumerated(EnumType.STRING)
     private AdminApprovalStatus status;
 
-    @OneToOne
+    @OneToOne(mappedBy = "feedback")
     private Reservation reservation;
 
     public Feedback() {

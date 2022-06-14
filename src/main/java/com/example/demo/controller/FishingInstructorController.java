@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.AdventureDTO;
 import com.example.demo.dto.FishingInstructorDTO;
 import com.example.demo.model.Address;
+import com.example.demo.model.Adventure;
 import com.example.demo.model.FishingInstructor;
 import com.example.demo.model.ProfileData;
 import com.example.demo.service.FishingInstructorService;
@@ -10,6 +12,9 @@ import org.springframework.boot.origin.SystemEnvironmentOrigin;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/instructors")
@@ -21,6 +26,21 @@ public class FishingInstructorController {
     {
         this.fishingInstructorService=fishingInstructorService;
     }
+
+    @GetMapping(value = "/all")
+    public ResponseEntity<List<FishingInstructorDTO>> getAllInstructors() {
+
+        List<FishingInstructor> instructors = fishingInstructorService.findAll();
+
+
+        List<FishingInstructorDTO> fishingInstructorDTOS = new ArrayList<>();
+        for (FishingInstructor fishingInstructor : instructors) {
+            fishingInstructorDTOS.add(new FishingInstructorDTO(fishingInstructor));
+        }
+
+        return new ResponseEntity<>(fishingInstructorDTOS, HttpStatus.OK);
+    }
+
     @GetMapping(value = "/getInstructorData")
     public ResponseEntity<FishingInstructorDTO> getFishingInstructorData(){
         FishingInstructor fishingInstructor = fishingInstructorService.findOne(1);

@@ -1,12 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.AdventureDTO;
-import com.example.demo.dto.FishingEquipmentDTO;
-import com.example.demo.dto.FishingInstructorDTO;
+import com.example.demo.dto.*;
 import com.example.demo.model.*;
-import com.example.demo.service.AdventureService;
-import com.example.demo.service.FishingEquipmentService;
-import com.example.demo.service.FishingInstructorService;
+import com.example.demo.model.enums.ReservationStatus;
+import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +19,20 @@ public class AdventureController {
     private AdventureService adventureService;
     private FishingInstructorService fishingInstructorService;
     private FishingEquipmentService fishingEquipmentService;
+    private ReservationService reservationService;
+    private OfferService offerService;
+    private UserService userService;
 
     @Autowired
-    public AdventureController(AdventureService adventureService, FishingInstructorService fishingInstructorService, FishingEquipmentService fishingEquipmentService) {
+    public AdventureController(AdventureService adventureService, FishingInstructorService fishingInstructorService,
+                               FishingEquipmentService fishingEquipmentService, ReservationService reservationService,
+                               OfferService offerService, UserService userService) {
         this.adventureService = adventureService;
         this.fishingInstructorService = fishingInstructorService;
         this.fishingEquipmentService = fishingEquipmentService;
+        this.reservationService = reservationService;
+        this.offerService = offerService;
+        this.userService = userService;
     }
 
     @GetMapping(value = "/all")
@@ -131,6 +136,49 @@ public class AdventureController {
 
         adventure = adventureService.update(adventure);
         return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.ACCEPTED);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/addFastReservation/{id}", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<FastReservationDTO> addFastReservation(@PathVariable Integer id,@RequestBody FastReservationDTO dto) {
+        Adventure adventure = adventureService.findOne(id);
+        if (adventure == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+
+        List<FastAdventureReservation> res = adventure.getFastAdventureReservations();
+        FastAdventureReservation far = new FastAdventureReservation();
+        far.setStart(dto.getStart());
+        far.setDuration(dto.getDuration());
+        far.setActionStart(dto.getActionStart());
+        far.setActionDuration(dto.getActionDuration());
+
+        far.setAdditionalServices(adventure.getAdditionalInfo());
+        far.setPrice(dto.getPrice());
+        far.setMaxPeople(dto.getMaxPeople());
+        far.setPlace(adventure.getAddress());
+        res.add(far);
+        adventure.setFastAdventureReservations(res);
+        adventureService.save(adventure);
+        return new ResponseEntity<>(new FastReservationDTO(far), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/addReservationClient", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<ReservationDTO> addResevClient(@RequestBody ReservationDTO dto) {
+        Reservation reservation = new Reservation();
+        reservation.setClient(userService.findClientByEmail(dto.getClientEmail()));
+        reservation.setEnd(dto.getEndDate());
+        reservation.setStart(dto.getStartDate());
+        reservation.setOffer(offerService.findOne(dto.getOfferId()));
+
+        if (reservation.getClient() == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        reservation.setReservationStatus(ReservationStatus.PENDING);
+        reservation = reservationService.save(reservation);
+        userService.addReservation(dto.getOwnerId(),reservation);
+
+        return new ResponseEntity<>(new ReservationDTO(reservation), HttpStatus.OK);
     }
 
 

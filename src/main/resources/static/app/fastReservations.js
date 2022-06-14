@@ -14,11 +14,14 @@ Vue.component('fast-reservations', {
     },
 
     template: `
-    <div>
-        <update-cottage-nav></update-cottage-nav>
-        <h3 class="mt-2 ms-3">Fast reservations</h3>
-        <div class="w-50">
-            <div v-for="(fr, i) in actions" class="card mt-3 ms-3">
+    <div style="background-color: #f2e488;height: 1000px">
+        <update-ship-nav></update-ship-nav>
+        <div class="d-flex justify-content-start ms-3 mt-3">
+            <h2 class="mt-2 ms-3">Fast reservations</h2>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div>
+                <div v-for="(fr, i) in actions" class="card mt-3 ms-3 shadow">
                 <div class="card-body ms-3">
                     <div class="d-flex justify-content-between">
                         <div>
@@ -37,13 +40,14 @@ Vue.component('fast-reservations', {
                     </div>
                 </div>
             </div>
-            <div class="card position-fixed bottom-0 end-0 mb-5">
+            </div>
+            <div class="card sticky-top shadow">
                 <div class="card-body">
                     <h5 class="ms-3 mt-2">Stay period</h5>
                     <div class="d-flex justify-content-left ms-3 mt-4 me-3 mb-1">
                         <div class="mt-1 ms-3 me-4 mb-1">
                             <label for="start-date">Start date</label>
-                            <vuejs-datepicker v-model="start" format="dd.MM.yyyy." id="start-date"></vuejs-datepicker>
+                            <vuejs-datepicker v-model="start" format="dd.MM.yyyy." id="start-date" :monday-first="true"></vuejs-datepicker>
                             <p v-if="!isValidStayDate" class="text-danger">Date must not be empty</p>
                         </div>
                         <div class="mt-1 mb-1 me-3 form-floating">
@@ -57,7 +61,7 @@ Vue.component('fast-reservations', {
                     <div class="d-flex justify-content-left ms-3 mt-4 me-3 mb-1">
                         <div class="mt-1 ms-3 me-4 mb-1">
                             <label for="start-action-date">Start date</label>
-                            <vuejs-datepicker v-model="actionStart" format="dd.MM.yyyy." id="start-action-date"></vuejs-datepicker>
+                            <vuejs-datepicker v-model="actionStart" format="dd.MM.yyyy." id="start-action-date" :monday-first="true"></vuejs-datepicker>
                             <p v-if="!isValidActionDate" class="text-danger">Date must not be empty</p>
                         </div>
                         <div class="mt-1 mb-1 me-3 form-floating">               
@@ -101,10 +105,10 @@ Vue.component('fast-reservations', {
             };
             if (this.isValidActionDate && this.isValidActionDuration && this.isValidPrice && this.isValidMaxPeople &&
                 this.isValidStayDate && this.isValidStayDuration) {
-                axios.post("api/cottages/addFastReservation/" + this.$route.params.id, fr).then(response => {
+                axios.post("api/offers/addFastReservation/" + this.$route.params.id, fr).then(response => {
                     this.reload();
                 }).catch(function (error) {
-                    alert('An error occurred!');
+                    Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }
         },
@@ -122,15 +126,15 @@ Vue.component('fast-reservations', {
             axios.delete("api/cottages/deleteFastReservation/" + this.$route.params.id + "/" + actionId).then(response => {
                 this.actions.splice(index, 1)
             }).catch(function (error) {
-                alert('An error occurred!');
+                Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
         reload() {
-            axios.get("api/cottages/getFastReservations/" + this.$route.params.id).then(response => {
+            axios.get("api/offers/getFastReservations/" + this.$route.params.id).then(response => {
                 this.actions = response.data;
             }).catch(function (error) {
-                alert('An error occurred!');
+                Swal.fire('Error', 'Something went wrong!', 'error');
             });
         }
     },

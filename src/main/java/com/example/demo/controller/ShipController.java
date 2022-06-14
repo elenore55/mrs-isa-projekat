@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import com.example.demo.dto.*;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ShipType;
-import com.example.demo.service.AdventureService;
 import com.example.demo.service.ShipOwnerService;
 import com.example.demo.service.ShipService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -131,6 +132,20 @@ public class ShipController {
         return new ResponseEntity<>(dtos, HttpStatus.OK);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/updateReservationPeriod", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<ShipDTO> updateReservationPeriod(@RequestBody ShipDTO dto) {
+        Ship ship = shipService.findOne(dto.getId());
+        if (ship == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Availability a = new Availability(dto.getAvailableStart(), dto.getAvailableEnd());
+        a.setOffer(ship);
+        ship.setAvailabilities(Arrays.asList(a));
+        shipService.save(ship);
+        return new ResponseEntity<>(new ShipDTO(ship), HttpStatus.OK);
+    }
+
     private void setAttributes(Ship ship, ShipDTO dto) {
         ship.setId(dto.getId());
         ship.setName(dto.getName());
@@ -145,7 +160,13 @@ public class ShipController {
         ship.setShipType(ShipType.values()[dto.getShipType() - 1]);
         ship.setMaxSpeed(dto.getMaxSpeed());
         // address
-        ship.setAddress(new Address(dto.getAddress().getStreet(), dto.getAddress().getCity(), dto.getAddress().getCountry()));
+        Address address = ship.getAddress();
+        if (address == null) address = new Address();
+        address.setStreet(dto.getAddress().getStreet());
+        address.setCity(dto.getAddress().getCity());
+        address.setCountry(dto.getAddress().getCountry());
+        ship.setAddress(address);
+        // ship.setAddress(new Address(dto.getAddress().getStreet(), dto.getAddress().getCity(), dto.getAddress().getCountry()));
         // navigation eq
         List<NavigationEquipment> navigationEquipmentList = new ArrayList<>();
         for (NavigationEquipmentDTO n : dto.getNavigationEquipmentList())
@@ -164,6 +185,28 @@ public class ShipController {
         List<Image> images = new ArrayList<>();
         for (String imgPath : dto.getImagePaths()) images.add(new Image(imgPath));
         ship.setImages(images);
+        // availabilities
+        if (dto.getAvailableStart() != null && dto.getAvailableEnd() != null) {
+            Availability a = new Availability(dto.getAvailableStart(), dto.getAvailableStart());
+            a.setOffer(ship);
+            ship.setAvailabilities(Arrays.asList(a));
+        }
+
+        // price history
+        if (ship.getPriceHistory() == null || ship.getPriceHistory().size() == 0) {
+            List<PriceList> priceHistory = new ArrayList<>();
+            priceHistory.add(new PriceList(LocalDate.now(), dto.getPrice()));
+            ship.setPriceHistory(priceHistory);
+        } else {
+            List<PriceList> priceHistory = ship.getPriceHistory();
+            PriceList last = priceHistory.get(priceHistory.size() - 1);
+            if (!last.getAmount().equals(dto.getPrice())) {
+                PriceList newPrice = new PriceList(LocalDate.now(), dto.getPrice());
+                priceHistory.add(newPrice);
+                ship.setPriceHistory(priceHistory);
+            }
+        }
+
         // owner
         ShipOwner owner = shipOwnerService.findOne(dto.getOwnerId());
         if (owner != null) ship.setOwner(owner);

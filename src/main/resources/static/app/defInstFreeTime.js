@@ -2,31 +2,40 @@ Vue.component("availability-instructor",{
     data:function ()
     {
         return{
-            availabilities: [],
-            start_date:null,
-            end_date:null,
+            // availabilities: [],
+            start:null,
+            end:null,
             calendar:[],
-            inst_id:[]
+            adventure:[],
+            adventures:[],
+            offer:[]
         }
     },
     mounted: function (){
-        this.loadAllInstructorAvailability()
+        // this.loadAllInstructorAvailability()
+        this.loadInstructorsAdventures()
+        // this.getOfferFromAdventure()
     },
-    // ako hoces custom ponasanja ti stavi button i v-onclick inace ako se koristi forma idemo submit i onsubmit jer nam daje sam mogucnost provere unosa podataka
     template: `
     <form style="width: 600px; margin: auto"  v-on:submit ="sendRequest">
-        <h2 class="text-center">Add your available time</h2>
+        <h2 class="text-center">Add adventure available time</h2>
         <div class="row">
         </div>
         <div class="row">
             <div class="col">
-                <vuejs-datepicker v-model="start_date" format="dd.MM.yyyy." id="start-date"></vuejs-datepicker>
+                <vuejs-datepicker v-model="start" format="dd.MM.yyyy." id="start-date"></vuejs-datepicker>
                 <label>start date</label>   
             </div>
             <div class="col">
-                <vuejs-datepicker v-model="end_date" format="dd.MM.yyyy." id="end-date"></vuejs-datepicker>
+                <vuejs-datepicker v-model="end" format="dd.MM.yyyy." id="end-date"></vuejs-datepicker>
                 <label>end date</label>
             </div>
+        </div>
+        <div class = "row">
+            <h2 class="text-center">Instructors adventures</h2>
+                <select class="select form-control" v-model="adventure" style="height: 50px">
+                    <option v-for="adv in adventures" v-bind:value="adv"> {{adv.name}}</option>
+                </select>
         </div>
         <div class="row">
             <div class="col">
@@ -38,24 +47,33 @@ Vue.component("availability-instructor",{
     </form>
     `,
     methods:{
-        loadAllInstructorAvailability(){
-            axios.get("api/availability/all").then(response => {
-                this.availabilities = response.data;
-                console.log(this.availabilities)
+        // loadAllInstructorAvailability(){
+        //     axios.get("api/availability/all").then(response => {
+        //         this.availabilities = response.data;
+        //         // console.log(this.availabilities)
+        //         // console.log("BBBB")
+        //     })
+        // },
+        loadInstructorsAdventures(){
+            axios.get("api/adventures/all").then(response => {
+                this.adventures = response.data;
+                // console.log(this.adventures)
             })
         },
         sendRequest(){
-            console.log(this.start_date)
-            console.log(this.end_date)
-            axios.post("api/availability/addAvailability", {
-                availabilityDTO: this.availabilities,
-                start_date: this.start_date,
-                end_date:this.end_date
-            }).then(function (response) {
-                alert("Successfully updated your personal information");
-            }).catch(function (error) {
-                alert("An ERROR occurred while updating your personal information");
-            });
+            axios.get("api/offers/getOffer/" + this.adventure.id).then(response => {
+                this.offer = response.data;
+                axios.post("api/availability/addAvailability", {
+                    // availabilityDTO: this.availabilityDTO
+                    start: this.start,
+                    end:this.end,
+                    offer: this.offer
+                }).then(function (response) {
+                    alert("Successfully added availability period");
+                }).catch(function (error) {
+                    alert("An ERROR occurred while adding an availability");
+                });
+            })
         }
     }
 });

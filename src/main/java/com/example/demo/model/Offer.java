@@ -1,12 +1,21 @@
 package com.example.demo.model;
 
+import com.example.demo.model.enums.AdminApprovalStatus;
+import com.example.demo.model.enums.ReservationStatus;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "offer_id")
 public class Offer {
 
     @Id
@@ -16,7 +25,7 @@ public class Offer {
     @Column
     protected String name;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "address_id")
     protected Address address;
 
@@ -24,8 +33,8 @@ public class Offer {
     protected String description;
 
 
-    //@OneToOne(cascade = CascadeType.ALL)        //izmenjeno
-    //protected PriceList priceList;
+    @OneToMany(cascade = CascadeType.ALL)        //izmenjeno
+    protected List<PriceList> priceHistory;
 
     @Column
     protected BigDecimal priceList;
@@ -46,6 +55,24 @@ public class Offer {
     protected List<Reservation> reservations = new ArrayList<>();
 
     public Offer() {
+    }
+
+    public Boolean hasFutureReservations() {
+        for (Reservation r : reservations) {
+            if (r.getEnd().compareTo(LocalDateTime.now()) >= 0 && r.getReservationStatus() != ReservationStatus.CANCELLED) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public List<Feedback> getReviews() {
+        List<Feedback> reviews = new ArrayList<>();
+        for (Reservation r : reservations) {
+            Feedback fb = r.getFeedback();
+            if (fb != null && fb.getStatus() == AdminApprovalStatus.APPROVED) reviews.add(r.getFeedback());
+        }
+        return reviews;
     }
 
     public Integer getId() {
@@ -126,6 +153,14 @@ public class Offer {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
+    }
+
+    public List<PriceList> getPriceHistory() {
+        return priceHistory;
+    }
+
+    public void setPriceHistory(List<PriceList> priceHistory) {
+        this.priceHistory = priceHistory;
     }
 
     public Double getRateOrNegativeOne() {

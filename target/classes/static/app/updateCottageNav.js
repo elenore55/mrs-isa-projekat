@@ -1,22 +1,40 @@
 Vue.component('update-cottage-nav', {
     template: `
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <div class="collapse navbar-collapse" id="mynavbar">
+            <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/cottagesViewOwner/'})">All</a>
+                        <a class="nav-link" :href="allCottages">All cottages</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/updateCottage/' + $route.params.id})">Profile</a>
+                        <a class="nav-link" :href="cottageProfile">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/cottageImages/' + $route.params.id})">Images</a>
+                        <a class="nav-link" :href="cottageImages">Images</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/cottageReservations/' + $route.params.id})">Reservations</a>
+                        <a class="nav-link" :href="cottageReservations">Reservations</a>
                     </li>
                 </ul>
             </div>
         </nav>
-    `
+    `,
+
+    computed: {
+        allCottages() {
+            return "/#/cottagesViewOwner/2";
+        },
+
+        cottageProfile() {
+            return "/#/cottageProfile/" + this.$route.params.id;
+        },
+
+        cottageImages() {
+            return "/#/cottageImages/" + this.$route.params.id;
+        },
+
+        cottageReservations() {
+            return "/#/cottageReservations/" + this.$route.params.id;
+        }
+    }
 });

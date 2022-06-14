@@ -1,6 +1,22 @@
+const PriceHistoryReport = {template: '<price-history-report></price-history-report>'};
+const VisitReport = {template: '<visit-report></visit-report>'};
+const ChangePasswordOwner = {template: '<change-pw-owner></change-pw-owner>'};
+const ShipProfile = {template: '<ship-profile></ship-profile>'};
+const CottageProfile = {template: '<cottage-profile></cottage-profile>'};
+const SearchMap = {template: '<search-map></search-map>'};
+const MyMap = {template: '<my-map></my-map>'};
+const IncomeReport = {template: '<income-report></income-report>'};
+const OwnersReservationsCalendar = {template: '<owners-reservations-calendar></owners-reservations-calendar>'};
+const ClientReadonlyProfile = {template: '<client-readonly-profile></client-readonly-profile>'};
+const ReservationsHistory = {template: '<reservations-history></reservations-history>'};
+const ReservationsCalendar = {template: '<reservations-calendar></reservations-calendar>'};
+const UpdateOwnersProfile = {template: '<update-owners-profile></update-owners-profile>'};
+const OwnersProfile = {template: '<owners-profile></owners-profile>'};
+const OwnersRegistration = {template: '<owners-registration></owners-registration>'};
+const ShipReservations = {template: '<ship-reservations></ship-reservations>'};
 const ReservationConfirmation = {template: '<reservation-confirmation></reservation-confirmation>'};
 const FastReservations = {template: '<fast-reservations></fast-reservations>'};
-const AddCottageReservation = {template: '<add-cottage-reservation></add-cottage-reservation>'};
+const AddReservation = {template: '<add-reservation></add-reservation>'};
 const CottageReservations = {template: '<cottage-reservations></cottage-reservations>'};
 const ShipsViewOwner = {template: '<ships-view-owner></ships-view-owner>'};
 const CottagesViewOwner = {template: '<cottages-view-owner></cottages-view-owner>'};
@@ -37,12 +53,81 @@ const ClientComplain = {template: '<client-complain></client-complain>'}
 const ClientRate = {template: '<client-rate></client-rate>'}
 const ClientSubs = {template: '<client-subs></client-subs>'}
 const ClientActions = {template: '<client-actions></client-actions>'}
+const InstructorsCalendar = {template: '<instructor-calendar></instructor-calendar>'};
+const AdventureHistory = {template: '<adventure-history></adventure-history>'};
+const AdventureQuickReserv = {template: '<adventure-quick></adventure-quick>'};
+const AdveReservWithClient = {template: '<advreserv-with-client></advreserv-with-client>'};
+const AdminEntities = {template: '<admin-entities></admin-entities>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/priceHistoryReport/:id",
+            component: PriceHistoryReport
+        },
+        {
+            path: "/visitReport/:id",
+            component: VisitReport
+        },
+        {
+            path: "/changePwOwner/:id",
+            component: ChangePasswordOwner
+        },
+        {
+            path: "/shipProfile/:id",
+            component: ShipProfile
+        },
+        {
+            path: "/cottageProfile/:id",
+            component: CottageProfile
+        },
+        {
+            path: "/searchMap",
+            component: SearchMap
+        },
+        {
+            path: "/myMap",
+            component: MyMap
+        },
+        {
+            path: "/incomeReport/:id",
+            component: IncomeReport
+        },
+        {
+            path: "/ownersReservationsCalendar/:id",
+            component: OwnersReservationsCalendar
+        },
+        {
+            path: "/clientReadonlyProfile/:email/",
+            component: ClientReadonlyProfile
+        },
+        {
+            path: "/reservationsHistory/:id/",
+            component: ReservationsHistory
+        },
+        {
+            path: "/reservationsCalendar/",
+            component: ReservationsCalendar
+        },
+        {
+            path: "/updateOwnersProfile/:id/",
+            component: UpdateOwnersProfile
+        },
+        {
+            path: "/ownersProfile/:id/",
+            component: OwnersProfile
+        },
+        {
+            path: "/ownersRegistration/",
+            component: OwnersRegistration
+        },
+        {
+            path: "/shipReservations/:id/",
+            component: ShipReservations
+        },
         {
             path: "/confirmReservation/:id/",
             component: ReservationConfirmation
@@ -52,8 +137,8 @@ const router = new VueRouter({
             component: FastReservations
         },
         {
-            path: "/addCottageReservation/:id/",
-            component: AddCottageReservation
+            path: "/addReservation/:id/",
+            component: AddReservation
         },
         {
             path: "/cottageReservations/:id/",
@@ -64,11 +149,11 @@ const router = new VueRouter({
             component: InstructorsAdventures
         },
         {
-            path: "/shipsViewOwner/",
+            path: "/shipsViewOwner/:id/",
             component: ShipsViewOwner
         },
         {
-            path: "/cottagesViewOwner/",
+            path: "/cottagesViewOwner/:id/",
             component: CottagesViewOwner
         },
         {
@@ -198,6 +283,26 @@ const router = new VueRouter({
         {
             path: "/availabilityInstructor/",
             component: AvailabilityInstructor
+        },
+        {
+            path: "/instructorsCalendar/",
+            component: InstructorsCalendar
+        },
+        {
+            path: "/adventureHistory/",
+            component: AdventureHistory
+        },
+        {
+            path: "/adventureQuickReserv/",
+            component: AdventureQuickReserv
+        },
+        {
+            path: "/advReservWithClient/",
+            component: AdveReservWithClient
+        },
+        {
+            path: "/adminEntities/",
+            component: AdminEntities
         }
 
 

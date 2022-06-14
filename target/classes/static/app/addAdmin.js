@@ -96,9 +96,9 @@ Vue.component("add-admin",{
                 is_main: this.is_main,
                 profileDataDTO: this.form
             }).then(function (response) {
-                alert("Successfully updated your personal information");
+                alert("Successfully added new admin");
             }).catch(function (error) {
-                alert("An ERROR occurred while updating your personal information");
+                alert("An ERROR occurred while adding admin");
             });
         }
     }

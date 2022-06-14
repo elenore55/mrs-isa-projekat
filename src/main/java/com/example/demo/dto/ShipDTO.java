@@ -4,6 +4,7 @@ import com.example.demo.model.*;
 import com.example.demo.model.enums.ShipType;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,11 @@ public class ShipDTO {
     private List<FishingEquipmentDTO> fishingEquipmentList;
     private List<NavigationEquipmentDTO> navigationEquipmentList;
     private String shipTypeStr;
+    private LocalDateTime availableStart;
+    private LocalDateTime availableEnd;
+    private Double rate;
+    private Boolean editable;
+    private List<ReviewDTO> reviews;
 
     public ShipDTO(Ship ship) {
         this.id = ship.getId();
@@ -54,6 +60,18 @@ public class ShipDTO {
         this.imagePaths = new ArrayList<>();
         for (Image img : ship.getImages()) {
             imagePaths.add(img.getPath());
+        }
+        List<Availability> avs = ship.getAvailabilities();
+        if (avs != null && avs.size() > 0) {
+            Availability av = ship.getAvailabilities().get(avs.size() - 1);
+            this.availableStart = av.getStart();
+            this.availableEnd = av.getEnd();
+        }
+        this.rate = ship.getRateOrNegativeOne();
+        this.editable = ship.hasFutureReservations();
+        this.reviews = new ArrayList<>();
+        for (Feedback fb : ship.getReviews()) {
+            this.reviews.add(new ReviewDTO(fb));
         }
     }
 
@@ -206,5 +224,45 @@ public class ShipDTO {
 
     public String getShipTypeStr() {
         return ShipType.values()[shipType - 1].toString();
+    }
+
+    public LocalDateTime getAvailableStart() {
+        return availableStart;
+    }
+
+    public void setAvailableStart(LocalDateTime availableStart) {
+        this.availableStart = availableStart;
+    }
+
+    public LocalDateTime getAvailableEnd() {
+        return availableEnd;
+    }
+
+    public void setAvailableEnd(LocalDateTime availableEnd) {
+        this.availableEnd = availableEnd;
+    }
+
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
+    }
+
+    public Boolean getEditable() {
+        return editable;
+    }
+
+    public void setEditable(Boolean editable) {
+        this.editable = editable;
+    }
+
+    public List<ReviewDTO> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<ReviewDTO> reviews) {
+        this.reviews = reviews;
     }
 }

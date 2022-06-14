@@ -145,4 +145,20 @@ public class Ship extends Offer {
     public void setFishingEquipmentList(List<FishingEquipment> fishingEquipmentList) {
         this.fishingEquipmentList = fishingEquipmentList;
     }
+
+    public double getRateOrNegativeOne()
+    {
+        double sum = 0;
+        int n = 0;
+        for(Reservation r : getReservations())
+        {
+            if (r.getFeedback()!= null)
+            {
+                sum += r.getFeedback().getRating();
+                n++;
+            }
+        }
+        if (n==0) return -1;
+        return sum/n;
+    }
 }

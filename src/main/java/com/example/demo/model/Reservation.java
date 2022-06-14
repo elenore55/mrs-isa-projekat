@@ -3,7 +3,9 @@ package com.example.demo.model;
 import com.example.demo.model.enums.ReservationStatus;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 public class Reservation {
@@ -25,7 +27,8 @@ public class Reservation {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "feedback_id", referencedColumnName = "id")
     private Feedback feedback;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -97,5 +100,9 @@ public class Reservation {
 
     public void setOffer(Offer offer) {
         this.offer = offer;
+    }
+
+    public BigDecimal getDuration() {
+        return BigDecimal.valueOf(ChronoUnit.DAYS.between(start, end));
     }
 }

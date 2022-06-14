@@ -2,9 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.ChangePasswordDTO;
 import com.example.demo.dto.EditProfileDTO;
-import com.example.demo.model.Client;
-import com.example.demo.model.ProfileData;
-import com.example.demo.model.User;
+import com.example.demo.model.*;
 import com.example.demo.model.enums.Category;
 import com.example.demo.repository.AddressRepository;
 import com.example.demo.repository.ClientRepository;
@@ -12,7 +10,6 @@ import com.example.demo.repository.Profile_DataRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
 import java.util.List;
 
@@ -26,8 +23,7 @@ public class UserService {
 
     @Autowired
     public UserService(UserRepository userRepository, ClientRepository clientRepository,
-                       Profile_DataRepository profileDataRepository, AddressRepository addressRepository)
-    {
+                       Profile_DataRepository profileDataRepository, AddressRepository addressRepository) {
         this.userRepository = userRepository;
         this.clientRepository = clientRepository;
         this.profileDataRepository = profileDataRepository;
@@ -43,12 +39,17 @@ public class UserService {
         return retC;
     }
 
-
     public String findUserToken(String email, String password) {
         ProfileData pd = profileDataRepository.getByEmail(email);
-        if (pd==null) return "";
+        if (pd == null) return "";
         if (isValidPassword(password, pd.getPassword())) return generateTokenById(pd.getId());
         return "";
+    }
+
+    public Client findClientByEmail(String email) {
+        ProfileData pd = profileDataRepository.getByEmail(email);
+        if (pd == null) return null;
+        return clientRepository.findByProfileDataId(pd.getId());
     }
 
     private String generateTokenById(Integer id) {
@@ -95,6 +96,32 @@ public class UserService {
         ProfileData pd = profileDataRepository.getByEmail(email);
         if (pd == null) return null;
         return clientRepository.findByProfileDataId(pd.getId());
+    public User findOne(Integer id) {
+        return userRepository.findById(id).orElseGet(null);
+    }
+    public List<User> findAll() { return userRepository.findAll();}
+
+    public void addReservation(Integer id, Reservation reservation) {
+        User user = findOne(id);
+        if (user instanceof CottageOwner) {
+            CottageOwner c = (CottageOwner)user;
+            List<Reservation> reservations = c.getReservations();
+            reservations.add(reservation);
+            c.setReservations(reservations);
+            userRepository.save(c);
+        } else if (user instanceof ShipOwner) {
+            ShipOwner c = (ShipOwner)user;
+            List<Reservation> reservations = c.getReservations();
+            reservations.add(reservation);
+            c.setReservations(reservations);
+            userRepository.save(c);
+        } else if (user instanceof FishingInstructor) {
+            FishingInstructor fi = (FishingInstructor) user;
+            List<Reservation> reservations = fi.getReservations();
+            reservations.add(reservation);
+            fi.setReservations(reservations);
+            userRepository.save(fi);
+        }
     }
 
     public User findById(Integer id) {
