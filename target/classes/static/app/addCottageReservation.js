@@ -15,7 +15,7 @@ Vue.component('add-cottage-reservation', {
         axios.get("api/cottages/getCottage/" + this.$route.params.id).then(response => {
             this.name = response.data.name;
         }).catch(function (error) {
-            alert('An error occurred!');
+            Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -38,11 +38,11 @@ Vue.component('add-cottage-reservation', {
                     <div class="d-flex justify-content-around ms-3 mt-4 me-3 mb-1">
                         <div class="mt-1 ms-3 me-4 mb-1">
                             <label for="start-date">Start date</label>
-                            <vuejs-datepicker v-model="start" format="dd.MM.yyyy." id="start-date"></vuejs-datepicker>
+                            <vuejs-datepicker v-model="start" format="dd.MM.yyyy." id="start-date" :monday-first="true"></vuejs-datepicker>
                         </div>
                         <div class="mt-1 mb-1 me-3">
                             <label for="end-date">End date</label>                
-                            <vuejs-datepicker v-model="end" format="dd.MM.yyyy." id="end-date"></vuejs-datepicker>
+                            <vuejs-datepicker v-model="end" format="dd.MM.yyyy." id="end-date" :monday-first="true"></vuejs-datepicker>
                         </div>
                     </div>
                     <p v-if="!areValidDates" class="ms-4 text-danger">Dates are required and must be in ascending order!</p>
@@ -67,12 +67,12 @@ Vue.component('add-cottage-reservation', {
                     endDate: this.end,
                     clientEmail: this.email
                 }).then(function(response) {
-                    alert('Cottage reservation successfully added!');
+                    Swal.fire('Success', 'Reservation added!', 'success');
                 }).catch(function (error) {
                     if(error.response.status === 404) {
-                        alert('Client not found');
+                        Swal.fire('Error', 'Client not found!', 'error');
                     } else {
-                        alert('Cottage already reserved')
+                        Swal.fire('Error', 'Cottage already reserved!', 'error');
                     }
                 });
             }
