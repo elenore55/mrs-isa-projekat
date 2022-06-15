@@ -48,8 +48,8 @@ public class Offer {
     @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     protected List<Availability> availabilities;
 
-    @ManyToMany(mappedBy = "subscriptions", fetch = FetchType.LAZY)
-    protected List<Client> subscribers = new ArrayList<>();
+//    @ManyToMany(mappedBy = "subscriptions", fetch = FetchType.LAZY)
+//    protected List<Client> subscribers = new ArrayList<>();
 
     @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     protected List<Reservation> reservations = new ArrayList<>();
@@ -139,13 +139,13 @@ public class Offer {
         this.availabilities = availabilities;
     }
 
-    public List<Client> getSubscribers() {
-        return subscribers;
-    }
-
-    public void setSubscribers(List<Client> subscribers) {
-        this.subscribers = subscribers;
-    }
+//    public List<Client> getSubscribers() {
+//        return subscribers;
+//    }
+//
+//    public void setSubscribers(List<Client> subscribers) {
+//        this.subscribers = subscribers;
+//    }
 
     public List<Reservation> getReservations() {
         return reservations;
