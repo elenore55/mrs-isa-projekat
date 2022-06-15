@@ -19,7 +19,7 @@ Vue.component("add-adventure",{
                 rules: [],
                 fishingEquipmentList: [],
                 maxPeople: 1,
-                fInstructorId: 1
+                fInstructorId: 3
             }
         }
     },
@@ -144,7 +144,7 @@ Vue.component("add-adventure",{
                 // street: this.form.street,
                 address: this.form.address,
                 additionalInfo: this.form.additionalInfo,
-                fInstructorId: 1
+                fInstructorId: 3
             }).then(function (response) {
                 alert("Successfully added an adventure");
             }).catch(function (error) {

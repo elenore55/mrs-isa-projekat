@@ -23,7 +23,7 @@ public class Complaint {
     private AdminApprovalStatus status;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private User issuedBy;
+    private Client issuedBy;
 
     public Complaint() {
     }
@@ -72,11 +72,11 @@ public class Complaint {
         this.id = id;
     }
 
-    public User getIssuedBy() {
+    public Client getIssuedBy() {
         return issuedBy;
     }
 
-    public void setIssuedBy(User issuedBy) {
+    public void setIssuedBy(Client issuedBy) {
         this.issuedBy = issuedBy;
     }
 }
