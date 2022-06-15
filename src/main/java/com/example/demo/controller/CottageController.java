@@ -209,7 +209,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/deleteFastReservation/{cottageId}/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> deleteFastReservation(@PathVariable Integer cottageId,  @PathVariable Integer id) {
+    public ResponseEntity<Void> deleteFastReservation(@PathVariable Integer cottageId, @PathVariable Integer id) {
         Cottage c = cottageService.findOne(cottageId);
         if (c == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -213,6 +213,7 @@ insert into ship_images (ship_id, images_id) values (8, 15);
 insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic55@hotmail.com', 'Marko', 'pass3', '066-321-3443', 'Markovic', 3);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,3);
 insert into client (id) values (3);
+insert into complaint(content,complaint_date_time,status,issued_by_id) values ('vrv email korisnika','20220520 10:05:00 AM','PENDING',3);
 
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,2);
 insert into admin (is_main, id) values (true , 4);

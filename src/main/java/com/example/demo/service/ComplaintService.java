@@ -5,6 +5,8 @@ import com.example.demo.repository.ComplaintRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ComplaintService {
     private ComplaintRepository repository;
@@ -17,5 +19,9 @@ public class ComplaintService {
 
     public void save(Complaint c) {
         this.repository.save(c);
+    }
+
+    public List<Complaint> findAll() {
+        return this.repository.findAll();
     }
 }
