@@ -12,6 +12,7 @@ import org.apache.catalina.LifecycleState;
 import com.example.demo.service.emailSenders.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.tools.JavaCompiler;
 import java.util.ArrayList;
@@ -29,10 +30,12 @@ public class OfferService {
         this.emailSender = emailSender;
     }
 
+    @Transactional
     public Offer findOne(Integer id) {
         return repository.findById(id).orElseGet(null);
     }
 
+    @Transactional
     public Offer save(Offer offer) {
         return repository.save(offer);
     }

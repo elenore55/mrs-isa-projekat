@@ -41,6 +41,7 @@ public class ReservationController {
 
     }
 
+    @Transactional
     @ResponseBody
     @RequestMapping(path = "/addReservation", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<ReservationDTO> addReservation(@RequestBody ReservationDTO dto) {

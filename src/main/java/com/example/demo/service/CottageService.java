@@ -31,10 +31,12 @@ public class CottageService {
         this.emailSender = emailSender;
     }
 
+    @Transactional
     public Cottage save(Cottage cottage) {
         return cottageRepository.save(cottage);
     }
 
+    @Transactional
     public List<Cottage> getCottages()
     {
         return cottageRepository.findAll();
@@ -45,10 +47,12 @@ public class CottageService {
         return cottageRepository.findById(id).orElseGet(null);
     }
 
+    @Transactional
     public void remove(Integer id) {
         cottageRepository.deleteById(id);
     }
 
+    @Transactional
     public boolean checkReservations(Cottage cottage) {
         for (Reservation r : cottage.getReservations()) {
             if (r.getEnd().compareTo(LocalDateTime.now()) >= 0) {
@@ -69,7 +73,7 @@ public class CottageService {
                 retVal.add(c);
             }
         }
-        //sortCottages(retVal, getStringSortBy(userFilterDTO));
+        sortCottages(retVal, getStringSortBy(userFilterDTO));
         return retVal;
     }
 

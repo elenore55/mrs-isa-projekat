@@ -54,6 +54,9 @@ public class Offer {
     @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     protected List<Reservation> reservations = new ArrayList<>();
 
+    @Version
+    private Integer version;
+
     public Offer() {
     }
 
@@ -161,6 +164,14 @@ public class Offer {
 
     public void setPriceHistory(List<PriceList> priceHistory) {
         this.priceHistory = priceHistory;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     public Double getRateOrNegativeOne() {
