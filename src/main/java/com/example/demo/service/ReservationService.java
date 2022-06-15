@@ -14,6 +14,7 @@ import com.example.demo.service.emailSenders.EmailSender;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -33,18 +34,22 @@ public class ReservationService {
         this.emailSender = emailSender;
     }
 
+    @Transactional
     public Reservation save(Reservation reservation) {
         return repository.save(reservation);
     }
 
+    @Transactional
     public List<Reservation> findAll() {
         return repository.findAll();
     }
 
+    @Transactional
     public Reservation findOne(Integer id) {
         return repository.findById(id).orElseGet(null);
     }
 
+    @Transactional
     public boolean isPossibleReservation(Reservation reservation) {
         Offer offer = reservation.getOffer();
         for (Reservation r : offer.getReservations()) {

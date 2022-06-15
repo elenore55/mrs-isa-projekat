@@ -82,7 +82,7 @@ Vue.component("add-reservation", {
                     startDate: this.start,
                     endDate: this.end,
                     clientEmail: this.email,
-                    ownerId: 1
+                    ownerId: 2
                 }).then(function (response) {
                     Swal.fire('Success', 'Reservation added!', 'success');
                 }).catch(function (error) {
