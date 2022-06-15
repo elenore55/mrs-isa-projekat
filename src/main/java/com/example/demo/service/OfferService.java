@@ -37,6 +37,10 @@ public class OfferService {
         return repository.save(offer);
     }
 
+    public void remove(Integer id) {
+        repository.deleteById(id);
+    }
+
     public String getNameForReservationView(Integer id) {
         // ovdje treba na osnovu ida da nadjem kako se zvala ponuda
         // mozda cu dodati da vrati i tip ponude, tipa vikendica Maria

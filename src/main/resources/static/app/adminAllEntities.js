@@ -104,7 +104,7 @@ Vue.component("admin-entities",{
                       </thead>
                       <tbody>
                         <tr v-for="(ship,index) in ships">
-                            <td> <input type="checkbox" id="ship.id" value="ship.id" v-on:click="enterValuesInLists(ship.id,selectedShips)" ></td>
+                            <td> <input type="checkbox" id="ship.id" value="ship.id" v-on:click="enterValuesInLists(ship,selectedShips)" ></td>
                             <td> {{ship.name}}  </td>
                             <td> {{ship.capacity}}  </td>
                             <td> {{ship.price}}  </td>
@@ -185,7 +185,8 @@ Vue.component("admin-entities",{
         deleteSelected() {
             for(let element of this.selectedShips)
             {
-                axios.delete("api/ships/deleteShip/"+element)
+                // axios.delete("api/offers/deleteOffer/"+element.id+"/"+element.ownerId)
+                axios.delete("api/shipOwner/deleteTheShip/"+element.id+"/"+element.ownerId)
             }
             console.log("AAAAAAAAAAAAAAAA")
 
