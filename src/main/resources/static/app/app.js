@@ -309,8 +309,6 @@ const router = new VueRouter({
             path: "/adminComplaint/",
             component: AdminComplaint
         }
-
-
     ]
 });
 

@@ -211,7 +211,5 @@ insert into adventure_fishing_equipments(adventure_id,fishing_equipments_id) val
 
 insert into sub (user_id, offer_id) values (7, 10);
 
-insert into complaint(content,complaint_date_time,status,issued_by_id) values ('zalba na nesto ili nekog','20220520 10:05:00 AM','PENDING',7);
-insert into complaint(content,complaint_date_time,status,issued_by_id) values ('vrv email korisnika','20220520 10:05:00 AM','PENDING',5);
 insert into complaint(content,complaint_date_time,status,issued_by_id) values ('vrv email korisnika','20220520 10:05:00 AM','PENDING',5);
 
