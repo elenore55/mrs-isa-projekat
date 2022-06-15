@@ -46,7 +46,7 @@ public class ReservationService {
 
     @Transactional
     public Reservation findOne(Integer id) {
-        return repository.findById(id).orElseGet(null);
+        return repository.findOneById(id);
     }
 
     @Transactional

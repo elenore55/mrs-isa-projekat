@@ -144,7 +144,7 @@ insert into offer_price_history (offer_id, price_history_id) values (3, 6);
 
 insert into address (city,country,street) values ('Novi Sad','Srbija','Puskinova 6');
 insert into address (city,country,street) values ('Beograd','Srbija','Puskinova 69');
-insert into profile_data (email,name,password,phone_number,surname,address_id) values ('email@gmail.com','ImeInstruktora','11223344','06444124214','PrezimeInstruktora',1);
+insert into profile_data (email,name,password,phone_number,surname,address_id) values ('milica.popovic55@hotmail.com','ImeInstruktora','11223344','06444124214','PrezimeInstruktora',1);
 insert into profile_data (email,name,password,phone_number,surname,address_id) values ('emailAdmin@gmail.com','Imeadmin','sifra','06444144444','PrezimeAdmin',2);
 
 insert into fishing_instructor (biography, id) values ('Instruktor pecanja I',1);
@@ -210,7 +210,7 @@ insert into ship_images (ship_id, images_id) values (1, 20);
 insert into ship_images (ship_id, images_id) values (4, 13);
 insert into ship_images (ship_id, images_id) values (8, 15);
 
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic55@hotmail.com', 'Marko', 'pass3', '066-321-3443', 'Markovic', 3);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic555@hotmail.com', 'Marko', 'pass3', '066-321-3443', 'Markovic', 3);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,3);
 insert into client (id) values (3);
 
