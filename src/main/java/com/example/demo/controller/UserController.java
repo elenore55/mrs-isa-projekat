@@ -262,4 +262,5 @@ public class UserController {
         else if (r.getStart().compareTo(today) > 0) r.setReservationStatus(ReservationStatus.PENDING);
         else r.setReservationStatus(ReservationStatus.ACTIVE);
     }
+
 }

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.ProfileDataDTO;
+import com.example.demo.model.Adventure;
 import com.example.demo.model.ProfileData;
 import com.example.demo.service.Profile_DataService;
 import org.springframework.beans.factory.annotation.Autowired;

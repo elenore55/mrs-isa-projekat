@@ -15,94 +15,139 @@ Vue.component("admin-entities",{
             selectAllAdventures: false,
             selectAllShips: false,
             selectAllCottages: false,
+            selectedUsers: [],
+            selectedAdventures: [],
+            selectedShips: [],
+            selectedCottages: [],
             users:[]
         }
     },
     mounted: function (){
     this.loadInstructorsAdventures()
     this.loadUsers()
+    this.loadShips()
+    this.loadCottages()
     console.log(this.users)
+    console.log(this.ships)
+    console.log(this.cottages)
+    console.log(this.adventures)
 },
     template: `
-    <form style="width: 1800px; margin: auto" v-on:submit="sendRequest">
-<!--        <form style="width: 900px; margin: auto"  v-on:submit ="loadReservationHistory">-->
-        <h2 class="text-center">All entitiess</h2>
-        <div class="row">
-            <div class="row">
-                <div class="col">
-                    <label>Search entities</label>
-                    <input type="text" class="form-control" v-model="search" style="width: 360px;">
-                    <button type="submit" class="btn btn-primary" style="position: relative; right: 0px;bottom: -5px">Search</button>
-                    <button type="submit" class="btn btn-primary" style="position: relative; right: 0px;bottom: -5px">Delete selected</button>
-                    <br>
-                    <br>
-                    <br>    
-                </div>
-                <div class="col" style="color: #0a53be">
-<!--                    <label>Enter entity to delete</label>-->
-<!--                    <input type="text" class="form-control" v-model="entity" style="width: 160px;">          -->
-<!--                -->
-                    <label style="font-size: large">User</label>
-                    <input type="checkbox" id="one" value="One" v-model="choice" style="width: 30px;" />
-                    
-                    <label style="font-size: large">| Adventure</label>
-                    <input type="checkbox" id="two" value="Two" v-model="choice" style="width: 30px"/>
-                    
-                   <label style="font-size: large">| Ship</label>
-                    <input type="checkbox" id="three" value="Three" v-model="choice" style="width: 30px;" />
-                    
-                    <label style="font-size: large">| Cottage</label>
-                    <input type="checkbox" id="four" value="Four" v-model="choice" style="width: 30px"/>
-                </div>
-            </div>  
-            <div class = "col">
-                <label>Users</label>
-                <table class="table table-striped" style="width: 800px">
-                  <thead>
-                    <tr>
-                        <th scope="col"><input type="checkbox" v-model="selectAllUsers" @click="selectUsers"></th>  
-                        <th scope="col">Email</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Surname</th>
-                        <th scope="col">Phone number</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="user in users">
-                        <td> <input type="checkbox" :value="user.email" v-model="selected"></td>
-                        <td> {{user.email}}  </td>
-                        <td> {{user.name}}  </td>
-                        <td> {{user.surname}}  </td>
-                        <td> {{user.phoneNumber}}  </td>
-                    </tr>
-                  </tbody>
-                </table>
+<!--        <form style="width: 900px; margin: auto"  v-on:submit ="loadReservationHistory">   mozes da obrises formu-->
+        <div>
+            <h2 class="text-center">All entitiesss</h2>
+            <div class="col">
+                <label>Search entities</label>
+                <input type="text" class="form-control" v-model="search" style="width: 360px;">
+                <button class="btn btn-primary" v-on:click="deleteSelected()" style="position: relative; right: 0px;bottom: -5px">Delete selected</button>
+                <br>
+                <br>
+                <br>    
             </div>
-            <div class = "col">
-                <label>Adventures</label>
-                <table class="table table-striped" style="width: 800px">
-                  <thead>
-                    <tr>
-                      <th scope="col"><input type="checkbox" v-model="selectAllAdventures"></th>  
-                      <th scope="col">Name</th>
-                      <th scope="col">Price</th>
-                      <th scope="col">Max People</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="adventure in adventures">
-                        <td> <input type="checkbox" :value="adventure.id" v-model="selected"></td>
-                        <td> {{adventure.name}}  </td>
-                        <td> {{adventure.price}}  </td>
-                        <td> {{adventure.maxPeople}}  </td>
-                    </tr>
-                  </tbody>
-                </table>
+            <div class="row">
+                <div class = "col">
+                    <label>Users</label>
+                    <table class="table table-striped" style="width: 800px">
+                      <thead>
+                        <tr> 
+                            <th></th> 
+                            <th scope="col">Email</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Surname</th>
+                            <th scope="col">Phone number</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="(user,index) in users">
+                            <td> <input type="checkbox" id="user.id" value="user.id" v-on:click="enterValuesInLists(user.id,selectedUsers)"></td>
+                            <td> {{user.email}}  </td>
+                            <td> {{user.name}}  </td>
+                            <td> {{user.surname}}  </td>
+                            <td> {{user.phoneNumber}}  </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+                <div class = "col">
+                    <label>Adventures</label>
+                    <table class="table table-striped" style="width: 800px">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Max People</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="(adventure,index) in adventures">
+                            <td> <input type="checkbox" id="adventure.id" value="adventure.id" v-on:click="enterValuesInLists(adventure.id,selectedAdventures)"></td>
+                            <td> {{adventure.name}}  </td>
+                            <td> {{adventure.price}}  </td>
+                            <td> {{adventure.maxPeople}}  </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    <label>Ships</label>
+                    <table class="table table-striped" style="width: 800px">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Capacity</th>
+                          <th scope="col">Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="(ship,index) in ships">
+                            <td> <input type="checkbox" id="ship.id" value="ship.id" v-on:click="enterValuesInLists(ship.id,selectedShips)" ></td>
+                            <td> {{ship.name}}  </td>
+                            <td> {{ship.capacity}}  </td>
+                            <td> {{ship.price}}  </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+                <div class = "col">
+                    <label>Cottages</label>
+                    <table class="table table-striped" style="width: 800px">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="(cottage,index) in cottages">
+                            <td> <input type="checkbox" id="cottage.id" value="cottage.id" v-on:click="enterValuesInLists(cottage.id,selectedCottages)"></td>
+                            <td> {{cottage.name}}  </td>
+                            <td> {{cottage.price}}  </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </form>
     `,
     methods:{
+        enterValuesInLists(element,list)
+        {
+          if(list.includes(element))
+          {
+            const index = list.indexOf(element)
+            if(index>-1)
+                list.splice(index,1)
+          }
+          else
+          {
+            list.push(element)
+          }
+        },
         selectUsers() {
             // this.selected = [];
             if (!this.selectAllUsers) {
@@ -125,17 +170,25 @@ Vue.component("admin-entities",{
                 // console.log(this.adventures)
             })
         },
-        loadShips(){
-            axios.get("api/TBD").then(response => {
-                this.adventures = response.data;
+        loadShips(){ //get ships metoda u ShipControlleru
+            axios.get("api/ships/getShips").then(response => {
+                this.ships = response.data;
                 // console.log(this.adventures)
             })
         },
-        loadCottages(){
-            axios.get("api/TBD").then(response => {
-                this.adventures = response.data;
+        loadCottages(){ // get cottages metoda u CottageControleru
+            axios.get("api/cottages/getCottages").then(response => {
+                this.cottages = response.data;
                 // console.log(this.adventures)
             })
+        },
+        deleteSelected() {
+            for(let element of this.selectedShips)
+            {
+                axios.delete("api/ships/deleteShip/"+element)
+            }
+            console.log("AAAAAAAAAAAAAAAA")
+
         },
         sendRequest(){
             axios.get("api/TBD").then(response => {

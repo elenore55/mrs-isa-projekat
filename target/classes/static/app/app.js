@@ -58,6 +58,7 @@ const AdventureHistory = {template: '<adventure-history></adventure-history>'};
 const AdventureQuickReserv = {template: '<adventure-quick></adventure-quick>'};
 const AdveReservWithClient = {template: '<advreserv-with-client></advreserv-with-client>'};
 const AdminEntities = {template: '<admin-entities></admin-entities>'};
+const AdminComplaint = {template: '<admin-complaint></admin-complaint>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -303,6 +304,10 @@ const router = new VueRouter({
         {
             path: "/adminEntities/",
             component: AdminEntities
+        },
+        {
+            path: "/adminComplaint/",
+            component: AdminComplaint
         }
 
 
