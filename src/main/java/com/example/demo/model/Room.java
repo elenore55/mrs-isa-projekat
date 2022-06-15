@@ -13,6 +13,7 @@ public class Room {
     private Integer numberOfBeds;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="cottage_id", nullable=false)
     private Cottage cottage;
 
     public Room() {

@@ -51,9 +51,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
 
                 // TODO: paths
-                .authorizeRequests().antMatchers("**").permitAll()        // /auth/**
-                .antMatchers("/h2-console/**").permitAll()    // /h2-console/** ako se koristi H2 baza)
-                .antMatchers("/api/foo").permitAll()       // /api/foo
+                .authorizeRequests().antMatchers("/api/cottages**").permitAll()
+                .antMatchers("/api/users/login").permitAll()
+                .antMatchers("/api/users/registration").permitAll()
+                .antMatchers("/api/registrationRequests/addRequest").permitAll()
 
                 // ukoliko ne zelimo da koristimo @PreAuthorize anotacije nad metodama kontrolera, moze se iskoristiti hasRole() metoda da se ogranici
                 // koji tip korisnika moze da pristupi odgovarajucoj ruti. Npr. ukoliko zelimo da definisemo da ruti 'admin' moze da pristupi
@@ -75,8 +76,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Zahtevi koji se mecuju za web.ignoring().antMatchers() nemaju pristup SecurityContext-u
 
         // Dozvoljena POST metoda na ruti /auth/login, za svaki drugi tip HTTP metode greska je 401 Unauthorized
-        web.ignoring().antMatchers(HttpMethod.POST, "/**");
-        web.ignoring().antMatchers(HttpMethod.GET, "/**");
+        web.ignoring().antMatchers(HttpMethod.POST, "/api/users/login");
+        web.ignoring().antMatchers(HttpMethod.POST, "/api/users/registration");
+        // web.ignoring().antMatchers(HttpMethod.GET, "/**");
 
         // Ovim smo dozvolili pristup statickim resursima aplikacije
         web.ignoring().antMatchers(HttpMethod.GET, "/", "/webjars/**", "/*.html", "favicon.ico", "/**/*.html",
