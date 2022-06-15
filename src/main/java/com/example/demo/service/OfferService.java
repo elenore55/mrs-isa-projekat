@@ -56,7 +56,7 @@ public class OfferService {
         if (images.size()==0) return;
         s.setImage(images.get(0).getPath());
     }
-}
+
 
     public void notifySubscribers(Offer offer) {
         String title = "Subscription update";

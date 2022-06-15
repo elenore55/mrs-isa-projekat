@@ -41,23 +41,16 @@ const DeleteProfileMessage = {template: '<delete-profile-message></delete-profil
 const EditProfileMessage = {template: '<edit-profile-message></edit-profile-message>'};
 const ChangePassword = {template: '<change-password></change-password>'};
 const CottageDetailedView = {template: '<cottage-detailed-view></cottage-detailed-view>'};
-const ShipDetailedView = {template: '<ship-detailed-view></ship-detailed-view>'};
-const UnregisteredNavbar = {template: '<unregistered-navbar></unregistered-navbar>'};
 const InstructorsAdventures = {template: '<instructors-adventures></instructors-adventures>'};
 const AddAdmin = {template: '<add-admin></add-admin>'};
 const UpdateAdminInfo = {template: '<update-admin-info></update-admin-info>'};
 const AvailabilityInstructor = {template: '<availability-instructor></availability-instructor>'};
-const UpcomingReservations = {template: '<upcoming-reservations></upcoming-reservations>'};
-const PastReservations = {template: '<past-reservations></past-reservations>'};
-const ClientComplain = {template: '<client-complain></client-complain>'}
-const ClientRate = {template: '<client-rate></client-rate>'}
-const ClientSubs = {template: '<client-subs></client-subs>'}
-const ClientActions = {template: '<client-actions></client-actions>'}
 const InstructorsCalendar = {template: '<instructor-calendar></instructor-calendar>'};
 const AdventureHistory = {template: '<adventure-history></adventure-history>'};
 const AdventureQuickReserv = {template: '<adventure-quick></adventure-quick>'};
 const AdveReservWithClient = {template: '<advreserv-with-client></advreserv-with-client>'};
 const AdminEntities = {template: '<admin-entities></admin-entities>'};
+const AdminComplaint = {template: '<admin-complaint></admin-complaint>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -189,10 +182,6 @@ const router = new VueRouter({
             component: ClientNavbar
         },
         {
-            path: "/unregisteredNavbar/",
-            component: UnregisteredNavbar
-        },
-        {
             path: "/clientProfile/",
             component: ClientProfile
         },
@@ -213,36 +202,8 @@ const router = new VueRouter({
             component: Login
         },
         {
-            path: "/cottageDetailedView/:id/:fromDate/:toDate",
+            path: "/cottageDetailedView/:id",
             component: CottageDetailedView
-        },
-        {
-            path: "/upcomingReservations/:id",
-            component: UpcomingReservations
-        },
-        {
-            path: "/clientComplain/:id",
-            component: ClientComplain
-        },
-        {
-            path: "/clientRate/:id",
-            component: ClientRate
-        },
-        {
-            path: "/clientSubs/:id",
-            component: ClientSubs
-        },
-        {
-            path: "/clientActions/:id",
-            component: ClientActions
-        },
-        {
-            path: "/pastReservations/",
-            component: PastReservations
-        },
-        {
-            path: "/shipDetailedView/:id/:fromDate/:toDate",
-            component: ShipDetailedView
         },
         {
             path: "/updateCottageNav/",
@@ -265,8 +226,8 @@ const router = new VueRouter({
             component: DeleteProfileMessage
         },
         {
-              path: "/editProfileMessage/",
-              component: EditProfileMessage
+            path: "/editProfileMessage/",
+            component: EditProfileMessage
         },
         {
            path: "/profilePageInstructorPI/",
@@ -303,6 +264,10 @@ const router = new VueRouter({
         {
             path: "/adminEntities/",
             component: AdminEntities
+        },
+        {
+            path: "/adminComplaint/",
+            component: AdminComplaint
         }
 
 

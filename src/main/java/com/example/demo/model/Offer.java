@@ -48,7 +48,7 @@ public class Offer {
     @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     protected List<Availability> availabilities;
 
-    @ManyToMany(mappedBy = "subscriptions")
+    @ManyToMany(mappedBy = "subscriptions", fetch = FetchType.LAZY)
     protected List<Client> subscribers = new ArrayList<>();
 
     @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -161,20 +161,5 @@ public class Offer {
 
     public void setPriceHistory(List<PriceList> priceHistory) {
         this.priceHistory = priceHistory;
-    }
-
-    public Double getRateOrNegativeOne() {
-        double sum = 0;
-        int n = 0;
-        for(Reservation r : getReservations())
-        {
-            if (r.getFeedback()!= null)
-            {
-                sum += r.getFeedback().getRating();
-                n++;
-            }
-        }
-        if (n==0) return -1.0;
-        return sum/n;
     }
 }

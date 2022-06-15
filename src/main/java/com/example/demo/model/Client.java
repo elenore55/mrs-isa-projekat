@@ -7,10 +7,10 @@ import java.util.List;
 @Entity
 public class Client extends User {
 
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Reservation> reservations = new ArrayList<>();
+//    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private List<Reservation> reservations = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "sub", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "offer_id", referencedColumnName = "id"))
     private List<Offer> subscriptions = new ArrayList<>();
 
@@ -21,13 +21,13 @@ public class Client extends User {
         super();
     }
 
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
+//    public List<Reservation> getReservations() {
+//        return reservations;
+//    }
 
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
-    }
+//    public void setReservations(List<Reservation> reservations) {
+//        this.reservations = reservations;
+//    }
 
     public List<Offer> getSubscriptions() {
         return subscriptions;

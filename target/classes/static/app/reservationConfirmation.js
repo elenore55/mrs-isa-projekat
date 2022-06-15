@@ -1,9 +1,9 @@
 Vue.component('reservation-confirmation', {
    mounted() {
        axios.post("api/reservations/confirmReservation/" + this.$route.params.id).then(function(response) {
-           alert('Reservation confirmed!');
+           Swal.fire('Success', 'Reservation confirmed!', 'success');
        }).catch(function (error) {
-           alert('An error occurred');
+           Swal.fire('Error', 'Something went wrong!', 'error');
        });
    }
 });

@@ -90,7 +90,7 @@ public class AdventureController {
 //        FishingInstructor fishingInstructor = new FishingInstructor();
 //        fishingInstructor.setId(adventureDTO.getfInstructorId());
 //        FishingInstructor fishingInstructor = fishingInstructorService.findOne(adventureDTO.getfInstructorId());
-        FishingInstructor fishingInstructor = fishingInstructorService.findOne(1);
+        FishingInstructor fishingInstructor = fishingInstructorService.findOne(3);
         adventure.setInstructor(fishingInstructor);
 
         List<Rule> rules = new ArrayList<>();

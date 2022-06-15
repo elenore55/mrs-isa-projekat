@@ -146,7 +146,7 @@ public class Ship extends Offer {
         this.fishingEquipmentList = fishingEquipmentList;
     }
 
-    public double getRateOrNegativeOne()
+    public Double getRateOrNegativeOne()
     {
         double sum = 0;
         int n = 0;
@@ -158,7 +158,7 @@ public class Ship extends Offer {
                 n++;
             }
         }
-        if (n==0) return -1;
+        if (n==0) return -1.0;
         return sum/n;
     }
 }

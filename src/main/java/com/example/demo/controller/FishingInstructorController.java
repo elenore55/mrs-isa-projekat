@@ -43,7 +43,7 @@ public class FishingInstructorController {
 
     @GetMapping(value = "/getInstructorData")
     public ResponseEntity<FishingInstructorDTO> getFishingInstructorData(){
-        FishingInstructor fishingInstructor = fishingInstructorService.findOne(1);
+        FishingInstructor fishingInstructor = fishingInstructorService.findOne(3);
         FishingInstructorDTO fishingInstructorDTO = new FishingInstructorDTO(fishingInstructor);
 
         return new ResponseEntity<>(fishingInstructorDTO, HttpStatus.OK);

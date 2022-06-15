@@ -1,10 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.FastReservationDTO;
-import com.example.demo.model.Cottage;
-import com.example.demo.model.FastReservation;
-import com.example.demo.model.Offer;
-import com.example.demo.model.Ship;
+import com.example.demo.model.*;
 import com.example.demo.dto.OfferDTO;
 import com.example.demo.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,13 +73,21 @@ public class OfferController {
             c.setFastReservations(res);
             offerService.save(c);
             offerService.notifySubscribers(c);
-        } else {
+        } else if(o instanceof Ship) {
             Ship s = (Ship)o;
             List<FastReservation> res = s.getFastReservations();
             res.add(fr);
             s.setFastReservations(res);
             offerService.save(s);
             offerService.notifySubscribers(s);
+        } else
+        {
+            Adventure a = (Adventure)o;
+            List<FastAdventureReservation> res = a.getFastAdventureReservations();
+            res.add((FastAdventureReservation) fr);
+            a.setFastAdventureReservations(res);
+            offerService.save(a);
+            offerService.notifySubscribers(a);
         }
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }

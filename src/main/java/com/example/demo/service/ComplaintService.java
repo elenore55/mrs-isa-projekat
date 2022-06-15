@@ -5,17 +5,15 @@ import com.example.demo.repository.ComplaintRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ComplaintService {
-    private ComplaintRepository repository;
 
     @Autowired
-    public ComplaintService(ComplaintRepository repository){
-        this.repository = repository;
+    private ComplaintRepository complaintRepository;
 
-    }
-
-    public void save(Complaint c) {
-        this.repository.save(c);
-    }
+    public List<Complaint> findAll(){return complaintRepository.findAll();}
+    public Complaint findOne(Integer id){return complaintRepository.getById(id);}
+    public Complaint update(Complaint complaint){return complaintRepository.save(complaint);}
 }

@@ -46,11 +46,11 @@ public class UserService {
         return "";
     }
 
-    public Client findClientByEmail(String email) {
+    /*public Client findClientByEmail(String email) {
         ProfileData pd = profileDataRepository.getByEmail(email);
         if (pd == null) return null;
         return clientRepository.findByProfileDataId(pd.getId());
-    }
+    }*/
 
     private String generateTokenById(Integer id) {
         // ovdje sad nisam sigurna kako ide, zasad samo id
@@ -89,13 +89,13 @@ public class UserService {
 
     public Client findClientByEmail(String email) {
         List<ProfileData> li = profileDataRepository.findAll();
-        for (ProfileData p: li) {
-            System.out.println(p.getEmail());
-        }
-        System.out.println("Ovaj koji ja trazim je " + email);
+
         ProfileData pd = profileDataRepository.getByEmail(email);
         if (pd == null) return null;
         return clientRepository.findByProfileDataId(pd.getId());
+    }
+
+
     public User findOne(Integer id) {
         return userRepository.findById(id).orElseGet(null);
     }

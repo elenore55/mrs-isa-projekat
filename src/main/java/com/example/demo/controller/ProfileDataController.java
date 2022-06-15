@@ -6,6 +6,7 @@ import com.example.demo.service.Profile_DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,5 +26,14 @@ public class ProfileDataController {
     public ResponseEntity<ProfileDataDTO> getProfileData(@PathVariable Integer id){
         ProfileData profileData = profile_dataService.findOne(id);
         return new ResponseEntity<>(new ProfileDataDTO(profileData),HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/deleteUser/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
+        ProfileData user = profile_dataService.findOne(id);
+        if (user == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        profile_dataService.remove(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
