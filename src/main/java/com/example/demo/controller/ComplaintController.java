@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.ComplaintAdminDTO;
 import com.example.demo.dto.ComplaintDTO;
 import com.example.demo.dto.RegistrationDTO;
 import com.example.demo.model.Client;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -41,9 +43,12 @@ public class ComplaintController {
     }
 
     @GetMapping(path = "/all")
-    public ResponseEntity<List<Complaint>> getAllComplaints(){
+    public ResponseEntity<List<ComplaintAdminDTO>> getAllComplaints(){
         List<Complaint> complaints = complaintService.findAll();
-        return new ResponseEntity<>(complaints, HttpStatus.OK);
+        List<ComplaintAdminDTO> complaintsDTOS = new ArrayList<>();
+        for(Complaint complaint : complaints)
+            complaintsDTOS.add(new ComplaintAdminDTO(complaint));
+        return new ResponseEntity<>(complaintsDTOS, HttpStatus.OK);
     }
     @GetMapping(value = "/{id}")
     public ResponseEntity<Complaint> getComplaint(@PathVariable Integer id)
