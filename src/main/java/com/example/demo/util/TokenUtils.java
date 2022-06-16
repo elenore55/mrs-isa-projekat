@@ -270,6 +270,7 @@ public class TokenUtils {
      * @return Sadrzaj iz AUTH_HEADER-a.
      */
     public String getAuthHeaderFromHeader(HttpServletRequest request) {
+        System.out.println(request.getHeaderNames());
         return request.getHeader(AUTH_HEADER);
     }
 }

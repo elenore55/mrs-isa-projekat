@@ -22,6 +22,7 @@ Vue.component("cottages-view-owner", {
     },
 
     mounted() {
+        let token = JSON.parse(localStorage.getItem("jwt"));
         this.reload();
 
         axios.get("api/addresses/getCities").then(response => {
@@ -170,7 +171,16 @@ Vue.component("cottages-view-owner", {
         },
 
         reload() {
-            axios.get("api/cottageOwner/getCottages/" + this.owner_id).then(response => {
+            let token = JSON.parse(localStorage.getItem("jwt"));
+            axios(
+                {
+                    method: 'get',
+                    url: "api/cottageOwner/getCottages/" + this.owner_id,
+                    headers: {
+                        Authorization: "Bearer " + token.accessToken
+                    }
+                }
+            ).then(response => {
                 this.cottages = response.data;
                 for (const c of this.cottages) {
                     if (!c.imagePaths || c.imagePaths.length === 0) {
@@ -180,7 +190,7 @@ Vue.component("cottages-view-owner", {
                     }
                 }
             }).catch(function (error) {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+                Swal.fire('Error', 'Something went wronggggg!', 'error');
             });
         },
 
