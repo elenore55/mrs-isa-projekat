@@ -86,7 +86,7 @@ insert into offer_price_history (offer_id, price_history_id) values (1, 1);
 insert into price_list (amount, start_date) values (150, '20220515 00:00:01 AM');
 insert into offer_price_history (offer_id, price_history_id) values (1, 2);
 
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email2@gmail.com', 'Djuro', 'pass2', '1233456', 'Djuric', 1);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email2@gmail.com', 'Djuro', '$2a$10$eJAhTBNusorL6jl1LxEuOeXwd75E1MV/XX8u67Fb/IO5yxpUmBOoC', '1233456', 'Djuric', 1); -- pass2
 insert into my_users (category,number_of_points,profile_data_id,role_id) values ('REGULAR',0,2,3);
 insert into cottage_owner (id) values (2);
 
