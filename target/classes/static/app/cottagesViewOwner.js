@@ -17,12 +17,13 @@ Vue.component("cottages-view-owner", {
             owner_id: 2,
             current_id: null,
             default_image: "images/cottage_icon.jpg",
-            profilePictures: []
+            profilePictures: [],
+            token: {}
         }
     },
 
     mounted() {
-        let token = JSON.parse(localStorage.getItem("jwt"));
+        this.token = JSON.parse(localStorage.getItem("jwt"));
         this.reload();
 
         axios.get("api/addresses/getCities").then(response => {
@@ -153,17 +154,30 @@ Vue.component("cottages-view-owner", {
         },
 
         deleteCottage() {
-            axios.delete("api/cottages/deleteCottage/" + this.current_id).then(response => {
+            axios({
+                method: "delete",
+                url: "api/cottages/deleteCottage/" + this.current_id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 Swal.fire('Success', 'Cottage deleted!', 'success');
                 this.reload();
             }).catch(function (error) {
+                // alert(error.response.status);
                 Swal.fire('Error', 'It is not possible to delete the cottage!', 'error');
             });
             this.of = "auto";
         },
 
         search() {
-            axios.get("api/cottageOwner/getCottages/" + this.owner_id + "/" + this.search_criterion).then(response => {
+            axios({
+                method: 'get',
+                url: "api/cottageOwner/getCottages/" + this.owner_id + "/" + this.search_criterion,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.cottages = response.data;
             }).catch(function (error) {
                 Swal.fire('Error', 'Something went wrong!', 'error');
@@ -171,16 +185,13 @@ Vue.component("cottages-view-owner", {
         },
 
         reload() {
-            let token = JSON.parse(localStorage.getItem("jwt"));
-            axios(
-                {
-                    method: 'get',
-                    url: "api/cottageOwner/getCottages/" + this.owner_id,
-                    headers: {
-                        Authorization: "Bearer " + token.accessToken
-                    }
+            axios({
+                method: 'get',
+                url: "api/cottageOwner/getCottages/" + this.owner_id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
                 }
-            ).then(response => {
+            }).then(response => {
                 this.cottages = response.data;
                 for (const c of this.cottages) {
                     if (!c.imagePaths || c.imagePaths.length === 0) {
@@ -190,19 +201,26 @@ Vue.component("cottages-view-owner", {
                     }
                 }
             }).catch(function (error) {
-                Swal.fire('Error', 'Something went wronggggg!', 'error');
+                Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
         filter() {
             if (this.areValidPrices) {
-                axios.post("api/cottageOwner/filterCottages/" + this.owner_id, {
-                    cities: this.cities,
-                    countries: this.countries,
-                    low: this.low_price,
-                    high: this.high_price,
-                    sortParam: this.sort_by,
-                    sortDir: this.direction
+                axios({
+                    method: "post",
+                    url: "api/cottageOwner/filterCottages/" + this.owner_id,
+                    data: {
+                        cities: this.cities,
+                        countries: this.countries,
+                        low: this.low_price,
+                        high: this.high_price,
+                        sortParam: this.sort_by,
+                        sortDir: this.direction
+                    },
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
                 }).then(response => {
                     this.cottages = response.data;
                 }).catch(function (error) {
