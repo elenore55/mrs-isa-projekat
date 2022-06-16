@@ -53,6 +53,7 @@ Vue.component("login", {
                      password: this.user.password
                      }).then(function(response) {
                          this.token = response.data;
+                         localStorage.setItem("jwt", JSON.stringify(this.token));
                          if (this.token.userRole === "ROLE_COTTAGE")
                             location.replace('http://localhost:8000/index.html#/cottagesViewOwner/' + this.token.userId);
                          else if (this.token.userRole === "ROLE_SHIP")

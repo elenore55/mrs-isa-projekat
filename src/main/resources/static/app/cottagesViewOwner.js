@@ -22,6 +22,7 @@ Vue.component("cottages-view-owner", {
     },
 
     mounted() {
+        let token = JSON.parse(localStorage.getItem("jwt"));
         this.reload();
 
         axios.get("api/addresses/getCities").then(response => {

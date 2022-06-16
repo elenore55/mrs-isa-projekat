@@ -50,11 +50,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
 
-                // TODO: paths
-                .authorizeRequests().antMatchers("/api/cottages**").permitAll()
+                .authorizeRequests()
                 .antMatchers("/api/users/login").permitAll()
                 .antMatchers("/api/users/registration").permitAll()
                 .antMatchers("/api/registrationRequests/addRequest").permitAll()
+                .antMatchers("/api/addresses/**").permitAll()
 
                 // ukoliko ne zelimo da koristimo @PreAuthorize anotacije nad metodama kontrolera, moze se iskoristiti hasRole() metoda da se ogranici
                 // koji tip korisnika moze da pristupi odgovarajucoj ruti. Npr. ukoliko zelimo da definisemo da ruti 'admin' moze da pristupi

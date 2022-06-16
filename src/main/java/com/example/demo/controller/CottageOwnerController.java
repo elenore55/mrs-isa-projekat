@@ -8,6 +8,7 @@ import com.example.demo.service.CottageOwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/cottageOwner")
+@CrossOrigin
 public class CottageOwnerController {
     private CottageOwnerService service;
 
@@ -26,6 +28,7 @@ public class CottageOwnerController {
 
     @ResponseBody
     @RequestMapping(path = "/getCottages/{id}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<List<CottageDTO>> getCottages(@PathVariable Integer id) {
         CottageOwner owner = service.findOne(id);
         List<Cottage> cottages = owner.getCottages();
