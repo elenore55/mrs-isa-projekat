@@ -50,8 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
 
-                // TODO: paths
-                .authorizeRequests().antMatchers("/api/cottages**").permitAll()
+                .authorizeRequests()
                 .antMatchers("/api/users/login").permitAll()
                 .antMatchers("/api/users/registration").permitAll()
                 .antMatchers("/api/registrationRequests/addRequest").permitAll()
