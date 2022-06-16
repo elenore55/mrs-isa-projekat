@@ -5,14 +5,15 @@ Vue.component("login", {
                email: "",
                password: "",
                error: false,
-           }
+           },
+           token: {}
        }
    },
 
    mounted() {
         main_image = $("body").css("background-image", "url('images/login3.jpg')");
         main_image = $("body").css("background-size", "100% 200%");
-       },
+   },
 
    template: `
     <div>
@@ -49,21 +50,21 @@ Vue.component("login", {
             {
                 axios.post("api/users/login", {
                      email: this.user.email,
-                     password: this.user.password,
-
+                     password: this.user.password
                      }).then(function(response) {
-                     if(response.data=="")
-                     {
-                     } else
-                     {
-                        console.log("trebalo je da se ispise");
-                        location.replace('http://localhost:8000/#/clientHome');
-                     }
-                         }).catch(function (error) {
-                             alert('An error occurred!');
-                             // preusmjeri na stranicu za login sa greskom
-                         });
-                    this.user.error = true;
+                         this.token = response.data;
+                         if (this.token.userRole === "ROLE_COTTAGE")
+                            location.replace('http://localhost:8000/index.html#/cottagesViewOwner/' + this.token.userId);
+                         else if (this.token.userRole === "ROLE_SHIP")
+                             location.replace('http://localhost:8000/index.html#/shipsViewOwner/' + this.token.userId);
+                         else if (this.token.userRole === "ROLE_CLIENT")
+                             location.replace('http://localhost:8000/index.html#/clientHome');
+                     }).catch(function (error) {
+                         this.user.email = "";
+                         this.user.password = "";
+                         this.user.error = true;
+                     });
+
             }
           }
         },
