@@ -105,7 +105,11 @@ Vue.component('fast-reservations', {
             };
             if (this.isValidActionDate && this.isValidActionDuration && this.isValidPrice && this.isValidMaxPeople &&
                 this.isValidStayDate && this.isValidStayDuration) {
-                axios.post("api/offers/addFastReservation/" + this.$route.params.id, fr).then(response => {
+                axios.post("api/offers/addFastReservation/" + this.$route.params.id, fr, {
+                    headers: {
+                        Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                    }
+                }).then(response => {
                     this.reload();
                 }).catch(function (error) {
                     Swal.fire('Error', 'Something went wrong!', 'error');
