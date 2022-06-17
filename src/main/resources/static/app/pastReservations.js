@@ -2,7 +2,7 @@ Vue.component("past-reservations", {
    data: function() {
        return {
            reservations: [],
-           id: 6,
+           id: 5,
            sortEntity: "",
            sortBy: "",
        }

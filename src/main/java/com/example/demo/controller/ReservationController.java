@@ -4,15 +4,13 @@ import com.example.demo.dto.*;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.model.FishingInstructor;
-import com.example.demo.service.FishingInstructorService;
-import com.example.demo.service.OfferService;
-import com.example.demo.service.ReservationService;
-import com.example.demo.service.UserService;
+import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +31,12 @@ public class ReservationController {
 
 
     @Autowired
-    public ReservationController(ReservationService reservationService, UserService userService, OfferService offerService,FishingInstructorService fishingInstructorService) {
+    public ReservationController(ReservationService reservationService, UserService userService, OfferService offerService,
+                                 FishingInstructorService fishingInstructorService) {
         this.reservationService = reservationService;
         this.userService = userService;
         this.offerService = offerService;
         this.fishingInstructorService = fishingInstructorService;
-
     }
 
     @ResponseBody
@@ -110,6 +108,29 @@ public class ReservationController {
         return new ResponseEntity<List<FastReservationDTO>>(dtos, HttpStatus.OK);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/getOldPrice/{offerId}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<BigDecimal> getOldPrice(@PathVariable Integer offerId) {
+        Offer o = offerService.findOne(offerId);
+        BigDecimal price = o.getPriceList();
+        return new ResponseEntity<BigDecimal>(price, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/addNewFastReservation/{offerId}/{clientId}", method = RequestMethod.POST, consumes = "application/json")
+    public String addFastReservation(@RequestBody FastReservationDTO fastReservationDTO, @PathVariable Integer offerId, @PathVariable Integer clientId) {
+        Reservation r = new Reservation();
+        r.setStart(fastReservationDTO.getStart());
+        r.setEnd(fastReservationDTO.getStart().plusDays(fastReservationDTO.getDuration().longValue()));
+        Offer o = offerService.findOne(offerId);
+        r.setOffer(o);
+        User u = userService.findById(clientId);
+        r.setClient((Client) u);
+        reservationService.save(r);
+        return "OK";
+    }
+
+
 
     private List<FastReservation> getFastReservations(Integer offerId) {
         List<FastReservation> retVal = new ArrayList<>();
@@ -158,7 +179,6 @@ public class ReservationController {
     @ResponseBody
     @RequestMapping(path = "/getClientPastReservations/", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<List<ReservationExtendedDTO>> getClientsPastReservations(@RequestBody FilterPastDTO filterPastDTO) {
-        System.err.println("SKRETANJE PAZNJE");
         List<Reservation> reservations = reservationService.getClientsPastReservations(filterPastDTO);
         reservationService.sortPastReservations(reservations, filterPastDTO.getSortBy());
         List<ReservationExtendedDTO> dtos = new ArrayList<>();

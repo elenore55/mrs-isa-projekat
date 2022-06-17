@@ -47,6 +47,7 @@ Vue.component("client-subs", {
 
         reload() {
             this.id = this.$route.params.id;
+            this.id = 5;
             axios.get("api/reservations/getClientsSubs/" + this.id).then(response => {
                 this.subs = response.data;
             }).catch(function (error) {

@@ -84,6 +84,8 @@ Vue.component("upcoming-reservations", {
 
         reload() {
             this.id = this.$route.params.id;
+            this.id = 5;
+            alert("ID klijenta je " + this.id);
             axios.get("api/reservations/getClientUpcomingReservations/" + this.id).then(response => {
                 this.reservations = response.data;
             }).catch(function (error) {
