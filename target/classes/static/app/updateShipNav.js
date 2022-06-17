@@ -22,7 +22,7 @@ Vue.component('update-ship-nav', {
 
     computed: {
         allShips() {
-            return "/index.html#/shipsViewOwner/1";
+            return "/index.html#/shipsViewOwner";
         },
 
         shipProfile() {

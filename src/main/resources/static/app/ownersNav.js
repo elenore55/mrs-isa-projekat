@@ -29,7 +29,7 @@ Vue.component('owners-nav', {
 
     computed: {
         ownersProfile() {
-            return "/index.html#/ownersProfile/" + this.$route.params.id;
+            return "/index.html#/ownersProfile";
         },
 
         offers() {
@@ -37,23 +37,23 @@ Vue.component('owners-nav', {
             let offer = "";
             if (role === "ROLE_COTTAGE") offer = "cottages";
             else if (role === "ROLE_SHIP") offer = "ships";
-            return "/index.html#/" + offer + "ViewOwner/" + this.$route.params.id;
+            return "/index.html#/" + offer + "ViewOwner";
         },
 
         reservationsHistory() {
-            return "/index.html#/reservationsHistory/" + this.$route.params.id;
+            return "/index.html#/reservationsHistory";
         },
 
         incomeReport() {
-            return "/index.html#/incomeReport/" + this.$route.params.id;
+            return "/index.html#/incomeReport";
         },
 
         visitReport() {
-            return "/index.html#/visitReport/" + this.$route.params.id;
+            return "/index.html#/visitReport";
         },
 
         priceHistoryReport() {
-            return "/index.html#/priceHistoryReport/" + this.$route.params.id;
+            return "/index.html#/priceHistoryReport";
         }
     }
 });

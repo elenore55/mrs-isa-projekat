@@ -185,7 +185,7 @@ Vue.component("reservations-history", {
                     content: this.review,
                     penaltyRequested: this.receives_penalty,
                     clientEmail: this.focused_reservation.clientEmail,
-                    ownerId: this.$route.params.id,
+                    ownerId: JSON.parse(localStorage.getItem("jwt")).userId,
                     reservationId: this.focused_reservation.id
                 }, {
                     headers: {

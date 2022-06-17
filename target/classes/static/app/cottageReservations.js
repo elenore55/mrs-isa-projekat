@@ -61,7 +61,7 @@ Vue.component("cottage-reservations", {
                 </div>
             </div>
         </div>
-        <reservations-calendar id="2" :offerId="$route.params.id" rangeStart="cottage.availableStart" :rangeEnd="cottage.availableEnd"></reservations-calendar>
+        <reservations-calendar :offerId="$route.params.id" rangeStart="cottage.availableStart" :rangeEnd="cottage.availableEnd"></reservations-calendar>
     </div>
     `,
 

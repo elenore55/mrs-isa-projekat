@@ -22,7 +22,7 @@ Vue.component('update-cottage-nav', {
 
     computed: {
         allCottages() {
-            return "/index.html#/cottagesViewOwner/2";
+            return "/index.html#/cottagesViewOwner";
         },
 
         cottageProfile() {

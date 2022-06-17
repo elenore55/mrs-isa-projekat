@@ -7,17 +7,16 @@ Vue.component('update-owners-profile', {
     },
 
     mounted() {
-        this.id = this.$route.params.id;
         axios({
             method: "get",
-            url: "api/users/getOwner/" + this.$route.params.id,
+            url: "api/users/getOwner/" + JSON.parse(localStorage.getItem("jwt")).userId,
             headers: {
                 Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
             }
         }).then(response => {
             this.owner = response.data;
         }).catch(function (error) {
-            if (error.response.status == 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+            if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
             else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
@@ -80,14 +79,14 @@ Vue.component('update-owners-profile', {
             this.input_started = true;
             if (this.isValidName && this.isValidSurname && this.isValidStreet && this.isValidCity &&
                 this.isValidCountry && this.isValidPhone) {
-                axios.post('api/users/updateUser/' + this.$route.params.id, this.owner, {
+                axios.post('api/users/updateUser/' + JSON.parse(localStorage.getItem("jwt")).userId, this.owner, {
                         headers: {
                             Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
                         }
                     }).then(response => {
                     this.owner = response.data;
                     Swal.fire('Success', 'Profile data updated!', 'success');
-                    this.$router.push({path: '/ownersProfile/' + this.$route.params.id});
+                    this.$router.push({path: '/ownersProfile'});
                 }).catch(function (error) {
                     if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
                     else Swal.fire('Error', 'Something went wrong!', 'error');

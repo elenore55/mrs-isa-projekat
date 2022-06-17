@@ -165,7 +165,7 @@ Vue.component("cottages-view-owner", {
                 Swal.fire('Success', 'Cottage deleted!', 'success');
                 this.reload();
             }).catch(function (error) {
-                if (error.response.status == 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
                 else Swal.fire('Error', 'It is not possible to delete the cottage!', 'error');
             });
             this.of = "auto";

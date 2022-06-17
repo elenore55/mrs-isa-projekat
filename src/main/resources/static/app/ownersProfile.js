@@ -1,24 +1,22 @@
 Vue.component('owners-profile', {
     data() {
         return {
-            id: null,
             owner: {},
             reason: ""
         }
     },
 
     mounted() {
-        this.id = this.$route.params.id;
         axios({
             method: "get",
-            url: "api/users/getOwner/" + this.$route.params.id,
+            url: "api/users/getOwner/" + JSON.parse(localStorage.getItem("jwt")).userId,
             headers: {
                 Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
             }
         }).then(response => {
             this.owner = response.data;
         }).catch(function (error) {
-            if (error.response.status == 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+            if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
             else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
@@ -57,7 +55,7 @@ Vue.component('owners-profile', {
                     </div>
 
                     <div class="mt-5 d-flex justify-content-evenly">
-                        <a class="btn btn-success me-1" href="javascript:void(0)" @click="$router.push({path: '/updateOwnersProfile/' + $route.params.id})" style="width: 50%">Edit</a>
+                        <a class="btn btn-success me-1" href="javascript:void(0)" @click="$router.push({path: '/updateOwnersProfile'})" style="width: 50%">Edit</a>
                         <a @click="window.scrollTo(0, document.body.scrollHeight);" class="btn btn-danger ms-1" data-bs-toggle="collapse" href="#confirm-delete" 
                         role="button" aria-expanded="false" aria-controls="confirm-delete" style="width: 50%">Delete</a>
                     </div>
@@ -78,7 +76,7 @@ Vue.component('owners-profile', {
     methods: {
         deleteAccount() {
             axios.post('api/deletionRequests/deleteProfile', {
-               id: this.$route.params.id,
+               id: JSON.parse(localStorage.getItem("jwt")).userId,
                reason: this.reason
             }, {
                 headers: {
@@ -87,7 +85,7 @@ Vue.component('owners-profile', {
             }).then(response => {
                 Swal.fire('Success', 'Request for account deletion sent!', 'success');
             }).catch(function (error) {
-                if (error.response.status == 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
                 else
                     Swal.fire({
                         icon: 'info',

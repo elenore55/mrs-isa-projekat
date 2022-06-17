@@ -55,9 +55,9 @@ Vue.component("login", {
                          this.token = response.data;
                          localStorage.setItem("jwt", JSON.stringify(this.token));
                          if (this.token.userRole === "ROLE_COTTAGE")
-                            location.replace('http://localhost:8000/index.html#/cottagesViewOwner/' + this.token.userId);
+                            location.replace('http://localhost:8000/index.html#/cottagesViewOwner');
                          else if (this.token.userRole === "ROLE_SHIP")
-                             location.replace('http://localhost:8000/index.html#/shipsViewOwner/' + this.token.userId);
+                             location.replace('http://localhost:8000/index.html#/shipsViewOwner');
                          else if (this.token.userRole === "ROLE_CLIENT")
                              location.replace('http://localhost:8000/index.html#/clientHome');
                      }).catch(function (error) {
