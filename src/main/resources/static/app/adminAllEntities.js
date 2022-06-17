@@ -35,7 +35,7 @@ Vue.component("admin-entities",{
     template: `
 <!--        <form style="width: 900px; margin: auto"  v-on:submit ="loadReservationHistory">   mozes da obrises formu-->
         <div>
-            <h2 class="text-center">All entitiesss</h2>
+            <h2 class="text-center">All entities</h2>
             <div class="col">
                 <label>Search entities</label>
                 <input type="text" class="form-control" v-model="search" style="width: 360px;">
@@ -81,7 +81,7 @@ Vue.component("admin-entities",{
                       </thead>
                       <tbody>
                         <tr v-for="(adventure,index) in adventures">
-                            <td> <input type="checkbox" id="adventure.id" value="adventure.id" v-on:click="enterValuesInLists(adventure.id,selectedAdventures)"></td>
+                            <td> <input type="checkbox" id="adventure.id" value="adventure.id" v-on:click="enterValuesInLists(adventure,selectedAdventures)"></td>
                             <td> {{adventure.name}}  </td>
                             <td> {{adventure.price}}  </td>
                             <td> {{adventure.maxPeople}}  </td>
@@ -191,6 +191,10 @@ Vue.component("admin-entities",{
             for(let element of this.selectedCottages)
             {
                 axios.delete("api/cottageOwner/deleteTheCottage/"+element.id+"/"+element.ownerId)
+            }
+            for(let element of this.selectedAdventures)
+            {
+                axios.delete("api/instructors/deleteTheAdventure/"+element.id+"/"+element.fInstructorId)
             }
             console.log("AAAAAAAAAAAAAAAA")
 

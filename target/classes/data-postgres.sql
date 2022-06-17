@@ -210,9 +210,12 @@ insert into adventure (max_people,id,fishing_instructor_id) values (10,10,3);
 insert into adventure_fishing_equipments(adventure_id,fishing_equipments_id) values(10,2);
 
 insert into sub (user_id, offer_id) values (7, 10);
+insert into sub (user_id, offer_id) values (5, 8);
 
 insert into complaint(content,complaint_date_time,status,issued_by_id) values ('zalba na nesto ili nekog','20220520 10:05:00 AM','PENDING',7);
 insert into complaint(content,complaint_date_time,status,issued_by_id) values ('vrv email korisnika','20220520 10:05:00 AM','PENDING',5);
 insert into complaint(content,complaint_date_time,status,issued_by_id) values ('vrv email korisnika','20220520 10:05:00 AM','PENDING',5);
 
+-- ////// IZGLEDA RUZNO ALI SAD ZASAD MORA OSTATI OVA LINIJA //////////
 insert into offer (additional_info, description, name, price_list, address_id,id) values ('-1', '-1', '-1', 0, 1,-1);
+-- ////////////////////////////////////////////////////////////////////

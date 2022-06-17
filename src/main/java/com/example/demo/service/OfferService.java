@@ -32,6 +32,9 @@ public class OfferService {
     public Offer findOne(Integer id) {
         return repository.findById(id).orElseGet(null);
     }
+    public List<Offer> findAll() {
+        return repository.findAll();
+    }
 
     public Offer save(Offer offer) {
         return repository.save(offer);

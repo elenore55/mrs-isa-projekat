@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dto.CottageDTO;
 import com.example.demo.dto.FilterCottageDTO;
 import com.example.demo.model.*;
+import com.example.demo.service.ClientService;
 import com.example.demo.service.CottageOwnerService;
 import com.example.demo.service.CottageService;
 import com.example.demo.service.ReservationService;
@@ -21,12 +22,14 @@ public class CottageOwnerController {
     private CottageOwnerService service;
     private ReservationService reservationService;
     private CottageService cottageService;
+    private ClientService clientService;
 
     @Autowired
-    public CottageOwnerController(CottageOwnerService service, ReservationService reservationService, CottageService cottageService) {
+    public CottageOwnerController(CottageOwnerService service, ReservationService reservationService, CottageService cottageService, ClientService clientService) {
         this.service = service;
         this.reservationService = reservationService;
         this.cottageService = cottageService;
+        this.clientService = clientService;
     }
 
     @ResponseBody
@@ -76,6 +79,14 @@ public class CottageOwnerController {
             offer.setId(-1);
             r.setOffer(offer);
             this.reservationService.save(r);
+        }
+
+        List<Client> clients = this.clientService.findAll();
+        for(Client c : clients) {
+            if (c.getSubscriptionsByID(idcottage)) {
+                c.setSubscriptions(c.getSubscriptions().stream().filter(s -> s.getId() != idcottage).collect(Collectors.toList()));
+                clientService.save(c);
+            }
         }
 
         Cottage cottage = cottageService.findOne(idcottage);

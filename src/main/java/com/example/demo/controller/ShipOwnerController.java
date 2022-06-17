@@ -2,10 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.FilterShipDTO;
 import com.example.demo.dto.ShipDTO;
-import com.example.demo.model.Offer;
-import com.example.demo.model.Reservation;
-import com.example.demo.model.Ship;
-import com.example.demo.model.ShipOwner;
+import com.example.demo.model.*;
+import com.example.demo.service.ClientService;
 import com.example.demo.service.ReservationService;
 import com.example.demo.service.ShipOwnerService;
 import com.example.demo.service.ShipService;
@@ -24,13 +22,15 @@ public class ShipOwnerController {
     private ShipOwnerService service;
     private ShipService shipservice;
     private ReservationService reservationService;
+    private ClientService clientService;
 
 
     @Autowired
-    public ShipOwnerController(ShipOwnerService service, ShipService shipservice, ReservationService reservationService) {
+    public ShipOwnerController(ShipOwnerService service, ShipService shipservice, ReservationService reservationService, ClientService clientService) {
         this.service = service;
         this.shipservice = shipservice;
         this.reservationService = reservationService;
+        this.clientService = clientService;
     }
 
     @ResponseBody
@@ -78,6 +78,14 @@ public class ShipOwnerController {
             offer.setId(-1);
             r.setOffer(offer);
             this.reservationService.save(r);
+        }
+
+        List<Client> clients = this.clientService.findAll();
+        for(Client c : clients) {
+            if (c.getSubscriptionsByID(idbrod)) {
+                c.setSubscriptions(c.getSubscriptions().stream().filter(s -> s.getId() != idbrod).collect(Collectors.toList()));
+                clientService.save(c);
+            }
         }
 
         Ship ship = shipservice.findOne(idbrod);

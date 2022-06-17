@@ -33,6 +33,23 @@ public class Client extends User {
         return subscriptions;
     }
 
+    public boolean getSubscriptionsByID(Integer offerID) {
+        for(Offer o : subscriptions)
+            if(o.getId()==offerID)
+                return true;
+        return false;
+    }
+
+    public int findSubscriptionsByOffer(Integer offerID) {
+        for(Offer o : subscriptions)
+            if(o.getId()==offerID) {
+                o.setId(-1);
+                return 1;
+            }
+        return -1;
+    }
+
+
     public void setSubscriptions(List<Offer> subscriptions) {
         this.subscriptions = subscriptions;
     }
