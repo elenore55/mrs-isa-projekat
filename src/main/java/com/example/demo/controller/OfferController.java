@@ -10,6 +10,7 @@ import com.example.demo.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -58,6 +59,7 @@ public class OfferController {
 
     @ResponseBody
     @RequestMapping(path = "/addFastReservation/{id}", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
     public ResponseEntity<FastReservationDTO> addFastReservation(@PathVariable Integer id, @RequestBody FastReservationDTO dto) {
         Offer o = offerService.findOne(id);
         if (o == null)

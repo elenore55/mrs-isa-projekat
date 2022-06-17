@@ -104,7 +104,7 @@ Vue.component('change-pw-owner', {
                 axios.post("api/users/changePassword", {
                     old: this.old_password,
                     newPass: this.password,
-                    id: this.$route.params.id,
+                    id: JSON.parse(localStorage.getItem("jwt")).userId,
                 }).then(function(response) {
                     if(response.data === "OK") {
                         Swal.fire('Success', 'Password changed!', 'success');
@@ -112,7 +112,8 @@ Vue.component('change-pw-owner', {
                         Swal.fire('Error', 'Incorrect old password!', 'error');
                     }
                 }).catch(function (error) {
-                    Swal.fire('Error', 'Something went wrong!', 'error');
+                    if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }
         }

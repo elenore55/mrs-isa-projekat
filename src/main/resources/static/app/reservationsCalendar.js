@@ -10,7 +10,13 @@ Vue.component("reservations-calendar", {
 
     mounted() {
         let events = [];
-        axios.get("api/users/getOwnersReservations/" + this.id + "/" + this.offerId).then(response => {
+        axios({
+            method: "get",
+            url: "api/users/getOwnersReservations/" + JSON.parse(localStorage.getItem("jwt")).userId + "/" + this.offerId,
+            headers: {
+                Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+            }
+        }).then(response => {
             this.reservations = response.data;
             for (const r of this.reservations) {
                 let color = "#36b5e3";
@@ -50,7 +56,13 @@ Vue.component("reservations-calendar", {
                 allDay: true,
                 color: "#6Bf251"
             });*/
-            axios.get("api/offers/getFastReservations/" + this.offerId).then(response => {
+            axios({
+                method: "get",
+                url: "api/offers/getFastReservations/" + this.offerId,
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
+            }).then(response => {
                 this.fast = response.data;
                 for (const f of this.fast) {
                     let startDate = new Date(f.start);
@@ -129,10 +141,12 @@ Vue.component("reservations-calendar", {
                 });
                 calendar.render();
             }).catch(function (error) {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         }).catch(function (error) {
-            Swal.fire('Error', 'Something went wrong!', 'error');
+            if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+            else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 

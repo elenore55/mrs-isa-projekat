@@ -7,7 +7,13 @@ Vue.component('cottage-profile', {
     },
 
     mounted() {
-        axios.get("api/cottages/getCottage/" + this.$route.params.id).then(response => {
+        axios({
+            method: "get",
+            url: "api/cottages/getCottage/" + this.$route.params.id,
+            headers: {
+                Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+            }
+        }).then(response => {
             this.cottage = response.data;
         }).catch(function (error) {
             Swal.fire('Error', 'Something went wrong!', 'error');
@@ -138,7 +144,7 @@ Vue.component('cottage-profile', {
 
     computed: {
         updateLink() {
-            return "/#/updateCottage/" + this.$route.params.id;
+            return "/index.html#/updateCottage/" + this.$route.params.id;
         },
 
         numberOfBeds() {

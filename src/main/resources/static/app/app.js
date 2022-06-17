@@ -1,3 +1,4 @@
+const Unauthorized = {template: '<unauthorized></unauthorized>'};
 const PriceHistoryReport = {template: '<price-history-report></price-history-report>'};
 const VisitReport = {template: '<visit-report></visit-report>'};
 const ChangePasswordOwner = {template: '<change-pw-owner></change-pw-owner>'};
@@ -64,6 +65,10 @@ Vue.component('vuejs-datepicker', vuejsDatepicker);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {
+            path: "/unauthorized",
+            component: Unauthorized
+        },
         {
             path: "/priceHistoryReport/:id",
             component: PriceHistoryReport

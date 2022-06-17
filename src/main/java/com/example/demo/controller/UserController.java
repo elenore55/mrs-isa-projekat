@@ -12,6 +12,7 @@ import com.example.demo.util.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -120,6 +121,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(path = "/getOwner/{id}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
     public ResponseEntity<UserDTO> getOwner(@PathVariable Integer id) {
         User user = userService.findOne(id);
         if (user == null) {
@@ -134,6 +136,7 @@ public class UserController {
     @Transactional
     @ResponseBody
     @RequestMapping(path = "/updateUser/{id}", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
     public ResponseEntity<UserDTO> updateUser(@PathVariable Integer id, @RequestBody UserDTO dto) {
         User user = userService.findOne(id);
         if (user == null) {
@@ -151,6 +154,7 @@ public class UserController {
     @Transactional
     @ResponseBody
     @RequestMapping(path = "/getOwnersReservations/{id}/{offerId}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
     public ResponseEntity<List<ReservationDTO>> getOwnersReservations(@PathVariable Integer id, @PathVariable Integer offerId) {
         User user = userService.findOne(id);
         if (!(user instanceof CottageOwner) && !(user instanceof ShipOwner)) {
@@ -172,6 +176,7 @@ public class UserController {
     @Transactional
     @ResponseBody
     @RequestMapping(path = "/getFilteredOwnersReservations/{id}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
     public ResponseEntity<List<ReservationDTO>> getOwnersReservations(@PathVariable Integer id, @RequestBody ReservationsFilterDTO dto) {
         User user = userService.findOne(id);
         if (!(user instanceof CottageOwner) && !(user instanceof ShipOwner)) {
@@ -202,6 +207,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(path = "/getIncomeReport/{id}/{kind}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
     public ResponseEntity<List<ReportEntryDTO>> getIncomeReport(@PathVariable Integer id, @PathVariable String kind, @RequestBody DatesDTO dto) {
         User user = userService.findOne(id);
         if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -219,6 +225,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(path = "/getVisitReport/{id}/{kind}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
     public ResponseEntity<List<ReportEntryDTO>> getVisitReport(@PathVariable Integer id, @PathVariable String kind, @RequestBody DatesDTO dto) {
         User user = userService.findOne(id);
         if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -236,6 +243,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(path = "/getPriceHistoryReport/{id}/{kind}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
     public ResponseEntity<List<ReportEntryDTO>> getPriceHistoryReport(@PathVariable Integer id, @PathVariable String kind, @RequestBody DatesDTO dto) {
         User user = userService.findOne(id);
         if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);

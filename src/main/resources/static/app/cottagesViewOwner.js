@@ -29,6 +29,7 @@ Vue.component("cottages-view-owner", {
         axios.get("api/addresses/getCities").then(response => {
             this.all_cities = response.data;
         }).catch(function (error) {
+
             Swal.fire('Error', 'Something went wrong!', 'error');
         });
 
@@ -63,7 +64,7 @@ Vue.component("cottages-view-owner", {
                         <a type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filter-div" role="button" 
                         aria-expanded="false" aria-controls="filter-div" style="background-color: white;">Filter</a>
                     </div>
-                    <a type="button" class="btn btn-primary shadow" href="/#/addCottage/">Add cottage</a>
+                    <a type="button" class="btn btn-primary shadow" href="/index.html#/addCottage/">Add cottage</a>
                 </div>
                 <div class="collapse bg-light shadow-sm rounded" id="filter-div">
                     <div class="container mt-3">
@@ -105,7 +106,7 @@ Vue.component("cottages-view-owner", {
                                 <p class="card-text mb-2">Number of rooms: {{ c.rooms.length }}</p>
                                 <p class="card-text">Number of beds: {{ c.numberOfBeds }}</p>
                                 <div class="d-flex flex-row mt-3">
-                                    <a :href="'/#/cottageProfile/' + c.id" class="btn btn-primary me-3 mt-3">View</a>
+                                    <a :href="'/index.html#/cottageProfile/' + c.id" class="btn btn-primary me-3 mt-3">View</a>
                                     <button type="button" class="btn btn-danger mt-3" v-on:click="setCurrentId(c.id)">Delete</button>
                                 </div>
                             </div>
@@ -164,8 +165,8 @@ Vue.component("cottages-view-owner", {
                 Swal.fire('Success', 'Cottage deleted!', 'success');
                 this.reload();
             }).catch(function (error) {
-                // alert(error.response.status);
-                Swal.fire('Error', 'It is not possible to delete the cottage!', 'error');
+                if (error.response.status == 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                else Swal.fire('Error', 'It is not possible to delete the cottage!', 'error');
             });
             this.of = "auto";
         },
@@ -180,7 +181,8 @@ Vue.component("cottages-view-owner", {
             }).then(response => {
                 this.cottages = response.data;
             }).catch(function (error) {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+                if (error.response.status == 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
@@ -201,7 +203,8 @@ Vue.component("cottages-view-owner", {
                     }
                 }
             }).catch(function (error) {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+                if (error.response.status == 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
@@ -224,7 +227,8 @@ Vue.component("cottages-view-owner", {
                 }).then(response => {
                     this.cottages = response.data;
                 }).catch(function (error) {
-                    Swal.fire('Error', 'Something went wrong!', 'error');
+                    if (error.response.status == 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             } else {
                 this.price_error = true;

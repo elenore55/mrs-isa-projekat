@@ -22,19 +22,19 @@ Vue.component('update-cottage-nav', {
 
     computed: {
         allCottages() {
-            return "/#/cottagesViewOwner/2";
+            return "/index.html#/cottagesViewOwner/2";
         },
 
         cottageProfile() {
-            return "/#/cottageProfile/" + this.$route.params.id;
+            return "/index.html#/cottageProfile/" + this.$route.params.id;
         },
 
         cottageImages() {
-            return "/#/cottageImages/" + this.$route.params.id;
+            return "/index.html#/cottageImages/" + this.$route.params.id;
         },
 
         cottageReservations() {
-            return "/#/cottageReservations/" + this.$route.params.id;
+            return "/index.html#/cottageReservations/" + this.$route.params.id;
         }
     }
 });

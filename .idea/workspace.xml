@@ -5,8 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/unauthorized.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageOwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageOwnerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/OfferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/OfferController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addCottage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addCottage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addCottageReservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addCottageReservation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addReservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addReservation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addShip.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addShip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/changeOwnersPassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/changeOwnersPassword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottageImages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageImages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottageProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottageReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageReservations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottagesViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottagesViewOwner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/fastReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/fastReservations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/ownersNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/ownersNav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/ownersProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/ownersProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/reservationsCalendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/reservationsCalendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/reservationsHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/reservationsHistory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipImages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipImages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipReservations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipsViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipsViewOwner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/updateCottage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/updateCottage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/updateCottageNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/updateCottageNav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/updateOwnersProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/updateOwnersProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/updateShip.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/updateShip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/updateShipNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/updateShipNav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/addCottage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/addCottage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/cottagesViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/cottagesViewOwner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/updateCottage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/updateCottage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +64,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="JavaScript File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -183,13 +216,6 @@
       <workItem from="1654502811918" duration="21916000" />
       <workItem from="1654803114806" duration="52939000" />
       <workItem from="1655406817526" duration="2736000" />
-    </task>
-    <task id="LOCAL-00110" summary="Kreiran IncomeReportDTO">
-      <created>1653652430461</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1653652430461</updated>
     </task>
     <task id="LOCAL-00111" summary="Izracunavanje za sve rezervacije">
       <created>1653677632534</created>
@@ -527,7 +553,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655421247192</updated>
     </task>
-    <option name="localTasksCounter" value="159" />
+    <task id="LOCAL-00159" summary="Dodate PreAuthorize anotacije u CottageOwnerController">
+      <created>1655421380754</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1655421380754</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -547,7 +580,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Iscrtavanje praznog grafika" />
     <MESSAGE value="#237.3 Iscrtavanje grafika" />
     <MESSAGE value="Prikaz modalnog dijaloga za unos izvestaja" />
     <MESSAGE value="Validacija za izvjestaj o klijentu" />
@@ -572,7 +604,8 @@
     <MESSAGE value="Cuvanje tokena u localStorage" />
     <MESSAGE value="Slanje tokena za prikaz vikendica" />
     <MESSAGE value="Ispravljeni axios pozivi kod cottagesViewOwner.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ispravljeni axios pozivi kod cottagesViewOwner.js" />
+    <MESSAGE value="Dodate PreAuthorize anotacije u CottageOwnerController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dodate PreAuthorize anotacije u CottageOwnerController" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="178" key="#Assign_Data_Sources" timestamp="1655292820546">
@@ -583,49 +616,49 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655408216203" />
-    <state x="2505" y="114" key="CommitChangelistDialog2" timestamp="1655421246440">
+    <state x="2505" y="114" key="CommitChangelistDialog2" timestamp="1655421380085">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2505" y="114" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655421246440" />
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1655421309945">
+    <state x="2505" y="114" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655421380085" />
+    <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1655464604385">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655421309945" />
+    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655464604385" />
     <state width="1237" height="136" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="223" key="GridCell.Tab.0.center" timestamp="1655421309945">
+    <state width="1877" height="223" key="GridCell.Tab.0.center" timestamp="1655464604384">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655421309945" />
+    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655464604384" />
     <state width="1237" height="136" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="223" key="GridCell.Tab.0.left" timestamp="1655421309945">
+    <state width="1877" height="223" key="GridCell.Tab.0.left" timestamp="1655464604383">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655421309945" />
+    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655464604383" />
     <state width="1237" height="136" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="223" key="GridCell.Tab.0.right" timestamp="1655421309945">
+    <state width="1877" height="223" key="GridCell.Tab.0.right" timestamp="1655464604385">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655421309945" />
+    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655464604385" />
     <state width="1237" height="136" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="223" key="GridCell.Tab.1.bottom" timestamp="1655421309945">
+    <state width="1877" height="223" key="GridCell.Tab.1.bottom" timestamp="1655464604385">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655421309945" />
+    <state width="1877" height="223" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655464604385" />
     <state width="1237" height="136" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655320307964" />
-    <state width="1877" height="223" key="GridCell.Tab.1.center" timestamp="1655421309945">
+    <state width="1877" height="223" key="GridCell.Tab.1.center" timestamp="1655464604385">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.1.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655421309945" />
+    <state width="1877" height="223" key="GridCell.Tab.1.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655464604385" />
     <state width="1237" height="136" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="223" key="GridCell.Tab.1.left" timestamp="1655421309945">
+    <state width="1877" height="223" key="GridCell.Tab.1.left" timestamp="1655464604385">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.1.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655421309945" />
+    <state width="1877" height="223" key="GridCell.Tab.1.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655464604385" />
     <state width="1237" height="136" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="223" key="GridCell.Tab.1.right" timestamp="1655421309945">
+    <state width="1877" height="223" key="GridCell.Tab.1.right" timestamp="1655464604385">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655421309945" />
+    <state width="1877" height="223" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655464604385" />
     <state width="1237" height="136" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
     <state width="1877" height="237" key="GridCell.Tab.2.bottom" timestamp="1655419932421">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -647,10 +680,10 @@
     </state>
     <state width="1877" height="237" key="GridCell.Tab.2.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655419932421" />
     <state width="1237" height="136" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1655320307964" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1655421252766">
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1655421385702">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655421252766" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655421385702" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1655408186641">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>

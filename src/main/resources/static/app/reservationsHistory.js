@@ -10,7 +10,6 @@ Vue.component("reservations-history", {
             sort_by: 'Date',
             direction: 'Ascending',
             calendarDisplay: false,
-            offer_type: "",
             focused_reservation: {
                 startDate: new Date(),
                 endDate: new Date(),
@@ -27,17 +26,12 @@ Vue.component("reservations-history", {
     },
 
     mounted() {
-        axios.get("api/users/getOfferType/" + this.$route.params.id).then(response => {
-            this.offer_type = response.data;
-        }).catch(error => {
-            Swal.fire('Error', 'Owner not found!', 'error');
-        });
         this.my_modal =  new bootstrap.Modal(document.getElementById("reportModal"), {});
     },
 
     template: `
     <div style="background-color: #fff9e8">
-        <owners-nav :offer="offer_type"></owners-nav>
+        <owners-nav></owners-nav>
         <div class="d-flex justify-content-center" style="background-color: #ddc8fb">
             <div class="w-25 d-flex justify-content-evenly my-3">
                 <div class="mt-1 ms-3 me-4 mb-1">
@@ -140,15 +134,20 @@ Vue.component("reservations-history", {
         getReservations() {
             this.input_started = true;
             let desc = this.direction === 'Descending';
-            axios.post('api/users/getFilteredOwnersReservations/' + this.$route.params.id, {
+            axios.post('api/users/getFilteredOwnersReservations/' + JSON.parse(localStorage.getItem("jwt")).userId, {
                 startDate: this.start_date,
                 endDate: this.end_date,
                 sortBy: this.sort_by,
                 desc: desc
+            }, {
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
             }).then(response => {
                 this.reservations = response.data;
             }).catch(error => {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
@@ -188,12 +187,17 @@ Vue.component("reservations-history", {
                     clientEmail: this.focused_reservation.clientEmail,
                     ownerId: this.$route.params.id,
                     reservationId: this.focused_reservation.id
+                }, {
+                    headers: {
+                        Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                    }
                 }).then(response => {
                     this.my_modal.hide();
                     this.resetModalData();
                     Swal.fire("Success", "Review submitted", "success");
                 }).catch(error => {
-                    Swal.fire("Error", "Something went wrong", "error");
+                    if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    else Swal.fire("Error", "Something went wrong", "error");
                 });
             }
         },
