@@ -67,5 +67,16 @@ public class ComplaintAdminDTO {
     public void setAdminApprovalStatus(AdminApprovalStatus adminApprovalStatus) {
         this.adminApprovalStatus = adminApprovalStatus;
     }
+
+    @Override
+    public String toString() {
+        return "ComplaintAdminDTO{" +
+                "content='" + content + '\'' +
+                ", clientDTO=" + clientDTO +
+                ", id=" + id +
+                ", adminApprovalStatus=" + adminApprovalStatus +
+                ", dateTime=" + dateTime +
+                '}';
+    }
 }
 

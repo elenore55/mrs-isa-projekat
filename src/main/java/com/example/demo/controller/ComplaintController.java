@@ -84,6 +84,7 @@ public class ComplaintController {
     @RequestMapping(path = "/updateComplaintAdmin", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<Complaint> updateComplaintAdmin(@RequestBody ComplaintAdminDTO complaint)
     {
+        System.out.println(complaint.toString());
         Complaint izBaze = complaintService.findOne(complaint.getId());
         if(complaint.getAdminApprovalStatus()==AdminApprovalStatus.APPROVED || complaint.getAdminApprovalStatus()==AdminApprovalStatus.REJECTED)
             izBaze.setStatus(complaint.getAdminApprovalStatus());

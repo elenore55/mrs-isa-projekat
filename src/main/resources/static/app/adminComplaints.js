@@ -50,13 +50,19 @@ Vue.component("admin-complaint",{
     methods:{
         respondTo(comp)
         {
-            axios.post("api/complaint/updateComplaintAdmin")
-            console.log(comp)
+            axios.post("api/complaint/updateComplaintAdmin",{
+                content : comp.content,
+                clientDTO: comp.clientDTO,
+                id: comp.id,
+                adminApprovalStatus:comp.adminApprovalStatus,
+                dateTime: comp.dateTime
+            }).then(console.log(comp)).catch(console.log(comp))
         },
 
         loadComplaints(){
             axios.get("api/complaint/allPending").then(response => {
                 this.complaints = response.data;
+                console.log(this.complaints[0])
             })
         },
         loadComplaintPossibleStatuses(){
