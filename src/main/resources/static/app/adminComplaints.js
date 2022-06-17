@@ -56,7 +56,7 @@ Vue.component("admin-complaint",{
                 id: comp.id,
                 adminApprovalStatus:comp.adminApprovalStatus,
                 dateTime: comp.dateTime
-            }).then(console.log(comp)).catch(console.log(comp))
+            }).then(this.$router.go()).catch(console.log("Nesto nije valjano"))
         },
 
         loadComplaints(){

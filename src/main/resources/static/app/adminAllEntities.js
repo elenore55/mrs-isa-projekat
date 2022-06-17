@@ -197,7 +197,7 @@ Vue.component("admin-entities",{
                 axios.delete("api/instructors/deleteTheAdventure/"+element.id+"/"+element.fInstructorId)
             }
             console.log("AAAAAAAAAAAAAAAA")
-
+            setTimeout(()=>this.$router.go(),100);
         },
         sendRequest(){
             axios.get("api/TBD").then(response => {
