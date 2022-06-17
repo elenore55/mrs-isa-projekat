@@ -72,7 +72,9 @@ public class CottageOwnerController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         List<Reservation> allReservationsOfThisCottage = this.reservationService.findAll().stream().filter(r-> r.getOffer().getId() == idcottage).collect(Collectors.toList());
         for(Reservation r : allReservationsOfThisCottage) {
-            r.setOffer(null);
+            Offer offer = new Offer();
+            offer.setId(-1);
+            r.setOffer(offer);
             this.reservationService.save(r);
         }
 

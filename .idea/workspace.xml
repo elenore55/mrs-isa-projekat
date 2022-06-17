@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="Opsta podesavanja za security">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ComplaintController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ComplaintController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Complaint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Complaint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Penalty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Penalty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adminComplaints.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminComplaints.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageOwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageOwnerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipOwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipOwnerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adminAllEntities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminAllEntities.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +190,7 @@
       <workItem from="1654502811918" duration="21916000" />
       <workItem from="1654803114806" duration="52939000" />
       <workItem from="1655304156627" duration="9891000" />
-      <workItem from="1655448405124" duration="4472000" />
+      <workItem from="1655448405124" duration="5667000" />
     </task>
     <task id="LOCAL-00105" summary="Prikaz profila klijenta">
       <created>1653517615884</created>

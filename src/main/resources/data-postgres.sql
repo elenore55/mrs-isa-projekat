@@ -215,3 +215,4 @@ insert into complaint(content,complaint_date_time,status,issued_by_id) values ('
 insert into complaint(content,complaint_date_time,status,issued_by_id) values ('vrv email korisnika','20220520 10:05:00 AM','PENDING',5);
 insert into complaint(content,complaint_date_time,status,issued_by_id) values ('vrv email korisnika','20220520 10:05:00 AM','PENDING',5);
 
+insert into offer (additional_info, description, name, price_list, address_id,id) values ('-1', '-1', '-1', 0, 1,-1);

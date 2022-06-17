@@ -74,7 +74,9 @@ public class ShipOwnerController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         List<Reservation> allReservationsOfThisShip = this.reservationService.findAll().stream().filter(r-> r.getOffer().getId() == idbrod).collect(Collectors.toList());
         for(Reservation r : allReservationsOfThisShip) {
-            r.setOffer(null);
+            Offer offer = new Offer();
+            offer.setId(-1);
+            r.setOffer(offer);
             this.reservationService.save(r);
         }
 

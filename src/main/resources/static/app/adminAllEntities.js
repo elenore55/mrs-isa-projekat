@@ -124,7 +124,7 @@ Vue.component("admin-entities",{
                       </thead>
                       <tbody>
                         <tr v-for="(cottage,index) in cottages">
-                            <td> <input type="checkbox" id="cottage.id" value="cottage.id" v-on:click="enterValuesInLists(cottage.id,selectedCottages)"></td>
+                            <td> <input type="checkbox" id="cottage.id" value="cottage.id" v-on:click="enterValuesInLists(cottage,selectedCottages)"></td>
                             <td> {{cottage.name}}  </td>
                             <td> {{cottage.price}}  </td>
                         </tr>
@@ -187,6 +187,10 @@ Vue.component("admin-entities",{
             {
                 // axios.delete("api/offers/deleteOffer/"+element.id+"/"+element.ownerId)
                 axios.delete("api/shipOwner/deleteTheShip/"+element.id+"/"+element.ownerId)
+            }
+            for(let element of this.selectedCottages)
+            {
+                axios.delete("api/cottageOwner/deleteTheCottage/"+element.id+"/"+element.ownerId)
             }
             console.log("AAAAAAAAAAAAAAAA")
 
