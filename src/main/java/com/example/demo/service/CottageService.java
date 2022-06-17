@@ -69,7 +69,7 @@ public class CottageService {
                 retVal.add(c);
             }
         }
-        sortCottages(retVal, getStringSortBy(userFilterDTO));
+        //sortCottages(retVal, getStringSortBy(userFilterDTO));
         return retVal;
     }
 
