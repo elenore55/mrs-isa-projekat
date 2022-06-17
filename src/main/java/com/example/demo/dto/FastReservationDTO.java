@@ -28,6 +28,9 @@ public class FastReservationDTO {
         this.actionDuration = fr.getActionDuration();
         this.price = fr.getPrice();
         this.maxPeople = fr.getMaxPeople();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+        this.startStr = dateTimeFormatter.format(start);
+        this.actionStartStr = dateTimeFormatter.format(actionStart);
     }
 
     public Integer getId() {
@@ -87,8 +90,7 @@ public class FastReservationDTO {
     }
 
     public String getStartStr() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
-        return dateTimeFormatter.format(start);
+        return startStr;
     }
 
     public void setStartStr(String startStr) {
@@ -96,8 +98,7 @@ public class FastReservationDTO {
     }
 
     public String getActionStartStr() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
-        return dateTimeFormatter.format(actionStart);
+        return actionStartStr;
     }
 
     public void setActionStartStr(String actionStartStr) {

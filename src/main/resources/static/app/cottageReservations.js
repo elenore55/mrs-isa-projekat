@@ -18,6 +18,8 @@ Vue.component("cottage-reservations", {
             }
         }).then(response => {
             this.cottage = response.data;
+            this.cottage.availableStart = this.getValidDate(this.cottage.availableStart);
+            this.cottage.availableEnd = this.getValidDate(this.cottage.availableEnd);
         }).catch(function (error) {
             if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
             else Swal.fire('Error', 'Something went wrong!', 'error');
@@ -80,6 +82,11 @@ Vue.component("cottage-reservations", {
                     else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }
+        },
+
+        getValidDate(date) {
+            let arr = date.toString().split(',');
+            return new Date(parseInt(arr[0]), parseInt(arr[1]), parseInt(arr[2]) - 1, parseInt(arr[3]), parseInt(arr[4]));
         }
     },
 

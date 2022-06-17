@@ -4,7 +4,11 @@ Vue.component('fast-reservations', {
             id: null,
             actions: [],
             start: null, duration: null, actionStart: null, actionDuration: null,
-            price: null, maxPeople: null, input_started: false
+            price: null, maxPeople: null, input_started: false,
+            role: JSON.parse(localStorage.getItem("jwt")).userRole,
+            disabled: {
+                to: new Date()
+            },
         }
     },
 
@@ -15,7 +19,8 @@ Vue.component('fast-reservations', {
 
     template: `
     <div style="background-color: #f2e488;height: 1000px">
-        <update-ship-nav></update-ship-nav>
+        <update-ship-nav v-if="role=='ROLE_SHIP'"></update-ship-nav>
+        <update-cottage-nav v-if="role=='ROLE_COTTAGE'"></update-cottage-nav>
         <div class="d-flex justify-content-start ms-3 mt-3">
             <h2 class="mt-2 ms-3">Fast reservations</h2>
         </div>
@@ -26,7 +31,7 @@ Vue.component('fast-reservations', {
                     <div class="d-flex justify-content-between">
                         <div>
                             <h5>Stay period</h5>
-                            <label class="form-label">Start date: {{ formatDate(fr.start) }} Duration: {{ fr.duration }} days</label>
+                            <label class="form-label">Start date: {{ fr.startStr }} Duration: {{ fr.duration }} days</label>
                         </div>
                         <div class="text-end me-1">
                             <h3 class="text-success">{{ fr.price }} EUR</h3>
@@ -34,7 +39,7 @@ Vue.component('fast-reservations', {
                         </div>
                     </div>
                     <h5 class="mt-3">Action period</h5>
-                    <label>Start date: {{ formatDate(fr.actionStart) }} Duration: {{ fr.actionDuration }} days</label>
+                    <label>Start date: {{ fr.actionStartStr }} Duration: {{ fr.actionDuration }} days</label>
                     <div class="text-end mb-1 me-1 mt-1">
                         <button type="button" v-on:click="deleteAction(i)" class="btn btn-outline-danger btn-sm">Delete</button>
                     </div>
@@ -47,7 +52,7 @@ Vue.component('fast-reservations', {
                     <div class="d-flex justify-content-left ms-3 mt-4 me-3 mb-1">
                         <div class="mt-1 ms-3 me-4 mb-1">
                             <label for="start-date">Start date</label>
-                            <vuejs-datepicker v-model="start" format="dd.MM.yyyy." id="start-date" :monday-first="true"></vuejs-datepicker>
+                            <vuejs-datepicker v-model="start" format="dd.MM.yyyy." id="start-date" :disabled-dates="disabled" :monday-first="true"></vuejs-datepicker>
                             <p v-if="!isValidStayDate" class="text-danger">Date must not be empty</p>
                         </div>
                         <div class="mt-1 mb-1 me-3 form-floating">
@@ -61,7 +66,7 @@ Vue.component('fast-reservations', {
                     <div class="d-flex justify-content-left ms-3 mt-4 me-3 mb-1">
                         <div class="mt-1 ms-3 me-4 mb-1">
                             <label for="start-action-date">Start date</label>
-                            <vuejs-datepicker v-model="actionStart" format="dd.MM.yyyy." id="start-action-date" :monday-first="true"></vuejs-datepicker>
+                            <vuejs-datepicker v-model="actionStart" format="dd.MM.yyyy." id="start-action-date" :disabled-dates="disabled" :monday-first="true"></vuejs-datepicker>
                             <p v-if="!isValidActionDate" class="text-danger">Date must not be empty</p>
                         </div>
                         <div class="mt-1 mb-1 me-3 form-floating">               
@@ -118,7 +123,7 @@ Vue.component('fast-reservations', {
         },
 
         formatDate(dt) {
-            let startStr = new Date(dt).toISOString();
+            let startStr = dt.toISOString();
             let y = startStr.slice(0, 4);
             let m = startStr.slice(5, 7);
             let d = startStr.slice(8, 10);
@@ -135,10 +140,17 @@ Vue.component('fast-reservations', {
         },
 
         reload() {
-            axios.get("api/offers/getFastReservations/" + this.$route.params.id).then(response => {
+            axios({
+                method: "get",
+                url: "api/offers/getFastReservations/" + this.$route.params.id,
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
+            }).then(response => {
                 this.actions = response.data;
             }).catch(function (error) {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         }
     },

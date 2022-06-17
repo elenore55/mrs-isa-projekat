@@ -149,9 +149,9 @@ Vue.component("reservations-history", {
                     if (response.data.hasOwnProperty(i)) {
                         let r = response.data[i];
                         let arr_s = r.startDate.toString().split(',');
-                        r.startDate = new Date(parseInt(arr_s[0]), parseInt(arr_s[1]), parseInt(arr_s[2]), parseInt(arr_s[3]), parseInt(arr_s[4]));
+                        r.startDate = new Date(parseInt(arr_s[0]), parseInt(arr_s[1]) - 1, parseInt(arr_s[2]), parseInt(arr_s[3]), parseInt(arr_s[4]));
                         let arr_e = r.endDate.toString().split(',');
-                        r.endDate = new Date(parseInt(arr_e[0]), parseInt(arr_e[1]), parseInt(arr_e[2]), parseInt(arr_e[3]), parseInt(arr_e[4]));
+                        r.endDate = new Date(parseInt(arr_e[0]), parseInt(arr_e[1]) - 1, parseInt(arr_e[2]), parseInt(arr_e[3]), parseInt(arr_e[4]));
                         this.reservations.push(r);
                     }
                 }
