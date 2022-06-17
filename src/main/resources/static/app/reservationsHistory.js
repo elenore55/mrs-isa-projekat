@@ -144,7 +144,17 @@ Vue.component("reservations-history", {
                     Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
                 }
             }).then(response => {
-                this.reservations = response.data;
+                this.reservations = [];
+                for (const i in response.data) {
+                    if (response.data.hasOwnProperty(i)) {
+                        let r = response.data[i];
+                        let arr_s = r.startDate.toString().split(',');
+                        r.startDate = new Date(parseInt(arr_s[0]), parseInt(arr_s[1]), parseInt(arr_s[2]), parseInt(arr_s[3]), parseInt(arr_s[4]));
+                        let arr_e = r.endDate.toString().split(',');
+                        r.endDate = new Date(parseInt(arr_e[0]), parseInt(arr_e[1]), parseInt(arr_e[2]), parseInt(arr_e[3]), parseInt(arr_e[4]));
+                        this.reservations.push(r);
+                    }
+                }
             }).catch(error => {
                 if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
                 else Swal.fire('Error', 'Something went wrong!', 'error');
@@ -152,7 +162,7 @@ Vue.component("reservations-history", {
         },
 
         getFormattedDate(date) {
-            let dateStr = new Date(date).toISOString();
+            let dateStr = date.toISOString();
             let year = dateStr.substring(0, 4);
             let month = dateStr.substring(5, 7);
             let day = dateStr.substring(8, 10);
@@ -160,7 +170,7 @@ Vue.component("reservations-history", {
         },
 
         getFormattedTime(date) {
-            let dateStr = new Date(date).toISOString();
+            let dateStr = date.toISOString();
             let hours = dateStr.substring(11, 13);
             let minutes = dateStr.substring(14, 16);
             return hours + ':' + minutes;
