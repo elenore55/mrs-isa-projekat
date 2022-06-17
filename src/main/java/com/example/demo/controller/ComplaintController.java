@@ -42,14 +42,25 @@ public class ComplaintController {
         return new ResponseEntity<>("OK", HttpStatus.CREATED);
     }
 
-    @GetMapping(path = "/all")
-    public ResponseEntity<List<ComplaintAdminDTO>> getAllComplaints(){
+    @GetMapping(path = "/allPending")
+    public ResponseEntity<List<ComplaintAdminDTO>> getAllPendingComplaints(){
         List<Complaint> complaints = complaintService.findAll();
         List<ComplaintAdminDTO> complaintsDTOS = new ArrayList<>();
-        for(Complaint complaint : complaints)
-            complaintsDTOS.add(new ComplaintAdminDTO(complaint));
+        for(Complaint complaint : complaints) {
+            if(complaint.getStatus() == AdminApprovalStatus.PENDING)
+                complaintsDTOS.add(new ComplaintAdminDTO(complaint));
+        }
         return new ResponseEntity<>(complaintsDTOS, HttpStatus.OK);
     }
+
+    @GetMapping(path = "/approvalStatus")
+    public ResponseEntity<List<AdminApprovalStatus>> getComplaintPossibleStatuses(){
+        List<AdminApprovalStatus> statuses = new ArrayList<>();
+        statuses.add(AdminApprovalStatus.APPROVED);
+        statuses.add(AdminApprovalStatus.REJECTED);
+        return new ResponseEntity<>(statuses, HttpStatus.OK);
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<Complaint> getComplaint(@PathVariable Integer id)
     {
@@ -65,6 +76,17 @@ public class ComplaintController {
     {
         Complaint izBaze = complaintService.findOne(complaint.getId());
         izBaze.setStatus(AdminApprovalStatus.APPROVED);
+        izBaze = complaintService.update(izBaze);
+        return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/updateComplaintAdmin", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<Complaint> updateComplaintAdmin(@RequestBody ComplaintAdminDTO complaint)
+    {
+        Complaint izBaze = complaintService.findOne(complaint.getId());
+        if(complaint.getAdminApprovalStatus()==AdminApprovalStatus.APPROVED || complaint.getAdminApprovalStatus()==AdminApprovalStatus.REJECTED)
+            izBaze.setStatus(complaint.getAdminApprovalStatus());
         izBaze = complaintService.update(izBaze);
         return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
     }

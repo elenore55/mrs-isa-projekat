@@ -22,7 +22,7 @@ public class Complaint {
     @Enumerated(EnumType.STRING)
     private AdminApprovalStatus status;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Client issuedBy;
 
     public Complaint() {
