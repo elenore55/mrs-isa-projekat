@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/registrationRequests")
@@ -43,5 +45,13 @@ public class RegistrationRequestController {
         request = service.save(request);
         service.notifyAdmins(request.getId());
         return new ResponseEntity<>(request, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/approvalStatus")
+    public ResponseEntity<List<AdminApprovalStatus>> getComplaintPossibleStatuses(){
+        List<AdminApprovalStatus> statuses = new ArrayList<>();
+        statuses.add(AdminApprovalStatus.APPROVED);
+        statuses.add(AdminApprovalStatus.REJECTED);
+        return new ResponseEntity<>(statuses, HttpStatus.OK);
     }
 }

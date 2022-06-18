@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Admin;
+import com.example.demo.model.Complaint;
 import com.example.demo.model.RegistrationRequest;
 import com.example.demo.repository.AdminRepository;
 import com.example.demo.repository.RegistrationRequestRepository;
@@ -36,4 +37,10 @@ public class RegistrationRequestService {
             emailSender.send(admin.getEmail(), title, content);
         }
     }
+    public List<RegistrationRequest> findAll() {
+        return this.repository.findAll();
+    }
+
+    public RegistrationRequest findOne(Integer id){return this.repository.findById(id).orElse(null);}
+    public RegistrationRequest update(RegistrationRequest request){return this.repository.save(request);}
 }
