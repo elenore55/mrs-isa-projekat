@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +87,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Fakultet/Semestar6/ISA/ISA-SIIT-vezbe-2022/Vezbe09/testing-example" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -207,14 +208,7 @@
       <workItem from="1654502811918" duration="21916000" />
       <workItem from="1654803114806" duration="52939000" />
       <workItem from="1655406817526" duration="2736000" />
-      <workItem from="1655583368904" duration="890000" />
-    </task>
-    <task id="LOCAL-00120" summary="Popravljen navbar za brodove i vikendice">
-      <created>1654013674087</created>
-      <option name="number" value="00120" />
-      <option name="presentableId" value="LOCAL-00120" />
-      <option name="project" value="LOCAL" />
-      <updated>1654013674087</updated>
+      <workItem from="1655583368904" duration="1149000" />
     </task>
     <task id="LOCAL-00121" summary="Probna komponenta za mapu">
       <created>1654335755714</created>
@@ -552,7 +546,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655584042270</updated>
     </task>
-    <option name="localTasksCounter" value="169" />
+    <task id="LOCAL-00169" summary="Rebuildovan projekat">
+      <created>1655584399452</created>
+      <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
+      <option name="project" value="LOCAL" />
+      <updated>1655584399453</updated>
+    </task>
+    <option name="localTasksCounter" value="170" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +573,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Upisivanje istorije cijena iz SQL" />
     <MESSAGE value="#236.3 Graficki prikaz rezultata" />
     <MESSAGE value="#236.2 Filtriranje podataka" />
     <MESSAGE value="Dnevni, sedmicni i mjesecni izvjestaji" />
@@ -597,7 +597,8 @@
     <MESSAGE value="Izdvojeno izracunavanje izvjestaja u zasebne klase" />
     <MESSAGE value="CottageOwnerServiceTest" />
     <MESSAGE value="Izmijenjeni kredencijali za bazu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Izmijenjeni kredencijali za bazu" />
+    <MESSAGE value="Rebuildovan projekat" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rebuildovan projekat" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="178" key="#Assign_Data_Sources" timestamp="1655292820546">
@@ -608,10 +609,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655408216203" />
-    <state x="2505" y="114" key="CommitChangelistDialog2" timestamp="1655584041553">
+    <state x="2505" y="114" key="CommitChangelistDialog2" timestamp="1655584397559">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2505" y="114" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584041553" />
+    <state x="2505" y="114" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584397559" />
     <state x="2660" y="275" key="FileChooserDialogImpl" timestamp="1655484842210">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -676,10 +677,14 @@
     </state>
     <state width="1877" height="237" key="GridCell.Tab.2.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655509287744" />
     <state width="1237" height="136" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1655320307964" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1655584047360">
+    <state x="2360" y="94" key="SettingsEditor" timestamp="1655584530103">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584047360" />
+    <state x="2360" y="94" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584530103" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1655584403506">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584403506" />
     <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1655500603170">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
