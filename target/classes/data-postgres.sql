@@ -222,3 +222,7 @@ insert into offer (additional_info, description, name, price_list, address_id,id
 
 insert into deletion_request(request_date_time,status,sent_by_id) values ('20220520 10:05:00 AM','PENDING',7);
 insert into deletion_request(request_date_time,status,sent_by_id) values ('20220520 10:05:00 AM','PENDING',5);
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (10, 5, 'FINISHED', '20220520 10:05:00 AM', '20220525 10:05:00 AM');
+insert into fishing_instructor_reservations (fishing_instructor_id, reservations_id) values (3, 13);
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (10, 7, 'FINISHED', '20220520 10:05:00 AM', '20220525 10:05:00 AM');
+insert into fishing_instructor_reservations (fishing_instructor_id, reservations_id) values (3, 14);

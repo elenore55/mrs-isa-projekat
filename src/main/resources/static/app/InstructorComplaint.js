@@ -9,14 +9,13 @@ Vue.component("instructor-complaint",{
             offer:[],
             review:[],
             brojac:0,
-            penalty:[],
+            penalty:false,
             client_email:[]
 
         }
     },
     mounted: function (){
         this.loadInstructorsAdventures()
-        this.loadAdventuresReservations()
     },
     template: `
     <form style="width: 600px; margin: auto"  v-on:submit ="sendRequest">
@@ -25,7 +24,7 @@ Vue.component("instructor-complaint",{
         </div>
         <div class = "row">
             <h5 class="text-center">Instructors adventures</h5>
-                <select class="select form-control" v-model="adventure" style="height: 50px">
+                <select class="select form-control" v-model="adventure" v-on:change="loadAdventuresReservations()" style="height: 50px">
                     <option v-for="adv in adventures" v-bind:value="adv"> {{adv.name}}</option>
                 </select>
         </div>
@@ -62,21 +61,26 @@ Vue.component("instructor-complaint",{
     methods:{
         reqPen()
         {
-            this.penalty = true
+            this.penalty = !this.penalty
         },
         loadInstructorsAdventures(){ // ZA SAD OSTAVLJENO DA BUDE 3 ZA INSTRUKTORA
-            axios.get("api/adventures/allInstructorsAdventures/"+3).then(response => {
+            axios.get("api/adventures/allInstructorsAdventures/"+"3").then(response => {
                 this.adventures = response.data;
                 // console.log(this.adventures)
             })
         },
         loadAdventuresReservations(){       // ZA SAD ZA INSTRUKTORA POSTAVLJENO DA JE 3
-            axios.get("api/reservations/advreser/"+this.adventure.id+"/"+3).then(response => {
+            axios.get("api/reservations/advreser/"+this.adventure.id+"/"+"3").then(response => {
                 this.reservations = response.data;
+                console.log(this.adventure)
             })
         },
         sendRequest() {
             if (this.review) {
+                console.log(this.review)
+                console.log(this.penalty)
+                console.log(this.client_email)
+                console.log(this.reservation.id)
                 axios.put("api/clientReviews/addReview", {
                     content: this.review,
                     penaltyRequested: this.penalty,

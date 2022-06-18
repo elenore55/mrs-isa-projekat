@@ -15,7 +15,7 @@ public class FishingInstructorService {
     private FishingInstructorRepository fishingInstructorRepository;
 
     public FishingInstructor findOne(Integer id) {
-        return fishingInstructorRepository.getById(id);
+        return fishingInstructorRepository.findById(id).orElse(null);
     }
 
     public List<FishingInstructor> findAll(){

@@ -60,6 +60,7 @@ const AdveReservWithClient = {template: '<advreserv-with-client></advreserv-with
 const AdminEntities = {template: '<admin-entities></admin-entities>'};
 const AdminComplaint = {template: '<admin-complaint></admin-complaint>'};
 const AdminDeletionReq = {template: '<admin-deletreq></admin-deletreq>'};
+const InstructorComplaint = {template: '<instructor-complaint></instructor-complaint>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -313,6 +314,10 @@ const router = new VueRouter({
         {
             path: "/adminDeletionReqs/",
             component: AdminDeletionReq
+        },
+        {
+            path: "/instructorComplaint/",
+            component: InstructorComplaint
         }
     ]
 });

@@ -38,7 +38,7 @@ public class ClientReviewController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         User user = userService.findOne(dto.getOwnerId());
-        if (!(user instanceof CottageOwner) && !(user instanceof ShipOwner)) {
+        if (!(user instanceof CottageOwner) && !(user instanceof ShipOwner) && !(user instanceof FishingInstructor)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         ClientReview review = new ClientReview();
