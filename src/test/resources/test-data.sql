@@ -27,15 +27,14 @@ insert into offer (additional_info, description, name, price_list, address_id) v
 insert into ship (capacity, ship_length, max_speed, number_of_engines, power_of_engine, ship_type, id, ship_owner_id) values (70, 25, 40, 4, 100, 'SHIP', 1, 1);
 
 
-insert into offer (additional_info, description, name, price_list, address_id) values ('info1', 'desc1', 'name1', 300, 1);
+insert into offer (additional_info, description, name, price_list, address_id) values ('this is info1', 'desc1', 'name1', 300, 1);
 insert into cottage (id, cottage_owner_id) values (2, 2);
-
 
 insert into offer (additional_info, description, name, price_list, address_id) values ('info2', 'desc2.', 'name2', 500, 3);
 insert into cottage (id, cottage_owner_id) values (3, 2);
 
 insert into offer (additional_info, description, name, price_list, address_id) values ('info3', 'desc3', 'name3', 60, 2);
-insert into cottage (id, cottage_owner_id) values (5, 2);
+insert into cottage (id, cottage_owner_id) values (4, 2);
 
 
 insert into room (number_of_beds, cottage_id) values (5, 2);
