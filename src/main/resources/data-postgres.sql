@@ -226,3 +226,8 @@ insert into reservation (offer_id, client_id, reservation_status, start_date_tim
 insert into fishing_instructor_reservations (fishing_instructor_id, reservations_id) values (3, 13);
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (10, 7, 'FINISHED', '20220520 10:05:00 AM', '20220525 10:05:00 AM');
 insert into fishing_instructor_reservations (fishing_instructor_id, reservations_id) values (3, 14);
+
+insert into client_review(content,complaint_date_time,penalty_requested,client_id,issued_by_id,reservation_id) values ('ovo je content', '20220520 10:05:00 AM', true, 7,3,13);
+insert into client_review(content,complaint_date_time,penalty_requested,client_id,issued_by_id,reservation_id) values ('ovo je content 2', '20220520 10:05:00 AM', false , 5,3,13);
+insert into client_review(content,complaint_date_time,penalty_requested,client_id,issued_by_id,reservation_id) values ('ovo je content', '20220520 10:05:00 AM', true, 7,3,14);
+insert into client_review(content,complaint_date_time,penalty_requested,client_id,issued_by_id,reservation_id) values ('ovo je content', '20220520 10:05:00 AM', false, 7,3,14);

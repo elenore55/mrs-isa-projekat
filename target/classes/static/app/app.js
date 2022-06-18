@@ -61,6 +61,7 @@ const AdminEntities = {template: '<admin-entities></admin-entities>'};
 const AdminComplaint = {template: '<admin-complaint></admin-complaint>'};
 const AdminDeletionReq = {template: '<admin-deletreq></admin-deletreq>'};
 const InstructorComplaint = {template: '<instructor-complaint></instructor-complaint>'};
+const AdminPenalties = {template: '<admin-penalties></admin-penalties>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -318,6 +319,10 @@ const router = new VueRouter({
         {
             path: "/instructorComplaint/",
             component: InstructorComplaint
+        },
+        {
+            path: "/adminPenalties/",
+            component: AdminPenalties
         }
     ]
 });
