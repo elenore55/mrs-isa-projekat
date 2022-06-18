@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="Opsta podesavanja za security">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminPenalties.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/FeedbackAdminDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminFeedbacks.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ClientReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ClientReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ClientReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ClientReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FeedbackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FeedbackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/FeedbackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/FeedbackService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adminComplaints.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminComplaints.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,9 +40,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="JavaScript File" />
+        <option value="JavaScript File" />
         <option value="Class" />
-        <option value="JavaScript File" />
-        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -206,7 +208,7 @@
       <workItem from="1654803114806" duration="52939000" />
       <workItem from="1655304156627" duration="9891000" />
       <workItem from="1655448405124" duration="16273000" />
-      <workItem from="1655553947281" duration="17484000" />
+      <workItem from="1655553947281" duration="19664000" />
     </task>
     <task id="LOCAL-00105" summary="Prikaz profila klijenta">
       <created>1653517615884</created>

@@ -231,3 +231,11 @@ insert into client_review(content,complaint_date_time,penalty_requested,client_i
 insert into client_review(content,complaint_date_time,penalty_requested,client_id,issued_by_id,reservation_id) values ('ovo je content 2', '20220520 10:05:00 AM', false , 5,3,13);
 insert into client_review(content,complaint_date_time,penalty_requested,client_id,issued_by_id,reservation_id) values ('ovo je content', '20220520 10:05:00 AM', true, 7,3,14);
 insert into client_review(content,complaint_date_time,penalty_requested,client_id,issued_by_id,reservation_id) values ('ovo je content', '20220520 10:05:00 AM', false, 7,3,14);
+
+
+insert into feedback (comment, rating, status) values ('Very pretty boat', 10, 'PENDING');
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (10, 5, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM', 4);
+insert into feedback (comment, rating, status) values ('Solid', 9, 'PENDING');
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (2, 7, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM', 5);
+insert into feedback (comment, rating, status) values ('Pretty good', 8, 'PENDING');
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (4, 5, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM', 6);
