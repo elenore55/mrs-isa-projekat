@@ -219,3 +219,6 @@ insert into complaint(content,complaint_date_time,status,issued_by_id) values ('
 -- ////// IZGLEDA RUZNO ALI SAD ZASAD MORA OSTATI OVA LINIJA //////////
 insert into offer (additional_info, description, name, price_list, address_id,id) values ('-1', '-1', '-1', 0, 1,-1);
 -- ////////////////////////////////////////////////////////////////////
+
+insert into deletion_request(request_date_time,status,sent_by_id) values ('20220520 10:05:00 AM','PENDING',7);
+insert into deletion_request(request_date_time,status,sent_by_id) values ('20220520 10:05:00 AM','PENDING',5);

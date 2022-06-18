@@ -59,6 +59,7 @@ const AdventureQuickReserv = {template: '<adventure-quick></adventure-quick>'};
 const AdveReservWithClient = {template: '<advreserv-with-client></advreserv-with-client>'};
 const AdminEntities = {template: '<admin-entities></admin-entities>'};
 const AdminComplaint = {template: '<admin-complaint></admin-complaint>'};
+const AdminDeletionReq = {template: '<admin-deletreq></admin-deletreq>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -308,6 +309,10 @@ const router = new VueRouter({
         {
             path: "/adminComplaint/",
             component: AdminComplaint
+        },
+        {
+            path: "/adminDeletionReqs/",
+            component: AdminDeletionReq
         }
     ]
 });
