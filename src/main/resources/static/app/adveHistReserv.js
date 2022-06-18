@@ -78,7 +78,7 @@ Vue.component("adventure-history",{
 
         // msm sta da ti kazem ti trazi pomoc :)
         loadReservationHistory(){   //onde nam 1 predstavlja id instruktora zasad ne znam o kojem je rec
-            axios.get("api/reservations/advreser/"+this.adventure.id+"/1").then(response => {
+            axios.get("api/reservations/advreser/"+this.adventure.id+"/3").then(response => {
                 this.reservations = response.data;
                 console.log(this.reservations)
             })

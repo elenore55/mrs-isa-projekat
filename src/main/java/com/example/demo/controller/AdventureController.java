@@ -35,6 +35,20 @@ public class AdventureController {
         this.userService = userService;
     }
 
+    @GetMapping(value = "/allInstructorsAdventures/{id}")
+    public ResponseEntity<List<AdventureDTO>> getAllInstructorsAdventures(@PathVariable Integer id) {
+
+        FishingInstructor fishingInstructor = fishingInstructorService.findOne(id);
+        List<Adventure> adventures = adventureService.findAll();
+        // convert adventures to DTOs
+        List<AdventureDTO> adventuresDTO = new ArrayList<>();
+        for (Adventure adventure : adventures) {
+            if(adventure.getInstructor().getId()==id)
+                adventuresDTO.add(new AdventureDTO(adventure));
+        }
+        return new ResponseEntity<>(adventuresDTO, HttpStatus.OK);
+    }
+
     @GetMapping(value = "/all")
     public ResponseEntity<List<AdventureDTO>> getAllAdventures() {
 

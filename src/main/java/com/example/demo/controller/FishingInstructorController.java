@@ -47,6 +47,8 @@ public class FishingInstructorController {
         return new ResponseEntity<>(fishingInstructorDTOS, HttpStatus.OK);
     }
 
+
+
     @GetMapping(value = "/getInstructorData")
     public ResponseEntity<FishingInstructorDTO> getFishingInstructorData(){
         // pribavi instruktora

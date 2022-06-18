@@ -203,15 +203,15 @@ public class ReservationController {
     }
 
     @GetMapping(value = "/advreser/{id1}/{id2}")
-    public ResponseEntity<List<ReservationDTO>> getAdventuresReservations(@PathVariable Integer id1,@PathVariable Integer id2) {
-
-        FishingInstructor fishingInstructor = fishingInstructorService.findOne(1);
+    public ResponseEntity<List<ReservationDTO>> getAdventuresReservations(@PathVariable Integer advId,@PathVariable Integer instId) {
+        //  ZA SAD INSTRUKTOR SE GLEDA KAO 3
+        FishingInstructor fishingInstructor = fishingInstructorService.findOne(instId);
         List<Reservation> reservations = fishingInstructor.getReservations();
 
         List<ReservationDTO> reservationDTOS = new ArrayList<>();
 
         for (Reservation reservation : reservations) {
-            if(reservation.getOffer().getId().equals(1))
+            if(reservation.getOffer().getId().equals(advId))
                     reservationDTOS.add(new ReservationDTO(reservation));
         }
 
