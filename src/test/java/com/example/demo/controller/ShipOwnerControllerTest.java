@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.FilterCottageDTO;
+import com.example.demo.dto.FilterShipDTO;
 import com.example.demo.util.TestUtil;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,9 +23,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CottageOwnerControllerTest {
+public class ShipOwnerControllerTest {
 
-    private static final String URL_PREFIX = "/api/cottageOwner";
+    private static final String URL_PREFIX = "/api/shipOwner";
 
     private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
             MediaType.APPLICATION_JSON.getSubtype());
@@ -40,38 +41,38 @@ public class CottageOwnerControllerTest {
     }
 
     @Test
-    @WithMockUser(roles = {"COTTAGE"})
-    public void testGetCottages() throws Exception {
-        mockMvc.perform(get(URL_PREFIX + "/getCottages/2")).andExpect(status().isOk())
+    @WithMockUser(roles = {"SHIP"})
+    public void testGetShips() throws Exception {
+        mockMvc.perform(get(URL_PREFIX + "/getShips/1")).andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$", hasSize(5)))
-                .andExpect(jsonPath("$[0].name").value("Frida River House"))
-                .andExpect(jsonPath("$[0].price").value(300));
+                .andExpect(jsonPath("$", hasSize(4)))
+                .andExpect(jsonPath("$[0].name").value("Sirena"))
+                .andExpect(jsonPath("$[0].price").value(150));
     }
 
     @Test
-    @WithMockUser(roles = {"COTTAGE"})
-    public void testGetCottagesSearch() throws Exception {
-        mockMvc.perform(get(URL_PREFIX + "/getCottages/2/house")).andExpect(status().isOk())
+    @WithMockUser(roles = {"SHIP"})
+    public void testGetShipsSearch() throws Exception {
+        mockMvc.perform(get(URL_PREFIX + "/getShips/1/brod")).andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].name").value("Frida River House"))
-                .andExpect(jsonPath("$[0].price").value(300));
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].name").value("Sirena"))
+                .andExpect(jsonPath("$[0].price").value(150));
     }
 
     @Test
-    @WithMockUser(roles = {"COTTAGE"})
-    public void testFilterCottages() throws Exception {
-        FilterCottageDTO dto = new FilterCottageDTO();
+    @WithMockUser(roles = {"SHIP"})
+    public void testFilterShips() throws Exception {
+        FilterShipDTO dto = new FilterShipDTO();
         dto.setSortParam("city");
         dto.setSortDir("ascending");
-        dto.setHigh(300);
-        dto.setLow(150);
+        dto.setHighPrice(300);
+        dto.setLowPrice(50);
         String json = TestUtil.json(dto);
-        mockMvc.perform(post(URL_PREFIX + "/filterCottages/2").contentType(contentType).content(json)).andExpect(status().isOk())
+        mockMvc.perform(post(URL_PREFIX + "/filterShips/1").contentType(contentType).content(json)).andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$", hasSize(3)))
-                .andExpect(jsonPath("$[0].name").value("Frida River House"))
-                .andExpect(jsonPath("$[0].price").value(300));
+                .andExpect(jsonPath("$[0].name").value("Sirena"))
+                .andExpect(jsonPath("$[0].price").value(150));
     }
 }
