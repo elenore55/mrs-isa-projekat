@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/FilterCottageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/FilterCottageDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/service/CottageOwnerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/service/CottageOwnerServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +111,7 @@
       <recent name="com.example.demo.security.auth" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DemoApplication">
+  <component name="RunManager" selected="JUnit.All in demo (3)">
     <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplication" />
       <module name="demo" />
@@ -140,7 +141,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in demo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in demo (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
@@ -148,13 +149,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="mvnw" type="ShConfigurationType" temporary="true">
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/mvnw" />
-      <option name="SCRIPT_OPTIONS" value="" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="INTERPRETER_PATH" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <method v="2" />
+    <configuration name="All in demo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="demo" />
@@ -165,11 +166,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in demo (3)" />
         <item itemvalue="Application.DemoApplication" />
         <item itemvalue="JUnit.All in demo (2)" />
         <item itemvalue="JUnit.All in demo (1)" />
         <item itemvalue="JUnit.All in demo" />
-        <item itemvalue="Shell Script.mvnw" />
       </list>
     </recent_temporary>
   </component>
@@ -208,14 +209,7 @@
       <workItem from="1654502811918" duration="21916000" />
       <workItem from="1654803114806" duration="52939000" />
       <workItem from="1655406817526" duration="2736000" />
-      <workItem from="1655583368904" duration="1444000" />
-    </task>
-    <task id="LOCAL-00122" summary="Prikaz trazene adrese na mapi">
-      <created>1654376898657</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1654376898657</updated>
+      <workItem from="1655583368904" duration="3365000" />
     </task>
     <task id="LOCAL-00123" summary="Dodata mapa na profil vikedice">
       <created>1654513748824</created>
@@ -553,7 +547,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655584644477</updated>
     </task>
-    <option name="localTasksCounter" value="171" />
+    <task id="LOCAL-00171" summary="Dodat plugin">
+      <created>1655584905869</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1655584905869</updated>
+    </task>
+    <option name="localTasksCounter" value="172" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,7 +574,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="#236.2 Filtriranje podataka" />
     <MESSAGE value="Dnevni, sedmicni i mjesecni izvjestaji" />
     <MESSAGE value="Prikaz datuma od ponedeljka" />
     <MESSAGE value="Dodati navbar linkovi za sve izvjestaje" />
@@ -598,7 +598,8 @@
     <MESSAGE value="Izmijenjeni kredencijali za bazu" />
     <MESSAGE value="Rebuildovan projekat" />
     <MESSAGE value="Promijenjena verzija jave" />
-    <option name="LAST_COMMIT_MESSAGE" value="Promijenjena verzija jave" />
+    <MESSAGE value="Dodat plugin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dodat plugin" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="178" key="#Assign_Data_Sources" timestamp="1655292820546">
@@ -609,33 +610,33 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655408216203" />
-    <state x="2505" y="114" key="CommitChangelistDialog2" timestamp="1655584642823">
+    <state x="2505" y="114" key="CommitChangelistDialog2" timestamp="1655584904512">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2505" y="114" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584642823" />
+    <state x="2505" y="114" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584904512" />
     <state x="2660" y="275" key="FileChooserDialogImpl" timestamp="1655484842210">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655484842210" />
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1655584294178">
+    <state width="1877" height="154" key="GridCell.Tab.0.bottom" timestamp="1655622574701">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584294178" />
+    <state width="1877" height="154" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655622574701" />
     <state width="1237" height="136" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="223" key="GridCell.Tab.0.center" timestamp="1655584294178">
+    <state width="1877" height="154" key="GridCell.Tab.0.center" timestamp="1655622574700">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584294178" />
+    <state width="1877" height="154" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655622574700" />
     <state width="1237" height="136" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="223" key="GridCell.Tab.0.left" timestamp="1655584294177">
+    <state width="1877" height="154" key="GridCell.Tab.0.left" timestamp="1655622574700">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584294177" />
+    <state width="1877" height="154" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655622574700" />
     <state width="1237" height="136" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="223" key="GridCell.Tab.0.right" timestamp="1655584294178">
+    <state width="1877" height="154" key="GridCell.Tab.0.right" timestamp="1655622574701">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584294178" />
+    <state width="1877" height="154" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655622574701" />
     <state width="1237" height="136" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
     <state width="1877" height="237" key="GridCell.Tab.1.bottom" timestamp="1655537210978">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -681,10 +682,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2360" y="94" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584530103" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1655584648871">
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1655584912403">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584648871" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584912403" />
     <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1655500603170">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
