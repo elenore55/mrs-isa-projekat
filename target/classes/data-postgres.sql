@@ -5,6 +5,8 @@ insert into address (city,country,street) values ('Pariz','Francuska','Puskinova
 insert into address (city,country,street) values ('London','Velika Britanija','Baker Street');
 insert into address (city,country,street) values ('Rim','Italija','Balzakova 20');
 insert into address (city,country,street) values ('Venecija','Italija','Marka Pola 20');
+insert into address (city,country,street) values ('Venecija','Italija','Marka Pola 10');
+insert into address (city,country,street) values ('Venecija','Italija','Marka Pola 99');
 
 insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email1@gmail.com', 'Pero', 'pass1', '065-111-5555', 'Peric', 1);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,1);
@@ -16,7 +18,7 @@ insert into offer_price_history (offer_id, price_history_id) values (1, 1);
 insert into price_list (amount, start_date) values (150, '20220515 00:00:01 AM');
 insert into offer_price_history (offer_id, price_history_id) values (1, 2);
 
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email2@gmail.com', 'Djuro', 'pass2', '1233456', 'Djuric', 1);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email2@gmail.com', 'Djuro', 'pass2', '1233456', 'Djuric', 2);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,2);
 insert into cottage_owner (id) values (2);
 
@@ -78,11 +80,11 @@ insert into cottage_images (cottage_id, images_id) values (3, 2);
 insert into price_list (amount, start_date) values (500, '20220501 00:00:01 AM');
 insert into offer_price_history (offer_id, price_history_id) values (3, 6);
 
-insert into profile_data (email,name,password,phone_number,surname,address_id) values ('email3@gmail.com','ImeInstruktora','11223344','06444124214','PrezimeInstruktora',1);
+insert into profile_data (email,name,password,phone_number,surname,address_id) values ('email3@gmail.com','ImeInstruktora','11223344','06444124214','PrezimeInstruktora',3);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,3);
 insert into fishing_instructor (biography, id) values ('Instruktor pecanja I',3);
 
-insert into profile_data (email,name,password,phone_number,surname,address_id) values ('emailAdmin@gmail.com','Imeadmin','sifra','06444144444','PrezimeAdmin',2);
+insert into profile_data (email,name,password,phone_number,surname,address_id) values ('emailAdmin@gmail.com','Imeadmin','sifra','06444144444','PrezimeAdmin',4);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,4);
 insert into admin (is_main, id) values (true , 4);
 
@@ -140,14 +142,14 @@ insert into ship_images (ship_id, images_id) values (4, 13);
 insert into ship_images (ship_id, images_id) values (8, 15);
 
 -- insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic55@hotmail.com', 'Marko', 'pass3', '066-321-3443', 'Markovic', 3);
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('simicdaleksa@hotmail.com', 'Marko', 'pass3', '066-321-3443', 'Markovic', 3);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('simicdaleksa@hotmail.com', 'Marko', 'pass3', '066-321-3443', 'Markovic', 5);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,5);
 insert into client (id) values (5);
 
 insert into sub (user_id, offer_id) values (5, 2);
 
 -- insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic55+2@hotmail.com', 'Mirko', 'pass3', '1233456', 'Mirkovic', 4);
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('simicdaleksa+2@hotmail.com', 'Mirko', 'pass3', '1233456', 'Mirkovic', 4);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('simicdaleksa+2@hotmail.com', 'Mirko', 'pass3', '1233456', 'Mirkovic', 6);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,6);
 insert into admin (id) values (6);
 
@@ -196,7 +198,7 @@ insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (8, 5, 'FINISHED', '20220520 10:05:00 AM', '20220525 10:05:00 AM');
 insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 12);
 
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('aleksadsimic@gmail.com', 'Aleksa', 'sifra', '064440044', 'Prezimic', 1);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('aleksadsimic@gmail.com', 'Aleksa', 'sifra', '064440044', 'Prezimic', 7);
 insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,7);
 insert into client (id) values (7);
 
@@ -240,10 +242,10 @@ insert into reservation (offer_id, client_id, reservation_status, start_date_tim
 insert into feedback (comment, rating, status) values ('Pretty good', 8, 'PENDING');
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (4, 5, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM', 6);
 
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('korisnikNovi@gmail.com', 'Novak', 'sifra', '064440044', 'Prezimic', 2);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('korisnikNovi@gmail.com', 'Novak', 'sifra', '064440044', 'Prezimic', 8);
 insert into registration_request (approval_status,date_time,reason,registration_type,profile_data_id) values ('PENDING', '20220520 10:10:00 AM','zelim da budem registrovaaaaan' ,'SHIP_OWNER', 8);
 -------- Mislim da ovo mora biti odradjeno kad se potvrdi zahtev za registrovanje --------
 --insert into my_users (category,number_of_points,profile_data_id) values ('REGULAR',0,8);--
 --insert into ship_owner (id) values (2); --
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('korisnikNovi2@gmail.com', 'Novakkk', 'sifra', '064440044', 'Prezimic', 3);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('korisnikNovi2@gmail.com', 'Novakkk', 'sifra', '064440044', 'Prezimic', 9);
 insert into registration_request (approval_status,date_time,reason,registration_type,profile_data_id) values ('PENDING', '20220520 10:10:00 AM','zelim da budem registrovaaaaan' ,'FISHING_OWNER', 9);

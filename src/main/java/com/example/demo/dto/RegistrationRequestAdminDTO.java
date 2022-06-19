@@ -1,6 +1,7 @@
 package com.example.demo.dto;
 
 import com.example.demo.model.RegistrationRequest;
+import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.model.enums.RegistrationType;
 
 public class RegistrationRequestAdminDTO {
@@ -12,6 +13,7 @@ public class RegistrationRequestAdminDTO {
     private String phoneNumber;
     private RegistrationType type;
     private String reason;
+    private AdminApprovalStatus status;
     private Integer id;
 
     public RegistrationRequestAdminDTO(String name, String surname, String email, String password, AddressDTO address, String phoneNumber, RegistrationType type, String reason, Integer id) {
@@ -36,6 +38,7 @@ public class RegistrationRequestAdminDTO {
         this.type = request.getRegistrationType();
         this.reason = request.getReason();
         this.id = request.getId();
+        this.status = request.getApprovalStatus();
     }
 
     public String getName() {
@@ -108,5 +111,13 @@ public class RegistrationRequestAdminDTO {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public AdminApprovalStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AdminApprovalStatus status) {
+        this.status = status;
     }
 }

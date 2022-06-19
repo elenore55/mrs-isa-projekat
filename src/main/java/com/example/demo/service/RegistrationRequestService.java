@@ -43,4 +43,7 @@ public class RegistrationRequestService {
 
     public RegistrationRequest findOne(Integer id){return this.repository.findById(id).orElse(null);}
     public RegistrationRequest update(RegistrationRequest request){return this.repository.save(request);}
+
+    public void remove(Integer id) { repository.deleteById(id);}
+
 }

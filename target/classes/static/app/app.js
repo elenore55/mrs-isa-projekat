@@ -63,6 +63,7 @@ const AdminDeletionReq = {template: '<admin-deletreq></admin-deletreq>'};
 const InstructorComplaint = {template: '<instructor-complaint></instructor-complaint>'};
 const AdminPenalties = {template: '<admin-penalties></admin-penalties>'};
 const AdminFeedback = {template: '<admin-feedback></admin-feedback>'};
+const AdminRegREq = {template: '<admin-registrationreq></admin-registrationreq>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -328,6 +329,10 @@ const router = new VueRouter({
         {
             path: "/adminFeedbacks/",
             component: AdminFeedback
+        },
+        {
+            path: "/adminRegReq/",
+            component: AdminRegREq
         }
     ]
 });
