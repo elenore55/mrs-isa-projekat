@@ -41,7 +41,11 @@ Vue.component("admin-penalties",{
         {
             axios.post("api/clientReviews/updatePenaltyAdmin",{
                 id: pen.id,
-                penaltyRequested: true
+                penaltyRequested: true,
+                clientEmail:pen.clientEmail,
+                reservationId:pen.reservationId,
+                dateTime:pen.dateTime,
+                content:pen.content
             }).then(setTimeout(()=>this.$router.go(),100)).catch(console.log("Nesto nije valjano"))
         },
 

@@ -4,14 +4,14 @@ import com.example.demo.dto.ClientReviewDTO;
 import com.example.demo.dto.ComplaintAdminDTO;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.AdminApprovalStatus;
-import com.example.demo.service.ClientReviewService;
-import com.example.demo.service.ReservationService;
-import com.example.demo.service.UserService;
+import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +22,16 @@ public class ClientReviewController {
     private UserService userService;
     private ClientReviewService clientReviewService;
     private ReservationService reservationService;
+    private ClientService clientService;
+    private PenaltyService penaltyService;
 
     @Autowired
-    public ClientReviewController(UserService userService, ClientReviewService clientReviewService, ReservationService reservationService) {
+    public ClientReviewController(UserService userService, ClientReviewService clientReviewService, ReservationService reservationService, ClientService clientService, PenaltyService penaltyService) {
         this.userService = userService;
         this.clientReviewService = clientReviewService;
         this.reservationService = reservationService;
+        this.clientService = clientService;
+        this.penaltyService = penaltyService;
     }
 
     @ResponseBody
@@ -70,13 +74,21 @@ public class ClientReviewController {
     // postavljamo bool da trazi penalty na false da ga ne bi prikazivali
     @ResponseBody
     @RequestMapping(path = "/updatePenaltyAdmin", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<ClientReview> updateComplaintAdmin(@RequestBody ClientReview clientReview)
+    public ResponseEntity<ClientReview> updateComplaintAdmin(@RequestBody ClientReviewDTO clientReview)
     {
         System.out.println(clientReview.toString());
         ClientReview izBaze = clientReviewService.findOne(clientReview.getId());
         if(clientReview.getPenaltyRequested())
             izBaze.setPenaltyRequested(false);
         izBaze = clientReviewService.update(izBaze);
+        Penalty penalty = new Penalty();
+        Client client = userService.findClientByEmail(clientReview.getClientEmail());
+        Reservation reservation = reservationService.findOne(clientReview.getReservationId());
+        penalty.setClient(client);
+        penalty.setReservation(reservation);
+        penalty.setReason(clientReview.getContent());
+        penalty.setDate(LocalDate.now());
+        penaltyService.save(penalty);
         return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
     }
 
