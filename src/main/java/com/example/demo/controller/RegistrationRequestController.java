@@ -76,15 +76,16 @@ public class RegistrationRequestController {
         izBaze.setProfileData(null);
         izBaze = service.update(izBaze);
 
+        ProfileData profileData = profile_dataService.getByEmail(requestAdminDTO.getEmail());
+        int addresID = profileData.getAddress().getId();
+        Address address =  new Address(profileData.getAddress());
+        profileData.setAddress(null);
+        profile_dataService.save(profileData);
+        addressService.remove(addresID);
+        profile_dataService.remove(profileData.getId());
+
         if(requestAdminDTO.getStatus()==AdminApprovalStatus.APPROVED)
         {
-            ProfileData profileData = profile_dataService.getByEmail(requestAdminDTO.getEmail());
-            int addresID = profileData.getAddress().getId();
-            Address address =  new Address(profileData.getAddress());
-            profileData.setAddress(null);
-            profile_dataService.save(profileData);
-            addressService.remove(addresID);
-            profile_dataService.remove(profileData.getId());
             profileData.setAddress(address);
             userService.saveOwners(profileData,requestAdminDTO.getType());
         }
