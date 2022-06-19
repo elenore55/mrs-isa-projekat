@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="Opsta podesavanja za security">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/PenaltyRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/PenaltyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ClientReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ClientReviewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adminPenalties.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminPenalties.js" afterDir="false" />
@@ -204,7 +202,7 @@
       <workItem from="1655448405124" duration="16273000" />
       <workItem from="1655553947281" duration="22105000" />
       <workItem from="1655586131271" duration="10000" />
-      <workItem from="1655635008388" duration="13054000" />
+      <workItem from="1655635008388" duration="13533000" />
     </task>
     <task id="LOCAL-00105" summary="Prikaz profila klijenta">
       <created>1653517615884</created>

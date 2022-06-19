@@ -29,8 +29,10 @@ Vue.component("admin-penalties",{
                         <td> {{pen.id}}  </td>   
                         <td> {{pen.clientEmail}}  </td>
                         <td> {{pen.ownerId}}  </td>
-                        <td> <input type="text" v-model="reason[pen.id]" id="pen.id" class="form-control">  </td>
-                        <td> <input type="button" value="send" id="pen.id" v-on:click="respondTo(pen)"></td>
+<!--                        <td> <input type="text" v-model="reason[pen.id]" id="pen.id" class="form-control">  </td>-->
+                        <td> {{pen.content}}  </td>
+                        <td> <input type="button" value="accept" id="pen.id" v-on:click="respondTo(pen)"></td>
+                        <td> <input type="button" value="ignore" id="pen.id" v-on:click="respondToDelete(pen)"></td>
                     </tr>
                   </tbody>
                 </table>
@@ -46,6 +48,13 @@ Vue.component("admin-penalties",{
                 reservationId:pen.reservationId,
                 dateTime:pen.dateTime,
                 content:pen.content
+            }).then(setTimeout(()=>this.$router.go(),100)).catch(console.log("Nesto nije valjano"))
+        },
+        respondToDelete(pen)
+        {
+            axios.post("api/clientReviews/updatePenaltyAdminDelete",{
+                id: pen.id,
+                penaltyRequested: true,
             }).then(setTimeout(()=>this.$router.go(),100)).catch(console.log("Nesto nije valjano"))
         },
 

@@ -92,4 +92,16 @@ public class ClientReviewController {
         return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
     }
 
+    // postavljamo bool da trazi penalty na false da ga ne bi prikazivali
+    @ResponseBody
+    @RequestMapping(path = "/updatePenaltyAdminDelete", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<ClientReview> updateComplaintAdminDelete(@RequestBody ClientReviewDTO clientReview)
+    {
+        ClientReview izBaze = clientReviewService.findOne(clientReview.getId());
+        if(clientReview.getPenaltyRequested())
+            izBaze.setPenaltyRequested(false);
+        izBaze = clientReviewService.update(izBaze);
+        return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
+    }
+
 }
