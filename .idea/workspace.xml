@@ -243,14 +243,7 @@
       <workItem from="1654502811918" duration="21916000" />
       <workItem from="1654803114806" duration="52939000" />
       <workItem from="1655406817526" duration="2736000" />
-      <workItem from="1655583368904" duration="26298000" />
-    </task>
-    <task id="LOCAL-00132" summary="Filtriranje rezultata za vikendice">
-      <created>1654537226586</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1654537226587</updated>
+      <workItem from="1655583368904" duration="27284000" />
     </task>
     <task id="LOCAL-00133" summary="#237.2 Filtriranje podataka">
       <created>1654537424534</created>
@@ -588,7 +581,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655656560390</updated>
     </task>
-    <option name="localTasksCounter" value="181" />
+    <task id="LOCAL-00181" summary="update readme">
+      <created>1655659591729</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1655659591730</updated>
+    </task>
+    <option name="localTasksCounter" value="182" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -609,7 +609,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Cuvanje tokena u localStorage" />
     <MESSAGE value="Slanje tokena za prikaz vikendica" />
     <MESSAGE value="Ispravljeni axios pozivi kod cottagesViewOwner.js" />
     <MESSAGE value="Dodate PreAuthorize anotacije u CottageOwnerController" />
@@ -634,7 +633,8 @@
     <MESSAGE value="Izmijenjen travis.yml" />
     <MESSAGE value="Dodat maven wrapper" />
     <MESSAGE value="skip tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="skip tests" />
+    <MESSAGE value="update readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="update readme" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="178" key="#Assign_Data_Sources" timestamp="1655292820546">
@@ -657,10 +657,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655408216203" />
-    <state x="2505" y="114" key="CommitChangelistDialog2" timestamp="1655656559305">
+    <state x="2505" y="114" key="CommitChangelistDialog2" timestamp="1655659590858">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2505" y="114" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655656559305" />
+    <state x="2505" y="114" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655659590858" />
     <state x="2660" y="275" key="FileChooserDialogImpl" timestamp="1655484842210">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -729,10 +729,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2360" y="94" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584530103" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1655656565868">
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1655659598105">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655656565868" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655659598105" />
     <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1655500603170">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
