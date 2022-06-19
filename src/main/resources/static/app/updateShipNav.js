@@ -22,19 +22,19 @@ Vue.component('update-ship-nav', {
 
     computed: {
         allShips() {
-            return "/#/shipsViewOwner/1";
+            return "/index.html#/shipsViewOwner";
         },
 
         shipProfile() {
-            return "/#/shipProfile/" + this.$route.params.id;
+            return "/index.html#/shipProfile/" + this.$route.params.id;
         },
 
         shipImages() {
-            return "/#/shipImages/" + this.$route.params.id;
+            return "/index.html#/shipImages/" + this.$route.params.id;
         },
 
         shipReservations() {
-            return "/#/shipReservations/" + this.$route.params.id;
+            return "/index.html#/shipReservations/" + this.$route.params.id;
         }
     }
 });

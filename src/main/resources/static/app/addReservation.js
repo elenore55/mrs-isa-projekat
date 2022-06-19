@@ -14,13 +14,19 @@ Vue.component("add-reservation", {
     mounted() {
         this.id = this.$route.params.id;
 
-        axios.get("api/offers/getName/" + this.$route.params.id).then(response => {
+        axios({
+            method: "get",
+            url: "api/offers/getName/" + this.$route.params.id,
+            headers: {
+                Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+            }
+        }).then(response => {
             this.name = response.data;
             this.tdStart = new tempusDominus.TempusDominus(document.getElementById('startPicker'));
             this.tdEnd = new tempusDominus.TempusDominus(document.getElementById('endPicker'));
-
         }).catch(function (error) {
-            Swal.fire('Error', 'Something went wrong!', 'error');
+            if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+            else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -82,15 +88,13 @@ Vue.component("add-reservation", {
                     startDate: this.start,
                     endDate: this.end,
                     clientEmail: this.email,
-                    ownerId: 1
+                    ownerId: JSON.parse(localStorage.getItem("jwt")).userId
                 }).then(function (response) {
                     Swal.fire('Success', 'Reservation added!', 'success');
                 }).catch(function (error) {
-                    if (error.response.status === 404) {
-                        Swal.fire('Error', 'Client not found!', 'error');
-                    } else {
-                        Swal.fire('Error', 'Already reserved!', 'error');
-                    }
+                    if(error.response.status === 404) Swal.fire('Error', 'Client not found!', 'error');
+                    else if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    else Swal.fire('Error', 'Cottage already reserved!', 'error');
                 });
             }
         },

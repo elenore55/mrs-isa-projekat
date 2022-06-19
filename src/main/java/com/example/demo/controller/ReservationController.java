@@ -8,6 +8,7 @@ import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -41,6 +42,7 @@ public class ReservationController {
 
     @ResponseBody
     @RequestMapping(path = "/addReservation", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
     public ResponseEntity<ReservationDTO> addReservation(@RequestBody ReservationDTO dto) {
 
         Reservation reservation = new Reservation();

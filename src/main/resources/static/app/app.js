@@ -1,3 +1,4 @@
+const Unauthorized = {template: '<unauthorized></unauthorized>'};
 const PriceHistoryReport = {template: '<price-history-report></price-history-report>'};
 const VisitReport = {template: '<visit-report></visit-report>'};
 const ChangePasswordOwner = {template: '<change-pw-owner></change-pw-owner>'};
@@ -65,15 +66,19 @@ const router = new VueRouter({
     mode: 'hash',
     routes: [
         {
-            path: "/priceHistoryReport/:id",
+            path: "/unauthorized",
+            component: Unauthorized
+        },
+        {
+            path: "/priceHistoryReport",
             component: PriceHistoryReport
         },
         {
-            path: "/visitReport/:id",
+            path: "/visitReport",
             component: VisitReport
         },
         {
-            path: "/changePwOwner/:id",
+            path: "/changePwOwner",
             component: ChangePasswordOwner
         },
         {
@@ -93,11 +98,11 @@ const router = new VueRouter({
             component: MyMap
         },
         {
-            path: "/incomeReport/:id",
+            path: "/incomeReport",
             component: IncomeReport
         },
         {
-            path: "/ownersReservationsCalendar/:id",
+            path: "/ownersReservationsCalendar",
             component: OwnersReservationsCalendar
         },
         {
@@ -105,19 +110,19 @@ const router = new VueRouter({
             component: ClientReadonlyProfile
         },
         {
-            path: "/reservationsHistory/:id/",
+            path: "/reservationsHistory",
             component: ReservationsHistory
         },
         {
-            path: "/reservationsCalendar/",
+            path: "/reservationsCalendar",
             component: ReservationsCalendar
         },
         {
-            path: "/updateOwnersProfile/:id/",
+            path: "/updateOwnersProfile",
             component: UpdateOwnersProfile
         },
         {
-            path: "/ownersProfile/:id/",
+            path: "/ownersProfile",
             component: OwnersProfile
         },
         {
@@ -149,11 +154,11 @@ const router = new VueRouter({
             component: InstructorsAdventures
         },
         {
-            path: "/shipsViewOwner/:id/",
+            path: "/shipsViewOwner",
             component: ShipsViewOwner
         },
         {
-            path: "/cottagesViewOwner/:id/",
+            path: "/cottagesViewOwner",
             component: CottagesViewOwner
         },
         {

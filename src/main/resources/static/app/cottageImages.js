@@ -9,10 +9,17 @@ Vue.component('cottage-images', {
     mounted() {
         this.id = this.$route.params.id;
 
-        axios.get("api/cottages/getCottageImages/" + this.$route.params.id).then(response => {
+        axios({
+            method: "get",
+            url: "api/cottages/getCottageImages/" + this.$route.params.id,
+            headers: {
+                Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+            }
+        }).then(response => {
             this.paths = response.data;
         }).catch(function (error) {
-            Swal.fire('Error', 'Something went wrong!', 'error');
+            if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+            else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -98,10 +105,15 @@ Vue.component('cottage-images', {
             axios.post("api/cottages/updateCottageImages", {
                 id: this.id,
                 imagePaths: this.paths
+            }, {
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
             }).then(function(response) {
                 Swal.fire('Success', 'Cottage updated!', 'success');
             }).catch(function (error) {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         }
     }
