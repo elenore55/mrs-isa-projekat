@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "api/users")
@@ -86,7 +87,8 @@ public class UserController {
         List<User> users = userService.findAll();
         List<UserDTO> userDTOS = new ArrayList<>();
         for (User user : users) {
-            userDTOS.add(new UserDTO(user));
+            if(!user.getProfileData().getEmail().equalsIgnoreCase("deleted"))
+                userDTOS.add(new UserDTO(user));
         }
 
         return new ResponseEntity<>(userDTOS, HttpStatus.OK);
@@ -261,5 +263,17 @@ public class UserController {
         if (r.getEnd().compareTo(today) < 0) r.setReservationStatus(ReservationStatus.FINISHED);
         else if (r.getStart().compareTo(today) > 0) r.setReservationStatus(ReservationStatus.PENDING);
         else r.setReservationStatus(ReservationStatus.ACTIVE);
+    }
+
+    @DeleteMapping(path = "/deleteTheUsers/{emailUser}")
+    public ResponseEntity<Void> deleteTheUser(@PathVariable String emailUser) {
+        User user = userService.findUserByEmailForAdmin(emailUser);
+        user.setEmail("deleted");
+        user.setPassword("deleted");
+//        user.setProfileData(null);
+        userService.saveUSER(user);
+        // sve ostaje jedino brisemo usera logicki
+        // msm da mora zbog iszvestaja
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

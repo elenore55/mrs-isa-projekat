@@ -50,6 +50,10 @@ public class UserService {
         return retC;
     }
 
+    public void saveUSER(User user){
+        userRepository.save(user);
+    }
+
     public User saveOwners(ProfileData profileData, RegistrationType type){
         ProfileData temp = new ProfileData(profileData);
         if(type== RegistrationType.COTTAGE_OWNER)
@@ -179,5 +183,9 @@ public class UserService {
 
     public void unfollow(Client c) {
         clientRepository.save(c);
+    }
+
+    public void remove(Integer id) {
+        userRepository.deleteById(id);
     }
 }

@@ -59,7 +59,7 @@ Vue.component("admin-entities",{
                       </thead>
                       <tbody>
                         <tr v-for="(user,index) in users">
-                            <td> <input type="checkbox" id="user.id" value="user.id" v-on:click="enterValuesInLists(user.id,selectedUsers)"></td>
+                            <td> <input type="checkbox" id="user.id" value="user.id" v-on:click="enterValuesInLists(user,selectedUsers)"></td>
                             <td> {{user.email}}  </td>
                             <td> {{user.name}}  </td>
                             <td> {{user.surname}}  </td>
@@ -195,6 +195,10 @@ Vue.component("admin-entities",{
             for(let element of this.selectedAdventures)
             {
                 axios.delete("api/instructors/deleteTheAdventure/"+element.id+"/"+element.fInstructorId)
+            }
+            for(let element of this.selectedUsers)
+            {
+                axios.delete("api/users/deleteTheUsers/"+element.email)
             }
             console.log("AAAAAAAAAAAAAAAA")
             setTimeout(()=>this.$router.go(),100);
