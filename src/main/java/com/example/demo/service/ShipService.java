@@ -10,6 +10,9 @@ import com.example.demo.model.Ship;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.repository.ShipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,16 +33,19 @@ public class ShipService {
     }
 
     @Transactional
+    @Cacheable("ship")
     public Ship findOne(Integer id) {
         return this.shipRepository.findById(id).orElseGet(null);
     }
 
     @Transactional
+    @CachePut(cacheNames = "ship", key="#ship.id")
     public Ship save(Ship ship) {
         return this.shipRepository.save(ship);
     }
 
     @Transactional
+    @CacheEvict(cacheNames = "cottage", key="#id")
     public void remove(Integer id) {
         shipRepository.deleteById(id);
     }

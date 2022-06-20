@@ -89,6 +89,10 @@ Vue.component("add-reservation", {
                     endDate: this.end,
                     clientEmail: this.email,
                     ownerId: JSON.parse(localStorage.getItem("jwt")).userId
+                }, {
+                    headers: {
+                        Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                    }
                 }).then(function (response) {
                     Swal.fire('Success', 'Reservation added!', 'success');
                 }).catch(function (error) {
