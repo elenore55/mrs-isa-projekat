@@ -115,7 +115,7 @@ insert into image (path) values ('images/inside3.jpg');
 insert into image (path) values ('images/inside4.jpg');
 insert into image (path) values ('images/inside5.jpg');
 
-insert into offer (additional_info, description, name, price_list, address_id) values ('Smeštaj je pogodan za više ljudi (u isto vremena na splavu može maksimalno boraviti 20 osoba) koji žele da imaju odvojen prostor za spavanje, odvojen prostor za druženje, a i mesto za odmaranje na reci uz sav komoditet splava.', 'Ovo je dosta autentican prostor.', 'Frida River House', 300, 1);
+insert into offer (additional_info, description, name, price_list, address_id, version) values ('Smeštaj je pogodan za više ljudi (u isto vremena na splavu može maksimalno boraviti 20 osoba) koji žele da imaju odvojen prostor za spavanje, odvojen prostor za druženje, a i mesto za odmaranje na reci uz sav komoditet splava.', 'Ovo je dosta autentican prostor.', 'Frida River House', 300, 1, 0);
 insert into offer_rules (offer_id, rules_id) values (2, 1);
 insert into offer_rules (offer_id, rules_id) values (2, 3);
 insert into offer_rules (offer_id, rules_id) values (1, 5);

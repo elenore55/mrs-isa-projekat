@@ -15,8 +15,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
     @Query("update Reservation r set r.reservationStatus='CANCELLED' where r.id = ?1")
     public void cancelReservation(Integer id);
 
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("select r from Reservation r where r.id = :id")
-    @QueryHints({@QueryHint(name = "javax.persistence.lock.timeout", value ="0")})
     Reservation findOneById(@Param("id") Integer id);
 }

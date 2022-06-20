@@ -9,6 +9,7 @@ Vue.component('cottage-profile', {
     mounted() {
         axios.get("api/cottages/getCottage/" + this.$route.params.id).then(response => {
             this.cottage = response.data;
+            alert(this.cottage.editable);
         }).catch(function (error) {
             Swal.fire('Error', 'Something went wrong!', 'error');
         });

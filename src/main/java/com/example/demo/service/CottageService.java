@@ -31,7 +31,6 @@ public class CottageService {
         this.emailSender = emailSender;
     }
 
-    @Transactional
     public Cottage save(Cottage cottage) {
         return cottageRepository.save(cottage);
     }

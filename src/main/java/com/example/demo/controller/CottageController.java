@@ -8,6 +8,7 @@ import com.example.demo.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -237,19 +238,24 @@ public class CottageController {
         cottage.setAddress(address);
         cottage.setPriceList(cottageDTO.getPrice());
 
+        List<PriceList> priceHistory = new ArrayList<>();
         if (cottage.getPriceHistory() == null || cottage.getPriceHistory().size() == 0) {
-            List<PriceList> priceHistory = new ArrayList<>();
             priceHistory.add(new PriceList(LocalDate.now(), cottageDTO.getPrice()));
-            cottage.setPriceHistory(priceHistory);
         } else {
-            List<PriceList> priceHistory = cottage.getPriceHistory();
+            for (PriceList pl : cottage.getPriceHistory()) {
+                PriceList p = new PriceList();
+                p.setAmount(pl.getAmount());
+                p.setEndDate(pl.getEndDate());
+                p.setStartDate(pl.getStartDate());
+                priceHistory.add(p);
+            }
             PriceList last = priceHistory.get(priceHistory.size() - 1);
             if (!last.getAmount().equals(cottageDTO.getPrice())) {
                 PriceList newPrice = new PriceList(LocalDate.now(), cottageDTO.getPrice());
                 priceHistory.add(newPrice);
-                cottage.setPriceHistory(priceHistory);
             }
         }
+        cottage.setPriceHistory(priceHistory);
 
         List<Rule> rules = new ArrayList<>();
         for (String ruleText : cottageDTO.getRules()) rules.add(new Rule(ruleText));

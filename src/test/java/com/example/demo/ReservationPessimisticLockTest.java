@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.model.Reservation;
+import com.example.demo.service.CottageService;
 import com.example.demo.service.ReservationService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +26,9 @@ public class ReservationPessimisticLockTest {
     @Autowired
     private ReservationService reservationService;
 
+    @Autowired
+    private CottageService cottageService;
+
     @org.junit.Test(expected = PessimisticLockingFailureException.class)
     public void testPessimisticLockingScenario() throws Throwable {
 
@@ -32,7 +37,10 @@ public class ReservationPessimisticLockTest {
             @Override
             public void run() {
                 System.out.println("Startovan Thread 1");
-                reservationService.findOne(1);
+                Reservation r1 = new Reservation();
+                r1.setOffer(cottageService.findOne(2));
+                reservationService.save(r1);
+                // reservationService.findOne(1);
             }
         });
         Future<?> future2 = executor.submit(new Runnable() {
@@ -40,7 +48,10 @@ public class ReservationPessimisticLockTest {
             public void run() {
                 System.out.println("Startovan Thread 2");
                 try { Thread.sleep(50); } catch (InterruptedException e) { }
-                reservationService.findOne(1);
+                // reservationService.findOne(1);
+                Reservation r1 = new Reservation();
+                r1.setOffer(cottageService.findOne(2));
+                reservationService.save(r1);
             }
         });
         try {
