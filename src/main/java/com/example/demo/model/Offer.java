@@ -2,8 +2,6 @@ package com.example.demo.model;
 
 import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.model.enums.ReservationStatus;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -25,7 +23,7 @@ public class Offer {
     @Column
     protected String name;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     protected Address address;
 
@@ -180,16 +178,14 @@ public class Offer {
     public Double getRateOrNegativeOne() {
         double sum = 0;
         int n = 0;
-        for(Reservation r : getReservations())
-        {
-            if (r.getFeedback()!= null)
-            {
+        for (Reservation r : getReservations()) {
+            if (r.getFeedback() != null) {
                 sum += r.getFeedback().getRating();
                 n++;
             }
         }
-        if (n==0) return -1.0;
-        return sum/n;
+        if (n == 0) return -1.0;
+        return sum / n;
     }
 
     public Integer getNumberOfReservations() {

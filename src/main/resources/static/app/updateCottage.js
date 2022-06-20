@@ -149,12 +149,12 @@ Vue.component("update-cottage", {
 
         sendRequest() {
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress) {
-                axios.post("api/cottages/updateCottage", this.cottage).then(function(response) {
-                    Swal.fire('Success', 'Cottage updated!', 'success');
-                }, {
+                axios.post("api/cottages/updateCottage", this.cottage, {
                     headers: {
                         Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
                     }
+                }).then(function(response) {
+                    Swal.fire('Success', 'Cottage updated!', 'success');
                 }).catch(function (error) {
                     Swal.fire('Error', 'Something went wrong!', 'error');
                 });

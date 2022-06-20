@@ -9,6 +9,9 @@ import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.repository.CottageRepository;
 import com.example.demo.service.emailSenders.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -31,6 +34,7 @@ public class CottageService {
         this.emailSender = emailSender;
     }
 
+    // @CachePut(cacheNames = "cottage")
     public Cottage save(Cottage cottage) {
         return cottageRepository.save(cottage);
     }
@@ -42,14 +46,17 @@ public class CottageService {
     }
 
     @Transactional
+    // @Cacheable("cottage")
     public Cottage findOne(Integer id) {
         if (!cottageRepository.existsById(id)) return null;
         return cottageRepository.getById(id);
     }
 
-    @Transactional
+    // @Transactional
+    // @CacheEvict(cacheNames = {"cottage"})
     public void remove(Integer id) {
         cottageRepository.deleteById(id);
+        cottageRepository.flush();
     }
 
     @Transactional
