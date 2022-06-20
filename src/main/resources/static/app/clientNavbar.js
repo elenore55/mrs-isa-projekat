@@ -21,10 +21,10 @@ Vue.component("client-navbar", {
                             <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/pastReservations'})">Past Reservations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/upcomingReservations/6'})">Upcoming Reservations</a>
+                            <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/upcomingReservations/0'})">Upcoming Reservations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/clientSubs/6'})">My Actions </a>
+                            <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/clientSubs/0'})">My Actions </a>
                         </li>
 
                         <li class="nav-item">

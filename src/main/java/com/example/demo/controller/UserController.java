@@ -60,10 +60,13 @@ public class UserController {
     @ResponseBody
     @RequestMapping(path = "/login", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<UserTokenState> login_user(@RequestBody LoginDTO loginDTO) {
+
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginDTO.getEmail(), loginDTO.getPassword()));
+        System.out.println("TRENUTNA LOZINKA JE " + loginDTO.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);
         User user = (User) authentication.getPrincipal();
+        System.out.println("Poslije je " + user.getPassword());
         String jwt = tokenUtils.generateToken(user.getUsername());
         int expiresIn = tokenUtils.getExpiredIn();
         return ResponseEntity.ok(new UserTokenState(jwt, expiresIn, user.getId(), user.getRole().getName()));
@@ -110,6 +113,7 @@ public class UserController {
     @Transactional
     @ResponseBody
     @RequestMapping(path = "/changePassword", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('CLIENT')")
     public ResponseEntity<String> changePassword(@RequestBody ChangePasswordDTO changePasswordDTO) {
         if (userService.isUsersPassword(changePasswordDTO.getOld(), changePasswordDTO.getId())) {
             System.out.println("Old password je dobro unesena");

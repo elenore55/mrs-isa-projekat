@@ -65,6 +65,7 @@ public class UserService {
     }
 
     public String findUserToken(String email, String password) {
+        System.out.println("/////////////////////////////////////////////////////////////////////////////////////////// lozinka je" + password);
         ProfileData pd = profileDataRepository.getByEmail(email);
         if (pd == null) return "";
         if (isValidPassword(password, pd.getPassword())) return generateTokenById(pd.getId());
@@ -85,6 +86,7 @@ public class UserService {
     public boolean isAlreadyRegistered(String email) {
         List<ProfileData> svi = profileDataRepository.findAll();
         ProfileData pd = profileDataRepository.getByEmail(email);
+        System.out.println(passwordEncoder.encode("marko"));
         return pd != null;
     }
 
