@@ -64,6 +64,7 @@ const InstructorComplaint = {template: '<instructor-complaint></instructor-compl
 const AdminPenalties = {template: '<admin-penalties></admin-penalties>'};
 const AdminFeedback = {template: '<admin-feedback></admin-feedback>'};
 const AdminRegREq = {template: '<admin-registrationreq></admin-registrationreq>'};
+const AdminLoyalProg = {template: '<admin-loyalprogram></admin-loyalprogram>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -333,6 +334,10 @@ const router = new VueRouter({
         {
             path: "/adminRegReq/",
             component: AdminRegREq
+        },
+        {
+            path: "/adminLoyal/",
+            component: AdminLoyalProg
         }
     ]
 });
