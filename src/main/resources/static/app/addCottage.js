@@ -202,10 +202,15 @@ Vue.component("add-cottage", {
                     availableStart: this.start_av,
                     availableEnd: this.end_av,
                     ownerId: this.cottage.owner_id
+                }, {
+                    headers: {
+                        Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                    }
                 }).then(function(response) {
                     Swal.fire('Success', 'Cottage added!', 'success');
                 }).catch(function (error) {
-                    Swal.fire('Error', 'Something went wrong!', 'error');
+                    if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             } else {
                 this.cottage.errors.name = true;

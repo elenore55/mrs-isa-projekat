@@ -25,6 +25,12 @@ public class AddressDTO {
         this.country = address.getCountry();
     }
 
+    public AddressDTO(String street, String city, String country) {
+        this.street = street;
+        this.city = city;
+        this.country = country;
+    }
+
     public Integer getId() {
         return id;
     }

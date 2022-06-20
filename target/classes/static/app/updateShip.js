@@ -16,10 +16,17 @@ Vue.component("update-ship", {
     mounted() {
         this.id = this.$route.params.id;
 
-        axios.get("api/ships/getShip/" + this.$route.params.id).then(response => {
+        axios({
+            method: "get",
+            url: "api/ships/getShip/" + this.$route.params.id,
+            headers: {
+                Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+            }
+        }).then(response => {
             this.ship = response.data;
         }).catch(function (error) {
-            Swal.fire('Error', 'Something went wrong!', 'error');
+            if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+            else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -248,10 +255,15 @@ Vue.component("update-ship", {
         sendRequest() {
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress &&
                 this.isValidLength && this.isValidCapacity && this.isValidNumEngines && this.isValidPower && this.isValidSpeed) {
-                axios.post("api/ships/updateShip", this.ship).then(function(response) {
+                axios.post("api/ships/updateShip", this.ship, {
+                    headers: {
+                        Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                    }
+                }).then(function(response) {
                     Swal.fire('Success', 'Ship updated!', 'success');
                 }).catch(function (error) {
-                    Swal.fire('Error', 'Something went wrong!', 'error');
+                    if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             } else {
                 this.errors.name = true;

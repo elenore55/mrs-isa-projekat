@@ -62,12 +62,12 @@ public class FilterCottageDTO {
     }
 
     public boolean checkCity(String city) {
-        if (cities.size() == 0) return true;
+        if (cities == null || cities.size() == 0) return true;
         return cities.contains(city);
     }
 
     public boolean checkCountry(String country) {
-        if (countries.size() == 0) return true;
+        if (countries == null || countries.size() == 0) return true;
         return countries.contains(country);
     }
 

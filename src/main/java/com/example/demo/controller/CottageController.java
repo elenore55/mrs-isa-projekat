@@ -8,6 +8,7 @@ import com.example.demo.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/getCottage/{id}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<CottageDTO> getCottage(@PathVariable Integer id) {
         Cottage cottage = cottageService.findOne(id);
         if (cottage == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -61,6 +63,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/addCottage", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<CottageDTO> saveCottage(@RequestBody CottageDTO cottageDTO) {
         Cottage cottage = new Cottage();
         setAttributes(cottage, cottageDTO);
@@ -70,6 +73,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/getCottageImages/{id}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<List<String>> getCottageImages(@PathVariable Integer id) {
         Cottage cottage = cottageService.findOne(id);
         if (cottage == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -82,6 +86,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/updateCottage", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<CottageDTO> updateCottage(@RequestBody CottageDTO cottageDTO) {
         Cottage cottage = cottageService.findOne(cottageDTO.getId());
         if (cottage == null) {
@@ -102,6 +107,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/updateCottageImages", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<CottageDTO> updateCottageImages(@RequestBody CottageDTO cottageDTO) {
         Cottage cottage = cottageService.findOne(cottageDTO.getId());
         if (cottage == null) {
@@ -117,6 +123,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/updateReservationPeriod", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<CottageDTO> updateReservationPeriod(@RequestBody CottageDTO cottageDTO) {
         Cottage cottage = cottageService.findOne(cottageDTO.getId());
         if (cottage == null) {
@@ -131,6 +138,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/deleteCottage/{id}", method = RequestMethod.DELETE)
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<Void> deleteCottage(@PathVariable Integer id) {
         Cottage cottage = cottageService.findOne(id);
         if (cottage == null)
@@ -189,6 +197,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/addFastReservation/{id}", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<FastReservationDTO> addFastReservation(@PathVariable Integer id, @RequestBody FastReservationDTO dto) {
         Cottage c = cottageService.findOne(id);
         if (c == null)
@@ -210,6 +219,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/deleteFastReservation/{cottageId}/{id}", method = RequestMethod.DELETE)
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<Void> deleteFastReservation(@PathVariable Integer cottageId,  @PathVariable Integer id) {
         Cottage c = cottageService.findOne(cottageId);
         if (c == null)

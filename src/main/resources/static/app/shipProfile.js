@@ -6,10 +6,17 @@ Vue.component('ship-profile', {
     },
 
     mounted() {
-        axios.get("api/ships/getShip/" + this.$route.params.id).then(response => {
+        axios({
+            method: "get",
+            url: "api/ships/getShip/" + this.$route.params.id,
+            headers: {
+                Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+            }
+        }).then(response => {
             this.ship = response.data;
         }).catch(function (error) {
-            Swal.fire('Error', 'Something went wrong!', 'error');
+            if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+            else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -144,7 +151,7 @@ Vue.component('ship-profile', {
 
     computed: {
         updateLink() {
-            return "/#/updateShip/" + this.$route.params.id;
+            return "/index.html#/updateShip/" + this.$route.params.id;
         }
     }
     

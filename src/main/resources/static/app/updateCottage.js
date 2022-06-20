@@ -17,8 +17,13 @@ Vue.component("update-cottage", {
 
     mounted() {
         this.cottage.id = this.$route.params.id;
-
-        axios.get("api/cottages/getCottage/" + this.cottage.id).then(response => {
+        axios({
+            method: "get",
+            url: "api/cottages/getCottage/" + this.$route.params.id,
+            headers: {
+                Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+            }
+        }).then(response => {
             this.cottage = response.data;
         }).catch(function (error) {
             Swal.fire('Error', 'Something went wrong!', 'error');
@@ -146,6 +151,10 @@ Vue.component("update-cottage", {
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress) {
                 axios.post("api/cottages/updateCottage", this.cottage).then(function(response) {
                     Swal.fire('Success', 'Cottage updated!', 'success');
+                }, {
+                    headers: {
+                        Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                    }
                 }).catch(function (error) {
                     Swal.fire('Error', 'Something went wrong!', 'error');
                 });

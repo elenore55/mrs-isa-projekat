@@ -12,10 +12,17 @@ Vue.component('add-cottage-reservation', {
     mounted() {
         this.id = this.$route.params.id;
 
-        axios.get("api/cottages/getCottage/" + this.$route.params.id).then(response => {
+        axios({
+            method: "get",
+            url: "api/cottages/getCottage/" + this.$route.params.id,
+            headers: {
+                Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+            }
+        }).then(response => {
             this.name = response.data.name;
         }).catch(function (error) {
-            Swal.fire('Error', 'Something went wrong!', 'error');
+            if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+            else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -65,15 +72,18 @@ Vue.component('add-cottage-reservation', {
                     offerId: this.id,
                     startDate: this.start,
                     endDate: this.end,
-                    clientEmail: this.email
+                    clientEmail: this.email,
+                    ownerId: JSON.parse(localStorage.getItem("jwt")).userId
+                }, {
+                    headers: {
+                        Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                    }
                 }).then(function(response) {
                     Swal.fire('Success', 'Reservation added!', 'success');
                 }).catch(function (error) {
-                    if(error.response.status === 404) {
-                        Swal.fire('Error', 'Client not found!', 'error');
-                    } else {
-                        Swal.fire('Error', 'Cottage already reserved!', 'error');
-                    }
+                    if(error.response.status === 404) Swal.fire('Error', 'Client not found!', 'error');
+                    else if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    else Swal.fire('Error', 'Cottage already reserved!', 'error');
                 });
             }
         }

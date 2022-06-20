@@ -43,7 +43,8 @@ public class CottageService {
 
     @Transactional
     public Cottage findOne(Integer id) {
-        return cottageRepository.findById(id).orElseGet(null);
+        if (!cottageRepository.existsById(id)) return null;
+        return cottageRepository.getById(id);
     }
 
     @Transactional

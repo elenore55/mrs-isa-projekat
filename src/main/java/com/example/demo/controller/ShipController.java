@@ -8,6 +8,7 @@ import com.example.demo.service.ShipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -29,6 +30,7 @@ public class ShipController {
 
     @ResponseBody
     @RequestMapping(path = "/addShip", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('SHIP')")
     public ResponseEntity<ShipDTO> saveShip(@RequestBody ShipDTO shipDTO) {
         Ship ship = new Ship();
         setAttributes(ship, shipDTO);
@@ -38,6 +40,7 @@ public class ShipController {
 
     @ResponseBody
     @RequestMapping(path = "/updateShip", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('SHIP')")
     public ResponseEntity<ShipDTO> updateShip(@RequestBody ShipDTO shipDTO) {
         Ship ship = shipService.findOne(shipDTO.getId());
         if (ship == null) {
@@ -50,6 +53,7 @@ public class ShipController {
 
     @ResponseBody
     @RequestMapping(path = "/updateShipImages", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('SHIP')")
     public ResponseEntity<ShipDTO> updateShipImages(@RequestBody ShipDTO shipDTO) {
         Ship ship = shipService.findOne(shipDTO.getId());
         if (ship == null) {
@@ -66,6 +70,7 @@ public class ShipController {
 
     @ResponseBody
     @RequestMapping(path = "/deleteShip/{id}", method = RequestMethod.DELETE)
+    @PreAuthorize("hasRole('SHIP')")
     public ResponseEntity<Void> deleteShip(@PathVariable Integer id) {
         Ship ship = shipService.findOne(id);
         if (ship == null)
@@ -78,6 +83,7 @@ public class ShipController {
 
     @ResponseBody
     @RequestMapping(path = "/getShip/{id}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasRole('SHIP')")
     public ResponseEntity<ShipDTO> getShip(@PathVariable Integer id) {
         Ship ship = shipService.findOne(id);
         if (ship == null)
@@ -123,6 +129,7 @@ public class ShipController {
 
     @ResponseBody
     @RequestMapping(path = "/filter", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    @PreAuthorize("hasRole('SHIP')")
     public ResponseEntity<List<ShipDTO>> filterShips(@RequestBody UserFilterDTO userFilterDTO) {
         List<Ship> ships = shipService.filter(userFilterDTO);
         List<ShipDTO> dtos = new ArrayList<>();
@@ -134,6 +141,7 @@ public class ShipController {
 
     @ResponseBody
     @RequestMapping(path = "/updateReservationPeriod", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('SHIP')")
     public ResponseEntity<ShipDTO> updateReservationPeriod(@RequestBody ShipDTO dto) {
         Ship ship = shipService.findOne(dto.getId());
         if (ship == null) {

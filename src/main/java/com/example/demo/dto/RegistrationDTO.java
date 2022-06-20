@@ -13,6 +13,7 @@ public class RegistrationDTO {
     private String city;
     private String country;
     private String phone;
+    private String userRole;
 
 
     public RegistrationDTO()
@@ -127,6 +128,15 @@ public class RegistrationDTO {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getUserRole() {
+        if (userRole == null || userRole.equalsIgnoreCase("")) return "CLIENT";
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 }
 
