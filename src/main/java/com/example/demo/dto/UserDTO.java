@@ -10,6 +10,7 @@ public class UserDTO {
     private AddressDTO address;
     private String category;
     private Integer numberOfPoints;
+    private Integer penalties;
 
     public UserDTO() {}
 
@@ -21,6 +22,7 @@ public class UserDTO {
         this.address = new AddressDTO(user.getAddress());
         this.category = user.getCategory().toString();
         this.numberOfPoints = user.getNumberOfPoints();
+
     }
 
     public String getEmail() {

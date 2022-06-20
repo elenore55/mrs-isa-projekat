@@ -157,7 +157,7 @@ insert into ship_images (ship_id, images_id) values (1, 20);
 insert into ship_images (ship_id, images_id) values (5, 13);
 insert into ship_images (ship_id, images_id) values (9, 15);
 
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('marko@gmail.com', 'Marko', '$2a$10$4BdHmh6h4Y7BMm1ysD7pl.8EQSNKEG0nmJaqebJlGVh4.H.nQy1aa', '066-321-3443', 'Markovic', 3);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('m@m', 'Marko', '$2a$10$4BdHmh6h4Y7BMm1ysD7pl.8EQSNKEG0nmJaqebJlGVh4.H.nQy1aa', '066-321-3443', 'Markovic', 3);
 insert into my_users (category,number_of_points,profile_data_id,role_id) values ('REGULAR',0, 5, 1);
 insert into client (id) values (5);
 
@@ -220,6 +220,18 @@ insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 
 
 insert into sub (user_id, offer_id) values (5, 2);
 insert into sub (user_id, offer_id) values (5, 1);
+
+insert into fast_reservation (type, action_duration, action_start, duration, reservation_start, max_people, price)
+    values ('OTH', 5, '20220712 00:00:01 AM', 5, '20220712 11:00:00 AM', 3, 20);
+insert into ship_fast_reservations (ship_id, fast_reservations_id) values (1, 2);
+
+insert into fast_reservation (type, action_duration, action_start, duration, reservation_start, max_people, price)
+    values ('OTH', 7, '20220707 00:00:01 AM', 3, '20220707 11:00:00 AM', 10, 500);
+insert into ship_fast_reservations (ship_id, fast_reservations_id) values (1, 3);
+
+insert into fast_reservation (type, action_duration, action_start, duration, reservation_start, max_people, price)
+    values ('OTH', 1, '20220715 00:00:01 AM', 2, '20220715 11:00:00 AM', 1, 30);
+insert into ship_fast_reservations (ship_id, fast_reservations_id) values (1, 4);
 
 
 

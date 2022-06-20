@@ -97,8 +97,7 @@ public class UserService {
     }
 
     public void changePassword(ChangePasswordDTO changePasswordDTO) {
-        // sad smo sve validirali i treba samo da upisemo novu lozinku na odgovarajuce mjesto
-        String hashed = changePasswordDTO.getNewPass();     // ovdje usmjesto da je samo preuzemem, treba i da je hesiram
+        String hashed = changePasswordDTO.getNewPass();
         System.out.println("dobro je i uzeta lozinka prije uspisa i  glasi " + hashed);
         int n = Integer.parseInt(changePasswordDTO.getId());
         profileDataRepository.changePassword(hashed, n);

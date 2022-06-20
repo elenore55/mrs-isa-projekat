@@ -16,7 +16,9 @@ Vue.component("registration", {
        }
    },
    template: `
-    <section>
+   <div class="w-100">
+        <unregistered-navbar> </unregistered-navbar>
+        <section>
             <div class="container mt-5 pt-5">
                 <div class="row">
                     <div class="col-lg-4 col-sm-8 col-md-6 m-auto">
@@ -80,6 +82,7 @@ Vue.component("registration", {
                 </div>
             </div>
         </section>
+   </div>
    `,
     methods: {
 

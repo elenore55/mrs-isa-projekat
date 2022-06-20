@@ -5,11 +5,20 @@ Vue.component("change-password", {
                old: "",
                newPass: "",
                confirm: "",
-               id: "1",
+               id: "",
                error: false,
+               token: {}
            }
        }
    },
+
+   mounted() {
+           this.token = JSON.parse(localStorage.getItem("jwt"));
+           this.form.id = this.token.userId;
+           main_image = $("body").css("background-image", "url('images/set.webp')");
+           main_image = $("body").css("background-size", "100% 210%");
+
+          },
    template: `
    <div class="w-100">
         <client-navbar></client-navbar>
@@ -47,7 +56,7 @@ Vue.component("change-password", {
         sendData() {
             if (this.allFieldsAreFilled)
             {
-                axios.post("api/users/changePassword", {
+                /*axios.post("api/users/changePassword", {
                      old: this.form.old,
                      newPass: this.form.newPass,
                      id: this.form.id,
@@ -60,7 +69,32 @@ Vue.component("change-password", {
                          }).catch(function (error) {
                              alert('An error occurred!');
 
-                         });
+                         });*/
+                axios({
+                   method: 'post',
+                   url: "api/users/changePassword", data: {
+                        old: this.form.old,
+                         newPass: this.form.newPass,
+                         id: this.form.id,
+                    },
+                   headers: {
+                       Authorization: "Bearer " + this.token.accessToken
+                   }
+               }).then(response => {
+               if(response.data=="OK")
+                {
+                   Swal.fire({
+                  title: 'Success!',
+                  text: 'Your changes are saved',
+                  icon: 'success',
+                  confirmButtonText: 'OK'
+                })
+                }
+
+               }).catch(function (error) {
+                   if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                   else Swal.fire('Error', 'Something went wrong!', 'error');
+               });
                     this.form.error = true;
             }
           }

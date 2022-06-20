@@ -25,7 +25,7 @@ Vue.component("client-actions", {
                     <div class="card-body ms-3">
                         <div class="d-flex justify-content-between">
                             <div class="d-inline-block">
-                                <h5>Start date: {{a.start.substring(0,10)}} </h5>
+                                <h5>Start date: {{a.startStr.substring(0,10)}} </h5>
                                 <h5>Duration: {{a.duration}} days </h5>
                             </div>
                             <div class="text-end me-1">
@@ -47,24 +47,51 @@ Vue.component("client-actions", {
 
         reload() {
             this.offerId = this.$route.params.id;
-            axios.get("api/reservations/getOfferActions/" + this.offerId).then(response => {
+            /*axios.get("api/reservations/getOfferActions/" + this.offerId).then(response => {
                 this.actions = response.data;
             }).catch(function (error) {
                 alert('Greska u get actions');
-            });
-            axios.get("api/reservations/getOldPrice/" + this.offerId).then(response => {
+            });*/
+            axios({
+               method: 'get',
+               url: "api/reservations/getOfferActions/" + this.offerId,
+               headers: {
+                   Authorization: "Bearer " + this.token.accessToken
+               }
+           }).then(response => {
+               this.actions = response.data;
+           }).catch(function (error) {
+               if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+               else Swal.fire('Error', 'Something went wrong!', 'error');
+           });
+
+
+            /*axios.get("api/reservations/getOldPrice/" + this.offerId).then(response => {
                 this.old_price = response.data;
             }).catch(function (error) {
                 alert('Greska u get actions');
-            });
+            });*/
+
+            axios({
+               method: 'get',
+               url: "api/reservations/getOldPrice/" + this.offerId,
+               headers: {
+                   Authorization: "Bearer " + this.token.accessToken
+               }
+           }).then(response => {
+               this.old_price = response.data;
+           }).catch(function (error) {
+               if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+               else Swal.fire('Error', 'Something went wrong!', 'error');
+           });
+
            },
 
         reserveAction(a, i)
            {
-             alert("Usla sam u ovo ");
              // treba poslati poruku da je uspjesno rezervisano
              // i onda jos napraviti novu rezervaciju
-              axios.post("api/reservations/addNewFastReservation/" + this.offerId + "/5", {
+              /*axios.post("api/reservations/addNewFastReservation/" + this.offerId + "/5", {
                      id: a.id,
                      start: a.start,
                      duration: a.duration,
@@ -76,10 +103,27 @@ Vue.component("client-actions", {
                      actionStartStr: "",
                      }).catch(function (error) {
                          alert('Greska u kreiranju rezervacije!');
-              });
-              alert("Sve je proslo dobro");
-              // sad bih ovdje jos mogla da obavijestim da je proslo dobro i da obrisem ovaj u kodu
-              // i - to dugme u kodu da disableujes i pretvoris u reserved
+              });*/
+              axios({
+                 method: 'post',
+                 url: "api/reservations/addNewFastReservation/" + this.offerId + "/" + this.id, data: {
+                      id: a.id,
+                       start: a.start,
+                       duration: a.duration,
+                       actionStart: a.actionStart,
+                       actionDuration: a.actionDuration,
+                       price: a.price,
+                       maxPeople: a.maxPeople,
+                       startStr: "",
+                       actionStartStr: "",
+                  },
+                 headers: {
+                     Authorization: "Bearer " + this.token.accessToken
+                 }
+             }).catch(function (error) {
+                 if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                 else Swal.fire('Error', 'Something went wrong!', 'error');
+             });
               var buttons = document.getElementsByTagName('button');
               var myBtn = buttons[i+1];     // treba +1 zato sto imamo ovaj toglovani button
               myBtn.textContent = "RESERVED";

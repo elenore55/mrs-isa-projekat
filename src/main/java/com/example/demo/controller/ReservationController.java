@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -114,6 +115,30 @@ public class ReservationController {
         return new ResponseEntity<List<FastReservationDTO>>(dtos, HttpStatus.OK);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/getOldPrice/{offerId}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasRole('CLIENT')")
+    public ResponseEntity<BigDecimal> getOldPrice(@PathVariable Integer offerId) {
+        Offer o = offerService.findOne(offerId);
+        BigDecimal price = o.getPriceList();
+        return new ResponseEntity<BigDecimal>(price, HttpStatus.OK);
+    }
+
+
+    @ResponseBody
+    @RequestMapping(path = "/addNewFastReservation/{offerId}/{clientId}", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('CLIENT')")
+    public String addFastReservation(@RequestBody FastReservationDTO fastReservationDTO, @PathVariable Integer offerId, @PathVariable Integer clientId) {
+        Reservation r = new Reservation();
+        r.setStart(fastReservationDTO.getStart());
+        r.setEnd(fastReservationDTO.getStart().plusDays(fastReservationDTO.getDuration().longValue()));
+        Offer o = offerService.findOne(offerId);
+        r.setOffer(o);
+        User u = userService.findById(clientId);
+        r.setClient((Client) u);
+        reservationService.save(r);
+        return "OK";
+    }
 
     private List<FastReservation> getFastReservations(Integer offerId) {
         List<FastReservation> retVal = new ArrayList<>();

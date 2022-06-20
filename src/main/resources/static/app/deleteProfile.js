@@ -4,10 +4,15 @@ data: function() {
             form: {
                 reason: "",
                 id: "1",
-
-            }
+            },
+            token:{},
         }
    },
+
+   mounted() {
+           this.token = JSON.parse(localStorage.getItem("jwt"));
+           this.form.id = this.token.userId;
+          },
 
    template: `
    <div class="w-100">
@@ -25,12 +30,12 @@ data: function() {
         </div>
    </div>
    `,
-methods: {
 
+methods: {
         sendFeedback() {
         if (this.form.reason)
         {
-            axios.post("api/deletionRequests/deleteProfile", {
+            /*axios.post("api/deletionRequests/deleteProfile", {
                  reason: this.form.reason,
                  id: this.form.id,
 
@@ -42,7 +47,28 @@ methods: {
                            }).catch(function (error) {
                                 alert('An error occurred!');
                                 // preusmjeri na stranicu za login sa greskom
-                           });
+                           });*/
+            axios({
+               method: 'post',
+               url: "api/deletionRequests/deleteProfile", data: {
+                    reason: this.form.reason,
+                    id: this.form.id,
+                },
+               headers: {
+                   Authorization: "Bearer " + this.token.accessToken
+               }
+           }).then(response => {
+               // neka poruka da je dobro proslo
+               Swal.fire({
+                 title: 'Success!',
+                 text: 'Your request has been sucesfully sent',
+                 icon: 'success',
+                 confirmButtonText: 'OK'
+               })
+           }).catch(function (error) {
+               if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+               else Swal.fire('Error', 'Something went wrong!', 'error');
+           });
         }
         },
     }

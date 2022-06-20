@@ -30,6 +30,9 @@ Vue.component("client-navbar", {
                         <li class="nav-item">
                             <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/clientProfile/'})"><i class="fa fa-fw fa-user"></i> My Account</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/login/'})">Log out</a>
+                        </li>
                     </ul>
                 </div>
             </div>
