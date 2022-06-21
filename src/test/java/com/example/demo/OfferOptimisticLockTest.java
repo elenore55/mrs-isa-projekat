@@ -1,24 +1,18 @@
 package com.example.demo;
 
-import com.example.demo.model.Address;
 import com.example.demo.model.Cottage;
-import com.example.demo.model.Reservation;
 import com.example.demo.service.CottageService;
 import com.example.demo.service.ReservationService;
 import com.example.demo.service.UserService;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.OptimisticLockingFailureException;
-import org.springframework.dao.PessimisticLockingFailureException;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -99,7 +93,10 @@ public class OfferOptimisticLockTest {
                 c.setRules(new ArrayList<>());
                 c.setImages(new ArrayList<>());
                 c.incNumberOfReservations();
-                try { Thread.sleep(3000); } catch (InterruptedException e) {}
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                }
                 c = cottageService.save(c);
                 System.out.println("VERSION4");
                 System.out.println(c.getVersion());

@@ -34,26 +34,25 @@ public class CottageService {
         this.emailSender = emailSender;
     }
 
-    //@CachePut(cacheNames = "cottage", key="#cottage.id")
+    @CachePut(cacheNames = "cottage", key = "#cottage.id")
     public Cottage save(Cottage cottage) {
         return cottageRepository.save(cottage);
     }
 
     @Transactional
-    public List<Cottage> getCottages()
-    {
+    public List<Cottage> getCottages() {
         return cottageRepository.findAll();
     }
 
     @Transactional
-    //@Cacheable("cottage")
+    @Cacheable("cottage")
     public Cottage findOne(Integer id) {
         if (!cottageRepository.existsById(id)) return null;
         return cottageRepository.getById(id);
     }
 
     // @Transactional
-    //@CacheEvict(cacheNames = "cottage", key="#id")
+    @CacheEvict(cacheNames = "cottage", key = "#id")
     public void remove(Integer id) {
         cottageRepository.deleteById(id);
         cottageRepository.flush();
@@ -72,11 +71,9 @@ public class CottageService {
     public List<Cottage> filter(UserFilterDTO userFilterDTO) {
         List<Cottage> retVal = new ArrayList<>();
         List<Cottage> all = cottageRepository.findAll();
-        for(Cottage c : all)
-        {
-            if (isValidDate(c, userFilterDTO) && isValidRate(c,userFilterDTO.getRate()) &&
-            isValidCountryAndCity(c, userFilterDTO) && isValidNumOfPeople(c,userFilterDTO))
-            {
+        for (Cottage c : all) {
+            if (isValidDate(c, userFilterDTO) && isValidRate(c, userFilterDTO.getRate()) &&
+                    isValidCountryAndCity(c, userFilterDTO) && isValidNumOfPeople(c, userFilterDTO)) {
                 retVal.add(c);
             }
         }
@@ -118,27 +115,27 @@ public class CottageService {
     }
 
     private boolean isValidCountryAndCity(Cottage c, UserFilterDTO userFilterDTO) {
-        if (!userFilterDTO.getCountry().equals("") && !userFilterDTO.getCountry().equalsIgnoreCase(c.getAddress().getCountry())) return false;
+        if (!userFilterDTO.getCountry().equals("") && !userFilterDTO.getCountry().equalsIgnoreCase(c.getAddress().getCountry()))
+            return false;
         // ako je drzava unesena i nije ono sto je napisano tamo
-        if (!userFilterDTO.getCity().equals("") && !userFilterDTO.getCity().equalsIgnoreCase(c.getAddress().getCity())) return false;
+        if (!userFilterDTO.getCity().equals("") && !userFilterDTO.getCity().equalsIgnoreCase(c.getAddress().getCity()))
+            return false;
         return true;
     }
 
     private boolean isValidRate(Cottage c, int rate) {
-        return c.getRateOrNegativeOne()>=rate || c.getRateOrNegativeOne()==-1;
+        return c.getRateOrNegativeOne() >= rate || c.getRateOrNegativeOne() == -1;
     }
 
     private boolean isValidDate(Cottage c, UserFilterDTO userFilterDTO) {
-        for(Reservation r : c.getReservations())
-        {
-            if (r.getReservationStatus()!= ReservationStatus.CANCELLED)
-            {
-                if (isInMidDate(r.getStart(), userFilterDTO) || isInMidDate(r.getEnd(), userFilterDTO) || isAround(r, userFilterDTO)) return false;
+        for (Reservation r : c.getReservations()) {
+            if (r.getReservationStatus() != ReservationStatus.CANCELLED) {
+                if (isInMidDate(r.getStart(), userFilterDTO) || isInMidDate(r.getEnd(), userFilterDTO) || isAround(r, userFilterDTO))
+                    return false;
             }
             // ako nadjes bar jednu rezervaciju da joj je pcetni ili krajnji datum unutar nase, vrati false
             // ako nadjes bar jednu rezervaciju da joj je pocetni datum prije nase, a krajni poslije, vrati false
-            else
-            {
+            else {
                 // za one koje nisu aktivne gledamo jel bila ista takva
                 if (parametersAreSame(r, userFilterDTO)) return false;
             }
@@ -151,8 +148,9 @@ public class CottageService {
         LocalDateTime r2 = r.getEnd();
         LocalDateTime u1 = getLocalDatetimeFromVuePicker(userFilterDTO.getFromDate());
         LocalDateTime u2 = getLocalDatetimeFromVuePicker(userFilterDTO.getToDate());
-        return r1==u1 && r2==u2;
+        return r1 == u1 && r2 == u2;
     }
+
     private boolean isAround(Reservation r, UserFilterDTO userFilterDTO) {
         LocalDateTime rStart = r.getStart();
         LocalDateTime rEnd = r.getEnd();
@@ -167,8 +165,7 @@ public class CottageService {
         return reservationStart.isBefore(date) && date.isBefore(reservationEnd);
     }
 
-    private LocalDateTime getLocalDatetimeFromVuePicker(String d)
-    {
+    private LocalDateTime getLocalDatetimeFromVuePicker(String d) {
         //String sub = d.substring(0, 24);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         return LocalDateTime.parse(d, formatter);
