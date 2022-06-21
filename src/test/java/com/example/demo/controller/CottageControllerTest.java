@@ -55,26 +55,6 @@ public class CottageControllerTest {
     }
 
     @Test
-    @WithMockUser(roles = {"COTTAGE"})
-    public void testGetCottage() throws Exception {
-        mockMvc.perform(get(URL_PREFIX + "/getCottage/2")).andExpect(status().isOk())
-                .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$.name").value("Frida River House"))
-                .andExpect(jsonPath("$.price").value(300));
-    }
-
-    @Test
-    @WithMockUser(roles = {"COTTAGE"})
-    public void testGetCottageRate() throws Exception {
-        mockMvc.perform(get(URL_PREFIX + "/getCottageRate/2")).andExpect(status().isOk())
-                .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$").value(9.5));
-        mockMvc.perform(get(URL_PREFIX + "/getCottageRate/5")).andExpect(status().isOk())
-                .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$").value(-1));
-    }
-
-    @Test
     @Transactional
     @WithMockUser(roles = {"COTTAGE"})
     public void testSaveCottage() throws Exception {
@@ -93,12 +73,5 @@ public class CottageControllerTest {
     @WithMockUser(roles = {"COTTAGE"})
     public void testDeleteCottage() throws Exception {
         mockMvc.perform(delete(URL_PREFIX + "/deleteCottage/5")).andExpect(status().isOk());
-    }
-
-    @Test
-    @Transactional
-    @WithMockUser(roles = {"COTTAGE"})
-    public void testDeleteCottageNotFound() throws Exception {
-        mockMvc.perform(delete(URL_PREFIX + "/deleteCottage/15")).andExpect(status().isNotFound());
     }
 }
