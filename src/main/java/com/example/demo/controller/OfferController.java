@@ -90,6 +90,39 @@ public class OfferController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/deleteFastReservation/{offerId}/{id}", method = RequestMethod.DELETE)
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
+    public ResponseEntity<Void> deleteFastReservation(@PathVariable Integer offerId, @PathVariable Integer id) {
+        Offer o = offerService.findOne(id);
+        if (o == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (o instanceof Cottage) {
+            Cottage c = (Cottage)o;
+            List<FastReservation> res = c.getFastReservations();
+            for (FastReservation fr : res) {
+                if (fr.getId().equals(id)) {
+                    res.remove(fr);
+                    break;
+                }
+            }
+            c.setFastReservations(res);
+            offerService.save(c);
+        } else {
+            Ship s = (Ship)o;
+            List<FastReservation> res = s.getFastReservations();
+            for (FastReservation fr : res) {
+                if (fr.getId().equals(id)) {
+                    res.remove(fr);
+                    break;
+                }
+            }
+            s.setFastReservations(res);
+            offerService.save(s);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/getOffer/{id}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<OfferDTO> getOffer(@PathVariable Integer id) {
         Offer offer = offerService.findOne(id);
