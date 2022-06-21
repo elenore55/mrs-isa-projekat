@@ -129,7 +129,7 @@ Vue.component("ships-view-owner", {
                     }
                 }
             }).catch(function (error) {
-                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
@@ -160,7 +160,7 @@ Vue.component("ships-view-owner", {
                 Swal.fire('Success', 'Ship deleted!', 'success');
                 this.reload();
             }).catch(function (error) {
-                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'It is not possible to delete the ship!', 'error');
             });
         },
@@ -187,7 +187,7 @@ Vue.component("ships-view-owner", {
             }).then(response => {
                 this.ships = response.data;
             }).catch(function (error) {
-                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
@@ -214,7 +214,7 @@ Vue.component("ships-view-owner", {
                 }).then(response => {
                     this.ships = response.data;
                 }).catch(function (error) {
-                    if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                     else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }

@@ -21,7 +21,7 @@ Vue.component('add-cottage-reservation', {
         }).then(response => {
             this.name = response.data.name;
         }).catch(function (error) {
-            if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+            if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
             else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
@@ -82,7 +82,7 @@ Vue.component('add-cottage-reservation', {
                     Swal.fire('Success', 'Reservation added!', 'success');
                 }).catch(function (error) {
                     if(error.response.status === 404) Swal.fire('Error', 'Client not found!', 'error');
-                    else if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    else if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                     else Swal.fire('Error', 'Cottage already reserved!', 'error');
                 });
             }

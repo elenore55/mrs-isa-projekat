@@ -156,7 +156,7 @@ Vue.component("reservations-history", {
                     }
                 }
             }).catch(error => {
-                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
@@ -206,7 +206,7 @@ Vue.component("reservations-history", {
                     this.resetModalData();
                     Swal.fire("Success", "Review submitted", "success");
                 }).catch(error => {
-                    if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                     else Swal.fire("Error", "Something went wrong", "error");
                 });
             }

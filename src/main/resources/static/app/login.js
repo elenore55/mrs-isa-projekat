@@ -51,16 +51,16 @@ Vue.component("login", {
                 axios.post("api/users/login", {
                      email: this.user.email,
                      password: this.user.password
-                     }).then(function(response) {
+                     }).then((response) => {
                          this.token = response.data;
                          localStorage.setItem("jwt", JSON.stringify(this.token));
                          if (this.token.userRole === "ROLE_COTTAGE")
-                            location.replace('http://localhost:8000/index.html#/cottagesViewOwner');
+                             this.$router.push('/cottagesViewOwner').catch(() => {});
                          else if (this.token.userRole === "ROLE_SHIP")
-                             location.replace('http://localhost:8000/index.html#/shipsViewOwner');
+                             this.$router.push('/shipsViewOwner').catch(() => {});
                          else if (this.token.userRole === "ROLE_CLIENT")
-                             location.replace('http://localhost:8000/index.html#/clientHome');
-                     }).catch(function (error) {
+                             this.$router.push('/clientHome').catch(() => {});
+                     }).catch((error) => {
                          this.user.email = "";
                          this.user.password = "";
                          this.user.error = true;
