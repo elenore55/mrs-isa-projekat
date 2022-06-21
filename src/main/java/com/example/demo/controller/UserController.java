@@ -216,6 +216,37 @@ public class UserController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/getAdminIncomeReport/{id}/{kind}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<List<ReportEntryDTO>> getAdminIncomeReport(@PathVariable Integer id, @PathVariable String kind, @RequestBody DatesDTO dto) {
+        User user = userService.findOne(id);
+        if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (user instanceof Admin) {
+            List<CottageOwner> cottageOwners = cottageOwnerService.findAlladmin();
+            List<ShipOwner> shipOwners = shipOwnerService.findAlladmin();
+            List<FishingInstructor> fishingInstructors = fishingInstructorService.findAll();
+            List<ReportEntryDTO> result = new ArrayList<>();
+
+            for (CottageOwner owner : cottageOwners)
+            {
+                result.addAll(cottageOwnerService.calculateIncomeReport(owner, dto.getStart(), dto.getEnd(), kind));
+            }
+
+            for (ShipOwner owner : shipOwners)
+            {
+                result.addAll(shipOwnerService.calculateIncomeReport(owner, dto.getStart(), dto.getEnd(), kind));
+            }
+
+            for (FishingInstructor owner : fishingInstructors)
+            {
+                result.addAll(fishingInstructorService.calculateIncomeReport(owner, dto.getStart(), dto.getEnd(), kind));
+            }
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/getVisitReport/{id}/{kind}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<List<ReportEntryDTO>> getVisitReport(@PathVariable Integer id, @PathVariable String kind, @RequestBody DatesDTO dto) {
         User user = userService.findOne(id);

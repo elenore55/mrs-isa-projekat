@@ -30,6 +30,10 @@ public class CottageOwnerService {
         this.cottageOwnerRepository = cottageOwnerRepository;
     }
 
+    public List<CottageOwner> findAlladmin(){
+        return  cottageOwnerRepository.findAll();
+    }
+
     public CottageOwner findOne(Integer id) {
         return cottageOwnerRepository.findById(id).orElseGet(null);
     }

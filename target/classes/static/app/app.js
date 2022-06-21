@@ -66,6 +66,7 @@ const AdminFeedback = {template: '<admin-feedback></admin-feedback>'};
 const AdminRegREq = {template: '<admin-registrationreq></admin-registrationreq>'};
 const AdminLoyalProg = {template: '<admin-loyalprogram></admin-loyalprogram>'};
 const AdventureImg = {template: '<adventure-images></adventure-images>'};
+const AdminIncomeRep= {template: '<adminincome-report></adminincome-report>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -343,6 +344,10 @@ const router = new VueRouter({
         {
             path: "/adventureImg/",
             component: AdventureImg
+        },
+        {
+            path: "/adminInmcome/:id",
+            component: AdminIncomeRep
         }
     ]
 });
