@@ -40,7 +40,12 @@ Vue.component('ship-profile', {
                                 <div class="ms-4">   
                                     <h1 class="text-success ">{{ ship.price }} <i class="fa fa-eur"></i></h1>
                                     <p class="h6 my-2"> {{ ship.description }}</p>
-                                    <h2 v-if="ship.rate != -1"><span class="badge bg-primary">{{ ship.rate }}</span></h2>
+                                    <span v-if="ship.rate != -1" class="badge bg-primary my-2">
+                                        <div class="d-flex justify-content-start">
+                                            <h6 class="d-flex align-items-center"><i class="fa fa-star"></i></h6>
+                                            <h2>&nbsp;{{ ship.rate }}</h2>
+                                        </div>
+                                    </span>
                                     <u><a data-bs-toggle="modal"  href="javascript:void(0)" @click="displayReviews" style="cursor: pointer; color: #0a53be"><h6 v-if="ship.rate != -1">{{ ship.reviews.length }} reviews</h6></a></u>
                                     <h3 v-if="ship.rate == -1">No reviews</h3>
                                     <div class="mt-4">

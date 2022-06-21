@@ -97,7 +97,12 @@ Vue.component("cottages-view-owner", {
                                         <p class="card-text mt-2 mb-4 h5">{{ c.address.street }}, {{ c.address.city }}, {{ c.address.country }}</p>
                                     </div>
                                     <div class="me-4">
-                                        <h2 v-if="c.rate != -1"><span class="badge bg-primary">{{ c.rate }}</span></h2>
+                                        <span v-if="c.rate != -1" class="badge bg-primary my-1">
+                                            <div class="d-flex justify-content-start">
+                                                <h6 class="d-flex align-items-center"><i class="fa fa-star"></i></h6>
+                                                <h2>&nbsp;{{ c.rate }}</h2>
+                                            </div>
+                                        </span>
                                         <h6 v-if="c.rate != -1">{{ c.reviews.length }} reviews</h6>
                                         <h3 v-if="c.rate == -1">No reviews</h3>
                                     </div>

@@ -35,9 +35,17 @@ Vue.component('cottage-profile', {
                                     <img :src="cottage.imagePaths[0]" style="width: 250px;height: 250px; cursor: pointer" data-bs-target="#carouselExample" data-bs-slide-to="0">
                                 </div>
                                 <div class="ms-4">   
-                                    <h1 class="text-success ">{{ cottage.price }} <i class="fa fa-eur"></i></h1>
+                                    <div class="d-flex justify-content-start">
+                                        <h1 class="text-success ">{{ cottage.price }} <i class="fa fa-eur"></i></h1>
+                                        <h5 class="d-flex align-items-end">&nbsp; /day</h5>
+                                    </div>
                                     <p class="h6 my-2"> {{ cottage.description }}</p>
-                                    <h2 v-if="cottage.rate != -1"><span class="badge bg-primary">{{ cottage.rate }}</span></h2>
+                                    <span v-if="cottage.rate != -1" class="badge bg-primary my-2">
+                                        <div class="d-flex justify-content-start">
+                                            <h6 class="d-flex align-items-center"><i class="fa fa-star"></i></h6>
+                                            <h2>&nbsp;{{ cottage.rate }}</h2>
+                                        </div>
+                                    </span>
                                     <u><a data-bs-toggle="modal" href="javascript:void(0)" @click="displayReviews" style="cursor: pointer; color: #0a53be"><h6 v-if="cottage.rate != -1">{{ cottage.reviews.length }} reviews</h6></a></u>
                                     <h3 v-if="cottage.rate == -1">No reviews</h3>
                                 </div>
