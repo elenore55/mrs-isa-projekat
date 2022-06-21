@@ -53,6 +53,14 @@ insert into image (path) values ('images/inside3.jpg');
 insert into image (path) values ('images/inside4.jpg');
 insert into image (path) values ('images/inside5.jpg');
 
+insert into image (path) values ('images/adv1.jpeg');
+insert into image (path) values ('images/adv2.jpeg');
+insert into image (path) values ('images/adv3.jpeg');
+insert into image (path) values ('images/adv4.jpeg');
+insert into image (path) values ('images/adv5.jpeg');
+insert into image (path) values ('images/adv6.jpeg');
+
+
 insert into offer (additional_info, description, name, price_list, address_id) values ('Smeštaj je pogodan za više ljudi (u isto vremena na splavu može maksimalno boraviti 20 osoba) koji žele da imaju odvojen prostor za spavanje, odvojen prostor za druženje, a i mesto za odmaranje na reci uz sav komoditet splava.', 'Ovo je dosta autentican prostor.', 'Frida River House', 300, 1);
 insert into offer_rules (offer_id, rules_id) values (2, 1);
 insert into offer_rules (offer_id, rules_id) values (2, 3);
@@ -210,6 +218,13 @@ insert into fishing_equipment (amount, name) values (10,'Hooks');
 insert into offer (additional_info, description, name, price_list, address_id) values ('additional info', 'neki opis', 'PonudaSQL', 500, 1);
 insert into adventure (max_people,id,fishing_instructor_id) values (10,10,3);
 insert into adventure_fishing_equipments(adventure_id,fishing_equipments_id) values(10,2);
+insert into adventure_images (adventure_id, images_id) values (10, 21);
+insert into adventure_images (adventure_id, images_id) values (10, 22);
+insert into adventure_images (adventure_id, images_id) values (10, 23);
+insert into adventure_images (adventure_id, images_id) values (10, 24);
+insert into adventure_images (adventure_id, images_id) values (10, 25);
+insert into adventure_images (adventure_id, images_id) values (10, 26);
+
 
 insert into sub (user_id, offer_id) values (7, 10);
 insert into sub (user_id, offer_id) values (5, 8);

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,6 +118,25 @@ public class AdventureController {
             fishingEquipmentList.add( fishingEquipmentService.findOne(fishingEquipmentListDTO.getId()));
         }
 
+        List<Image> images = new ArrayList<>();
+        for (String path : adventureDTO.getImagePaths())
+            images.add(new Image(path));
+        adventure.setImages(images);
+
+        adventure.setPriceList(adventureDTO.getPrice());
+        if (adventure.getPriceHistory() == null || adventure.getPriceHistory().size() == 0) {
+            List<PriceList> priceHistory = new ArrayList<>();
+            priceHistory.add(new PriceList(LocalDate.now(), adventureDTO.getPrice()));
+            adventure.setPriceHistory(priceHistory);
+        } else {
+            List<PriceList> priceHistory = adventure.getPriceHistory();
+            PriceList last = priceHistory.get(priceHistory.size() - 1);
+            if (!last.getAmount().equals(adventureDTO.getPrice())) {
+                PriceList newPrice = new PriceList(LocalDate.now(), adventureDTO.getPrice());
+                priceHistory.add(newPrice);
+                adventure.setPriceHistory(priceHistory);
+            }
+        }
 
 
         adventure.setFishingEquipments(fishingEquipmentList);
@@ -147,6 +167,26 @@ public class AdventureController {
             fishingEquipmentList.add(fishingEquipmentService.findOne(fishingEquipmentListDTO.getId()));
         }
         adventure.setFishingEquipments(fishingEquipmentList);
+
+        List<Image> images = new ArrayList<>();
+        for (String path : adventureDTO.getImagePaths())
+            images.add(new Image(path));
+        adventure.setImages(images);
+
+        adventure.setPriceList(adventureDTO.getPrice());
+        if (adventure.getPriceHistory() == null || adventure.getPriceHistory().size() == 0) {
+            List<PriceList> priceHistory = new ArrayList<>();
+            priceHistory.add(new PriceList(LocalDate.now(), adventureDTO.getPrice()));
+            adventure.setPriceHistory(priceHistory);
+        } else {
+            List<PriceList> priceHistory = adventure.getPriceHistory();
+            PriceList last = priceHistory.get(priceHistory.size() - 1);
+            if (!last.getAmount().equals(adventureDTO.getPrice())) {
+                PriceList newPrice = new PriceList(LocalDate.now(), adventureDTO.getPrice());
+                priceHistory.add(newPrice);
+                adventure.setPriceHistory(priceHistory);
+            }
+        }
 
         adventure = adventureService.update(adventure);
         return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.ACCEPTED);
@@ -193,6 +233,33 @@ public class AdventureController {
         userService.addReservation(dto.getOwnerId(),reservation);
 
         return new ResponseEntity<>(new ReservationDTO(reservation), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/updateAdventureImages", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<AdventureDTO> updateCottageImages(@RequestBody AdventureDTO adventureDTO) {
+        Adventure adventure = adventureService.findOne(adventureDTO.getId());
+        if (adventure == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        List<Image> images = new ArrayList<>();
+        for (String path : adventureDTO.getImagePaths())
+            images.add(new Image(path));
+        adventure.setImages(images);
+        adventureService.save(adventure);
+        return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getAdventureImages/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<String>> getAdventureImages(@PathVariable Integer id) {
+        Adventure adventure = adventureService.findOne(id);
+        if (adventure == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        List<String> result = new ArrayList<>();
+        for (Image img : adventure.getImages()) {
+            result.add(img.getPath());
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 

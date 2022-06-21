@@ -65,6 +65,7 @@ const AdminPenalties = {template: '<admin-penalties></admin-penalties>'};
 const AdminFeedback = {template: '<admin-feedback></admin-feedback>'};
 const AdminRegREq = {template: '<admin-registrationreq></admin-registrationreq>'};
 const AdminLoyalProg = {template: '<admin-loyalprogram></admin-loyalprogram>'};
+const AdventureImg = {template: '<adventure-images></adventure-images>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -338,6 +339,10 @@ const router = new VueRouter({
         {
             path: "/adminLoyal/",
             component: AdminLoyalProg
+        },
+        {
+            path: "/adventureImg/",
+            component: AdventureImg
         }
     ]
 });
