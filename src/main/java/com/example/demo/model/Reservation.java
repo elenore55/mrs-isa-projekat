@@ -35,6 +35,10 @@ public class Reservation {
     @JoinColumn(name = "offer_id")
     private Offer offer;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_review_id", referencedColumnName = "id")
+    private ClientReview clientReview;
+
     public Reservation() {
     }
 
@@ -104,5 +108,13 @@ public class Reservation {
 
     public BigDecimal getDuration() {
         return BigDecimal.valueOf(ChronoUnit.DAYS.between(start, end));
+    }
+
+    public ClientReview getClientReview() {
+        return clientReview;
+    }
+
+    public void setClientReview(ClientReview clientReview) {
+        this.clientReview = clientReview;
     }
 }

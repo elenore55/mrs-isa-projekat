@@ -88,7 +88,6 @@ Vue.component("reservations-history", {
                             <h5 class="my-3"><span class="badge" style="background-color: purple">{{ reservationStatus(r.status) }}</span></h5>
                             <button class="btn btn-success btn-sm h-50 my-3" v-on:click="setFocusedReservation(r)" type="button">Leave a review</button>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -110,18 +109,26 @@ Vue.component("reservations-history", {
                         <h5 class="ms-4">({{ focused_reservation.clientEmail }})</h5>
                         
                         <hr>
-                        <div class="form-floating">
-                            <textarea v-model="review" class="form-control" id="review-input" style="height: 150px"/>
-                            <label for="review-input">Leave a review</label>
-                            <p v-if="!isValidReview" class="text-danger">Review cannot be empty.</p>
+                        <div v-if="!(focused_reservation.reviewOfClient)">
+                            <div class="form-floating">
+                                <textarea v-model="review" class="form-control" id="review-input" style="height: 150px"/>
+                                <label for="review-input">Leave a review</label>
+                                <p v-if="!isValidReview" class="text-danger">Review cannot be empty.</p>
+                            </div>
+                            <div class="form-check mt-3">
+                                <input class="form-check-input" type="checkbox" value="" id="penaltyCheck" v-model="receives_penalty">
+                                <label class="form-check-label" for="penaltyCheck">Client did not show up</label>
+                            </div>
                         </div>
-                        <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="penaltyCheck" v-model="receives_penalty">
-                            <label class="form-check-label" for="penaltyCheck">Client did not show up</label>
+                        <div v-if="!!(focused_reservation.reviewOfClient)">
+                            <div class="form-floating">
+                                <textarea v-model="focused_reservation.reviewOfClient" class="form-control" id="review-input" style="height: 150px" disabled/>
+                                <label for="review-input">Your review</label>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" v-on:click="submitReview">Submit</button>
+                        <button type="button" class="btn btn-success" v-on:click="submitReview" v-if="!(focused_reservation.reviewOfClient)">Submit</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetModalData">Close</button>
                     </div>
                 </div>
@@ -203,6 +210,8 @@ Vue.component("reservations-history", {
                     }
                 }).then(response => {
                     this.my_modal.hide();
+                    if (this.receives_penalty) this.focused_reservation.status = 'MISSED';
+                    this.focused_reservation.reviewOfClient = this.review;
                     this.resetModalData();
                     Swal.fire("Success", "Review submitted", "success");
                 }).catch(error => {

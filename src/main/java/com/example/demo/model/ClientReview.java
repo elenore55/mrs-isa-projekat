@@ -22,7 +22,7 @@ public class ClientReview {
     @ManyToOne(fetch = FetchType.EAGER)
     private Client client;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "clientReview")
     private Reservation reservation;
 
     @Column
