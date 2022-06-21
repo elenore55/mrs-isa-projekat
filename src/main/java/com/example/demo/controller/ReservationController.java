@@ -46,7 +46,7 @@ public class ReservationController {
     @Transactional
     @ResponseBody
     @RequestMapping(path = "/addReservation", method = RequestMethod.POST, consumes = "application/json")
-    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP', 'CLIENT', 'ADVENTURE')")
     public ResponseEntity<ReservationDTO> addReservation(@RequestBody ReservationDTO dto) {
 
         Reservation reservation = new Reservation();
