@@ -23,6 +23,8 @@ Vue.component("cottages-view-owner", {
     },
 
     mounted() {
+        $("body").css("background-image", "url('images/set2.png')");
+        $("body").css("background-size", "100% 200%");
         this.token = JSON.parse(localStorage.getItem("jwt"));
         this.reload();
 
@@ -41,7 +43,7 @@ Vue.component("cottages-view-owner", {
     },
 
     template: `
-        <div style="background-color: #fff9e8">
+        <div>
             <owners-nav offer="cottages"></owners-nav>
             <div class="container">
                 <div class="d-flex justify-content-center">

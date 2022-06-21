@@ -15,6 +15,8 @@ Vue.component("ships-view-owner", {
     },
 
     mounted() {
+        $("body").css("background-image", "url('images/set2.png')");
+        $("body").css("background-size", "100% 200%");
         this.reload();
 
         axios.get("api/addresses/getCities").then(response => {
@@ -31,7 +33,7 @@ Vue.component("ships-view-owner", {
     },
 
     template: `
-        <div style="background-color: #fff9e8">
+        <div>
             <owners-nav offer="ships"></owners-nav>
             <div class="container">
                 <div class="d-flex justify-content-center">

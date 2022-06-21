@@ -15,12 +15,15 @@ Vue.component('fast-reservations', {
     },
 
     mounted(){
+        $("body").css("background-image", "none");
+        $("body").css("background-color", "#f2e488");
+        $("body").css("background-size", "100% 200%");
         this.id = this.$route.params.id;
         this.reload();
     },
 
     template: `
-    <div style="background-color: #f2e488;height: 1000px">
+    <div style="background-color: #f2e488">
         <update-ship-nav v-if="role=='ROLE_SHIP'"></update-ship-nav>
         <update-cottage-nav v-if="role=='ROLE_COTTAGE'"></update-cottage-nav>
         <div class="d-flex justify-content-start ms-3 mt-3">

@@ -7,6 +7,8 @@ Vue.component('ship-profile', {
     },
 
     mounted() {
+        $("body").css("background-color", "#f2e488");
+        $("body").css("background-size", "100% 200%");
         axios({
             method: "get",
             url: "api/ships/getShip/" + this.$route.params.id,

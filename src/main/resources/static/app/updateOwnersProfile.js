@@ -7,6 +7,8 @@ Vue.component('update-owners-profile', {
     },
 
     mounted() {
+        $("body").css("background-image", "url('images/gradient_purple.jpg')");
+        $("body").css("background-size", "100% 200%");
         axios({
             method: "get",
             url: "api/users/getOwner/" + JSON.parse(localStorage.getItem("jwt")).userId,
@@ -22,7 +24,7 @@ Vue.component('update-owners-profile', {
     },
 
     template: `
-    <div class="bg-gradient" style="background-color: #ddc8fb; height: 100%">
+    <div>
         <div class="d-flex justify-content-center">
             <div class="card my-5 px-4 shadow-lg" style="background-color: #fff9e8; border-radius: 15px">
                 <div class="container card-body">

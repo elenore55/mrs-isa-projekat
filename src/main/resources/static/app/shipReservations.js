@@ -8,6 +8,9 @@ Vue.component("ship-reservations", {
     },
 
     mounted() {
+        $("body").css("background-image", "none");
+        $("body").css("background-color", "#f2e488");
+        $("body").css("background-size", "100% 200%");
         this.id = this.$route.params.id;
 
         axios({
