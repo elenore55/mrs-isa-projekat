@@ -68,6 +68,7 @@ const AdminLoyalProg = {template: '<admin-loyalprogram></admin-loyalprogram>'};
 const AdventureImg = {template: '<adventure-images></adventure-images>'};
 const AdminIncomeRep= {template: '<adminincome-report></adminincome-report>'};
 const AdminVisitRep= {template: '<adminvisit-report></adminvisit-report>'};
+const InsAdvReservStatus = {template: '<instadv-reserv></instadv-reserv>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -353,6 +354,10 @@ const router = new VueRouter({
         {
             path: "/adminVisit/:id",
             component: AdminVisitRep
+        },
+        {
+            path: "/instAdvReservSatatus",
+            component: InsAdvReservStatus
         }
     ]
 });

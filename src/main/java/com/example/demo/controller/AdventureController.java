@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.*;
 import com.example.demo.model.*;
+import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,15 @@ public class AdventureController {
                 adventuresDTO.add(new AdventureDTO(adventure));
         }
         return new ResponseEntity<>(adventuresDTO, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/approvalStatus")
+    public ResponseEntity<List<ReservationStatus>> getReservationPossibleStatuses(){
+        List<ReservationStatus> statuses = new ArrayList<>();
+        statuses.add(ReservationStatus.CANCELLED);
+        statuses.add(ReservationStatus.CLIENT_NOT_ARRIVED);
+        statuses.add(ReservationStatus.FINISHED);
+        return new ResponseEntity<>(statuses, HttpStatus.OK);
     }
 
     @GetMapping(value = "/all")

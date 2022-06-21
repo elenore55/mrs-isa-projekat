@@ -103,4 +103,6 @@ public class FishingInstructorController {
         adventureService.remove(idadventure);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 }
