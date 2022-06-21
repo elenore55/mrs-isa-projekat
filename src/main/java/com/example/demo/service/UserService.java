@@ -77,13 +77,12 @@ public class UserService {
         return id.toString();
     }
 
-    private boolean isValidPassword(String password, String tabelar) {
+    public boolean isValidPassword(String password, String tabelar) {
         // ovdje treba hesirati unijetu lozinku i vidjeti da li se poklapa sa ovom iz tabele
         return password.equals(tabelar);
     }
 
     public boolean isAlreadyRegistered(String email) {
-        List<ProfileData> svi = profileDataRepository.findAll();
         ProfileData pd = profileDataRepository.getByEmail(email);
         return pd != null;
     }
@@ -108,8 +107,6 @@ public class UserService {
     }
 
     public Client findClientByEmail(String email) {
-        List<ProfileData> li = profileDataRepository.findAll();
-
         ProfileData pd = profileDataRepository.getByEmail(email);
         if (pd == null) return null;
         return clientRepository.findByProfileDataId(pd.getId());

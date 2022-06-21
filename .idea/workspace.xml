@@ -5,62 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40ba84b1-d75b-4871-ab2e-141e0d13074f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/documentation/Konkurentni pristup resursima u bazi Student 1.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/unregisteredHome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ComplaintController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ComplaintController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DeletionRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DeletionRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FeedbackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FeedbackController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/RegistrationRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/RegistrationRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/ComplaintDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/ComplaintDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Complaint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Complaint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/DeletionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/DeletionRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Feedback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Feedback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Offer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/RegistrationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/RegistrationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/service/ShipOwnerServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/service/ShipServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/service/UserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/ReservationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/ReservationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ComplaintService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ComplaintService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/DeletionRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/DeletionRequestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/RegistrationRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/RegistrationRequestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ReservationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/changePassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/changePassword.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientComplain.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientComplain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientRate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientRate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientSubs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientSubs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/deleteProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/deleteProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/editProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/editProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/pastReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/pastReservations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/registration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/unregisteredNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/unregisteredNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/upcomingReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/upcomingReservations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/changePassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/changePassword.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientComplain.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientComplain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientHome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientRate.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientRate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientSubs.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientSubs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/deleteProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/deleteProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/editProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/editProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/pastReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/pastReservations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/registration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/unregisteredNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/unregisteredNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/upcomingReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/upcomingReservations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ShipService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ShipService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,49 +123,86 @@
       <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\reports" />
       <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\filters" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.demo.service" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.DemoApplication">
-    <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplication" />
+  <component name="RunManager" selected="JUnit.UserServiceTest.testValidPasswords">
+    <configuration name="ShipServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.demo.*" />
+          <option name="PATTERN" value="com.example.demo.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.ShipServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in demo (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ShipServiceTest.checkReservationsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.ShipServiceTest" />
+      <option name="METHOD_NAME" value="checkReservationsTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in demo (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.alreadyRegisteredTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="alreadyRegisteredTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in demo (4)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.testGetClientByEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="testGetClientByEmail" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in demo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.testValidPasswords" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="testValidPasswords" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -246,20 +241,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.DemoApplication" />
-      <item itemvalue="JUnit.All in demo" />
-      <item itemvalue="JUnit.All in demo (2)" />
-      <item itemvalue="JUnit.All in demo (3)" />
-      <item itemvalue="JUnit.All in demo (4)" />
       <item itemvalue="Maven.demo [-N,wrapper:wrapper]" />
+      <item itemvalue="JUnit.ShipServiceTest.checkReservationsTest" />
+      <item itemvalue="JUnit.ShipServiceTest" />
+      <item itemvalue="JUnit.UserServiceTest.testGetClientByEmail" />
+      <item itemvalue="JUnit.UserServiceTest.alreadyRegisteredTest" />
+      <item itemvalue="JUnit.UserServiceTest.testValidPasswords" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in demo" />
-        <item itemvalue="JUnit.All in demo (4)" />
-        <item itemvalue="JUnit.All in demo (3)" />
-        <item itemvalue="Application.DemoApplication" />
-        <item itemvalue="JUnit.All in demo (2)" />
+        <item itemvalue="JUnit.UserServiceTest.testValidPasswords" />
+        <item itemvalue="JUnit.UserServiceTest.testGetClientByEmail" />
+        <item itemvalue="JUnit.UserServiceTest.alreadyRegisteredTest" />
+        <item itemvalue="JUnit.ShipServiceTest" />
+        <item itemvalue="JUnit.ShipServiceTest.checkReservationsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -299,13 +294,6 @@
       <workItem from="1654803114806" duration="52939000" />
       <workItem from="1655406817526" duration="2736000" />
       <workItem from="1655583368904" duration="27284000" />
-    </task>
-    <task id="LOCAL-00149" summary="Dodati navbar linkovi za sve izvjestaje">
-      <created>1654942772794</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
-      <option name="project" value="LOCAL" />
-      <updated>1654942772794</updated>
     </task>
     <task id="LOCAL-00150" summary="MouseOver i MouseLeave za kartice">
       <created>1654944453481</created>
@@ -643,7 +631,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655811278070</updated>
     </task>
-    <option name="localTasksCounter" value="198" />
+    <task id="LOCAL-00198" summary="spojena security st 1 ma cache">
+      <created>1655820130990</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
+      <option name="project" value="LOCAL" />
+      <updated>1655820130990</updated>
+    </task>
+    <option name="localTasksCounter" value="199" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,7 +658,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Test za filtriranje vikendica" />
     <MESSAGE value="Test za izvjestaje" />
     <MESSAGE value="CottageControllerTest" />
     <MESSAGE value="CottageOwnerControllerTest" />
@@ -688,137 +682,8 @@
     <MESSAGE value="Sortiranje po ratingu" />
     <MESSAGE value="Odlazak na profil klijenta iz ratinga" />
     <MESSAGE value="Ispravljen prikaz slika" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ispravljen prikaz slika" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="2472" y="178" key="#Assign_Data_Sources" timestamp="1655292820546">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2472" y="178" key="#Assign_Data_Sources/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655292820546" />
-    <state x="2334" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1655654513369">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2334" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655654513369" />
-    <state x="2012" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1655624214858">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2012" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655624214858" />
-    <state x="2645" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1655647094619">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2645" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655647094619" />
-    <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1655812312003">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655812312003" />
-    <state x="2676" y="379" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1655811796294">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2676" y="379" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655811796294" />
-    <state x="2505" y="29" key="CommitChangelistDialog2" timestamp="1655811277331">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2505" y="29" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655811277331" />
-    <state x="2660" y="275" key="FileChooserDialogImpl" timestamp="1655745585170">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655745585170" />
-    <state width="1877" height="341" key="GridCell.Tab.0.bottom" timestamp="1655813687639">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="341" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655813687639" />
-    <state width="1237" height="136" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="341" key="GridCell.Tab.0.center" timestamp="1655813687639">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="341" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655813687639" />
-    <state width="1237" height="136" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="341" key="GridCell.Tab.0.left" timestamp="1655813687639">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="341" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655813687639" />
-    <state width="1237" height="136" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="341" key="GridCell.Tab.0.right" timestamp="1655813687639">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="341" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655813687639" />
-    <state width="1237" height="136" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="341" key="GridCell.Tab.1.bottom" timestamp="1655813687639">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="341" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655813687639" />
-    <state width="1237" height="136" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655320307964" />
-    <state width="1877" height="341" key="GridCell.Tab.1.center" timestamp="1655813687639">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="341" key="GridCell.Tab.1.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655813687639" />
-    <state width="1237" height="136" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="341" key="GridCell.Tab.1.left" timestamp="1655813687639">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="341" key="GridCell.Tab.1.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655813687639" />
-    <state width="1237" height="136" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="341" key="GridCell.Tab.1.right" timestamp="1655813687639">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="341" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655813687639" />
-    <state width="1237" height="136" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="237" key="GridCell.Tab.2.bottom" timestamp="1655777213657">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="237" key="GridCell.Tab.2.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655777213657" />
-    <state width="1237" height="136" key="GridCell.Tab.2.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655320307964" />
-    <state width="1877" height="237" key="GridCell.Tab.2.center" timestamp="1655777213657">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="237" key="GridCell.Tab.2.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655777213657" />
-    <state width="1237" height="136" key="GridCell.Tab.2.center/0.0.1280.680@0.0.1280.680" timestamp="1655320307964" />
-    <state width="1877" height="237" key="GridCell.Tab.2.left" timestamp="1655777213657">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="237" key="GridCell.Tab.2.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655777213657" />
-    <state width="1237" height="136" key="GridCell.Tab.2.left/0.0.1280.680@0.0.1280.680" timestamp="1655320307964" />
-    <state width="1877" height="237" key="GridCell.Tab.2.right" timestamp="1655777213657">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="237" key="GridCell.Tab.2.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655777213657" />
-    <state width="1237" height="136" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1655320307964" />
-    <state x="2410" y="175" key="Maven.ArtifactSearchDialog" timestamp="1655772609938">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2410" y="175" key="Maven.ArtifactSearchDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655772609938" />
-    <state x="2080" y="34" width="1746" height="776" key="MergeDialog" timestamp="1655737766886">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2080" y="34" width="1746" height="776" key="MergeDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655737766886" />
-    <state x="2592" y="236" key="MultipleFileMergeDialog" timestamp="1655737766921">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2592" y="236" key="MultipleFileMergeDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655737766921" />
-    <state x="2360" y="94" key="SettingsEditor" timestamp="1655584530103">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2360" y="94" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584530103" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1655811281865">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655811281865" />
-    <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1655500603170">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655500603170" />
-    <state x="2576" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1655583370543">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2576" y="344" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655583370543" />
-    <state x="2536" y="240" key="run.anything.popup" timestamp="1655798689459">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2536" y="240" key="run.anything.popup/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655798689459" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1655627963749">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655627963749" />
+    <MESSAGE value="spojena security st 1 ma cache" />
+    <option name="LAST_COMMIT_MESSAGE" value="spojena security st 1 ma cache" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

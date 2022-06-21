@@ -62,7 +62,7 @@ public class ReservationService {
 
     private boolean hasInSamePeriod(Reservation reservation) {
         // ova metoda nam vraca listu svih rezervacija datog entiteta
-        List<Reservation> offersReservations = repository.getByOfferId(reservation.getOffer().getId());
+        /*List<Reservation> offersReservations = repository.getByOfferId(reservation.getOffer().getId());
         for (Reservation r : offersReservations)
         {
             // nema problema ako jedna zavrsi prije nego sto druga pocne i obrnuto
@@ -70,7 +70,7 @@ public class ReservationService {
             {
                 return true;
             }
-        }
+        }*/
         return false;
     }
 

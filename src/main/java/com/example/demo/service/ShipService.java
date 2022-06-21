@@ -5,10 +5,13 @@ import com.example.demo.dto.comparators.ship.ShipCityComparator;
 import com.example.demo.dto.comparators.ship.ShipCountryComparator;
 import com.example.demo.dto.comparators.ship.ShipNameComparator;
 import com.example.demo.dto.comparators.ship.ShipRatingComparator;
+import com.example.demo.model.Client;
+import com.example.demo.model.Cottage;
 import com.example.demo.model.Reservation;
 import com.example.demo.model.Ship;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.repository.ShipRepository;
+import com.example.demo.service.emailSenders.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -26,10 +29,13 @@ import java.util.List;
 @Service
 public class ShipService {
     private ShipRepository shipRepository;
+    private EmailSender emailSender;
 
     @Autowired
-    public ShipService(ShipRepository shipRepository) {
+    public ShipService(ShipRepository shipRepository, EmailSender emailSender)
+    {
         this.shipRepository = shipRepository;
+        this.emailSender = emailSender;
     }
 
     @Transactional
@@ -166,5 +172,13 @@ public class ShipService {
         //String sub = d.substring(0, 24);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         return LocalDateTime.parse(d, formatter);
+    }
+
+    public void notifySubscribers(Ship ship) {
+        String title = "Subscription update";
+        String content = "There is a new fast reservation available for " + ship.getName();
+        for (Client s : ship.getSubscribers()) {
+            emailSender.send(s.getEmail(), title, content);
+        }
     }
 }

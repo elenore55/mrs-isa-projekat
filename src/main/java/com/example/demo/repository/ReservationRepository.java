@@ -1,9 +1,11 @@
 package com.example.demo.repository;
 
+import com.example.demo.model.Client;
 import com.example.demo.model.Reservation;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import org.springframework.lang.NonNullApi;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.LockModeType;
 import javax.persistence.QueryHint;
@@ -19,6 +21,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
     @Query("select r from Reservation r where r.id = :id")
     Reservation findOneById(@Param("id") Integer id);
 
-    @Query("select r from Reservation r where r.offerId=?1")
-    List<Reservation> getByOfferId(Integer id);
+    @Query("select r from Reservation r where r.offer.id = ?1")
+    public List<Reservation> getByOfferId(Integer i);
+
+
 }
