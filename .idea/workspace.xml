@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="40ba84b1-d75b-4871-ab2e-141e0d13074f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +110,7 @@
       <recent name="com.example.demo.security.auth" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DemoApplication">
+  <component name="RunManager" selected="JUnit.All in demo (1)">
     <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplication" />
       <module name="demo" />
@@ -200,11 +199,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in demo (1)" />
         <item itemvalue="JUnit.All in demo" />
         <item itemvalue="JUnit.All in demo (3)" />
         <item itemvalue="Application.DemoApplication" />
         <item itemvalue="JUnit.All in demo (2)" />
-        <item itemvalue="JUnit.All in demo (1)" />
       </list>
     </recent_temporary>
   </component>
