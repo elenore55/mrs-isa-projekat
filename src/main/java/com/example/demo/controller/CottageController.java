@@ -215,6 +215,7 @@ public class CottageController {
         fr.setMaxPeople(dto.getMaxPeople());
         res.add(fr);
         c.setFastReservations(res);
+        c.incNumberOfFastReservations();
         cottageService.save(c);
         cottageService.notifySubscribers(c);
         return new ResponseEntity<>(dto, HttpStatus.OK);

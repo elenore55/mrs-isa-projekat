@@ -53,6 +53,8 @@ public class Offer {
 
     private Integer numberOfReservations;
 
+    private Integer numberOfFastReservations;
+
     public Offer() {
     }
 
@@ -196,5 +198,18 @@ public class Offer {
     public void incNumberOfReservations() {
         if (this.numberOfReservations == null) this.numberOfReservations = 0;
         this.numberOfReservations++;
+    }
+
+    public Integer getNumberOfFastReservations() {
+        return numberOfFastReservations;
+    }
+
+    public void setNumberOfFastReservations(Integer numberOfFastReservations) {
+        this.numberOfFastReservations = numberOfFastReservations;
+    }
+
+    public void incNumberOfFastReservations() {
+        if (this.numberOfFastReservations == null) this.numberOfFastReservations = 0;
+        this.numberOfFastReservations++;
     }
 }
