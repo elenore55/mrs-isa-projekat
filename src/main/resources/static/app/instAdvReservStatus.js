@@ -7,6 +7,7 @@ Vue.component("instadv-reserv",{
             apStatus:[],
             selectedStatus:[],
             adventure: [],
+            checked:false
         }
     },
     mounted: function (){
@@ -22,6 +23,8 @@ Vue.component("instadv-reserv",{
                     <option v-for="adv in adventures">{{adv.id}} - {{adv.name}}</option>
                 </select>
                 <button type="button" v-on:click="loadReservations" class="btn btn-secondary my-1"> Press to load adventures reservations</button>
+                <label>Show all</label>
+                <input type="checkbox" v-model="checked">
         </div>
         <div class = "row">
             <table class="table table-striped" style="width: 800px">
@@ -32,7 +35,6 @@ Vue.component("instadv-reserv",{
                   <th scope="col">Start date</th>
                   <th scope="col">End date</th>
                   <th scope="col">Clients email</th>
-                  <th scope="col">Status</th>
                   <th scope="col">Respond</th>
                   <th scope="col"></th>
                 </tr>
@@ -43,7 +45,6 @@ Vue.component("instadv-reserv",{
                     <td> {{comp.startDate}}  </td>
                     <td> {{comp.endDate}}  </td>
                     <td> {{comp.clientEmail}}  </td>
-                    <td> {{comp.status}}  </td>
                     <td> 
                         <select v-model="comp.status">
                           <option v-for="status in apStatus">
@@ -67,10 +68,20 @@ Vue.component("instadv-reserv",{
             })
         },
         loadReservations(){ // zasad id od instruktora ostaje na 3
-            axios.get("api/reservations/allPendingForInstructor/"+3+"/"+this.adventure.split(' - ')[0]).then(response => {
-                this.reservations = response.data;
-                console.log(this.reservations[0])
-            })
+            if(this.checked)
+            {
+                axios.get("api/reservations/allForInstructor/"+3+"/"+this.adventure.split(' - ')[0]).then(response => {
+                    this.reservations = response.data;
+                    console.log(this.reservations[0])
+                })
+            }
+            else
+            {
+                axios.get("api/reservations/allPendingForInstructor/"+3+"/"+this.adventure.split(' - ')[0]).then(response => {
+                    this.reservations = response.data;
+                    console.log(this.reservations[0])
+                })
+            }
         },
         loadReservationsPossibleStatuses(){
             axios.get("api/adventures/approvalStatus").then(response => {

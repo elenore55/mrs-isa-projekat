@@ -246,6 +246,18 @@ public class ReservationController {
         return new ResponseEntity<>(reservationInstDTOS, HttpStatus.OK);
     }
 
+    @GetMapping(path = "/allForInstructor/{id}/{idadv}")
+    public ResponseEntity<List<ReservationInstDTO>> getAllReservations(@PathVariable Integer id, @PathVariable Integer idadv){
+        FishingInstructor fishingInstructor = fishingInstructorService.findOne(id);
+        List<Reservation> reservations = fishingInstructor.getReservations();
+        List<ReservationInstDTO> reservationInstDTOS = new ArrayList<>();
+        for(Reservation reservation : reservations) {
+            if(reservation.getOffer().getId().equals(idadv))
+                reservationInstDTOS.add(new ReservationInstDTO(reservation));
+        }
+        return new ResponseEntity<>(reservationInstDTOS, HttpStatus.OK);
+    }
+
     @ResponseBody
     @RequestMapping(path = "/updateAdventuresreservation", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<Reservation> updateComplaintAdmin(@RequestBody ReservationInstDTO reservationInstDTO)
