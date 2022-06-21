@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.*;
 import com.example.demo.model.*;
+import com.example.demo.service.AddressService;
 import com.example.demo.service.CottageOwnerService;
 import com.example.demo.service.CottageService;
 import com.example.demo.service.RoomService;
@@ -23,12 +24,14 @@ public class CottageController {
     private CottageService cottageService;
     private CottageOwnerService cottageOwnerService;
     private RoomService roomService;
+    private AddressService addressService;
 
     @Autowired
-    public CottageController(CottageService cottageService, CottageOwnerService cottageOwnerService, RoomService roomService) {
+    public CottageController(CottageService cottageService, CottageOwnerService cottageOwnerService, RoomService roomService, AddressService addressService) {
         this.cottageService = cottageService;
         this.cottageOwnerService = cottageOwnerService;
         this.roomService = roomService;
+        this.addressService = addressService;
     }
 
     @ResponseBody
@@ -212,6 +215,7 @@ public class CottageController {
         fr.setMaxPeople(dto.getMaxPeople());
         res.add(fr);
         c.setFastReservations(res);
+        c.incNumberOfFastReservations();
         cottageService.save(c);
         cottageService.notifySubscribers(c);
         return new ResponseEntity<>(dto, HttpStatus.OK);
@@ -220,7 +224,7 @@ public class CottageController {
     @ResponseBody
     @RequestMapping(path = "/deleteFastReservation/{cottageId}/{id}", method = RequestMethod.DELETE)
     @PreAuthorize("hasRole('COTTAGE')")
-    public ResponseEntity<Void> deleteFastReservation(@PathVariable Integer cottageId,  @PathVariable Integer id) {
+    public ResponseEntity<Void> deleteFastReservation(@PathVariable Integer cottageId, @PathVariable Integer id) {
         Cottage c = cottageService.findOne(cottageId);
         if (c == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -237,14 +241,11 @@ public class CottageController {
     }
 
     private void setAttributes(Cottage cottage, CottageDTO cottageDTO) {
-        cottage.setId(cottageDTO.getId());
         cottage.setName(cottageDTO.getName());
         cottage.setDescription(cottageDTO.getDescription());
-        Address address = cottage.getAddress();
-        if (address == null) address = new Address();
-        address.setStreet(cottageDTO.getAddress().getStreet());
-        address.setCity(cottageDTO.getAddress().getCity());
-        address.setCountry(cottageDTO.getAddress().getCountry());
+
+        Address address = addressService.getAddress(new Address(cottageDTO.getAddress().getStreet(),
+                cottageDTO.getAddress().getCity(), cottageDTO.getAddress().getCountry()));
         cottage.setAddress(address);
         cottage.setPriceList(cottageDTO.getPrice());
 

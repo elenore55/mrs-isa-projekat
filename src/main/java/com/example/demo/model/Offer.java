@@ -2,8 +2,8 @@ package com.example.demo.model;
 
 import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.model.enums.ReservationStatus;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -13,9 +13,6 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-//@JsonIdentityInfo(
-//        generator = ObjectIdGenerators.PropertyGenerator.class,
-//        property = "offer_id")
 public class Offer {
 
     @Id
@@ -25,7 +22,7 @@ public class Offer {
     @Column
     protected String name;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id")
     protected Address address;
 
@@ -57,6 +54,8 @@ public class Offer {
     private Integer version;
 
     private Integer numberOfReservations;
+
+    private Integer numberOfFastReservations;
 
     private Integer numberOfPriceLists;
 
@@ -184,16 +183,14 @@ public class Offer {
     public Double getRateOrNegativeOne() {
         double sum = 0;
         int n = 0;
-        for(Reservation r : getReservations())
-        {
-            if (r.getFeedback()!= null)
-            {
+        for (Reservation r : getReservations()) {
+            if (r.getFeedback() != null) {
                 sum += r.getFeedback().getRating();
                 n++;
             }
         }
-        if (n==0) return -1.0;
-        return sum/n;
+        if (n == 0) return -1.0;
+        return sum / n;
     }
 
     public Integer getNumberOfReservations() {
@@ -217,6 +214,18 @@ public class Offer {
         this.numberOfReservations++;
     }
 
+    public Integer getNumberOfFastReservations() {
+        return numberOfFastReservations;
+    }
+
+    public void setNumberOfFastReservations(Integer numberOfFastReservations) {
+        this.numberOfFastReservations = numberOfFastReservations;
+    }
+
+    public void incNumberOfFastReservations() {
+        if (this.numberOfFastReservations == null) this.numberOfFastReservations = 0;
+        this.numberOfFastReservations++;
+    }
     public void incNumberOfPricelists() {
         if (this.numberOfPriceLists == null) this.numberOfPriceLists = 0;
         this.numberOfPriceLists++;

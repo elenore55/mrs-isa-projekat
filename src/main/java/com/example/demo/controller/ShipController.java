@@ -155,7 +155,6 @@ public class ShipController {
     }
 
     private void setAttributes(Ship ship, ShipDTO dto) {
-        ship.setId(dto.getId());
         ship.setName(dto.getName());
         ship.setDescription(dto.getDescription());
         ship.setPriceList(dto.getPrice());

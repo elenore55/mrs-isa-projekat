@@ -218,6 +218,8 @@ public class ReservationController {
         r.setEnd(dto.getEndDate());
         Offer offer = offerService.findOne(dto.getOfferId());
         r.setOffer(offer);
+        offer.incNumberOfReservations();
+        offerService.save(offer);
         Client client = userService.findClientByEmail(dto.getClientEmail());
         r.setClient(client);
     }

@@ -100,7 +100,7 @@ Vue.component("ships-view-owner", {
                                 <p class="card-text mb-1">Length: {{ s.length }} m</p>
                                 <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
                                 <div class="d-flex flex-row mt-3">
-                                    <a :href="'/#/shipProfile/' + s.id" class="btn btn-primary me-3 mt-3">View</a>
+                                    <a :href="'/index.html#/shipProfile/' + s.id" class="btn btn-primary me-3 mt-3">View</a>
                                     <button type="button" class="btn btn-danger mt-3" v-on:click="setCurrentId(s.id)">Delete</button>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ Vue.component("ships-view-owner", {
                     }
                 }
             }).catch(function (error) {
-                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
@@ -160,7 +160,7 @@ Vue.component("ships-view-owner", {
                 Swal.fire('Success', 'Ship deleted!', 'success');
                 this.reload();
             }).catch(function (error) {
-                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'It is not possible to delete the ship!', 'error');
             });
         },
@@ -187,7 +187,7 @@ Vue.component("ships-view-owner", {
             }).then(response => {
                 this.ships = response.data;
             }).catch(function (error) {
-                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
@@ -214,7 +214,7 @@ Vue.component("ships-view-owner", {
                 }).then(response => {
                     this.ships = response.data;
                 }).catch(function (error) {
-                    if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                     else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }

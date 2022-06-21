@@ -1,0 +1,4 @@
+#Key and value types
+#Tue Jun 21 02:38:30 CEST 2022
+valueType=com.example.demo.model.Ship
+keyType=java.lang.Integer

@@ -16,7 +16,7 @@ Vue.component('owners-profile', {
         }).then(response => {
             this.owner = response.data;
         }).catch(function (error) {
-            if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+            if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
             else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
@@ -85,7 +85,7 @@ Vue.component('owners-profile', {
             }).then(response => {
                 Swal.fire('Success', 'Request for account deletion sent!', 'success');
             }).catch(function (error) {
-                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else
                     Swal.fire({
                         icon: 'info',

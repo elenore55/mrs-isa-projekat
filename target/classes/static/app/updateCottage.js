@@ -26,7 +26,8 @@ Vue.component("update-cottage", {
         }).then(response => {
             this.cottage = response.data;
         }).catch(function (error) {
-            Swal.fire('Error', 'Something went wrong!', 'error');
+            if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+            else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -149,14 +150,15 @@ Vue.component("update-cottage", {
 
         sendRequest() {
             if (this.isValidName && this.isValidDescription && this.isValidPrice && this.isValidAddress) {
-                axios.post("api/cottages/updateCottage", this.cottage).then(function(response) {
-                    Swal.fire('Success', 'Cottage updated!', 'success');
-                }, {
+                axios.post("api/cottages/updateCottage", this.cottage, {
                     headers: {
                         Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
                     }
+                }).then(function(response) {
+                    Swal.fire('Success', 'Cottage updated!', 'success');
                 }).catch(function (error) {
-                    Swal.fire('Error', 'Something went wrong!', 'error');
+                    if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                    else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             } else {
                 this.errors.name = true;

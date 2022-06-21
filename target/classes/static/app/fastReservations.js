@@ -9,6 +9,8 @@ Vue.component('fast-reservations', {
             disabled: {
                 to: new Date()
             },
+            additional_services: [],
+            service: ''
         }
     },
 
@@ -27,24 +29,29 @@ Vue.component('fast-reservations', {
         <div class="d-flex justify-content-between">
             <div>
                 <div v-for="(fr, i) in actions" class="card mt-3 ms-3 shadow">
-                <div class="card-body ms-3">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <h5>Stay period</h5>
-                            <label class="form-label">Start date: {{ fr.startStr }} Duration: {{ fr.duration }} days</label>
+                    <div class="card-body ms-3">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5>Stay period</h5>
+                                <label class="form-label">Start date: {{ fr.startStr }} Duration: {{ fr.duration }} days</label>
+                            </div>
+                            <div class="text-end me-1">
+                                <h3 class="text-success">{{ fr.price }} EUR</h3>
+                                <h6 class="text-success">{{ fr.maxPeople }} people</h6>
+                            </div>
                         </div>
-                        <div class="text-end me-1">
-                            <h3 class="text-success">{{ fr.price }} EUR</h3>
-                            <h6 class="text-success">{{ fr.maxPeople }} people</h6>
+                        <h5 class="mt-3">Action period</h5>
+                        <label>Start date: {{ fr.actionStartStr }} Duration: {{ fr.actionDuration }} days</label>
+                        <div class="d-flex flex-wrap my-3">
+                            <span class="badge bg-success mx-2" v-for="(s, i) in fr.additionalServices" style="font-size: 1em">
+                                {{ s }}
+                            </span>
                         </div>
-                    </div>
-                    <h5 class="mt-3">Action period</h5>
-                    <label>Start date: {{ fr.actionStartStr }} Duration: {{ fr.actionDuration }} days</label>
-                    <div class="text-end mb-1 me-1 mt-1">
-                        <button type="button" v-on:click="deleteAction(i)" class="btn btn-outline-danger btn-sm">Delete</button>
+                        <div class="text-end mb-1 me-1 mt-1">
+                            <button type="button" v-on:click="deleteAction(i)" class="btn btn-outline-danger btn-sm">Delete</button>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
             <div class="card sticky-top shadow">
                 <div class="card-body">
@@ -88,6 +95,20 @@ Vue.component('fast-reservations', {
                             <p v-if="!isValidMaxPeople" class="text-danger">Number of people must be positive</p>
                         </div>
                     </div>
+                    <div class="input-group my-4 mx-4">
+                        <div class="form-floating">
+                            <input type="text" v-model="service" id="additional-service-input" class="form-control">
+                            <label for="additional-service-input">Additional service</label>
+                        </div>
+                        <button type="button" class="btn btn-secondary" v-on:click="addService">
+                                <i class="fa fa-plus"></i>
+                         </button>
+                    </div>
+                    <div class="d-flex flex-wrap ms-4 mb-4">
+                        <span class="badge bg-success mx-2" v-for="(s, i) in additional_services">
+                            {{ s }} <button class="btn btn-success btn-sm" type="button"><i class="fa fa-x" v-on:click="additional_services.splice(i, 1)"></i></button>
+                        </span>
+                    </div>
                     <div class="text-end">
                         <button type="button" class="btn btn-primary" v-on:click="addAction">Add</button>
                     </div>
@@ -106,7 +127,8 @@ Vue.component('fast-reservations', {
                 actionStart: this.actionStart,
                 actionDuration: this.actionDuration,
                 price: this.price,
-                maxPeople: this.maxPeople
+                maxPeople: this.maxPeople,
+                additionalServices: this.additional_services
             };
             if (this.isValidActionDate && this.isValidActionDuration && this.isValidPrice && this.isValidMaxPeople &&
                 this.isValidStayDate && this.isValidStayDuration) {
@@ -116,8 +138,9 @@ Vue.component('fast-reservations', {
                     }
                 }).then(response => {
                     this.reload();
-                }).catch(function (error) {
-                    Swal.fire('Error', 'Something went wrong!', 'error');
+                }).catch(error => {
+                    if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                    else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }
         },
@@ -132,10 +155,17 @@ Vue.component('fast-reservations', {
 
         deleteAction(index) {
             let actionId = this.actions[index].id;
-            axios.delete("api/cottages/deleteFastReservation/" + this.$route.params.id + "/" + actionId).then(response => {
+            axios({
+                method: 'delete',
+                url: "api/offers/deleteFastReservation/" + this.$route.params.id + "/" + actionId,
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
+            }).then(response => {
                 this.actions.splice(index, 1)
-            }).catch(function (error) {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+            }).catch(error => {
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
@@ -148,10 +178,16 @@ Vue.component('fast-reservations', {
                 }
             }).then(response => {
                 this.actions = response.data;
-            }).catch(function (error) {
-                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                this.additional_services = [];
+            }).catch(error => {
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });
+        },
+
+        addService() {
+            if (this.service) this.additional_services.push(this.service);
+            this.service = '';
         }
     },
 

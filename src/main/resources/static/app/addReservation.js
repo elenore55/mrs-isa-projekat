@@ -25,7 +25,7 @@ Vue.component("add-reservation", {
             this.tdStart = new tempusDominus.TempusDominus(document.getElementById('startPicker'));
             this.tdEnd = new tempusDominus.TempusDominus(document.getElementById('endPicker'));
         }).catch(function (error) {
-            if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+            if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
             else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
@@ -89,11 +89,15 @@ Vue.component("add-reservation", {
                     endDate: this.end,
                     clientEmail: this.email,
                     ownerId: JSON.parse(localStorage.getItem("jwt")).userId
+                }, {
+                    headers: {
+                        Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                    }
                 }).then(function (response) {
                     Swal.fire('Success', 'Reservation added!', 'success');
                 }).catch(function (error) {
                     if(error.response.status === 404) Swal.fire('Error', 'Client not found!', 'error');
-                    else if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    else if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                     else Swal.fire('Error', 'Cottage already reserved!', 'error');
                 });
             }

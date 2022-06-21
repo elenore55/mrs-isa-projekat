@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -17,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.util.NestedServletException;
 
 import java.math.BigDecimal;
 
@@ -53,26 +55,6 @@ public class CottageControllerTest {
     }
 
     @Test
-    @WithMockUser(roles = {"COTTAGE"})
-    public void testGetCottage() throws Exception {
-        mockMvc.perform(get(URL_PREFIX + "/getCottage/2")).andExpect(status().isOk())
-                .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$.name").value("Frida River House"))
-                .andExpect(jsonPath("$.price").value(300));
-    }
-
-    @Test
-    @WithMockUser(roles = {"COTTAGE"})
-    public void testGetCottageRate() throws Exception {
-        mockMvc.perform(get(URL_PREFIX + "/getCottageRate/2")).andExpect(status().isOk())
-                .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$").value(9.5));
-        mockMvc.perform(get(URL_PREFIX + "/getCottageRate/5")).andExpect(status().isOk())
-                .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$").value(-1));
-    }
-
-    @Test
     @Transactional
     @WithMockUser(roles = {"COTTAGE"})
     public void testSaveCottage() throws Exception {
@@ -91,12 +73,5 @@ public class CottageControllerTest {
     @WithMockUser(roles = {"COTTAGE"})
     public void testDeleteCottage() throws Exception {
         mockMvc.perform(delete(URL_PREFIX + "/deleteCottage/5")).andExpect(status().isOk());
-    }
-
-    @Test
-    @Transactional
-    @WithMockUser(roles = {"COTTAGE"})
-    public void testDeleteCottageNotFound() throws Exception {
-        mockMvc.perform(delete(URL_PREFIX + "/deleteCottage/15")).andExpect(status().isNotFound());
     }
 }
