@@ -71,6 +71,7 @@ public class OfferController {
         fr.setActionDuration(dto.getActionDuration());
         fr.setPrice(dto.getPrice());
         fr.setMaxPeople(dto.getMaxPeople());
+        fr.setAdditionalServices(String.join(",", dto.getAdditionalServices()));
         if (o instanceof Cottage) {
             Cottage c = (Cottage)o;
             List<FastReservation> res = c.getFastReservations();
