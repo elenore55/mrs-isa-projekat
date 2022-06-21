@@ -66,7 +66,7 @@ public class CottageDTO {
             this.availableEnd = av.getEnd();
         }
         this.rate = cottage.getRateOrNegativeOne();
-        this.editable = cottage.hasFutureReservations();
+        this.editable = !cottage.hasFutureReservations();
         this.reviews = new ArrayList<>();
         for (Feedback fb : cottage.getReviews()) {
             this.reviews.add(new ReviewDTO(fb));

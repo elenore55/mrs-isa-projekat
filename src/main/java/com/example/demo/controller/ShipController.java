@@ -201,19 +201,24 @@ public class ShipController {
         }
 
         // price history
+        List<PriceList> priceHistory = new ArrayList<>();
         if (ship.getPriceHistory() == null || ship.getPriceHistory().size() == 0) {
-            List<PriceList> priceHistory = new ArrayList<>();
             priceHistory.add(new PriceList(LocalDate.now(), dto.getPrice()));
-            ship.setPriceHistory(priceHistory);
         } else {
-            List<PriceList> priceHistory = ship.getPriceHistory();
+            for (PriceList pl : ship.getPriceHistory()) {
+                PriceList p = new PriceList();
+                p.setAmount(pl.getAmount());
+                p.setEndDate(pl.getEndDate());
+                p.setStartDate(pl.getStartDate());
+                priceHistory.add(p);
+            }
             PriceList last = priceHistory.get(priceHistory.size() - 1);
             if (!last.getAmount().equals(dto.getPrice())) {
                 PriceList newPrice = new PriceList(LocalDate.now(), dto.getPrice());
                 priceHistory.add(newPrice);
-                ship.setPriceHistory(priceHistory);
             }
         }
+        ship.setPriceHistory(priceHistory);
 
         // owner
         ShipOwner owner = shipOwnerService.findOne(dto.getOwnerId());

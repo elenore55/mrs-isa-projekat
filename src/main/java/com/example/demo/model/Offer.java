@@ -25,16 +25,15 @@ public class Offer {
     @Column
     protected String name;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "address_id")
     protected Address address;
 
     @Column
     protected String description;
 
-
-    @OneToMany(cascade = CascadeType.ALL)        //izmenjeno
-    protected List<PriceList> priceHistory;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    protected List<PriceList> priceHistory = new ArrayList<>();
 
     @Column
     protected BigDecimal priceList;
@@ -53,6 +52,11 @@ public class Offer {
 
     @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     protected List<Reservation> reservations = new ArrayList<>();
+
+    @Version
+    private Integer version;
+
+    private Integer numberOfReservations;
 
     public Offer() {
     }
@@ -153,6 +157,8 @@ public class Offer {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
+        if (reservations == null) this.numberOfReservations = 0;
+        else this.numberOfReservations = reservations.size();
     }
 
     public List<PriceList> getPriceHistory() {
@@ -161,6 +167,14 @@ public class Offer {
 
     public void setPriceHistory(List<PriceList> priceHistory) {
         this.priceHistory = priceHistory;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     public Double getRateOrNegativeOne() {
@@ -176,5 +190,18 @@ public class Offer {
         }
         if (n==0) return -1.0;
         return sum/n;
+    }
+
+    public Integer getNumberOfReservations() {
+        return numberOfReservations;
+    }
+
+    public void setNumberOfReservations(Integer numberOfReservations) {
+        this.numberOfReservations = numberOfReservations;
+    }
+
+    public void incNumberOfReservations() {
+        if (this.numberOfReservations == null) this.numberOfReservations = 0;
+        this.numberOfReservations++;
     }
 }

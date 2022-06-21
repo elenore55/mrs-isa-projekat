@@ -1,15 +1,17 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.UserFilterDTO;
-import com.example.demo.dto.comparators.cottage.*;
-import com.example.demo.dto.comparators.ship.*;
-import com.example.demo.model.Cottage;
+import com.example.demo.dto.comparators.ship.ShipCityComparator;
+import com.example.demo.dto.comparators.ship.ShipCountryComparator;
+import com.example.demo.dto.comparators.ship.ShipNameComparator;
+import com.example.demo.dto.comparators.ship.ShipRatingComparator;
 import com.example.demo.model.Reservation;
 import com.example.demo.model.Ship;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.repository.ShipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,18 +29,22 @@ public class ShipService {
         this.shipRepository = shipRepository;
     }
 
+    @Transactional
     public Ship findOne(Integer id) {
         return this.shipRepository.findById(id).orElseGet(null);
     }
 
+    @Transactional
     public Ship save(Ship ship) {
         return this.shipRepository.save(ship);
     }
 
+    @Transactional
     public void remove(Integer id) {
         shipRepository.deleteById(id);
     }
 
+    @Transactional
     public boolean checkReservations(Ship ship) {
         for (Reservation r : ship.getReservations()) {
             if (r.getEnd().compareTo(LocalDateTime.now()) >= 0) {
@@ -55,15 +61,13 @@ public class ShipService {
     public List<Ship> filter(UserFilterDTO userFilterDTO) {
         List<Ship> retVal = new ArrayList<>();
         List<Ship> all = shipRepository.findAll();
-        for(Ship s : all)
-        {
-            if (isValidDate(s, userFilterDTO) && isValidRate(s,userFilterDTO.getRate()) &&
-                    isValidCountryAndCity(s, userFilterDTO) && isValidNumOfPeople(s,userFilterDTO))
-            {
+        for (Ship s : all) {
+            if (isValidDate(s, userFilterDTO) && isValidRate(s, userFilterDTO.getRate()) &&
+                    isValidCountryAndCity(s, userFilterDTO) && isValidNumOfPeople(s, userFilterDTO)) {
                 retVal.add(s);
             }
         }
-        //sortShips(retVal, getStringSortBy(userFilterDTO));
+        sortShips(retVal, getStringSortBy(userFilterDTO));
         return retVal;
     }
 
@@ -101,27 +105,27 @@ public class ShipService {
     }
 
     private boolean isValidCountryAndCity(Ship s, UserFilterDTO userFilterDTO) {
-        if (!userFilterDTO.getCountry().equals("") && !userFilterDTO.getCountry().equalsIgnoreCase(s.getAddress().getCountry())) return false;
+        if (!userFilterDTO.getCountry().equals("") && !userFilterDTO.getCountry().equalsIgnoreCase(s.getAddress().getCountry()))
+            return false;
         // ako je drzava unesena i nije ono sto je napisano tamo
-        if (!userFilterDTO.getCity().equals("") && !userFilterDTO.getCity().equalsIgnoreCase(s.getAddress().getCity())) return false;
+        if (!userFilterDTO.getCity().equals("") && !userFilterDTO.getCity().equalsIgnoreCase(s.getAddress().getCity()))
+            return false;
         return true;
     }
 
     private boolean isValidRate(Ship s, int rate) {
-        return s.getRateOrNegativeOne()>=rate || s.getRateOrNegativeOne()==-1;
+        return s.getRateOrNegativeOne() >= rate || s.getRateOrNegativeOne() == -1;
     }
 
     private boolean isValidDate(Ship s, UserFilterDTO userFilterDTO) {
-        for(Reservation r : s.getReservations())
-        {
+        for (Reservation r : s.getReservations()) {
             // ako nadjes bar jednu rezervaciju da joj je pcetni ili krajnji datum unutar nase, vrati false
             // ako nadjes bar jednu rezervaciju da joj je pocetni datum prije nase, a krajni poslije, vrati false
-            if (r.getReservationStatus()!= ReservationStatus.CANCELLED) {
+            if (r.getReservationStatus() != ReservationStatus.CANCELLED) {
                 // za sve aktivne rezervacije gledamo ima li poklapanje
                 if (isInMidDate(r.getStart(), userFilterDTO) || isInMidDate(r.getEnd(), userFilterDTO) || isAround(r, userFilterDTO))
                     return false;
-            }
-            else {
+            } else {
                 // za dve koje nisu aktivne gledamo da li je bilo bas na isti datum da mu to onemogucimo
                 if (equalDates(r, userFilterDTO)) return false;
             }
@@ -134,7 +138,7 @@ public class ShipService {
         LocalDateTime r2 = r.getEnd();
         LocalDateTime u1 = getLocalDatetimeFromVuePicker(userFilterDTO.getFromDate());
         LocalDateTime u2 = getLocalDatetimeFromVuePicker(userFilterDTO.getToDate());
-        return r1==u1 && r2==u2;
+        return r1 == u1 && r2 == u2;
     }
 
     private boolean isAround(Reservation r, UserFilterDTO userFilterDTO) {
@@ -152,8 +156,7 @@ public class ShipService {
         return reservationStart.isBefore(date) && date.isBefore(reservationEnd);
     }
 
-    private LocalDateTime getLocalDatetimeFromVuePicker(String d)
-    {
+    private LocalDateTime getLocalDatetimeFromVuePicker(String d) {
         //String sub = d.substring(0, 24);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         return LocalDateTime.parse(d, formatter);

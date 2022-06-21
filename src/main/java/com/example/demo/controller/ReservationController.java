@@ -43,6 +43,7 @@ public class ReservationController {
 
     }
 
+    @Transactional
     @ResponseBody
     @RequestMapping(path = "/addReservation", method = RequestMethod.POST, consumes = "application/json")
     @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")

@@ -15,6 +15,7 @@ Vue.component('cottage-profile', {
             }
         }).then(response => {
             this.cottage = response.data;
+            alert(this.cottage.editable);
         }).catch(function (error) {
             Swal.fire('Error', 'Something went wrong!', 'error');
         });
