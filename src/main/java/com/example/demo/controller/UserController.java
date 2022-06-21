@@ -261,6 +261,50 @@ public class UserController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/getAdminVisitReport/{id}/{kind}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<List<ReportEntryDTO>> getAdminVisitReport(@PathVariable Integer id, @PathVariable String kind, @RequestBody DatesDTO dto) {
+        User user = userService.findOne(id);
+        if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (user instanceof Admin) {
+            List<CottageOwner> cottageOwners = cottageOwnerService.findAlladmin();
+            List<ShipOwner> shipOwners = shipOwnerService.findAlladmin();
+            List<FishingInstructor> fishingInstructors = fishingInstructorService.findAll();
+            List<ReportEntryDTO> result = new ArrayList<>();
+            for (CottageOwner owner : cottageOwners)
+            {
+                result.addAll(cottageOwnerService.calculateVisitReport(owner, dto.getStart(), dto.getEnd(), kind));
+            }
+
+            for (ShipOwner owner : shipOwners)
+            {
+                result.addAll(shipOwnerService.calculateVisitReport(owner, dto.getStart(), dto.getEnd(), kind));
+            }
+
+            for (FishingInstructor owner : fishingInstructors)
+            {
+                result.addAll(fishingInstructorService.calculateVisitReport(owner, dto.getStart(), dto.getEnd(), kind));
+            }
+            //////////// svi su postavljeni na jedan sad trebamo da ih spojimo/////////
+
+            for(int i=0;i< result.size()-2;i++)
+            {
+                for(int j=i+1;j< result.size()-1;j++)
+                {
+                    if(result.get(i).getX().equals(result.get(j).getX()))
+                    {
+                        result.get(i).setY(result.get(i).getY().add(result.get(j).getY()));
+                        result.get(j).setY(new BigDecimal(0));
+                    }
+                }
+
+            }
+            return new ResponseEntity<>(result.subList(0, result.size()/3), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/getVisitReport/{id}/{kind}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<List<ReportEntryDTO>> getVisitReport(@PathVariable Integer id, @PathVariable String kind, @RequestBody DatesDTO dto) {
         User user = userService.findOne(id);
