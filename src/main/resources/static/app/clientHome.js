@@ -24,11 +24,15 @@ Vue.component("client-home", {
              default_cottage: "images/cottage_icon.jpg",
              default_ship: "images/ship_icon.png",
              default_adventure: "images/fishing_icon.jpg",
+             token: {},
+             id: 0
 
            }
         },
 
 mounted() {
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = JSON.parse(localStorage.getItem("jwt")).userId,
         this.reload();
     },
 
@@ -223,7 +227,7 @@ mounted() {
 methods: {
 
         reload() {
-            axios.get("api/cottages/getCottagesWithRate/").then(response => {
+            /*axios.get("api/cottages/getCottagesWithRate/").then(response => {
                 this.cottages = response.data;
                 for (const c of this.cottages) {
                     if (!c.imagePaths || c.imagePaths.length === 0) {
@@ -233,10 +237,33 @@ methods: {
                     }
                 }
             }).catch(function (error) {
-                alert('Greska u get cottages');
-            });
+                alert("Greska u get cottages");
+                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                else Swal.fire('Error', 'Something went wrong!', 'error');
+            });*/
+            axios({
+                    method: 'get',
+                    url: "api/cottages/getCottagesWithRate/",
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
+                }).then(response => {
+                alert("Duzina dobavljenih vikendica je " + response.data.length);
+                    this.cottages = response.data;
+                        for (const c of this.cottages) {
+                            if (!c.imagePaths || c.imagePaths.length === 0) {
+                                this.cottage_pictures.push(this.default_cottage);
+                            } else {
+                                this.cottage_pictures.push(c.imagePaths.at(0));
+                            }
+                        }
+                }).catch(function (error) {
+                    alert("Greskaaa u get cottages");
+                    if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    else Swal.fire('Error', 'Something went wrong!', 'error');
+                });
 
-            axios.get("api/ships/getShipsWithRate/").then(response => {
+            /*axios.get("api/ships/getShipsWithRate/").then(response => {
                  this.ships = response.data;
                  for (const s of this.ships) {
                      if (!s.imagePaths || s.imagePaths.length === 0) {
@@ -246,10 +273,33 @@ methods: {
                      }
                  }
             }).catch(function (error) {
-                 alert('Greska u get ships');
+             alert("Greska u get ships");
+             if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+             else Swal.fire('Error', 'Something went wrong!', 'error');
+            });*/
+
+            axios({
+                method: 'get',
+                url: "api/ships/getShipsWithRate/",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
+                alert("Duzina dobavljenih brodova je " + response.data.length);
+                for (const s of this.ships) {
+                     if (!s.imagePaths || s.imagePaths.length === 0) {
+                         this.ship_pictures.push(this.default_ship);
+                     } else {
+                         this.ship_pictures.push(s.imagePaths.at(0));
+                     }
+                 }
+            }).catch(function (error) {
+                alert("Greskaaa u get ships");
+                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             });
 
-            axios.get("api/adventures/all/").then(response => {
+            /*axios.get("api/adventures/all/").then(response => {
                  this.adventures = response.data;
                  for (const a of this.adventures) {
                      if (!a.imagePaths || a.imagePaths.length === 0) {
@@ -260,7 +310,7 @@ methods: {
                  }
             }).catch(function (error) {
                  alert('An error occurred!');
-            });
+            });*/
         },
 
         adjustRate(rate)

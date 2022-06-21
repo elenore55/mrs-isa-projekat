@@ -8,10 +8,14 @@ Vue.component("client-rate", {
             clientId: 6,
             reservationId: "",
             rate: "",
+            clientId: "",
+            token: {}
        }
    },
 
    mounted() {
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.clientId = this.token.userId;
         this.reservationId = this.$route.params.id;
         main_image = $("body").css("background-image", "");
         main_image = $("body").css("background-size", "100% 200%");
@@ -46,11 +50,17 @@ Vue.component("client-rate", {
                                 </div>
                                 <p v-if="errorRadio" class="text-danger">You must choose one option</p>
                                  <div class="rating">
+                                 <input type="radio" v-model="rate" name="rating" value="10" id="1"><label for="10">☆</label>
+                                     <input type="radio" v-model="rate" name="rating" value="9" id="9"><label for="9">☆</label>
+                                     <input type="radio" v-model="rate" name="rating" value="8" id="8"><label for="8">☆</label>
+                                     <input type="radio" v-model="rate" name="rating" value="7" id="7"><label for="7">☆</label>
+                                     <input type="radio" v-model="rate" name="rating" value="6" id="6"><label for="6">☆</label>
                                     <input type="radio" v-model="rate" name="rating" value="5" id="5"><label for="5">☆</label>
                                     <input type="radio" v-model="rate" name="rating" value="4" id="4"><label for="4">☆</label>
                                     <input type="radio" v-model="rate" name="rating" value="3" id="3"><label for="3">☆</label>
                                     <input type="radio" v-model="rate" name="rating" value="2" id="2"><label for="2">☆</label>
                                     <input type="radio" v-model="rate" name="rating" value="1" id="1"><label for="1">☆</label>
+
                                  </div>
                               <p v-if="errorRate" class="text-danger">You must input rate</p>
 
@@ -79,7 +89,8 @@ Vue.component("client-rate", {
                 {
                     this.errorRate = false;
                     this.errorRadio = false;
-                    axios.post("api/feedback/add", {
+
+                    /*axios.post("api/feedback/add", {
                         comment: this.reason,
                         rating: this.rate,
                         reservationId: this.reservationId,
@@ -88,7 +99,24 @@ Vue.component("client-rate", {
                         $("#confirm-cancel").show(200);
                     }).catch(function (error) {
                         alert("An ERROR occurred while sending feedback");
-                    });
+                    });*/
+                    axios({
+                       method: 'post',
+                       url: "api/feedback/add", data: {
+                            comment: this.reason,
+                            rating: this.rate,
+                            reservationId: this.reservationId,
+                        },
+                       headers: {
+                           Authorization: "Bearer " + this.token.accessToken
+                       }
+                   }).then(response => {
+                       $("#confirm-cancel").show(200);
+                   }).catch(function (error) {
+                       if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                       else Swal.fire('Error', 'Something went wrong!', 'error');
+                   });
+
                 }
                 else
                 {

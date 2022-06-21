@@ -15,7 +15,7 @@ Vue.component("unregistered-navbar", {
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/clientHome/'})">Home</a>
+                        <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/unregisteredHome/'})">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/login/'})">Login</a>

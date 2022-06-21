@@ -5,10 +5,15 @@ Vue.component("past-reservations", {
            id: 6,
            sortEntity: "",
            sortBy: "",
+           token: {}
+
        }
    },
 
    mounted() {
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
         main_image = $("body").css("background-image", "url('images/set.webp')");
         main_image = $("body").css("background-size", "100% 210%");
         this.reload();
@@ -100,7 +105,7 @@ Vue.component("past-reservations", {
     methods: {
 
         reload() {
-            axios.post("api/reservations/getClientPastReservations/", {
+            /*axios.post("api/reservations/getClientPastReservations/", {
                 sortEntity: this.sortEntity,
                 sortBy: this.sortBy,
                 id: this.id,
@@ -108,18 +113,34 @@ Vue.component("past-reservations", {
             this.reservations = response.data;
             }).catch(function (error) {
                 alert('Greska u get past reservations');
-            });
+            });*/
+            axios({
+               method: 'post',
+               url: "api/reservations/getClientPastReservations/", data: {
+                    sortEntity: this.sortEntity,
+                    sortBy: this.sortBy,
+                    id: this.id,
+                },
+               headers: {
+                   Authorization: "Bearer " + this.token.accessToken
+               }
+           }).then(response => {
+               this.reservations = response.data;
+           }).catch(function (error) {
+               if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+               else Swal.fire('Error', 'Something went wrong!', 'error');
+           });
            },
 
 
         rate(reservation)
             {
-                location.replace('http://localhost:8000/#/clientRate/' + reservation.id);
+                location.replace('http://localhost:8000/index.html#/clientRate/' + reservation.id);
             },
 
         complain(reservation)
                 {
-                    location.replace('http://localhost:8000/#/clientComplain/' + reservation.id);
+                    location.replace('http://localhost:8000/index.html#/clientComplain/' + reservation.id);
                 },
 
         viewDetails(link)

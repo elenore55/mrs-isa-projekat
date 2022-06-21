@@ -25,6 +25,9 @@ public class Complaint {
     @ManyToOne(fetch = FetchType.EAGER)
     private User issuedBy;
 
+    @Version
+    private Integer version;
+
     public Complaint() {
     }
 

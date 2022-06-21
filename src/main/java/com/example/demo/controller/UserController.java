@@ -60,10 +60,13 @@ public class UserController {
     @ResponseBody
     @RequestMapping(path = "/login", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<UserTokenState> login_user(@RequestBody LoginDTO loginDTO) {
+
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginDTO.getEmail(), loginDTO.getPassword()));
+        System.out.println("TRENUTNA LOZINKA JE " + loginDTO.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);
         User user = (User) authentication.getPrincipal();
+        System.out.println("Poslije je " + user.getPassword());
         String jwt = tokenUtils.generateToken(user.getUsername());
         int expiresIn = tokenUtils.getExpiredIn();
         return ResponseEntity.ok(new UserTokenState(jwt, expiresIn, user.getId(), user.getRole().getName()));
@@ -73,6 +76,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping(path = "/edit", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<String> saveRequest(@RequestBody EditProfileDTO editProfileDTO) {
+        System.out.println("Adresa je bila " + editProfileDTO.getStreet());
         userService.updateProfileData(editProfileDTO);
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
@@ -110,6 +114,7 @@ public class UserController {
     @Transactional
     @ResponseBody
     @RequestMapping(path = "/changePassword", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP', 'CLIENT', 'ADVENTURE', 'ADMIN')")
     public ResponseEntity<String> changePassword(@RequestBody ChangePasswordDTO changePasswordDTO) {
         if (userService.isUsersPassword(changePasswordDTO.getOld(), changePasswordDTO.getId())) {
             System.out.println("Old password je dobro unesena");
@@ -148,6 +153,14 @@ public class UserController {
         Address a = new Address(dto.getAddress().getStreet(), dto.getAddress().getCity(), dto.getAddress().getCountry());
         user.setAddress(a);
         user = userService.save(user);
+        return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getById/{id}", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('CLIENT')")
+    public ResponseEntity<UserDTO> getById(@PathVariable Integer id) {
+        User user = userService.findOne(id);
         return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
     }
 

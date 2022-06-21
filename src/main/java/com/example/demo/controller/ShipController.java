@@ -203,6 +203,7 @@ public class ShipController {
         List<PriceList> priceHistory = new ArrayList<>();
         if (ship.getPriceHistory() == null || ship.getPriceHistory().size() == 0) {
             priceHistory.add(new PriceList(LocalDate.now(), dto.getPrice()));
+            ship.setNumberOfPriceLists(1);
         } else {
             for (PriceList pl : ship.getPriceHistory()) {
                 PriceList p = new PriceList();
@@ -216,6 +217,7 @@ public class ShipController {
                 PriceList newPrice = new PriceList(LocalDate.now(), dto.getPrice());
                 priceHistory.add(newPrice);
             }
+            ship.setNumberOfPriceLists(ship.getPriceHistory().size());
         }
         ship.setPriceHistory(priceHistory);
 

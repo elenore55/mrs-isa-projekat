@@ -37,6 +37,7 @@ const ClientNavbar = {template: '<client-navbar></client-navbar>'};
 const ClientProfile = {template: '<client-profile></client-profile>'};
 const EditProfile = {template: '<edit-profile></edit-profile>'};
 const ClientHome = {template: '<client-home></client-home>'};
+const UnregisteredHome = {template: '<unregistered-home></unregistered-home>'};
 const DeleteProfile = {template: '<delete-profile></delete-profile>'};
 const DeleteProfileMessage = {template: '<delete-profile-message></delete-profile-message>'};
 const EditProfileMessage = {template: '<edit-profile-message></edit-profile-message>'};
@@ -180,6 +181,10 @@ const router = new VueRouter({
         {
             path: "/clientHome/",
             component: ClientHome
+        },
+        {
+            path: "/unregisteredHome/",
+            component: UnregisteredHome
         },
         {
             path: "/deleteProfile/",

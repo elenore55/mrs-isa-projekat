@@ -3,10 +3,13 @@ Vue.component("client-subs", {
        return {
            subs: [],
            id: "",
+           token: {}
        }
    },
 
    mounted() {
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
         main_image = $("body").css("background-image", "url('images/set2.png')");
         main_image = $("body").css("background-size", "100% 270%");
         this.reload();
@@ -46,27 +49,51 @@ Vue.component("client-subs", {
     methods: {
 
         reload() {
-            this.id = this.$route.params.id;
-            axios.get("api/reservations/getClientsSubs/" + this.id).then(response => {
+            //this.id = this.$route.params.id;
+            /*axios.get("api/reservations/getClientsSubs/" + this.id).then(response => {
                 this.subs = response.data;
             }).catch(function (error) {
                 alert('Greska u get subs');
-            });
+            });*/
+            axios({
+               method: 'get',
+               url: "api/reservations/getClientsSubs/" + this.id,
+               headers: {
+                   Authorization: "Bearer " + this.token.accessToken
+               }
+           }).then(response => {
+               this.subs = response.data;
+           }).catch(function (error) {
+               if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+               else Swal.fire('Error', 'Something went wrong!', 'error');
+           });
            },
 
 
         viewActions(sub)
         {
-            window.location.href = 'http://localhost:8000/#/clientActions/' + sub.id;
+            window.location.href = 'http://localhost:8000/index.html#/clientActions/' + sub.id;
         },
 
         unfollow(sub)
         {
-            axios.post("api/reservations/unfollow/" + this.id + "/" + sub.id).then(response => {
+            /*axios.post("api/reservations/unfollow/" + this.id + "/" + sub.id).then(response => {
                 this.reload();
             }).catch(function (error) {
                 alert('Greska u get subs');
-            });
+            });*/
+            axios({
+               method: 'post',
+               url: "api/reservations/unfollow/" + this.id + "/" + sub.id,
+               headers: {
+                   Authorization: "Bearer " + this.token.accessToken
+               }
+           }).then(response => {
+               this.reload();
+           }).catch(function (error) {
+               if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+               else Swal.fire('Error', 'Something went wrong!', 'error');
+           });
         },
     },
 });

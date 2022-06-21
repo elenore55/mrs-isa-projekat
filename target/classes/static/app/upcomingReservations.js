@@ -3,10 +3,12 @@ Vue.component("upcoming-reservations", {
        return {
            reservations: [],
            id: "",
+           token: {}
        }
    },
 
    mounted() {
+        this.token = JSON.parse(localStorage.getItem("jwt"));
         main_image = $("body").css("background-image", "url('images/set.webp')");
         main_image = $("body").css("background-size", "100% 250%");
         this.reload();
@@ -83,13 +85,27 @@ Vue.component("upcoming-reservations", {
     methods: {
 
         reload() {
-            this.id = this.$route.params.id;
+            /*this.id = this.$route.params.id;
             axios.get("api/reservations/getClientUpcomingReservations/" + this.id).then(response => {
                 this.reservations = response.data;
             }).catch(function (error) {
                 alert('Greska u get cottages');
-            });
-           },
+            });*/
+            this.id = JSON.parse(localStorage.getItem("jwt")).userId;
+            axios({
+               method: 'get',
+               url: "api/reservations/getClientUpcomingReservations/" + this.id,
+               headers: {
+                   Authorization: "Bearer " + this.token.accessToken
+               }
+           }).then(response => {
+               this.reservations = response.data;
+
+           }).catch(function (error) {
+               if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+               else Swal.fire('Error', 'Something went wrong!', 'error');
+           });
+        },
 
         canCancel(reservation)
         {
@@ -105,15 +121,27 @@ Vue.component("upcoming-reservations", {
 
         cancel(reservation)
         {
-            axios.post("api/reservations/cancelReservation/" + reservation.id).then(response => {
-            // ovdje treba neka poruka da je uspjesno otkazano
-            // sad treba ovo aktivirati
-
+            /*axios.post("api/reservations/cancelReservation/" + reservation.id).then(response => {
                 this.reload();
                 $("#confirm-cancel").show(200);
             }).catch(function (error) {
                 alert('Greska u brisanju rezervacija');
-            });
+            });*/
+
+            axios({
+               method: 'post',
+               url: "api/reservations/cancelReservation/" + reservation.id,
+               headers: {
+                   Authorization: "Bearer " + this.token.accessToken
+               }
+           }).then(response => {
+               this.reload();
+               $("#confirm-cancel").show(200);
+
+           }).catch(function (error) {
+               if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+               else Swal.fire('Error', 'Something went wrong!', 'error');
+           });
         },
 
         findPaths(reservations)
