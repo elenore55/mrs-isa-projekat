@@ -38,7 +38,7 @@ Vue.component('cottage-profile', {
                                     <h1 class="text-success ">{{ cottage.price }} <i class="fa fa-eur"></i></h1>
                                     <p class="h6 my-2"> {{ cottage.description }}</p>
                                     <h2 v-if="cottage.rate != -1"><span class="badge bg-primary">{{ cottage.rate }}</span></h2>
-                                    <u><a data-bs-toggle="modal" data-bs-target="#reviewsModal" style="cursor: pointer; color: #0a53be"><h6 v-if="cottage.rate != -1">{{ cottage.reviews.length }} reviews</h6></a></u>
+                                    <u><a data-bs-toggle="modal" href="javascript:void(0)" @click="displayReviews" style="cursor: pointer; color: #0a53be"><h6 v-if="cottage.rate != -1">{{ cottage.reviews.length }} reviews</h6></a></u>
                                     <h3 v-if="cottage.rate == -1">No reviews</h3>
                                 </div>
                             </div>
@@ -114,7 +114,9 @@ Vue.component('cottage-profile', {
                     <div class="modal-body">
                         <div v-for="(r, i) in cottage.reviews">
                             <div class="d-flex justify-content-start my-3">
-                                <h3><i class="fa fa-user mx-3"></i>{{ r.client.name }} {{ r.client.surname }}</h3>
+                                <a href="javascript:void(0)" @click="displayClientProfile(r.client.email)" style="text-decoration: none; color: #002a80; cursor: pointer">
+                                    <h3><i class="fa fa-user mx-3"></i>{{ r.client.name }} {{ r.client.surname }}</h3>
+                                </a>
                             </div>
                             <div class="d-flex justify-content-start ms-5 my-2">
                                 <h4 class="mt-2 me-2"><i :class="getEmoji(r.rating)" style="color: #fd7e14"></i></h4>
@@ -139,6 +141,16 @@ Vue.component('cottage-profile', {
             if (rating >= 6.) return "fa fa-smile";
             if (rating >= 4.5) return "fa fa-meh";
             return "fa fa-frown";
+        },
+
+        displayReviews() {
+            this.my_modal =  new bootstrap.Modal(document.getElementById("reviewsModal"), {});
+            this.my_modal.show();
+        },
+
+        displayClientProfile(email) {
+            this.my_modal.hide();
+            this.$router.push({path: '/clientReadonlyProfile/' + email});
         }
     },
 

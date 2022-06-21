@@ -1,7 +1,8 @@
 Vue.component('ship-profile', {
     data() {
         return {
-            ship: {}
+            ship: {},
+            my_modal: null
         }
     },
 
@@ -18,6 +19,7 @@ Vue.component('ship-profile', {
             if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
             else Swal.fire('Error', 'Something went wrong!', 'error');
         });
+        this.my_modal =  new bootstrap.Modal(document.getElementById("reviewsModal"), {});
     },
 
     template: `
@@ -39,7 +41,7 @@ Vue.component('ship-profile', {
                                     <h1 class="text-success ">{{ ship.price }} <i class="fa fa-eur"></i></h1>
                                     <p class="h6 my-2"> {{ ship.description }}</p>
                                     <h2 v-if="ship.rate != -1"><span class="badge bg-primary">{{ ship.rate }}</span></h2>
-                                    <u><a data-bs-toggle="modal" data-bs-target="#reviewsModal" style="cursor: pointer; color: #0a53be"><h6 v-if="ship.rate != -1">{{ ship.reviews.length }} reviews</h6></a></u>
+                                    <u><a data-bs-toggle="modal"  href="javascript:void(0)" @click="displayReviews" style="cursor: pointer; color: #0a53be"><h6 v-if="ship.rate != -1">{{ ship.reviews.length }} reviews</h6></a></u>
                                     <h3 v-if="ship.rate == -1">No reviews</h3>
                                     <div class="mt-4">
                                         <p class="h6">Length: {{ ship.length }}m</p>
@@ -121,7 +123,9 @@ Vue.component('ship-profile', {
                     <div class="modal-body">
                         <div v-for="(r, i) in ship.reviews">
                             <div class="d-flex justify-content-start my-3">
-                                <h3><i class="fa fa-user mx-3"></i>{{ r.client.name }} {{ r.client.surname }}</h3>
+                                <a href="javascript:void(0)" @click="displayClientProfile(r.client.email)" style="text-decoration: none; color: #002a80; cursor: pointer">
+                                    <h3><i class="fa fa-user mx-3"></i>{{ r.client.name }} {{ r.client.surname }}</h3>
+                                </a>
                             </div>
                             <div class="d-flex justify-content-start ms-5 my-2">
                                 <h4 class="mt-2 me-2"><i :class="getEmoji(r.rating)" style="color: #fd7e14"></i></h4>
@@ -146,6 +150,16 @@ Vue.component('ship-profile', {
             if (rating >= 6.) return "fa fa-smile";
             if (rating >= 4.5) return "fa fa-meh";
             return "fa fa-frown";
+        },
+
+        displayReviews() {
+            this.my_modal =  new bootstrap.Modal(document.getElementById("reviewsModal"), {});
+            this.my_modal.show();
+        },
+
+        displayClientProfile(email) {
+            this.my_modal.hide();
+            this.$router.push({path: '/clientReadonlyProfile/' + email});
         }
     },
 
