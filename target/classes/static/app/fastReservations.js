@@ -132,7 +132,7 @@ Vue.component('fast-reservations', {
 
         deleteAction(index) {
             let actionId = this.actions[index].id;
-            axios.delete("api/cottages/deleteFastReservation/" + this.$route.params.id + "/" + actionId).then(response => {
+            axios.delete("api/offers/deleteFastReservation/" + this.$route.params.id + "/" + actionId).then(response => {
                 this.actions.splice(index, 1)
             }).catch(function (error) {
                 Swal.fire('Error', 'Something went wrong!', 'error');

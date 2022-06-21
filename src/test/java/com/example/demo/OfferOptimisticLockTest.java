@@ -6,6 +6,7 @@ import com.example.demo.model.Reservation;
 import com.example.demo.service.CottageService;
 import com.example.demo.service.ReservationService;
 import com.example.demo.service.UserService;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -38,8 +39,11 @@ public class OfferOptimisticLockTest {
     @Autowired
     private UserService userService;
 
+    private List<Cottage> cottages;
+
     @Before
     public void setUp() {
+        cottages = new ArrayList<>();
         Cottage c1 = new Cottage();
         c1.setName("c1");
         c1.setDescription("d1");
@@ -64,10 +68,20 @@ public class OfferOptimisticLockTest {
         c4.setPriceList(BigDecimal.valueOf(50));
         //c4.setAddress(new Address("street1", "city1", "country1"));
 
-        cottageService.save(c1);
-        cottageService.save(c2);
-        cottageService.save(c3);
-        cottageService.save(c4);
+        c1 = cottageService.save(c1);
+        c2 = cottageService.save(c2);
+        c3 = cottageService.save(c3);
+        c4 = cottageService.save(c4);
+
+        cottages.add(c1);
+        cottages.add(c2);
+        cottages.add(c3);
+        cottages.add(c4);
+    }
+
+    @After
+    public void tearDown() {
+        for (Cottage c : cottages) cottageService.remove(c.getId());
     }
 
     @org.junit.Test(expected = OptimisticLockingFailureException.class)

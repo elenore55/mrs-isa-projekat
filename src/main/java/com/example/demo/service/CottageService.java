@@ -34,7 +34,7 @@ public class CottageService {
         this.emailSender = emailSender;
     }
 
-    @CachePut(cacheNames = "cottage", key="#cottage.id")
+    //@CachePut(cacheNames = "cottage", key="#cottage.id")
     public Cottage save(Cottage cottage) {
         return cottageRepository.save(cottage);
     }
@@ -46,14 +46,14 @@ public class CottageService {
     }
 
     @Transactional
-    @Cacheable("cottage")
+    //@Cacheable("cottage")
     public Cottage findOne(Integer id) {
         if (!cottageRepository.existsById(id)) return null;
         return cottageRepository.getById(id);
     }
 
     // @Transactional
-    @CacheEvict(cacheNames = "cottage", key="#id")
+    //@CacheEvict(cacheNames = "cottage", key="#id")
     public void remove(Integer id) {
         cottageRepository.deleteById(id);
         cottageRepository.flush();
