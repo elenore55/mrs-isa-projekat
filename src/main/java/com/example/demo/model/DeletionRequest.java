@@ -21,6 +21,9 @@ public class DeletionRequest {
     @Enumerated(EnumType.STRING)
     private AdminApprovalStatus status;
 
+    @Version
+    private Integer version;
+
     public DeletionRequest() {
     }
 
