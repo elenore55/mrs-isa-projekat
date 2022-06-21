@@ -24,7 +24,8 @@ Vue.component("instructors-adventures",{
                 rules: [],
                 fishingEquipmentList: [],
                 maxPeople: []
-            }
+            },
+            paths:[]
         }
     },
     mounted: function (){
@@ -100,14 +101,6 @@ Vue.component("instructors-adventures",{
                         <label>Maximum number of people</label>
                         <input v-model="adventureInfo.maxPeople" class="form-control" style="width: 100px" pattern="[0-9]{0,4}">
                 </div>
-                <div class="form-group">
-                    <div>
-                        <v-img class="d-block w-100" src="adventureInfo.imagePaths[0]" style="height: 450px">
-                    </div>
-<!--                    <div v-for="(img, i) in adventureInfo.imagePaths.slice(1)">-->
-<!--                        <v-img class="d-block w-100" src="img" style="height: 450px">-->
-<!--                    </div>-->
-                </div>
                 <button type="submit" class="btn btn-primary btn-lg" style="width: 200px; position: relative; bottom: 0px; right: -400px">Update your adventure's info</button>
             </form>
         </div>
@@ -123,6 +116,7 @@ Vue.component("instructors-adventures",{
                 this.addressInfo.cityInfo=this.adventureInfo.address.city;
                 this.addressInfo.streetInfo=this.adventureInfo.address.street;
                 this.addressInfo.countryInfo=this.adventureInfo.address.country;
+                this.loadAdventureImages();
             })
         },
         loadEquipment(){
@@ -130,6 +124,13 @@ Vue.component("instructors-adventures",{
                 this.allEquipments = response.data
                 console.log(this.allEquipments)
             })
+        },
+        loadAdventureImages(){
+            axios.get("api/adventures/getAdventureImages/" + this.adventureInfo.id).then(response => {
+                this.paths = response.data;
+            }).catch(function (error) {
+                Swal.fire('Error', 'Something went wrong!', 'error');
+            });
         },
         deleteAdventure(){
             console.log(this.adventure.split(' - ')[0])
