@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -225,7 +226,6 @@ public class UserController {
             List<ShipOwner> shipOwners = shipOwnerService.findAlladmin();
             List<FishingInstructor> fishingInstructors = fishingInstructorService.findAll();
             List<ReportEntryDTO> result = new ArrayList<>();
-
             for (CottageOwner owner : cottageOwners)
             {
                 result.addAll(cottageOwnerService.calculateIncomeReport(owner, dto.getStart(), dto.getEnd(), kind));
@@ -240,7 +240,21 @@ public class UserController {
             {
                 result.addAll(fishingInstructorService.calculateIncomeReport(owner, dto.getStart(), dto.getEnd(), kind));
             }
-            return new ResponseEntity<>(result, HttpStatus.OK);
+            //////////// svi su postavljeni na jedan sad trebamo da ih spojimo/////////
+
+            for(int i=0;i< result.size()-2;i++)
+            {
+                for(int j=i+1;j< result.size()-1;j++)
+                {
+                    if(result.get(i).getX().equals(result.get(j).getX()))
+                    {
+                        result.get(i).setY(result.get(i).getY().add(result.get(j).getY()));
+                        result.get(j).setY(new BigDecimal(0));
+                    }
+                }
+
+            }
+            return new ResponseEntity<>(result.subList(0, result.size()/3), HttpStatus.OK);
         }
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
