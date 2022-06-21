@@ -1,36 +1,44 @@
 Vue.component("unregistered-home", {
    data: function() {
    return {
+             entityType: "",
              cottages: [],
-             sort_by_list: ["Name", "Price", "Number of rooms", "Rating", "City", "Country"],
-             search_criterion: "",
+             ships: [],
+             adventures: [],
              all_cities: [],
              all_countries: [],
-             cities: [],
-             countries: [],
+             city: "",
              country: "",
-             low_price: null,
-             high_price: null,
-             sort_by: "",
+             rate: "",
+             numberOfPeople: "",
+             sortBy: "",
+             sortByList: ["...", "Name", "Rate", "Country", "City", "Price"],
              direction: "",
-             price_error: false,
-             owner_id: 2,
-             current_id: null,
-             default_image: "images/cottage_icon.jpg",
-             profilePictures: [],
-             token: {}
+             fromDate: "",
+             toDate: "",
+             error_date: false,
+             error_radio: false,
+             cottage_pictures: [],
+             ship_pictures: [],
+             adventure_pictures: [],
+             default_cottage: "images/cottage_icon.jpg",
+             default_ship: "images/ship_icon.png",
+             default_adventure: "images/fishing_icon.jpg",
+             token: {},
+             id: 0
+
            }
         },
 
 mounted() {
-        this.token = JSON.parse(localStorage.getItem("jwt"));
-        this.id = JSON.parse(localStorage.getItem("jwt")).userId,
+        //this.token = JSON.parse(localStorage.getItem("jwt"));
+        //this.id = JSON.parse(localStorage.getItem("jwt")).userId,
         this.reload();
     },
 
    template: `
    <div class="w-100">
-       <unregistered-navbar></unregistered-navbar>
+       <client-navbar></client-navbar>
        <div class="d-sm-flex align-items-center" style=" margin-top: 80px">
            <div id="outer" class ="vertical-left col-md-3 fixed-top h-100 d-inline-block pb-2" style="margin-top: 80px; margin-left: 10px">
                <form @submit.prevent class="p-2 bg-warning h-100 d-inline-block" style="border:1px solid rgb(156, 151, 151); border-radius: 5px;">

@@ -31,12 +31,20 @@ Vue.component("client-navbar", {
                             <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/clientProfile/'})"><i class="fa fa-fw fa-user"></i> My Account</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/login/'})">Log out</a>
+                            <a class="nav-link" href="javascript:void(0)" @click="logout">Log out</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
    `,
+
+   methods: {
+   logout()
+   {
+        localStorage.removeItem('jwt');
+        location.replace('http://localhost:8000/index.html#/login/');
+   }
+   }
 
 });

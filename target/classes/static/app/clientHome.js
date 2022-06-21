@@ -248,6 +248,7 @@ methods: {
                         Authorization: "Bearer " + this.token.accessToken
                     }
                 }).then(response => {
+                alert("Duzina dobavljenih vikendica je " + response.data.length);
                     this.cottages = response.data;
                         for (const c of this.cottages) {
                             if (!c.imagePaths || c.imagePaths.length === 0) {
@@ -284,6 +285,7 @@ methods: {
                     Authorization: "Bearer " + this.token.accessToken
                 }
             }).then(response => {
+                alert("Duzina dobavljenih brodova je " + response.data.length);
                 for (const s of this.ships) {
                      if (!s.imagePaths || s.imagePaths.length === 0) {
                          this.ship_pictures.push(this.default_ship);
