@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
+
 @RestController
 @RequestMapping(value = "api/complaint")
 public class ComplaintController {
@@ -25,6 +27,7 @@ public class ComplaintController {
         this.userService = userService;
     }
 
+    @Transactional
     @ResponseBody
     @RequestMapping(path = "/add", method = RequestMethod.POST, consumes = "application/json")
     @PreAuthorize("hasRole('CLIENT')")

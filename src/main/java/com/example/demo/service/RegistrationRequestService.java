@@ -8,6 +8,7 @@ import com.example.demo.service.emailSenders.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
@@ -23,6 +24,7 @@ public class RegistrationRequestService {
         this.emailSender = emailSender;
     }
 
+    @Transactional
     public RegistrationRequest save(RegistrationRequest request) {
         return repository.save(request);
     }

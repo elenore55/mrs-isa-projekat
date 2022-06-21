@@ -251,6 +251,7 @@ public class CottageController {
         List<PriceList> priceHistory = new ArrayList<>();
         if (cottage.getPriceHistory() == null || cottage.getPriceHistory().size() == 0) {
             priceHistory.add(new PriceList(LocalDate.now(), cottageDTO.getPrice()));
+            cottage.setNumberOfPriceLists(1);
         } else {
             for (PriceList pl : cottage.getPriceHistory()) {
                 PriceList p = new PriceList();
@@ -264,6 +265,7 @@ public class CottageController {
                 PriceList newPrice = new PriceList(LocalDate.now(), cottageDTO.getPrice());
                 priceHistory.add(newPrice);
             }
+            cottage.setNumberOfPriceLists(cottage.getPriceHistory().size());
         }
         cottage.setPriceHistory(priceHistory);
 

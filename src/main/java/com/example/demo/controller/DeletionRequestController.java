@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
 @RestController
@@ -24,6 +25,8 @@ public class DeletionRequestController {
         this.deletionRequestService = deletionRequestService;
     }
 
+
+    @Transactional
     @ResponseBody
     @RequestMapping(path = "/deleteProfile", method = RequestMethod.POST, consumes = "application/json")
     @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP', 'CLIENT', 'ADMIN', 'ADVENTURE')")

@@ -24,8 +24,6 @@ public class Feedback {
     @OneToOne(mappedBy = "feedback")
     private Reservation reservation;
 
-    @Version
-    private Integer version;
 
     public Feedback() {
     }

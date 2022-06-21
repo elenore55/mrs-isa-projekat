@@ -58,6 +58,8 @@ public class Offer {
 
     private Integer numberOfReservations;
 
+    private Integer numberOfPriceLists;
+
     public Offer() {
     }
 
@@ -167,6 +169,8 @@ public class Offer {
 
     public void setPriceHistory(List<PriceList> priceHistory) {
         this.priceHistory = priceHistory;
+        if (priceHistory == null) this.numberOfPriceLists = 0;
+        else this.numberOfPriceLists = priceHistory.size();
     }
 
     public Integer getVersion() {
@@ -200,8 +204,27 @@ public class Offer {
         this.numberOfReservations = numberOfReservations;
     }
 
+    public Integer getNumberOfPriceLists() {
+        return numberOfPriceLists;
+    }
+
+    public void setNumberOfPriceLists(Integer numberOfPriceLists) {
+        this.numberOfPriceLists = numberOfPriceLists;
+    }
+
     public void incNumberOfReservations() {
         if (this.numberOfReservations == null) this.numberOfReservations = 0;
         this.numberOfReservations++;
+    }
+
+    public void incNumberOfPricelists() {
+        if (this.numberOfPriceLists == null) this.numberOfPriceLists = 0;
+        this.numberOfPriceLists++;
+    }
+
+    public void addReservation(Reservation r)
+    {
+        this.reservations.add(r);
+        this.numberOfReservations = this.reservations.size();
     }
 }

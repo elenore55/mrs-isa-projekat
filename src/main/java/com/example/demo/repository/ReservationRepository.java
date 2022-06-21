@@ -7,6 +7,7 @@ import org.springframework.lang.NonNullApi;
 
 import javax.persistence.LockModeType;
 import javax.persistence.QueryHint;
+import java.util.List;
 import java.util.Optional;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
@@ -17,4 +18,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
     @Query("select r from Reservation r where r.id = :id")
     Reservation findOneById(@Param("id") Integer id);
+
+    @Query("select r from Reservation r where r.offerId=?1")
+    List<Reservation> getByOfferId(Integer id);
 }
