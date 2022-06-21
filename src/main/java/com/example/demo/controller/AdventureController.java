@@ -123,7 +123,6 @@ public class AdventureController {
             images.add(new Image(path));
         adventure.setImages(images);
 
-        adventure.setPriceList(adventureDTO.getPrice());
         if (adventure.getPriceHistory() == null || adventure.getPriceHistory().size() == 0) {
             List<PriceList> priceHistory = new ArrayList<>();
             priceHistory.add(new PriceList(LocalDate.now(), adventureDTO.getPrice()));
@@ -173,7 +172,6 @@ public class AdventureController {
             images.add(new Image(path));
         adventure.setImages(images);
 
-        adventure.setPriceList(adventureDTO.getPrice());
         if (adventure.getPriceHistory() == null || adventure.getPriceHistory().size() == 0) {
             List<PriceList> priceHistory = new ArrayList<>();
             priceHistory.add(new PriceList(LocalDate.now(), adventureDTO.getPrice()));
@@ -237,7 +235,7 @@ public class AdventureController {
 
     @ResponseBody
     @RequestMapping(path = "/updateAdventureImages", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<AdventureDTO> updateCottageImages(@RequestBody AdventureDTO adventureDTO) {
+    public ResponseEntity<AdventureDTO> updateAdventureImages(@RequestBody AdventureDTO adventureDTO) {
         Adventure adventure = adventureService.findOne(adventureDTO.getId());
         if (adventure == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
