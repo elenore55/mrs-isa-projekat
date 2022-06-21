@@ -116,8 +116,9 @@ Vue.component('fast-reservations', {
                     }
                 }).then(response => {
                     this.reload();
-                }).catch(function (error) {
-                    Swal.fire('Error', 'Something went wrong!', 'error');
+                }).catch(error => {
+                    if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                    else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }
         },
@@ -132,10 +133,17 @@ Vue.component('fast-reservations', {
 
         deleteAction(index) {
             let actionId = this.actions[index].id;
-            axios.delete("api/offers/deleteFastReservation/" + this.$route.params.id + "/" + actionId).then(response => {
+            axios({
+                method: 'delete',
+                url: "api/offers/deleteFastReservation/" + this.$route.params.id + "/" + actionId,
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
+            }).then(response => {
                 this.actions.splice(index, 1)
-            }).catch(function (error) {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+            }).catch(error => {
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
@@ -148,7 +156,7 @@ Vue.component('fast-reservations', {
                 }
             }).then(response => {
                 this.actions = response.data;
-            }).catch(function (error) {
+            }).catch(error => {
                 if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });
