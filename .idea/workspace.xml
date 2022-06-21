@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/resources/ehcache.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cache/.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/CottageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/CottageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/DemoApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/OfferOptimisticLockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/OfferOptimisticLockTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/controller/CottageControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/controller/CottageControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data-postgres.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,10 +104,8 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\maps" />
-      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\reports" />
-      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\filters" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.demo.security.auth" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\js" />
@@ -118,11 +114,13 @@
       <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static" />
       <recent name="C:\Users\LENOVO\Desktop\faks\VI semestar\ISA\Projekat\mrs-isa-projekat\src\main\resources\static\app" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.example.demo.security.auth" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\maps" />
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\reports" />
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\filters" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in demo (4)">
+  <component name="RunManager" selected="Spring Boot.DemoApplication">
     <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplication" />
       <module name="demo" />
@@ -256,13 +254,6 @@
       <workItem from="1654803114806" duration="52939000" />
       <workItem from="1655406817526" duration="2736000" />
       <workItem from="1655583368904" duration="27284000" />
-    </task>
-    <task id="LOCAL-00140" summary="#211.3 Cuvanje podataka">
-      <created>1654812959922</created>
-      <option name="number" value="00140" />
-      <option name="presentableId" value="LOCAL-00140" />
-      <option name="project" value="LOCAL" />
-      <updated>1654812959922</updated>
     </task>
     <task id="LOCAL-00141" summary="#211.4 Slanje maila administratoru u slucaju zahteva za sankcionisanje">
       <created>1654814146287</created>
@@ -600,7 +591,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655778124137</updated>
     </task>
-    <option name="localTasksCounter" value="189" />
+    <task id="LOCAL-00189" summary="Vracen cache">
+      <created>1655779239851</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
+      <option name="project" value="LOCAL" />
+      <updated>1655779239851</updated>
+    </task>
+    <option name="localTasksCounter" value="190" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -621,7 +619,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Bugfix" />
     <MESSAGE value="Test za CottageService" />
     <MESSAGE value="Izdvojeno izracunavanje izvjestaja u zasebne klase" />
     <MESSAGE value="CottageOwnerServiceTest" />
@@ -646,7 +643,8 @@
     <MESSAGE value="Izbacen localhost iz putanja" />
     <MESSAGE value="Brisanje akcija" />
     <MESSAGE value="Ispravljeni testovi" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ispravljeni testovi" />
+    <MESSAGE value="Vracen cache" />
+    <option name="LAST_COMMIT_MESSAGE" value="Vracen cache" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="178" key="#Assign_Data_Sources" timestamp="1655292820546">
@@ -673,53 +671,53 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2676" y="379" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655779065111" />
-    <state x="2505" y="29" key="CommitChangelistDialog2" timestamp="1655778123206">
+    <state x="2505" y="29" key="CommitChangelistDialog2" timestamp="1655798681842">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2505" y="29" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655778123206" />
+    <state x="2505" y="29" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655798681842" />
     <state x="2660" y="275" key="FileChooserDialogImpl" timestamp="1655745585170">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655745585170" />
-    <state width="1877" height="277" key="GridCell.Tab.0.bottom" timestamp="1655778905728">
+    <state width="1877" height="468" key="GridCell.Tab.0.bottom" timestamp="1655798700160">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655778905728" />
+    <state width="1877" height="468" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655798700160" />
     <state width="1237" height="136" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="277" key="GridCell.Tab.0.center" timestamp="1655778905727">
+    <state width="1877" height="468" key="GridCell.Tab.0.center" timestamp="1655798700160">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655778905727" />
+    <state width="1877" height="468" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655798700160" />
     <state width="1237" height="136" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="277" key="GridCell.Tab.0.left" timestamp="1655778905727">
+    <state width="1877" height="468" key="GridCell.Tab.0.left" timestamp="1655798700160">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655778905727" />
+    <state width="1877" height="468" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655798700160" />
     <state width="1237" height="136" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="277" key="GridCell.Tab.0.right" timestamp="1655778905728">
+    <state width="1877" height="468" key="GridCell.Tab.0.right" timestamp="1655798700160">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655778905728" />
+    <state width="1877" height="468" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655798700160" />
     <state width="1237" height="136" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="277" key="GridCell.Tab.1.bottom" timestamp="1655778905728">
+    <state width="1877" height="468" key="GridCell.Tab.1.bottom" timestamp="1655798700160">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655778905728" />
+    <state width="1877" height="468" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655798700160" />
     <state width="1237" height="136" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655320307964" />
-    <state width="1877" height="277" key="GridCell.Tab.1.center" timestamp="1655778905728">
+    <state width="1877" height="468" key="GridCell.Tab.1.center" timestamp="1655798700160">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.1.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655778905728" />
+    <state width="1877" height="468" key="GridCell.Tab.1.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655798700160" />
     <state width="1237" height="136" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="277" key="GridCell.Tab.1.left" timestamp="1655778905728">
+    <state width="1877" height="468" key="GridCell.Tab.1.left" timestamp="1655798700160">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.1.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655778905728" />
+    <state width="1877" height="468" key="GridCell.Tab.1.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655798700160" />
     <state width="1237" height="136" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="277" key="GridCell.Tab.1.right" timestamp="1655778905728">
+    <state width="1877" height="468" key="GridCell.Tab.1.right" timestamp="1655798700160">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655778905728" />
+    <state width="1877" height="468" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655798700160" />
     <state width="1237" height="136" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
     <state width="1877" height="237" key="GridCell.Tab.2.bottom" timestamp="1655777213657">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -757,10 +755,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2360" y="94" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584530103" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1655776823565">
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1655779243511">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655776823565" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655779243511" />
     <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1655500603170">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -769,6 +767,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2576" y="344" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655583370543" />
+    <state x="2536" y="240" key="run.anything.popup" timestamp="1655798689459">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2536" y="240" key="run.anything.popup/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655798689459" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1655627963749">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -791,11 +793,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java</url>
           <line>113</line>
           <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java</url>
-          <line>159</line>
-          <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java</url>

@@ -87,7 +87,6 @@ public class CottageController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @Transactional
     @ResponseBody
     @RequestMapping(path = "/updateCottage", method = RequestMethod.POST, consumes = "application/json")
     @PreAuthorize("hasRole('COTTAGE')")
@@ -241,7 +240,6 @@ public class CottageController {
     }
 
     private void setAttributes(Cottage cottage, CottageDTO cottageDTO) {
-        cottage.setId(cottageDTO.getId());
         cottage.setName(cottageDTO.getName());
         cottage.setDescription(cottageDTO.getDescription());
 
