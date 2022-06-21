@@ -6,6 +6,7 @@ import com.example.demo.dto.comparators.reservation.ReservationOfferComparator;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.service.CottageOwnerService;
+import com.example.demo.service.FishingInstructorService;
 import com.example.demo.service.ShipOwnerService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,14 @@ public class UserController {
     private UserService userService;
     private CottageOwnerService cottageOwnerService;
     private ShipOwnerService shipOwnerService;
+    private FishingInstructorService fishingInstructorService;
 
     @Autowired
-    public UserController(UserService userService, CottageOwnerService cottageOwnerService, ShipOwnerService shipOwnerService) {
+    public UserController(UserService userService, CottageOwnerService cottageOwnerService, ShipOwnerService shipOwnerService, FishingInstructorService fishingInstructorService) {
         this.userService = userService;
         this.cottageOwnerService = cottageOwnerService;
         this.shipOwnerService = shipOwnerService;
+        this.fishingInstructorService = fishingInstructorService;
     }
 
     @ResponseBody
@@ -202,6 +205,13 @@ public class UserController {
             List<ReportEntryDTO> result = shipOwnerService.calculateIncomeReport(so, dto.getStart(), dto.getEnd(), kind);
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
+        //!?!?!?!?!?
+        if (user instanceof FishingInstructor) {
+            FishingInstructor fi = (FishingInstructor) user;
+            List<ReportEntryDTO> result = fishingInstructorService.calculateIncomeReport(fi, dto.getStart(), dto.getEnd(), kind);
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+        /////////////////////
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
@@ -219,6 +229,14 @@ public class UserController {
             List<ReportEntryDTO> result = shipOwnerService.calculateVisitReport(so, dto.getStart(), dto.getEnd(), kind);
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
+
+        //!??!?!?!?!?!?!??!?
+        if (user instanceof FishingInstructor) {
+            FishingInstructor fi = (FishingInstructor) user;
+            List<ReportEntryDTO> result = fishingInstructorService.calculateVisitReport(fi, dto.getStart(), dto.getEnd(), kind);
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+        //////////////////////////
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
@@ -235,6 +253,12 @@ public class UserController {
             ShipOwner so = (ShipOwner) user;
             return new ResponseEntity<>(shipOwnerService.calculatePriceHistoryReport(so, dto.getStart(), dto.getEnd(), kind), HttpStatus.OK);
         }
+        //?!?!?!?!?!?!?
+        if (user instanceof FishingInstructor) {
+            FishingInstructor fi = (FishingInstructor) user;
+            return new ResponseEntity<>(fishingInstructorService.calculatePriceHistoryReport(fi, dto.getStart(), dto.getEnd(), kind), HttpStatus.OK);
+        }
+        //////////////////
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -245,6 +269,9 @@ public class UserController {
         if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         if (user instanceof CottageOwner) return new ResponseEntity<>("cottages", HttpStatus.OK);
         if (user instanceof ShipOwner) return new ResponseEntity<>("ships", HttpStatus.OK);
+        //?!?!?!?!?!
+        if (user instanceof FishingInstructor) return new ResponseEntity<>("adventures", HttpStatus.OK);
+        ////////////
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
