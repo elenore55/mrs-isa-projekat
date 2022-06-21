@@ -96,7 +96,7 @@ public class UserService {
 
     public void changePassword(ChangePasswordDTO changePasswordDTO) {
         // sad smo sve validirali i treba samo da upisemo novu lozinku na odgovarajuce mjesto
-        String hashed = changePasswordDTO.getNewPass();     // ovdje usmjesto da je samo preuzemem, treba i da je hesiram
+        String hashed = passwordEncoder.encode(changePasswordDTO.getNewPass());
         System.out.println("dobro je i uzeta lozinka prije uspisa i  glasi " + hashed);
         int n = Integer.parseInt(changePasswordDTO.getId());
         profileDataRepository.changePassword(hashed, n);
@@ -104,7 +104,7 @@ public class UserService {
 
     public boolean isUsersPassword(String old, String id) {
         String currentPassword = userRepository.getById(Integer.parseInt(id)).getPassword();    // ovo nam je dalo trenutnu hesiranu lozinku
-        return isValidPassword(old, currentPassword);
+        return passwordEncoder.matches(old, currentPassword);
     }
 
     public Client findClientByEmail(String email) {

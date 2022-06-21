@@ -105,6 +105,10 @@ Vue.component('change-pw-owner', {
                     old: this.old_password,
                     newPass: this.password,
                     id: JSON.parse(localStorage.getItem("jwt")).userId,
+                }, {
+                    headers: {
+                        Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                    }
                 }).then(function(response) {
                     if(response.data === "OK") {
                         Swal.fire('Success', 'Password changed!', 'success');

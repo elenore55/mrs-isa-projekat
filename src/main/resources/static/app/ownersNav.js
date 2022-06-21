@@ -22,10 +22,20 @@ Vue.component('owners-nav', {
                             <li><a class="dropdown-item" :href="priceHistoryReport">Average prices</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link"  href="javascript:void(0)" @click="logOut">Log out</a>
+                    </li>
                 </ul>
             </div>
         </nav>
     `,
+
+    methods: {
+        logOut() {
+            localStorage.removeItem("jwt");
+            this.$router.push({path: '/login'});
+        }
+    },
 
     computed: {
         ownersProfile() {

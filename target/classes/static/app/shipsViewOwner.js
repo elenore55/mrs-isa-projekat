@@ -100,7 +100,7 @@ Vue.component("ships-view-owner", {
                                 <p class="card-text mb-1">Length: {{ s.length }} m</p>
                                 <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
                                 <div class="d-flex flex-row mt-3">
-                                    <a :href="'/#/shipProfile/' + s.id" class="btn btn-primary me-3 mt-3">View</a>
+                                    <a :href="'/index.html#/shipProfile/' + s.id" class="btn btn-primary me-3 mt-3">View</a>
                                     <button type="button" class="btn btn-danger mt-3" v-on:click="setCurrentId(s.id)">Delete</button>
                                 </div>
                             </div>
