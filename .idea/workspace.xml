@@ -5,29 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/gradient_purple.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/login3_50_op.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/see.webp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addReservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addReservation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottageReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageReservations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottagesViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottagesViewOwner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/fastReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/fastReservations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/ownersProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/ownersProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/reports/incomeReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/reports/incomeReport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/reports/priceHistoryReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/reports/priceHistoryReport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/reports/visitReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/reports/visitReport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/reservationsHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/reservationsHistory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipReservations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipsViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipsViewOwner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/updateOwnersProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/updateOwnersProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/cottageReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/cottageReservations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/cottagesViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/cottagesViewOwner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/fastReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/fastReservations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/shipsViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/shipsViewOwner.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,13 +245,6 @@
       <workItem from="1654803114806" duration="52939000" />
       <workItem from="1655406817526" duration="2736000" />
       <workItem from="1655583368904" duration="27284000" />
-    </task>
-    <task id="LOCAL-00151" summary="Onemoguceno azuriranje rezervisanih vikendica i brodova">
-      <created>1654946716902</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
-      <option name="project" value="LOCAL" />
-      <updated>1654946716903</updated>
     </task>
     <task id="LOCAL-00152" summary="Prikaz ratinga">
       <created>1654951789120</created>
@@ -611,7 +582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655817751642</updated>
     </task>
-    <option name="localTasksCounter" value="200" />
+    <task id="LOCAL-00200" summary="Promijenjene pozadine">
+      <created>1655827792371</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1655827792371</updated>
+    </task>
+    <option name="localTasksCounter" value="201" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,7 +610,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="CottageControllerTest" />
     <MESSAGE value="CottageOwnerControllerTest" />
     <MESSAGE value="ShipOwnerControllerTest" />
     <MESSAGE value="Dodat travis.yml" />
@@ -657,7 +634,8 @@
     <MESSAGE value="Ispravljen prikaz slika" />
     <MESSAGE value="Onemoguceno visestruko ostavljanje izvjestaja o klijentu" />
     <MESSAGE value="Prikaz ratinga" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prikaz ratinga" />
+    <MESSAGE value="Promijenjene pozadine" />
+    <option name="LAST_COMMIT_MESSAGE" value="Promijenjene pozadine" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="178" key="#Assign_Data_Sources" timestamp="1655292820546">
@@ -684,53 +662,53 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2676" y="379" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655811796294" />
-    <state x="2505" y="29" key="CommitChangelistDialog2" timestamp="1655817750726">
+    <state x="2505" y="29" key="CommitChangelistDialog2" timestamp="1655827791447">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2505" y="29" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655817750726" />
+    <state x="2505" y="29" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655827791447" />
     <state x="2660" y="275" key="FileChooserDialogImpl" timestamp="1655745585170">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655745585170" />
-    <state width="1877" height="227" key="GridCell.Tab.0.bottom" timestamp="1655827630410">
+    <state width="1877" height="227" key="GridCell.Tab.0.bottom" timestamp="1655844629880">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655827630410" />
+    <state width="1877" height="227" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655844629880" />
     <state width="1237" height="136" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="227" key="GridCell.Tab.0.center" timestamp="1655827630410">
+    <state width="1877" height="227" key="GridCell.Tab.0.center" timestamp="1655844629879">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655827630410" />
+    <state width="1877" height="227" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655844629879" />
     <state width="1237" height="136" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="227" key="GridCell.Tab.0.left" timestamp="1655827630410">
+    <state width="1877" height="227" key="GridCell.Tab.0.left" timestamp="1655844629878">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655827630410" />
+    <state width="1877" height="227" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655844629878" />
     <state width="1237" height="136" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="227" key="GridCell.Tab.0.right" timestamp="1655827630410">
+    <state width="1877" height="227" key="GridCell.Tab.0.right" timestamp="1655844629879">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655827630410" />
+    <state width="1877" height="227" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655844629879" />
     <state width="1237" height="136" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="227" key="GridCell.Tab.1.bottom" timestamp="1655827630410">
+    <state width="1877" height="227" key="GridCell.Tab.1.bottom" timestamp="1655844629881">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655827630410" />
+    <state width="1877" height="227" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655844629881" />
     <state width="1237" height="136" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655320307964" />
-    <state width="1877" height="227" key="GridCell.Tab.1.center" timestamp="1655827630410">
+    <state width="1877" height="227" key="GridCell.Tab.1.center" timestamp="1655844629881">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.1.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655827630410" />
+    <state width="1877" height="227" key="GridCell.Tab.1.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655844629881" />
     <state width="1237" height="136" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="227" key="GridCell.Tab.1.left" timestamp="1655827630410">
+    <state width="1877" height="227" key="GridCell.Tab.1.left" timestamp="1655844629881">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.1.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655827630410" />
+    <state width="1877" height="227" key="GridCell.Tab.1.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655844629881" />
     <state width="1237" height="136" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
-    <state width="1877" height="227" key="GridCell.Tab.1.right" timestamp="1655827630410">
+    <state width="1877" height="227" key="GridCell.Tab.1.right" timestamp="1655844629881">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655827630410" />
+    <state width="1877" height="227" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655844629881" />
     <state width="1237" height="136" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1655320307963" />
     <state width="1877" height="237" key="GridCell.Tab.2.bottom" timestamp="1655777213657">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -768,10 +746,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2360" y="94" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655584530103" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1655817754404">
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1655827801182">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655817754404" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1655827801182" />
     <state x="2596" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1655500603170">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
