@@ -43,7 +43,7 @@ Vue.component('fast-reservations', {
                         <h5 class="mt-3">Action period</h5>
                         <label>Start date: {{ fr.actionStartStr }} Duration: {{ fr.actionDuration }} days</label>
                         <div class="d-flex flex-wrap my-3">
-                            <span class="badge bg-success mx-2" v-for="(s, i) in fr.additionalServices" style="font-size: 1.1em">
+                            <span class="badge bg-success mx-2" v-for="(s, i) in fr.additionalServices" style="font-size: 1em">
                                 {{ s }}
                             </span>
                         </div>

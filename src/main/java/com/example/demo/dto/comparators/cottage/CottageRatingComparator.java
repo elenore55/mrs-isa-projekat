@@ -8,6 +8,6 @@ public class CottageRatingComparator implements Comparator<Cottage> {
 
     @Override
     public int compare(Cottage c1, Cottage c2) {
-        return 0;
+        return c1.getRateOrNegativeOne().compareTo(c2.getRateOrNegativeOne());
     }
 }
