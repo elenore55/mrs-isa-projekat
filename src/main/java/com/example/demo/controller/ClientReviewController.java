@@ -28,12 +28,13 @@ public class ClientReviewController {
     private EmailSender emailSender;
 
     @Autowired
-    public ClientReviewController(UserService userService, ClientReviewService clientReviewService, ReservationService reservationService, ClientService clientService, PenaltyService penaltyService) {
+    public ClientReviewController(UserService userService, ClientReviewService clientReviewService, ReservationService reservationService, ClientService clientService, PenaltyService penaltyService, EmailSender emailSender) {
         this.userService = userService;
         this.clientReviewService = clientReviewService;
         this.reservationService = reservationService;
         this.clientService = clientService;
         this.penaltyService = penaltyService;
+        this.emailSender = emailSender;
     }
 
     @ResponseBody
@@ -92,8 +93,6 @@ public class ClientReviewController {
         penalty.setDate(LocalDate.now());
         penaltyService.save(penalty);
         emailSender.send(client.getEmail(), "Penalty", "You recieved a penalty");
-        User u = userService.findById(clientReview.getOwnerId());
-        emailSender.send(u.getEmail(), "Penalty", "The client reciaved the penalty");
         return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
     }
 

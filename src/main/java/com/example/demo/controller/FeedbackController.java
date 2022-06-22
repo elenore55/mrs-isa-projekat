@@ -4,10 +4,7 @@ import com.example.demo.dto.ComplaintAdminDTO;
 import com.example.demo.dto.ComplaintDTO;
 import com.example.demo.dto.FeedbackAdminDTO;
 import com.example.demo.dto.FeedbackDTO;
-import com.example.demo.model.Complaint;
-import com.example.demo.model.Feedback;
-import com.example.demo.model.Reservation;
-import com.example.demo.model.User;
+import com.example.demo.model.*;
 import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.service.FeedbackService;
 import com.example.demo.service.ReservationService;
@@ -76,6 +73,14 @@ public class FeedbackController {
         if(feedbackAdminDTO.getStatus()==AdminApprovalStatus.APPROVED || feedbackAdminDTO.getStatus()==AdminApprovalStatus.REJECTED)
             izBaze.setStatus(feedbackAdminDTO.getStatus());
         izBaze = feedbackService.update(izBaze);
+
+        Reservation reservation = reservationService.findOne(feedbackAdminDTO.getReservationId());
+
+        emailSender.send(reservation.getClient().getEmail(), "Feedback", feedbackAdminDTO.getStatus().toString());
+
+//        Offer offer = reservation.getOffer();
+//        emailSender.send(offer.getOwnerID(), "Adventure", "You made an adventure reservation");
+
         return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
     }
 }
