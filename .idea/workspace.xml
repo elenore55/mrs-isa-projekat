@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="Opsta podesavanja za security">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="Opsta podesavanja za security" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -194,6 +192,7 @@
       <workItem from="1655766603604" duration="669000" />
       <workItem from="1655808179695" duration="20787000" />
       <workItem from="1655881951368" duration="5248000" />
+      <workItem from="1655890808428" duration="429000" />
     </task>
     <task id="LOCAL-00105" summary="Prikaz profila klijenta">
       <created>1653517615884</created>
