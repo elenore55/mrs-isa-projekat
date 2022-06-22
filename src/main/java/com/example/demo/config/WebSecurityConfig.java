@@ -57,11 +57,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/addresses/**").permitAll()
                 .antMatchers("/api/ships/getShipsWithRate/").permitAll()
                 .antMatchers("/api/cottages/getCottagesWithRate/").permitAll()
+                .antMatchers("/api/adventures/all/").permitAll()
                 .antMatchers("/api/cottages/filter/").permitAll()
                 .antMatchers("/api/ships/filter/").permitAll()
-
-
-
+                .antMatchers("/api/adventures/filter/").permitAll()
 
 
 
@@ -87,6 +86,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Dozvoljena POST metoda na ruti /auth/login, za svaki drugi tip HTTP metode greska je 401 Unauthorized
         web.ignoring().antMatchers(HttpMethod.POST, "/api/users/login");
         web.ignoring().antMatchers(HttpMethod.POST, "/api/users/registration");
+        web.ignoring().antMatchers(HttpMethod.POST, "/api/cottages/filter/");
+        web.ignoring().antMatchers(HttpMethod.POST, "/api/ships/filter/");
+        web.ignoring().antMatchers("/api/adventures/all/");
+        web.ignoring().antMatchers("/api/adventures/filter/");
         // web.ignoring().antMatchers(HttpMethod.GET, "/**");
 
         // Ovim smo dozvolili pristup statickim resursima aplikacije

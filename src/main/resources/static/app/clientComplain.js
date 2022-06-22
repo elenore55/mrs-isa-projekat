@@ -66,8 +66,6 @@ Vue.component("client-complain", {
                 if (this.reason && this.type)
                 {
                     this.error = false;
-                    alert(this.id + " je id sada");
-                    alert(this.reason + " je content sada");
                     /*axios.post("api/complaint/add", {
                         content: this.reason,
                         id: this.id
@@ -90,7 +88,7 @@ Vue.component("client-complain", {
                    }).then(response => {
                        $("#confirm-cancel").show(200);
                    }).catch(function (error) {
-                       if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                       if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                        else Swal.fire('Error', 'Something went wrong!', 'error');
                    });
                 }

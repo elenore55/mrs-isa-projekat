@@ -4,7 +4,64 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="" />
+    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/adventureDetailedView.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipDetailedView2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/AdventureDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/AdventureDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Offer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AdventureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AdventureService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ReservationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/changePassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/changePassword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientComplain.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientComplain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientRate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientRate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientSubs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientSubs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottageDetailedView2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageDetailedView2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/deleteProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/deleteProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/editProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/editProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/pastReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/pastReservations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/profilePageInstructorPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/profilePageInstructorPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/registration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipDetailedView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipDetailedView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/unregisteredHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/unregisteredHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/unregisteredNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/unregisteredNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/upcomingReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/upcomingReservations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/changePassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/changePassword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientComplain.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientComplain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientRate.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientRate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientSubs.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientSubs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/deleteProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/deleteProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/editProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/editProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/pastReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/pastReservations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/profilePageInstructorPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/profilePageInstructorPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/registration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/shipDetailedView.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/shipDetailedView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/unregisteredNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/unregisteredNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/upcomingReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/upcomingReservations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -328,13 +385,6 @@
       <workItem from="1655583368904" duration="27284000" />
       <workItem from="1655897338338" duration="20681000" />
       <workItem from="1655921575764" duration="6534000" />
-    </task>
-    <task id="LOCAL-00150" summary="MouseOver i MouseLeave za kartice">
-      <created>1654944453481</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
-      <option name="project" value="LOCAL" />
-      <updated>1654944453481</updated>
     </task>
     <task id="LOCAL-00151" summary="Onemoguceno azuriranje rezervisanih vikendica i brodova">
       <created>1654946716902</created>
@@ -672,7 +722,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655820130990</updated>
     </task>
-    <option name="localTasksCounter" value="199" />
+    <task id="LOCAL-00199" summary="Merged st3_1_development">
+      <created>1655928726709</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1655928726709</updated>
+    </task>
+    <option name="localTasksCounter" value="200" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -693,7 +750,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Test za izvjestaje" />
     <MESSAGE value="CottageControllerTest" />
     <MESSAGE value="CottageOwnerControllerTest" />
     <MESSAGE value="ShipOwnerControllerTest" />
@@ -718,41 +774,58 @@
     <MESSAGE value="Odlazak na profil klijenta iz ratinga" />
     <MESSAGE value="Ispravljen prikaz slika" />
     <MESSAGE value="spojena security st 1 ma cache" />
-    <option name="LAST_COMMIT_MESSAGE" value="spojena security st 1 ma cache" />
+    <MESSAGE value="Merged st3_1_development" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged st3_1_development" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="100" key="GridCell.Tab.0.bottom" timestamp="1655928655689">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1655928726002">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="100" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655928655689" />
-    <state width="1237" height="100" key="GridCell.Tab.0.center" timestamp="1655928655688">
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1655928726002" />
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom" timestamp="1655929131885">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="100" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655928655688" />
-    <state width="1237" height="100" key="GridCell.Tab.0.left" timestamp="1655928655688">
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655929131885" />
+    <state width="1237" height="160" key="GridCell.Tab.0.center" timestamp="1655929131884">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="100" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655928655688" />
-    <state width="1237" height="100" key="GridCell.Tab.0.right" timestamp="1655928655689">
+    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655929131884" />
+    <state width="1237" height="160" key="GridCell.Tab.0.left" timestamp="1655929131884">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="100" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655928655689" />
-    <state width="1237" height="100" key="GridCell.Tab.1.bottom" timestamp="1655928655689">
+    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655929131884" />
+    <state width="1237" height="160" key="GridCell.Tab.0.right" timestamp="1655929131884">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="100" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655928655689" />
-    <state width="1237" height="100" key="GridCell.Tab.1.center" timestamp="1655928655689">
+    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655929131884" />
+    <state width="1237" height="160" key="GridCell.Tab.1.bottom" timestamp="1655929131885">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="100" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1655928655689" />
-    <state width="1237" height="100" key="GridCell.Tab.1.left" timestamp="1655928655689">
+    <state width="1237" height="160" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655929131885" />
+    <state width="1237" height="160" key="GridCell.Tab.1.center" timestamp="1655929131885">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="100" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1655928655689" />
-    <state width="1237" height="100" key="GridCell.Tab.1.right" timestamp="1655928655689">
+    <state width="1237" height="160" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1655929131885" />
+    <state width="1237" height="160" key="GridCell.Tab.1.left" timestamp="1655929131885">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="100" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1655928655689" />
+    <state width="1237" height="160" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1655929131885" />
+    <state width="1237" height="160" key="GridCell.Tab.1.right" timestamp="1655929131885">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="160" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1655929131885" />
+    <state x="0" y="45" width="1280" height="579" key="MergeDialog" timestamp="1655929107346">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="0" y="45" width="1280" height="579" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1655929107346" />
+    <state x="354" y="57" key="MultipleFileMergeDialog" timestamp="1655929107353">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="354" y="57" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1655929107353" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1655928736562">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1655928736562" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

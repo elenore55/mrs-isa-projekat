@@ -39,7 +39,7 @@ Vue.component("registration", {
                                     <div class="form-floating has-validation">
                                         <input v-model="user.passwordConfirmation" type="password" class="form-control my-3 py-2" placeholder="Confirm password" required>
                                         <p v-if="!isValidConfirmationPassword" class="text-danger">Passwords do not match.</p>
-                                        <label style="color:#C0C0C0" for="passwordConfirmation-input">Potvrda lozinke</label>
+                                        <label style="color:#C0C0C0" for="passwordConfirmation-input">Password confirmation</label>
                                     </div>
 
                                     <div class="form-floating has-validation">
@@ -102,7 +102,8 @@ Vue.component("registration", {
                     if (response.data == "OK")
                     {
                         alert("User succesfully added");
-                        window.location = 'http://localhost:8000/#/login';
+                        //window.location = 'http://localhost:8000/#/login';
+                        this.$router.push({path: '/login'});
                     }
 
                 }).catch(function (error) {

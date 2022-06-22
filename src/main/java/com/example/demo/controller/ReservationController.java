@@ -68,6 +68,11 @@ public class ReservationController {
     @RequestMapping(path = "/addReservationStringDate", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<String> addReservationStringDate(@RequestBody ReservationDTOstring dto) {
         Reservation r = new Reservation();
+        // ovdje cu da izmijenim email klijenta
+        User u = userService.findById(dto.getId());
+        String newMail = u.getEmail();
+        dto.setClientEmail(newMail);
+        System.out.println("Novi mejl je " + dto.getClientEmail());
         setAttributes(r, dto);
         r = reservationService.save(r);
         reservationService.notifyClient(r);
@@ -102,6 +107,19 @@ public class ReservationController {
             dtos.add(s);
         }
         return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/subscribe/{clientId}/{offerId}", method = RequestMethod.POST, produces = "application/json")
+    @PreAuthorize("hasRole('CLIENT')")
+    public ResponseEntity<String> subscribe(@PathVariable Integer clientId, @PathVariable Integer offerId) {
+        Client c = (Client) userService.findById(clientId);
+        Offer o = offerService.findOne(offerId);
+        c.addSub(o);
+        o.addSub(c);
+        //userService.save(c);
+        //offerService.save(o);
+        return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
     @ResponseBody
@@ -143,16 +161,18 @@ public class ReservationController {
     }
 
     private List<FastReservation> getFastReservations(Integer offerId) {
+        // TODO treba dodati da su u buducnosti i da nisu zauzete
         List<FastReservation> retVal = new ArrayList<>();
         Offer o = offerService.findOne(offerId);
         if (o instanceof Cottage)
         {
-            retVal = ((Cottage) o).getFastReservations();
+            retVal = ((Ship) o).getFastReservations();
         }
         else if (o instanceof Ship)
         {
             retVal = ((Ship) o).getFastReservations();
         }
+
         return retVal;
     }
 

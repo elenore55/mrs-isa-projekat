@@ -83,7 +83,7 @@ public class ShipController {
 
     @ResponseBody
     @RequestMapping(path = "/getShip/{id}", method = RequestMethod.GET, produces = "application/json")
-    @PreAuthorize("hasRole('SHIP')")
+    //@PreAuthorize("hasRole('SHIP')")
     public ResponseEntity<ShipDTO> getShip(@PathVariable Integer id) {
         Ship ship = shipService.findOne(id);
         if (ship == null)
@@ -129,7 +129,7 @@ public class ShipController {
 
     @ResponseBody
     @RequestMapping(path = "/filter", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    @PreAuthorize("hasAnyRole('SHIP', 'CLIENT', 'ADMIN')")
+    //@PreAuthorize("hasRole('SHIP', 'CLIENT')")
     public ResponseEntity<List<ShipDTO>> filterShips(@RequestBody UserFilterDTO userFilterDTO) {
         List<Ship> ships = shipService.filter(userFilterDTO);
         List<ShipDTO> dtos = new ArrayList<>();
@@ -138,6 +138,7 @@ public class ShipController {
         }
         return new ResponseEntity<>(dtos, HttpStatus.OK);
     }
+
 
     @ResponseBody
     @RequestMapping(path = "/updateReservationPeriod", method = RequestMethod.POST, consumes = "application/json")

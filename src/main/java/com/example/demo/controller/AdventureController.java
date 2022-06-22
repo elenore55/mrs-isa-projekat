@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.*;
 import com.example.demo.model.*;
-import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,14 +47,14 @@ public class AdventureController {
         // convert adventures to DTOs
         List<AdventureDTO> adventuresDTO = new ArrayList<>();
         for (Adventure adventure : adventures) {
-            if(adventure.getInstructor().getId()==id)
+            if (adventure.getInstructor().getId() == id)
                 adventuresDTO.add(new AdventureDTO(adventure));
         }
         return new ResponseEntity<>(adventuresDTO, HttpStatus.OK);
     }
 
     @GetMapping(path = "/approvalStatus")
-    public ResponseEntity<List<ReservationStatus>> getReservationPossibleStatuses(){
+    public ResponseEntity<List<ReservationStatus>> getReservationPossibleStatuses() {
         List<ReservationStatus> statuses = new ArrayList<>();
         statuses.add(ReservationStatus.CANCELLED);
         statuses.add(ReservationStatus.CLIENT_NOT_ARRIVED);
@@ -64,18 +63,15 @@ public class AdventureController {
     }
 
     @GetMapping(value = "/all")
-//    @PreAuthorize("hasRole('CLIENT')")
     @PreAuthorize("hasAnyRole('ADMIN','CLIENT', 'ADVENTURE')")
     public ResponseEntity<List<AdventureDTO>> getAllAdventures() {
 
         List<Adventure> adventures = adventureService.findAll();
-
         // convert adventures to DTOs
         List<AdventureDTO> adventuresDTO = new ArrayList<>();
         for (Adventure adventure : adventures) {
             adventuresDTO.add(new AdventureDTO(adventure));
         }
-
         return new ResponseEntity<>(adventuresDTO, HttpStatus.OK);
     }
 
@@ -87,7 +83,7 @@ public class AdventureController {
         // convert adventures to DTOs
         List<AdventureDTO> adventuresDTO = new ArrayList<>();
         for (Adventure adventure : adventures) {
-            if(adventure.getInstructor().getId() == id)
+            if (adventure.getInstructor().getId() == id)
                 adventuresDTO.add(new AdventureDTO(adventure));
         }
 
@@ -104,6 +100,18 @@ public class AdventureController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+
+    @ResponseBody
+    @RequestMapping(path = "/getByIdForDetailed/{id}", method = RequestMethod.GET, produces = "application/json")
+    //@PreAuthorize("hasRole('SHIP')")
+    public ResponseEntity<AdventureDTO> getAdventureForDetails(@PathVariable Integer id) {
+        Adventure a = adventureService.findOne(id);
+        if (a == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        a.getImages();
+        a.getRules();
+        return new ResponseEntity<>(new AdventureDTO(a), HttpStatus.OK);
+    }
 
     @ResponseBody
     @RequestMapping(path = "/addAdventure/{id}", method = RequestMethod.POST, consumes = "application/json")
@@ -138,8 +146,8 @@ public class AdventureController {
         adventure.setRules(rules);
 
         List<FishingEquipment> fishingEquipmentList = new ArrayList<>();
-        for (FishingEquipmentDTO fishingEquipmentListDTO : adventureDTO.getFishingEquipmentList()){
-            fishingEquipmentList.add( fishingEquipmentService.findOne(fishingEquipmentListDTO.getId()));
+        for (FishingEquipmentDTO fishingEquipmentListDTO : adventureDTO.getFishingEquipmentList()) {
+            fishingEquipmentList.add(fishingEquipmentService.findOne(fishingEquipmentListDTO.getId()));
         }
 
         List<Image> images = new ArrayList<>();
@@ -185,8 +193,8 @@ public class AdventureController {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/updateAdventureInfo",method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<AdventureDTO> updateInstructorInfo(@RequestBody AdventureDTO adventureDTO){
+    @RequestMapping(path = "/updateAdventureInfo", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<AdventureDTO> updateInstructorInfo(@RequestBody AdventureDTO adventureDTO) {
         Adventure adventure = adventureService.findOne(adventureDTO.getId());
         adventure.setId(adventureDTO.getId());
         adventure.setAddress(adventureDTO.getAddress());
@@ -229,7 +237,7 @@ public class AdventureController {
 
     @ResponseBody
     @RequestMapping(path = "/addFastReservation/{id}", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<FastReservationDTO> addFastReservation(@PathVariable Integer id,@RequestBody FastReservationDTO dto) {
+    public ResponseEntity<FastReservationDTO> addFastReservation(@PathVariable Integer id, @RequestBody FastReservationDTO dto) {
         Adventure adventure = adventureService.findOne(id);
         if (adventure == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -253,6 +261,18 @@ public class AdventureController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/filter", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    //@PreAuthorize("hasRole('SHIP', 'CLIENT')")
+    public ResponseEntity<List<AdventureDTO>> filterAdventures(@RequestBody UserFilterDTO userFilterDTO) {
+        List<Adventure> adventures = adventureService.filter(userFilterDTO);
+        List<AdventureDTO> dtos = new ArrayList<>();
+        for (Adventure a : adventures) {
+            dtos.add(new AdventureDTO(a));
+        }
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/addReservationClient", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<ReservationDTO> addResevClient(@RequestBody ReservationDTO dto) {
         Reservation reservation = new Reservation();
@@ -265,7 +285,7 @@ public class AdventureController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         reservation.setReservationStatus(ReservationStatus.PENDING);
         reservation = reservationService.save(reservation);
-        userService.addReservation(dto.getOwnerId(),reservation);
+        userService.addReservation(dto.getOwnerId(), reservation);
 
         return new ResponseEntity<>(new ReservationDTO(reservation), HttpStatus.OK);
     }

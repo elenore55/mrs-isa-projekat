@@ -241,4 +241,9 @@ public class Offer {
         this.numberOfReservations = this.reservations.size();
     }
 
+    public void addSub(Client c)
+    {
+        this.subscribers.add(c);
+    }
+
 }

@@ -64,7 +64,7 @@ Vue.component("client-subs", {
            }).then(response => {
                this.subs = response.data;
            }).catch(function (error) {
-               if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+               if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                else Swal.fire('Error', 'Something went wrong!', 'error');
            });
            },
@@ -72,7 +72,8 @@ Vue.component("client-subs", {
 
         viewActions(sub)
         {
-            window.location.href = 'http://localhost:8000/index.html#/clientActions/' + sub.id;
+            //window.location.href = 'http://localhost:8000/index.html#/clientActions/' + sub.id;
+            this.$router.push({path: '/clientActions/' + sub.id});
         },
 
         unfollow(sub)
@@ -91,7 +92,7 @@ Vue.component("client-subs", {
            }).then(response => {
                this.reload();
            }).catch(function (error) {
-               if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+               if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                else Swal.fire('Error', 'Something went wrong!', 'error');
            });
         },

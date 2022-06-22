@@ -14,8 +14,8 @@ Vue.component("client-home", {
              sortBy: "",
              sortByList: ["...", "Name", "Rate", "Country", "City", "Price"],
              direction: "",
-             fromDate: 7,
-             toDate: 7,
+             fromDate: "",
+             toDate: "",
              error_date: false,
              error_radio: false,
              cottage_pictures: [],
@@ -25,12 +25,17 @@ Vue.component("client-home", {
              default_ship: "images/ship_icon.png",
              default_adventure: "images/fishing_icon.jpg",
              token: {},
-             id: 0
+             id: 0,
+             canShow: false,
+             disabled: {
+                 to: new Date()
+             },
 
            }
         },
 
 mounted() {
+        main_image = $("body").css("background-image", "url('images/set.webp')");
         this.token = JSON.parse(localStorage.getItem("jwt"));
         this.id = JSON.parse(localStorage.getItem("jwt")).userId,
         this.reload();
@@ -60,20 +65,21 @@ mounted() {
                    </div>
                    <p v-if="error_radio" class="text-danger">You must choose entity type.</p>
 
-                   <div class="row py-2">
+                   <div class="py-1">
                        <div class="form-group col-md-5 ">
                            <label for="start-date">Start date</label>
-                           <vuejs-datepicker v-model="fromDate" format="dd.MM.yyyy." id="start-date" required style="width: 50px"></vuejs-datepicker>
+                           <vuejs-datepicker v-model="fromDate" id="start-date" :disabled-dates="disabled"></vuejs-datepicker>
                        </div>
 
-                       <div class="form-group col-md-3">
+                       <div class="form-group col-md-5">
                            <label for="end-date">End date</label>
-                           <vuejs-datepicker v-model="toDate" format="dd.MM.yyyy." id="end-date" required></vuejs-datepicker>
+
+                           <vuejs-datepicker v-model="toDate" id="end-date" :disabled-dates="disabled"></vuejs-datepicker>
                        </div>
                    </div>
                    <p v-if="error_date" class="text-danger">You must choose start and end date.</p>
 
-                   <div class="row py-2">
+                   <div class="row py-1">
                        <div class="form-group col-md-6">
                            <label for="country" class="control-label">Country</label>
                            <input v-model="country" type="text" value='' class="col-md-10" id="country">
@@ -85,14 +91,14 @@ mounted() {
                        </div>
                    </div>
 
-                   <div class="row py-3">
+                   <div class="row py-1">
                        <div class="">
                            <label for="rate"> Rate (from)</label>
                            <input v-model="rate" type="number" value='' min="0" max="10" class="col-md-2" id="rate">
                        </div>
                    </div>
 
-                   <div class="row py-3">
+                   <div class="row py-1">
                        <div class="">
                            <label for="people"> Number of people</label>
                            <input v-model="numberOfPeople" type="number" value='' min="0"  class="col-md-2" id="people">
@@ -100,7 +106,7 @@ mounted() {
                    </div>
                    <hr/>
 
-                   <div class="row py-3">
+                   <div class="row py-1">
                        <div class="">
                            <label for="sort"> Sort by</label>
                            <select v-model="sortBy" class="mdb-select md-form">
@@ -114,7 +120,7 @@ mounted() {
                        </div>
                    </div>
                    <hr/>
-                   <div class="row mx-5">
+                   <div class="row mx-3">
                        <button type="submit" class="float-right btn btn-primary" v-on:click="searchEntites">Search</button>
                    </div>
                </form>
@@ -141,14 +147,14 @@ mounted() {
                                               <p>Rate:  </p>
                                           </div>
                                           <div class="col-8">
-                                              <h6> {{adjustRate(c.rate)}} </h6>
+                                              <h3> {{adjustRate(c.rate)}} </h3>
                                           </div>
                                       </div>
                                  </div>
                                  <div class="col-4 flex-column mt-auto mx-auto py-2">
-                                     <p class="">Price: {{c.price}} EUR</p>
-                                     <div class="text-center">
-                                         <a :href="'/index.html#/cottageDetailedView2/' + c.id + '/' + 7 + '/' + 7" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
+                                     <p style="font-size:20px;" class="">Price: {{c.price}} EUR</p>
+                                     <div v-if="canShow" class="text-center"  >
+                                         <a :href="'/index.html#/cottageDetailedView2/' + c.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
                                      </div>
                                 </div>
                             </div>
@@ -170,17 +176,17 @@ mounted() {
                                       <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
                                       <div class="row">
                                             <div class="col-2 my-auto">
-                                                <p>Rate:  </p>
+                                                <p>Rate:</p>
                                             </div>
                                             <div class="col-8">
-                                                <h6> {{adjustRate(s.rate)}}  </h6>
+                                                <h3> {{adjustRate(s.rate)}}  </h3>
                                             </div>
                                         </div>
                                  </div>
                                  <div class="col-4 flex-column mt-auto mx-auto py-2">
-                                      <p class="" style="text-align:center;">Price: {{s.price}} EUR</p>
-                                      <div class="text-center">
-                                          <a :href="'/#/shipDetailedView/' + s.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
+                                      <p style="font-size:20px;" class="">Price: {{s.price}} EUR</p>
+                                      <div v-if="canShow" class="text-center">
+                                          <a :href="'/index.html#/shipDetailedView2/' + s.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
                                       </div>
                                  </div>
                             </div>
@@ -205,14 +211,14 @@ mounted() {
                                                <p> Rate:  </p>
                                            </div>
                                            <div class="col-8">
-                                               <h1> 9.9 </h1>
+                                               <h3> {{adjustRate(a.rate)}}  </h3>
                                            </div>
                                       </div>
                                  </div>
                                  <div class="col-4 flex-column mt-auto mx-auto py-2">
-                                      <p class="" style="text-align:center;">Price: {{a.price}} EUR</p>
-                                      <div class="text-center">
-                                          <a :href="'/#/adventureDetailedView/' + a.id" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
+                                      <p style="font-size:20px;">Price: {{a.price}} EUR</p>
+                                      <div v-if="canShow" class="text-center">
+                                          <a :href="'/index.html#/adventureDetailedView/' + a.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
                                       </div>
                                  </div>
                              </div>
@@ -259,7 +265,7 @@ methods: {
                         }
                 }).catch(function (error) {
                     alert("Greskaaa u get cottages");
-                    if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                     else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
 
@@ -286,6 +292,7 @@ methods: {
                 }
             }).then(response => {
                 //alert("Duzina dobavljenih brodova je " + response.data.length);
+                this.ships = response.data;
                 for (const s of this.ships) {
                      if (!s.imagePaths || s.imagePaths.length === 0) {
                          this.ship_pictures.push(this.default_ship);
@@ -295,9 +302,10 @@ methods: {
                  }
             }).catch(function (error) {
                 alert("Greskaaa u get ships");
-                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });
+
 
             /*axios.get("api/adventures/all/").then(response => {
                  this.adventures = response.data;
@@ -311,6 +319,29 @@ methods: {
             }).catch(function (error) {
                  alert('An error occurred!');
             });*/
+
+            axios({
+                method: 'get',
+                url: "api/adventures/all/",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
+                //alert("Duzina dobavljenih avantura je " + response.data.length);
+                this.adventures = response.data;
+                for (const a of this.adventures) {
+                     if (!a.imagePaths || a.imagePaths.length === 0) {
+                         this.adventure_pictures.push(this.default_adventure);
+                     } else {
+                         this.adventure_pictures.push(a.imagePaths.at(0));
+                     }
+                 }
+            }).catch(function (error) {
+                alert("Greskaaa u get ships");
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                else Swal.fire('Error', 'Something went wrong!', 'error');
+            });
+
         },
 
         adjustRate(rate)
@@ -321,6 +352,7 @@ methods: {
         },
 
         searchEntites() {
+
             if (!this.entityType)
             {
                 this.error_radio = true;
@@ -331,6 +363,7 @@ methods: {
             }
             if (this.fromDate && this.toDate && (this.entityType))
             {
+                this.canShow = true;
                 this.cottages = [];
                 this.ships = [];
                 this.adventures = [];
@@ -338,7 +371,7 @@ methods: {
                 this.error_radio = false;
                 if (this.entityType=="cottage")      // ako su odabrane vikendice, nuliracemo ostale i samo njih prikazati
                 {
-                    axios.post("api/cottages/filter", {
+                    /*axios.post("api/cottages/filter", {
                          fromDate: this.fromDate,
                          toDate: this.toDate,
                          country: this.country,
@@ -352,12 +385,36 @@ methods: {
                     this.cottages = response.data;
                     }).catch(function (error) {
                          alert('An error occurred!');
-                    });
+                    });*/
+
+                    alert(this.fromDate);
+                    axios({
+                       method: 'post',
+                       url: "api/cottages/filter/", data: {
+                            fromDate: this.fromDate,
+                             toDate: this.toDate,
+                             country: this.country,
+                             city: this.city,
+                             rate: this.rate,
+                             numberOfPeople: this.numberOfPeople,
+                             sortByList: this.sortByList,
+                             sortBy: this.sortBy,
+                             direction: this.direction,
+                        },
+                       headers: {
+                           Authorization: "Bearer " + this.token.accessToken
+                       }
+                   }).then(response => {
+                       this.cottages = response.data;
+                   }).catch(function (error) {
+                       if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                       else Swal.fire('Error', 'Something went wrong!', 'error');
+                   });
 
                 }
                 else if (this.entityType=="ship")
                     {
-                        axios.post("api/ships/filter", {
+                        /*axios.post("api/ships/filter", {
                              fromDate: this.fromDate,
                              toDate: this.toDate,
                              country: this.country,
@@ -370,10 +427,71 @@ methods: {
                         this.ships = response.data;
                         }).catch(function (error) {
                              alert('An error occurred!');
-                        });
+                        });*/
+                        axios({
+                           method: 'post',
+                           url: "api/ships/filter/", data: {
+                                fromDate: this.fromDate,
+                                 toDate: this.toDate,
+                                 country: this.country,
+                                 city: this.city,
+                                 rate: this.rate,
+                                 numberOfPeople: this.numberOfPeople,
+                                 sortByList: this.sortByList,
+                                 sortBy: this.sortBy,
+                                 direction: this.direction,
+                            },
+                           headers: {
+                               Authorization: "Bearer " + this.token.accessToken
+                           }
+                       }).then(response => {
+                           this.ships = response.data;
+                       }).catch(function (error) {
+                           if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                           else Swal.fire('Error', 'Something went wrong!', 'error');
+                       });
                     }
-            }
 
-        }
-          },
+                else if (this.entityType=="adventure")
+                    {
+                        /*axios.post("api/ships/filter", {
+                             fromDate: this.fromDate,
+                             toDate: this.toDate,
+                             country: this.country,
+                             city: this.city,
+                             rate: this.rate,
+                             sortByList: this.sortByList,
+                             sortBy: this.sortBy,
+                             direction: this.direction,
+                        }).then(response => {
+                        this.ships = response.data;
+                        }).catch(function (error) {
+                             alert('An error occurred!');
+                        });*/
+                        axios({
+                           method: 'post',
+                           url: "api/adventures/filter/", data: {
+                                fromDate: this.fromDate,
+                                 toDate: this.toDate,
+                                 country: this.country,
+                                 city: this.city,
+                                 rate: this.rate,
+                                 numberOfPeople: this.numberOfPeople,
+                                 sortByList: this.sortByList,
+                                 sortBy: this.sortBy,
+                                 direction: this.direction,
+                            },
+                           headers: {
+                               Authorization: "Bearer " + this.token.accessToken
+                           }
+                       }).then(response => {
+                           this.adventures = response.data;
+                       }).catch(function (error) {
+                           if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                           else Swal.fire('Error', 'Something went wrong!', 'error');
+                       });
+                    }
+                }
+            }
+        },
     });

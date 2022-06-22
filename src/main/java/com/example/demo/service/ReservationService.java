@@ -12,7 +12,9 @@ import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.repository.ReservationRepository;
 import com.example.demo.service.emailSenders.EmailSender;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -104,11 +106,20 @@ public class ReservationService {
         System.out.println("BILA SAM U NOTIFICIRANJUUUUUUUUUUUUUUUUU");
         System.out.println("Email je " + reservation.getClient().getEmail());
         String to = reservation.getClient().getEmail();
-        String subject = "Reservation confirmation";
-        String text = "To confirm reservation for\n";
-        text += reservation.getOffer().getName() + "\nPlease click the link below\n";
-        text += "http://localhost:8000/#/confirmReservation/" + reservation.getId().toString();
-        emailSender.send(to, subject, text);
+        //String subject = "Reservation";
+        //String text = "To confirm reservation for\n";
+        //text += reservation.getOffer().getName() + "\nPlease click the link below\n";
+        //text += "http://localhost:8000/#/confirmReservation/" + reservation.getId().toString();
+        //emailSender.send(to, subject, text);
+
+        //SimpleMailMessage message = new SimpleMailMessage();
+        //message.setFrom("jelenababic142@gmail.com");
+        //message.setTo(to);
+        String subject = "Reservation";
+        //message.setText("Your reservation is confirmed");
+        String text = "Your reservation is confirmed";
+        //emailSender.send(to,subject,text);
+        System.out.println("Mail sent");
     }
 
 
