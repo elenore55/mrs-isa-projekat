@@ -11,6 +11,7 @@ import com.example.demo.model.User;
 import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.service.FeedbackService;
 import com.example.demo.service.ReservationService;
+import com.example.demo.service.emailSenders.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,7 @@ import java.util.List;
 public class FeedbackController {
     private FeedbackService feedbackService;
     private ReservationService reservationService;
+    private EmailSender emailSender;
 
     @Autowired
     public FeedbackController(FeedbackService feedbackService, ReservationService reservationService)

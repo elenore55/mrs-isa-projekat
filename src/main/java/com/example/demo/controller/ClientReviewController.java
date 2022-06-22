@@ -5,6 +5,7 @@ import com.example.demo.dto.ComplaintAdminDTO;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.service.*;
+import com.example.demo.service.emailSenders.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ public class ClientReviewController {
     private ReservationService reservationService;
     private ClientService clientService;
     private PenaltyService penaltyService;
+    private EmailSender emailSender;
 
     @Autowired
     public ClientReviewController(UserService userService, ClientReviewService clientReviewService, ReservationService reservationService, ClientService clientService, PenaltyService penaltyService) {
@@ -89,6 +91,9 @@ public class ClientReviewController {
         penalty.setReason(clientReview.getContent());
         penalty.setDate(LocalDate.now());
         penaltyService.save(penalty);
+        emailSender.send(client.getEmail(), "Penalty", "You recieved a penalty");
+        User u = userService.findById(clientReview.getOwnerId());
+        emailSender.send(u.getEmail(), "Penalty", "The client reciaved the penalty");
         return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
     }
 

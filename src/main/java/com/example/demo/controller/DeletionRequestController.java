@@ -8,6 +8,7 @@ import com.example.demo.model.DeletionRequest;
 import com.example.demo.model.User;
 import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.service.DeletionRequestService;
+import com.example.demo.service.emailSenders.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ import java.util.List;
 @RequestMapping(value = "api/deletionRequests")
 public class DeletionRequestController {
     private DeletionRequestService deletionRequestService;
+    private EmailSender emailSender;
 
     @Autowired
     public DeletionRequestController (DeletionRequestService deletionRequestService)
@@ -56,6 +58,9 @@ public class DeletionRequestController {
         if(deletionRequestDTO.getStatus()==AdminApprovalStatus.APPROVED || deletionRequestDTO.getStatus()==AdminApprovalStatus.REJECTED)
             izBaze.setStatus(deletionRequestDTO.getStatus());
         izBaze = deletionRequestService.update(izBaze);
+
+        emailSender.send(izBaze.getSentBy().getEmail(), "Deletion req", izBaze.getStatus().toString());
+
         return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
     }
 
