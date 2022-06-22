@@ -77,10 +77,17 @@ public class CottageOwnerController {
         CottageOwner cottageOwner = service.findOne(idvlasnik);
         if (cottageOwner == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        ////dodato//////
+        Cottage cottage = cottageService.findOne(idcottage);
+        cottage.setReservations(null);
+        cottageService.save(cottage);
+        service.save(cottageOwner);
+        ///////////////////
         List<Reservation> allReservationsOfThisCottage = this.reservationService.findAll().stream().filter(r-> r.getOffer().getId() == idcottage).collect(Collectors.toList());
         for(Reservation r : allReservationsOfThisCottage) {
             Offer offer = new Offer();
-            offer.setId(-1);
+//            offer.setId(-1);
+            offer.setId(11);
             r.setOffer(offer);
             this.reservationService.save(r);
         }
@@ -93,7 +100,7 @@ public class CottageOwnerController {
             }
         }
 
-        Cottage cottage = cottageService.findOne(idcottage);
+        cottage = cottageService.findOne(idcottage);
         cottageOwner.getCottages().remove(cottage);
 
         service.save(cottageOwner);

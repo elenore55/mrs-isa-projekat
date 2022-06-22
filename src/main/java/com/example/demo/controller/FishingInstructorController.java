@@ -85,7 +85,8 @@ public class FishingInstructorController {
         List<Reservation> allReservationsOfThisAdventure = this.reservationService.findAll().stream().filter(r-> r.getOffer().getId() == idadventure).collect(Collectors.toList());
         for(Reservation r : allReservationsOfThisAdventure) {
             Offer offer = new Offer();
-            offer.setId(-1);
+//            offer.setId(-1);
+            offer.setId(11);
             r.setOffer(offer);
             this.reservationService.save(r);
         }

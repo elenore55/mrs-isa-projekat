@@ -75,7 +75,8 @@ public class ShipOwnerController {
         List<Reservation> allReservationsOfThisShip = this.reservationService.findAll().stream().filter(r-> r.getOffer().getId() == idbrod).collect(Collectors.toList());
         for(Reservation r : allReservationsOfThisShip) {
             Offer offer = new Offer();
-            offer.setId(-1);
+//            offer.setId(-1);
+            offer.setId(11);
             r.setOffer(offer);
             this.reservationService.save(r);
         }

@@ -113,7 +113,6 @@ insert into fishing_equipment (amount, name) values (10,'Hooks');
 insert into offer (additional_info, description, name, price_list, address_id, version) values ('additional info', 'neki opis', 'PonudaSQL', 500, 4, 0);
 insert into adventure (max_people,id,fishing_instructor_id) values (10, 4, 3);
 insert into adventure_fishing_equipments(adventure_id,fishing_equipments_id) values(4,2);
-insert into adventure_images (adventure_id, images_id) values (4, 21);
 insert into adventure_images (adventure_id, images_id) values (4, 22);
 insert into adventure_images (adventure_id, images_id) values (4, 23);
 insert into adventure_images (adventure_id, images_id) values (4, 24);
@@ -272,4 +271,13 @@ insert into profile_data (email, name, password, phone_number, surname, address_
 insert into registration_request (approval_status,date_time,reason,registration_type,profile_data_id) values ('PENDING', '20220520 10:10:00 AM','zelim da budem registrovaaaaan' ,'FISHING_OWNER', 9);
 
 ---------Loyalty program----------------
-insert into coefficients(owner_reservation_points,percentage_client_gold,percentage_client_silver,percentage_owner_gold,percentage_owner_silver,required_points_gold,required_points_silver,reservation_percentage,user_reservation_points) values (10,2.2,3.4,4.1,5.3,3,4,6.9,8)
+insert into coefficients(owner_reservation_points,percentage_client_gold,percentage_client_silver,percentage_owner_gold,percentage_owner_silver,required_points_gold,required_points_silver,reservation_percentage,user_reservation_points) values (10,2.2,3.4,4.1,5.3,3,4,6.9,8);
+
+-- ////// IZGLEDA RUZNO ALI SAD ZASAD MORA OSTATI OVA LINIJA ////////// BROJ 11
+insert into offer (additional_info, description, name, price_list, address_id) values ('-1', '-1', '-1', 0, 1);
+-- ////////////////////////////////////////////////////////////////////
+
+insert into offer (additional_info, description, name, price_list, address_id, version) values ('additional info', 'neki opis', 'NovaPonuda', 500, 4, 0);
+insert into adventure (max_people,id,fishing_instructor_id) values (10, 12, 3);
+insert into adventure_fishing_equipments(adventure_id,fishing_equipments_id) values(12,2);
+insert into adventure_images (adventure_id, images_id) values (12, 21);
