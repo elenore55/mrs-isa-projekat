@@ -146,14 +146,6 @@ Vue.component("edit-profile", {
 
                if (this.allFieldAreFilled())
                {
-                    alert(this.user.address.street + " je ulica");
-                    alert(this.user.name + " je ime ");
-
-                    alert(this.user.surname + " je prezime ");
-                    alert(this.user.email + " je mejl ");
-
-                    alert(this.user.address.country + " je drzava ");
-                    alert(this.user.address.city + " je grad ");
 
                     /*axios.post("api/users/edit", {
                     email: this.user.email,
@@ -195,7 +187,7 @@ Vue.component("edit-profile", {
                         confirmButtonText: 'OK'
                       })
                    }).catch(function (error) {
-                       if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                       if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                        else Swal.fire('Error', 'Something went wrong!', 'error');
                    });
                }
@@ -212,7 +204,7 @@ Vue.component("edit-profile", {
               }).then(response => {
                   this.user = response.data;
               }).catch(function (error) {
-                  if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                  if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                   else Swal.fire('Error', 'Something went wrong!', 'error');
               });
 
@@ -220,14 +212,7 @@ Vue.component("edit-profile", {
 
            allFieldAreFilled()
            {
-           /*alert("Provjera unutar funkcije");
-           alert(this.user.email);
-           alert(this.user.name);
-           alert(this.user.surname);
-           alert(this.user.address.street);
-           alert(this.user.address.city);
-           alert(this.user.address.county);
-           alert(this.user.phoneNumber);*/
+
 
                 return this.user.email && this.user.name && this.user.surname && this.user.address.street
                 && this.user.address.city && this.user.address.country && this.user.phoneNumber;

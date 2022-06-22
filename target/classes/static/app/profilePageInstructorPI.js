@@ -93,7 +93,8 @@ Vue.component("profile-page-instructorpi",{
                     reason: this.reason,
                 }).then(function (response) {
                     if (response.data == "OK") {
-                        location.replace('http://localhost:8000/#/deleteProfileMessage');
+                        //location.replace('http://localhost:8000/#/deleteProfileMessage');
+                        this.$router.push({path: '/deleteProfileMessage/'});
                     }
                 }).catch(function (error) {
                     alert('An error occurred!');

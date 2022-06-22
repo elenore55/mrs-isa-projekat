@@ -18,6 +18,8 @@ public class AdventureDTO {
     private List<String> rules;
     private List<FishingEquipmentDTO> fishingEquipmentList;
     private Integer maxPeople;
+    private Double rate;
+    private List<ReviewDTO> reviews;
 
     public AdventureDTO()
     {
@@ -50,6 +52,7 @@ public class AdventureDTO {
         this.imagePaths = new ArrayList<>();
         for(Image image : adventure.getImages())
             imagePaths.add(image.getPath());
+        handleNoImages(adventure);
 
         this.rules = new ArrayList<>();
         for(Rule rule : adventure.getRules())
@@ -59,6 +62,34 @@ public class AdventureDTO {
         for(FishingEquipment fishingEquipment : adventure.getFishingEquipments())
             fishingEquipmentList.add(new FishingEquipmentDTO(fishingEquipment));
         this.maxPeople = adventure.getMaxPeople();
+        this.rate = adventure.getRateOrNegativeOne();
+        this.reviews = new ArrayList<>();
+        for (Feedback fb : adventure.getReviews()) {
+            this.reviews.add(new ReviewDTO(fb));
+        }
+    }
+
+    private void handleNoImages(Adventure a) {
+        if (a.getImages().size()==0)
+        {
+            this.imagePaths.add("images/fishing_icon.jpg");
+        }
+    }
+
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
+    }
+
+    public List<ReviewDTO> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<ReviewDTO> reviews) {
+        this.reviews = reviews;
     }
 
     public Integer getId() {

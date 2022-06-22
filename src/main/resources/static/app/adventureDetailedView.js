@@ -14,20 +14,23 @@ Vue.component('adventure-detailed-view', {
     },
 
     mounted() {
+        alert("1");
         this.token = JSON.parse(localStorage.getItem("jwt"));
         this.id = this.token.userId;
 
         this.offerId = this.$route.params.id;
         this.fromDate = this.$route.params.fromDate;
         this.toDate = this.$route.params.toDate;
+        alert("2");
         axios({
             method: "get",
-            url: "api/adventures/all/" + this.offerId,
+            url: "api/adventures/getByIdForDetailed/" + this.offerId,
             headers: {
                 Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
             }
         }).then(response => {
             this.adventure = response.data;
+            alert("3");
         }).catch(function (error) {
             if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
             else Swal.fire('Error', 'Something went wrong!', 'error');
@@ -39,7 +42,7 @@ Vue.component('adventure-detailed-view', {
     <div style="background-color: #f2e488">
         <client-navbar></client-navbar>
         <div class="d-flex justify-content-center mt-5">
-            <div class="card shadow-lg my-3">
+            <div class="card shadow-lg my-3" style="width:85%">
                 <div class="container card-body">
 
                     <h2 class="card-title mb-5 ms-5 mt-3">{{ adventure.name }}</h2>
@@ -200,7 +203,8 @@ Vue.component('adventure-detailed-view', {
                }).then(response => {
                    Swal.fire('Success', 'Reservation added! We have sent You an email', 'success');
                }).catch(function (error) {
-                   if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                   if (error.response.status === 401)
+                        this.$router.push({path: '/unauthorized'});
                    else Swal.fire('Error', 'Something went wrong!', 'error');
                });
             },
@@ -215,7 +219,7 @@ Vue.component('adventure-detailed-view', {
                }).then(response => {
                    Swal.fire('Success', 'You have succesfully subscribed to this entity', 'success');
                }).catch(function (error) {
-                   if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                   if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                    else Swal.fire('Error', 'Something went wrong!', 'error');
                });
             },

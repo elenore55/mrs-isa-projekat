@@ -34,6 +34,7 @@ Vue.component("client-home", {
         },
 
 mounted() {
+        main_image = $("body").css("background-image", "url('images/set.webp')");
         this.token = JSON.parse(localStorage.getItem("jwt"));
         this.id = JSON.parse(localStorage.getItem("jwt")).userId,
         this.reload();
@@ -63,21 +64,21 @@ mounted() {
                    </div>
                    <p v-if="error_radio" class="text-danger">You must choose entity type.</p>
 
-                   <div class="row py-2">
+                   <div class="py-1">
                        <div class="form-group col-md-5 ">
                            <label for="start-date">Start date</label>
-                           <vuejs-datepicker v-model="fromDate" format="dd.MM.yyyy." id="start-date" :disabled-dates="disabled"></vuejs-datepicker>
+                           <vuejs-datepicker v-model="fromDate" id="start-date" :disabled-dates="disabled"></vuejs-datepicker>
                        </div>
 
-                       <div class="form-group col-md-3">
+                       <div class="form-group col-md-5">
                            <label for="end-date">End date</label>
 
-                           <vuejs-datepicker v-model="toDate" format="dd.MM.yyyy." id="end-date" :disabled-dates="disabled"></vuejs-datepicker>
+                           <vuejs-datepicker v-model="toDate" id="end-date" :disabled-dates="disabled"></vuejs-datepicker>
                        </div>
                    </div>
                    <p v-if="error_date" class="text-danger">You must choose start and end date.</p>
 
-                   <div class="row py-2">
+                   <div class="row py-1">
                        <div class="form-group col-md-6">
                            <label for="country" class="control-label">Country</label>
                            <input v-model="country" type="text" value='' class="col-md-10" id="country">
@@ -89,14 +90,14 @@ mounted() {
                        </div>
                    </div>
 
-                   <div class="row py-3">
+                   <div class="row py-1">
                        <div class="">
                            <label for="rate"> Rate (from)</label>
                            <input v-model="rate" type="number" value='' min="0" max="10" class="col-md-2" id="rate">
                        </div>
                    </div>
 
-                   <div class="row py-3">
+                   <div class="row py-1">
                        <div class="">
                            <label for="people"> Number of people</label>
                            <input v-model="numberOfPeople" type="number" value='' min="0"  class="col-md-2" id="people">
@@ -104,7 +105,7 @@ mounted() {
                    </div>
                    <hr/>
 
-                   <div class="row py-3">
+                   <div class="row py-1">
                        <div class="">
                            <label for="sort"> Sort by</label>
                            <select v-model="sortBy" class="mdb-select md-form">
@@ -118,7 +119,7 @@ mounted() {
                        </div>
                    </div>
                    <hr/>
-                   <div class="row mx-5">
+                   <div class="row mx-3">
                        <button type="submit" class="float-right btn btn-primary" v-on:click="searchEntites">Search</button>
                    </div>
                </form>
@@ -145,7 +146,7 @@ mounted() {
                                               <p>Rate:  </p>
                                           </div>
                                           <div class="col-8">
-                                              <h6> {{adjustRate(c.rate)}} </h6>
+                                              <h3> {{adjustRate(c.rate)}} </h3>
                                           </div>
                                       </div>
                                  </div>
@@ -177,7 +178,7 @@ mounted() {
                                                 <p>Rate:  </p>
                                             </div>
                                             <div class="col-8">
-                                                <h6> {{adjustRate(s.rate)}}  </h6>
+                                                <h3> {{adjustRate(s.rate)}}  </h3>
                                             </div>
                                         </div>
                                  </div>
@@ -209,7 +210,7 @@ mounted() {
                                                <p> Rate:  </p>
                                            </div>
                                            <div class="col-8">
-                                               <h1> 9.9 </h1>
+                                               <h3> {{adjustRate(a.rate)}}  </h3>
                                            </div>
                                       </div>
                                  </div>
@@ -263,7 +264,7 @@ methods: {
                         }
                 }).catch(function (error) {
                     alert("Greskaaa u get cottages");
-                    if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                    if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                     else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
 
@@ -300,7 +301,7 @@ methods: {
                  }
             }).catch(function (error) {
                 alert("Greskaaa u get ships");
-                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });
 
@@ -336,7 +337,7 @@ methods: {
                  }
             }).catch(function (error) {
                 alert("Greskaaa u get ships");
-                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });
 
@@ -403,7 +404,7 @@ methods: {
                    }).then(response => {
                        this.cottages = response.data;
                    }).catch(function (error) {
-                       if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                       if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                        else Swal.fire('Error', 'Something went wrong!', 'error');
                    });
 
@@ -443,14 +444,13 @@ methods: {
                        }).then(response => {
                            this.ships = response.data;
                        }).catch(function (error) {
-                           if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                           if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                            else Swal.fire('Error', 'Something went wrong!', 'error');
                        });
                     }
 
                 else if (this.entityType=="adventure")
                     {
-                    alert("1");
                         /*axios.post("api/ships/filter", {
                              fromDate: this.fromDate,
                              toDate: this.toDate,
@@ -482,10 +482,9 @@ methods: {
                                Authorization: "Bearer " + this.token.accessToken
                            }
                        }).then(response => {
-                       alert("2");
                            this.adventures = response.data;
                        }).catch(function (error) {
-                           if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                           if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                            else Swal.fire('Error', 'Something went wrong!', 'error');
                        });
                     }

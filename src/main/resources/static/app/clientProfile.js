@@ -38,7 +38,7 @@ Vue.component("client-profile", {
                         Password:
                     </div>
                     <div class="col-6">
-                        <a href="http://localhost:8000/index.html#/changePassword/">Change password</a>
+                        <a href="javascript:void(0)" @click="$router.push({path: '/changePassword/'})"> Change password </a>
                     </div>
                 </div>
 
@@ -162,16 +162,18 @@ Vue.component("client-profile", {
            }).then(response => {
                this.user = response.data;
            }).catch(function (error) {
-               if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+               if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                else Swal.fire('Error', 'Something went wrong!', 'error');
            });
 
         },
         editProfile() {
-            location.replace('http://localhost:8000/index.html#/editProfile');
+            //location.replace('http://localhost:8000/index.html#/editProfile');
+            this.$router.push({path: '/editProfile'});
         },
         deleteProfile() {
-             location.replace('http://localhost:8000/index.html#/deleteProfile');
+             //location.replace('http://localhost:8000/index.html#/deleteProfile');
+             this.$router.push({path: '/deleteProfile'});
              }
     }
 

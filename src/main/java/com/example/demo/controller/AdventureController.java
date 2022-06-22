@@ -112,6 +112,18 @@ public class AdventureController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/getByIdForDetailed/{id}", method = RequestMethod.GET, produces = "application/json")
+    //@PreAuthorize("hasRole('SHIP')")
+    public ResponseEntity<AdventureDTO> getAdventureForDetails(@PathVariable Integer id) {
+        Adventure a = adventureService.findOne(id);
+        if (a == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        a.getImages();
+        a.getRules();
+        return new ResponseEntity<>(new AdventureDTO(a), HttpStatus.OK);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/addAdventure", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<AdventureDTO> saveAdventure(@RequestBody AdventureDTO adventureDTO) {
 

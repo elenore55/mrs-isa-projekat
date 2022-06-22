@@ -117,6 +117,8 @@ public class ReservationController {
         Offer o = offerService.findOne(offerId);
         c.addSub(o);
         o.addSub(c);
+        //userService.save(c);
+        //offerService.save(o);
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 

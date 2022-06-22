@@ -102,7 +102,8 @@ Vue.component("registration", {
                     if (response.data == "OK")
                     {
                         alert("User succesfully added");
-                        window.location = 'http://localhost:8000/#/login';
+                        //window.location = 'http://localhost:8000/#/login';
+                        this.$router.push({path: '/login'});
                     }
 
                 }).catch(function (error) {

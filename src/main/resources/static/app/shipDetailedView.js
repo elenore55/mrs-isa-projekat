@@ -209,7 +209,8 @@ methods: {
 
                  }).then(function(response) {
                      alert("Sve je proslo dobro");
-                     location.replace('http://localhost:8000/#/clientHome');
+                     //location.replace('http://localhost:8000/#/clientHome');
+                     this.$router.push({path: '/clientHome'});
                      }).catch(function (error) {
                          alert('Greska u rezervisanju broda');
                      });

@@ -13,7 +13,6 @@ Vue.component("past-reservations", {
    mounted() {
         this.token = JSON.parse(localStorage.getItem("jwt"));
         this.id = this.token.userId;
-        alert("Trenutni id je " + this.id);
         main_image = $("body").css("background-image", "url('images/set.webp')");
         main_image = $("body").css("background-size", "100% 210%");
         this.reload();
@@ -127,7 +126,7 @@ Vue.component("past-reservations", {
            }).then(response => {
                this.reservations = response.data;
            }).catch(function (error) {
-               if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+               if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                else Swal.fire('Error', 'Something went wrong!', 'error');
            });
            },
@@ -135,17 +134,20 @@ Vue.component("past-reservations", {
 
         rate(reservation)
             {
-                location.replace('http://localhost:8000/index.html#/clientRate/' + reservation.id);
+                //location.replace('http://localhost:8000/index.html#/clientRate/' + reservation.id);
+                this.$router.push({path: '/clientRate/' + reservation.id});
             },
 
         complain(reservation)
                 {
-                    location.replace('http://localhost:8000/index.html#/clientComplain/' + reservation.id);
+                    //location.replace('http://localhost:8000/index.html#/clientComplain/' + reservation.id);
+                    this.$router.push({path: '/clientComplain/' + reservation.id});
                 },
 
         viewDetails(link)
         {
-            window.location.href = 'http://localhost:8000/' + link;
+            //window.location.href = 'http://localhost:8000/' + link;
+            this.$router.push({path: '/' + link});
         },
 
         filter()

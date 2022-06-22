@@ -43,7 +43,8 @@ Vue.component("client-navbar", {
    logout()
    {
         localStorage.removeItem('jwt');
-        location.replace('http://localhost:8000/index.html#/login/');
+        //location.replace('http://localhost:8000/index.html#/login/');
+        this.$router.push({path: '/login/'});
    }
    }
 
