@@ -126,106 +126,106 @@ mounted() {
                </form>
            </div>
 
-           <div class="row">
-               <div class="col-3">
-               </div>
-               <div class="container col-9 px-5">
-                   <div class="container">
-                       <div v-for="(c, i) in cottages" class="container card m-3  border-warning border-2">
-                            <div class="row pb-3">
-                                 <div class="col-3 mt-2">
-                                       <img :src="cottage_pictures.at(i)" class="card-img rounded-3 mt-3" width="200" height="200"  alt="cottage image">
-                                       <p class="ms-2 mt-3">{{ c.description }}</p>
-                                 </div>
-                                 <div class="col-5 card-body container">
-                                      <h3 class="card-title mb-2">{{ c.name }}</h3>
-                                      <p class="card-text mt-2 mb-4 h5">{{ c.address.street }}, {{ c.address.city }}, {{ c.address.country }}</p>
-                                      <p class="card-text mb-2">Number of rooms: {{ c.rooms.length }}</p>
-                                      <p class="card-text">Number of beds: {{ c.numberOfBeds }}</p>
-                                      <div class="row ">
-                                          <div class="col-2 my-auto">
-                                              <p>Rate:  </p>
-                                          </div>
-                                          <div class="col-8">
-                                              <h3> {{adjustRate(c.rate)}} </h3>
-                                          </div>
-                                      </div>
-                                 </div>
-                                 <div class="col-4 flex-column mt-auto mx-auto py-2">
-                                     <p style="font-size:20px;" class="">Price: {{c.price}} EUR</p>
-                                     <div v-if="canShow" class="text-center"  >
-                                         <a :href="'/index.html#/cottageDetailedView2/' + c.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
-                                     </div>
-                                </div>
-                            </div>
-                       </div>
-                   </div>
-
-                    <div class="container">
-                       <div v-for="(s, i) in ships" class="container card m-3 border-warning border-2">
-                            <div class="row pb-3">
-                                 <div class="col-3 mt-2">
-                                      <img :src="ship_pictures.at(i)" class="card-img rounded-3 mt-3" width="200" height="200"  alt="ship image">
-                                      <p class="ms-2 mt-3">{{ s.description }}</p>
-                                 </div>
-                                 <div class="col-5 card-body container">
-                                      <h3 class="card-title mb-2">{{ s.name }} ({{ s.shipTypeStr }})</h3>
-                                      <p class="card-text mt-2 mb-4 h5">{{ s.address.street }}, {{ s.address.city }}, {{ s.address.country }}</p>
-                                      <p class="card-text mb-1">Capacity: {{ s.capacity }} people</p>
-                                      <p class="card-text mb-1">Length: {{ s.length }} m</p>
-                                      <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
-                                      <div class="row">
-                                            <div class="col-2 my-auto">
-                                                <p>Rate:</p>
-                                            </div>
-                                            <div class="col-8">
-                                                <h3> {{adjustRate(s.rate)}}  </h3>
-                                            </div>
+                   <div style="padding-left:370px">
+                           <div class="container">
+                               <div v-for="(c, i) in cottages" class="container card m-3  border-warning border-2">
+                                    <div class="row pb-3">
+                                         <div class="col-3 mt-2">
+                                               <img :src="cottage_pictures.at(i)" class="card-img rounded-3 mt-3" width="200" height="200"  alt="cottage image">
+                                               <p class="ms-2 mt-3">{{ c.description }}</p>
+                                         </div>
+                                         <div class="col-5 card-body container">
+                                              <h3 class="card-title mb-2">{{ c.name }}</h3>
+                                              <p class="card-text mt-2 mb-4 h5">{{ c.address.street }}, {{ c.address.city }}, {{ c.address.country }}</p>
+                                              <p class="card-text mb-2">Number of rooms: {{ c.rooms.length }}</p>
+                                              <p class="card-text">Number of beds: {{ c.numberOfBeds }}</p>
+                                              <div class="row ">
+                                                  <div class="col-2 my-auto">
+                                                      <p>Rate:  </p>
+                                                  </div>
+                                                  <div class="col-8">
+                                                      <h3> {{adjustRate(c.rate)}} </h3>
+                                                  </div>
+                                              </div>
+                                         </div>
+                                         <div class="col-4 flex-column mt-auto mx-auto py-2">
+                                             <p style="font-size:20px;" class="">Price: {{c.price}} EUR</p>
+                                             <div v-if="canShow" class="text-center"  >
+                                                 <a :href="'/index.html#/cottageDetailedView2/' + c.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
+                                             </div>
                                         </div>
-                                 </div>
-                                 <div class="col-4 flex-column mt-auto mx-auto py-2">
-                                      <p style="font-size:20px;" class="">Price: {{s.price}} EUR</p>
-                                      <div v-if="canShow" class="text-center">
-                                          <a :href="'/index.html#/shipDetailedView2/' + s.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
-                                      </div>
-                                 </div>
-                            </div>
-                       </div>
-                    </div>
+                                    </div>
+                               </div>
+
+                           </div>
+
+                           <div class="container">
+                               <div v-for="(s, i) in ships" class="container card m-3 border-warning border-2">
+                                    <div class="row pb-3">
+                                         <div class="col-3 mt-2">
+                                              <img :src="ship_pictures.at(i)" class="card-img rounded-3 mt-3" width="200" height="200"  alt="ship image">
+                                              <p class="ms-2 mt-3">{{ s.description }}</p>
+                                         </div>
+                                         <div class="col-5 card-body container">
+                                              <h3 class="card-title mb-2">{{ s.name }} ({{ s.shipTypeStr }})</h3>
+                                              <p class="card-text mt-2 mb-4 h5">{{ s.address.street }}, {{ s.address.city }}, {{ s.address.country }}</p>
+                                              <p class="card-text mb-1">Capacity: {{ s.capacity }} people</p>
+                                              <p class="card-text mb-1">Length: {{ s.length }} m</p>
+                                              <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
+                                              <div class="row">
+                                                    <div class="col-3 my-auto">
+                                                        <p>Rate:</p>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h3> {{adjustRate(s.rate)}}  </h3>
+                                                    </div>
+                                              </div>
+                                         </div>
+                                         <div class="col-4 flex-column mt-auto mx-auto py-2">
+                                              <p style="font-size:20px;" class="">Price: {{s.price}} EUR</p>
+                                              <div v-if="canShow" class="text-center">
+                                                  <a :href="'/index.html#/shipDetailedView2/' + s.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
+                                              </div>
+                                         </div>
+                                    </div>
+                               </div>
+                           </div>
 
 
-                   <div class="container col">
-                         <div v-for="(a, i) in adventures" class="container card m-3 border-warning border-2">
-                             <div class="row pb-3">
-                                 <div class="col-3 mt-2">
-                                     <img :src="adventure_pictures.at(i)" class="card-img rounded-3 mt-3" width="200" height="200">
-                                      <p class="ms-2 mt-3">{{a.description}}
-                                      </p>
+                           <div class="container">
+                                 <div v-for="(a, i) in adventures" class="container card m-3 border-warning border-2">
+                                     <div class="row pb-3">
+                                         <div class="col-3 mt-2">
+                                             <img :src="adventure_pictures.at(i)" class="card-img rounded-3 mt-3" width="200" height="200">
+                                              <p class="ms-2 mt-3">{{a.description}}
+                                              </p>
+                                         </div>
+                                         <div class="col-5 card-body container">
+                                              <h3 class="card-title mb-2">{{a.name}}</h3>
+                                              <p class="card-text mt-2 mb-4 h5">{{a.address.street}}, {{a.address.city}}, {{a.address.country}}</p>
+                                              <p class="card-text mb-2">Max number of people: {{a.maxPeople}}</p>
+                                              <div class="row ">
+                                                   <div class="col-3 my-auto">
+                                                       <p> Rate:  </p>
+                                                   </div>
+                                                   <div class="col-8">
+                                                       <h3> {{adjustRate(a.rate)}}  </h3>
+                                                   </div>
+                                              </div>
+                                         </div>
+                                         <div class="col-4 flex-column mt-auto mx-auto py-2">
+                                              <p style="font-size:20px;">Price: {{a.price}} EUR</p>
+                                              <div v-if="canShow" class="text-center">
+                                                  <a :href="'/index.html#/adventureDetailedView/' + a.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
+                                              </div>
+                                         </div>
+                                     </div>
                                  </div>
-                                 <div class="col-5 card-body container">
-                                      <h3 class="card-title mb-2">{{a.name}}</h3>
-                                      <p class="card-text mt-2 mb-4 h5">{{a.address.street}}, {{a.address.city}}, {{a.address.country}}</p>
-                                      <p class="card-text mb-2">Max number of people: {{a.maxPeople}}</p>
-                                      <div class="row ">
-                                           <div class="col-2 my-auto">
-                                               <p> Rate:  </p>
-                                           </div>
-                                           <div class="col-8">
-                                               <h3> {{adjustRate(a.rate)}}  </h3>
-                                           </div>
-                                      </div>
-                                 </div>
-                                 <div class="col-4 flex-column mt-auto mx-auto py-2">
-                                      <p style="font-size:20px;">Price: {{a.price}} EUR</p>
-                                      <div v-if="canShow" class="text-center">
-                                          <a :href="'/index.html#/adventureDetailedView/' + a.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
-                                      </div>
-                                 </div>
-                             </div>
-                         </div>
+                           </div>
+
+
                    </div>
-               </div>
-           </div>
+
        </div>
    </div>
    `,
@@ -264,7 +264,7 @@ methods: {
                             }
                         }
                 }).catch(function (error) {
-                    alert("Greskaaa u get cottages");
+                    // alert("Greskaaa u get cottages");
                     if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                     else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
@@ -300,8 +300,8 @@ methods: {
                          this.ship_pictures.push(s.imagePaths.at(0));
                      }
                  }
-            }).catch(function (error) {
-                alert("Greskaaa u get ships");
+            }).catch(error => {
+                // alert("Greskaaa u get ships");
                 if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });
@@ -348,7 +348,7 @@ methods: {
         {
             if (rate==-1)
             return "Not rated";
-            return rate;
+            return rate.toFixed(1);
         },
 
         searchEntites() {

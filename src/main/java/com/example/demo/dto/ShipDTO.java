@@ -4,6 +4,7 @@ import com.example.demo.model.*;
 import com.example.demo.model.enums.ShipType;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -243,7 +244,8 @@ public class ShipDTO {
     }
 
     public Double getRate() {
-        return rate;
+        DecimalFormat df = new DecimalFormat("#.#");
+        return Double.valueOf(df.format(rate));
     }
 
     public void setRate(Double rate) {

@@ -102,7 +102,7 @@ Vue.component("cottages-view-owner", {
                                         <span v-if="c.rate != -1" class="badge bg-primary my-1">
                                             <div class="d-flex justify-content-start">
                                                 <h6 class="d-flex align-items-center"><i class="fa fa-star"></i></h6>
-                                                <h3>&nbsp;{{ c.rate }}</h3>
+                                                <h3>&nbsp;{{ c.rate.toFixed(1) }}</h3>
                                             </div>
                                         </span>
                                         <h6 v-if="c.rate != -1">{{ c.reviews.length }} reviews</h6>

@@ -95,7 +95,7 @@ Vue.component("ships-view-owner", {
                                         <span v-if="s.rate != -1" class="badge bg-primary my-2">
                                             <div class="d-flex justify-content-start">
                                                 <h6 class="d-flex align-items-center"><i class="fa fa-star"></i></h6>
-                                                <h3>&nbsp;{{ s.rate }}</h3>
+                                                <h3>&nbsp;{{ s.rate.toFixed(1) }}</h3>
                                             </div>
                                         </span>
                                         <h6 v-if="s.rate != -1">{{ s.reviews.length }} reviews</h6>

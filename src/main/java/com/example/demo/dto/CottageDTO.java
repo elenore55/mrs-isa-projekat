@@ -3,6 +3,7 @@ package com.example.demo.dto;
 import com.example.demo.model.*;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -177,7 +178,8 @@ public class CottageDTO {
     }
 
     public Double getRate() {
-        return rate;
+        DecimalFormat df = new DecimalFormat("#.#");
+        return Double.valueOf(df.format(rate));
     }
 
     public void setRate(Double rate) {

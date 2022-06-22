@@ -43,7 +43,7 @@ Vue.component('cottage-profile', {
                                     <span v-if="cottage.rate != -1" class="badge bg-primary my-2">
                                         <div class="d-flex justify-content-start">
                                             <h6 class="d-flex align-items-center"><i class="fa fa-star"></i></h6>
-                                            <h2>&nbsp;{{ cottage.rate }}</h2>
+                                            <h2>&nbsp;{{ cottage.rate.toFixed(1) }}</h2>
                                         </div>
                                     </span>
                                     <u><a data-bs-toggle="modal" href="javascript:void(0)" @click="displayReviews" style="cursor: pointer; color: #0a53be"><h6 v-if="cottage.rate != -1">{{ cottage.reviews.length }} reviews</h6></a></u>
