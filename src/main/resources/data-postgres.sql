@@ -111,10 +111,10 @@ insert into price_list (amount, start_date) values (500, '20220501 00:00:01 AM')
 insert into offer_price_history (offer_id, price_history_id) values (3, 6);
 
 
-insert into profile_data (email,name,password,phone_number,surname,address_id) values ('emailInstr@gmail.com','ImeInstruktora','$2a$10$M9e44e0uS7tE34vlkKMGxulqdSGey86502fkLNbUt60A9hc/peUj6','06444124214','PrezimeInstruktora',6);
+insert into profile_data (email,name,password,phone_number,surname,address_id) values ('milica.popovic55+420@hotmail.com','ImeInstruktora','$2a$10$M9e44e0uS7tE34vlkKMGxulqdSGey86502fkLNbUt60A9hc/peUj6','06444124214','PrezimeInstruktora',6);
 insert into my_users (category,number_of_points,profile_data_id,role_id) values ('REGULAR',0,3,5);
 
-insert into profile_data (email,name,password,phone_number,surname,address_id) values ('emailAdmin@gmail.com','Imeadmin','$2a$10$M9e44e0uS7tE34vlkKMGxulqdSGey86502fkLNbUt60A9hc/peUj6','06444144444','PrezimeAdmin',7);
+insert into profile_data (email,name,password,phone_number,surname,address_id) values ('milica.popovic55+69@hotmail.com','Imeadmin','$2a$10$M9e44e0uS7tE34vlkKMGxulqdSGey86502fkLNbUt60A9hc/peUj6','06444144444','PrezimeAdmin',7);
 insert into my_users (category,number_of_points,profile_data_id,role_id) values ('REGULAR',0,4,2);
 insert into admin (is_main, id) values (true , 4);
 
@@ -277,10 +277,10 @@ insert into reservation (offer_id, client_id, reservation_status, start_date_tim
 insert into feedback (comment, rating, status) values ('Pretty good', 8, 'PENDING');
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (4, 5, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM', 6);
 
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('korisnikNovi@gmail.com', 'Novak', '$2a$10$M9e44e0uS7tE34vlkKMGxulqdSGey86502fkLNbUt60A9hc/peUj6', '064440044', 'Prezimic', 18);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic55+10@hotmail.com', 'Novak', '$2a$10$M9e44e0uS7tE34vlkKMGxulqdSGey86502fkLNbUt60A9hc/peUj6', '064440044', 'Prezimic', 18);
 insert into registration_request (approval_status,date_time,reason,registration_type,profile_data_id) values ('PENDING', '20220520 10:10:00 AM','zelim da budem registrovaaaaan' ,'SHIP_OWNER', 8);
 -------- Mislim da ovo mora biti odradjeno kad se potvrdi zahtev za registrovanje --------
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('korisnikNovi2@gmail.com', 'Novakkk', '$2a$10$M9e44e0uS7tE34vlkKMGxulqdSGey86502fkLNbUt60A9hc/peUj6', '064440044', 'Prezimic', 19);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic55+211@hotmail.com', 'Novakkk', '$2a$10$M9e44e0uS7tE34vlkKMGxulqdSGey86502fkLNbUt60A9hc/peUj6', '064440044', 'Prezimic', 19);
 insert into registration_request (approval_status,date_time,reason,registration_type,profile_data_id) values ('PENDING', '20220520 10:10:00 AM','zelim da budem registrovaaaaan' ,'FISHING_OWNER', 9);
 
 ---------Loyalty program----------------

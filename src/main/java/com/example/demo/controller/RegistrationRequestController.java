@@ -7,6 +7,7 @@ import com.example.demo.model.*;
 import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.model.enums.RegistrationType;
 import com.example.demo.service.*;
+import com.example.demo.service.emailSenders.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +28,10 @@ public class RegistrationRequestController {
     private ShipOwnerService shipOwnerService;
     private FishingInstructorService fishingInstructorService;
     private AddressService addressService;
+    private EmailSender emailSender;
 
     @Autowired
-    public RegistrationRequestController(RegistrationRequestService service, UserService userService, Profile_DataService profile_dataService, CottageOwnerService cottageOwnerService, ShipOwnerService shipOwnerService, FishingInstructorService fishingInstructorService, AddressService addressService) {
+    public RegistrationRequestController(RegistrationRequestService service, UserService userService, Profile_DataService profile_dataService, CottageOwnerService cottageOwnerService, ShipOwnerService shipOwnerService, FishingInstructorService fishingInstructorService, AddressService addressService, EmailSender emailSender) {
         this.service = service;
         this.userService = userService;
         this.profile_dataService = profile_dataService;
@@ -37,6 +39,7 @@ public class RegistrationRequestController {
         this.shipOwnerService = shipOwnerService;
         this.fishingInstructorService = fishingInstructorService;
         this.addressService = addressService;
+        this.emailSender = emailSender;
     }
 
     @Transactional
@@ -95,6 +98,7 @@ public class RegistrationRequestController {
             profileData.getAddress().setId(addresID);
             userService.saveOwners(profileData,requestAdminDTO.getType());
         }
+        emailSender.send(requestAdminDTO.getEmail(), "Registration", requestAdminDTO.getStatus().toString());
 
         return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
     }
