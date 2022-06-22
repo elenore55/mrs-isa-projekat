@@ -25,17 +25,19 @@ public class AdventureController {
     private ReservationService reservationService;
     private OfferService offerService;
     private UserService userService;
+    private AddressService addressService;
 
     @Autowired
     public AdventureController(AdventureService adventureService, FishingInstructorService fishingInstructorService,
                                FishingEquipmentService fishingEquipmentService, ReservationService reservationService,
-                               OfferService offerService, UserService userService) {
+                               OfferService offerService, UserService userService, AddressService addressService) {
         this.adventureService = adventureService;
         this.fishingInstructorService = fishingInstructorService;
         this.fishingEquipmentService = fishingEquipmentService;
         this.reservationService = reservationService;
         this.offerService = offerService;
         this.userService = userService;
+        this.adventureService = adventureService;
     }
 
     @GetMapping(value = "/allInstructorsAdventures/{id}")
@@ -102,18 +104,6 @@ public class AdventureController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<AdventureDTO> getAdventure(@PathVariable Integer id) {
-
-        Adventure adventure = adventureService.findOne(id);
-
-        // adventure must exist
-        if (adventure == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.OK);
-    }
 
     @ResponseBody
     @RequestMapping(path = "/addAdventure/{id}", method = RequestMethod.POST, consumes = "application/json")
@@ -123,8 +113,13 @@ public class AdventureController {
 
 
         adventure.setName(adventureDTO.getName());
-        adventure.setAddress(new Address(adventureDTO.getAddress().getStreet(),
+
+        Address address = addressService.getAddress(new Address(adventureDTO.getAddress().getStreet(),
                 adventureDTO.getAddress().getCity(), adventureDTO.getAddress().getCountry()));
+        adventure.setAddress(address);
+
+//        adventure.setAddress(new Address(adventureDTO.getAddress().getStreet(),
+//                adventureDTO.getAddress().getCity(), adventureDTO.getAddress().getCountry()));
         adventure.setDescription(adventureDTO.getDescription());
         adventure.setPriceList(adventureDTO.getPrice());
 
@@ -174,6 +169,19 @@ public class AdventureController {
 
         adventure = adventureService.save(adventure);
         return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<AdventureDTO> getAdventure(@PathVariable Integer id) {
+
+        Adventure adventure = adventureService.findOne(id);
+
+        // adventure must exist
+        if (adventure == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.OK);
     }
 
     @ResponseBody

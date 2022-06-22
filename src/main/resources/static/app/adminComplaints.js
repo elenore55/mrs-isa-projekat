@@ -84,7 +84,7 @@ Vue.component("admin-complaint",{
                 headers: {
                     Authorization: "Bearer " + this.token.accessToken
                 }
-            })
+            }).then(setTimeout(()=>this.$router.go(),100)).catch(console.log("Nesto nije valjano"))
             console.log("ULAZIIIIIIIIII")
         },
 
