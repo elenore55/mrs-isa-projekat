@@ -111,6 +111,10 @@ public class Reservation {
         return BigDecimal.valueOf(ChronoUnit.DAYS.between(start, end));
     }
 
+    public BigDecimal getDurationHours() {
+        return BigDecimal.valueOf(ChronoUnit.HOURS.between(start, end));
+    }
+
     public ClientReview getClientReview() {
         return clientReview;
     }
