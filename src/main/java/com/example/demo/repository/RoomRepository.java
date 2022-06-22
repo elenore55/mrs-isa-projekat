@@ -11,5 +11,5 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
     @Modifying
     @Transactional
     @Query("delete from Room r where r.cottage.id =?1")
-    public void deleteRooms(Integer cottage_id);
+    void deleteRooms(Integer cottage_id);
 }

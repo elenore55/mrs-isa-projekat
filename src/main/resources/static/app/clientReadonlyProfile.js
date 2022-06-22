@@ -6,7 +6,13 @@ Vue.component('client-readonly-profile', {
     },
 
     mounted() {
-        axios.get("api/users/getClientByEmail/" + this.$route.params.email).then(response => {
+        axios({
+            method: "get",
+            url: "api/users/getClientByEmail/" + this.$route.params.email,
+            headers: {
+                Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+            }
+        }).then(response => {
             this.client = response.data;
         }).catch(error => {
             Swal.fire('Error', 'Something went wrong!', 'error');

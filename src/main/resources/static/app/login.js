@@ -5,14 +5,15 @@ Vue.component("login", {
                email: "",
                password: "",
                error: false,
-           }
+           },
+           token: {}
        }
    },
 
    mounted() {
         main_image = $("body").css("background-image", "url('images/login3.jpg')");
         main_image = $("body").css("background-size", "100% 200%");
-       },
+   },
 
    template: `
     <div>
@@ -49,21 +50,22 @@ Vue.component("login", {
             {
                 axios.post("api/users/login", {
                      email: this.user.email,
-                     password: this.user.password,
+                     password: this.user.password
+                     }).then((response) => {
+                         this.token = response.data;
+                         localStorage.setItem("jwt", JSON.stringify(this.token));
+                         if (this.token.userRole === "ROLE_COTTAGE")
+                             this.$router.push('/cottagesViewOwner').catch(() => {});
+                         else if (this.token.userRole === "ROLE_SHIP")
+                             this.$router.push('/shipsViewOwner').catch(() => {});
+                         else if (this.token.userRole === "ROLE_CLIENT")
+                             this.$router.push('/clientHome').catch(() => {});
+                     }).catch((error) => {
+                         this.user.email = "";
+                         this.user.password = "";
+                         this.user.error = true;
+                     });
 
-                     }).then(function(response) {
-                     if(response.data=="")
-                     {
-                     } else
-                     {
-                        console.log("trebalo je da se ispise");
-                        location.replace('http://localhost:8000/#/clientHome');
-                     }
-                         }).catch(function (error) {
-                             alert('An error occurred!');
-                             // preusmjeri na stranicu za login sa greskom
-                         });
-                    this.user.error = true;
             }
           }
         },

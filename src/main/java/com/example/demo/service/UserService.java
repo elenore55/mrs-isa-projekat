@@ -2,11 +2,13 @@ package com.example.demo.service;
 
 import com.example.demo.dto.ChangePasswordDTO;
 import com.example.demo.dto.EditProfileDTO;
+import com.example.demo.dto.RegistrationDTO;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.Category;
 import com.example.demo.model.enums.RegistrationType;
 import com.example.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,9 +23,12 @@ public class UserService {
     private ShipOwnerRepository shipOwnerRepository;
     private Profile_DataRepository profileDataRepository;
     private AddressRepository addressRepository;
+    private RoleService roleService;
 
     @Autowired
-    public UserService(UserRepository userRepository, ClientRepository clientRepository, FishingInstructorRepository fishingInstructorRepository, CottageOwnerRepository cottageOwnerRepository, ShipOwnerRepository shipOwnerRepository, Profile_DataRepository profileDataRepository, AddressRepository addressRepository) {
+    public UserService(UserRepository userRepository, ClientRepository clientRepository, FishingInstructorRepository fishingInstructorRepository
+                       Profile_DataRepository profileDataRepository, AddressRepository addressRepository, RoleService roleService,
+                      CottageOwnerRepository cottageOwnerRepository, ShipOwnerRepository shipOwnerRepository) {
         this.userRepository = userRepository;
         this.clientRepository = clientRepository;
         this.fishingInstructorRepository = fishingInstructorRepository;
@@ -31,6 +36,7 @@ public class UserService {
         this.shipOwnerRepository = shipOwnerRepository;
         this.profileDataRepository = profileDataRepository;
         this.addressRepository = addressRepository;
+        this.roleService = roleService;
     }
 //    public UserService(UserRepository userRepository, ClientRepository clientRepository,
 //                       Profile_DataRepository profileDataRepository, AddressRepository addressRepository) {
@@ -41,7 +47,10 @@ public class UserService {
 //    }
 
 
-    public User save(User user){
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    public User save(User user) {
         Client c = new Client();
         c.setProfileData(user.getProfileData());
         c.setNumberOfPoints(0);
@@ -84,6 +93,23 @@ public class UserService {
             return res;
         }
         return null;
+
+    public User save(RegistrationDTO dto) {
+        User user = new User();
+        ProfileData pd = new ProfileData();
+        pd.setName(dto.getName());
+        pd.setSurname(dto.getSurname());
+        pd.setEmail(dto.getEmail());
+        pd.setPassword(passwordEncoder.encode(dto.getPassword()));
+        Address a = new Address(dto.getStreet(), dto.getCity(), dto.getCountry());
+        pd.setAddress(a);
+        pd.setPhoneNumber(dto.getPhone());
+        user.setProfileData(pd);
+        user.setNumberOfPoints(0);
+        user.setCategory(Category.REGULAR);
+        List<Role> roles = roleService.findByName("ROLE_" + dto.getUserRole().toUpperCase());
+        user.setRole(roles.get(0));
+        return userRepository.save(user);
     }
 
     public String findUserToken(String email, String password) {
@@ -93,24 +119,18 @@ public class UserService {
         return "";
     }
 
-    /*public Client findClientByEmail(String email) {
-        ProfileData pd = profileDataRepository.getByEmail(email);
-        if (pd == null) return null;
-        return clientRepository.findByProfileDataId(pd.getId());
-    }*/
 
     private String generateTokenById(Integer id) {
         // ovdje sad nisam sigurna kako ide, zasad samo id
         return id.toString();
     }
 
-    private boolean isValidPassword(String password, String tabelar) {
+    public boolean isValidPassword(String password, String tabelar) {
         // ovdje treba hesirati unijetu lozinku i vidjeti da li se poklapa sa ovom iz tabele
         return password.equals(tabelar);
     }
 
     public boolean isAlreadyRegistered(String email) {
-        List<ProfileData> svi = profileDataRepository.findAll();
         ProfileData pd = profileDataRepository.getByEmail(email);
         return pd != null;
     }
@@ -123,7 +143,7 @@ public class UserService {
 
     public void changePassword(ChangePasswordDTO changePasswordDTO) {
         // sad smo sve validirali i treba samo da upisemo novu lozinku na odgovarajuce mjesto
-        String hashed = changePasswordDTO.getNewPass();     // ovdje usmjesto da je samo preuzemem, treba i da je hesiram
+        String hashed = passwordEncoder.encode(changePasswordDTO.getNewPass());
         System.out.println("dobro je i uzeta lozinka prije uspisa i  glasi " + hashed);
         int n = Integer.parseInt(changePasswordDTO.getId());
         profileDataRepository.changePassword(hashed, n);
@@ -131,12 +151,10 @@ public class UserService {
 
     public boolean isUsersPassword(String old, String id) {
         String currentPassword = userRepository.getById(Integer.parseInt(id)).getPassword();    // ovo nam je dalo trenutnu hesiranu lozinku
-        return isValidPassword(old, currentPassword);
+        return passwordEncoder.matches(old, currentPassword);
     }
 
     public Client findClientByEmail(String email) {
-        List<ProfileData> li = profileDataRepository.findAll();
-
         ProfileData pd = profileDataRepository.getByEmail(email);
         if (pd == null) return null;
         return clientRepository.findByProfileDataId(pd.getId());
@@ -152,18 +170,21 @@ public class UserService {
     public User findOne(Integer id) {
         return userRepository.findById(id).orElseGet(null);
     }
-    public List<User> findAll() { return userRepository.findAll();}
+
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
 
     public void addReservation(Integer id, Reservation reservation) {
         User user = findOne(id);
         if (user instanceof CottageOwner) {
-            CottageOwner c = (CottageOwner)user;
+            CottageOwner c = (CottageOwner) user;
             List<Reservation> reservations = c.getReservations();
             reservations.add(reservation);
             c.setReservations(reservations);
             userRepository.save(c);
         } else if (user instanceof ShipOwner) {
-            ShipOwner c = (ShipOwner)user;
+            ShipOwner c = (ShipOwner) user;
             List<Reservation> reservations = c.getReservations();
             reservations.add(reservation);
             c.setReservations(reservations);

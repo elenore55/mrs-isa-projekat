@@ -2,8 +2,8 @@ package com.example.demo.model;
 
 import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.model.enums.ReservationStatus;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -25,16 +25,15 @@ public class Offer {
     @Column
     protected String name;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id")
     protected Address address;
 
     @Column
     protected String description;
 
-
-    @OneToMany(cascade = CascadeType.ALL)        //izmenjeno
-    protected List<PriceList> priceHistory;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    protected List<PriceList> priceHistory = new ArrayList<>();
 
     @Column
     protected BigDecimal priceList;
@@ -53,6 +52,15 @@ public class Offer {
 
     @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     protected List<Reservation> reservations = new ArrayList<>();
+
+    @Version
+    private Integer version;
+
+    private Integer numberOfReservations;
+
+    private Integer numberOfFastReservations;
+
+    private Integer numberOfPriceLists;
 
     public Offer() {
     }
@@ -153,6 +161,8 @@ public class Offer {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
+        if (reservations == null) this.numberOfReservations = 0;
+        else this.numberOfReservations = reservations.size();
     }
 
     public List<PriceList> getPriceHistory() {
@@ -161,20 +171,74 @@ public class Offer {
 
     public void setPriceHistory(List<PriceList> priceHistory) {
         this.priceHistory = priceHistory;
+        if (priceHistory == null) this.numberOfPriceLists = 0;
+        else this.numberOfPriceLists = priceHistory.size();
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     public Double getRateOrNegativeOne() {
         double sum = 0;
         int n = 0;
-        for(Reservation r : getReservations())
-        {
-            if (r.getFeedback()!= null)
-            {
+        for (Reservation r : getReservations()) {
+            if (r.getFeedback() != null) {
                 sum += r.getFeedback().getRating();
                 n++;
             }
         }
-        if (n==0) return -1.0;
-        return sum/n;
+        if (n == 0) return -1.0;
+        return sum / n;
     }
+
+    public Integer getNumberOfReservations() {
+        return numberOfReservations;
+    }
+
+    public void setNumberOfReservations(Integer numberOfReservations) {
+        this.numberOfReservations = numberOfReservations;
+    }
+
+    public Integer getNumberOfPriceLists() {
+        return numberOfPriceLists;
+    }
+
+    public void setNumberOfPriceLists(Integer numberOfPriceLists) {
+        this.numberOfPriceLists = numberOfPriceLists;
+    }
+
+    public void incNumberOfReservations() {
+        if (this.numberOfReservations == null) this.numberOfReservations = 0;
+        this.numberOfReservations++;
+    }
+
+    public Integer getNumberOfFastReservations() {
+        return numberOfFastReservations;
+    }
+
+    public void setNumberOfFastReservations(Integer numberOfFastReservations) {
+        this.numberOfFastReservations = numberOfFastReservations;
+    }
+
+    public void incNumberOfFastReservations() {
+        if (this.numberOfFastReservations == null) this.numberOfFastReservations = 0;
+        this.numberOfFastReservations++;
+    }
+
+    public void incNumberOfPricelists() {
+        if (this.numberOfPriceLists == null) this.numberOfPriceLists = 0;
+        this.numberOfPriceLists++;
+    }
+
+    public void addReservation(Reservation r)
+    {
+        this.reservations.add(r);
+        this.numberOfReservations = this.reservations.size();
+    }
+
 }

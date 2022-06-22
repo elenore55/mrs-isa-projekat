@@ -66,7 +66,7 @@ public class CottageDTO {
             this.availableEnd = av.getEnd();
         }
         this.rate = cottage.getRateOrNegativeOne();
-        this.editable = cottage.hasFutureReservations();
+        this.editable = !cottage.hasFutureReservations();
         this.reviews = new ArrayList<>();
         for (Feedback fb : cottage.getReviews()) {
             this.reviews.add(new ReviewDTO(fb));
@@ -106,6 +106,7 @@ public class CottageDTO {
     }
 
     public List<RoomDTO> getRooms() {
+        if (rooms == null) rooms = new ArrayList<>();
         return rooms;
     }
 
@@ -122,6 +123,7 @@ public class CottageDTO {
     }
 
     public List<String> getRules() {
+        if (rules == null) rules = new ArrayList<>();
         return rules;
     }
 
@@ -146,6 +148,7 @@ public class CottageDTO {
     }
 
     public List<String> getImagePaths() {
+        if (imagePaths == null) imagePaths = new ArrayList<>();
         return imagePaths;
     }
 

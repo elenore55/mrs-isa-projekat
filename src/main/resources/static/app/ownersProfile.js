@@ -1,30 +1,29 @@
 Vue.component('owners-profile', {
     data() {
         return {
-            id: null,
             owner: {},
-            reason: "",
-            offer_type: ""
+            reason: ""
         }
     },
 
     mounted() {
-        this.id = this.$route.params.id;
-        axios.get("api/users/getOwner/" + this.$route.params.id).then(response => {
+        axios({
+            method: "get",
+            url: "api/users/getOwner/" + JSON.parse(localStorage.getItem("jwt")).userId,
+            headers: {
+                Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+            }
+        }).then(response => {
             this.owner = response.data;
         }).catch(function (error) {
-            Swal.fire('Error', 'Something went wrong!', 'error');
-        });
-        axios.get("api/users/getOfferType/" + this.$route.params.id).then(response => {
-            this.offer_type = response.data;
-        }).catch(error => {
-            Swal.fire('Error', 'Owner not found!', 'error');
+            if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+            else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
     template: `
     <div style="background-color: #ddc8fb; height: 100%">
-        <owners-nav :offer="offer_type"></owners-nav>
+        <owners-nav></owners-nav>
         <div class="d-flex justify-content-center">
             <div class="card px-3 py-2 m-5 shadow-lg" style="background-color: #fff9e8; border-radius: 15px; width: 40%">
                 <div class="card-body m-3">
@@ -42,7 +41,6 @@ Vue.component('owners-profile', {
                     <div>
                         <i class="fa fa-home"></i>
                         <label class="fw-bold h6">Address</label>
-                        <!--<address-map my_style="width:500px;height:400px" street_init="Jevrejska 2" city_init="Novi Sad" country_init="Srbija"></address-map>-->
                     </div>
                     <p class="ms-1 mb-4" style="font-size: 1.2em">{{ owner.address.street }}, {{ owner.address.city }}, {{ owner.address.country }}</p>
                     <hr>
@@ -57,7 +55,7 @@ Vue.component('owners-profile', {
                     </div>
 
                     <div class="mt-5 d-flex justify-content-evenly">
-                        <a class="btn btn-success me-1" href="javascript:void(0)" @click="$router.push({path: '/updateOwnersProfile/' + $route.params.id})" style="width: 50%">Edit</a>
+                        <a class="btn btn-success me-1" href="javascript:void(0)" @click="$router.push({path: '/updateOwnersProfile'})" style="width: 50%">Edit</a>
                         <a @click="window.scrollTo(0, document.body.scrollHeight);" class="btn btn-danger ms-1" data-bs-toggle="collapse" href="#confirm-delete" 
                         role="button" aria-expanded="false" aria-controls="confirm-delete" style="width: 50%">Delete</a>
                     </div>
@@ -78,16 +76,23 @@ Vue.component('owners-profile', {
     methods: {
         deleteAccount() {
             axios.post('api/deletionRequests/deleteProfile', {
-               id: this.$route.params.id,
+               id: JSON.parse(localStorage.getItem("jwt")).userId,
                reason: this.reason
+            }, {
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
             }).then(response => {
                 Swal.fire('Success', 'Request for account deletion sent!', 'success');
             }).catch(function (error) {
-                Swal.fire({
-                    icon: 'info',
-                    title: 'Deletion request already sent'
-                });
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                else
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Deletion request already sent'
+                    });
             });
         }
     }
+
 });

@@ -11,8 +11,10 @@ import com.example.demo.service.DeletionRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +30,11 @@ public class DeletionRequestController {
         this.deletionRequestService = deletionRequestService;
     }
 
+
+    @Transactional
     @ResponseBody
     @RequestMapping(path = "/deleteProfile", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP', 'CLIENT', 'ADMIN', 'ADVENTURE')")
     public ResponseEntity<String> saveRequest(@RequestBody DeletionRequestDTO deletionRequestDTO)
     {
         if (!deletionRequestService.isDeletePossible(deletionRequestDTO.getId())) {

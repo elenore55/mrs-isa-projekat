@@ -11,6 +11,7 @@ import com.example.demo.service.emailSenders.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -28,6 +29,7 @@ public class DeletionRequestService {
         this.emailSender = emailSender;
     }
 
+    @Transactional
     public DeletionRequest save(DeletionRequest deletionRequest) {
         DeletionRequest request = deletionRequestRepository.save(deletionRequest);
         notifyAdmins(request.getId());

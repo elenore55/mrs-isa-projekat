@@ -4,11 +4,14 @@ Vue.component("client-complain", {
             reason: "",
             error: false,
             type: "",
-            id: 1,
+            id: 0,
+            token: {}
        }
    },
 
    mounted() {
+           this.token = JSON.parse(localStorage.getItem("jwt"));
+           this.id = this.token.userId;
         //main_image = $("body").css("background-image", "url('images/login3.jpg')");
         //main_image = $("body").css("background-size", "100% 200%");
        },
@@ -63,7 +66,9 @@ Vue.component("client-complain", {
                 if (this.reason && this.type)
                 {
                     this.error = false;
-                    axios.post("api/complaint/add", {
+                    alert(this.id + " je id sada");
+                    alert(this.reason + " je content sada");
+                    /*axios.post("api/complaint/add", {
                         content: this.reason,
                         id: this.id
                     }).then(function (response) {
@@ -71,7 +76,23 @@ Vue.component("client-complain", {
                         $("#confirm-cancel").show(200);
                     }).catch(function (error) {
                         alert("An ERROR occurred while sending feedback");
-                    });
+                    });*/
+
+                    axios({
+                       method: 'post',
+                       url: "api/complaint/add", data: {
+                            content: this.reason,
+                            id: this.id,
+                        },
+                       headers: {
+                           Authorization: "Bearer " + this.token.accessToken
+                       }
+                   }).then(response => {
+                       $("#confirm-cancel").show(200);
+                   }).catch(function (error) {
+                       if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                       else Swal.fire('Error', 'Something went wrong!', 'error');
+                   });
                 }
                 else
                 {

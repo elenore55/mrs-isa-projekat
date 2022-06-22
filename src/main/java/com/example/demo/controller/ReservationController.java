@@ -12,8 +12,10 @@ import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +44,10 @@ public class ReservationController {
 
     }
 
+    @Transactional
     @ResponseBody
     @RequestMapping(path = "/addReservation", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP', 'CLIENT', 'ADVENTURE')")
     public ResponseEntity<ReservationDTO> addReservation(@RequestBody ReservationDTO dto) {
 
         Reservation reservation = new Reservation();
@@ -86,6 +90,7 @@ public class ReservationController {
 
     @ResponseBody
     @RequestMapping(path = "/getClientsSubs/{id}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasRole('CLIENT')")
     public ResponseEntity<List<SubDTO>> getClientsSubs(@PathVariable Integer id) {
         Client c = (Client) userService.findById(id);
 
@@ -101,6 +106,7 @@ public class ReservationController {
 
     @ResponseBody
     @RequestMapping(path = "/getOfferActions/{offerId}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasRole('CLIENT')")
     public ResponseEntity<List<FastReservationDTO>> getOfferActions(@PathVariable Integer offerId) {
         List<FastReservation> fast = getFastReservations(offerId);
         List<FastReservationDTO> dtos = new ArrayList<>();
@@ -111,6 +117,30 @@ public class ReservationController {
         return new ResponseEntity<List<FastReservationDTO>>(dtos, HttpStatus.OK);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/getOldPrice/{offerId}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasRole('CLIENT')")
+    public ResponseEntity<BigDecimal> getOldPrice(@PathVariable Integer offerId) {
+        Offer o = offerService.findOne(offerId);
+        BigDecimal price = o.getPriceList();
+        return new ResponseEntity<BigDecimal>(price, HttpStatus.OK);
+    }
+
+
+    @ResponseBody
+    @RequestMapping(path = "/addNewFastReservation/{offerId}/{clientId}", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('CLIENT')")
+    public String addFastReservation(@RequestBody FastReservationDTO fastReservationDTO, @PathVariable Integer offerId, @PathVariable Integer clientId) {
+        Reservation r = new Reservation();
+        r.setStart(fastReservationDTO.getStart());
+        r.setEnd(fastReservationDTO.getStart().plusDays(fastReservationDTO.getDuration().longValue()));
+        Offer o = offerService.findOne(offerId);
+        r.setOffer(o);
+        User u = userService.findById(clientId);
+        r.setClient((Client) u);
+        reservationService.save(r);
+        return "OK";
+    }
 
     private List<FastReservation> getFastReservations(Integer offerId) {
         List<FastReservation> retVal = new ArrayList<>();
@@ -128,6 +158,7 @@ public class ReservationController {
 
     @ResponseBody
     @RequestMapping(path = "/unfollow/{clientId}/{offerId}", method = RequestMethod.POST, produces = "application/json")
+    @PreAuthorize("hasRole('CLIENT')")
     public ResponseEntity<String> unfollow(@PathVariable Integer clientId, @PathVariable Integer offerId) {
         Client c = (Client) userService.findById(clientId);
         List<Offer> subs = c.getSubscriptions();
@@ -145,6 +176,7 @@ public class ReservationController {
 
     @ResponseBody
     @RequestMapping(path = "/getClientUpcomingReservations/{id}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasRole('CLIENT')")
     public ResponseEntity<List<ReservationExtendedDTO>> getClientsUpcomingReservations(@PathVariable Integer id) {
         List<Reservation> reservations = reservationService.getClientsUpcomingReservations(id);
         List<ReservationExtendedDTO> dtos = new ArrayList<>();
@@ -158,8 +190,8 @@ public class ReservationController {
 
     @ResponseBody
     @RequestMapping(path = "/getClientPastReservations/", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    @PreAuthorize("hasRole('CLIENT')")
     public ResponseEntity<List<ReservationExtendedDTO>> getClientsPastReservations(@RequestBody FilterPastDTO filterPastDTO) {
-        System.err.println("SKRETANJE PAZNJE");
         List<Reservation> reservations = reservationService.getClientsPastReservations(filterPastDTO);
         reservationService.sortPastReservations(reservations, filterPastDTO.getSortBy());
         List<ReservationExtendedDTO> dtos = new ArrayList<>();
@@ -175,6 +207,7 @@ public class ReservationController {
     @Transactional
     @ResponseBody
     @RequestMapping(path = "/cancelReservation/{id}", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('CLIENT')")
     public ResponseEntity<String> cancelReservation(@PathVariable Integer id) {
         reservationService.cancelReservation(id);
         return new ResponseEntity<>("OK", HttpStatus.OK);
@@ -186,6 +219,8 @@ public class ReservationController {
         r.setEnd(dto.getEndDate());
         Offer offer = offerService.findOne(dto.getOfferId());
         r.setOffer(offer);
+        offer.incNumberOfReservations();
+        offerService.save(offer);
         Client client = userService.findClientByEmail(dto.getClientEmail());
         r.setClient(client);
     }

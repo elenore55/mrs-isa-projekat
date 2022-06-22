@@ -8,6 +8,7 @@ import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -61,6 +62,7 @@ public class AdventureController {
     }
 
     @GetMapping(value = "/all")
+    @PreAuthorize("hasRole('CLIENT')")
     public ResponseEntity<List<AdventureDTO>> getAllAdventures() {
 
         List<Adventure> adventures = adventureService.findAll();

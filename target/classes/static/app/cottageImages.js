@@ -9,10 +9,17 @@ Vue.component('cottage-images', {
     mounted() {
         this.id = this.$route.params.id;
 
-        axios.get("api/cottages/getCottageImages/" + this.$route.params.id).then(response => {
+        axios({
+            method: "get",
+            url: "api/cottages/getCottageImages/" + this.$route.params.id,
+            headers: {
+                Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+            }
+        }).then(response => {
             this.paths = response.data;
         }).catch(function (error) {
-            Swal.fire('Error', 'Something went wrong!', 'error');
+            if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+            else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -22,9 +29,11 @@ Vue.component('cottage-images', {
             <h3 v-if="paths.length == 0" class="text-info">No images to show</h3>
             <div class="container px-2">
                 <div class="row">
-                    <div class="col d-flex justify-content-center flex-wrap" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div class="col d-flex justify-content-center flex-wrap">
                         <div v-for="(img, i) in paths" class="m-2">
-                            <img :src="img" class="rounded float-start m-2" width="240" height="240" data-bs-target="#carouselExample" :data-bs-slide-to="i" style="cursor: pointer">
+                            <div data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <img :src="img" class="rounded float-start m-2" width="240" height="240" data-bs-target="#carouselExample" :data-bs-slide-to="i" style="cursor: pointer">
+                            </div>
                             <div class="text-end">
                                 <button type="button" class="btn btn-sm btn-danger me-3" v-on:click="paths.splice(i, 1)">Delete</button>
                             </div>
@@ -98,10 +107,15 @@ Vue.component('cottage-images', {
             axios.post("api/cottages/updateCottageImages", {
                 id: this.id,
                 imagePaths: this.paths
+            }, {
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
             }).then(function(response) {
                 Swal.fire('Success', 'Cottage updated!', 'success');
             }).catch(function (error) {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         }
     }

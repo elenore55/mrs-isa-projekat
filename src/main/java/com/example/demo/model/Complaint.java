@@ -25,6 +25,9 @@ public class Complaint {
     @ManyToOne(fetch = FetchType.LAZY)
     private Client issuedBy;
 
+    @Version
+    private Integer version;
+
     public Complaint() {
     }
 

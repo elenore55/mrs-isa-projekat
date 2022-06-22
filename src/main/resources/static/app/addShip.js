@@ -304,7 +304,7 @@ Vue.component("add-ship", {
                     rules: this.rules,
                     additionalInfo: this.additional_info,
                     imagePaths: this.images,
-                    ownerId: 1,
+                    ownerId: JSON.parse(localStorage.getItem("jwt")).userId,
                     shipType: this.ship_type,
                     length: this.length,
                     capacity: this.capacity,
@@ -316,10 +316,15 @@ Vue.component("add-ship", {
                     navigationEquipmentList: this.nav_equipment_list,
                     availableStart: this.start_av,
                     availableEnd: this.end_av
+                }, {
+                    headers: {
+                        Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                    }
                 }).then(function(response) {
                     Swal.fire('Success', 'Ship added!', 'success');
                 }).catch(function (error) {
-                    Swal.fire('Error', 'Something went wrong!', 'error');
+                    if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                    else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             } else {
                 this.errors.name = true;

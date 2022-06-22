@@ -1,3 +1,4 @@
+const Unauthorized = {template: '<unauthorized></unauthorized>'};
 const PriceHistoryReport = {template: '<price-history-report></price-history-report>'};
 const VisitReport = {template: '<visit-report></visit-report>'};
 const ChangePasswordOwner = {template: '<change-pw-owner></change-pw-owner>'};
@@ -36,11 +37,13 @@ const ClientNavbar = {template: '<client-navbar></client-navbar>'};
 const ClientProfile = {template: '<client-profile></client-profile>'};
 const EditProfile = {template: '<edit-profile></edit-profile>'};
 const ClientHome = {template: '<client-home></client-home>'};
+const UnregisteredHome = {template: '<unregistered-home></unregistered-home>'};
 const DeleteProfile = {template: '<delete-profile></delete-profile>'};
 const DeleteProfileMessage = {template: '<delete-profile-message></delete-profile-message>'};
 const EditProfileMessage = {template: '<edit-profile-message></edit-profile-message>'};
 const ChangePassword = {template: '<change-password></change-password>'};
 const CottageDetailedView = {template: '<cottage-detailed-view></cottage-detailed-view>'};
+const CottageDetailedView2 = {template: '<cottage-detailed-view2></cottage-detailed-view2>'};
 const ShipDetailedView = {template: '<ship-detailed-view></ship-detailed-view>'};
 const UnregisteredNavbar = {template: '<unregistered-navbar></unregistered-navbar>'};
 const InstructorsAdventures = {template: '<instructors-adventures></instructors-adventures>'};
@@ -78,15 +81,19 @@ const router = new VueRouter({
     mode: 'hash',
     routes: [
         {
-            path: "/priceHistoryReport/:id",
+            path: "/unauthorized",
+            component: Unauthorized
+        },
+        {
+            path: "/priceHistoryReport",
             component: PriceHistoryReport
         },
         {
-            path: "/visitReport/:id",
+            path: "/visitReport",
             component: VisitReport
         },
         {
-            path: "/changePwOwner/:id",
+            path: "/changePwOwner",
             component: ChangePasswordOwner
         },
         {
@@ -106,11 +113,11 @@ const router = new VueRouter({
             component: MyMap
         },
         {
-            path: "/incomeReport/:id",
+            path: "/incomeReport",
             component: IncomeReport
         },
         {
-            path: "/ownersReservationsCalendar/:id",
+            path: "/ownersReservationsCalendar",
             component: OwnersReservationsCalendar
         },
         {
@@ -118,19 +125,19 @@ const router = new VueRouter({
             component: ClientReadonlyProfile
         },
         {
-            path: "/reservationsHistory/:id/",
+            path: "/reservationsHistory",
             component: ReservationsHistory
         },
         {
-            path: "/reservationsCalendar/",
+            path: "/reservationsCalendar",
             component: ReservationsCalendar
         },
         {
-            path: "/updateOwnersProfile/:id/",
+            path: "/updateOwnersProfile",
             component: UpdateOwnersProfile
         },
         {
-            path: "/ownersProfile/:id/",
+            path: "/ownersProfile",
             component: OwnersProfile
         },
         {
@@ -162,11 +169,11 @@ const router = new VueRouter({
             component: InstructorsAdventures
         },
         {
-            path: "/shipsViewOwner/:id/",
+            path: "/shipsViewOwner",
             component: ShipsViewOwner
         },
         {
-            path: "/cottagesViewOwner/:id/",
+            path: "/cottagesViewOwner",
             component: CottagesViewOwner
         },
         {
@@ -188,6 +195,10 @@ const router = new VueRouter({
         {
             path: "/clientHome/",
             component: ClientHome
+        },
+        {
+            path: "/unregisteredHome/",
+            component: UnregisteredHome
         },
         {
             path: "/deleteProfile/",
@@ -228,6 +239,10 @@ const router = new VueRouter({
         {
             path: "/cottageDetailedView/:id/:fromDate/:toDate",
             component: CottageDetailedView
+        },
+        {
+            path: "/cottageDetailedView2/:id/:fromDate/:toDate",
+            component: CottageDetailedView2
         },
         {
             path: "/upcomingReservations/:id",

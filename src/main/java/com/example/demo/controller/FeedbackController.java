@@ -14,6 +14,7 @@ import com.example.demo.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class FeedbackController {
 
     @ResponseBody
     @RequestMapping(path = "/add", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('CLIENT')")
     public ResponseEntity<String> addFeedback(@RequestBody FeedbackDTO feedbackDTO){
         Feedback f = new Feedback(feedbackDTO);
         Reservation r = reservationService.findOne(feedbackDTO.getReservationId());

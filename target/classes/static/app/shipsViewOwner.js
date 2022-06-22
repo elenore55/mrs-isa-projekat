@@ -100,7 +100,7 @@ Vue.component("ships-view-owner", {
                                 <p class="card-text mb-1">Length: {{ s.length }} m</p>
                                 <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
                                 <div class="d-flex flex-row mt-3">
-                                    <a :href="'/#/shipProfile/' + s.id" class="btn btn-primary me-3 mt-3">View</a>
+                                    <a :href="'/index.html#/shipProfile/' + s.id" class="btn btn-primary me-3 mt-3">View</a>
                                     <button type="button" class="btn btn-danger mt-3" v-on:click="setCurrentId(s.id)">Delete</button>
                                 </div>
                             </div>
@@ -113,7 +113,13 @@ Vue.component("ships-view-owner", {
 
     methods: {
         reload() {
-            axios.get("api/shipOwner/getShips/" + this.owner_id).then(response => {
+            axios({
+                method: "get",
+                url: "api/shipOwner/getShips/" + JSON.parse(localStorage.getItem("jwt")).userId,
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
+            }).then(response => {
                 this.ships = response.data;
                 for (const s of this.ships) {
                     if (!s.imagePaths || s.imagePaths.length === 0) {
@@ -123,7 +129,8 @@ Vue.component("ships-view-owner", {
                     }
                 }
             }).catch(function (error) {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
@@ -143,11 +150,18 @@ Vue.component("ships-view-owner", {
         },
 
         deleteShip() {
-            axios.delete("api/ships/deleteShip/" + this.current_id).then(response => {
+            axios({
+                method: "delete",
+                url: "api/ships/deleteShip/" + this.current_id,
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
+            }).then(response => {
                 Swal.fire('Success', 'Ship deleted!', 'success');
                 this.reload();
             }).catch(function (error) {
-                Swal.fire('Error', 'It is not possible to delete the ship!', 'error');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                else Swal.fire('Error', 'It is not possible to delete the ship!', 'error');
             });
         },
 
@@ -164,10 +178,17 @@ Vue.component("ships-view-owner", {
         },
 
         search() {
-            axios.get("api/shipOwner/getShips/" + this.owner_id + "/" + this.search_criterion).then(response => {
+            axios({
+                method: "get",
+                url: "api/shipOwner/getShips/" + JSON.parse(localStorage.getItem("jwt")).userId + "/" + this.search_criterion,
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
+            }).then(response => {
                 this.ships = response.data;
             }).catch(function (error) {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
@@ -186,10 +207,15 @@ Vue.component("ships-view-owner", {
                     highSpeed: this.high_speed,
                     sortParam: this.sort_by,
                     sortDir: this.direction
+                }, {
+                    headers: {
+                        Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                    }
                 }).then(response => {
                     this.ships = response.data;
                 }).catch(function (error) {
-                    Swal.fire('Error', 'Something went wrong!', 'error');
+                    if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                    else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }
         },

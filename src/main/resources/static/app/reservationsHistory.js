@@ -10,7 +10,6 @@ Vue.component("reservations-history", {
             sort_by: 'Date',
             direction: 'Ascending',
             calendarDisplay: false,
-            offer_type: "",
             focused_reservation: {
                 startDate: new Date(),
                 endDate: new Date(),
@@ -27,17 +26,12 @@ Vue.component("reservations-history", {
     },
 
     mounted() {
-        axios.get("api/users/getOfferType/" + this.$route.params.id).then(response => {
-            this.offer_type = response.data;
-        }).catch(error => {
-            Swal.fire('Error', 'Owner not found!', 'error');
-        });
         this.my_modal =  new bootstrap.Modal(document.getElementById("reportModal"), {});
     },
 
     template: `
     <div style="background-color: #fff9e8">
-        <owners-nav :offer="offer_type"></owners-nav>
+        <owners-nav></owners-nav>
         <div class="d-flex justify-content-center" style="background-color: #ddc8fb">
             <div class="w-25 d-flex justify-content-evenly my-3">
                 <div class="mt-1 ms-3 me-4 mb-1">
@@ -94,7 +88,6 @@ Vue.component("reservations-history", {
                             <h5 class="my-3"><span class="badge" style="background-color: purple">{{ reservationStatus(r.status) }}</span></h5>
                             <button class="btn btn-success btn-sm h-50 my-3" v-on:click="setFocusedReservation(r)" type="button">Leave a review</button>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -116,18 +109,26 @@ Vue.component("reservations-history", {
                         <h5 class="ms-4">({{ focused_reservation.clientEmail }})</h5>
                         
                         <hr>
-                        <div class="form-floating">
-                            <textarea v-model="review" class="form-control" id="review-input" style="height: 150px"/>
-                            <label for="review-input">Leave a review</label>
-                            <p v-if="!isValidReview" class="text-danger">Review cannot be empty.</p>
+                        <div v-if="!(focused_reservation.reviewOfClient)">
+                            <div class="form-floating">
+                                <textarea v-model="review" class="form-control" id="review-input" style="height: 150px"/>
+                                <label for="review-input">Leave a review</label>
+                                <p v-if="!isValidReview" class="text-danger">Review cannot be empty.</p>
+                            </div>
+                            <div class="form-check mt-3">
+                                <input class="form-check-input" type="checkbox" value="" id="penaltyCheck" v-model="receives_penalty">
+                                <label class="form-check-label" for="penaltyCheck">Client did not show up</label>
+                            </div>
                         </div>
-                        <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="penaltyCheck" v-model="receives_penalty">
-                            <label class="form-check-label" for="penaltyCheck">Client did not show up</label>
+                        <div v-if="!!(focused_reservation.reviewOfClient)">
+                            <div class="form-floating">
+                                <textarea v-model="focused_reservation.reviewOfClient" class="form-control" id="review-input" style="height: 150px" disabled/>
+                                <label for="review-input">Your review</label>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" v-on:click="submitReview">Submit</button>
+                        <button type="button" class="btn btn-success" v-on:click="submitReview" v-if="!(focused_reservation.reviewOfClient)">Submit</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetModalData">Close</button>
                     </div>
                 </div>
@@ -140,20 +141,35 @@ Vue.component("reservations-history", {
         getReservations() {
             this.input_started = true;
             let desc = this.direction === 'Descending';
-            axios.post('api/users/getFilteredOwnersReservations/' + this.$route.params.id, {
+            axios.post('api/users/getFilteredOwnersReservations/' + JSON.parse(localStorage.getItem("jwt")).userId, {
                 startDate: this.start_date,
                 endDate: this.end_date,
                 sortBy: this.sort_by,
                 desc: desc
+            }, {
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
             }).then(response => {
-                this.reservations = response.data;
+                this.reservations = [];
+                for (const i in response.data) {
+                    if (response.data.hasOwnProperty(i)) {
+                        let r = response.data[i];
+                        let arr_s = r.startDate.toString().split(',');
+                        r.startDate = new Date(parseInt(arr_s[0]), parseInt(arr_s[1]) - 1, parseInt(arr_s[2]), parseInt(arr_s[3]), parseInt(arr_s[4]));
+                        let arr_e = r.endDate.toString().split(',');
+                        r.endDate = new Date(parseInt(arr_e[0]), parseInt(arr_e[1]) - 1, parseInt(arr_e[2]), parseInt(arr_e[3]), parseInt(arr_e[4]));
+                        this.reservations.push(r);
+                    }
+                }
             }).catch(error => {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         },
 
         getFormattedDate(date) {
-            let dateStr = new Date(date).toISOString();
+            let dateStr = date.toISOString();
             let year = dateStr.substring(0, 4);
             let month = dateStr.substring(5, 7);
             let day = dateStr.substring(8, 10);
@@ -161,7 +177,7 @@ Vue.component("reservations-history", {
         },
 
         getFormattedTime(date) {
-            let dateStr = new Date(date).toISOString();
+            let dateStr = date.toISOString();
             let hours = dateStr.substring(11, 13);
             let minutes = dateStr.substring(14, 16);
             return hours + ':' + minutes;
@@ -186,14 +202,21 @@ Vue.component("reservations-history", {
                     content: this.review,
                     penaltyRequested: this.receives_penalty,
                     clientEmail: this.focused_reservation.clientEmail,
-                    ownerId: this.$route.params.id,
+                    ownerId: JSON.parse(localStorage.getItem("jwt")).userId,
                     reservationId: this.focused_reservation.id
+                }, {
+                    headers: {
+                        Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                    }
                 }).then(response => {
                     this.my_modal.hide();
+                    if (this.receives_penalty) this.focused_reservation.status = 'MISSED';
+                    this.focused_reservation.reviewOfClient = this.review;
                     this.resetModalData();
                     Swal.fire("Success", "Review submitted", "success");
                 }).catch(error => {
-                    Swal.fire("Error", "Something went wrong", "error");
+                    if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                    else Swal.fire("Error", "Something went wrong", "error");
                 });
             }
         },

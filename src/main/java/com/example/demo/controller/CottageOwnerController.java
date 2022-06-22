@@ -10,6 +10,7 @@ import com.example.demo.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class CottageOwnerController {
 
     @ResponseBody
     @RequestMapping(path = "/getCottages/{id}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<List<CottageDTO>> getCottages(@PathVariable Integer id) {
         CottageOwner owner = service.findOne(id);
         List<Cottage> cottages = owner.getCottages();
@@ -48,6 +50,7 @@ public class CottageOwnerController {
 
     @ResponseBody
     @RequestMapping(path = "/getCottages/{id}/{search}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<List<CottageDTO>> getCottages(@PathVariable Integer id, @PathVariable String search) {
         List<Cottage> cottages = service.searchCottages(id, search.toLowerCase());
         List<CottageDTO> dtos = new ArrayList<>();
@@ -59,6 +62,7 @@ public class CottageOwnerController {
 
     @ResponseBody
     @RequestMapping(path = "/filterCottages/{id}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<List<CottageDTO>> filterCottages(@PathVariable Integer id, @RequestBody FilterCottageDTO filter) {
         List<Cottage> cottages = service.filterCottages(id, filter);
         List<CottageDTO> dtos = new ArrayList<>();

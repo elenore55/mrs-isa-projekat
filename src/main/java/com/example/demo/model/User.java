@@ -2,15 +2,22 @@ package com.example.demo.model;
 
 import com.example.demo.dto.RegistrationDTO;
 import com.example.demo.model.enums.Category;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import static javax.persistence.InheritanceType.JOINED;
 
 @Entity
 @Table(name = "my_users")
 @Inheritance(strategy = JOINED)
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +31,13 @@ public class User {
 
     @OneToOne(cascade = CascadeType.ALL)
     protected ProfileData profileData;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "role_id")
+    protected Role role;
+
+    @Column(name = "last_password_reset_date")
+    private Timestamp lastPasswordResetDate;
 
     public User() {
     }
@@ -66,8 +80,43 @@ public class User {
         profileData.setEmail(email);
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Collection<GrantedAuthority> auth = new ArrayList<>();
+        auth.add(role);
+        return auth;
+    }
+
     public String getPassword() {
         return profileData.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return profileData.getEmail();
+    }
+
+    @JsonIgnore
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @JsonIgnore
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @JsonIgnore
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setPassword(String password) {
@@ -128,5 +177,21 @@ public class User {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Timestamp getLastPasswordResetDate() {
+        return lastPasswordResetDate;
+    }
+
+    public void setLastPasswordResetDate(Timestamp lastPasswordResetDate) {
+        this.lastPasswordResetDate = lastPasswordResetDate;
     }
 }

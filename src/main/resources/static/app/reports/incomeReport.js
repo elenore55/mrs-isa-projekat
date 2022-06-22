@@ -4,7 +4,6 @@ Vue.component('income-report', {
             start_date: null,
             end_date: null,
             reports: [],
-            offer_type: "",
             disabled: {
                 from: new Date()
             },
@@ -18,11 +17,6 @@ Vue.component('income-report', {
     },
 
     mounted() {
-        axios.get("api/users/getOfferType/" + this.$route.params.id).then(response => {
-            this.offer_type = response.data;
-        }).catch(error => {
-            Swal.fire('Error', 'Owner not found!', 'error');
-        });
         let chart = document.getElementById('bar-plot').getContext('2d');
         this.ch = new Chart(chart, {
             type: 'bar',
@@ -49,7 +43,7 @@ Vue.component('income-report', {
 
     template: `
     <div>
-        <owners-nav :offer="offer_type"></owners-nav>
+        <owners-nav></owners-nav>
         <div class="d-flex justify-content-center" style="background-color: #ddc8fb">
             <div class="w-25 d-flex justify-content-evenly my-3">
                 <div class="mt-1 ms-3 me-4 mb-1">
@@ -81,9 +75,13 @@ Vue.component('income-report', {
 
     methods: {
         getReports() {
-            axios.post("api/users/getIncomeReport/" + this.$route.params.id + "/" + this.period_select, {
+            axios.post("api/users/getIncomeReport/" + JSON.parse(localStorage.getItem("jwt")).userId + "/" + this.period_select, {
                 start: this.start_date,
                 end: this.end_date
+            }, {
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
             }).then(response => {
                 this.reports = response.data;
                 this.ch.data.labels = this.getChartLabels();
@@ -101,7 +99,8 @@ Vue.component('income-report', {
                 };
                 this.ch.update();
             }).catch(error => {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             })
         },
 

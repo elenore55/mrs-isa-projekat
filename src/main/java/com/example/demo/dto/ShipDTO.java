@@ -68,7 +68,7 @@ public class ShipDTO {
             this.availableEnd = av.getEnd();
         }
         this.rate = ship.getRateOrNegativeOne();
-        this.editable = ship.hasFutureReservations();
+        this.editable = !ship.hasFutureReservations();
         this.reviews = new ArrayList<>();
         for (Feedback fb : ship.getReviews()) {
             this.reviews.add(new ReviewDTO(fb));

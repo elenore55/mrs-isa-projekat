@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import javax.transaction.Transactional;
+
 
 @Service
 public class ComplaintService {
@@ -14,9 +16,9 @@ public class ComplaintService {
     @Autowired
     public ComplaintService(ComplaintRepository repository){
         this.repository = repository;
-
     }
 
+    @Transactional
     public void save(Complaint c) {
         this.repository.save(c);
     }

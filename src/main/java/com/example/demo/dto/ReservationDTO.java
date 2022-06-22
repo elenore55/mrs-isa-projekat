@@ -14,6 +14,7 @@ public class ReservationDTO {
     private Integer ownerId;
     private String status;
     private String offerName;
+    private String reviewOfClient;
 
     public ReservationDTO() {
     }
@@ -29,6 +30,7 @@ public class ReservationDTO {
         this.endDate = r.getEnd();
         this.status = r.getReservationStatus().toString();
         this.offerName = r.getOffer().getName();
+        if (r.getClientReview() != null) this.reviewOfClient = r.getClientReview().getContent();
     }
 
     public Integer getId() {
@@ -101,5 +103,13 @@ public class ReservationDTO {
 
     public void setClient(ClientDTO client) {
         this.client = client;
+    }
+
+    public String getReviewOfClient() {
+        return reviewOfClient;
+    }
+
+    public void setReviewOfClient(String reviewOfClient) {
+        this.reviewOfClient = reviewOfClient;
     }
 }
