@@ -21,13 +21,13 @@ Vue.component("ships-view-owner", {
 
         axios.get("api/addresses/getCities").then(response => {
             this.all_cities = response.data;
-        }).catch(function (error) {
+        }).catch(error => {
             Swal.fire('Error', 'Something went wrong!', 'error');
         });
 
         axios.get("api/addresses/getCountries").then(response => {
             this.all_countries = response.data;
-        }).catch(function (error) {
+        }).catch(error => {
             Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
@@ -138,7 +138,7 @@ Vue.component("ships-view-owner", {
                         this.profilePictures.push(s.imagePaths.at(0));
                     }
                 }
-            }).catch(function (error) {
+            }).catch(error => {
                 if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });
@@ -169,7 +169,7 @@ Vue.component("ships-view-owner", {
             }).then(response => {
                 Swal.fire('Success', 'Ship deleted!', 'success');
                 this.reload();
-            }).catch(function (error) {
+            }).catch(error => {
                 if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'It is not possible to delete the ship!', 'error');
             });
@@ -196,7 +196,7 @@ Vue.component("ships-view-owner", {
                 }
             }).then(response => {
                 this.ships = response.data;
-            }).catch(function (error) {
+            }).catch(error => {
                 if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });

@@ -47,7 +47,7 @@ public class ShipOwnerController {
 
     @ResponseBody
     @RequestMapping(path = "/getShips/{id}/{search}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<ShipDTO>> getCottages(@PathVariable Integer id, @PathVariable String search) {
+    public ResponseEntity<List<ShipDTO>> getShips(@PathVariable Integer id, @PathVariable String search) {
         List<Ship> ships = service.searchShips(id, search.toLowerCase());
         List<ShipDTO> dtos = new ArrayList<>();
         for (Ship s : ships) {
