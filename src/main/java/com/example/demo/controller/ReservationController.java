@@ -161,16 +161,18 @@ public class ReservationController {
     }
 
     private List<FastReservation> getFastReservations(Integer offerId) {
+        // TODO treba dodati da su u buducnosti i da nisu zauzete
         List<FastReservation> retVal = new ArrayList<>();
         Offer o = offerService.findOne(offerId);
         if (o instanceof Cottage)
         {
-            retVal = ((Cottage) o).getFastReservations();
+            retVal = ((Ship) o).getFastReservations();
         }
         else if (o instanceof Ship)
         {
             retVal = ((Ship) o).getFastReservations();
         }
+
         return retVal;
     }
 

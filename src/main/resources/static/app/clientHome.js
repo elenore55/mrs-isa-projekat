@@ -14,8 +14,8 @@ Vue.component("client-home", {
              sortBy: "",
              sortByList: ["...", "Name", "Rate", "Country", "City", "Price"],
              direction: "",
-             fromDate: "Fri Jun 24 2022 02:00:00 GMT+0200 (Central European Summer Time)",
-             toDate: "Fri Jun 24 2022 02:00:00 GMT+0200 (Central European Summer Time)",
+             fromDate: "",
+             toDate: "",
              error_date: false,
              error_radio: false,
              cottage_pictures: [],
@@ -26,6 +26,7 @@ Vue.component("client-home", {
              default_adventure: "images/fishing_icon.jpg",
              token: {},
              id: 0,
+             canShow: false,
              disabled: {
                  to: new Date()
              },
@@ -151,8 +152,8 @@ mounted() {
                                       </div>
                                  </div>
                                  <div class="col-4 flex-column mt-auto mx-auto py-2">
-                                     <p class="">Price: {{c.price}} EUR</p>
-                                     <div class="text-center">
+                                     <p style="font-size:20px;" class="">Price: {{c.price}} EUR</p>
+                                     <div v-if="canShow" class="text-center"  >
                                          <a :href="'/index.html#/cottageDetailedView2/' + c.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
                                      </div>
                                 </div>
@@ -175,7 +176,7 @@ mounted() {
                                       <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
                                       <div class="row">
                                             <div class="col-2 my-auto">
-                                                <p>Rate:  </p>
+                                                <p>Rate:</p>
                                             </div>
                                             <div class="col-8">
                                                 <h3> {{adjustRate(s.rate)}}  </h3>
@@ -183,8 +184,8 @@ mounted() {
                                         </div>
                                  </div>
                                  <div class="col-4 flex-column mt-auto mx-auto py-2">
-                                      <p class="" style="text-align:center;">Price: {{s.price}} EUR</p>
-                                      <div class="text-center">
+                                      <p style="font-size:20px;" class="">Price: {{s.price}} EUR</p>
+                                      <div v-if="canShow" class="text-center">
                                           <a :href="'/index.html#/shipDetailedView2/' + s.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
                                       </div>
                                  </div>
@@ -215,8 +216,8 @@ mounted() {
                                       </div>
                                  </div>
                                  <div class="col-4 flex-column mt-auto mx-auto py-2">
-                                      <p class="" style="text-align:center;">Price: {{a.price}} EUR</p>
-                                      <div class="text-center">
+                                      <p style="font-size:20px;">Price: {{a.price}} EUR</p>
+                                      <div v-if="canShow" class="text-center">
                                           <a :href="'/index.html#/adventureDetailedView/' + a.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
                                       </div>
                                  </div>
@@ -351,6 +352,7 @@ methods: {
         },
 
         searchEntites() {
+
             if (!this.entityType)
             {
                 this.error_radio = true;
@@ -361,6 +363,7 @@ methods: {
             }
             if (this.fromDate && this.toDate && (this.entityType))
             {
+                this.canShow = true;
                 this.cottages = [];
                 this.ships = [];
                 this.adventures = [];

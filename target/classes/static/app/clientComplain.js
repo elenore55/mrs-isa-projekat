@@ -66,8 +66,6 @@ Vue.component("client-complain", {
                 if (this.reason && this.type)
                 {
                     this.error = false;
-                    alert(this.id + " je id sada");
-                    alert(this.reason + " je content sada");
                     /*axios.post("api/complaint/add", {
                         content: this.reason,
                         id: this.id
