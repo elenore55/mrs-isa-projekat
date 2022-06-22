@@ -4,6 +4,7 @@ import com.example.demo.dto.*;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.service.*;
+import com.example.demo.service.emailSenders.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,18 +26,20 @@ public class AdventureController {
     private OfferService offerService;
     private UserService userService;
     private AddressService addressService;
+    private EmailSender emailSender;
 
     @Autowired
     public AdventureController(AdventureService adventureService, FishingInstructorService fishingInstructorService,
                                FishingEquipmentService fishingEquipmentService, ReservationService reservationService,
-                               OfferService offerService, UserService userService, AddressService addressService) {
+                               OfferService offerService, UserService userService, AddressService addressService, EmailSender emailSender) {
         this.adventureService = adventureService;
         this.fishingInstructorService = fishingInstructorService;
         this.fishingEquipmentService = fishingEquipmentService;
         this.reservationService = reservationService;
         this.offerService = offerService;
         this.userService = userService;
-        this.adventureService = adventureService;
+        this.addressService = addressService;
+        this.emailSender = emailSender;
     }
 
     @GetMapping(value = "/allInstructorsAdventures/{id}")
@@ -176,6 +179,7 @@ public class AdventureController {
         adventure.setMaxPeople(adventureDTO.getMaxPeople());
 
         adventure = adventureService.save(adventure);
+        System.out.println(adventure.getId());
         return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.CREATED);
     }
 
@@ -257,6 +261,7 @@ public class AdventureController {
         res.add(far);
         adventure.setFastAdventureReservations(res);
         adventureService.save(adventure);
+        offerService.notifySubscribers(adventure);
         return new ResponseEntity<>(new FastReservationDTO(far), HttpStatus.OK);
     }
 
@@ -287,6 +292,7 @@ public class AdventureController {
         reservation = reservationService.save(reservation);
         userService.addReservation(dto.getOwnerId(), reservation);
 
+        emailSender.send(dto.getClientEmail(), "Adventure", "You made an adventure reservation");
         return new ResponseEntity<>(new ReservationDTO(reservation), HttpStatus.OK);
     }
 

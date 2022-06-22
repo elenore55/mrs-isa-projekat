@@ -55,6 +55,7 @@ Vue.component("admin-feedback",{
             axios.post("api/feedback/updateFeedbackAdmin",{
                 id: fed.id,
                 status:fed.status,
+                reservationId:fed.reservationId
             },{
                 headers: {
                     Authorization: "Bearer " + this.token.accessToken
