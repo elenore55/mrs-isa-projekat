@@ -73,10 +73,12 @@ public class RegistrationRequestController {
     {
         RegistrationRequest izBaze = service.findOne(requestAdminDTO.getId());
         if(requestAdminDTO.getStatus()==AdminApprovalStatus.APPROVED || requestAdminDTO.getStatus()==AdminApprovalStatus.REJECTED) {
-            izBaze.setApprovalStatus(requestAdminDTO.getStatus());
+//            izBaze.setApprovalStatus(requestAdminDTO.getStatus());
+            izBaze.setProfileData(null);
+            service.updateStatus(izBaze.getId(),requestAdminDTO.getStatus());
         }
-        izBaze.setProfileData(null);
-        izBaze = service.update(izBaze);
+
+//        service.remove(requestAdminDTO.getId());
 
         ProfileData profileData = profile_dataService.getByEmail(requestAdminDTO.getEmail());
         int addresID = profileData.getAddress().getId();
@@ -84,11 +86,13 @@ public class RegistrationRequestController {
         profileData.setAddress(null);
         profile_dataService.save(profileData);
         addressService.remove(addresID);
+//
         profile_dataService.remove(profileData.getId());
 
         if(requestAdminDTO.getStatus()==AdminApprovalStatus.APPROVED)
         {
             profileData.setAddress(address);
+            profileData.getAddress().setId(addresID);
             userService.saveOwners(profileData,requestAdminDTO.getType());
         }
 

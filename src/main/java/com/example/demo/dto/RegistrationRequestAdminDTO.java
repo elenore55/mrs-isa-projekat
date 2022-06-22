@@ -16,6 +16,8 @@ public class RegistrationRequestAdminDTO {
     private AdminApprovalStatus status;
     private Integer id;
 
+    public RegistrationRequestAdminDTO(){}
+
     public RegistrationRequestAdminDTO(String name, String surname, String email, String password, AddressDTO address, String phoneNumber, RegistrationType type, String reason, Integer id) {
         this.name = name;
         this.surname = surname;

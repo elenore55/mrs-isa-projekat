@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.model.Admin;
 import com.example.demo.model.Complaint;
 import com.example.demo.model.RegistrationRequest;
+import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.repository.AdminRepository;
 import com.example.demo.repository.RegistrationRequestRepository;
 import com.example.demo.service.emailSenders.EmailSender;
@@ -45,6 +46,8 @@ public class RegistrationRequestService {
 
     public RegistrationRequest findOne(Integer id){return this.repository.findById(id).orElse(null);}
     public RegistrationRequest update(RegistrationRequest request){return this.repository.save(request);}
+    public void updateStatus(Integer id, AdminApprovalStatus status){this.repository.updateStatus(id,status);}
+
 
     public void remove(Integer id) { repository.deleteById(id);}
 

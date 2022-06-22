@@ -86,17 +86,19 @@ public class ComplaintController {
         return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
     }
 
+
     @ResponseBody
     @RequestMapping(path = "/updateComplaintAdmin", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<Complaint> updateComplaintAdmin(@RequestBody ComplaintAdminDTO complaint)
+    public ResponseEntity<ComplaintAdminDTO> updateComplaintAdmin(@RequestBody ComplaintAdminDTO complaint)
     {
         System.out.println(complaint.toString());
         System.out.println("CCCCCCCCCCCCCCCCCCCCCCC");
         Complaint izBaze = complaintService.findOne(complaint.getId());
         if(complaint.getAdminApprovalStatus()==AdminApprovalStatus.APPROVED || complaint.getAdminApprovalStatus()==AdminApprovalStatus.REJECTED)
-            izBaze.setStatus(complaint.getAdminApprovalStatus());
-        izBaze = complaintService.update(izBaze);
-        return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
+            complaintService.updateStatus(izBaze.getId(),complaint.getAdminApprovalStatus());
+
+        ComplaintAdminDTO temp = new ComplaintAdminDTO(izBaze);
+        return  new ResponseEntity<>(temp,HttpStatus.ACCEPTED);
     }
 
 

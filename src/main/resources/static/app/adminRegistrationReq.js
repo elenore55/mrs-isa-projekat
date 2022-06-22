@@ -64,7 +64,8 @@ Vue.component("admin-registrationreq",{
                 headers: {
                     Authorization: "Bearer " + this.token.accessToken
                 }
-            }).then(setTimeout(()=>this.$router.go(),100)).catch(console.log("Nesto nije valjano"))
+            })
+                // .then(setTimeout(()=>this.$router.go(),100)).catch(console.log("Nesto nije valjano"))
         },
 
         loadRequests(){

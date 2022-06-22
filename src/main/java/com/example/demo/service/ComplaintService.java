@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Complaint;
+import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.repository.ComplaintRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,4 +30,5 @@ public class ComplaintService {
 
     public Complaint findOne(Integer id){return this.repository.getById(id);}
     public Complaint update(Complaint complaint){return this.repository.save(complaint);}
+    public void updateStatus(Integer id, AdminApprovalStatus status){this.repository.updateStatus(id,status);}
 }
