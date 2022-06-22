@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.model.Admin;
 import com.example.demo.model.Client;
 import com.example.demo.model.ClientReview;
+import com.example.demo.model.Complaint;
 import com.example.demo.repository.AdminRepository;
 import com.example.demo.repository.ClientReviewRepository;
 import com.example.demo.service.emailSenders.EmailSender;
@@ -28,6 +29,9 @@ public class ClientReviewService {
     public ClientReview findOne(Integer id) {
         return repository.findById(id).orElseGet(null);
     }
+    public List<ClientReview> findAll() {
+        return this.repository.findAll();
+    }
 
     public ClientReview save(ClientReview clientReview) {
         clientReview = this.repository.save(clientReview);
@@ -46,4 +50,6 @@ public class ClientReviewService {
             emailSender.send(admin.getEmail(), title, content);
         }
     }
+
+    public ClientReview update(ClientReview clientReview){return this.repository.save(clientReview);}
 }

@@ -2,9 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.CottageDTO;
 import com.example.demo.dto.FilterCottageDTO;
-import com.example.demo.model.Cottage;
-import com.example.demo.model.CottageOwner;
+import com.example.demo.model.*;
+import com.example.demo.service.ClientService;
 import com.example.demo.service.CottageOwnerService;
+import com.example.demo.service.CottageService;
+import com.example.demo.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,17 +15,23 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "api/cottageOwner")
 public class CottageOwnerController {
     private CottageOwnerService service;
+    private ReservationService reservationService;
+    private CottageService cottageService;
+    private ClientService clientService;
 
     @Autowired
-    public CottageOwnerController(CottageOwnerService service) {
+    public CottageOwnerController(CottageOwnerService service, ReservationService reservationService, CottageService cottageService, ClientService clientService) {
         this.service = service;
+        this.reservationService = reservationService;
+        this.cottageService = cottageService;
+        this.clientService = clientService;
     }
-
 
     @ResponseBody
     @RequestMapping(path = "/getCottages/{id}", method = RequestMethod.GET, produces = "application/json")
@@ -62,5 +70,34 @@ public class CottageOwnerController {
             dtos.add(new CottageDTO(c));
         }
         return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "/deleteTheCottage/{idcottage}/{idvlasnik}")
+    public ResponseEntity<Void> deleteTheCottage(@PathVariable Integer idcottage,@PathVariable Integer idvlasnik) {
+        CottageOwner cottageOwner = service.findOne(idvlasnik);
+        if (cottageOwner == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        List<Reservation> allReservationsOfThisCottage = this.reservationService.findAll().stream().filter(r-> r.getOffer().getId() == idcottage).collect(Collectors.toList());
+        for(Reservation r : allReservationsOfThisCottage) {
+            Offer offer = new Offer();
+            offer.setId(-1);
+            r.setOffer(offer);
+            this.reservationService.save(r);
+        }
+
+        List<Client> clients = this.clientService.findAll();
+        for(Client c : clients) {
+            if (c.getSubscriptionsByID(idcottage)) {
+                c.setSubscriptions(c.getSubscriptions().stream().filter(s -> s.getId() != idcottage).collect(Collectors.toList()));
+                clientService.save(c);
+            }
+        }
+
+        Cottage cottage = cottageService.findOne(idcottage);
+        cottageOwner.getCottages().remove(cottage);
+
+        service.save(cottageOwner);
+        cottageService.remove(cottage.getId());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

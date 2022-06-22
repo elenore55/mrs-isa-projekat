@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Admin;
+import com.example.demo.model.Complaint;
 import com.example.demo.model.DeletionRequest;
 import com.example.demo.model.User;
 import com.example.demo.repository.AdminRepository;
@@ -48,6 +49,14 @@ public class DeletionRequestService {
             }
         }
         return true;
+    }
+
+    public DeletionRequest update(DeletionRequest deletionRequest){return this.deletionRequestRepository.save(deletionRequest);}
+
+    public DeletionRequest findOne(Integer id){return this.deletionRequestRepository.getById(id);}
+
+    public List<DeletionRequest> findAll() {
+        return this.deletionRequestRepository.findAll();
     }
 
     private void notifyAdmins(Integer id) {

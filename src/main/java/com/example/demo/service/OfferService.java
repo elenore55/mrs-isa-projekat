@@ -34,10 +34,17 @@ public class OfferService {
     public Offer findOne(Integer id) {
         return repository.findById(id).orElseGet(null);
     }
+    public List<Offer> findAll() {
+        return repository.findAll();
+    }
 
     @Transactional
     public Offer save(Offer offer) {
         return repository.save(offer);
+    }
+
+    public void remove(Integer id) {
+        repository.deleteById(id);
     }
 
     public String getNameForReservationView(Integer id) {

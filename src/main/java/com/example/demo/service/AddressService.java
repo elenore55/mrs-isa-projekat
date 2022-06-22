@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Address;
+import com.example.demo.model.FishingInstructor;
+
 import com.example.demo.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,13 @@ public class AddressService {
         return repository.getCountries();
     }
 
+    public Address findOne(Integer id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    public void remove(Integer id) {
+        repository.deleteById(id);
+
     public Address save(Address address) {
         return repository.save(address);
     }
@@ -32,5 +41,6 @@ public class AddressService {
         Address address = repository.getExistingAddress(dto.getStreet(), dto.getCity(), dto.getCountry());
         if (address == null) return save(dto);
         return address;
+
     }
 }

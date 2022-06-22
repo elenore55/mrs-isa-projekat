@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.*;
 import com.example.demo.model.*;
+import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.model.FishingInstructor;
 import com.example.demo.service.FishingInstructorService;
@@ -237,16 +238,16 @@ public class ReservationController {
         return new ResponseEntity<>(reservationDTOS, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/advreser/{id1}/{id2}")
-    public ResponseEntity<List<ReservationDTO>> getAdventuresReservations(@PathVariable Integer id1,@PathVariable Integer id2) {
-
-        FishingInstructor fishingInstructor = fishingInstructorService.findOne(1);
+    @GetMapping(value = "/advreser/{advId}/{instId}")
+    public ResponseEntity<List<ReservationDTO>> getAdventuresReservations(@PathVariable Integer advId,@PathVariable Integer instId) {
+        FishingInstructor fishingInstructor = fishingInstructorService.findOne(instId);
         List<Reservation> reservations = fishingInstructor.getReservations();
+
 
         List<ReservationDTO> reservationDTOS = new ArrayList<>();
 
         for (Reservation reservation : reservations) {
-            if(reservation.getOffer().getId().equals(1))
+            if(reservation.getOffer().getId().equals(advId))
                     reservationDTOS.add(new ReservationDTO(reservation));
         }
 
@@ -265,6 +266,43 @@ public class ReservationController {
         }
 
         return new ResponseEntity<>(reservationDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/allPendingForInstructor/{id}/{idadv}")
+    public ResponseEntity<List<ReservationInstDTO>> getAllPendingReservations(@PathVariable Integer id, @PathVariable Integer idadv){
+        FishingInstructor fishingInstructor = fishingInstructorService.findOne(id);
+        List<Reservation> reservations = fishingInstructor.getReservations();
+        List<ReservationInstDTO> reservationInstDTOS = new ArrayList<>();
+        for(Reservation reservation : reservations) {
+            if(reservation.getOffer().getId().equals(idadv))
+                if(reservation.getReservationStatus() == ReservationStatus.PENDING || reservation.getReservationStatus() == ReservationStatus.ACTIVE || reservation.getReservationStatus() == ReservationStatus.FINISHED)
+                    reservationInstDTOS.add(new ReservationInstDTO(reservation));
+        }
+        return new ResponseEntity<>(reservationInstDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/allForInstructor/{id}/{idadv}")
+    public ResponseEntity<List<ReservationInstDTO>> getAllReservations(@PathVariable Integer id, @PathVariable Integer idadv){
+        FishingInstructor fishingInstructor = fishingInstructorService.findOne(id);
+        List<Reservation> reservations = fishingInstructor.getReservations();
+        List<ReservationInstDTO> reservationInstDTOS = new ArrayList<>();
+        for(Reservation reservation : reservations) {
+            if(reservation.getOffer().getId().equals(idadv))
+                reservationInstDTOS.add(new ReservationInstDTO(reservation));
+        }
+        return new ResponseEntity<>(reservationInstDTOS, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/updateAdventuresreservation", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<Reservation> updateComplaintAdmin(@RequestBody ReservationInstDTO reservationInstDTO)
+    {
+        System.out.println(reservationInstDTO.toString());
+        Reservation izBaze = reservationService.findOne(reservationInstDTO.getId());
+        if(reservationInstDTO.getStatus()==ReservationStatus.CANCELLED || reservationInstDTO.getStatus()==ReservationStatus.CLIENT_NOT_ARRIVED || reservationInstDTO.getStatus()==ReservationStatus.FINISHED )
+            izBaze.setReservationStatus(reservationInstDTO.getStatus());
+        izBaze = reservationService.save(izBaze);
+        return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
     }
 
 

@@ -57,6 +57,13 @@ public class User implements UserDetails {
 
     }
 
+    public User(ProfileData profileData) {
+        this.profileData = profileData;
+        this.numberOfPoints = 0;
+        this.category = Category.REGULAR;
+
+    }
+
     public Integer getId() {
         return id;
     }

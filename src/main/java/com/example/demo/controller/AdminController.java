@@ -25,7 +25,8 @@ public class AdminController {
     }
     @GetMapping(value = "/getAdminData")
     public ResponseEntity<AdminDTO> getAdminData(){
-        Admin admin = adminService.findOne(2);
+        // ZAPUCANA 2
+        Admin admin = adminService.findOne(4);
         AdminDTO adminDTO = new AdminDTO(admin);
 
         return new ResponseEntity<>(adminDTO, HttpStatus.OK);

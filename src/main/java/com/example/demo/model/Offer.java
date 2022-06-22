@@ -47,7 +47,7 @@ public class Offer {
     @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     protected List<Availability> availabilities;
 
-    @ManyToMany(mappedBy = "subscriptions")
+    @ManyToMany(mappedBy = "subscriptions", fetch = FetchType.LAZY)
     protected List<Client> subscribers = new ArrayList<>();
 
     @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

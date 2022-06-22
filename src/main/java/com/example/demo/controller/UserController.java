@@ -6,6 +6,7 @@ import com.example.demo.dto.comparators.reservation.ReservationOfferComparator;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.service.CottageOwnerService;
+import com.example.demo.service.FishingInstructorService;
 import com.example.demo.service.ShipOwnerService;
 import com.example.demo.service.UserService;
 import com.example.demo.util.TokenUtils;
@@ -20,11 +21,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "api/users")
@@ -32,17 +35,19 @@ public class UserController {
     private UserService userService;
     private CottageOwnerService cottageOwnerService;
     private ShipOwnerService shipOwnerService;
+    private FishingInstructorService fishingInstructorService;
     private AuthenticationManager authenticationManager;
     private TokenUtils tokenUtils;
 
     @Autowired
     public UserController(UserService userService, CottageOwnerService cottageOwnerService, ShipOwnerService shipOwnerService,
-                          AuthenticationManager authenticationManager, TokenUtils tokenUtils) {
+                          FishingInstructorService fishingInstructorService, AuthenticationManager authenticationManager, TokenUtils tokenUtils) {
         this.userService = userService;
         this.cottageOwnerService = cottageOwnerService;
         this.shipOwnerService = shipOwnerService;
         this.authenticationManager = authenticationManager;
         this.tokenUtils = tokenUtils;
+        this.fishingInstructorService = fishingInstructorService;
     }
 
     @ResponseBody
@@ -104,7 +109,8 @@ public class UserController {
         List<User> users = userService.findAll();
         List<UserDTO> userDTOS = new ArrayList<>();
         for (User user : users) {
-            userDTOS.add(new UserDTO(user));
+            if(!user.getProfileData().getEmail().equalsIgnoreCase("deleted"))
+                userDTOS.add(new UserDTO(user));
         }
         return new ResponseEntity<>(userDTOS, HttpStatus.OK);
     }
@@ -231,6 +237,101 @@ public class UserController {
             List<ReportEntryDTO> result = shipOwnerService.calculateIncomeReport(so, dto.getStart(), dto.getEnd(), kind);
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
+        //!?!?!?!?!?
+        if (user instanceof FishingInstructor) {
+            FishingInstructor fi = (FishingInstructor) user;
+            List<ReportEntryDTO> result = fishingInstructorService.calculateIncomeReport(fi, dto.getStart(), dto.getEnd(), kind);
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+        /////////////////////
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getAdminIncomeReport/{id}/{kind}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<List<ReportEntryDTO>> getAdminIncomeReport(@PathVariable Integer id, @PathVariable String kind, @RequestBody DatesDTO dto) {
+        User user = userService.findOne(id);
+        if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (user instanceof Admin) {
+            List<CottageOwner> cottageOwners = cottageOwnerService.findAlladmin();
+            List<ShipOwner> shipOwners = shipOwnerService.findAlladmin();
+            List<FishingInstructor> fishingInstructors = fishingInstructorService.findAll();
+            List<ReportEntryDTO> result = new ArrayList<>();
+            for (CottageOwner owner : cottageOwners)
+            {
+                result.addAll(cottageOwnerService.calculateIncomeReport(owner, dto.getStart(), dto.getEnd(), kind));
+            }
+
+            for (ShipOwner owner : shipOwners)
+            {
+                result.addAll(shipOwnerService.calculateIncomeReport(owner, dto.getStart(), dto.getEnd(), kind));
+            }
+
+            for (FishingInstructor owner : fishingInstructors)
+            {
+                result.addAll(fishingInstructorService.calculateIncomeReport(owner, dto.getStart(), dto.getEnd(), kind));
+            }
+            //////////// svi su postavljeni na jedan sad trebamo da ih spojimo/////////
+
+            for(int i=0;i< result.size()-2;i++)
+            {
+                for(int j=i+1;j< result.size()-1;j++)
+                {
+                    if(result.get(i).getX().equals(result.get(j).getX()))
+                    {
+                        result.get(i).setY(result.get(i).getY().add(result.get(j).getY()));
+                        result.get(j).setY(new BigDecimal(0));
+                    }
+                }
+
+            }
+            return new ResponseEntity<>(result.subList(0, result.size()/3), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/getAdminVisitReport/{id}/{kind}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<List<ReportEntryDTO>> getAdminVisitReport(@PathVariable Integer id, @PathVariable String kind, @RequestBody DatesDTO dto) {
+        User user = userService.findOne(id);
+        if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (user instanceof Admin) {
+            List<CottageOwner> cottageOwners = cottageOwnerService.findAlladmin();
+            List<ShipOwner> shipOwners = shipOwnerService.findAlladmin();
+            List<FishingInstructor> fishingInstructors = fishingInstructorService.findAll();
+            List<ReportEntryDTO> result = new ArrayList<>();
+            for (CottageOwner owner : cottageOwners)
+            {
+                result.addAll(cottageOwnerService.calculateVisitReport(owner, dto.getStart(), dto.getEnd(), kind));
+            }
+
+            for (ShipOwner owner : shipOwners)
+            {
+                result.addAll(shipOwnerService.calculateVisitReport(owner, dto.getStart(), dto.getEnd(), kind));
+            }
+
+            for (FishingInstructor owner : fishingInstructors)
+            {
+                result.addAll(fishingInstructorService.calculateVisitReport(owner, dto.getStart(), dto.getEnd(), kind));
+            }
+            //////////// svi su postavljeni na jedan sad trebamo da ih spojimo/////////
+
+            for(int i=0;i< result.size()-2;i++)
+            {
+                for(int j=i+1;j< result.size()-1;j++)
+                {
+                    if(result.get(i).getX().equals(result.get(j).getX()))
+                    {
+                        result.get(i).setY(result.get(i).getY().add(result.get(j).getY()));
+                        result.get(j).setY(new BigDecimal(0));
+                    }
+                }
+
+            }
+            return new ResponseEntity<>(result.subList(0, result.size()/3), HttpStatus.OK);
+        }
+
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
@@ -249,6 +350,14 @@ public class UserController {
             List<ReportEntryDTO> result = shipOwnerService.calculateVisitReport(so, dto.getStart(), dto.getEnd(), kind);
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
+
+        //!??!?!?!?!?!?!??!?
+        if (user instanceof FishingInstructor) {
+            FishingInstructor fi = (FishingInstructor) user;
+            List<ReportEntryDTO> result = fishingInstructorService.calculateVisitReport(fi, dto.getStart(), dto.getEnd(), kind);
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+        //////////////////////////
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
@@ -266,6 +375,12 @@ public class UserController {
             ShipOwner so = (ShipOwner) user;
             return new ResponseEntity<>(shipOwnerService.calculatePriceHistoryReport(so, dto.getStart(), dto.getEnd(), kind), HttpStatus.OK);
         }
+        //?!?!?!?!?!?!?
+        if (user instanceof FishingInstructor) {
+            FishingInstructor fi = (FishingInstructor) user;
+            return new ResponseEntity<>(fishingInstructorService.calculatePriceHistoryReport(fi, dto.getStart(), dto.getEnd(), kind), HttpStatus.OK);
+        }
+        //////////////////
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -276,6 +391,9 @@ public class UserController {
         if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         if (user instanceof CottageOwner) return new ResponseEntity<>("cottages", HttpStatus.OK);
         if (user instanceof ShipOwner) return new ResponseEntity<>("ships", HttpStatus.OK);
+        //?!?!?!?!?!
+        if (user instanceof FishingInstructor) return new ResponseEntity<>("adventures", HttpStatus.OK);
+        ////////////
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
@@ -294,5 +412,17 @@ public class UserController {
         if (r.getEnd().compareTo(today) < 0) r.setReservationStatus(ReservationStatus.FINISHED);
         else if (r.getStart().compareTo(today) > 0) r.setReservationStatus(ReservationStatus.PENDING);
         else r.setReservationStatus(ReservationStatus.ACTIVE);
+    }
+
+    @DeleteMapping(path = "/deleteTheUsers/{emailUser}")
+    public ResponseEntity<Void> deleteTheUser(@PathVariable String emailUser) {
+        User user = userService.findUserByEmailForAdmin(emailUser);
+        user.setEmail("deleted");
+        user.setPassword("deleted");
+//        user.setProfileData(null);
+        userService.saveUSER(user);
+        // sve ostaje jedino brisemo usera logicki
+        // msm da mora zbog iszvestaja
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
