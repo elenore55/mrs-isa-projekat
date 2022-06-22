@@ -18,7 +18,7 @@ Vue.component('update-owners-profile', {
         }).then(response => {
             this.owner = response.data;
         }).catch(function (error) {
-            if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+            if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
             else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
@@ -128,8 +128,7 @@ Vue.component('update-owners-profile', {
 
         isValidPhone() {
             if (!this.input_started) return true;
-            const re = new RegExp(/[0-9]{3}-[0-9]{3}-[0-9]{3,4}$/);
-            return this.owner.phoneNumber && re.test(this.owner.phoneNumber);
+            return !!(this.owner.phoneNumber);
         },
     }
 
