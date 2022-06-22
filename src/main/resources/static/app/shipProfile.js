@@ -40,7 +40,10 @@ Vue.component('ship-profile', {
                                     <img :src="ship.imagePaths[0]" style="width: 250px;height: 250px; cursor: pointer" data-bs-target="#carouselExample" data-bs-slide-to="0">
                                 </div>
                                 <div class="ms-4">   
-                                    <h1 class="text-success ">{{ ship.price }} <i class="fa fa-eur"></i></h1>
+                                    <div class="d-flex justify-content-start">
+                                        <h1 class="text-success ">{{ ship.price }} <i class="fa fa-eur"></i></h1>
+                                        <h5 class="d-flex align-items-end">&nbsp; /hour</h5>
+                                    </div>
                                     <p class="h6 my-2"> {{ ship.description }}</p>
                                     <span v-if="ship.rate != -1" class="badge bg-primary my-2">
                                         <div class="d-flex justify-content-start">
