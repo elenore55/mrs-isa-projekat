@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/documentation/Skalabilnost.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottageProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottagesViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottagesViewOwner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipsViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipsViewOwner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/cottagesViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/cottagesViewOwner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/shipsViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/shipsViewOwner.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,13 +282,6 @@
       <workItem from="1654803114806" duration="52939000" />
       <workItem from="1655406817526" duration="2736000" />
       <workItem from="1655583368904" duration="27284000" />
-    </task>
-    <task id="LOCAL-00155" summary="Ignorisanje filtera za resurse">
-      <created>1655409391212</created>
-      <option name="number" value="00155" />
-      <option name="presentableId" value="LOCAL-00155" />
-      <option name="project" value="LOCAL" />
-      <updated>1655409391212</updated>
     </task>
     <task id="LOCAL-00156" summary="Cuvanje tokena u localStorage">
       <created>1655411840468</created>
@@ -635,7 +619,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655916166475</updated>
     </task>
-    <option name="localTasksCounter" value="204" />
+    <task id="LOCAL-00204" summary="Ispravljen front">
+      <created>1655917733381</created>
+      <option name="number" value="00204" />
+      <option name="presentableId" value="LOCAL-00204" />
+      <option name="project" value="LOCAL" />
+      <updated>1655917733381</updated>
+    </task>
+    <option name="localTasksCounter" value="205" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -656,7 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Izmijenjen travis.yml" />
     <MESSAGE value="Dodat maven wrapper" />
     <MESSAGE value="skip tests" />
     <MESSAGE value="update readme" />
@@ -681,17 +671,18 @@
     <MESSAGE value="Ispravljeni code smell-ovi" />
     <MESSAGE value="Izmijenjeni tekstovi mailova" />
     <MESSAGE value="Dodati novi podaci kroz sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dodati novi podaci kroz sql" />
+    <MESSAGE value="Ispravljen front" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ispravljen front" />
   </component>
   <component name="WindowStateProjectService">
     <state x="438" y="200" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1655908237709">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="200" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1655908237709" />
-    <state x="186" y="0" key="CommitChangelistDialog2" timestamp="1655916165597">
+    <state x="186" y="0" key="CommitChangelistDialog2" timestamp="1655917732600">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="186" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1655916165597" />
+    <state x="186" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1655917732600" />
     <state width="1237" height="263" key="GridCell.Tab.0.bottom" timestamp="1655917502232">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -724,10 +715,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="159" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1655916169485">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1655917738269">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1655916169485" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1655917738269" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
