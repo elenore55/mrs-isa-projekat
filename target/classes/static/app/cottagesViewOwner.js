@@ -23,6 +23,8 @@ Vue.component("cottages-view-owner", {
     },
 
     mounted() {
+        $("body").css("background-image", "url('images/set2.png')");
+        $("body").css("background-size", "100% 200%");
         this.token = JSON.parse(localStorage.getItem("jwt"));
         this.reload();
 
@@ -41,7 +43,7 @@ Vue.component("cottages-view-owner", {
     },
 
     template: `
-        <div style="background-color: #fff9e8">
+        <div>
             <owners-nav offer="cottages"></owners-nav>
             <div class="container">
                 <div class="d-flex justify-content-center">
@@ -97,7 +99,12 @@ Vue.component("cottages-view-owner", {
                                         <p class="card-text mt-2 mb-4 h5">{{ c.address.street }}, {{ c.address.city }}, {{ c.address.country }}</p>
                                     </div>
                                     <div class="me-4">
-                                        <h2 v-if="c.rate != -1"><span class="badge bg-primary">{{ c.rate }}</span></h2>
+                                        <span v-if="c.rate != -1" class="badge bg-primary my-1">
+                                            <div class="d-flex justify-content-start">
+                                                <h6 class="d-flex align-items-center"><i class="fa fa-star"></i></h6>
+                                                <h3>&nbsp;{{ c.rate }}</h3>
+                                            </div>
+                                        </span>
                                         <h6 v-if="c.rate != -1">{{ c.reviews.length }} reviews</h6>
                                         <h3 v-if="c.rate == -1">No reviews</h3>
                                     </div>

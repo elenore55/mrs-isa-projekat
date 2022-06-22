@@ -15,6 +15,8 @@ Vue.component("ships-view-owner", {
     },
 
     mounted() {
+        $("body").css("background-image", "url('images/set2.png')");
+        $("body").css("background-size", "100% 200%");
         this.reload();
 
         axios.get("api/addresses/getCities").then(response => {
@@ -31,7 +33,7 @@ Vue.component("ships-view-owner", {
     },
 
     template: `
-        <div style="background-color: #fff9e8">
+        <div>
             <owners-nav offer="ships"></owners-nav>
             <div class="container">
                 <div class="d-flex justify-content-center">
@@ -90,7 +92,12 @@ Vue.component("ships-view-owner", {
                                         <p class="card-text mt-2 mb-4 h5">{{ s.address.street }}, {{ s.address.city }}, {{ s.address.country }}</p>
                                     </div>
                                     <div class="me-4">
-                                        <h2 v-if="s.rate != -1"><span class="badge bg-primary">{{ s.rate }}</span></h2>
+                                        <span v-if="s.rate != -1" class="badge bg-primary my-2">
+                                            <div class="d-flex justify-content-start">
+                                                <h6 class="d-flex align-items-center"><i class="fa fa-star"></i></h6>
+                                                <h3>&nbsp;{{ s.rate }}</h3>
+                                            </div>
+                                        </span>
                                         <h6 v-if="s.rate != -1">{{ s.reviews.length }} reviews</h6>
                                         <h3 v-if="s.rate == -1">No reviews</h3>
                                     </div>

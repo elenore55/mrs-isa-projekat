@@ -26,6 +26,9 @@ Vue.component("reservations-history", {
     },
 
     mounted() {
+        $("body").css("background-color", "#fff9e8");
+        $("body").css("background-image", "none");
+        $("body").css("background-size", "100% 200%");
         this.my_modal =  new bootstrap.Modal(document.getElementById("reportModal"), {});
     },
 

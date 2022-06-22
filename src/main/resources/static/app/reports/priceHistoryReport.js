@@ -17,6 +17,9 @@ Vue.component('price-history-report', {
     },
 
     mounted() {
+        $("body").css("background-image", "none");
+        $("body").css("background-color", "#f7f5f0");
+        $("body").css("background-size", "100% 200%");
         let chart = document.getElementById('bar-plot').getContext('2d');
         this.ch = new Chart(chart, {
             type: 'bar',

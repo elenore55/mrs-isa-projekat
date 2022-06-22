@@ -7,6 +7,8 @@ Vue.component('owners-profile', {
     },
 
     mounted() {
+        $("body").css("background-image", "url('images/gradient_purple.jpg')");
+        $("body").css("background-size", "100% 200%");
         axios({
             method: "get",
             url: "api/users/getOwner/" + JSON.parse(localStorage.getItem("jwt")).userId,
@@ -22,7 +24,7 @@ Vue.component('owners-profile', {
     },
 
     template: `
-    <div style="background-color: #ddc8fb; height: 100%">
+    <div>
         <owners-nav></owners-nav>
         <div class="d-flex justify-content-center">
             <div class="card px-3 py-2 m-5 shadow-lg" style="background-color: #fff9e8; border-radius: 15px; width: 40%">
@@ -43,6 +45,10 @@ Vue.component('owners-profile', {
                         <label class="fw-bold h6">Address</label>
                     </div>
                     <p class="ms-1 mb-4" style="font-size: 1.2em">{{ owner.address.street }}, {{ owner.address.city }}, {{ owner.address.country }}</p>
+                    <div class="d-flex justify-content-start ms-1 mb-4">
+                        <i class="fa fa-key mt-1 me-1"></i>
+                        <a href="javascript:void(0)" @click="$router.push({path: '/changePwOwner'})">Change password</a>
+                    </div>
                     <hr>
                     <h4 class="text-success mb-5">Loyalty program</h4>
                     <div style="font-size: 1.2em">
@@ -55,9 +61,9 @@ Vue.component('owners-profile', {
                     </div>
 
                     <div class="mt-5 d-flex justify-content-evenly">
-                        <a class="btn btn-success me-1" href="javascript:void(0)" @click="$router.push({path: '/updateOwnersProfile'})" style="width: 50%">Edit</a>
-                        <a @click="window.scrollTo(0, document.body.scrollHeight);" class="btn btn-danger ms-1" data-bs-toggle="collapse" href="#confirm-delete" 
-                        role="button" aria-expanded="false" aria-controls="confirm-delete" style="width: 50%">Delete</a>
+                        <a class="btn btn-success me-1" href="javascript:void(0)" @click="$router.push({path: '/updateOwnersProfile'})" style="width: 30%">Edit</a>
+                        <a data-bs-target="#confirm-delete" class="btn btn-danger ms-1" data-bs-toggle="collapse" href="#confirm-delete" 
+                        role="button" aria-expanded="false" aria-controls="confirm-delete" style="width: 30%">Delete</a>
                     </div>
                     <div class="collapse shadow rounded mt-3 form-floating" id="confirm-delete">
                         <textarea v-model="reason" class="form-control" id="reason-textarea" style="height: 150px"></textarea>

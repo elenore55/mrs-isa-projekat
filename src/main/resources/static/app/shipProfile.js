@@ -7,6 +7,8 @@ Vue.component('ship-profile', {
     },
 
     mounted() {
+        $("body").css("background-color", "#f2e488");
+        $("body").css("background-size", "100% 200%");
         axios({
             method: "get",
             url: "api/ships/getShip/" + this.$route.params.id,
@@ -38,9 +40,17 @@ Vue.component('ship-profile', {
                                     <img :src="ship.imagePaths[0]" style="width: 250px;height: 250px; cursor: pointer" data-bs-target="#carouselExample" data-bs-slide-to="0">
                                 </div>
                                 <div class="ms-4">   
-                                    <h1 class="text-success ">{{ ship.price }} <i class="fa fa-eur"></i></h1>
+                                    <div class="d-flex justify-content-start">
+                                        <h1 class="text-success ">{{ ship.price }} <i class="fa fa-eur"></i></h1>
+                                        <h5 class="d-flex align-items-end">&nbsp; /hour</h5>
+                                    </div>
                                     <p class="h6 my-2"> {{ ship.description }}</p>
-                                    <h2 v-if="ship.rate != -1"><span class="badge bg-primary">{{ ship.rate }}</span></h2>
+                                    <span v-if="ship.rate != -1" class="badge bg-primary my-2">
+                                        <div class="d-flex justify-content-start">
+                                            <h6 class="d-flex align-items-center"><i class="fa fa-star"></i></h6>
+                                            <h2>&nbsp;{{ ship.rate }}</h2>
+                                        </div>
+                                    </span>
                                     <u><a data-bs-toggle="modal"  href="javascript:void(0)" @click="displayReviews" style="cursor: pointer; color: #0a53be"><h6 v-if="ship.rate != -1">{{ ship.reviews.length }} reviews</h6></a></u>
                                     <h3 v-if="ship.rate == -1">No reviews</h3>
                                     <div class="mt-4">

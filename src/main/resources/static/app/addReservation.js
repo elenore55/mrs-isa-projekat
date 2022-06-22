@@ -12,6 +12,9 @@ Vue.component("add-reservation", {
     },
 
     mounted() {
+        $("body").css("background-image", "none");
+        $("body").css("background-color", "#f2e488");
+        $("body").css("background-size", "100% 200%");
         this.id = this.$route.params.id;
 
         axios({
@@ -31,7 +34,7 @@ Vue.component("add-reservation", {
     },
 
     template: `
-    <div style="background-color: #f2e488; height: 100vh">
+    <div>
         <div class="d-flex justify-content-center">
             <div class="container w-50 m-5 card shadow-lg" style="border-radius: 10px">
                 <div class="mt-4 ms-3 mb-2 card-title d-flex justify-content-center">

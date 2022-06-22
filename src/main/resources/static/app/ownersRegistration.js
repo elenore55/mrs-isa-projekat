@@ -8,7 +8,7 @@ Vue.component("owners-registration", {
             surname: "",
             street: "",
             city: "",
-            country: "Serbia",
+            country: "",
             phone: "",
             input_started: false,
             type: "",
@@ -88,9 +88,9 @@ Vue.component("owners-registration", {
                             <label for="city-input" class="ms-2" style="color:#C0C0C0">City</label>
                             <p v-if="!isValidCity" class="text-danger">Invalid city</p>
                         </div>
-                        <div class="col">
-                            <label for="country-input" class="ms-2" style="color:#C0C0C0">Country</label>
-                            <select id="country-input" v-model="country" class="selectpicker countrypicker" data-live-search="true" data-default="Serbia"></select>
+                        <div class="col form-floating">
+                            <input type="text" class="form-control" id="country-input" v-model="country" placeholder="Country">
+                            <label for="country-input" class="ms-2" style="color:#C0C0C0">City</label>
                             <p v-if="!isValidCountry" class="text-danger">Invalid country</p>
                         </div>
                     </div>
@@ -239,8 +239,7 @@ Vue.component("owners-registration", {
 
         isValidPhone() {
             if (!this.input_started) return true;
-            const re = new RegExp(/[0-9]{3}-[0-9]{3}-[0-9]{3,4}$/);
-            return this.phone && re.test(this.phone);
+            return !!(this.phone);
         },
 
         isValidReason() {
