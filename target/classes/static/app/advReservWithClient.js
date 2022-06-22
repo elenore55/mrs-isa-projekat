@@ -8,11 +8,18 @@ Vue.component("advreserv-with-client",{
             adventures:[],
             offer:[],
             price:[],
-            client_email:[]
+            client_email:[],
+            id: [],
+            token: {}
 
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         // this.loadAllInstructorAvailability()
         this.loadInstructorsAdventures()
         // this.getOfferFromAdventure()
@@ -54,7 +61,18 @@ Vue.component("advreserv-with-client",{
     `,
     methods:{
         loadInstructorsAdventures(){
-            axios.get("api/adventures/all").then(response => {
+            // axios.get("api/adventures/all").then(response => {
+            //     this.adventures = response.data;
+            //     // console.log(this.adventures)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/adventures/all/"+this.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.adventures = response.data;
                 // console.log(this.adventures)
             })
@@ -73,15 +91,41 @@ Vue.component("advreserv-with-client",{
 
             console.log(this.start);
             console.log(this.end);
-            axios.get("api/offers/getOffer/" + this.adventure.id).then(response => {
+            // axios.get("api/offers/getOffer/" + this.adventure.id).then(response => {
+            //     this.offer = response.data;
+            //     axios.post("api/adventures/addReservationClient", {
+            //         // availabilityDTO: this.availabilityDTO
+            //         ownerId: 1, //zasad
+            //         startDate: this.start,
+            //         endDate: this.end,
+            //         offerId: this.offer.id,
+            //         clientEmail: this.client_email
+            //     }).then(function (response) {
+            //         alert("Successful");
+            //     }).catch(function (error) {
+            //         alert("An ERROR occurred while updating your personal information");
+            //     });
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/offers/getOffer/"+this.adventure.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.offer = response.data;
                 axios.post("api/adventures/addReservationClient", {
                     // availabilityDTO: this.availabilityDTO
-                    ownerId: 1, //zasad
+                    ownerId: this.id, //zasad
                     startDate: this.start,
                     endDate: this.end,
                     offerId: this.offer.id,
                     clientEmail: this.client_email
+                },{
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
                 }).then(function (response) {
                     alert("Successful");
                 }).catch(function (error) {

@@ -25,10 +25,17 @@ Vue.component("instructors-adventures",{
                 fishingEquipmentList: [],
                 maxPeople: []
             },
-            paths:[]
+            paths:[],
+            id: [],
+            token: {}
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         this.loadInstructorsAdventures()
         this.loadEquipment()
     },
@@ -108,7 +115,24 @@ Vue.component("instructors-adventures",{
     `,
     methods:{
         loadAdventureInfo(){
-            axios.get("api/adventures/"+this.adventure.split(' - ')[0]).then(response => {
+            // axios.get("api/adventures/"+this.adventure.split(' - ')[0]).then(response => {
+            //     this.adventureInfo = response.data;
+            //     console.log(this.adventure)
+            //     console.log("AAAAAAAAA")
+            //     console.log(this.adventureInfo)
+            //     this.addressInfo.cityInfo=this.adventureInfo.address.city;
+            //     this.addressInfo.streetInfo=this.adventureInfo.address.street;
+            //     this.addressInfo.countryInfo=this.adventureInfo.address.country;
+            //     this.loadAdventureImages();
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/adventures/"+this.adventure.split(' - ')[0],
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.adventureInfo = response.data;
                 console.log(this.adventure)
                 console.log("AAAAAAAAA")
@@ -120,13 +144,36 @@ Vue.component("instructors-adventures",{
             })
         },
         loadEquipment(){
-            axios.get("api/fishingEquipment/all").then(response => {
+            // axios.get("api/fishingEquipment/all").then(response => {
+            //     this.allEquipments = response.data
+            //     console.log(this.allEquipments)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/fishingEquipment/all",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.allEquipments = response.data
                 console.log(this.allEquipments)
             })
         },
         loadAdventureImages(){
-            axios.get("api/adventures/getAdventureImages/" + this.adventureInfo.id).then(response => {
+            // axios.get("api/adventures/getAdventureImages/" + this.adventureInfo.id).then(response => {
+            //     this.paths = response.data;
+            // }).catch(function (error) {
+            //     Swal.fire('Error', 'Something went wrong!', 'error');
+            // });
+
+            axios({
+                method: 'get',
+                url: "api/adventures/getAdventureImages/"+this.adventureInfo.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.paths = response.data;
             }).catch(function (error) {
                 Swal.fire('Error', 'Something went wrong!', 'error');
@@ -134,7 +181,20 @@ Vue.component("instructors-adventures",{
         },
         deleteAdventure(){
             console.log(this.adventure.split(' - ')[0])
-            axios.get("api/adventures/deleteAdventure/"+this.adventure.split(' - ')[0]).then(response => {
+            // axios.get("api/adventures/deleteAdventure/"+this.adventure.split(' - ')[0]).then(response => {
+            //     alert('Adventure successfully deleted');
+            //     this.loadInstructorsAdventures();
+            // }).catch(function (error) {
+            //     alert('It is not possible to delete this adventure');
+            // });
+
+            axios({
+                method: 'get',
+                url: "api/adventures/deleteAdventure/"+this.adventure.split(' - ')[0],
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 alert('Adventure successfully deleted');
                 this.loadInstructorsAdventures();
             }).catch(function (error) {
@@ -142,7 +202,18 @@ Vue.component("instructors-adventures",{
             });
         },
         loadInstructorsAdventures(){
-            axios.get("api/adventures/all/"+this.$route.params.id).then(response => {
+            // axios.get("api/adventures/all/"+this.$route.params.id).then(response => {
+            //     this.adventures = response.data;
+            //     // console.log(this.adventures)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/adventures/all/"+this.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.adventures = response.data;
                 // console.log(this.adventures)
             })
@@ -168,6 +239,10 @@ Vue.component("instructors-adventures",{
                 additionalInfo: this.adventureInfo.additionalInfo,
                 fInstructorId: this.adventureInfo.fInstructorId,
                 imagePaths: this.adventureInfo.imagePaths
+            },{
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
             }).then(function (response) {
                 alert("Successfully updated your adventure's information");
             }).catch(function (error) {

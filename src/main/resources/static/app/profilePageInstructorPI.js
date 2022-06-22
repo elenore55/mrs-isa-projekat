@@ -6,9 +6,16 @@ Vue.component("profile-page-instructorpi",{
             passwordRE:"",
             ogpassword:[],
             reason: "",
+            id: [],
+            token: {}
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         this.loadInstructorProfile()
     },
     // ako hoces custom ponasanja ti stavi button i v-onclick inace ako se koristi forma idemo submit i onsubmit jer nam daje sam mogucnost provere unosa podataka
@@ -91,6 +98,10 @@ Vue.component("profile-page-instructorpi",{
                 axios.post("api/deletionRequests/deleteProfile", {
                     id: this.instruktorPI.id,
                     reason: this.reason,
+                },{
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
                 }).then(function (response) {
                     if (response.data == "OK") {
                         location.replace('http://localhost:8000/#/deleteProfileMessage');
@@ -101,7 +112,19 @@ Vue.component("profile-page-instructorpi",{
             }
         },
         loadInstructorProfile(){
-            axios.get("api/instructors/getInstructorData").then(response => {
+            // axios.get("api/instructors/getInstructorData").then(response => {
+            //     this.instruktorPI = response.data;
+            //     this.ogpassword = this.instruktorPI.profileDataDTO.password;
+            //     console.log(this.instruktorPI)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/instructors/getInstructorData/"+this.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.instruktorPI = response.data;
                 this.ogpassword = this.instruktorPI.profileDataDTO.password;
                 console.log(this.instruktorPI)
@@ -113,7 +136,11 @@ Vue.component("profile-page-instructorpi",{
                 axios.post("api/instructors/updateInstructorInfo", {
                     biography: this.instruktorPI.biography,
                     profileDataDTO: this.instruktorPI.profileDataDTO,
-                    id: 1
+                    id: this.id
+                },{
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
                 }).then(function (response) {
                     alert("Successfully updated your personal information");
                 }).catch(function (error) {

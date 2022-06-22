@@ -20,11 +20,18 @@ Vue.component("add-adventure",{
                 rules: [],
                 fishingEquipmentList: [],
                 maxPeople: 1,
-                fInstructorId: 3
-            }
+                fInstructorId: JSON.parse(localStorage.getItem("jwt")).userId
+            },
+            id: [],
+            token: {}
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         this.loadEquipment()
         this.loadInstructorBio_data()
     },
@@ -117,13 +124,33 @@ Vue.component("add-adventure",{
     `,
     methods:{
         loadEquipment(){
-          axios.get("api/fishingEquipment/all").then(response => {
-            this.allEquipments = response.data
-              console.log(this.allEquipments)
-          })
+          // axios.get("api/fishingEquipment/all").then(response => {
+          //   this.allEquipments = response.data
+          //     console.log(this.allEquipments)
+          // })
+            axios({
+                method: 'get',
+                url: "api/fishingEquipment/all",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
+                this.allEquipments = response.data
+                console.log(this.allEquipments)
+            })
         },
         loadInstructorBio_data(){
-            axios.get("api/instructors/getInstructorData").then(response => {
+            // axios.get("api/instructors/getInstructorData").then(response => {
+            //     this.instructorBio_data = response.data // dobijamo FishingInstructorDTO
+            //     console.log(this.instructorBio_data)
+            // })
+            axios({
+                method: 'get',
+                url: "api/instructors/getInstructorData/"+this.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.instructorBio_data = response.data // dobijamo FishingInstructorDTO
                 console.log(this.instructorBio_data)
             })
@@ -140,7 +167,7 @@ Vue.component("add-adventure",{
             console.log("JEDAN1")
             console.log(this.form.fishingEquipmentList)
             console.log("JEDAN2")
-            axios.post("api/adventures/addAdventure", {
+            axios.post("api/adventures/addAdventure/"+this.id, {
                 name: this.form.name,
                 description: this.form.description,
                 rules: this.form.rules,
@@ -154,7 +181,11 @@ Vue.component("add-adventure",{
                 // street: this.form.street,
                 address: this.form.address,
                 additionalInfo: this.form.additionalInfo,
-                fInstructorId: 3
+                fInstructorId: this.id
+            },{
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
             }).then(function (response) {
                 alert("Successfully added an adventure");
             }).catch(function (error) {

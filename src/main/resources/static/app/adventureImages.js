@@ -4,11 +4,19 @@ Vue.component("adventure-images", {
             id: [],
             paths: [],
             adventures:[],
-            adventure:[]
+            adventure:[],
+
+            idT: [],
+            token: {}
         }
     },
 
     mounted:function () {
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.idT = this.token.userId;
+        alert("Trenutni id je " + this.idT);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         this.loadInstructorsAdventures()
     },
 
@@ -86,7 +94,20 @@ Vue.component("adventure-images", {
     methods: {
         loadAdventureImages()
         {
-            axios.get("api/adventures/getAdventureImages/" + this.adventureInfo.id).then(response => {
+            // axios.get("api/adventures/getAdventureImages/" + this.adventureInfo.id).then(response => {
+            //     this.paths = response.data;
+            //     console.log(this.paths)
+            // }).catch(function (error) {
+            //     Swal.fire('Error', 'Something went wrong!', 'error');
+            // });
+
+            axios({
+                method: 'get',
+                url: "api/adventures/getAdventureImages/"+this.adventureInfo.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.paths = response.data;
                 console.log(this.paths)
             }).catch(function (error) {
@@ -94,13 +115,38 @@ Vue.component("adventure-images", {
             });
         },
         loadInstructorsAdventures(){
-            axios.get("api/adventures/all").then(response => {
+            // axios.get("api/adventures/all").then(response => {
+            //     this.adventures = response.data;
+            //     console.log(this.adventures)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/adventures/all/"+this.idT,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.adventures = response.data;
                 console.log(this.adventures)
             })
         },
         loadAdventureInfo(){
-            axios.get("api/adventures/"+this.adventure.split(' - ')[0]).then(response => {
+            // axios.get("api/adventures/"+this.adventure.split(' - ')[0]).then(response => {
+            //     this.adventureInfo = response.data;
+            //     console.log(this.adventure)
+            //     console.log("AAAAAAAAA")
+            //     console.log(this.adventureInfo)
+            //     this.loadAdventureImages();
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/adventures/"+this.adventure.split(' - ')[0],
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.adventureInfo = response.data;
                 console.log(this.adventure)
                 console.log("AAAAAAAAA")
@@ -125,7 +171,12 @@ Vue.component("adventure-images", {
             axios.post("api/adventures/updateAdventureImages", {
                 id: this.adventureInfo.id,
                 imagePaths: this.paths
-            }).then(function(response) {
+            },{
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+                }
+            ).then(function(response) {
                 Swal.fire('Success', 'Adventure updated!', 'success');
             }).catch(function (error) {
                 Swal.fire('Error', 'Something went wrong!', 'error');

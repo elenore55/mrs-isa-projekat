@@ -7,10 +7,17 @@ Vue.component("adventure-history",{
             adventures:[],
             start:null,
             end:null,
-            reservations:[]
+            reservations:[],
+            id: [],
+            token: {}
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         this.loadInstructorsAdventures()
         //this.loadAllReservationHistory()
         //this.loadReservationHistory()
@@ -63,14 +70,36 @@ Vue.component("adventure-history",{
     `,
     methods:{
         loadInstructorsAdventures(){
-            axios.get("api/adventures/all").then(response => {
+            // axios.get("api/adventures/all").then(response => {
+            //     this.adventures = response.data;
+            //     // console.log(this.adventures)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/adventures/all/"+this.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.adventures = response.data;
                 // console.log(this.adventures)
             })
         },
 
         loadAllReservationHistory(){
-            axios.get("api/reservations/all").then(response => {
+            // axios.get("api/reservations/all").then(response => {
+            //     this.reservations = response.data;
+            //     console.log(this.reservations)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/reservations/allAdv"+this.adventure.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.reservations = response.data;
                 console.log(this.reservations)
             })
@@ -78,7 +107,18 @@ Vue.component("adventure-history",{
 
         // msm sta da ti kazem ti trazi pomoc :)
         loadReservationHistory(){   //onde nam 1 predstavlja id instruktora zasad ne znam o kojem je rec
-            axios.get("api/reservations/advreser/"+this.adventure.id+"/3").then(response => {
+            // axios.get("api/reservations/advreser/"+this.adventure.id+"/3").then(response => {
+            //     this.reservations = response.data;
+            //     console.log(this.reservations)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/reservations/advreser/"+this.adventure.id+"/"+this.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.reservations = response.data;
                 console.log(this.reservations)
             })
@@ -95,7 +135,19 @@ Vue.component("adventure-history",{
 
         sendRequest(){
             console.log("AAAAAAAAAAAAA")
-            axios.get("api/availability/betweenDates").then(response => {
+            // axios.get("api/availability/betweenDates").then(response => {
+            //     this.availabilities = response.data;
+            //     // console.log(this.availabilities)
+            //     // console.log("BBBB")
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/availability/betweenDates"+this.start+"/"+this.end,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.availabilities = response.data;
                 // console.log(this.availabilities)
                 // console.log("BBBB")

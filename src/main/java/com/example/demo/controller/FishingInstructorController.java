@@ -49,10 +49,10 @@ public class FishingInstructorController {
 
 
 
-    @GetMapping(value = "/getInstructorData")
-    public ResponseEntity<FishingInstructorDTO> getFishingInstructorData(){
+    @GetMapping(value = "/getInstructorData/{id}")
+    public ResponseEntity<FishingInstructorDTO> getFishingInstructorData(@PathVariable Integer id){
         // pribavi instruktora
-        FishingInstructor fishingInstructor = fishingInstructorService.findOne(3);
+        FishingInstructor fishingInstructor = fishingInstructorService.findOne(id);
         FishingInstructorDTO fishingInstructorDTO = new FishingInstructorDTO(fishingInstructor);
 
         return new ResponseEntity<>(fishingInstructorDTO, HttpStatus.OK);

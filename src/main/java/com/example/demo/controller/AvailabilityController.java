@@ -64,8 +64,8 @@ public class AvailabilityController {
         return new ResponseEntity<>(new AvailabilityDTO(availability), HttpStatus.CREATED);
     }
 
-    @GetMapping(value = "/betweenDates")
-    public ResponseEntity<List<AvailabilityDTO>> getBetweenAvailabilities(LocalDateTime start, LocalDateTime end) {
+    @GetMapping(value = "/betweenDates/{start}/{end}")
+    public ResponseEntity<List<AvailabilityDTO>> getBetweenAvailabilities(@PathVariable LocalDateTime start,@PathVariable LocalDateTime end) {
 
         List<Availability> availabilities = availabilityService.findAll();
         List<AvailabilityDTO> availabilityDTOS = new ArrayList<>();

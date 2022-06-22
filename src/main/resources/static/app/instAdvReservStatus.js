@@ -7,10 +7,17 @@ Vue.component("instadv-reserv",{
             apStatus:[],
             selectedStatus:[],
             adventure: [],
-            checked:false
+            checked:false,
+            id: [],
+            token: {}
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         this.loadInstructorsAdventures()
         this.loadReservationsPossibleStatuses()
     },
@@ -62,7 +69,18 @@ Vue.component("instadv-reserv",{
     `,
     methods:{
         loadInstructorsAdventures(){
-            axios.get("api/adventures/all").then(response => {
+            // axios.get("api/adventures/all").then(response => {
+            //     this.adventures = response.data;
+            //     // console.log(this.adventures)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/adventures/allInstructorsAdventures"+this.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.adventures = response.data;
                 // console.log(this.adventures)
             })
@@ -70,21 +88,55 @@ Vue.component("instadv-reserv",{
         loadReservations(){ // zasad id od instruktora ostaje na 3
             if(this.checked)
             {
-                axios.get("api/reservations/allForInstructor/"+3+"/"+this.adventure.split(' - ')[0]).then(response => {
+                // axios.get("api/reservations/allForInstructor/"+3+"/"+this.adventure.split(' - ')[0]).then(response => {
+                //     this.reservations = response.data;
+                //     console.log(this.reservations[0])
+                // })
+
+                axios({
+                    method: 'get',
+                    url: "api/reservations/allForInstructor/"+this.id+"/"+this.adventure.split(' - ')[0],
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
+                }).then(response => {
                     this.reservations = response.data;
                     console.log(this.reservations[0])
                 })
+
             }
             else
             {
-                axios.get("api/reservations/allPendingForInstructor/"+3+"/"+this.adventure.split(' - ')[0]).then(response => {
+                // axios.get("api/reservations/allPendingForInstructor/"+3+"/"+this.adventure.split(' - ')[0]).then(response => {
+                //     this.reservations = response.data;
+                //     console.log(this.reservations[0])
+                // })
+
+                axios({
+                    method: 'get',
+                    url: "api/reservations/allPendingForInstructor/"+this.id+"/"+this.adventure.split(' - ')[0],
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
+                }).then(response => {
                     this.reservations = response.data;
                     console.log(this.reservations[0])
                 })
             }
         },
         loadReservationsPossibleStatuses(){
-            axios.get("api/adventures/approvalStatus").then(response => {
+            // axios.get("api/adventures/approvalStatus").then(response => {
+            //     this.apStatus = response.data;
+            //     console.log(this.apStatus)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/adventures/approvalStatus",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.apStatus = response.data;
                 console.log(this.apStatus)
             })
@@ -94,6 +146,10 @@ Vue.component("instadv-reserv",{
             axios.post("api/reservations/updateAdventuresreservation",{
                 id: comp.id,
                 status:comp.status,
+            },{
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
             }).then(setTimeout(()=>this.$router.go(),100)).catch(console.log("Nesto nije valjano"))
         },
     }

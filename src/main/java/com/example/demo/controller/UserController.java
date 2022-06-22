@@ -224,7 +224,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(path = "/getIncomeReport/{id}/{kind}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP','ADVENTURE', 'ADMIN')")
     public ResponseEntity<List<ReportEntryDTO>> getIncomeReport(@PathVariable Integer id, @PathVariable String kind, @RequestBody DatesDTO dto) {
         User user = userService.findOne(id);
         if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -337,7 +337,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(path = "/getVisitReport/{id}/{kind}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP','ADVENTURE', 'ADMIN')")
     public ResponseEntity<List<ReportEntryDTO>> getVisitReport(@PathVariable Integer id, @PathVariable String kind, @RequestBody DatesDTO dto) {
         User user = userService.findOne(id);
         if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -363,7 +363,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(path = "/getPriceHistoryReport/{id}/{kind}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP','ADVENTURE', 'ADMIN')")
     public ResponseEntity<List<ReportEntryDTO>> getPriceHistoryReport(@PathVariable Integer id, @PathVariable String kind, @RequestBody DatesDTO dto) {
         User user = userService.findOne(id);
         if (user == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);

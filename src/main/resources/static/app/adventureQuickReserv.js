@@ -13,10 +13,17 @@ Vue.component("adventure-quick",{
             price:[],
             additional_services:[],
             address_id:[],
-            type:[]
+            type:[],
+            id: [],
+            token: {}
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         // this.loadAllInstructorAvailability()
         this.loadInstructorsAdventures()
         // this.getOfferFromAdventure()
@@ -82,13 +89,50 @@ Vue.component("adventure-quick",{
     `,
     methods:{
         loadInstructorsAdventures(){
-            axios.get("api/adventures/all").then(response => {
+            // axios.get("api/adventures/all").then(response => {
+            //     this.adventures = response.data;
+            //     // console.log(this.adventures)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/adventures/all/"+this.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.adventures = response.data;
                 // console.log(this.adventures)
             })
         },
         sendRequest(){
-            axios.get("api/offers/getOffer/" + this.adventure.id).then(response => {
+            // axios.get("api/offers/getOffer/" + this.adventure.id).then(response => {
+            //     this.offer = response.data;
+            //     axios.post("api/adventures/addFastReservation/"+this.offer.id, {
+            //         // availabilityDTO: this.availabilityDTO
+            //         start: this.start,
+            //         duration: this.duration,
+            //
+            //         actionStart: this.action_start,
+            //         actionDuration: this.action_duration,
+            //
+            //         maxPeople: this.maxPeople,
+            //         price: this.price,
+            //         adventure: this.adventure.id
+            //     }).then(function (response) {
+            //         alert("Successful");
+            //     }).catch(function (error) {
+            //         alert("An ERROR occurred while updating your personal information");
+            //     });
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/offers/getOffer/"+this.adventure.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.offer = response.data;
                 axios.post("api/adventures/addFastReservation/"+this.offer.id, {
                     // availabilityDTO: this.availabilityDTO
@@ -101,6 +145,10 @@ Vue.component("adventure-quick",{
                     maxPeople: this.maxPeople,
                     price: this.price,
                     adventure: this.adventure.id
+                },{
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
                 }).then(function (response) {
                     alert("Successful");
                 }).catch(function (error) {

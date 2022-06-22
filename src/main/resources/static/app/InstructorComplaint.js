@@ -10,11 +10,18 @@ Vue.component("instructor-complaint",{
             review:[],
             brojac:0,
             penalty:false,
-            client_email:[]
+            client_email:[],
+            id: [],
+            token: {}
 
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         this.loadInstructorsAdventures()
     },
     template: `
@@ -64,13 +71,35 @@ Vue.component("instructor-complaint",{
             this.penalty = !this.penalty
         },
         loadInstructorsAdventures(){ // ZA SAD OSTAVLJENO DA BUDE 3 ZA INSTRUKTORA
-            axios.get("api/adventures/allInstructorsAdventures/"+"3").then(response => {
+            // axios.get("api/adventures/allInstructorsAdventures/"+"3").then(response => {
+            //     this.adventures = response.data;
+            //     // console.log(this.adventures)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/adventures/allInstructorsAdventures/"+this.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.adventures = response.data;
                 // console.log(this.adventures)
             })
         },
         loadAdventuresReservations(){       // ZA SAD ZA INSTRUKTORA POSTAVLJENO DA JE 3
-            axios.get("api/reservations/advreser/"+this.adventure.id+"/"+"3").then(response => {
+            // axios.get("api/reservations/advreser/"+this.adventure.id+"/"+"3").then(response => {
+            //     this.reservations = response.data;
+            //     console.log(this.adventure)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/reservations/advreser/"+this.adventure.id + "/" + this.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.reservations = response.data;
                 console.log(this.adventure)
             })
@@ -81,12 +110,26 @@ Vue.component("instructor-complaint",{
                 console.log(this.penalty)
                 console.log(this.client_email)
                 console.log(this.reservation.id)
-                axios.put("api/clientReviews/addReview", {
-                    content: this.review,
-                    penaltyRequested: this.penalty,
-                    clientEmail: this.client_email,
-                    ownerId: 3,
-                    reservationId: this.reservation.id
+                // axios.put("api/clientReviews/addReview", {
+                //     content: this.review,
+                //     penaltyRequested: this.penalty,
+                //     clientEmail: this.client_email,
+                //     ownerId: 3,
+                //     reservationId: this.reservation.id
+                // })
+
+                axios({
+                    method: 'put',
+                    url: "api/clientReviews/addReview/", data:{
+                        content: this.review,
+                        penaltyRequested: this.penalty,
+                        clientEmail: this.client_email,
+                        ownerId: this.id,
+                        reservationId: this.reservation.id
+                    },
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
                 })
             }
         }

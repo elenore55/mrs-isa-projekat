@@ -1,5 +1,14 @@
 Vue.component('instructor-nav', {
     props: ['offer'],
+    id:[],
+    token: {},
+    mounted() {
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
+    },
 
     template: `
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -56,52 +65,52 @@ Vue.component('instructor-nav', {
 
     computed: {
         profilePageInstructorPI() {
-            return "/#/profilePageInstructorPI/" + this.$route.params.id;
+            return "/index.html#/profilePageInstructorPI/" + this.id;   //odradjen
         },
 
         instructorsAdventures() {
-            return "/#/instructorsAdventures/"+ this.$route.params.id;
+            return "/index.html#/instructorsAdventures/"+ this.id;      //odradjeno
         },
 
         scheduleCalendarInstructor() {
-            return "/#/instructorsCalendar/" + this.$route.params.id;
+            return "/index.html#/instructorsCalendar/" + this.id;       //odradjeno
         },
 
         incomeReport() {
-            return "/#/incomeReport/" + this.$route.params.id;
+            return "/index.html#/incomeReport/";
         },
 
         visitReport() {
-            return "/#/visitReport/" + this.$route.params.id;
+            return "/index.html#/visitReport/";
         },
 
         priceHistoryReport() {
-            return "/#/priceHistoryReport/" + this.$route.params.id;
+            return "/index.html#/priceHistoryReport/";
         },
 
         defInstFreeTime() {
-            return "/#/availabilityInstructor/" + this.$route.params.id;
+            return "/index.html#/availabilityInstructor/" + this.id;    //odradjeno
         },
         instAdvReservStatus() {
-            return "/#/instAdvReservSatatus/" + this.$route.params.id;
+            return "/index.html#/instAdvReservSatatus/" + this.id;      //odradjeno
         },
         InstructorComplaint() {
-            return "/#/instructorComplaint/" + this.$route.params.id;
+            return "/index.html#/instructorComplaint/" + this.id;       //odradjeno
         },
         addAdventure() {
-            return "/#/addAdventure/" + this.$route.params.id;
+            return "/index.html#/addAdventure/" + this.id;      //odradjeno
         },
         adveHistReserv() {
-            return "/#/adventureHistory/" + this.$route.params.id;
+            return "/index.html#/adventureHistory/" + this.id;  //odradjeno
         },
         adventureImages() {
-            return "/#/adventureImg/" + this.$route.params.id;
+            return "/index.html#/adventureImg/" + this.id;          //odradjeno
         },
         adventureQuickReserv() {
-            return "/#/adventureQuickReserv/" + this.$route.params.id;
+            return "/index.html#/adventureQuickReserv/" + this.id;      //odradjeno
         },
         advReservWithClient() {
-            return "/#/advReservWithClient/" + this.$route.params.id;
+            return "/index.html#/advReservWithClient/" + this.id;       //odradjeno
         },
 
 

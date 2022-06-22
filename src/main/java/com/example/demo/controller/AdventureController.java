@@ -116,8 +116,8 @@ public class AdventureController {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/addAdventure", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<AdventureDTO> saveAdventure(@RequestBody AdventureDTO adventureDTO) {
+    @RequestMapping(path = "/addAdventure/{id}", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<AdventureDTO> saveAdventure(@RequestBody AdventureDTO adventureDTO, @PathVariable Integer id) {
 
         Adventure adventure = new Adventure();
 
@@ -134,7 +134,7 @@ public class AdventureController {
 //        FishingInstructor fishingInstructor = new FishingInstructor();
 //        fishingInstructor.setId(adventureDTO.getfInstructorId());
 //        FishingInstructor fishingInstructor = fishingInstructorService.findOne(adventureDTO.getfInstructorId());
-        FishingInstructor fishingInstructor = fishingInstructorService.findOne(3);
+        FishingInstructor fishingInstructor = fishingInstructorService.findOne(id);
         adventure.setInstructor(fishingInstructor);
 
         List<Rule> rules = new ArrayList<>();

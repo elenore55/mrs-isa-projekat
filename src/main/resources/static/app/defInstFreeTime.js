@@ -8,10 +8,17 @@ Vue.component("availability-instructor",{
             calendar:[],
             adventure:[],
             adventures:[],
-            offer:[]
+            offer:[],
+            id: [],
+            token: {}
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         // this.loadAllInstructorAvailability()
         this.loadInstructorsAdventures()
         // this.getOfferFromAdventure()
@@ -55,19 +62,53 @@ Vue.component("availability-instructor",{
         //     })
         // },
         loadInstructorsAdventures(){
-            axios.get("api/adventures/all").then(response => {
+            // axios.get("api/adventures/all").then(response => {
+            //     this.adventures = response.data;
+            //     // console.log(this.adventures)
+            // })
+            axios({
+                method: 'get',
+                url: "api/adventures/all/"+this.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.adventures = response.data;
                 // console.log(this.adventures)
             })
         },
         sendRequest(){
-            axios.get("api/offers/getOffer/" + this.adventure.id).then(response => {
+            // axios.get("api/offers/getOffer/" + this.adventure.id).then(response => {
+            //     this.offer = response.data;
+            //     axios.post("api/availability/addAvailability", {
+            //         // availabilityDTO: this.availabilityDTO
+            //         start: this.start,
+            //         end:this.end,
+            //         offer: this.offer
+            //     }).then(function (response) {
+            //         alert("Successfully added availability period");
+            //     }).catch(function (error) {
+            //         alert("An ERROR occurred while adding an availability");
+            //     });
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/offers/getOffer/"+this.adventure.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.offer = response.data;
                 axios.post("api/availability/addAvailability", {
                     // availabilityDTO: this.availabilityDTO
                     start: this.start,
                     end:this.end,
                     offer: this.offer
+                },{
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
                 }).then(function (response) {
                     alert("Successfully added availability period");
                 }).catch(function (error) {

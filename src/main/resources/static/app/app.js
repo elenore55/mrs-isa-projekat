@@ -285,7 +285,7 @@ const router = new VueRouter({
             component: AddCottage
         },
         {
-           path: "/addAdventure/",
+           path: "/addAdventure/:id",
            component: AddAdventure
         },
         {
@@ -309,23 +309,23 @@ const router = new VueRouter({
             component: UpdateAdminInfo
         },
         {
-            path: "/availabilityInstructor/",
+            path: "/availabilityInstructor/:id",
             component: AvailabilityInstructor
         },
         {
-            path: "/instructorsCalendar/",
+            path: "/instructorsCalendar/:id",
             component: InstructorsCalendar
         },
         {
-            path: "/adventureHistory/",
+            path: "/adventureHistory/:id",
             component: AdventureHistory
         },
         {
-            path: "/adventureQuickReserv/",
+            path: "/adventureQuickReserv/:id",
             component: AdventureQuickReserv
         },
         {
-            path: "/advReservWithClient/",
+            path: "/advReservWithClient/:id",
             component: AdveReservWithClient
         },
         {
@@ -341,7 +341,7 @@ const router = new VueRouter({
             component: AdminDeletionReq
         },
         {
-            path: "/instructorComplaint/",
+            path: "/instructorComplaint/:id",
             component: InstructorComplaint
         },
         {
@@ -373,7 +373,7 @@ const router = new VueRouter({
             component: AdminVisitRep
         },
         {
-            path: "/instAdvReservSatatus",
+            path: "/instAdvReservSatatus/:id",
             component: InsAdvReservStatus
         },
         {

@@ -238,6 +238,20 @@ public class ReservationController {
         return new ResponseEntity<>(reservationDTOS, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/allAdv/{advID}")
+    public ResponseEntity<List<ReservationDTO>> getAllInstructorReservations(@PathVariable Integer advID) {
+
+        List<Reservation> reservations = reservationService.findAll();
+        List<ReservationDTO> reservationDTOS = new ArrayList<>();
+
+        for (Reservation reservation : reservations) {
+            if(reservation.getOffer().getId()==advID)
+                reservationDTOS.add(new ReservationDTO(reservation));
+        }
+
+        return new ResponseEntity<>(reservationDTOS, HttpStatus.OK);
+    }
+
     @GetMapping(value = "/advreser/{advId}/{instId}")
     public ResponseEntity<List<ReservationDTO>> getAdventuresReservations(@PathVariable Integer advId,@PathVariable Integer instId) {
         FishingInstructor fishingInstructor = fishingInstructorService.findOne(instId);
