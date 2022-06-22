@@ -337,7 +337,6 @@ methods: {
                      }
                  }
             }).catch(function (error) {
-                alert("Greskaaa u get ships");
                 if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });
@@ -387,7 +386,6 @@ methods: {
                          alert('An error occurred!');
                     });*/
 
-                    alert(this.fromDate);
                     axios({
                        method: 'post',
                        url: "api/cottages/filter/", data: {

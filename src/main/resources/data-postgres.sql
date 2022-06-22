@@ -253,6 +253,12 @@ insert into cottage_owner_reservations (cottage_owner_id, reservations_id) value
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (3, 5, 'PENDING', '20220701 10:05:00 AM', '20220710 10:05:00 AM');
 insert into cottage_owner_reservations (cottage_owner_id, reservations_id) values (2, 15);
 
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (10, 5, 'PENDING', '20220625 10:05:00 AM', '20220625 10:05:00 AM');
+insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 16);
+
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (9, 5, 'PENDING', '20220720 10:05:00 AM', '20220725 10:05:00 AM');
+insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 17);
+
 insert into sub (user_id, offer_id) values (5, 2);
 
 insert into availability (offer_id, star_date_time, end_date_time) values (3, '20220402 00:00:01 AM', '20220830 11:59:59 PM');
@@ -315,3 +321,11 @@ insert into offer (additional_info, description, name, price_list, address_id, v
 insert into adventure (max_people,id,fishing_instructor_id) values (10, 12, 3);
 insert into adventure_fishing_equipments(adventure_id,fishing_equipments_id) values(12,2);
 insert into adventure_images (adventure_id, images_id) values (12, 21);
+
+insert into fast_reservation (type, action_duration, action_start, duration, reservation_start, max_people, price)
+    values ('OTH', 5, '20220705 00:14:01 AM', 5, '20220712 11:00:00 AM', 3, 55);
+insert into cottage_fast_reservations (cottage_id, fast_reservations_id) values (2, 2);
+
+insert into fast_reservation (type, action_duration, action_start, duration, reservation_start, max_people, price)
+    values ('OTH', 7, '20220815 00:10:01 AM', 5, '20220812 01:00:00 AM', 3, 70);
+insert into cottage_fast_reservations (cottage_id, fast_reservations_id) values (2, 3);
