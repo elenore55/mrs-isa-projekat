@@ -66,7 +66,7 @@ insert into address (city,country,street) values ('Venecija','Italija','Marka Po
 insert into address (city,country,street) values ('Venecija','Italija','Marka Pola 29');
 insert into address (city,country,street) values ('Venecija','Italija','Marka Pola 76');
 
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email1@gmail.com', 'Pero', '$2a$10$/rU.Ul4ovYWb/BWMKJnWqeC7ye5ZU9XnRuYCE2wdExlmxRwuy0J12', '065-111-5555', 'Peric', 1);  -- pass1
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic55+5@hotmail.com', 'Pero', '$2a$10$/rU.Ul4ovYWb/BWMKJnWqeC7ye5ZU9XnRuYCE2wdExlmxRwuy0J12', '065-111-5555', 'Peric', 1);  -- pass1
 insert into my_users (category,number_of_points,profile_data_id,role_id) values ('REGULAR',0,1,4);
 insert into ship_owner (id) values (1);
 
@@ -78,7 +78,7 @@ insert into price_list (amount, start_date) values (150, '20220515 00:00:01 AM')
 insert into offer_price_history (offer_id, price_history_id) values (1, 2);
 
 
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('email2@gmail.com', 'Djuro', '$2a$10$eJAhTBNusorL6jl1LxEuOeXwd75E1MV/XX8u67Fb/IO5yxpUmBOoC', '1233456', 'Djuric', 3); -- pass2
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic55+6@hotmail.com', 'Djuro', '$2a$10$eJAhTBNusorL6jl1LxEuOeXwd75E1MV/XX8u67Fb/IO5yxpUmBOoC', '1233456', 'Djuric', 3); -- pass2
 insert into my_users (category,number_of_points,profile_data_id,role_id) values ('REGULAR',0,2,3);
 insert into cottage_owner (id) values (2);
 
