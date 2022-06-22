@@ -21,7 +21,9 @@ Vue.component("ship-reservations", {
             }
         }).then(response => {
             this.ship = response.data;
-        }).catch(function (error) {
+            this.ship.availableStart = this.getValidDate(this.ship.availableStart);
+            this.ship.availableEnd = this.getValidDate(this.ship.availableEnd);
+        }).catch(error => {
             if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
             else Swal.fire('Error', 'Something went wrong!', 'error');
         });
@@ -76,13 +78,18 @@ Vue.component("ship-reservations", {
                     headers: {
                         Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
                     }
-                }).then(function(response) {
+                }).then(response => {
                     Swal.fire('Success', 'Ship updated!', 'success');
-                }).catch(function (error) {
+                }).catch(error => {
                     if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                     else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }
+        },
+
+        getValidDate(date) {
+            let arr = date.toString().split(',');
+            return new Date(parseInt(arr[0]), parseInt(arr[1]), parseInt(arr[2]), parseInt(arr[3]), parseInt(arr[4]));
         }
     },
 
