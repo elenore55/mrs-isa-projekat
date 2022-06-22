@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.*;
 import com.example.demo.model.*;
-import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.model.enums.ReservationStatus;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,29 +35,6 @@ public class AdventureController {
         this.userService = userService;
     }
 
-    @GetMapping(value = "/allInstructorsAdventures/{id}")
-    public ResponseEntity<List<AdventureDTO>> getAllInstructorsAdventures(@PathVariable Integer id) {
-
-        FishingInstructor fishingInstructor = fishingInstructorService.findOne(id);
-        List<Adventure> adventures = adventureService.findAll();
-        // convert adventures to DTOs
-        List<AdventureDTO> adventuresDTO = new ArrayList<>();
-        for (Adventure adventure : adventures) {
-            if(adventure.getInstructor().getId()==id)
-                adventuresDTO.add(new AdventureDTO(adventure));
-        }
-        return new ResponseEntity<>(adventuresDTO, HttpStatus.OK);
-    }
-
-    @GetMapping(path = "/approvalStatus")
-    public ResponseEntity<List<ReservationStatus>> getReservationPossibleStatuses(){
-        List<ReservationStatus> statuses = new ArrayList<>();
-        statuses.add(ReservationStatus.CANCELLED);
-        statuses.add(ReservationStatus.CLIENT_NOT_ARRIVED);
-        statuses.add(ReservationStatus.FINISHED);
-        return new ResponseEntity<>(statuses, HttpStatus.OK);
-    }
-
     @GetMapping(value = "/all")
     public ResponseEntity<List<AdventureDTO>> getAllAdventures() {
 
@@ -73,22 +48,6 @@ public class AdventureController {
 
         return new ResponseEntity<>(adventuresDTO, HttpStatus.OK);
     }
-
-    @GetMapping(value = "/all/{id}")
-    public ResponseEntity<List<AdventureDTO>> getInstructorsAdventures(@PathVariable Integer id) {
-
-        List<Adventure> adventures = adventureService.findAll();
-
-        // convert adventures to DTOs
-        List<AdventureDTO> adventuresDTO = new ArrayList<>();
-        for (Adventure adventure : adventures) {
-            if(adventure.getInstructor().getId() == id)
-                adventuresDTO.add(new AdventureDTO(adventure));
-        }
-
-        return new ResponseEntity<>(adventuresDTO, HttpStatus.OK);
-    }
-
     @GetMapping(path = "/deleteAdventure/{id}")
     public ResponseEntity<Void> deleteAdventure(@PathVariable Integer id) {
         Adventure adventure = adventureService.findOne(id);
@@ -131,7 +90,7 @@ public class AdventureController {
 //        FishingInstructor fishingInstructor = new FishingInstructor();
 //        fishingInstructor.setId(adventureDTO.getfInstructorId());
 //        FishingInstructor fishingInstructor = fishingInstructorService.findOne(adventureDTO.getfInstructorId());
-        FishingInstructor fishingInstructor = fishingInstructorService.findOne(3);
+        FishingInstructor fishingInstructor = fishingInstructorService.findOne(1);
         adventure.setInstructor(fishingInstructor);
 
         List<Rule> rules = new ArrayList<>();
@@ -144,24 +103,6 @@ public class AdventureController {
             fishingEquipmentList.add( fishingEquipmentService.findOne(fishingEquipmentListDTO.getId()));
         }
 
-        List<Image> images = new ArrayList<>();
-        for (String path : adventureDTO.getImagePaths())
-            images.add(new Image(path));
-        adventure.setImages(images);
-
-        if (adventure.getPriceHistory() == null || adventure.getPriceHistory().size() == 0) {
-            List<PriceList> priceHistory = new ArrayList<>();
-            priceHistory.add(new PriceList(LocalDate.now(), adventureDTO.getPrice()));
-            adventure.setPriceHistory(priceHistory);
-        } else {
-            List<PriceList> priceHistory = adventure.getPriceHistory();
-            PriceList last = priceHistory.get(priceHistory.size() - 1);
-            if (!last.getAmount().equals(adventureDTO.getPrice())) {
-                PriceList newPrice = new PriceList(LocalDate.now(), adventureDTO.getPrice());
-                priceHistory.add(newPrice);
-                adventure.setPriceHistory(priceHistory);
-            }
-        }
 
 
         adventure.setFishingEquipments(fishingEquipmentList);
@@ -192,25 +133,6 @@ public class AdventureController {
             fishingEquipmentList.add(fishingEquipmentService.findOne(fishingEquipmentListDTO.getId()));
         }
         adventure.setFishingEquipments(fishingEquipmentList);
-
-        List<Image> images = new ArrayList<>();
-        for (String path : adventureDTO.getImagePaths())
-            images.add(new Image(path));
-        adventure.setImages(images);
-
-        if (adventure.getPriceHistory() == null || adventure.getPriceHistory().size() == 0) {
-            List<PriceList> priceHistory = new ArrayList<>();
-            priceHistory.add(new PriceList(LocalDate.now(), adventureDTO.getPrice()));
-            adventure.setPriceHistory(priceHistory);
-        } else {
-            List<PriceList> priceHistory = adventure.getPriceHistory();
-            PriceList last = priceHistory.get(priceHistory.size() - 1);
-            if (!last.getAmount().equals(adventureDTO.getPrice())) {
-                PriceList newPrice = new PriceList(LocalDate.now(), adventureDTO.getPrice());
-                priceHistory.add(newPrice);
-                adventure.setPriceHistory(priceHistory);
-            }
-        }
 
         adventure = adventureService.update(adventure);
         return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.ACCEPTED);
@@ -257,33 +179,6 @@ public class AdventureController {
         userService.addReservation(dto.getOwnerId(),reservation);
 
         return new ResponseEntity<>(new ReservationDTO(reservation), HttpStatus.OK);
-    }
-
-    @ResponseBody
-    @RequestMapping(path = "/updateAdventureImages", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<AdventureDTO> updateAdventureImages(@RequestBody AdventureDTO adventureDTO) {
-        Adventure adventure = adventureService.findOne(adventureDTO.getId());
-        if (adventure == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        List<Image> images = new ArrayList<>();
-        for (String path : adventureDTO.getImagePaths())
-            images.add(new Image(path));
-        adventure.setImages(images);
-        adventureService.save(adventure);
-        return new ResponseEntity<>(new AdventureDTO(adventure), HttpStatus.OK);
-    }
-
-    @ResponseBody
-    @RequestMapping(path = "/getAdventureImages/{id}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<String>> getAdventureImages(@PathVariable Integer id) {
-        Adventure adventure = adventureService.findOne(id);
-        if (adventure == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        List<String> result = new ArrayList<>();
-        for (Image img : adventure.getImages()) {
-            result.add(img.getPath());
-        }
-        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 

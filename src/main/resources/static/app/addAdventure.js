@@ -4,7 +4,6 @@ Vue.component("add-adventure",{
         return{
             allEquipments: [],
             instructorBio_data: [],
-            paths:[],
             form:{
                 name: "",
                 address:{
@@ -20,7 +19,7 @@ Vue.component("add-adventure",{
                 rules: [],
                 fishingEquipmentList: [],
                 maxPeople: 1,
-                fInstructorId: 3
+                fInstructorId: 1
             }
         }
     },
@@ -101,8 +100,7 @@ Vue.component("add-adventure",{
         <div class="row">
             <div class="col-4">
                 <label>Pictures</label>
-<!--                <input accept="image/*" type="file" class="form-control" multiple/>-->
-                <input type="file" class="form-control-file" id="img" name="img" accept="image/*" @change="addImage($event)" multiple>
+                <input accept="image/*" type="file" class="form-control" multiple/>
             </div>
             <div class="col-4"></div>
             <div class="col-2">
@@ -128,14 +126,6 @@ Vue.component("add-adventure",{
                 console.log(this.instructorBio_data)
             })
         },
-        addImage(e) {
-            let files = e.target.files || e.dataTransfer.files;
-            if (!files.length)
-                return;
-            for (let file of files) {
-                this.paths.push("images/" + file.name);
-            }
-        },
         sendRequest(){
             console.log("JEDAN1")
             console.log(this.form.fishingEquipmentList)
@@ -148,13 +138,13 @@ Vue.component("add-adventure",{
                 maxPeople: this.form.maxPeople,
                 fishingEquipmentList: this.form.fishingEquipmentList,
                 fInstructorBio: this.form.fInstructorBio,
-                imagePaths: this.paths,
+                imagePaths: this.form.imagePaths,
                 // country: this.form.country,
                 // city: this.form.city,
                 // street: this.form.street,
                 address: this.form.address,
                 additionalInfo: this.form.additionalInfo,
-                fInstructorId: 3
+                fInstructorId: 1
             }).then(function (response) {
                 alert("Successfully added an adventure");
             }).catch(function (error) {

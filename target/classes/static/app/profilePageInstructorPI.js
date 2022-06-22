@@ -4,8 +4,7 @@ Vue.component("profile-page-instructorpi",{
         return{
             instruktorPI: {},
             passwordRE:"",
-            ogpassword:[],
-            reason: "",
+            ogpassword:[]
         }
     },
     mounted: function (){
@@ -75,31 +74,12 @@ Vue.component("profile-page-instructorpi",{
             <div class="col">
                 <br>
 <!--                <button type="submit" class="btn btn-primary btn-lg" v-on:submit="sendRequest" style="width: 200px; position: relative; bottom: 0px; right: -400px">Update your info</button>-->
-                <input type="button" class="btn btn-primary btn-lg" value="Delete request" v-on:click="sendDeleteReq()" style="width: 200px;"/>
-                <button type="submit" class="btn btn-primary btn-lg" style="width: 200px; position: relative; bottom: 0px; right: -200px">Update your info</button>
+                <button type="submit" class="btn btn-primary btn-lg" style="width: 200px; position: relative; bottom: 0px; right: -400px">Update your info</button>
             </div>
-        </div>
-        <div class="row">
-            <textarea v-model="reason" class = "" name="textarea" rows="10" cols="70" required></textarea>
         </div>
     </form>
     `,
     methods:{
-        sendDeleteReq()
-        {
-            if(this.reason) {
-                axios.post("api/deletionRequests/deleteProfile", {
-                    id: this.instruktorPI.id,
-                    reason: this.reason,
-                }).then(function (response) {
-                    if (response.data == "OK") {
-                        location.replace('http://localhost:8000/#/deleteProfileMessage');
-                    }
-                }).catch(function (error) {
-                    alert('An error occurred!');
-                });
-            }
-        },
         loadInstructorProfile(){
             axios.get("api/instructors/getInstructorData").then(response => {
                 this.instruktorPI = response.data;

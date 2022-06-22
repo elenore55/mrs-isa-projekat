@@ -27,12 +27,6 @@ public class Address {
         this.country = country;
     }
 
-    public Address(Address address) {
-        this.street = address.getStreet();
-        this.city = address.getCity();
-        this.country = address.getCountry();
-    }
-
     public Integer getId() {
         return id;
     }

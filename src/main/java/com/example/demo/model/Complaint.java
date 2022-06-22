@@ -22,8 +22,8 @@ public class Complaint {
     @Enumerated(EnumType.STRING)
     private AdminApprovalStatus status;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Client issuedBy;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User issuedBy;
 
     public Complaint() {
     }
@@ -72,11 +72,11 @@ public class Complaint {
         this.id = id;
     }
 
-    public Client getIssuedBy() {
+    public User getIssuedBy() {
         return issuedBy;
     }
 
-    public void setIssuedBy(Client issuedBy) {
+    public void setIssuedBy(User issuedBy) {
         this.issuedBy = issuedBy;
     }
 }

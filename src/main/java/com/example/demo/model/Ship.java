@@ -161,5 +161,4 @@ public class Ship extends Offer {
         if (n==0) return -1.0;
         return sum/n;
     }
-
 }

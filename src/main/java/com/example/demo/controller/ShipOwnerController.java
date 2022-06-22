@@ -2,11 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.FilterShipDTO;
 import com.example.demo.dto.ShipDTO;
-import com.example.demo.model.*;
-import com.example.demo.service.ClientService;
-import com.example.demo.service.ReservationService;
+import com.example.demo.model.Ship;
+import com.example.demo.model.ShipOwner;
 import com.example.demo.service.ShipOwnerService;
-import com.example.demo.service.ShipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,23 +12,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "api/shipOwner")
 public class ShipOwnerController {
     private ShipOwnerService service;
-    private ShipService shipservice;
-    private ReservationService reservationService;
-    private ClientService clientService;
-
 
     @Autowired
-    public ShipOwnerController(ShipOwnerService service, ShipService shipservice, ReservationService reservationService, ClientService clientService) {
+    public ShipOwnerController(ShipOwnerService service) {
         this.service = service;
-        this.shipservice = shipservice;
-        this.reservationService = reservationService;
-        this.clientService = clientService;
     }
 
     @ResponseBody
@@ -65,34 +55,5 @@ public class ShipOwnerController {
             dtos.add(new ShipDTO(s));
         }
         return new ResponseEntity<>(dtos, HttpStatus.OK);
-    }
-
-    @DeleteMapping(path = "/deleteTheShip/{idbrod}/{idvlasnik}")
-    public ResponseEntity<Void> deleteTheShip(@PathVariable Integer idbrod,@PathVariable Integer idvlasnik) {
-        ShipOwner shipOwner = service.findOne(idvlasnik);
-        if (shipOwner == null)
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        List<Reservation> allReservationsOfThisShip = this.reservationService.findAll().stream().filter(r-> r.getOffer().getId() == idbrod).collect(Collectors.toList());
-        for(Reservation r : allReservationsOfThisShip) {
-            Offer offer = new Offer();
-            offer.setId(-1);
-            r.setOffer(offer);
-            this.reservationService.save(r);
-        }
-
-        List<Client> clients = this.clientService.findAll();
-        for(Client c : clients) {
-            if (c.getSubscriptionsByID(idbrod)) {
-                c.setSubscriptions(c.getSubscriptions().stream().filter(s -> s.getId() != idbrod).collect(Collectors.toList()));
-                clientService.save(c);
-            }
-        }
-
-        Ship ship = shipservice.findOne(idbrod);
-        shipOwner.getShips().remove(ship);
-
-        service.save(shipOwner);
-        shipservice.remove(ship.getId());
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

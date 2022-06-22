@@ -24,8 +24,7 @@ Vue.component("instructors-adventures",{
                 rules: [],
                 fishingEquipmentList: [],
                 maxPeople: []
-            },
-            paths:[]
+            }
         }
     },
     mounted: function (){
@@ -110,13 +109,9 @@ Vue.component("instructors-adventures",{
         loadAdventureInfo(){
             axios.get("api/adventures/"+this.adventure.split(' - ')[0]).then(response => {
                 this.adventureInfo = response.data;
-                console.log(this.adventure)
-                console.log("AAAAAAAAA")
-                console.log(this.adventureInfo)
                 this.addressInfo.cityInfo=this.adventureInfo.address.city;
                 this.addressInfo.streetInfo=this.adventureInfo.address.street;
                 this.addressInfo.countryInfo=this.adventureInfo.address.country;
-                this.loadAdventureImages();
             })
         },
         loadEquipment(){
@@ -124,13 +119,6 @@ Vue.component("instructors-adventures",{
                 this.allEquipments = response.data
                 console.log(this.allEquipments)
             })
-        },
-        loadAdventureImages(){
-            axios.get("api/adventures/getAdventureImages/" + this.adventureInfo.id).then(response => {
-                this.paths = response.data;
-            }).catch(function (error) {
-                Swal.fire('Error', 'Something went wrong!', 'error');
-            });
         },
         deleteAdventure(){
             console.log(this.adventure.split(' - ')[0])
@@ -142,7 +130,7 @@ Vue.component("instructors-adventures",{
             });
         },
         loadInstructorsAdventures(){
-            axios.get("api/adventures/all/"+this.$route.params.id).then(response => {
+            axios.get("api/adventures/all").then(response => {
                 this.adventures = response.data;
                 // console.log(this.adventures)
             })

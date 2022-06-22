@@ -39,10 +39,6 @@ public class ShipOwnerService {
         return this.shipOwnerRepository.save(shipOwner);
     }
 
-    public List<ShipOwner> findAlladmin(){
-        return  shipOwnerRepository.findAll();
-    }
-
     public List<Ship> searchShips(Integer id, String search) {
         ShipOwner owner = findOne(id);
         List<Ship> ships = owner.getShips();

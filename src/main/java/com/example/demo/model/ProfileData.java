@@ -52,18 +52,6 @@ public class ProfileData {
         this.address = profileDataDTO.getAddress();
     }
 
-    public  ProfileData(ProfileData profileData)
-    {
-        this.email = profileData.getEmail();
-        this.password = profileData.getPassword();
-        this.name = profileData.getName();
-        this.surname = profileData.getSurname();
-        this.phoneNumber = profileData.getPhoneNumber();
-        this.address = profileData.getAddress();
-    }
-
-
-
     public Integer getId() {
         return id;
     }

@@ -22,6 +22,4 @@ public class Profile_DataService {
         profile_dataREpository.deleteById(id);
     }
 
-    public ProfileData getByEmail(String email){ return profile_dataREpository.getByEmail(email);}
-
 }

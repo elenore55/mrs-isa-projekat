@@ -1,7 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.FastReservationDTO;
-import com.example.demo.model.*;
+import com.example.demo.model.Cottage;
+import com.example.demo.model.FastReservation;
+import com.example.demo.model.Offer;
+import com.example.demo.model.Ship;
 import com.example.demo.dto.OfferDTO;
 import com.example.demo.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -129,20 +132,6 @@ public class OfferController {
         }
         return new ResponseEntity<>(new OfferDTO(offer), HttpStatus.OK);
     }
-
-    @DeleteMapping(path = "/deleteOffer/{id}")
-    public ResponseEntity<Void> deleteOffer(@PathVariable Integer id) {
-        Offer offer = offerService.findOne(id);
-        if (offer == null)
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        // dodati proveru ako je napravljena rezervacija!!!
-        if(offer instanceof Ship) {
-            offerService.remove(id);
-        }
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-
 
 
 }

@@ -28,9 +28,6 @@ public class RegistrationRequestDTO {
         } else if (r.getRegistrationType() == RegistrationType.SHIP_OWNER) {
             this.type = "Ship owner";
         }
-        else if (r.getRegistrationType() == RegistrationType.FISHING_OWNER) {
-            this.type = "Fishing owner";
-        }
         this.reason = r.getReason();
     }
 
@@ -103,8 +100,6 @@ public class RegistrationRequestDTO {
             return RegistrationType.COTTAGE_OWNER;
         else if(type.equalsIgnoreCase("Ship owner"))
             return RegistrationType.SHIP_OWNER;
-        else if(type.equalsIgnoreCase("Fishing owner"))
-            return RegistrationType.FISHING_OWNER;
         return null;
     }
 }

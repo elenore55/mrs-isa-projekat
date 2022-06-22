@@ -1,7 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Address;
-import com.example.demo.model.FishingInstructor;
 import com.example.demo.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,13 +21,5 @@ public class AddressService {
 
     public List<String> getCountries() {
         return repository.getCountries();
-    }
-
-    public Address findOne(Integer id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    public void remove(Integer id) {
-        repository.deleteById(id);
     }
 }

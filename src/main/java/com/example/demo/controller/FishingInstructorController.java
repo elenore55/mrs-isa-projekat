@@ -2,8 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.AdventureDTO;
 import com.example.demo.dto.FishingInstructorDTO;
-import com.example.demo.model.*;
-import com.example.demo.service.*;
+import com.example.demo.model.Address;
+import com.example.demo.model.Adventure;
+import com.example.demo.model.FishingInstructor;
+import com.example.demo.model.ProfileData;
+import com.example.demo.service.FishingInstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.origin.SystemEnvironmentOrigin;
 import org.springframework.http.HttpStatus;
@@ -12,25 +15,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "api/instructors")
 public class FishingInstructorController {
     private FishingInstructorService fishingInstructorService;
-    private ReservationService reservationService;
-    private AdventureService adventureService;
-    private ClientService clientService;
-    private OfferService offerService;
 
     @Autowired
-    public FishingInstructorController(FishingInstructorService fishingInstructorService, ReservationService reservationService, AdventureService adventureService, ClientService clientService, OfferService offerService)
+    public FishingInstructorController(FishingInstructorService fishingInstructorService)
     {
         this.fishingInstructorService=fishingInstructorService;
-        this.reservationService = reservationService;
-        this.adventureService = adventureService;
-        this.clientService = clientService;
-        this.offerService = offerService;
     }
 
     @GetMapping(value = "/all")
@@ -47,12 +41,9 @@ public class FishingInstructorController {
         return new ResponseEntity<>(fishingInstructorDTOS, HttpStatus.OK);
     }
 
-
-
     @GetMapping(value = "/getInstructorData")
     public ResponseEntity<FishingInstructorDTO> getFishingInstructorData(){
-        // pribavi instruktora
-        FishingInstructor fishingInstructor = fishingInstructorService.findOne(3);
+        FishingInstructor fishingInstructor = fishingInstructorService.findOne(1);
         FishingInstructorDTO fishingInstructorDTO = new FishingInstructorDTO(fishingInstructor);
 
         return new ResponseEntity<>(fishingInstructorDTO, HttpStatus.OK);
@@ -76,33 +67,4 @@ public class FishingInstructorController {
         fishingInstructor = fishingInstructorService.save(fishingInstructor);
         return new ResponseEntity<>(new FishingInstructorDTO(fishingInstructor), HttpStatus.CREATED);
     }
-
-    @DeleteMapping(path = "/deleteTheAdventure/{idadventure}/{idinstruktor}")
-    public ResponseEntity<Void> deleteTheCottage(@PathVariable Integer idadventure,@PathVariable Integer idinstruktor) {
-        FishingInstructor fishingInstructor = fishingInstructorService.findOne(idinstruktor);
-        if (fishingInstructor == null)
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        List<Reservation> allReservationsOfThisAdventure = this.reservationService.findAll().stream().filter(r-> r.getOffer().getId() == idadventure).collect(Collectors.toList());
-        for(Reservation r : allReservationsOfThisAdventure) {
-            Offer offer = new Offer();
-            offer.setId(-1);
-            r.setOffer(offer);
-            this.reservationService.save(r);
-        }
-
-        List<Client> clients = this.clientService.findAll();
-        for(Client c : clients) {
-            if (c.getSubscriptionsByID(idadventure)) {
-                c.setSubscriptions(c.getSubscriptions().stream().filter(s -> s.getId() != idadventure).collect(Collectors.toList()));
-                clientService.save(c);
-            }
-        }
-
-        fishingInstructor.setAdventures(fishingInstructor.getAdventures().stream().filter(a -> a.getId() != idadventure).collect(Collectors.toList()));
-        fishingInstructorService.save(fishingInstructor);
-        adventureService.remove(idadventure);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-
 }
