@@ -73,6 +73,22 @@ public class AdventureController {
 
         return new ResponseEntity<>(adventuresDTO, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/all/{id}")
+    public ResponseEntity<List<AdventureDTO>> getInstructorsAdventures(@PathVariable Integer id) {
+
+        List<Adventure> adventures = adventureService.findAll();
+
+        // convert adventures to DTOs
+        List<AdventureDTO> adventuresDTO = new ArrayList<>();
+        for (Adventure adventure : adventures) {
+            if(adventure.getInstructor().getId() == id)
+                adventuresDTO.add(new AdventureDTO(adventure));
+        }
+
+        return new ResponseEntity<>(adventuresDTO, HttpStatus.OK);
+    }
+
     @GetMapping(path = "/deleteAdventure/{id}")
     public ResponseEntity<Void> deleteAdventure(@PathVariable Integer id) {
         Adventure adventure = adventureService.findOne(id);

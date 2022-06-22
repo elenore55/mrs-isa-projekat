@@ -69,6 +69,8 @@ const AdventureImg = {template: '<adventure-images></adventure-images>'};
 const AdminIncomeRep= {template: '<adminincome-report></adminincome-report>'};
 const AdminVisitRep= {template: '<adminvisit-report></adminvisit-report>'};
 const InsAdvReservStatus = {template: '<instadv-reserv></instadv-reserv>'};
+const InstNavBar = {template: '<instructor-nav></instructor-nav>'};
+const AdminNavBar = {template: '<admin-nav></admin-nav>'};
 
 Vue.component('vuejs-datepicker', vuejsDatepicker);
 
@@ -156,7 +158,7 @@ const router = new VueRouter({
             component: CottageReservations
         },
         {
-            path: "/instructorsAdventures/",
+            path: "/instructorsAdventures/:id/",
             component: InstructorsAdventures
         },
         {
@@ -280,7 +282,7 @@ const router = new VueRouter({
               component: EditProfileMessage
         },
         {
-           path: "/profilePageInstructorPI/",
+           path: "/profilePageInstructorPI/:id/",
            component: ProfilePageInstructorPI
         },
         {
@@ -358,6 +360,14 @@ const router = new VueRouter({
         {
             path: "/instAdvReservSatatus",
             component: InsAdvReservStatus
+        },
+        {
+            path: "/instNavBar",
+            component: InstNavBar
+        },
+        {
+            path: "/adminNavBar",
+            component: AdminNavBar
         }
     ]
 });

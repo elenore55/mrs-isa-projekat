@@ -142,7 +142,7 @@ Vue.component("instructors-adventures",{
             });
         },
         loadInstructorsAdventures(){
-            axios.get("api/adventures/all").then(response => {
+            axios.get("api/adventures/all/"+this.$route.params.id).then(response => {
                 this.adventures = response.data;
                 // console.log(this.adventures)
             })
