@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ShipReportsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ShipReportsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addCottage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addCottage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addShip.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addShip.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,13 +285,6 @@
       <workItem from="1654803114806" duration="52939000" />
       <workItem from="1655406817526" duration="2736000" />
       <workItem from="1655583368904" duration="27284000" />
-    </task>
-    <task id="LOCAL-00150" summary="MouseOver i MouseLeave za kartice">
-      <created>1654944453481</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
-      <option name="project" value="LOCAL" />
-      <updated>1654944453481</updated>
     </task>
     <task id="LOCAL-00151" summary="Onemoguceno azuriranje rezervisanih vikendica i brodova">
       <created>1654946716902</created>
@@ -628,7 +622,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655820130990</updated>
     </task>
-    <option name="localTasksCounter" value="199" />
+    <task id="LOCAL-00199" summary="Ispravljeni izvjestaji za brodove">
+      <created>1655904543011</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1655904543011</updated>
+    </task>
+    <option name="localTasksCounter" value="200" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +650,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Test za izvjestaje" />
     <MESSAGE value="CottageControllerTest" />
     <MESSAGE value="CottageOwnerControllerTest" />
     <MESSAGE value="ShipOwnerControllerTest" />
@@ -674,29 +674,30 @@
     <MESSAGE value="Odlazak na profil klijenta iz ratinga" />
     <MESSAGE value="Ispravljen prikaz slika" />
     <MESSAGE value="spojena security st 1 ma cache" />
-    <option name="LAST_COMMIT_MESSAGE" value="spojena security st 1 ma cache" />
+    <MESSAGE value="Ispravljeni izvjestaji za brodove" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ispravljeni izvjestaji za brodove" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="186" y="0" key="CommitChangelistDialog2" timestamp="1655904531629">
+    <state x="186" y="0" key="CommitChangelistDialog2" timestamp="1655904542118">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="186" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1655904531629" />
-    <state width="1237" height="175" key="GridCell.Tab.0.bottom" timestamp="1655904531656">
+    <state x="186" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1655904542118" />
+    <state width="1237" height="175" key="GridCell.Tab.0.bottom" timestamp="1655905018954">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655904531656" />
-    <state width="1237" height="175" key="GridCell.Tab.0.center" timestamp="1655904531656">
+    <state width="1237" height="175" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655905018954" />
+    <state width="1237" height="175" key="GridCell.Tab.0.center" timestamp="1655905018953">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655904531656" />
-    <state width="1237" height="175" key="GridCell.Tab.0.left" timestamp="1655904531655">
+    <state width="1237" height="175" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655905018953" />
+    <state width="1237" height="175" key="GridCell.Tab.0.left" timestamp="1655905018953">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655904531655" />
-    <state width="1237" height="175" key="GridCell.Tab.0.right" timestamp="1655904531656">
+    <state width="1237" height="175" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655905018953" />
+    <state width="1237" height="175" key="GridCell.Tab.0.right" timestamp="1655905018953">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655904531656" />
+    <state width="1237" height="175" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655905018953" />
     <state width="1237" height="159" key="GridCell.Tab.1.bottom" timestamp="1655895420087">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -713,6 +714,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="159" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1655904546123">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1655904546123" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
