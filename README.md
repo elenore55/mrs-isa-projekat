@@ -30,11 +30,11 @@ milica.popovic55@hotmail.com <br/>
 marko <br/>
 
 Vlasnik broda: <br/>
-email1@gmail.com <br/>
+milica.popovic55+5@hotmail.com <br/>
 pass1
 
 Vlasnik vikendice: <br/>
-email2@gmail.com <br/>
+milica.popovic55+6@hotmail.com <br/>
 pass2 <br/>
 
 Instruktor pecanja: <br/>
