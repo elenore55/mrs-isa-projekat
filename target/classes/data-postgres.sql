@@ -264,10 +264,10 @@ insert into reservation (offer_id, client_id, reservation_status, start_date_tim
 insert into feedback (comment, rating, status) values ('Pretty good', 8, 'PENDING');
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (4, 5, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM', 6);
 
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('korisnikNovi@gmail.com', 'Novak', 'sifra', '064440044', 'Prezimic', 8);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('korisnikNovi@gmail.com', 'Novak', '$2a$10$M9e44e0uS7tE34vlkKMGxulqdSGey86502fkLNbUt60A9hc/peUj6', '064440044', 'Prezimic', 8);
 insert into registration_request (approval_status,date_time,reason,registration_type,profile_data_id) values ('PENDING', '20220520 10:10:00 AM','zelim da budem registrovaaaaan' ,'SHIP_OWNER', 8);
 -------- Mislim da ovo mora biti odradjeno kad se potvrdi zahtev za registrovanje --------
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('korisnikNovi2@gmail.com', 'Novakkk', 'sifra', '064440044', 'Prezimic', 9);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('korisnikNovi2@gmail.com', 'Novakkk', '$2a$10$M9e44e0uS7tE34vlkKMGxulqdSGey86502fkLNbUt60A9hc/peUj6', '064440044', 'Prezimic', 9);
 insert into registration_request (approval_status,date_time,reason,registration_type,profile_data_id) values ('PENDING', '20220520 10:10:00 AM','zelim da budem registrovaaaaan' ,'FISHING_OWNER', 9);
 
 ---------Loyalty program----------------

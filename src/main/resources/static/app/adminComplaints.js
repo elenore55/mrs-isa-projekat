@@ -57,18 +57,35 @@ Vue.component("admin-complaint",{
     methods:{
         respondTo(comp)
         {
-            axios.post("api/complaint/updateComplaintAdmin",{
-                content : comp.content,
-                clientDTO: comp.clientDTO,
-                id: comp.id,
-                adminApprovalStatus:comp.adminApprovalStatus,
-                dateTime: comp.dateTime
-            },
-            {
+            // axios.post("api/complaint/updateComplaintAdmin",{
+            //     content : comp.content,
+            //     clientDTO: comp.clientDTO,
+            //     id: comp.id,
+            //     adminApprovalStatus:comp.adminApprovalStatus,
+            //     dateTime: comp.dateTime
+            // },
+            // console.log("ULAZIIIIIIIIII")
+            // ,
+            // {
+            //     headers: {
+            //         Authorization: "Bearer " + this.token.accessToken
+            //     }
+            // }).then(setTimeout(()=>this.$router.go(),100)).catch(console.log("Nesto nije valjano"))
+
+            axios({
+                method: 'post',
+                url: "api/complaint/updateComplaintAdmin", data: {
+                    content : comp.content,
+                    clientDTO: comp.clientDTO,
+                    id: comp.id,
+                    adminApprovalStatus:comp.adminApprovalStatus,
+                    dateTime: comp.dateTime
+                },
                 headers: {
                     Authorization: "Bearer " + this.token.accessToken
                 }
-            }).then(setTimeout(()=>this.$router.go(),100)).catch(console.log("Nesto nije valjano"))
+            })
+            console.log("ULAZIIIIIIIIII")
         },
 
         loadComplaints(){

@@ -38,6 +38,7 @@ public class AdminController {
         Admin admin = new Admin();
         admin.setProfileData(new ProfileData(adminDTO.getProfileDataDTO()));
         admin.setMain(adminDTO.getIs_main());
+
         admin = adminService.save(admin);
         return new ResponseEntity<>(new AdminDTO(admin),HttpStatus.OK);
     }

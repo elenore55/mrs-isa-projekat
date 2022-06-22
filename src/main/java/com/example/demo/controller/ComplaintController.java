@@ -91,6 +91,7 @@ public class ComplaintController {
     public ResponseEntity<Complaint> updateComplaintAdmin(@RequestBody ComplaintAdminDTO complaint)
     {
         System.out.println(complaint.toString());
+        System.out.println("CCCCCCCCCCCCCCCCCCCCCCC");
         Complaint izBaze = complaintService.findOne(complaint.getId());
         if(complaint.getAdminApprovalStatus()==AdminApprovalStatus.APPROVED || complaint.getAdminApprovalStatus()==AdminApprovalStatus.REJECTED)
             izBaze.setStatus(complaint.getAdminApprovalStatus());

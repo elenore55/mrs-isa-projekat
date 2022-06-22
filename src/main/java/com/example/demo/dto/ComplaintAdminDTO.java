@@ -12,6 +12,8 @@ public class ComplaintAdminDTO {
     private AdminApprovalStatus adminApprovalStatus;
     private LocalDateTime dateTime;
 
+    public ComplaintAdminDTO(){}
+
     public ComplaintAdminDTO(String content, ClientDTO clientDTO, Integer id, AdminApprovalStatus adminApprovalStatus, LocalDateTime dateTime) {
         this.content = content;
         this.clientDTO = clientDTO;

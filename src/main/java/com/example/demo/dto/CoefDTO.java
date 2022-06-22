@@ -16,6 +16,8 @@ public class CoefDTO {
     private Double percentageOwnerGold;
     private Double reservationPercentage;
 
+    public CoefDTO(){}
+
     public CoefDTO(Integer requiredPointsSilver, Integer requiredPointsGold, Integer userReservationPoints, Integer ownerReservationPoints, Double percentageClientSilver, Double percentageClientGold, Double percentageOwnerSilver, Double percentageOwnerGold, Double reservationPercentage) {
         this.requiredPointsSilver = requiredPointsSilver;
         this.requiredPointsGold = requiredPointsGold;
