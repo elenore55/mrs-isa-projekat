@@ -1,11 +1,12 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.AdventureDTO;
 import com.example.demo.dto.FishingInstructorDTO;
-import com.example.demo.model.*;
+import com.example.demo.model.Client;
+import com.example.demo.model.FishingInstructor;
+import com.example.demo.model.Offer;
+import com.example.demo.model.Reservation;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.origin.SystemEnvironmentOrigin;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +25,8 @@ public class FishingInstructorController {
     private OfferService offerService;
 
     @Autowired
-    public FishingInstructorController(FishingInstructorService fishingInstructorService, ReservationService reservationService, AdventureService adventureService, ClientService clientService, OfferService offerService)
-    {
-        this.fishingInstructorService=fishingInstructorService;
+    public FishingInstructorController(FishingInstructorService fishingInstructorService, ReservationService reservationService, AdventureService adventureService, ClientService clientService, OfferService offerService) {
+        this.fishingInstructorService = fishingInstructorService;
         this.reservationService = reservationService;
         this.adventureService = adventureService;
         this.clientService = clientService;
@@ -48,18 +48,18 @@ public class FishingInstructorController {
     }
 
 
-
     @GetMapping(value = "/getInstructorData")
-    public ResponseEntity<FishingInstructorDTO> getFishingInstructorData(){
+    public ResponseEntity<FishingInstructorDTO> getFishingInstructorData() {
         // pribavi instruktora
         FishingInstructor fishingInstructor = fishingInstructorService.findOne(3);
         FishingInstructorDTO fishingInstructorDTO = new FishingInstructorDTO(fishingInstructor);
 
         return new ResponseEntity<>(fishingInstructorDTO, HttpStatus.OK);
     }
+
     @ResponseBody
-    @RequestMapping(path = "/updateInstructorInfo",method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<FishingInstructorDTO> updateInstructorInfo(@RequestBody FishingInstructorDTO fishingInstructorDTO){
+    @RequestMapping(path = "/updateInstructorInfo", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<FishingInstructorDTO> updateInstructorInfo(@RequestBody FishingInstructorDTO fishingInstructorDTO) {
         FishingInstructor fishingInstructor = fishingInstructorService.findOne(fishingInstructorDTO.getId());
 
         System.out.println(fishingInstructorDTO.toString());
@@ -78,12 +78,12 @@ public class FishingInstructorController {
     }
 
     @DeleteMapping(path = "/deleteTheAdventure/{idadventure}/{idinstruktor}")
-    public ResponseEntity<Void> deleteTheCottage(@PathVariable Integer idadventure,@PathVariable Integer idinstruktor) {
+    public ResponseEntity<Void> deleteTheCottage(@PathVariable Integer idadventure, @PathVariable Integer idinstruktor) {
         FishingInstructor fishingInstructor = fishingInstructorService.findOne(idinstruktor);
         if (fishingInstructor == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        List<Reservation> allReservationsOfThisAdventure = this.reservationService.findAll().stream().filter(r-> r.getOffer().getId() == idadventure).collect(Collectors.toList());
-        for(Reservation r : allReservationsOfThisAdventure) {
+        List<Reservation> allReservationsOfThisAdventure = this.reservationService.findAll().stream().filter(r -> r.getOffer().getId() == idadventure).collect(Collectors.toList());
+        for (Reservation r : allReservationsOfThisAdventure) {
             Offer offer = new Offer();
             offer.setId(-1);
             r.setOffer(offer);
@@ -91,7 +91,7 @@ public class FishingInstructorController {
         }
 
         List<Client> clients = this.clientService.findAll();
-        for(Client c : clients) {
+        for (Client c : clients) {
             if (c.getSubscriptionsByID(idadventure)) {
                 c.setSubscriptions(c.getSubscriptions().stream().filter(s -> s.getId() != idadventure).collect(Collectors.toList()));
                 clientService.save(c);

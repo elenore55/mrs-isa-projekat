@@ -1,17 +1,12 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.AdventureDTO;
 import com.example.demo.dto.CoefDTO;
-import com.example.demo.model.Adventure;
 import com.example.demo.model.Coefficients;
 import com.example.demo.service.CoefficientsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/coefficients")
@@ -24,8 +19,8 @@ public class CoefficientsController {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/updateCoeffs",method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<CoefDTO> updateInstructorInfo(@RequestBody CoefDTO coefDTO){
+    @RequestMapping(path = "/updateCoeffs", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<CoefDTO> updateInstructorInfo(@RequestBody CoefDTO coefDTO) {
         Coefficients coefficients = coefficientsService.findOne(1);
         coefficients.setOwnerReservationPoints(coefDTO.getOwnerReservationPoints());
         coefficients.setPercentageClientGold(coefDTO.getPercentageClientGold());

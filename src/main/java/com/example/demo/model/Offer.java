@@ -2,8 +2,6 @@ package com.example.demo.model;
 
 import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.model.enums.ReservationStatus;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -235,8 +233,7 @@ public class Offer {
         this.numberOfPriceLists++;
     }
 
-    public void addReservation(Reservation r)
-    {
+    public void addReservation(Reservation r) {
         this.reservations.add(r);
         this.numberOfReservations = this.reservations.size();
     }
