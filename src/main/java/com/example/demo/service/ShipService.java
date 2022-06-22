@@ -74,7 +74,7 @@ public class ShipService {
         List<Ship> retVal = new ArrayList<>();
         List<Ship> all = shipRepository.findAll();
         for (Ship s : all) {
-            if (isValidDate(s, userFilterDTO) && isValidRate(s, userFilterDTO.getRate()) &&
+            if (isValidDate(s, userFilterDTO) && isValidRate(s, userFilterDTO) &&
                     isValidCountryAndCity(s, userFilterDTO) && isValidNumOfPeople(s, userFilterDTO)) {
                 retVal.add(s);
             }
@@ -125,24 +125,33 @@ public class ShipService {
         return true;
     }
 
-    private boolean isValidRate(Ship s, int rate) {
-        return s.getRateOrNegativeOne() >= rate || s.getRateOrNegativeOne() == -1;
+    private boolean isValidRate(Ship s, UserFilterDTO u) {
+        if (u.getRate()!=0)
+        {
+            return s.getRateOrNegativeOne() >= u.getRate() || s.getRateOrNegativeOne() == -1;
+        }
+        return true;
     }
 
     private boolean isValidDate(Ship s, UserFilterDTO userFilterDTO) {
-        for (Reservation r : s.getReservations()) {
-            // ako nadjes bar jednu rezervaciju da joj je pcetni ili krajnji datum unutar nase, vrati false
-            // ako nadjes bar jednu rezervaciju da joj je pocetni datum prije nase, a krajni poslije, vrati false
-            if (r.getReservationStatus() != ReservationStatus.CANCELLED) {
-                // za sve aktivne rezervacije gledamo ima li poklapanje
-                if (isInMidDate(r.getStart(), userFilterDTO) || isInMidDate(r.getEnd(), userFilterDTO) || isAround(r, userFilterDTO))
-                    return false;
-            } else {
-                // za dve koje nisu aktivne gledamo da li je bilo bas na isti datum da mu to onemogucimo
-                if (equalDates(r, userFilterDTO)) return false;
+        if (userFilterDTO.getFromDate()!=null || userFilterDTO.getToDate()!=null)
+        {
+            for (Reservation r : s.getReservations()) {
+                // ako nadjes bar jednu rezervaciju da joj je pcetni ili krajnji datum unutar nase, vrati false
+                // ako nadjes bar jednu rezervaciju da joj je pocetni datum prije nase, a krajni poslije, vrati false
+                if (r.getReservationStatus() != ReservationStatus.CANCELLED) {
+                    // za sve aktivne rezervacije gledamo ima li poklapanje
+                    if (isInMidDate(r.getStart(), userFilterDTO) || isInMidDate(r.getEnd(), userFilterDTO) || isAround(r, userFilterDTO))
+                        return false;
+                } else {
+                    // za dve koje nisu aktivne gledamo da li je bilo bas na isti datum da mu to onemogucimo
+                    if (equalDates(r, userFilterDTO)) return false;
+                }
             }
+            return true;
         }
         return true;
+
     }
 
     private boolean equalDates(Reservation r, UserFilterDTO userFilterDTO) {
@@ -166,6 +175,7 @@ public class ShipService {
         LocalDateTime reservationStart = getLocalDatetimeFromVuePicker(userFilterDTO.getFromDate());
         LocalDateTime reservationEnd = getLocalDatetimeFromVuePicker(userFilterDTO.getToDate());
         return reservationStart.isBefore(date) && date.isBefore(reservationEnd);
+
     }
 
     private LocalDateTime getLocalDatetimeFromVuePicker(String d) {

@@ -76,7 +76,6 @@ public class UserController {
     @ResponseBody
     @RequestMapping(path = "/edit", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<String> saveRequest(@RequestBody EditProfileDTO editProfileDTO) {
-        System.out.println("Adresa je bila " + editProfileDTO.getStreet());
         userService.updateProfileData(editProfileDTO);
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
@@ -107,7 +106,6 @@ public class UserController {
         for (User user : users) {
             userDTOS.add(new UserDTO(user));
         }
-
         return new ResponseEntity<>(userDTOS, HttpStatus.OK);
     }
 

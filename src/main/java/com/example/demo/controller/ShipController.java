@@ -129,7 +129,7 @@ public class ShipController {
 
     @ResponseBody
     @RequestMapping(path = "/filter", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    @PreAuthorize("hasRole('SHIP')")
+    @PreAuthorize("hasAnyRole('SHIP', 'CLIENT', 'ADMIN')")
     public ResponseEntity<List<ShipDTO>> filterShips(@RequestBody UserFilterDTO userFilterDTO) {
         List<Ship> ships = shipService.filter(userFilterDTO);
         List<ShipDTO> dtos = new ArrayList<>();
