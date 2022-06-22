@@ -4,20 +4,17 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
+    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="Izmijenjeni tekstovi mailova">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/RegistrationRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/RegistrationRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ClientReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ClientReviewService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/DeletionRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/DeletionRequestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/OfferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/OfferService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/RegistrationRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/RegistrationRequestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ReservationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/emailSenders/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/emailSenders/EmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addReservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addReservation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottageReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageReservations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipReservations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/cottageReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/cottageReservations.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,13 +290,6 @@
       <workItem from="1654803114806" duration="52939000" />
       <workItem from="1655406817526" duration="2736000" />
       <workItem from="1655583368904" duration="27284000" />
-    </task>
-    <task id="LOCAL-00153" summary="Izmijenjen WebConfig">
-      <created>1655309184674</created>
-      <option name="number" value="00153" />
-      <option name="presentableId" value="LOCAL-00153" />
-      <option name="project" value="LOCAL" />
-      <updated>1655309184674</updated>
     </task>
     <task id="LOCAL-00154" summary="Preusmjeravanje na odgovarajucu stranicu poslije logina">
       <created>1655408718306</created>
@@ -637,7 +627,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655909056641</updated>
     </task>
-    <option name="localTasksCounter" value="202" />
+    <task id="LOCAL-00202" summary="Izmijenjeni tekstovi mailova">
+      <created>1655912221650</created>
+      <option name="number" value="00202" />
+      <option name="presentableId" value="LOCAL-00202" />
+      <option name="project" value="LOCAL" />
+      <updated>1655912221650</updated>
+    </task>
+    <option name="localTasksCounter" value="203" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -658,7 +655,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ShipOwnerControllerTest" />
     <MESSAGE value="Dodat travis.yml" />
     <MESSAGE value="Izmijenjen travis.yml" />
     <MESSAGE value="Dodat maven wrapper" />
@@ -683,33 +679,34 @@
     <MESSAGE value="Ispravljeni izvjestaji za brodove" />
     <MESSAGE value="Redirect kod dodavanja" />
     <MESSAGE value="Ispravljeni code smell-ovi" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ispravljeni code smell-ovi" />
+    <MESSAGE value="Izmijenjeni tekstovi mailova" />
+    <option name="LAST_COMMIT_MESSAGE" value="Izmijenjeni tekstovi mailova" />
   </component>
   <component name="WindowStateProjectService">
     <state x="438" y="200" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1655908237709">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="200" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1655908237709" />
-    <state x="186" y="0" key="CommitChangelistDialog2" timestamp="1655909055462">
+    <state x="186" y="0" key="CommitChangelistDialog2" timestamp="1655915044050">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="186" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1655909055462" />
-    <state width="1237" height="175" key="GridCell.Tab.0.bottom" timestamp="1655912048854">
+    <state x="186" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1655915044050" />
+    <state width="1237" height="138" key="GridCell.Tab.0.bottom" timestamp="1655915863119">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655912048854" />
-    <state width="1237" height="175" key="GridCell.Tab.0.center" timestamp="1655912048853">
+    <state width="1237" height="138" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655915863119" />
+    <state width="1237" height="138" key="GridCell.Tab.0.center" timestamp="1655915863119">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655912048853" />
-    <state width="1237" height="175" key="GridCell.Tab.0.left" timestamp="1655912048853">
+    <state width="1237" height="138" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655915863119" />
+    <state width="1237" height="138" key="GridCell.Tab.0.left" timestamp="1655915863118">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655912048853" />
-    <state width="1237" height="175" key="GridCell.Tab.0.right" timestamp="1655912048854">
+    <state width="1237" height="138" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655915863118" />
+    <state width="1237" height="138" key="GridCell.Tab.0.right" timestamp="1655915863119">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655912048853" />
+    <state width="1237" height="138" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655915863119" />
     <state width="1237" height="159" key="GridCell.Tab.1.bottom" timestamp="1655895420087">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -726,10 +723,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="159" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1655909060719">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1655912225277">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1655909060719" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1655912225277" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

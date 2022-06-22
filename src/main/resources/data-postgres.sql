@@ -135,8 +135,12 @@ insert into room (number_of_beds, cottage_id) values (2, 6);
 insert into room (number_of_beds, cottage_id) values (3, 6);
 insert into room (number_of_beds, cottage_id) values (3, 7);
 insert into room (number_of_beds, cottage_id) values (2, 7);
-insert into room (number_of_beds, cottage_id) values (4, 8);
-insert into room (number_of_beds, cottage_id) values (3, 8);
+insert into room (number_of_beds, cottage_id) values (4, 2);
+insert into room (number_of_beds, cottage_id) values (3, 2);
+insert into room (number_of_beds, cottage_id) values (3, 3);
+insert into room (number_of_beds, cottage_id) values (3, 3);
+insert into room (number_of_beds, cottage_id) values (5, 8);
+insert into room (number_of_beds, cottage_id) values (2, 8);
 
 
 insert into offer (additional_info, description, name, price_list, address_id, version) values ('Zbog komfora koji pruža predstavlja idealan izbor za dnevna i noćna krstarenja, kao i sve vrste proslava!', 'Ekskluzivan katamaran za rentiranje', 'Ariel', 300, 9, 0);
@@ -167,7 +171,7 @@ insert into my_users (category,number_of_points,profile_data_id,role_id) values 
 insert into admin (id) values (6);
 
 insert into feedback (comment, rating, status) values ('Very pretty boat', 10, 'APPROVED');
-insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (1, 5, 'PENDING', '20220523 10:05:00 AM', '20220528 10:05:00 AM', 1);
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (1, 5, 'PENDING', '20220523 10:00:00 AM', '20220523 4:00:00 PM', 1);
 insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 1);
 insert into availability (offer_id, star_date_time, end_date_time) values (1, '20220501 00:00:01 AM', '20220731 11:59:59 PM');
 
@@ -181,7 +185,7 @@ insert into feedback (comment, rating, status) values ('Very nice cottage', 9, '
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (2, 5, 'PENDING', '20220602 09:10:00 AM', '20220605 04:00:00 PM', 3);
 insert into cottage_owner_reservations (cottage_owner_id, reservations_id) values (2, 3);
 
-insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (1, 5, 'FINISHED', '20220502 09:10:00 AM', '20220506 04:00:00 PM');
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (1, 5, 'FINISHED', '20220502 09:10:00 AM', '20220502 03:10:00 PM');
 insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 4);
 
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (2, 5, 'CLIENT_NOT_ARRIVED', '20220502 09:10:00 AM', '20220510 04:00:00 PM');
@@ -204,7 +208,7 @@ insert into cottage_owner_reservations (cottage_owner_id, reservations_id) value
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (7, 5, 'FINISHED', '20220415 10:05:00 AM', '20220430 10:05:00 AM');
 insert into cottage_owner_reservations (cottage_owner_id, reservations_id) values (2, 9);
 
-insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (1, 5, 'CLIENT_NOT_ARRIVED', '20220514 10:05:00 AM', '20220517 10:05:00 AM');
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (1, 5, 'CLIENT_NOT_ARRIVED', '20220514 10:00:00 AM', '20220515 07:00:00 AM');
 insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 10);
 
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (10, 5, 'FINISHED', '20220511 10:05:00 AM', '20220515 10:05:00 AM');
@@ -213,4 +217,21 @@ insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (9, 5, 'FINISHED', '20220520 10:05:00 AM', '20220525 10:05:00 AM');
 insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 12);
 
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (2, 5, 'ACTIVE', '20220615 11:00:00 AM', '20220620 11:00:00 AM');
+insert into cottage_owner_reservations (cottage_owner_id, reservations_id) values (2, 13);
+
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (2, 5, 'PENDING', '20220627 11:00:00 AM', '20220630 11:00:00 AM');
+insert into cottage_owner_reservations (cottage_owner_id, reservations_id) values (2, 14);
+
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (3, 5, 'PENDING', '20220701 10:05:00 AM', '20220710 10:05:00 AM');
+insert into cottage_owner_reservations (cottage_owner_id, reservations_id) values (2, 15);
+
 insert into sub (user_id, offer_id) values (5, 2);
+
+insert into availability (offer_id, star_date_time, end_date_time) values (3, '20220402 00:00:01 AM', '20220830 11:59:59 PM');
+insert into availability (offer_id, star_date_time, end_date_time) values (4, '20220202 00:00:01 AM', '20220930 11:59:59 PM');
+insert into availability (offer_id, star_date_time, end_date_time) values (5, '20220302 00:00:01 AM', '20221030 11:59:59 PM');
+insert into availability (offer_id, star_date_time, end_date_time) values (6, '20220202 00:00:01 AM', '20221130 11:59:59 PM');
+insert into availability (offer_id, star_date_time, end_date_time) values (7, '20220402 00:00:01 AM', '20220830 11:59:59 PM');
+insert into availability (offer_id, star_date_time, end_date_time) values (8, '20220302 00:00:01 AM', '20220730 11:59:59 PM');
+insert into availability (offer_id, star_date_time, end_date_time) values (9, '20220402 00:00:01 AM', '20220830 11:59:59 PM');

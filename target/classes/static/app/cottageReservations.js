@@ -41,11 +41,11 @@ Vue.component("cottage-reservations", {
                     <div class="d-flex justify-content-center card-body">
                         <div class="me-3 mb-4">
                             <label for="start-date">Start</label>
-                            <vuejs-datepicker :disabled="!cottage.enabled" v-model="cottage.availableStart" format="dd.MM." id="start-date" :monday-first="true"></vuejs-datepicker>
+                            <vuejs-datepicker :disabled="!cottage.editable" v-model="cottage.availableStart" format="dd.MM." id="start-date" :monday-first="true"></vuejs-datepicker>
                         </div>
                         <div class="mb-4">
                             <label for="end-date">End</label>                
-                            <vuejs-datepicker :disabled="!cottage.enabled" v-model="cottage.availableEnd" format="dd.MM." id="end-date" :monday-first="true"></vuejs-datepicker>
+                            <vuejs-datepicker :disabled="!cottage.editable" v-model="cottage.availableEnd" format="dd.MM." id="end-date" :monday-first="true"></vuejs-datepicker>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
@@ -53,8 +53,8 @@ Vue.component("cottage-reservations", {
                     </div>
                     <div class="row mb-3 me-3">
                         <div class="col text-end">
-                            <button v-if="cottage.enabled" type="button" class="btn btn-primary" v-on:click="updateReservationPeriod">Save changes</button>
-                            <button v-if="!cottage.enabled" type="button" class="btn btn-primary" style="cursor: not-allowed; opacity: 50%">Save changes</button>
+                            <button v-if="cottage.editable" type="button" class="btn btn-primary" v-on:click="updateReservationPeriod">Save changes</button>
+                            <button v-if="!cottage.editable" type="button" class="btn btn-primary" style="cursor: not-allowed; opacity: 50%">Save changes</button>
                         </div>
                     </div>
                 </div>
