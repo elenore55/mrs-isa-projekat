@@ -64,7 +64,7 @@ public class OfferService {
 
     public void notifySubscribers(Offer offer) {
         String title = "Subscription update";
-        String content = "There is a new fast reservation available for " + offer.getName();
+        String content = "<h1>There is a new fast reservation available for </h1>" + offer.getName() + "\nCheck it out!";
         for (Client s : offer.getSubscribers()) {
             emailSender.send(s.getEmail(), title, content);
         }

@@ -30,12 +30,11 @@ public class RegistrationRequestService {
         return repository.save(request);
     }
 
-    public void notifyAdmins(Integer id) {
+    public void notifyAdmins() {
         List<Admin> admins = adminRepository.findAll();
         for(Admin admin : admins) {
             String title = "Registration request";
-            String content = "Please review the following registration request:\n";
-            content += "http://localhost:8000/#/reviewRequest/" + id.toString();
+            String content = "There is a new registration request\nPlease review it!";
             emailSender.send(admin.getEmail(), title, content);
         }
     }

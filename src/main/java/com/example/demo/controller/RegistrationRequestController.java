@@ -1,11 +1,11 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.ComplaintAdminDTO;
 import com.example.demo.dto.RegistrationRequestAdminDTO;
 import com.example.demo.dto.RegistrationRequestDTO;
-import com.example.demo.model.*;
+import com.example.demo.model.Address;
+import com.example.demo.model.ProfileData;
+import com.example.demo.model.RegistrationRequest;
 import com.example.demo.model.enums.AdminApprovalStatus;
-import com.example.demo.model.enums.RegistrationType;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -55,12 +55,12 @@ public class RegistrationRequestController {
         request.setReason(dto.getReason());
         request.setRegistrationType(dto.getRegistrationType());
         request = service.save(request);
-        service.notifyAdmins(request.getId());
+        service.notifyAdmins();
         return new ResponseEntity<>(request, HttpStatus.OK);
     }
 
     @GetMapping(path = "/approvalStatus")
-    public ResponseEntity<List<AdminApprovalStatus>> getComplaintPossibleStatuses(){
+    public ResponseEntity<List<AdminApprovalStatus>> getComplaintPossibleStatuses() {
         List<AdminApprovalStatus> statuses = new ArrayList<>();
         statuses.add(AdminApprovalStatus.APPROVED);
         statuses.add(AdminApprovalStatus.REJECTED);
@@ -69,10 +69,9 @@ public class RegistrationRequestController {
 
     @ResponseBody
     @RequestMapping(path = "/updateRegReqAdmin", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<RegistrationRequest> updateRegReqAdmin(@RequestBody RegistrationRequestAdminDTO requestAdminDTO)
-    {
+    public ResponseEntity<RegistrationRequest> updateRegReqAdmin(@RequestBody RegistrationRequestAdminDTO requestAdminDTO) {
         RegistrationRequest izBaze = service.findOne(requestAdminDTO.getId());
-        if(requestAdminDTO.getStatus()==AdminApprovalStatus.APPROVED || requestAdminDTO.getStatus()==AdminApprovalStatus.REJECTED) {
+        if (requestAdminDTO.getStatus() == AdminApprovalStatus.APPROVED || requestAdminDTO.getStatus() == AdminApprovalStatus.REJECTED) {
             izBaze.setApprovalStatus(requestAdminDTO.getStatus());
         }
         izBaze.setProfileData(null);
@@ -80,27 +79,26 @@ public class RegistrationRequestController {
 
         ProfileData profileData = profile_dataService.getByEmail(requestAdminDTO.getEmail());
         int addresID = profileData.getAddress().getId();
-        Address address =  new Address(profileData.getAddress());
+        Address address = new Address(profileData.getAddress());
         profileData.setAddress(null);
         profile_dataService.save(profileData);
         addressService.remove(addresID);
         profile_dataService.remove(profileData.getId());
 
-        if(requestAdminDTO.getStatus()==AdminApprovalStatus.APPROVED)
-        {
+        if (requestAdminDTO.getStatus() == AdminApprovalStatus.APPROVED) {
             profileData.setAddress(address);
-            userService.saveOwners(profileData,requestAdminDTO.getType());
+            userService.saveOwners(profileData, requestAdminDTO.getType());
         }
 
-        return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(izBaze, HttpStatus.ACCEPTED);
     }
 
     @GetMapping(path = "/allPending")
-    public ResponseEntity<List<RegistrationRequestAdminDTO>> getAllPendingRegReqs(){
+    public ResponseEntity<List<RegistrationRequestAdminDTO>> getAllPendingRegReqs() {
         List<RegistrationRequest> requests = service.findAll();
         List<RegistrationRequestAdminDTO> registrationRequestAdminDTOS = new ArrayList<>();
-        for(RegistrationRequest request : requests) {
-            if(request.getApprovalStatus() == AdminApprovalStatus.PENDING)
+        for (RegistrationRequest request : requests) {
+            if (request.getApprovalStatus() == AdminApprovalStatus.PENDING)
                 registrationRequestAdminDTOS.add(new RegistrationRequestAdminDTO(request));
         }
         return new ResponseEntity<>(registrationRequestAdminDTOS, HttpStatus.OK);

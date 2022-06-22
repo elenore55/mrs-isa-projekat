@@ -32,7 +32,7 @@ public class DeletionRequestService {
     @Transactional
     public DeletionRequest save(DeletionRequest deletionRequest) {
         DeletionRequest request = deletionRequestRepository.save(deletionRequest);
-        notifyAdmins(request.getId());
+        notifyAdmins(request);
         return request;
     }
 
@@ -59,12 +59,13 @@ public class DeletionRequestService {
         return this.deletionRequestRepository.findAll();
     }
 
-    private void notifyAdmins(Integer id) {
+    private void notifyAdmins(DeletionRequest request) {
         List<Admin> admins = adminRepository.findAll();
+        User user = request.getSentBy();
+        String sentBy = user.getName() + ' ' + user.getSurname() + '(' + user.getEmail() + ')';
         for (Admin admin : admins) {
             String title = "Profile deletion request";
-            String content = "Please review the following profile deletion request:\n";
-            content += "http://localhost:8000/#/reviewProfileDeletionRequest/" + id.toString();
+            String content = "User " + sentBy  + " submitted a deletion request for their profile.\nPlease review it!";
             emailSender.send(admin.getEmail(), title, content);
         }
     }

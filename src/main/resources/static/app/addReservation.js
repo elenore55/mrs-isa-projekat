@@ -96,9 +96,9 @@ Vue.component("add-reservation", {
                     headers: {
                         Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
                     }
-                }).then(function (response) {
+                }).then(response => {
                     Swal.fire('Success', 'Reservation added!', 'success');
-                }).catch(function (error) {
+                }).catch(error => {
                     if(error.response.status === 404) Swal.fire('Error', 'Client not found!', 'error');
                     else if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                     else Swal.fire('Error', 'Cottage already reserved!', 'error');
