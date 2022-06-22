@@ -29,6 +29,12 @@ Vue.component("add-ship", {
         };
     },
 
+    mounted() {
+        $("body").css("background-image", "none");
+        $("body").css("background-color", "#f2e488");
+        $("body").css("background-size", "100% 200%");
+    },
+
     template: `
     <form novalidate style="background-color: #f2e488" class="p-4">
         <div class="container card mt-3 shadow-lg w-75 px-1">
@@ -320,9 +326,10 @@ Vue.component("add-ship", {
                     headers: {
                         Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
                     }
-                }).then(function(response) {
+                }).then(response => {
                     Swal.fire('Success', 'Ship added!', 'success');
-                }).catch(function (error) {
+                    this.$router.push({path: '/shipsViewOwner'});
+                }).catch(error => {
                     if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                     else Swal.fire('Error', 'Something went wrong!', 'error');
                 });

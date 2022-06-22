@@ -111,7 +111,7 @@ public class ShipOwnerService {
     private Comparator<Ship> SelectComparator(String sortBy) {
         switch (sortBy) {
             case "price":
-                return new ShipLengthComparator();
+                return new ShipPriceComparator();
             case "capacity":
                 return new ShipCapacityComparator();
             case "maximum speed":
@@ -124,6 +124,8 @@ public class ShipOwnerService {
                 return new ShipCountryComparator();
             case "rating":
                 return new ShipRatingComparator();
+            case "length":
+                return new ShipLengthComparator();
             default:
                 return new ShipNameComparator();
         }

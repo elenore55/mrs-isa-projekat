@@ -41,7 +41,7 @@ public class ShipReportsService {
                 }
             }
             if (!isFast) {
-                BigDecimal newIncome = c.getPriceList().multiply(r.getDuration());
+                BigDecimal newIncome = c.getPriceList().multiply(r.getDurationHours());
                 dto.setY(dto.getY().add(newIncome));
             }
             result.put(c.getName(), dto);
@@ -78,7 +78,7 @@ public class ShipReportsService {
                 }
             }
             if (!isFast) {
-                BigDecimal newIncome = c.getPriceList().multiply(r.getDuration());
+                BigDecimal newIncome = c.getPriceList().multiply(r.getDurationHours());
                 value = value.add(newIncome);
             }
             incomePerMonth.put(monthStr, value);
@@ -119,7 +119,7 @@ public class ShipReportsService {
                 while (resStart.compareTo(r.getEnd()) < 0 && resStart.compareTo(end) < 0) {
                     LocalDateTime startOfWeek = resStart.minusDays(resStart.getDayOfWeek().getValue() - 1);
                     String weekStr = startOfWeek.getDayOfMonth() + " " + startOfWeek.getMonth().toString() + " " + startOfWeek.getYear();
-                    resStart = resStart.plusDays(1);
+                    resStart = resStart.plusHours(1);
                     incomePerWeek.put(weekStr, incomePerWeek.get(weekStr).add(c.getPriceList()));
                 }
             }
@@ -160,7 +160,7 @@ public class ShipReportsService {
                     if (incomePerDay.containsKey(dayStr)) {
                         incomePerDay.put(dayStr, incomePerDay.get(dayStr).add(c.getPriceList()));
                     }
-                    resStart = resStart.plusDays(1);
+                    resStart = resStart.plusHours(1);
                 }
             }
         }

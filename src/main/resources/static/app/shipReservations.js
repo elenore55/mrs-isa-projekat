@@ -21,7 +21,9 @@ Vue.component("ship-reservations", {
             }
         }).then(response => {
             this.ship = response.data;
-        }).catch(function (error) {
+            this.ship.availableStart = this.getValidDate(this.ship.availableStart);
+            this.ship.availableEnd = this.getValidDate(this.ship.availableEnd);
+        }).catch(error => {
             if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
             else Swal.fire('Error', 'Something went wrong!', 'error');
         });
@@ -39,11 +41,11 @@ Vue.component("ship-reservations", {
                     <div class="d-flex justify-content-center card-body">
                         <div class="me-3 mb-1">
                             <label for="start-date">Start</label>
-                            <vuejs-datepicker :disabled="!ship.enabled" v-model="ship.availableStart" format="dd.MM." id="start-date" :monday-first="true"></vuejs-datepicker>
+                            <vuejs-datepicker :disabled="!ship.editable" v-model="ship.availableStart" format="dd.MM." id="start-date" :monday-first="true"></vuejs-datepicker>
                         </div>
                         <div class="mb-1">
                             <label for="end-date">End</label>                
-                            <vuejs-datepicker :disabled="!ship.enabled" v-model="ship.availableEnd" format="dd.MM." id="end-date" :monday-first="true"></vuejs-datepicker>
+                            <vuejs-datepicker :disabled="!ship.editable" v-model="ship.availableEnd" format="dd.MM." id="end-date" :monday-first="true"></vuejs-datepicker>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
@@ -51,8 +53,8 @@ Vue.component("ship-reservations", {
                     </div>
                     <div class="row mb-3 me-3 mt-3">
                         <div class="col text-end">
-                            <button v-if="ship.enabled" type="button" class="btn btn-primary" v-on:click="updateReservationPeriod">Save changes</button>
-                            <button v-if="!ship.enabled" type="button" class="btn btn-primary" style="cursor: not-allowed; opacity: 50%">Save changes</button>
+                            <button v-if="ship.editable" type="button" class="btn btn-primary" v-on:click="updateReservationPeriod">Save changes</button>
+                            <button v-if="!ship.editable" type="button" class="btn btn-primary" style="cursor: not-allowed; opacity: 50%">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -76,13 +78,18 @@ Vue.component("ship-reservations", {
                     headers: {
                         Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
                     }
-                }).then(function(response) {
+                }).then(response => {
                     Swal.fire('Success', 'Ship updated!', 'success');
-                }).catch(function (error) {
+                }).catch(error => {
                     if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                     else Swal.fire('Error', 'Something went wrong!', 'error');
                 });
             }
+        },
+
+        getValidDate(date) {
+            let arr = date.toString().split(',');
+            return new Date(parseInt(arr[0]), parseInt(arr[1]), parseInt(arr[2]), parseInt(arr[3]), parseInt(arr[4]));
         }
     },
 

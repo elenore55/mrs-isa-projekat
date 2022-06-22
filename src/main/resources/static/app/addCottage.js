@@ -31,6 +31,12 @@ Vue.component("add-cottage", {
            input_started: false
        }
    },
+
+    mounted() {
+        $("body").css("background-image", "none");
+        $("body").css("background-color", "#f2e488");
+        $("body").css("background-size", "100% 200%");
+    },
    template: `
     <div style="background-color: #f2e488; height: 100%" class="p-4">
         <div class="container card mt-3 shadow-lg w-75 px-2">
@@ -206,9 +212,10 @@ Vue.component("add-cottage", {
                     headers: {
                         Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
                     }
-                }).then(function(response) {
+                }).then(response => {
                     Swal.fire('Success', 'Cottage added!', 'success');
-                }).catch(function (error) {
+                    this.$router.push({path: '/cottagesViewOwner'});
+                }).catch(error => {
                     if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
                     else Swal.fire('Error', 'Something went wrong!', 'error');
                 });

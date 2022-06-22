@@ -21,10 +21,10 @@ public class AdventureDTO {
     private Double rate;
     private List<ReviewDTO> reviews;
 
-    public AdventureDTO()
-    {
+    public AdventureDTO() {
 
     }
+
     public AdventureDTO(Integer id, String name, Address address, String description, BigDecimal price, String additionalInfo, Integer fInstructorId, List<String> imagePaths, List<String> rules, List<FishingEquipmentDTO> fishingEquipmentList, Integer maxPeople) {
         this.id = id;
         this.name = name;
@@ -39,8 +39,7 @@ public class AdventureDTO {
         this.maxPeople = maxPeople;
     }
 
-    public AdventureDTO(Adventure adventure)
-    {
+    public AdventureDTO(Adventure adventure) {
         this.id = adventure.getId();
         this.name = adventure.getName();
         this.address = adventure.getAddress();
@@ -50,16 +49,16 @@ public class AdventureDTO {
         this.fInstructorId = adventure.getInstructor().getId();
 
         this.imagePaths = new ArrayList<>();
-        for(Image image : adventure.getImages())
+        for (Image image : adventure.getImages())
             imagePaths.add(image.getPath());
         handleNoImages(adventure);
 
         this.rules = new ArrayList<>();
-        for(Rule rule : adventure.getRules())
+        for (Rule rule : adventure.getRules())
             rules.add(rule.getText());
 
         this.fishingEquipmentList = new ArrayList<>();
-        for(FishingEquipment fishingEquipment : adventure.getFishingEquipments())
+        for (FishingEquipment fishingEquipment : adventure.getFishingEquipments())
             fishingEquipmentList.add(new FishingEquipmentDTO(fishingEquipment));
         this.maxPeople = adventure.getMaxPeople();
         this.rate = adventure.getRateOrNegativeOne();

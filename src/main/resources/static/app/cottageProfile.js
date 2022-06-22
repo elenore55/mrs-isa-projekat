@@ -25,7 +25,7 @@ Vue.component('cottage-profile', {
     <div style="background-color: #f2e488">
         <update-cottage-nav></update-cottage-nav>
         <div class="d-flex justify-content-center">
-            <div class="card shadow-lg my-3">
+            <div class="card shadow-lg my-3" style="width: 85%">
                 <div class="container card-body">
                     <h2 class="card-title mb-5 ms-5 mt-3">{{ cottage.name }}</h2>
                     <div class="d-flex justify-content-evenly  mb-4">

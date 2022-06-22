@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -61,7 +60,7 @@ public class CottageController {
         Cottage cottage = cottageService.findOne(id);
         if (cottage == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         double rate = cottage.getRateOrNegativeOne();
-        return new ResponseEntity<Double>(rate, HttpStatus.OK);
+        return new ResponseEntity<>(rate, HttpStatus.OK);
     }
 
     @ResponseBody
@@ -103,7 +102,6 @@ public class CottageController {
     @ResponseBody
     @RequestMapping(path = "/detailViewCottage/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> detailViewCottage(@PathVariable Integer id) {
-        Cottage cottage = cottageService.findOne(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -251,7 +249,7 @@ public class CottageController {
         cottage.setPriceList(cottageDTO.getPrice());
 
         List<PriceList> priceHistory = new ArrayList<>();
-        if (cottage.getPriceHistory() == null || cottage.getPriceHistory().size() == 0) {
+        if (cottage.getPriceHistory() == null || cottage.getPriceHistory().isEmpty()) {
             priceHistory.add(new PriceList(LocalDate.now(), cottageDTO.getPrice()));
             cottage.setNumberOfPriceLists(1);
         } else {

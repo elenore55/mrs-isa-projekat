@@ -2,9 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.*;
 import com.example.demo.model.*;
-import com.example.demo.model.enums.AdminApprovalStatus;
 import com.example.demo.model.enums.ReservationStatus;
-import com.example.demo.model.FishingInstructor;
 import com.example.demo.service.FishingInstructorService;
 import com.example.demo.service.OfferService;
 import com.example.demo.service.ReservationService;
@@ -15,12 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import javax.transaction.Transactional;
-import java.time.LocalDate;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -36,7 +30,7 @@ public class ReservationController {
 
 
     @Autowired
-    public ReservationController(ReservationService reservationService, UserService userService, OfferService offerService,FishingInstructorService fishingInstructorService) {
+    public ReservationController(ReservationService reservationService, UserService userService, OfferService offerService, FishingInstructorService fishingInstructorService) {
         this.reservationService = reservationService;
         this.userService = userService;
         this.offerService = offerService;
@@ -164,15 +158,11 @@ public class ReservationController {
         // TODO treba dodati da su u buducnosti i da nisu zauzete
         List<FastReservation> retVal = new ArrayList<>();
         Offer o = offerService.findOne(offerId);
-        if (o instanceof Cottage)
-        {
+        if (o instanceof Cottage) {
+            retVal = ((Cottage) o).getFastReservations();
+        } else if (o instanceof Ship) {
             retVal = ((Ship) o).getFastReservations();
         }
-        else if (o instanceof Ship)
-        {
-            retVal = ((Ship) o).getFastReservations();
-        }
-
         return retVal;
     }
 
@@ -182,10 +172,8 @@ public class ReservationController {
     public ResponseEntity<String> unfollow(@PathVariable Integer clientId, @PathVariable Integer offerId) {
         Client c = (Client) userService.findById(clientId);
         List<Offer> subs = c.getSubscriptions();
-        for (Offer o : c.getSubscriptions())
-        {
-            if (o.getId().equals(offerId))
-            {
+        for (Offer o : c.getSubscriptions()) {
+            if (o.getId().equals(offerId)) {
                 subs.remove(o);
                 break;
             }
@@ -273,7 +261,7 @@ public class ReservationController {
     }
 
     @GetMapping(value = "/advreser/{advId}/{instId}")
-    public ResponseEntity<List<ReservationDTO>> getAdventuresReservations(@PathVariable Integer advId,@PathVariable Integer instId) {
+    public ResponseEntity<List<ReservationDTO>> getAdventuresReservations(@PathVariable Integer advId, @PathVariable Integer instId) {
         FishingInstructor fishingInstructor = fishingInstructorService.findOne(instId);
         List<Reservation> reservations = fishingInstructor.getReservations();
 
@@ -281,8 +269,8 @@ public class ReservationController {
         List<ReservationDTO> reservationDTOS = new ArrayList<>();
 
         for (Reservation reservation : reservations) {
-            if(reservation.getOffer().getId().equals(advId))
-                    reservationDTOS.add(new ReservationDTO(reservation));
+            if (reservation.getOffer().getId().equals(advId))
+                reservationDTOS.add(new ReservationDTO(reservation));
         }
 
         return new ResponseEntity<>(reservationDTOS, HttpStatus.OK);
@@ -303,25 +291,25 @@ public class ReservationController {
     }
 
     @GetMapping(path = "/allPendingForInstructor/{id}/{idadv}")
-    public ResponseEntity<List<ReservationInstDTO>> getAllPendingReservations(@PathVariable Integer id, @PathVariable Integer idadv){
+    public ResponseEntity<List<ReservationInstDTO>> getAllPendingReservations(@PathVariable Integer id, @PathVariable Integer idadv) {
         FishingInstructor fishingInstructor = fishingInstructorService.findOne(id);
         List<Reservation> reservations = fishingInstructor.getReservations();
         List<ReservationInstDTO> reservationInstDTOS = new ArrayList<>();
-        for(Reservation reservation : reservations) {
-            if(reservation.getOffer().getId().equals(idadv))
-                if(reservation.getReservationStatus() == ReservationStatus.PENDING || reservation.getReservationStatus() == ReservationStatus.ACTIVE || reservation.getReservationStatus() == ReservationStatus.FINISHED)
+        for (Reservation reservation : reservations) {
+            if (reservation.getOffer().getId().equals(idadv))
+                if (reservation.getReservationStatus() == ReservationStatus.PENDING || reservation.getReservationStatus() == ReservationStatus.ACTIVE || reservation.getReservationStatus() == ReservationStatus.FINISHED)
                     reservationInstDTOS.add(new ReservationInstDTO(reservation));
         }
         return new ResponseEntity<>(reservationInstDTOS, HttpStatus.OK);
     }
 
     @GetMapping(path = "/allForInstructor/{id}/{idadv}")
-    public ResponseEntity<List<ReservationInstDTO>> getAllReservations(@PathVariable Integer id, @PathVariable Integer idadv){
+    public ResponseEntity<List<ReservationInstDTO>> getAllReservations(@PathVariable Integer id, @PathVariable Integer idadv) {
         FishingInstructor fishingInstructor = fishingInstructorService.findOne(id);
         List<Reservation> reservations = fishingInstructor.getReservations();
         List<ReservationInstDTO> reservationInstDTOS = new ArrayList<>();
-        for(Reservation reservation : reservations) {
-            if(reservation.getOffer().getId().equals(idadv))
+        for (Reservation reservation : reservations) {
+            if (reservation.getOffer().getId().equals(idadv))
                 reservationInstDTOS.add(new ReservationInstDTO(reservation));
         }
         return new ResponseEntity<>(reservationInstDTOS, HttpStatus.OK);
@@ -329,14 +317,13 @@ public class ReservationController {
 
     @ResponseBody
     @RequestMapping(path = "/updateAdventuresreservation", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<Reservation> updateComplaintAdmin(@RequestBody ReservationInstDTO reservationInstDTO)
-    {
+    public ResponseEntity<Reservation> updateComplaintAdmin(@RequestBody ReservationInstDTO reservationInstDTO) {
         System.out.println(reservationInstDTO.toString());
         Reservation izBaze = reservationService.findOne(reservationInstDTO.getId());
-        if(reservationInstDTO.getStatus()==ReservationStatus.CANCELLED || reservationInstDTO.getStatus()==ReservationStatus.CLIENT_NOT_ARRIVED || reservationInstDTO.getStatus()==ReservationStatus.FINISHED )
+        if (reservationInstDTO.getStatus() == ReservationStatus.CANCELLED || reservationInstDTO.getStatus() == ReservationStatus.CLIENT_NOT_ARRIVED || reservationInstDTO.getStatus() == ReservationStatus.FINISHED)
             izBaze.setReservationStatus(reservationInstDTO.getStatus());
         izBaze = reservationService.save(izBaze);
-        return  new ResponseEntity<>(izBaze,HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(izBaze, HttpStatus.ACCEPTED);
     }
 
 
@@ -353,8 +340,7 @@ public class ReservationController {
         r.setReservationStatus(ReservationStatus.PENDING);
     }
 
-    private LocalDateTime getLocalDatetimeFromVuePicker(String d)
-    {
+    private LocalDateTime getLocalDatetimeFromVuePicker(String d) {
         String sub = d.substring(0, 24);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd yyyy kk:mm:ss");
         LocalDateTime localDateTime = LocalDateTime.parse(sub, formatter);

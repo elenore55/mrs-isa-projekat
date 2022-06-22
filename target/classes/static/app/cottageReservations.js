@@ -3,7 +3,9 @@ Vue.component("cottage-reservations", {
         return {
             id: null,
             cottage: {},
-            input_started: false
+            input_started: false,
+            start: "",
+            end: ""
         }
     },
 
@@ -12,7 +14,6 @@ Vue.component("cottage-reservations", {
         $("body").css("background-color", "#f2e488");
         $("body").css("background-size", "100% 200%");
         this.id = this.$route.params.id;
-
         axios({
             method: "get",
             url: "api/cottages/getCottage/" + this.$route.params.id,
@@ -23,7 +24,7 @@ Vue.component("cottage-reservations", {
             this.cottage = response.data;
             this.cottage.availableStart = this.getValidDate(this.cottage.availableStart);
             this.cottage.availableEnd = this.getValidDate(this.cottage.availableEnd);
-        }).catch(function (error) {
+        }).catch(error => {
             if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
             else Swal.fire('Error', 'Something went wrong!', 'error');
         });
@@ -41,11 +42,11 @@ Vue.component("cottage-reservations", {
                     <div class="d-flex justify-content-center card-body">
                         <div class="me-3 mb-4">
                             <label for="start-date">Start</label>
-                            <vuejs-datepicker :disabled="!cottage.enabled" v-model="cottage.availableStart" format="dd.MM." id="start-date" :monday-first="true"></vuejs-datepicker>
+                            <vuejs-datepicker :disabled="!cottage.editable" v-model="cottage.availableStart" format="dd.MM." id="start-date" :monday-first="true"></vuejs-datepicker>
                         </div>
                         <div class="mb-4">
                             <label for="end-date">End</label>                
-                            <vuejs-datepicker :disabled="!cottage.enabled" v-model="cottage.availableEnd" format="dd.MM." id="end-date" :monday-first="true"></vuejs-datepicker>
+                            <vuejs-datepicker :disabled="!cottage.editable" v-model="cottage.availableEnd" format="dd.MM." id="end-date" :monday-first="true"></vuejs-datepicker>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
@@ -53,8 +54,8 @@ Vue.component("cottage-reservations", {
                     </div>
                     <div class="row mb-3 me-3">
                         <div class="col text-end">
-                            <button v-if="cottage.enabled" type="button" class="btn btn-primary" v-on:click="updateReservationPeriod">Save changes</button>
-                            <button v-if="!cottage.enabled" type="button" class="btn btn-primary" style="cursor: not-allowed; opacity: 50%">Save changes</button>
+                            <button v-if="cottage.editable" type="button" class="btn btn-primary" v-on:click="updateReservationPeriod">Save changes</button>
+                            <button v-if="!cottage.editable" type="button" class="btn btn-primary" style="cursor: not-allowed; opacity: 50%">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -66,7 +67,7 @@ Vue.component("cottage-reservations", {
                 </div>
             </div>
         </div>
-        <reservations-calendar :offerId="$route.params.id" rangeStart="cottage.availableStart" :rangeEnd="cottage.availableEnd"></reservations-calendar>
+        <reservations-calendar :offerId="$route.params.id" :rangeStart="cottage.availableStart" :rangeEnd="cottage.availableEnd"></reservations-calendar>
     </div>
     `,
 
@@ -89,7 +90,7 @@ Vue.component("cottage-reservations", {
 
         getValidDate(date) {
             let arr = date.toString().split(',');
-            return new Date(parseInt(arr[0]), parseInt(arr[1]), parseInt(arr[2]) - 1, parseInt(arr[3]), parseInt(arr[4]));
+            return new Date(parseInt(arr[0]), parseInt(arr[1]), parseInt(arr[2]), parseInt(arr[3]), parseInt(arr[4]));
         }
     },
 

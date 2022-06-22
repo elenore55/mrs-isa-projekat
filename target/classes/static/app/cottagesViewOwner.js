@@ -109,7 +109,10 @@ Vue.component("cottages-view-owner", {
                                         <h3 v-if="c.rate == -1">No reviews</h3>
                                     </div>
                                 </div>
-                                <p class="card-text mb-2">Price: {{ c.price }} EUR</p>
+                                <div class="d-flex justify-content-start">
+                                    <h1 class="text-success ">{{ c.price }} <i class="fa fa-eur"></i></h1>
+                                    <h5 class="d-flex align-items-end">&nbsp; /day</h5>
+                                </div>
                                 <p class="card-text mb-2">Number of rooms: {{ c.rooms.length }}</p>
                                 <p class="card-text">Number of beds: {{ c.numberOfBeds }}</p>
                                 <div class="d-flex flex-row mt-3">

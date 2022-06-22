@@ -103,23 +103,17 @@ public class ReservationService {
     }
 
     public void notifyClient(Reservation reservation) {
-        System.out.println("BILA SAM U NOTIFICIRANJUUUUUUUUUUUUUUUUU");
         System.out.println("Email je " + reservation.getClient().getEmail());
         String to = reservation.getClient().getEmail();
-        //String subject = "Reservation";
-        //String text = "To confirm reservation for\n";
-        //text += reservation.getOffer().getName() + "\nPlease click the link below\n";
-        //text += "http://localhost:8000/#/confirmReservation/" + reservation.getId().toString();
-        //emailSender.send(to, subject, text);
-
-        //SimpleMailMessage message = new SimpleMailMessage();
-        //message.setFrom("jelenababic142@gmail.com");
-        //message.setTo(to);
-        String subject = "Reservation";
-        //message.setText("Your reservation is confirmed");
-        String text = "Your reservation is confirmed";
-        //emailSender.send(to,subject,text);
-        System.out.println("Mail sent");
+        String subject = "Reservation confirmation";
+        String name = reservation.getClient().getName();
+        String offerName = reservation.getOffer().getName();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String start = formatter.format(reservation.getStart());
+        String end = formatter.format(reservation.getEnd());
+        String text = String.format("Hello %s!\nThere is a new reservation for you." +
+                "\nOffer: %s\nStart date: %s\nEnd date: %s\nEnjoy your stay!", name, offerName, start, end);
+        emailSender.send(to, subject, text);
     }
 
 

@@ -43,8 +43,8 @@ public class ClientReviewService {
         String title = "Client penalty request";
         String owner = String.format("%s %s (%s)", review.getIssuedBy().getName(), review.getIssuedBy().getSurname(), review.getIssuedBy().getEmail());
         String client = String.format("%s %s (%s)", review.getClient().getName(), review.getClient().getSurname(), review.getClient().getEmail());
-        String content = String.format("Owner %s requested a penalty for client %s due to missing a reservation.\n" +
-                "To review the request, please click the link below\nhttps://localhost:8000/#/viewPenaltyRequest/%d", owner, client, review.getId());
+        String content = String.format("Owner %s requested a penalty for client %s due to missing a reservation (reservation number %d).\n" +
+                "Please review the request.", owner, client, review.getReservation().getId());
         List<Admin> admins = adminRepository.findAll();
         for (Admin admin : admins) {
             emailSender.send(admin.getEmail(), title, content);
