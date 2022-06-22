@@ -5,6 +5,9 @@ import com.example.demo.model.FastReservation;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class FastReservationDTO {
     private Integer id;
@@ -16,6 +19,7 @@ public class FastReservationDTO {
     private Integer maxPeople;
     private String startStr;
     private String actionStartStr;
+    private List<String> additionalServices;
 
     public FastReservationDTO() {
     }
@@ -28,6 +32,13 @@ public class FastReservationDTO {
         this.actionDuration = fr.getActionDuration();
         this.price = fr.getPrice();
         this.maxPeople = fr.getMaxPeople();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+        this.startStr = dateTimeFormatter.format(start);
+        this.actionStartStr = dateTimeFormatter.format(actionStart);
+        this.additionalServices = new ArrayList<>();
+        if (fr.getAdditionalServices() != null) {
+            this.additionalServices = Arrays.asList(fr.getAdditionalServices().split(","));
+        }
     }
 
     public Integer getId() {
@@ -87,8 +98,7 @@ public class FastReservationDTO {
     }
 
     public String getStartStr() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
-        return dateTimeFormatter.format(start);
+        return startStr;
     }
 
     public void setStartStr(String startStr) {
@@ -96,11 +106,18 @@ public class FastReservationDTO {
     }
 
     public String getActionStartStr() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
-        return dateTimeFormatter.format(actionStart);
+        return actionStartStr;
     }
 
     public void setActionStartStr(String actionStartStr) {
         this.actionStartStr = actionStartStr;
+    }
+
+    public List<String> getAdditionalServices() {
+        return additionalServices;
+    }
+
+    public void setAdditionalServices(List<String> additionalServices) {
+        this.additionalServices = additionalServices;
     }
 }

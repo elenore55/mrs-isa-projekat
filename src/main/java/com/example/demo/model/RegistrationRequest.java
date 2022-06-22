@@ -28,6 +28,9 @@ public class RegistrationRequest {
     @Enumerated(EnumType.STRING)
     private RegistrationType registrationType;
 
+    @Version
+    private Integer version;
+
     public RegistrationRequest() {
     }
 

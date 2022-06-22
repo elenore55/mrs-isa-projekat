@@ -5,16 +5,28 @@ Vue.component("edit-profile", {
                 email: "email@gmail.com",
                 name: "Pero",
                 surname: "Peric",
-                street: "Puskinova 6",
-                city: "Novi Sad",
-                country: "Srbija",
+                address: {
+                    street: "Puskinova 6",
+                    city: "Novi Sad",
+                    country: "Srbija",
+                },
                 phone: "123345",
                 category: "Regular",
                 penalties: "0",
                 points: "0",
-            }
+            },
+            id: 0,
+            token: "",
         }
    },
+
+   mounted() {
+      this.token = JSON.parse(localStorage.getItem("jwt"));
+      this.id = this.token.userId;
+      main_image = $("body").css("background-image", "url('images/set.webp')");
+      main_image = $("body").css("background-size", "100% 210%");
+      this.reload();
+     },
 
    template: `
 
@@ -56,7 +68,7 @@ Vue.component("edit-profile", {
                       Street:
                     </div>
                     <div class="col-6">
-                      <input v-model="user.street" type="text"  class="form-control" required>
+                      <input v-model="user.address.street" type="text"  class="form-control" required>
                     </div>
                 </div>
 
@@ -65,7 +77,7 @@ Vue.component("edit-profile", {
                       City:
                     </div>
                     <div class="col-6">
-                      <input v-model="user.city" type="text"  class="form-control" required>
+                      <input v-model="user.address.city" type="text"  class="form-control" required>
                     </div>
                 </div>
 
@@ -74,7 +86,7 @@ Vue.component("edit-profile", {
                       Country:
                     </div>
                     <div class="col-6">
-                      <input v-model="user.country" type="text"  class="form-control" required>
+                      <input v-model="user.address.country" type="text"  class="form-control" required>
                     </div>
                 </div>
 
@@ -83,7 +95,7 @@ Vue.component("edit-profile", {
                       Phone Number:
                     </div>
                     <div class="col-6">
-                      <input v-model="user.phone" type="text"  class="form-control" required>
+                      <input v-model="user.phoneNumber" type="text"  class="form-control" required>
                     </div>
                 </div>
 
@@ -101,7 +113,7 @@ Vue.component("edit-profile", {
                             Penalties:
                        </div>
                        <div class="col-6">
-                            <label> {{user.penalties}}</label>
+                            <label> {{0}}</label>
                        </div>
                 </div>
 
@@ -110,7 +122,7 @@ Vue.component("edit-profile", {
                             Points:
                        </div>
                        <div class="col-6">
-                            <label> {{user.points}}</label>
+                            <label> {{user.numberOfPoints}}</label>
                        </div>
                 </div>
 
@@ -130,9 +142,20 @@ Vue.component("edit-profile", {
 
    methods: {
            sendData() {
+
+
                if (this.allFieldAreFilled())
                {
-                    axios.post("api/users/edit", {
+                    alert(this.user.address.street + " je ulica");
+                    alert(this.user.name + " je ime ");
+
+                    alert(this.user.surname + " je prezime ");
+                    alert(this.user.email + " je mejl ");
+
+                    alert(this.user.address.country + " je drzava ");
+                    alert(this.user.address.city + " je grad ");
+
+                    /*axios.post("api/users/edit", {
                     email: this.user.email,
                     name: this.user.name,
                     surname: this.user.surname,
@@ -141,7 +164,6 @@ Vue.component("edit-profile", {
                     country: this.user.country,
                     phone: this.user.phone,
 
-
                     }).then(function(response) {
                     if(response.data=="OK")
                     {
@@ -149,15 +171,66 @@ Vue.component("edit-profile", {
                     }
                     }).catch(function (error) {
                          alert('An error occurred!');
-                    // preusmjeri na stranicu za login sa greskom
-                    });
+                    });*/
+
+                    axios({
+                       method: 'post',
+                       url: "api/users/edit", data: {
+                            email: this.user.email,
+                            name: this.user.name,
+                            surname: this.user.surname,
+                            street: this.user.address.street,
+                            city: this.user.address.city,
+                            country: this.user.address.country,
+                            phone: this.user.phoneNumber,
+                        },
+                       headers: {
+                           Authorization: "Bearer " + this.token.accessToken
+                       }
+                   }).then(response => {
+                       Swal.fire({
+                        title: 'Success!',
+                        text: 'Your changes are saved',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                      })
+                   }).catch(function (error) {
+                       if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                       else Swal.fire('Error', 'Something went wrong!', 'error');
+                   });
                }
+           },
+
+           reload()
+           {
+               axios({
+                  method: 'get',
+                  url: "api/users/getById/" + this.id,
+                  headers: {
+                      Authorization: "Bearer " + this.token.accessToken
+                  }
+              }).then(response => {
+                  this.user = response.data;
+              }).catch(function (error) {
+                  if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                  else Swal.fire('Error', 'Something went wrong!', 'error');
+              });
+
            },
 
            allFieldAreFilled()
            {
-                return this.user.email && this.user.name && this.user.surname && this.user.street && this.user.street
-                && this.user.city && this.user.country && this.user.phone;
+           /*alert("Provjera unutar funkcije");
+           alert(this.user.email);
+           alert(this.user.name);
+           alert(this.user.surname);
+           alert(this.user.address.street);
+           alert(this.user.address.city);
+           alert(this.user.address.county);
+           alert(this.user.phoneNumber);*/
+
+                return this.user.email && this.user.name && this.user.surname && this.user.address.street
+                && this.user.address.city && this.user.address.country && this.user.phoneNumber;
            }
        }
 

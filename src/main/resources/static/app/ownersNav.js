@@ -1,6 +1,4 @@
 Vue.component('owners-nav', {
-    props: ['offer'],
-
     template: `
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="collapse navbar-collapse">
@@ -24,34 +22,48 @@ Vue.component('owners-nav', {
                             <li><a class="dropdown-item" :href="priceHistoryReport">Average prices</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link"  href="javascript:void(0)" @click="logOut">Log out</a>
+                    </li>
                 </ul>
             </div>
         </nav>
     `,
 
+    methods: {
+        logOut() {
+            localStorage.removeItem("jwt");
+            this.$router.push({path: '/login'});
+        }
+    },
+
     computed: {
         ownersProfile() {
-            return "/#/ownersProfile/" + this.$route.params.id;
+            return "/index.html#/ownersProfile";
         },
 
         offers() {
-            return "/#/" + this.offer + "ViewOwner/" + this.$route.params.id;
+            let role = JSON.parse(localStorage.getItem("jwt")).userRole;
+            let offer = "";
+            if (role === "ROLE_COTTAGE") offer = "cottages";
+            else if (role === "ROLE_SHIP") offer = "ships";
+            return "/index.html#/" + offer + "ViewOwner";
         },
 
         reservationsHistory() {
-            return "/#/reservationsHistory/" + this.$route.params.id;
+            return "/index.html#/reservationsHistory";
         },
 
         incomeReport() {
-            return "/#/incomeReport/" + this.$route.params.id;
+            return "/index.html#/incomeReport";
         },
 
         visitReport() {
-            return "/#/visitReport/" + this.$route.params.id;
+            return "/index.html#/visitReport";
         },
 
         priceHistoryReport() {
-            return "/#/priceHistoryReport/" + this.$route.params.id;
+            return "/index.html#/priceHistoryReport";
         }
     }
 });

@@ -24,6 +24,7 @@ public class Feedback {
     @OneToOne(mappedBy = "feedback")
     private Reservation reservation;
 
+
     public Feedback() {
     }
 

@@ -5,16 +5,27 @@ Vue.component("client-profile", {
                 email: "email@gmail.com",
                 name: "Pero",
                 surname: "Peric",
-                street: "Puskinova 6",
-                city: "Novi Sad",
-                country: "Srbija",
+                address: {
+                    street: "Puskinova 6",
+                    city: "Novi Sad",
+                    country: "Srbija",
+                },
                 phone: "123345",
                 category: "Regular",
                 penalties: "0",
                 points: "0",
-            }
+            },
+            token: {},
+            id: 0,
         }
    },
+   mounted() {
+           this.token = JSON.parse(localStorage.getItem("jwt"));
+           this.id = this.token.userId;
+           main_image = $("body").css("background-image", "url('images/set.webp')");
+           main_image = $("body").css("background-size", "100% 210%");
+           this.reload();
+          },
 
    template: `
 
@@ -27,7 +38,7 @@ Vue.component("client-profile", {
                         Password:
                     </div>
                     <div class="col-6">
-                        <a href="http://localhost:8000/#/changePassword/">Change password</a>
+                        <a href="http://localhost:8000/index.html#/changePassword/">Change password</a>
                     </div>
                 </div>
 
@@ -63,7 +74,7 @@ Vue.component("client-profile", {
                     Street:
                     </div>
                     <div class="col-6">
-                    <label> {{user.street}}</label>
+                    <label> {{user.address.street}}</label>
                     </div>
                 </div>
 
@@ -72,7 +83,7 @@ Vue.component("client-profile", {
                     City:
                     </div>
                     <div class="col-6">
-                    <label> {{user.city}}</label>
+                    <label> {{user.address.city}}</label>
                     </div>
                 </div>
 
@@ -81,7 +92,7 @@ Vue.component("client-profile", {
                     Country:
                     </div>
                     <div class="col-6">
-                    <label> {{user.country}}</label>
+                    <label> {{user.address.country}}</label>
                     </div>
                 </div>
 
@@ -90,7 +101,7 @@ Vue.component("client-profile", {
                     Phone Number:
                     </div>
                     <div class="col-6">
-                    <label> {{user.phone}}</label>
+                    <label> {{user.phoneNumber}}</label>
                     </div>
                 </div>
 
@@ -108,7 +119,7 @@ Vue.component("client-profile", {
                             Penalties:
                     </div>
                     <div class="col-2">
-                            <label> {{user.penalties}}</label>
+                            <label> {{0}}</label>
                     </div>
                 </div>
 
@@ -117,7 +128,7 @@ Vue.component("client-profile", {
                             Points:
                     </div>
                     <div class="col-6">
-                            <label> {{user.points}}</label>
+                            <label> {{user.numberOfPoints}}</label>
                     </div>
                 </div>
             </div>
@@ -140,12 +151,28 @@ Vue.component("client-profile", {
    `,
 
     methods: {
+        reload()
+        {
+            axios({
+               method: 'get',
+               url: "api/users/getById/" + this.id,
+               headers: {
+                   Authorization: "Bearer " + this.token.accessToken
+               }
+           }).then(response => {
+               this.user = response.data;
+           }).catch(function (error) {
+               if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+               else Swal.fire('Error', 'Something went wrong!', 'error');
+           });
+
+        },
         editProfile() {
-            location.replace('http://localhost:8000/#/editProfile');
+            location.replace('http://localhost:8000/index.html#/editProfile');
         },
         deleteProfile() {
-                    location.replace('http://localhost:8000/#/deleteProfile');
-                }
+             location.replace('http://localhost:8000/index.html#/deleteProfile');
+             }
     }
 
 

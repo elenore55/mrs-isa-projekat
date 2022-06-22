@@ -2,9 +2,11 @@ package com.example.demo.dto;
 
 public class ComplaintDTO {
     private String content;
-    private Integer id;
+    private int id;
 
-    public ComplaintDTO(String content, Integer id) {
+    public ComplaintDTO(){}
+
+    public ComplaintDTO(String content, int id) {
         this.content = content;
         this.id = id;
     }
@@ -17,7 +19,7 @@ public class ComplaintDTO {
         this.content = content;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 

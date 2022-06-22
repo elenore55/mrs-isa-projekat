@@ -13,7 +13,9 @@ import com.example.demo.repository.ReservationRepository;
 import com.example.demo.service.emailSenders.EmailSender;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -33,18 +35,56 @@ public class ReservationService {
         this.emailSender = emailSender;
     }
 
+    @Transactional
     public Reservation save(Reservation reservation) {
-        return repository.save(reservation);
+        try {
+            return repository.save(reservation);
+        }
+        catch(ObjectOptimisticLockingFailureException e) {
+            // prvo provjeriti da li je bilo poklapanja termina, ako nije, vratiti vikendicu
+            // ako jeste, baciti exception dalje
+            if (hasInSamePeriod(reservation))
+            {
+                throw new ObjectOptimisticLockingFailureException("This entity is already reserved", e);
+            }
+            else
+            {
+                Offer o = reservation.getOffer();
+                o.addReservation(reservation);
+                o.setNumberOfReservations(o.getNumberOfReservations()+1);
+                o.setNumberOfPriceLists(o.getNumberOfPriceLists() + 1);
+                reservation.setOffer(o);
+                o.addReservation(reservation);
+                return repository.save(reservation);
+            }
+        }
     }
 
+    private boolean hasInSamePeriod(Reservation reservation) {
+        // ova metoda nam vraca listu svih rezervacija datog entiteta
+        /*List<Reservation> offersReservations = repository.getByOfferId(reservation.getOffer().getId());
+        for (Reservation r : offersReservations)
+        {
+            // nema problema ako jedna zavrsi prije nego sto druga pocne i obrnuto
+            if (!(r.getEnd().isBefore(reservation.getStart()) || r.getStart().isAfter(reservation.getEnd())))
+            {
+                return true;
+            }
+        }*/
+        return false;
+    }
+
+    @Transactional
     public List<Reservation> findAll() {
         return repository.findAll();
     }
 
+    @Transactional
     public Reservation findOne(Integer id) {
-        return repository.findById(id).orElseGet(null);
+        return repository.findOneById(id);
     }
 
+    @Transactional
     public boolean isPossibleReservation(Reservation reservation) {
         Offer offer = reservation.getOffer();
         for (Reservation r : offer.getReservations()) {

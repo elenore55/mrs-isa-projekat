@@ -6,11 +6,17 @@ Vue.component("reservations-calendar", {
         }
     },
 
-    props: ['rangeStart', 'id', 'rangeEnd', 'offerId'],
+    props: ['rangeStart', 'rangeEnd', 'offerId'],
 
     mounted() {
         let events = [];
-        axios.get("api/users/getOwnersReservations/" + this.id + "/" + this.offerId).then(response => {
+        axios({
+            method: "get",
+            url: "api/users/getOwnersReservations/" + JSON.parse(localStorage.getItem("jwt")).userId + "/" + this.offerId,
+            headers: {
+                Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+            }
+        }).then(response => {
             this.reservations = response.data;
             for (const r of this.reservations) {
                 let color = "#36b5e3";
@@ -35,8 +41,8 @@ Vue.component("reservations-calendar", {
                 }
                 events.push({
                     title: r.clientEmail,
-                    start: new Date(r.startDate),
-                    end: new Date(r.endDate),
+                    start: this.getValidDate(r.startDate),
+                    end: this.getValidDate(r.endDate),
                     backgroundColor: color,
                     id: r.id,
                     groupId: 1,
@@ -50,14 +56,20 @@ Vue.component("reservations-calendar", {
                 allDay: true,
                 color: "#6Bf251"
             });*/
-            axios.get("api/offers/getFastReservations/" + this.offerId).then(response => {
+            axios({
+                method: "get",
+                url: "api/offers/getFastReservations/" + this.offerId,
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
+            }).then(response => {
                 this.fast = response.data;
-                for (const f of this.fast) {
-                    let startDate = new Date(f.start);
-                    let endDate = new Date(f.start);
+                for (let f of this.fast) {
+                    let startDate = this.getValidDate(f.start);
+                    let endDate = this.getValidDate(f.start);
                     endDate.setDate(endDate.getDate() + f.duration);
-                    let actionStartDate = new Date(f.actionStart);
-                    let actionEndDate = new Date(f.actionStart);
+                    let actionStartDate = this.getValidDate(f.actionStart);
+                    let actionEndDate = this.getValidDate(f.actionStart);
                     actionEndDate.setDate(actionEndDate.getDate() + f.actionDuration);
                     events.push({
                         title: "Fast reservation",
@@ -129,10 +141,12 @@ Vue.component("reservations-calendar", {
                 });
                 calendar.render();
             }).catch(function (error) {
-                Swal.fire('Error', 'Something went wrong!', 'error');
+                if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+                else Swal.fire('Error', 'Something went wrong!', 'error');
             });
         }).catch(function (error) {
-            Swal.fire('Error', 'Something went wrong!', 'error');
+            if (error.response.status === 401) this.$router.push({path: '/unauthorized'});
+            else Swal.fire('Error', 'Something went wrong!', 'error');
         });
     },
 
@@ -140,5 +154,12 @@ Vue.component("reservations-calendar", {
     <div class="mx-4 mb-5 d-flex justify-content-center">
         <div id="calendar" class="p-4 shadow-lg w-75 h-75" style="background-color: white; border-radius: 10px"></div>
     </div>
-    `
+    `,
+
+    methods: {
+        getValidDate(date) {
+            let arr = date.toString().split(',');
+            return new Date(parseInt(arr[0]), parseInt(arr[1]) - 1, parseInt(arr[2]), parseInt(arr[3]), parseInt(arr[4]));
+        }
+    }
 });
