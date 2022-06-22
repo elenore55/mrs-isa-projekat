@@ -102,7 +102,10 @@ Vue.component("ships-view-owner", {
                                         <h3 v-if="s.rate == -1">No reviews</h3>
                                     </div>
                                 </div>
-                                <p class="card-text mb-1">Price: {{ s.price }} EUR</p>
+                                <div class="d-flex justify-content-start">
+                                        <h1 class="text-success ">{{ s.price }} <i class="fa fa-eur"></i></h1>
+                                        <h5 class="d-flex align-items-end">&nbsp; /hour</h5>
+                                    </div>
                                 <p class="card-text mb-1">Capacity: {{ s.capacity }} people</p>
                                 <p class="card-text mb-1">Length: {{ s.length }} m</p>
                                 <p class="card-text">Max speed: {{ s.maxSpeed }} km/h</p>
