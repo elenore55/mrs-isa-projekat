@@ -26,7 +26,7 @@ public class UserService {
     private RoleService roleService;
 
     @Autowired
-    public UserService(UserRepository userRepository, ClientRepository clientRepository, FishingInstructorRepository fishingInstructorRepository
+    public UserService(UserRepository userRepository, ClientRepository clientRepository, FishingInstructorRepository fishingInstructorRepository,
                        Profile_DataRepository profileDataRepository, AddressRepository addressRepository, RoleService roleService,
                       CottageOwnerRepository cottageOwnerRepository, ShipOwnerRepository shipOwnerRepository) {
         this.userRepository = userRepository;
@@ -63,28 +63,23 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public User saveOwners(ProfileData profileData, RegistrationType type){
+    public User saveOwners(ProfileData profileData, RegistrationType type) {
         ProfileData temp = new ProfileData(profileData);
-        if(type== RegistrationType.COTTAGE_OWNER)
-        {
+        if (type == RegistrationType.COTTAGE_OWNER) {
             CottageOwner cottageOwner = new CottageOwner();
             cottageOwner.setProfileData(temp);
             cottageOwner.setNumberOfPoints(0);
             cottageOwner.setCategory(Category.REGULAR);
             CottageOwner res = cottageOwnerRepository.save(cottageOwner);
             return res;
-        }
-        else if(type== RegistrationType.SHIP_OWNER)
-        {
+        } else if (type == RegistrationType.SHIP_OWNER) {
             ShipOwner shipOwner = new ShipOwner();
             shipOwner.setProfileData(temp);
             shipOwner.setNumberOfPoints(0);
             shipOwner.setCategory(Category.REGULAR);
             ShipOwner res = shipOwnerRepository.save(shipOwner);
             return res;
-        }
-        else if(type== RegistrationType.FISHING_OWNER)
-        {
+        } else if (type == RegistrationType.FISHING_OWNER) {
             FishingInstructor fishingInstructor = new FishingInstructor();
             fishingInstructor.setProfileData(temp);
             fishingInstructor.setNumberOfPoints(0);
@@ -93,6 +88,7 @@ public class UserService {
             return res;
         }
         return null;
+    }
 
     public User save(RegistrationDTO dto) {
         User user = new User();

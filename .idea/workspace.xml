@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40ba84b1-d75b-4871-ab2e-141e0d13074f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cache/.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageDetailedView2.js" afterDir="false" />
+    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/OfferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/OfferController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data-postgres.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientHome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,9 +58,9 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/cottageDetailedView.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/editProfile.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -109,8 +98,10 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.example.demo.security.auth" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\maps" />
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\reports" />
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\filters" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\js" />
@@ -119,14 +110,12 @@
       <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static" />
       <recent name="C:\Users\LENOVO\Desktop\faks\VI semestar\ISA\Projekat\mrs-isa-projekat\src\main\resources\static\app" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\maps" />
-      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\reports" />
-      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\filters" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.demo.controller" />
       <recent name="com.example.demo.service" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.demo.security.auth" />
     </key>
   </component>
   <component name="RunManager" selected="Application.DemoApplication">
@@ -259,7 +248,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -650,12 +639,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -685,6 +675,40 @@
     <MESSAGE value="Ispravljen prikaz slika" />
     <MESSAGE value="spojena security st 1 ma cache" />
     <option name="LAST_COMMIT_MESSAGE" value="spojena security st 1 ma cache" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1237" height="159" key="GridCell.Tab.0.bottom" timestamp="1655895420087">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="159" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
+    <state width="1237" height="159" key="GridCell.Tab.0.center" timestamp="1655895420087">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="159" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
+    <state width="1237" height="159" key="GridCell.Tab.0.left" timestamp="1655895420087">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="159" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
+    <state width="1237" height="159" key="GridCell.Tab.0.right" timestamp="1655895420087">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="159" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
+    <state width="1237" height="159" key="GridCell.Tab.1.bottom" timestamp="1655895420087">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="159" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
+    <state width="1237" height="159" key="GridCell.Tab.1.center" timestamp="1655895420087">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="159" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
+    <state width="1237" height="159" key="GridCell.Tab.1.left" timestamp="1655895420087">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="159" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
+    <state width="1237" height="159" key="GridCell.Tab.1.right" timestamp="1655895420087">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="159" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

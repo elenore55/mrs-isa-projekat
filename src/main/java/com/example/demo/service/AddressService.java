@@ -32,6 +32,7 @@ public class AddressService {
 
     public void remove(Integer id) {
         repository.deleteById(id);
+    }
 
     public Address save(Address address) {
         return repository.save(address);
