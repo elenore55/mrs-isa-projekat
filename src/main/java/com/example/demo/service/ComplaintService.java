@@ -24,4 +24,7 @@ public class ComplaintService {
     public List<Complaint> findAll() {
         return this.repository.findAll();
     }
+
+    public Complaint findOne(Integer id){return this.repository.getById(id);}
+    public Complaint update(Complaint complaint){return this.repository.save(complaint);}
 }

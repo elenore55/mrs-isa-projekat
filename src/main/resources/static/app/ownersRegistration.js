@@ -106,6 +106,7 @@ Vue.component("owners-registration", {
                             <select class="form-select form-control" id="type-select" v-model="type">
                                 <option selected>Cottage owner</option>
                                 <option>Ship owner</option>
+                                <option>Fishing owner</option>
                             </select>
                             <label for="type-select" class="form-label ms-2" style="color:#C0C0C0">Type</label>
                             <p v-if="!isValidType" class="text-danger">Invalid type</p>

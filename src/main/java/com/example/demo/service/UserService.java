@@ -4,10 +4,8 @@ import com.example.demo.dto.ChangePasswordDTO;
 import com.example.demo.dto.EditProfileDTO;
 import com.example.demo.model.*;
 import com.example.demo.model.enums.Category;
-import com.example.demo.repository.AddressRepository;
-import com.example.demo.repository.ClientRepository;
-import com.example.demo.repository.Profile_DataRepository;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.model.enums.RegistrationType;
+import com.example.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,17 +16,30 @@ public class UserService {
 
     private UserRepository userRepository;
     private ClientRepository clientRepository;
+    private FishingInstructorRepository fishingInstructorRepository;
+    private CottageOwnerRepository cottageOwnerRepository;
+    private ShipOwnerRepository shipOwnerRepository;
     private Profile_DataRepository profileDataRepository;
     private AddressRepository addressRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository, ClientRepository clientRepository,
-                       Profile_DataRepository profileDataRepository, AddressRepository addressRepository) {
+    public UserService(UserRepository userRepository, ClientRepository clientRepository, FishingInstructorRepository fishingInstructorRepository, CottageOwnerRepository cottageOwnerRepository, ShipOwnerRepository shipOwnerRepository, Profile_DataRepository profileDataRepository, AddressRepository addressRepository) {
         this.userRepository = userRepository;
         this.clientRepository = clientRepository;
+        this.fishingInstructorRepository = fishingInstructorRepository;
+        this.cottageOwnerRepository = cottageOwnerRepository;
+        this.shipOwnerRepository = shipOwnerRepository;
         this.profileDataRepository = profileDataRepository;
         this.addressRepository = addressRepository;
     }
+//    public UserService(UserRepository userRepository, ClientRepository clientRepository,
+//                       Profile_DataRepository profileDataRepository, AddressRepository addressRepository) {
+//        this.userRepository = userRepository;
+//        this.clientRepository = clientRepository;
+//        this.profileDataRepository = profileDataRepository;
+//        this.addressRepository = addressRepository;
+//    }
+
 
     public User save(User user){
         Client c = new Client();
@@ -37,6 +48,42 @@ public class UserService {
         c.setCategory(Category.REGULAR);
         Client retC = clientRepository.save(c);
         return retC;
+    }
+
+    public void saveUSER(User user){
+        userRepository.save(user);
+    }
+
+    public User saveOwners(ProfileData profileData, RegistrationType type){
+        ProfileData temp = new ProfileData(profileData);
+        if(type== RegistrationType.COTTAGE_OWNER)
+        {
+            CottageOwner cottageOwner = new CottageOwner();
+            cottageOwner.setProfileData(temp);
+            cottageOwner.setNumberOfPoints(0);
+            cottageOwner.setCategory(Category.REGULAR);
+            CottageOwner res = cottageOwnerRepository.save(cottageOwner);
+            return res;
+        }
+        else if(type== RegistrationType.SHIP_OWNER)
+        {
+            ShipOwner shipOwner = new ShipOwner();
+            shipOwner.setProfileData(temp);
+            shipOwner.setNumberOfPoints(0);
+            shipOwner.setCategory(Category.REGULAR);
+            ShipOwner res = shipOwnerRepository.save(shipOwner);
+            return res;
+        }
+        else if(type== RegistrationType.FISHING_OWNER)
+        {
+            FishingInstructor fishingInstructor = new FishingInstructor();
+            fishingInstructor.setProfileData(temp);
+            fishingInstructor.setNumberOfPoints(0);
+            fishingInstructor.setCategory(Category.REGULAR);
+            FishingInstructor res = fishingInstructorRepository.save(fishingInstructor);
+            return res;
+        }
+        return null;
     }
 
     public String findUserToken(String email, String password) {
@@ -95,6 +142,12 @@ public class UserService {
         return clientRepository.findByProfileDataId(pd.getId());
     }
 
+    public User findUserByEmailForAdmin(String email) {
+        ProfileData pd = profileDataRepository.getByEmail(email);
+        if (pd == null) return null;
+        return userRepository.findByProfileDataId(pd.getId());
+    }
+
 
     public User findOne(Integer id) {
         return userRepository.findById(id).orElseGet(null);
@@ -130,5 +183,9 @@ public class UserService {
 
     public void unfollow(Client c) {
         clientRepository.save(c);
+    }
+
+    public void remove(Integer id) {
+        userRepository.deleteById(id);
     }
 }
