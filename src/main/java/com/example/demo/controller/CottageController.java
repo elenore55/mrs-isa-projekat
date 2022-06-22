@@ -176,6 +176,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/filter", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    //@PreAuthorize("hasRole('CLIENT')")
     public ResponseEntity<List<CottageDTO>> filterCottages(@RequestBody UserFilterDTO userFilterDTO) {
         List<Cottage> cottages = cottageService.filter(userFilterDTO);
         List<CottageDTO> dtos = new ArrayList<>();

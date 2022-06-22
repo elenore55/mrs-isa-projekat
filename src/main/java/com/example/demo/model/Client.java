@@ -61,4 +61,9 @@ public class Client extends User {
     public void setPenalties(List<Penalty> penalties) {
         this.penalties = penalties;
     }
+
+    public void addSub(Offer o)
+    {
+        this.subscriptions.add(o);
+    }
 }

@@ -62,17 +62,14 @@ public class AdventureController {
     }
 
     @GetMapping(value = "/all")
-    @PreAuthorize("hasRole('CLIENT')")
+    //@PreAuthorize("hasRole('CLIENT')")
     public ResponseEntity<List<AdventureDTO>> getAllAdventures() {
-
         List<Adventure> adventures = adventureService.findAll();
-
         // convert adventures to DTOs
         List<AdventureDTO> adventuresDTO = new ArrayList<>();
         for (Adventure adventure : adventures) {
             adventuresDTO.add(new AdventureDTO(adventure));
         }
-
         return new ResponseEntity<>(adventuresDTO, HttpStatus.OK);
     }
 
@@ -241,6 +238,18 @@ public class AdventureController {
         adventure.setFastAdventureReservations(res);
         adventureService.save(adventure);
         return new ResponseEntity<>(new FastReservationDTO(far), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/filter", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    //@PreAuthorize("hasRole('SHIP', 'CLIENT')")
+    public ResponseEntity<List<AdventureDTO>> filterAdventures(@RequestBody UserFilterDTO userFilterDTO) {
+        List<Adventure> adventures = adventureService.filter(userFilterDTO);
+        List<AdventureDTO> dtos = new ArrayList<>();
+        for (Adventure a : adventures) {
+            dtos.add(new AdventureDTO(a));
+        }
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
     }
 
     @ResponseBody

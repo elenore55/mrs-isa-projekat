@@ -24,6 +24,16 @@ Vue.component("unregistered-navbar", {
                         <a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/registration/'})">Registration</a>
                     </li>
 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Registration
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/registration/'})">Registration</a></li>
+                            <li><a class="nav-link" href="javascript:void(0)" @click="$router.push({path: '/registration/'})">Registration</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
             </div>
         </div>

@@ -5,7 +5,7 @@ Vue.component("past-reservations", {
            id: 6,
            sortEntity: "",
            sortBy: "",
-           token: {}
+           token: {},
 
        }
    },

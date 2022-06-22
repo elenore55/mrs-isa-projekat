@@ -14,8 +14,8 @@ Vue.component("client-home", {
              sortBy: "",
              sortByList: ["...", "Name", "Rate", "Country", "City", "Price"],
              direction: "",
-             fromDate: 7,
-             toDate: 7,
+             fromDate: "Fri Jun 24 2022 02:00:00 GMT+0200 (Central European Summer Time)",
+             toDate: "Fri Jun 24 2022 02:00:00 GMT+0200 (Central European Summer Time)",
              error_date: false,
              error_radio: false,
              cottage_pictures: [],
@@ -25,7 +25,10 @@ Vue.component("client-home", {
              default_ship: "images/ship_icon.png",
              default_adventure: "images/fishing_icon.jpg",
              token: {},
-             id: 0
+             id: 0,
+             disabled: {
+                 to: new Date()
+             },
 
            }
         },
@@ -63,12 +66,13 @@ mounted() {
                    <div class="row py-2">
                        <div class="form-group col-md-5 ">
                            <label for="start-date">Start date</label>
-                           <vuejs-datepicker v-model="fromDate" format="dd.MM.yyyy." id="start-date" required style="width: 50px"></vuejs-datepicker>
+                           <vuejs-datepicker v-model="fromDate" format="dd.MM.yyyy." id="start-date" :disabled-dates="disabled"></vuejs-datepicker>
                        </div>
 
                        <div class="form-group col-md-3">
                            <label for="end-date">End date</label>
-                           <vuejs-datepicker v-model="toDate" format="dd.MM.yyyy." id="end-date" required></vuejs-datepicker>
+
+                           <vuejs-datepicker v-model="toDate" format="dd.MM.yyyy." id="end-date" :disabled-dates="disabled"></vuejs-datepicker>
                        </div>
                    </div>
                    <p v-if="error_date" class="text-danger">You must choose start and end date.</p>
@@ -148,7 +152,7 @@ mounted() {
                                  <div class="col-4 flex-column mt-auto mx-auto py-2">
                                      <p class="">Price: {{c.price}} EUR</p>
                                      <div class="text-center">
-                                         <a :href="'/index.html#/cottageDetailedView2/' + c.id + '/' + 7 + '/' + 7" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
+                                         <a :href="'/index.html#/cottageDetailedView2/' + c.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
                                      </div>
                                 </div>
                             </div>
@@ -180,7 +184,7 @@ mounted() {
                                  <div class="col-4 flex-column mt-auto mx-auto py-2">
                                       <p class="" style="text-align:center;">Price: {{s.price}} EUR</p>
                                       <div class="text-center">
-                                          <a :href="'/#/shipDetailedView/' + s.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
+                                          <a :href="'/index.html#/shipDetailedView2/' + s.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
                                       </div>
                                  </div>
                             </div>
@@ -212,7 +216,7 @@ mounted() {
                                  <div class="col-4 flex-column mt-auto mx-auto py-2">
                                       <p class="" style="text-align:center;">Price: {{a.price}} EUR</p>
                                       <div class="text-center">
-                                          <a :href="'/#/adventureDetailedView/' + a.id" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
+                                          <a :href="'/index.html#/adventureDetailedView/' + a.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
                                       </div>
                                  </div>
                              </div>
@@ -286,6 +290,7 @@ methods: {
                 }
             }).then(response => {
                 //alert("Duzina dobavljenih brodova je " + response.data.length);
+                this.ships = response.data;
                 for (const s of this.ships) {
                      if (!s.imagePaths || s.imagePaths.length === 0) {
                          this.ship_pictures.push(this.default_ship);
@@ -299,6 +304,7 @@ methods: {
                 else Swal.fire('Error', 'Something went wrong!', 'error');
             });
 
+
             /*axios.get("api/adventures/all/").then(response => {
                  this.adventures = response.data;
                  for (const a of this.adventures) {
@@ -311,6 +317,29 @@ methods: {
             }).catch(function (error) {
                  alert('An error occurred!');
             });*/
+
+            axios({
+                method: 'get',
+                url: "api/adventures/all/",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
+                //alert("Duzina dobavljenih avantura je " + response.data.length);
+                this.adventures = response.data;
+                for (const a of this.adventures) {
+                     if (!a.imagePaths || a.imagePaths.length === 0) {
+                         this.adventure_pictures.push(this.default_adventure);
+                     } else {
+                         this.adventure_pictures.push(a.imagePaths.at(0));
+                     }
+                 }
+            }).catch(function (error) {
+                alert("Greskaaa u get ships");
+                if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                else Swal.fire('Error', 'Something went wrong!', 'error');
+            });
+
         },
 
         adjustRate(rate)
@@ -338,7 +367,7 @@ methods: {
                 this.error_radio = false;
                 if (this.entityType=="cottage")      // ako su odabrane vikendice, nuliracemo ostale i samo njih prikazati
                 {
-                    axios.post("api/cottages/filter", {
+                    /*axios.post("api/cottages/filter", {
                          fromDate: this.fromDate,
                          toDate: this.toDate,
                          country: this.country,
@@ -352,12 +381,36 @@ methods: {
                     this.cottages = response.data;
                     }).catch(function (error) {
                          alert('An error occurred!');
-                    });
+                    });*/
+
+                    alert(this.fromDate);
+                    axios({
+                       method: 'post',
+                       url: "api/cottages/filter/", data: {
+                            fromDate: this.fromDate,
+                             toDate: this.toDate,
+                             country: this.country,
+                             city: this.city,
+                             rate: this.rate,
+                             numberOfPeople: this.numberOfPeople,
+                             sortByList: this.sortByList,
+                             sortBy: this.sortBy,
+                             direction: this.direction,
+                        },
+                       headers: {
+                           Authorization: "Bearer " + this.token.accessToken
+                       }
+                   }).then(response => {
+                       this.cottages = response.data;
+                   }).catch(function (error) {
+                       if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                       else Swal.fire('Error', 'Something went wrong!', 'error');
+                   });
 
                 }
                 else if (this.entityType=="ship")
                     {
-                        axios.post("api/ships/filter", {
+                        /*axios.post("api/ships/filter", {
                              fromDate: this.fromDate,
                              toDate: this.toDate,
                              country: this.country,
@@ -370,10 +423,71 @@ methods: {
                         this.ships = response.data;
                         }).catch(function (error) {
                              alert('An error occurred!');
-                        });
+                        });*/
+                        axios({
+                           method: 'post',
+                           url: "api/ships/filter/", data: {
+                                fromDate: this.fromDate,
+                                 toDate: this.toDate,
+                                 country: this.country,
+                                 city: this.city,
+                                 rate: this.rate,
+                                 numberOfPeople: this.numberOfPeople,
+                                 sortByList: this.sortByList,
+                                 sortBy: this.sortBy,
+                                 direction: this.direction,
+                            },
+                           headers: {
+                               Authorization: "Bearer " + this.token.accessToken
+                           }
+                       }).then(response => {
+                           this.ships = response.data;
+                       }).catch(function (error) {
+                           if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                           else Swal.fire('Error', 'Something went wrong!', 'error');
+                       });
                     }
-            }
 
-        }
-          },
+                else if (this.entityType=="adventure")
+                    {
+                        /*axios.post("api/ships/filter", {
+                             fromDate: this.fromDate,
+                             toDate: this.toDate,
+                             country: this.country,
+                             city: this.city,
+                             rate: this.rate,
+                             sortByList: this.sortByList,
+                             sortBy: this.sortBy,
+                             direction: this.direction,
+                        }).then(response => {
+                        this.ships = response.data;
+                        }).catch(function (error) {
+                             alert('An error occurred!');
+                        });*/
+                        axios({
+                           method: 'post',
+                           url: "api/adventures/filter/", data: {
+                                fromDate: this.fromDate,
+                                 toDate: this.toDate,
+                                 country: this.country,
+                                 city: this.city,
+                                 rate: this.rate,
+                                 numberOfPeople: this.numberOfPeople,
+                                 sortByList: this.sortByList,
+                                 sortBy: this.sortBy,
+                                 direction: this.direction,
+                            },
+                           headers: {
+                               Authorization: "Bearer " + this.token.accessToken
+                           }
+                       }).then(response => {
+                           this.adventures = response.data;
+                       }).catch(function (error) {
+                           if (error.response.status === 401) location.replace('http://localhost:8000/index.html#/unauthorized/');
+                           else Swal.fire('Error', 'Something went wrong!', 'error');
+                       });
+                    }
+                }
+            }
+        },
     });

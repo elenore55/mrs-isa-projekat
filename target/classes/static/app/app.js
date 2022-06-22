@@ -45,6 +45,8 @@ const ChangePassword = {template: '<change-password></change-password>'};
 const CottageDetailedView = {template: '<cottage-detailed-view></cottage-detailed-view>'};
 const CottageDetailedView2 = {template: '<cottage-detailed-view2></cottage-detailed-view2>'};
 const ShipDetailedView = {template: '<ship-detailed-view></ship-detailed-view>'};
+const ShipDetailedView2 = {template: '<ship-detailed-view2></ship-detailed-view2>'};
+const AdventureDetailedView = {template: '<adventure-detailed-view></adventure-detailed-view>'};
 const UnregisteredNavbar = {template: '<unregistered-navbar></unregistered-navbar>'};
 const InstructorsAdventures = {template: '<instructors-adventures></instructors-adventures>'};
 const AddAdmin = {template: '<add-admin></add-admin>'};
@@ -271,6 +273,14 @@ const router = new VueRouter({
         {
             path: "/shipDetailedView/:id/:fromDate/:toDate",
             component: ShipDetailedView
+        },
+        {
+            path: "/shipDetailedView2/:id/:fromDate/:toDate",
+            component: ShipDetailedView2
+        },
+        {
+            path: "/adventureDetailedView/:id/:fromDate/:toDate",
+            component: AdventureDetailedView
         },
         {
             path: "/updateCottageNav/",
