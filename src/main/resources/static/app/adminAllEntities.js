@@ -19,10 +19,20 @@ Vue.component("admin-entities",{
             selectedAdventures: [],
             selectedShips: [],
             selectedCottages: [],
-            users:[]
+            users:[],
+
+            id: [],
+            token: {}
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
+
+
         this.loadInstructorsAdventures()
         this.loadUsers()
         this.loadShips()
@@ -158,26 +168,70 @@ Vue.component("admin-entities",{
         },
 
         loadUsers(){
-            axios.get("api/users/allUsers").then(response => {
+            // axios.get("api/users/allUsers").then(response => {
+            //     this.users = response.data;
+            //     // console.log(this.adventures)
+            // })
+
+
+            axios({
+                method: "get",
+                url: "api/users/allUsers",
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")).accessToken
+                }
+            }).then(response => {
                 this.users = response.data;
                 // console.log(this.adventures)
             })
         },
 
         loadInstructorsAdventures(){
-            axios.get("api/adventures/all").then(response => {
+            // axios.get("api/adventures/all").then(response => {
+            //     this.adventures = response.data;
+            //     // console.log(this.adventures)
+            // })
+            axios({
+                method: 'get',
+                url: "api/adventures/all",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.adventures = response.data;
                 // console.log(this.adventures)
             })
+
         },
         loadShips(){ //get ships metoda u ShipControlleru
-            axios.get("api/ships/getShips").then(response => {
+            // axios.get("api/ships/getShips").then(response => {
+            //     this.ships = response.data;
+            //     // console.log(this.adventures)
+            // })
+            axios({
+                method: 'get',
+                url: "api/ships/getShips",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.ships = response.data;
                 // console.log(this.adventures)
             })
         },
         loadCottages(){ // get cottages metoda u CottageControleru
-            axios.get("api/cottages/getCottages").then(response => {
+            // axios.get("api/cottages/getCottages").then(response => {
+            //     this.cottages = response.data;
+            //     // console.log(this.adventures)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/cottages/getCottages",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.cottages = response.data;
                 // console.log(this.adventures)
             })
@@ -186,28 +240,51 @@ Vue.component("admin-entities",{
             for(let element of this.selectedShips)
             {
                 // axios.delete("api/offers/deleteOffer/"+element.id+"/"+element.ownerId)
-                axios.delete("api/shipOwner/deleteTheShip/"+element.id+"/"+element.ownerId)
+                // axios.delete("api/shipOwner/deleteTheShip/"+element.id+"/"+element.ownerId)
+
+                axios({
+                    method: 'delete',
+                    url: "api/shipOwner/deleteTheShip/"+element.id+"/"+element.ownerId,
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
+                })
             }
             for(let element of this.selectedCottages)
             {
-                axios.delete("api/cottageOwner/deleteTheCottage/"+element.id+"/"+element.ownerId)
+                // axios.delete("api/cottageOwner/deleteTheCottage/"+element.id+"/"+element.ownerId)
+                axios({
+                    method: 'delete',
+                    url: "api/cottageOwner/deleteTheCottage/"+element.id+"/"+element.ownerId,
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
+                })
             }
             for(let element of this.selectedAdventures)
             {
-                axios.delete("api/instructors/deleteTheAdventure/"+element.id+"/"+element.fInstructorId)
+                // axios.delete("api/instructors/deleteTheAdventure/"+element.id+"/"+element.fInstructorId)
+                axios({
+                    method: 'delete',
+                    url: "api/instructors/deleteTheAdventure/"+element.id+"/"+element.fInstructorId,
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
+                })
             }
             for(let element of this.selectedUsers)
             {
-                axios.delete("api/users/deleteTheUsers/"+element.email)
+                // axios.delete("api/users/deleteTheUsers/"+element.email)
+                axios({
+                    method: 'delete',
+                    url: "api/users/deleteTheUsers/"+element.email,
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
+                })
             }
             console.log("AAAAAAAAAAAAAAAA")
             setTimeout(()=>this.$router.go(),100);
         },
-        sendRequest(){
-            axios.get("api/TBD").then(response => {
-                this.users = response.data;
-                // console.log(this.adventures)
-            })
-        }
     }
 });

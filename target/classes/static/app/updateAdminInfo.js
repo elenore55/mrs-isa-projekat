@@ -4,10 +4,17 @@ Vue.component("update-admin-info",{
         return{
             adminData:[],
             passwordRe: "",
-            ogpassword:""
+            ogpassword:"",
+            id: [],
+            token: {}
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         this.loadAdminsInfo()
     },
     template: `
@@ -81,7 +88,18 @@ Vue.component("update-admin-info",{
     `,
     methods:{
         loadAdminsInfo(){
-            axios.get("api/admin/getAdminData").then(response => {
+            // axios.get("api/admin/getAdminData/"+this.id).then(response => {
+            //     this.adminData = response.data
+            //     this.ogpassword = this.adminData.profileDataDTO.password;
+            //     console.log(this.adminData)
+            // })
+            axios({
+                method: 'get',
+                url: "api/admin/getAdminData/"+this.id,
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.adminData = response.data
                 this.ogpassword = this.adminData.profileDataDTO.password;
                 console.log(this.adminData)
@@ -94,6 +112,11 @@ Vue.component("update-admin-info",{
                     is_main: this.adminData.is_main,
                     profileDataDTO: this.adminData.profileDataDTO,
                     id: this.adminData.id
+                },
+                {
+                    headers: {
+                        Authorization: "Bearer " + this.token.accessToken
+                    }
                 }).then(function (response) {
                     alert("Successfully updated your personal information");
                 }).catch(function (error) {

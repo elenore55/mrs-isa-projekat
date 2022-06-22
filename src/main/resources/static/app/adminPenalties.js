@@ -4,10 +4,17 @@ Vue.component("admin-penalties",{
             penalties:[],
             apStatus:[],
             selectedStatus:[],
-            reason:[]
+            reason:[],
+            id: [],
+            token: {}
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         this.loadPenalties()
     },
     template: `
@@ -48,6 +55,10 @@ Vue.component("admin-penalties",{
                 reservationId:pen.reservationId,
                 dateTime:pen.dateTime,
                 content:pen.content
+            },{
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
             }).then(setTimeout(()=>this.$router.go(),100)).catch(console.log("Nesto nije valjano"))
         },
         respondToDelete(pen)
@@ -55,11 +66,26 @@ Vue.component("admin-penalties",{
             axios.post("api/clientReviews/updatePenaltyAdminDelete",{
                 id: pen.id,
                 penaltyRequested: true,
+            },{
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
             }).then(setTimeout(()=>this.$router.go(),100)).catch(console.log("Nesto nije valjano"))
         },
 
         loadPenalties(){
-            axios.get("api/clientReviews/allPending").then(response => {
+            // axios.get("api/clientReviews/allPending").then(response => {
+            //     this.penalties = response.data;
+            //     console.log(this.penalties[0])
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/clientReviews/allPending",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.penalties = response.data;
                 console.log(this.penalties[0])
             })

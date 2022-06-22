@@ -3,10 +3,17 @@ Vue.component("admin-deletreq",{
         return {
             reqs:[],
             apStatus:[],
-            selectedStatus:[]
+            selectedStatus:[],
+            id: [],
+            token: {}
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         this.loadDeletionReqs()
         this.loadReqsPossibleStatuses()
     },
@@ -48,19 +55,44 @@ Vue.component("admin-deletreq",{
                 userDTO: req.clientDTO,
                 id: req.id,
                 status:req.status,
+            },{
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
             }).then(this.$router.go()).catch(console.log("Nesto nije valjano"))
         },
 
         loadDeletionReqs(){
-            axios.get("api/deletionRequests/allPending").then(response => {
+            // axios.get("api/deletionRequests/allPending").then(response => {
+            //     this.reqs = response.data;
+            //     console.log(this.reqs[0])
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/deletionRequests/allPending",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.reqs = response.data;
                 console.log(this.reqs[0])
             })
         },
         loadReqsPossibleStatuses(){
-            axios.get("api/deletionRequests/approvalStatus").then(response => {
+            // axios.get("api/deletionRequests/approvalStatus").then(response => {
+            //     this.apStatus = response.data;
+            // })
+            axios({
+                method: 'get',
+                url: "api/deletionRequests/approvalStatus",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.apStatus = response.data;
             })
+
         },
     }
 });

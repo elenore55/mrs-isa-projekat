@@ -60,6 +60,10 @@ Vue.component("login", {
                              this.$router.push('/shipsViewOwner').catch(() => {});
                          else if (this.token.userRole === "ROLE_CLIENT")
                              this.$router.push('/clientHome').catch(() => {});
+                         else if (this.token.userRole === "ROLE_ADMIN")
+                             this.$router.push('/adminNavBar').catch(() => {});
+                         else if (this.token.userRole === "ROLE_ADVENTURE")
+                             this.$router.push('/instNavBar').catch(() => {});
                      }).catch((error) => {
                          this.user.email = "";
                          this.user.password = "";

@@ -6,9 +6,28 @@
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/AddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AdventureController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/addAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/addAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adminAllEntities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminAllEntities.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adminComplaints.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminComplaints.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adminDeletionReq.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminDeletionReq.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adminFeedbacks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminFeedbacks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adminLoyalProgram.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminLoyalProgram.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adminNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminNavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adminPenalties.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminPenalties.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adminRegistrationReq.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminRegistrationReq.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adminVisitsREport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminVisitsREport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/adminsIncomeReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/adminsIncomeReport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/updateAdminInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/updateAdminInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,9 +77,9 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/cottageDetailedView.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/editProfile.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/cottageDetailedView.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -118,7 +137,7 @@
       <recent name="com.example.demo.security.auth" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DemoApplication">
+  <component name="RunManager" selected="Spring Boot.DemoApplication">
     <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplication" />
       <module name="demo" />
@@ -128,6 +147,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -196,6 +226,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="demo [-N,wrapper:wrapper]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -248,13 +289,13 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="40ba84b1-d75b-4871-ab2e-141e0d13074f" name="Default Changelist" comment="" />
+      <changelist id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="" />
       <created>1649621033745</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -284,6 +325,7 @@
       <workItem from="1654803114806" duration="52939000" />
       <workItem from="1655406817526" duration="2736000" />
       <workItem from="1655583368904" duration="27284000" />
+      <workItem from="1655897338338" duration="7000000" />
     </task>
     <task id="LOCAL-00150" summary="MouseOver i MouseLeave za kartice">
       <created>1654944453481</created>
@@ -632,20 +674,19 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -675,40 +716,6 @@
     <MESSAGE value="Ispravljen prikaz slika" />
     <MESSAGE value="spojena security st 1 ma cache" />
     <option name="LAST_COMMIT_MESSAGE" value="spojena security st 1 ma cache" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1237" height="159" key="GridCell.Tab.0.bottom" timestamp="1655895420087">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="159" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
-    <state width="1237" height="159" key="GridCell.Tab.0.center" timestamp="1655895420087">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="159" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
-    <state width="1237" height="159" key="GridCell.Tab.0.left" timestamp="1655895420087">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="159" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
-    <state width="1237" height="159" key="GridCell.Tab.0.right" timestamp="1655895420087">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="159" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
-    <state width="1237" height="159" key="GridCell.Tab.1.bottom" timestamp="1655895420087">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="159" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
-    <state width="1237" height="159" key="GridCell.Tab.1.center" timestamp="1655895420087">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="159" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
-    <state width="1237" height="159" key="GridCell.Tab.1.left" timestamp="1655895420087">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="159" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
-    <state width="1237" height="159" key="GridCell.Tab.1.right" timestamp="1655895420087">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="159" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1655895420087" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

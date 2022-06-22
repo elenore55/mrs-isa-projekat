@@ -3,10 +3,17 @@ Vue.component("admin-registrationreq",{
         return {
             regreqs:[],
             apStatus:[],
-            selectedStatus:[]
+            selectedStatus:[],
+            id: [],
+            token: {}
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         this.loadRequests()
         // console.log(this.complaints)
         this.loadrequestPossibleStatuses()
@@ -53,17 +60,42 @@ Vue.component("admin-registrationreq",{
                 status:req.status,
                 email:req.email,
                 type:req.type,
+            },{
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
             }).then(setTimeout(()=>this.$router.go(),100)).catch(console.log("Nesto nije valjano"))
         },
 
         loadRequests(){
-            axios.get("api/registrationRequests/allPending").then(response => {
+            // axios.get("api/registrationRequests/allPending").then(response => {
+            //     this.regreqs = response.data;
+            //     console.log(this.regreqs[0])
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/registrationRequests/allPending",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.regreqs = response.data;
                 console.log(this.regreqs[0])
             })
         },
         loadrequestPossibleStatuses(){
-            axios.get("api/registrationRequests/approvalStatus").then(response => {
+            // axios.get("api/registrationRequests/approvalStatus").then(response => {
+            //     this.apStatus = response.data;
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/registrationRequests/approvalStatus",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.apStatus = response.data;
             })
         },

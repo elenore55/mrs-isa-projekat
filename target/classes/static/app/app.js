@@ -301,11 +301,11 @@ const router = new VueRouter({
            component: ProfilePageInstructorPI
         },
         {
-            path: "/addAdmin/",
+            path: "/addAdmin/:id",
             component: AddAdmin
         },
         {
-            path: "/updateAdminInfo/",
+            path: "/updateAdminInfo/:id",
             component: UpdateAdminInfo
         },
         {
@@ -329,15 +329,15 @@ const router = new VueRouter({
             component: AdveReservWithClient
         },
         {
-            path: "/adminEntities/",
+            path: "/adminEntities/:id",
             component: AdminEntities
         },
         {
-            path: "/adminComplaint/",
+            path: "/adminComplaint/:id",
             component: AdminComplaint
         },
         {
-            path: "/adminDeletionReqs/",
+            path: "/adminDeletionReqs/:id",
             component: AdminDeletionReq
         },
         {
@@ -345,19 +345,19 @@ const router = new VueRouter({
             component: InstructorComplaint
         },
         {
-            path: "/adminPenalties/",
+            path: "/adminPenalties/:id",
             component: AdminPenalties
         },
         {
-            path: "/adminFeedbacks/",
+            path: "/adminFeedbacks/:id",
             component: AdminFeedback
         },
         {
-            path: "/adminRegReq/",
+            path: "/adminRegReq/:id",
             component: AdminRegREq
         },
         {
-            path: "/adminLoyal/",
+            path: "/adminLoyal/:id",
             component: AdminLoyalProg
         },
         {

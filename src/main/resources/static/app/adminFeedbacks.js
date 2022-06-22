@@ -3,10 +3,17 @@ Vue.component("admin-feedback",{
         return {
             feedbacks:[],
             apStatus:[],
-            selectedStatus:[]
+            selectedStatus:[],
+            id: [],
+            token: {}
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         this.loadFeedbacks()
         this.loadFeedbacksPossibleStatuses()
     },
@@ -48,17 +55,42 @@ Vue.component("admin-feedback",{
             axios.post("api/feedback/updateFeedbackAdmin",{
                 id: fed.id,
                 status:fed.status,
+            },{
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
             }).then(setTimeout(()=>this.$router.go(),100)).catch(console.log("Nesto nije valjano"))
         },
 
         loadFeedbacks(){
-            axios.get("api/feedback/allPending").then(response => {
+            // axios.get("api/feedback/allPending").then(response => {
+            //     this.feedbacks = response.data;
+            //     console.log(this.feedbacks[0])
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/feedback/allPending",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.feedbacks = response.data;
                 console.log(this.feedbacks[0])
             })
         },
         loadFeedbacksPossibleStatuses(){
-            axios.get("api/feedback/approvalStatus").then(response => {
+            // axios.get("api/feedback/approvalStatus").then(response => {
+            //     this.apStatus = response.data;
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/feedback/approvalStatus",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.apStatus = response.data;
             })
         },

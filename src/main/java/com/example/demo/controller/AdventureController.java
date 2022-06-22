@@ -62,7 +62,8 @@ public class AdventureController {
     }
 
     @GetMapping(value = "/all")
-    @PreAuthorize("hasRole('CLIENT')")
+//    @PreAuthorize("hasRole('CLIENT')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENT', 'ADVENTURE')")
     public ResponseEntity<List<AdventureDTO>> getAllAdventures() {
 
         List<Adventure> adventures = adventureService.findAll();

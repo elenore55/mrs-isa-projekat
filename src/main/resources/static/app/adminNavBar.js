@@ -1,6 +1,15 @@
 Vue.component('admin-nav', {
     props: ['offer'],
+    id:[],
+    token: {},
+    mounted() {
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
 
+    },
     template: `
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="collapse navbar-collapse">
@@ -49,42 +58,42 @@ Vue.component('admin-nav', {
 
     computed: {
         updateAdminInfo() {
-            return "/#/updateAdminInfo/" + this.$route.params.id;
+            return "/index.html#/updateAdminInfo/" + this.id;   //odradjen
         },
 
         addAdmin() {
-            return "/#/addAdmin/"+ this.$route.params.id;
+            return "/index.html#/addAdmin/"+ this.id;       //odradjen
         },
 
         adminAllEntities() {
-            return "/#/adminEntities/" + this.$route.params.id;
+            return "/index.html#/adminEntities/" + this.id;  //odradjeno
         },
 
         adminComplaints() {
-            return "/#/adminComplaint/" + this.$route.params.id;
+            return "/index.html#/adminComplaint/" + this.id;    //odradjeno
         },
 
         adminVisitsREport() {
-            return "/#/adminVisit/" + this.$route.params.id;
+            return "/index.html#/adminVisit/" + this.id;    //odradjen
         },
 
         adminsIncomeReport() {
-            return "/#/adminInmcome/" + this.$route.params.id;
+            return "/index.html#/adminInmcome/" + this.id;      //odradjen
         },
         adminDeletionReq() {
-            return "/#/adminDeletionReqs/" + this.$route.params.id;
+            return "/index.html#/adminDeletionReqs/" + this.id; //odradjen
         },
         adminFeedbacks() {
-            return "/#/adminFeedbacks/" + this.$route.params.id;
+            return "/index.html#/adminFeedbacks/" + this.id;        //odradjen
         },
         adminLoyalProgram() {
-            return "/#/adminLoyal/" + this.$route.params.id;
+            return "/index.html#/adminLoyal/" + this.id;        //odradjen
         },
         adminPenalties() {
-            return "/#/adminPenalties/" + this.$route.params.id;
+            return "/index.html#/adminPenalties/" + this.id;        //odradjen
         },
         adminRegistrationReq() {
-            return "/#/adminRegReq/" + this.$route.params.id;
+            return "/index.html#/adminRegReq/" + this.id;       //odradjen
         },
     }
 });

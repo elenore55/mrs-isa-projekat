@@ -13,17 +13,18 @@ Vue.component('adminincome-report', {
                 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
             border_colors: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
-            period_select: 'Monthly'
+            period_select: 'Monthly',
+            id: [],
+            token: {}
         }
     },
 
     mounted() {
-        // all offer types
-        // axios.get("api/users/getOfferType/" + this.$route.params.id).then(response => {
-        //     this.offer_type = response.data;
-        // }).catch(error => {
-        //     Swal.fire('Error', 'Owner not found!', 'error');
-        // });
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         let chart = document.getElementById('bar-plot').getContext('2d');
         this.ch = new Chart(chart, {
             type: 'bar',
@@ -80,9 +81,13 @@ Vue.component('adminincome-report', {
 
     methods: {
         getReports() {
-            axios.post("api/users/getAdminIncomeReport/" + this.$route.params.id + "/" + this.period_select, {
+            axios.post("api/users/getAdminIncomeReport/" + this.token.userId + "/" + this.period_select, {
                 start: this.start_date,
                 end: this.end_date
+            },{
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
             }).then(response => {
                 this.reports = response.data;
                 this.ch.data.labels = this.getChartLabels();

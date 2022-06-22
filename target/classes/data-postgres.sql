@@ -35,6 +35,13 @@ insert into image (path) values ('images/inside3.jpg');
 insert into image (path) values ('images/inside4.jpg');
 insert into image (path) values ('images/inside5.jpg');
 
+insert into image (path) values ('images/adv1.jpeg');
+insert into image (path) values ('images/adv2.jpeg');
+insert into image (path) values ('images/adv3.jpeg');
+insert into image (path) values ('images/adv4.jpeg');
+insert into image (path) values ('images/adv5.jpeg');
+insert into image (path) values ('images/adv6.jpeg');
+
 insert into address (city,country,street) values ('Novi Sad','Srbija','Puskinova 6');
 insert into address (city,country,street) values ('Beograd','Srbija','Marka Pola 10');
 insert into address (city,country,street) values ('Novi Sad','Srbija','Bulevar oslobodjenja 105');
@@ -94,7 +101,7 @@ insert into offer_price_history (offer_id, price_history_id) values (3, 6);
 insert into profile_data (email,name,password,phone_number,surname,address_id) values ('emailInstr@gmail.com','ImeInstruktora','11223344','06444124214','PrezimeInstruktora',1);
 insert into my_users (category,number_of_points,profile_data_id,role_id) values ('REGULAR',0,3,5);
 
-insert into profile_data (email,name,password,phone_number,surname,address_id) values ('emailAdmin@gmail.com','Imeadmin','sifra','06444144444','PrezimeAdmin',2);
+insert into profile_data (email,name,password,phone_number,surname,address_id) values ('emailAdmin@gmail.com','Imeadmin','$2a$10$M9e44e0uS7tE34vlkKMGxulqdSGey86502fkLNbUt60A9hc/peUj6','06444144444','PrezimeAdmin',2);
 insert into my_users (category,number_of_points,profile_data_id,role_id) values ('REGULAR',0,4,2);
 insert into admin (is_main, id) values (true , 4);
 
@@ -166,6 +173,8 @@ insert into profile_data (email, name, password, phone_number, surname, address_
 insert into my_users (category,number_of_points,profile_data_id,role_id) values ('REGULAR',0,6,2);
 insert into admin (id) values (6);
 
+
+
 insert into feedback (comment, rating, status) values ('Very pretty boat', 10, 'APPROVED');
 insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (1, 5, 'PENDING', '20220523 10:05:00 AM', '20220528 10:05:00 AM', 1);
 insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 1);
@@ -214,3 +223,47 @@ insert into reservation (offer_id, client_id, reservation_status, start_date_tim
 insert into ship_owner_reservations (ship_owner_id, reservations_id) values (1, 12);
 
 insert into sub (user_id, offer_id) values (5, 2);
+
+-- /////////////////////////////////////
+-- /////////////////////////////////////
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('aleksadsimic@gmail.com', 'Aleksa', 'sifra', '064440044', 'Prezimic', 7);
+insert into my_users (category,number_of_points,profile_data_id,role_id) values ('REGULAR',0,7,1);
+insert into client (id) values (7);
+
+
+insert into complaint(content,complaint_date_time,status,issued_by_id) values ('zalba na nesto ili nekog','20220520 10:05:00 AM','PENDING',7);
+insert into complaint(content,complaint_date_time,status,issued_by_id) values ('vrv email korisnika','20220520 10:05:00 AM','PENDING',5);
+insert into complaint(content,complaint_date_time,status,issued_by_id) values ('vrv email korisnika','20220520 10:05:00 AM','PENDING',5);
+
+insert into deletion_request(request_date_time,status,sent_by_id) values ('20220520 10:05:00 AM','PENDING',7);
+insert into deletion_request(request_date_time,status,sent_by_id) values ('20220520 10:05:00 AM','PENDING',5);
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (10, 5, 'FINISHED', '20220520 10:05:00 AM', '20220525 10:05:00 AM');
+insert into fishing_instructor_reservations (fishing_instructor_id, reservations_id) values (3, 13);
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time) values (10, 7, 'FINISHED', '20220520 10:05:00 AM', '20220525 10:05:00 AM');
+insert into fishing_instructor_reservations (fishing_instructor_id, reservations_id) values (3, 14);
+
+insert into client_review(content,complaint_date_time,penalty_requested,client_id,issued_by_id) values ('ovo je content', '20220520 10:05:00 AM', true, 5,3);
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, client_review_id) values (1, 5, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM', 1);
+insert into client_review(content,complaint_date_time,penalty_requested,client_id,issued_by_id) values ('ovo je content 2', '20220520 10:05:00 AM', false , 5,3);
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, client_review_id) values (4, 7, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM', 2);
+insert into client_review(content,complaint_date_time,penalty_requested,client_id,issued_by_id) values ('ovo je content', '20220520 10:05:00 AM', true, 5,3);
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, client_review_id) values (5, 5, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM', 3);
+insert into client_review(content,complaint_date_time,penalty_requested,client_id,issued_by_id) values ('ovo je content', '20220520 10:05:00 AM', false, 5,3);
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, client_review_id) values (4, 7, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM', 4);
+
+
+insert into feedback (comment, rating, status) values ('Very pretty boat', 10, 'PENDING');
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (10, 5, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM', 4);
+insert into feedback (comment, rating, status) values ('Solid', 9, 'PENDING');
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (2, 7, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM', 5);
+insert into feedback (comment, rating, status) values ('Pretty good', 8, 'PENDING');
+insert into reservation (offer_id, client_id, reservation_status, start_date_time, end_date_time, feedback_id) values (4, 5, 'PENDING', '20220520 10:10:00 AM', '20220526 10:00:00 PM', 6);
+
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('korisnikNovi@gmail.com', 'Novak', 'sifra', '064440044', 'Prezimic', 8);
+insert into registration_request (approval_status,date_time,reason,registration_type,profile_data_id) values ('PENDING', '20220520 10:10:00 AM','zelim da budem registrovaaaaan' ,'SHIP_OWNER', 8);
+-------- Mislim da ovo mora biti odradjeno kad se potvrdi zahtev za registrovanje --------
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('korisnikNovi2@gmail.com', 'Novakkk', 'sifra', '064440044', 'Prezimic', 9);
+insert into registration_request (approval_status,date_time,reason,registration_type,profile_data_id) values ('PENDING', '20220520 10:10:00 AM','zelim da budem registrovaaaaan' ,'FISHING_OWNER', 9);
+
+---------Loyalty program----------------
+insert into coefficients(owner_reservation_points,percentage_client_gold,percentage_client_silver,percentage_owner_gold,percentage_owner_silver,required_points_gold,required_points_silver,reservation_percentage,user_reservation_points) values (10,2.2,3.4,4.1,5.3,3,4,6.9,8)

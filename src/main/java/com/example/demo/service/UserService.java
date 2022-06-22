@@ -127,6 +127,7 @@ public class UserService {
     }
 
     public boolean isAlreadyRegistered(String email) {
+        System.out.println(passwordEncoder.encode("admin"));
         ProfileData pd = profileDataRepository.getByEmail(email);
         return pd != null;
     }

@@ -2,20 +2,18 @@ Vue.component("admin-loyalprogram",{
     data:function ()
     {
         return{
-            coefficients:[]
+            coefficients:[],
+            id: [],
+            token: {}
         }
     },
     mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
         this.loadLoyalProgram()
-        // private Integer requiredPointsSilver;
-        // private Integer requiredPointsGold;
-        // private Integer userReservationPoints;
-        // private Integer ownerReservationPoints;
-        // private Double percentageClientSilver;
-        // private Double percentageClientGold;
-        // private Double percentageOwnerSilver;
-        // private Double percentageOwnerGold;
-        // private Double reservationPercentage;
     },
     template: `
     <form style="width: 600px; margin: auto"  v-on:submit ="sendRequest">
@@ -95,7 +93,18 @@ Vue.component("admin-loyalprogram",{
     `,
     methods:{
         loadLoyalProgram(){
-            axios.get("api/coefficients/getCoefs").then(response => {
+            // axios.get("api/coefficients/getCoefs").then(response => {
+            //     this.coefficients = response.data;
+            //     console.log(this.coefficients)
+            // })
+
+            axios({
+                method: 'get',
+                url: "api/coefficients/getCoefs",
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }).then(response => {
                 this.coefficients = response.data;
                 console.log(this.coefficients)
             })
@@ -112,6 +121,10 @@ Vue.component("admin-loyalprogram",{
             percentageOwnerSilver:this.coefficients.percentageOwnerSilver,
             percentageOwnerGold:this.coefficients.percentageOwnerGold,
             reservationPercentage:this.coefficients.reservationPercentage
+            },{
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
             }).then(function (response) {
                 this.$router.go();
                 alert("Successfully updated coeffs");

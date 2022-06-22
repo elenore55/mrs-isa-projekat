@@ -23,10 +23,10 @@ public class AdminController {
     {
         this.adminService = adminService;
     }
-    @GetMapping(value = "/getAdminData")
-    public ResponseEntity<AdminDTO> getAdminData(){
+    @GetMapping(value = "/getAdminData/{id}")
+    public ResponseEntity<AdminDTO> getAdminData(@PathVariable Integer id){
         // ZAPUCANA 2
-        Admin admin = adminService.findOne(4);
+        Admin admin = adminService.findOne(id);
         AdminDTO adminDTO = new AdminDTO(admin);
 
         return new ResponseEntity<>(adminDTO, HttpStatus.OK);

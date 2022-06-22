@@ -14,12 +14,18 @@ Vue.component("add-admin",{
                     street: ""
                 }
             },
-            is_main:""
+            is_main:"",
+            token: {},
+            id:[]
         }
     },
-    // mounted: function (){
-    //
-    // },
+    mounted: function (){
+        this.token = JSON.parse(localStorage.getItem("jwt"));
+        this.id = this.token.userId;
+        alert("Trenutni id je " + this.id);
+        main_image = $("body").css("background-image", "url('images/set.webp')");
+        main_image = $("body").css("background-size", "100% 210%");
+    },
     template: `
     <form style="width: 600px; margin: auto"  v-on:submit ="sendRequest">
         <h2 class="text-center">Add admin</h2>
@@ -95,7 +101,13 @@ Vue.component("add-admin",{
             axios.post("api/admin/addAdmin", {
                 is_main: this.is_main,
                 profileDataDTO: this.form
-            }).then(function (response) {
+            },
+            {
+                headers: {
+                    Authorization: "Bearer " + this.token.accessToken
+                }
+            }
+            ).then(function (response) {
                 alert("Successfully added new admin");
             }).catch(function (error) {
                 alert("An ERROR occurred while adding admin");
