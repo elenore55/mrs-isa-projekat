@@ -6,16 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipOwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipOwnerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipPriceComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/comparators/ship/ShipPriceComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ShipOwnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ShipOwnerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/shipsViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/shipsViewOwner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/app/shipsViewOwner.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/shipsViewOwner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/cottageReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageReservations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/cottageReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/cottageReservations.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,13 +277,6 @@
       <workItem from="1654803114806" duration="52939000" />
       <workItem from="1655406817526" duration="2736000" />
       <workItem from="1655583368904" duration="27284000" />
-    </task>
-    <task id="LOCAL-00157" summary="Slanje tokena za prikaz vikendica">
-      <created>1655419632606</created>
-      <option name="number" value="00157" />
-      <option name="presentableId" value="LOCAL-00157" />
-      <option name="project" value="LOCAL" />
-      <updated>1655419632606</updated>
     </task>
     <task id="LOCAL-00158" summary="Ispravljeni axios pozivi kod cottagesViewOwner.js">
       <created>1655421247192</created>
@@ -627,7 +614,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655918394924</updated>
     </task>
-    <option name="localTasksCounter" value="206" />
+    <task id="LOCAL-00206" summary="Ispravljeno filtriranje brodova">
+      <created>1655922627707</created>
+      <option name="number" value="00206" />
+      <option name="presentableId" value="LOCAL-00206" />
+      <option name="project" value="LOCAL" />
+      <updated>1655922627707</updated>
+    </task>
+    <option name="localTasksCounter" value="207" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +642,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="skip tests" />
     <MESSAGE value="update readme" />
     <MESSAGE value="Merge branch 'security_st2' into locking&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;demo.iml&#10;#&#9;pom.xml&#10;#&#9;src/main/java/com/example/demo/controller/CottageController.java&#10;#&#9;src/main/resources/data-postgres.sql&#10;#&#9;src/main/resources/static/app/addReservation.js&#10;#&#9;target/classes/data-postgres.sql" />
     <MESSAGE value="Dodati headeri" />
@@ -673,49 +666,50 @@
     <MESSAGE value="Dodati novi podaci kroz sql" />
     <MESSAGE value="Ispravljen front" />
     <MESSAGE value="Dodat proof of concept" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dodat proof of concept" />
+    <MESSAGE value="Ispravljeno filtriranje brodova" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ispravljeno filtriranje brodova" />
   </component>
   <component name="WindowStateProjectService">
     <state x="438" y="200" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1655908237709">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="200" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1655908237709" />
-    <state x="186" y="0" key="CommitChangelistDialog2" timestamp="1655918394173">
+    <state x="186" y="0" key="CommitChangelistDialog2" timestamp="1655922625797">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="186" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1655918394173" />
-    <state width="1237" height="42" key="GridCell.Tab.0.bottom" timestamp="1655922530811">
+    <state x="186" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1655922625797" />
+    <state width="1237" height="274" key="GridCell.Tab.0.bottom" timestamp="1655926138043">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="42" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655922530811" />
-    <state width="1237" height="42" key="GridCell.Tab.0.center" timestamp="1655922530810">
+    <state width="1237" height="274" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655926138043" />
+    <state width="1237" height="274" key="GridCell.Tab.0.center" timestamp="1655926138042">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="42" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655922530810" />
-    <state width="1237" height="42" key="GridCell.Tab.0.left" timestamp="1655922530810">
+    <state width="1237" height="274" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1655926138042" />
+    <state width="1237" height="274" key="GridCell.Tab.0.left" timestamp="1655926138042">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="42" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655922530810" />
-    <state width="1237" height="42" key="GridCell.Tab.0.right" timestamp="1655922530811">
+    <state width="1237" height="274" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1655926138042" />
+    <state width="1237" height="274" key="GridCell.Tab.0.right" timestamp="1655926138042">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="42" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655922530811" />
-    <state width="1237" height="42" key="GridCell.Tab.1.bottom" timestamp="1655922530811">
+    <state width="1237" height="274" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1655926138042" />
+    <state width="1237" height="274" key="GridCell.Tab.1.bottom" timestamp="1655926138043">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="42" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655922530811" />
-    <state width="1237" height="42" key="GridCell.Tab.1.center" timestamp="1655922530811">
+    <state width="1237" height="274" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1655926138043" />
+    <state width="1237" height="274" key="GridCell.Tab.1.center" timestamp="1655926138043">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="42" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1655922530811" />
-    <state width="1237" height="42" key="GridCell.Tab.1.left" timestamp="1655922530811">
+    <state width="1237" height="274" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1655926138043" />
+    <state width="1237" height="274" key="GridCell.Tab.1.left" timestamp="1655926138043">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="42" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1655922530811" />
-    <state width="1237" height="42" key="GridCell.Tab.1.right" timestamp="1655922530811">
+    <state width="1237" height="274" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1655926138043" />
+    <state width="1237" height="274" key="GridCell.Tab.1.right" timestamp="1655926138043">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="42" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1655922530811" />
+    <state width="1237" height="274" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1655926138043" />
     <state width="1237" height="42" key="GridCell.Tab.2.bottom" timestamp="1655922530811">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -732,10 +726,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="42" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1655922530811" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1655918400704">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1655922631714">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1655918400704" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1655922631714" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

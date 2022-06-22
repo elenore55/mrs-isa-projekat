@@ -3,7 +3,9 @@ Vue.component("cottage-reservations", {
         return {
             id: null,
             cottage: {},
-            input_started: false
+            input_started: false,
+            start: "",
+            end: ""
         }
     },
 
@@ -12,7 +14,6 @@ Vue.component("cottage-reservations", {
         $("body").css("background-color", "#f2e488");
         $("body").css("background-size", "100% 200%");
         this.id = this.$route.params.id;
-
         axios({
             method: "get",
             url: "api/cottages/getCottage/" + this.$route.params.id,
@@ -66,7 +67,7 @@ Vue.component("cottage-reservations", {
                 </div>
             </div>
         </div>
-        <reservations-calendar :offerId="$route.params.id" rangeStart="cottage.availableStart" :rangeEnd="cottage.availableEnd"></reservations-calendar>
+        <reservations-calendar :offerId="$route.params.id" :rangeStart="cottage.availableStart" :rangeEnd="cottage.availableEnd"></reservations-calendar>
     </div>
     `,
 
@@ -89,7 +90,7 @@ Vue.component("cottage-reservations", {
 
         getValidDate(date) {
             let arr = date.toString().split(',');
-            return new Date(parseInt(arr[0]), parseInt(arr[1]), parseInt(arr[2]) - 1, parseInt(arr[3]), parseInt(arr[4]));
+            return new Date(parseInt(arr[0]), parseInt(arr[1]), parseInt(arr[2]), parseInt(arr[3]), parseInt(arr[4]));
         }
     },
 
