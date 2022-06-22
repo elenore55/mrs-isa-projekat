@@ -4,12 +4,22 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="">
+    <list default="true" id="40ba84b1-d75b-4871-ab2e-141e0d13074f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/cache/.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageDetailedView2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ComplaintService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ComplaintService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/OfferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/OfferController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +45,10 @@
       <list>
         <option value="JavaScript File" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="spring-beans.schema" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -57,9 +69,9 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/cottageDetailedView.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/editProfile.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -77,6 +89,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -87,19 +100,17 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="C:/moja prethodna grana/mrs-isa-projekat-searchEntities" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Fakultet/Semestar6/ISA/ISA-SIIT-vezbe-2022/Vezbe07/cache-example" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\maps" />
-      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\reports" />
-      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\filters" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.demo.security.auth" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\js" />
@@ -108,8 +119,17 @@
       <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static" />
       <recent name="C:\Users\LENOVO\Desktop\faks\VI semestar\ISA\Projekat\mrs-isa-projekat\src\main\resources\static\app" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\maps" />
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\reports" />
+      <recent name="C:\Users\Milica\Desktop\Fakultet\Semestar6\ISA\Projekat\demo\src\main\resources\static\app\filters" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.demo.controller" />
+      <recent name="com.example.demo.service" />
+    </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.DemoApplication">
+  <component name="RunManager" selected="Application.DemoApplication">
     <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplication" />
       <module name="demo" />
@@ -123,12 +143,94 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="mvnw" type="ShConfigurationType" temporary="true">
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/mvnw" />
-      <option name="SCRIPT_OPTIONS" value="" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="INTERPRETER_PATH" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
+    <configuration name="AddressControllerTest.testGetCountries" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.controller.AddressControllerTest" />
+      <option name="METHOD_NAME" value="testGetCountries" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminControllerTest.testAddAdmin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.controller.AdminControllerTest" />
+      <option name="METHOD_NAME" value="testAddAdmin" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminControllerTest.testUpdateAdmin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.controller.AdminControllerTest" />
+      <option name="METHOD_NAME" value="testUpdateAdmin" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserControllerTest.testGetAllUsers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.controller.UserControllerTest" />
+      <option name="METHOD_NAME" value="testGetAllUsers" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="demo [-N,wrapper:wrapper]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="-N" />
+                <option value="wrapper:wrapper" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
       <method v="2" />
     </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -138,23 +240,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.DemoApplication" />
+      <item itemvalue="JUnit.AddressControllerTest.testGetCountries" />
+      <item itemvalue="JUnit.UserControllerTest.testGetAllUsers" />
+      <item itemvalue="JUnit.AdminControllerTest.testAddAdmin" />
+      <item itemvalue="JUnit.AdminControllerTest.testUpdateAdmin" />
+      <item itemvalue="Maven.demo [-N,wrapper:wrapper]" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Shell Script.mvnw" />
         <item itemvalue="Application.DemoApplication" />
-        <item itemvalue="Application.DemoApplication" />
-        <item itemvalue="Application.DemoApplication" />
-        <item itemvalue="Application.DemoApplication" />
+        <item itemvalue="JUnit.AdminControllerTest.testUpdateAdmin" />
+        <item itemvalue="JUnit.AdminControllerTest.testAddAdmin" />
+        <item itemvalue="JUnit.UserControllerTest.testGetAllUsers" />
+        <item itemvalue="JUnit.AddressControllerTest.testGetCountries" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="daecabf8-cb63-4262-b59c-c6d74003dcaf" name="Default Changelist" comment="" />
+      <changelist id="40ba84b1-d75b-4871-ab2e-141e0d13074f" name="Default Changelist" comment="" />
       <created>1649621033745</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -182,321 +292,8 @@
       <workItem from="1654366468195" duration="8158000" />
       <workItem from="1654502811918" duration="21916000" />
       <workItem from="1654803114806" duration="52939000" />
-    </task>
-    <task id="LOCAL-00105" summary="Prikaz profila klijenta">
-      <created>1653517615884</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1653517615884</updated>
-    </task>
-    <task id="LOCAL-00106" summary="#203.4 Omogucavanje prikaza profila klijenta koji je rezervisao vikendicu/brod">
-      <created>1653518272258</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1653518272258</updated>
-    </task>
-    <task id="LOCAL-00107" summary="#203.2 Prikaz svih rezervacija na kalendaru">
-      <created>1653520193174</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1653520193174</updated>
-    </task>
-    <task id="LOCAL-00108" summary="Kreirana komponenta za prikaz izvjestaja o prihodima">
-      <created>1653651029565</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1653651029566</updated>
-    </task>
-    <task id="LOCAL-00109" summary="#238.1 Izbor vremenskog perioda">
-      <created>1653652128029</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1653652128029</updated>
-    </task>
-    <task id="LOCAL-00110" summary="Kreiran IncomeReportDTO">
-      <created>1653652430461</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1653652430461</updated>
-    </task>
-    <task id="LOCAL-00111" summary="Izracunavanje za sve rezervacije">
-      <created>1653677632534</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1653677632535</updated>
-    </task>
-    <task id="LOCAL-00112" summary="Dodata provera datuma">
-      <created>1653677834022</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1653677834022</updated>
-    </task>
-    <task id="LOCAL-00113" summary="#238.2 Izracunavanje prihoda po vikendici/brodu">
-      <created>1653678931806</created>
-      <option name="number" value="00113" />
-      <option name="presentableId" value="LOCAL-00113" />
-      <option name="project" value="LOCAL" />
-      <updated>1653678931806</updated>
-    </task>
-    <task id="LOCAL-00114" summary="Prikaz osnovnih podataka">
-      <created>1653681885271</created>
-      <option name="number" value="00114" />
-      <option name="presentableId" value="LOCAL-00114" />
-      <option name="project" value="LOCAL" />
-      <updated>1653681885271</updated>
-    </task>
-    <task id="LOCAL-00115" summary="Update-ovanje grafika">
-      <created>1653683391120</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1653683391120</updated>
-    </task>
-    <task id="LOCAL-00116" summary="Namestene boje">
-      <created>1653685015314</created>
-      <option name="number" value="00116" />
-      <option name="presentableId" value="LOCAL-00116" />
-      <option name="project" value="LOCAL" />
-      <updated>1653685015315</updated>
-    </task>
-    <task id="LOCAL-00117" summary="#238.3 Prikaz rezultata izvestaja">
-      <created>1653918884300</created>
-      <option name="number" value="00117" />
-      <option name="presentableId" value="LOCAL-00117" />
-      <option name="project" value="LOCAL" />
-      <updated>1653918884300</updated>
-    </task>
-    <task id="LOCAL-00118" summary="Omoguceno listanje slika brodova i vikendica">
-      <created>1653927630688</created>
-      <option name="number" value="00118" />
-      <option name="presentableId" value="LOCAL-00118" />
-      <option name="project" value="LOCAL" />
-      <updated>1653927630688</updated>
-    </task>
-    <task id="LOCAL-00119" summary="Dodat navbar za vlasnika">
-      <created>1654012885827</created>
-      <option name="number" value="00119" />
-      <option name="presentableId" value="LOCAL-00119" />
-      <option name="project" value="LOCAL" />
-      <updated>1654012885827</updated>
-    </task>
-    <task id="LOCAL-00120" summary="Popravljen navbar za brodove i vikendice">
-      <created>1654013674087</created>
-      <option name="number" value="00120" />
-      <option name="presentableId" value="LOCAL-00120" />
-      <option name="project" value="LOCAL" />
-      <updated>1654013674087</updated>
-    </task>
-    <task id="LOCAL-00121" summary="Probna komponenta za mapu">
-      <created>1654335755714</created>
-      <option name="number" value="00121" />
-      <option name="presentableId" value="LOCAL-00121" />
-      <option name="project" value="LOCAL" />
-      <updated>1654335755715</updated>
-    </task>
-    <task id="LOCAL-00122" summary="Prikaz trazene adrese na mapi">
-      <created>1654376898657</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1654376898657</updated>
-    </task>
-    <task id="LOCAL-00123" summary="Dodata mapa na profil vikedice">
-      <created>1654513748824</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1654513748824</updated>
-    </task>
-    <task id="LOCAL-00124" summary="Dodata mapa na profil broda">
-      <created>1654520979409</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1654520979409</updated>
-    </task>
-    <task id="LOCAL-00125" summary="#217.1 Forma za unos stare i nove lozinke">
-      <created>1654527718988</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1654527718989</updated>
-    </task>
-    <task id="LOCAL-00126" summary="Provjera poklavanje nove i potvrdjene nove lozinke">
-      <created>1654527976959</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1654527976959</updated>
-    </task>
-    <task id="LOCAL-00127" summary="#217.2 Validacija podataka">
-      <created>1654528256981</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1654528256981</updated>
-    </task>
-    <task id="LOCAL-00128" summary="#217.3 Cuvanje nove lozinke">
-      <created>1654535135033</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1654535135033</updated>
-    </task>
-    <task id="LOCAL-00129" summary="#237.1 Forma za unos vremenskog opsega">
-      <created>1654535690228</created>
-      <option name="number" value="00129" />
-      <option name="presentableId" value="LOCAL-00129" />
-      <option name="project" value="LOCAL" />
-      <updated>1654535690228</updated>
-    </task>
-    <task id="LOCAL-00130" summary="Kreiran VisitReportDTO">
-      <created>1654536278132</created>
-      <option name="number" value="00130" />
-      <option name="presentableId" value="LOCAL-00130" />
-      <option name="project" value="LOCAL" />
-      <updated>1654536278132</updated>
-    </task>
-    <task id="LOCAL-00131" summary="Slanje axios poziva">
-      <created>1654536810237</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1654536810237</updated>
-    </task>
-    <task id="LOCAL-00132" summary="Filtriranje rezultata za vikendice">
-      <created>1654537226586</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1654537226587</updated>
-    </task>
-    <task id="LOCAL-00133" summary="#237.2 Filtriranje podataka">
-      <created>1654537424534</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1654537424534</updated>
-    </task>
-    <task id="LOCAL-00134" summary="Iscrtavanje praznog grafika">
-      <created>1654539623610</created>
-      <option name="number" value="00134" />
-      <option name="presentableId" value="LOCAL-00134" />
-      <option name="project" value="LOCAL" />
-      <updated>1654539623610</updated>
-    </task>
-    <task id="LOCAL-00135" summary="#237.3 Iscrtavanje grafika">
-      <created>1654539865188</created>
-      <option name="number" value="00135" />
-      <option name="presentableId" value="LOCAL-00135" />
-      <option name="project" value="LOCAL" />
-      <updated>1654539865188</updated>
-    </task>
-    <task id="LOCAL-00136" summary="Prikaz modalnog dijaloga za unos izvestaja">
-      <created>1654805455781</created>
-      <option name="number" value="00136" />
-      <option name="presentableId" value="LOCAL-00136" />
-      <option name="project" value="LOCAL" />
-      <updated>1654805455782</updated>
-    </task>
-    <task id="LOCAL-00137" summary="Validacija za izvjestaj o klijentu">
-      <created>1654806413473</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1654806413473</updated>
-    </task>
-    <task id="LOCAL-00138" summary="#211.1 Forma za unos izvestaja o zavrsenoj rezervaciji">
-      <created>1654807590439</created>
-      <option name="number" value="00138" />
-      <option name="presentableId" value="LOCAL-00138" />
-      <option name="project" value="LOCAL" />
-      <updated>1654807590440</updated>
-    </task>
-    <task id="LOCAL-00139" summary="Kreiran ClientReviewDTO">
-      <created>1654810791600</created>
-      <option name="number" value="00139" />
-      <option name="presentableId" value="LOCAL-00139" />
-      <option name="project" value="LOCAL" />
-      <updated>1654810791600</updated>
-    </task>
-    <task id="LOCAL-00140" summary="#211.3 Cuvanje podataka">
-      <created>1654812959922</created>
-      <option name="number" value="00140" />
-      <option name="presentableId" value="LOCAL-00140" />
-      <option name="project" value="LOCAL" />
-      <updated>1654812959922</updated>
-    </task>
-    <task id="LOCAL-00141" summary="#211.4 Slanje maila administratoru u slucaju zahteva za sankcionisanje">
-      <created>1654814146287</created>
-      <option name="number" value="00141" />
-      <option name="presentableId" value="LOCAL-00141" />
-      <option name="project" value="LOCAL" />
-      <updated>1654814146287</updated>
-    </task>
-    <task id="LOCAL-00142" summary="#236.1 Forma za unos vremenskog perioda">
-      <created>1654846535683</created>
-      <option name="number" value="00142" />
-      <option name="presentableId" value="LOCAL-00142" />
-      <option name="project" value="LOCAL" />
-      <updated>1654846535683</updated>
-    </task>
-    <task id="LOCAL-00143" summary="Dodat priceHistory u Offer">
-      <created>1654849750416</created>
-      <option name="number" value="00143" />
-      <option name="presentableId" value="LOCAL-00143" />
-      <option name="project" value="LOCAL" />
-      <updated>1654849750416</updated>
-    </task>
-    <task id="LOCAL-00144" summary="Upisivanje istorije cijena iz SQL">
-      <created>1654852010161</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
-      <option name="project" value="LOCAL" />
-      <updated>1654852010162</updated>
-    </task>
-    <task id="LOCAL-00145" summary="#236.3 Graficki prikaz rezultata">
-      <created>1654857933953</created>
-      <option name="number" value="00145" />
-      <option name="presentableId" value="LOCAL-00145" />
-      <option name="project" value="LOCAL" />
-      <updated>1654857933953</updated>
-    </task>
-    <task id="LOCAL-00146" summary="#236.2 Filtriranje podataka">
-      <created>1654862273817</created>
-      <option name="number" value="00146" />
-      <option name="presentableId" value="LOCAL-00146" />
-      <option name="project" value="LOCAL" />
-      <updated>1654862273818</updated>
-    </task>
-    <task id="LOCAL-00147" summary="Dnevni, sedmicni i mjesecni izvjestaji">
-      <created>1654877797499</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
-      <option name="project" value="LOCAL" />
-      <updated>1654877797499</updated>
-    </task>
-    <task id="LOCAL-00148" summary="Prikaz datuma od ponedeljka">
-      <created>1654899533662</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1654899533663</updated>
-    </task>
-    <task id="LOCAL-00149" summary="Dodati navbar linkovi za sve izvjestaje">
-      <created>1654942772794</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
-      <option name="project" value="LOCAL" />
-      <updated>1654942772794</updated>
+      <workItem from="1655406817526" duration="2736000" />
+      <workItem from="1655583368904" duration="27284000" />
     </task>
     <task id="LOCAL-00150" summary="MouseOver i MouseLeave za kartice">
       <created>1654944453481</created>
@@ -519,117 +316,382 @@
       <option name="project" value="LOCAL" />
       <updated>1654951789121</updated>
     </task>
-    <task id="LOCAL-00153" summary="Opsta podesavanja za security">
-      <created>1655301754764</created>
+    <task id="LOCAL-00153" summary="Izmijenjen WebConfig">
+      <created>1655309184674</created>
       <option name="number" value="00153" />
       <option name="presentableId" value="LOCAL-00153" />
       <option name="project" value="LOCAL" />
-      <updated>1655301754765</updated>
+      <updated>1655309184674</updated>
     </task>
-    <option name="localTasksCounter" value="154" />
+    <task id="LOCAL-00154" summary="Preusmjeravanje na odgovarajucu stranicu poslije logina">
+      <created>1655408718306</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1655408718306</updated>
+    </task>
+    <task id="LOCAL-00155" summary="Ignorisanje filtera za resurse">
+      <created>1655409391212</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1655409391212</updated>
+    </task>
+    <task id="LOCAL-00156" summary="Cuvanje tokena u localStorage">
+      <created>1655411840468</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1655411840468</updated>
+    </task>
+    <task id="LOCAL-00157" summary="Slanje tokena za prikaz vikendica">
+      <created>1655419632606</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1655419632606</updated>
+    </task>
+    <task id="LOCAL-00158" summary="Ispravljeni axios pozivi kod cottagesViewOwner.js">
+      <created>1655421247192</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1655421247192</updated>
+    </task>
+    <task id="LOCAL-00159" summary="Dodate PreAuthorize anotacije u CottageOwnerController">
+      <created>1655421380754</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1655421380754</updated>
+    </task>
+    <task id="LOCAL-00160" summary="Slanje JWT u headeru">
+      <created>1655464921048</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1655464921048</updated>
+    </task>
+    <task id="LOCAL-00161" summary="Slanje JWT u headeru za izvjestaje">
+      <created>1655465358366</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1655465358366</updated>
+    </task>
+    <task id="LOCAL-00162" summary="Uklonjen id korisnika iz putanje">
+      <created>1655466281448</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
+      <option name="project" value="LOCAL" />
+      <updated>1655466281448</updated>
+    </task>
+    <task id="LOCAL-00163" summary="Ispravljen prikaz datuma za istoriju rezervacija">
+      <created>1655469524952</created>
+      <option name="number" value="00163" />
+      <option name="presentableId" value="LOCAL-00163" />
+      <option name="project" value="LOCAL" />
+      <updated>1655469524952</updated>
+    </task>
+    <task id="LOCAL-00164" summary="Bugfix">
+      <created>1655477745236</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1655477745236</updated>
+    </task>
+    <task id="LOCAL-00165" summary="Test za CottageService">
+      <created>1655504860807</created>
+      <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
+      <option name="project" value="LOCAL" />
+      <updated>1655504860807</updated>
+    </task>
+    <task id="LOCAL-00166" summary="Izdvojeno izracunavanje izvjestaja u zasebne klase">
+      <created>1655505961021</created>
+      <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
+      <option name="project" value="LOCAL" />
+      <updated>1655505961021</updated>
+    </task>
+    <task id="LOCAL-00167" summary="CottageOwnerServiceTest">
+      <created>1655583401931</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
+      <option name="project" value="LOCAL" />
+      <updated>1655583401932</updated>
+    </task>
+    <task id="LOCAL-00168" summary="Izmijenjeni kredencijali za bazu">
+      <created>1655584042270</created>
+      <option name="number" value="00168" />
+      <option name="presentableId" value="LOCAL-00168" />
+      <option name="project" value="LOCAL" />
+      <updated>1655584042270</updated>
+    </task>
+    <task id="LOCAL-00169" summary="Rebuildovan projekat">
+      <created>1655584399452</created>
+      <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
+      <option name="project" value="LOCAL" />
+      <updated>1655584399453</updated>
+    </task>
+    <task id="LOCAL-00170" summary="Promijenjena verzija jave">
+      <created>1655584644477</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1655584644477</updated>
+    </task>
+    <task id="LOCAL-00171" summary="Dodat plugin">
+      <created>1655584905869</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1655584905869</updated>
+    </task>
+    <task id="LOCAL-00172" summary="Test za filtriranje vikendica">
+      <created>1655622610442</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1655622610442</updated>
+    </task>
+    <task id="LOCAL-00173" summary="Test za izvjestaje">
+      <created>1655625146115</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1655625146115</updated>
+    </task>
+    <task id="LOCAL-00174" summary="CottageControllerTest">
+      <created>1655631532568</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1655631532568</updated>
+    </task>
+    <task id="LOCAL-00175" summary="CottageOwnerControllerTest">
+      <created>1655632512803</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1655632512803</updated>
+    </task>
+    <task id="LOCAL-00176" summary="ShipOwnerControllerTest">
+      <created>1655635877417</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1655635877417</updated>
+    </task>
+    <task id="LOCAL-00177" summary="Dodat travis.yml">
+      <created>1655649683587</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1655649683589</updated>
+    </task>
+    <task id="LOCAL-00178" summary="Izmijenjen travis.yml">
+      <created>1655652832175</created>
+      <option name="number" value="00178" />
+      <option name="presentableId" value="LOCAL-00178" />
+      <option name="project" value="LOCAL" />
+      <updated>1655652832176</updated>
+    </task>
+    <task id="LOCAL-00179" summary="Dodat maven wrapper">
+      <created>1655654682587</created>
+      <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
+      <option name="project" value="LOCAL" />
+      <updated>1655654682588</updated>
+    </task>
+    <task id="LOCAL-00180" summary="skip tests">
+      <created>1655656560389</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1655656560390</updated>
+    </task>
+    <task id="LOCAL-00181" summary="update readme">
+      <created>1655659591729</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1655659591730</updated>
+    </task>
+    <task id="LOCAL-00182" summary="Merge branch 'security_st2' into locking&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;demo.iml&#10;#&#9;pom.xml&#10;#&#9;src/main/java/com/example/demo/controller/CottageController.java&#10;#&#9;src/main/resources/data-postgres.sql&#10;#&#9;src/main/resources/static/app/addReservation.js&#10;#&#9;target/classes/data-postgres.sql">
+      <created>1655738055361</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1655738055362</updated>
+    </task>
+    <task id="LOCAL-00183" summary="Dodati headeri">
+      <created>1655752185420</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1655752185420</updated>
+    </task>
+    <task id="LOCAL-00184" summary="Kesiranje broda i vikendice">
+      <created>1655769021708</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
+      <option name="project" value="LOCAL" />
+      <updated>1655769021708</updated>
+    </task>
+    <task id="LOCAL-00185" summary="Promjena lozinke">
+      <created>1655772350055</created>
+      <option name="number" value="00185" />
+      <option name="presentableId" value="LOCAL-00185" />
+      <option name="project" value="LOCAL" />
+      <updated>1655772350055</updated>
+    </task>
+    <task id="LOCAL-00186" summary="Izbacen localhost iz putanja">
+      <created>1655776238849</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1655776238849</updated>
+    </task>
+    <task id="LOCAL-00187" summary="Brisanje akcija">
+      <created>1655776807172</created>
+      <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
+      <option name="project" value="LOCAL" />
+      <updated>1655776807172</updated>
+    </task>
+    <task id="LOCAL-00188" summary="Ispravljeni testovi">
+      <created>1655778124137</created>
+      <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
+      <option name="project" value="LOCAL" />
+      <updated>1655778124137</updated>
+    </task>
+    <task id="LOCAL-00189" summary="Vracen cache">
+      <created>1655779239851</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
+      <option name="project" value="LOCAL" />
+      <updated>1655779239851</updated>
+    </task>
+    <task id="LOCAL-00190" summary="Ispravljen add i update">
+      <created>1655798838912</created>
+      <option name="number" value="00190" />
+      <option name="presentableId" value="LOCAL-00190" />
+      <option name="project" value="LOCAL" />
+      <updated>1655798838912</updated>
+    </task>
+    <task id="LOCAL-00191" summary="Ispravljeno brisanje akcija">
+      <created>1655799955243</created>
+      <option name="number" value="00191" />
+      <option name="presentableId" value="LOCAL-00191" />
+      <option name="project" value="LOCAL" />
+      <updated>1655799955243</updated>
+    </task>
+    <task id="LOCAL-00192" summary="Ispravljeni testovi">
+      <created>1655804637616</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
+      <option name="project" value="LOCAL" />
+      <updated>1655804637616</updated>
+    </task>
+    <task id="LOCAL-00193" summary="Dodaj brojac akcija u Offer">
+      <created>1655805176467</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1655805176467</updated>
+    </task>
+    <task id="LOCAL-00194" summary="Dodatne usluge za brze rezervacije">
+      <created>1655807948515</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
+      <option name="project" value="LOCAL" />
+      <updated>1655807948515</updated>
+    </task>
+    <task id="LOCAL-00195" summary="Sortiranje po ratingu">
+      <created>1655809022069</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
+      <option name="project" value="LOCAL" />
+      <updated>1655809022069</updated>
+    </task>
+    <task id="LOCAL-00196" summary="Odlazak na profil klijenta iz ratinga">
+      <created>1655811019735</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1655811019735</updated>
+    </task>
+    <task id="LOCAL-00197" summary="Ispravljen prikaz slika">
+      <created>1655811278070</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1655811278070</updated>
+    </task>
+    <task id="LOCAL-00198" summary="spojena security st 1 ma cache">
+      <created>1655820130990</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
+      <option name="project" value="LOCAL" />
+      <updated>1655820130990</updated>
+    </task>
+    <option name="localTasksCounter" value="199" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="#237.1 Forma za unos vremenskog opsega" />
-    <MESSAGE value="Kreiran VisitReportDTO" />
-    <MESSAGE value="Slanje axios poziva" />
-    <MESSAGE value="Filtriranje rezultata za vikendice" />
-    <MESSAGE value="#237.2 Filtriranje podataka" />
-    <MESSAGE value="Iscrtavanje praznog grafika" />
-    <MESSAGE value="#237.3 Iscrtavanje grafika" />
-    <MESSAGE value="Prikaz modalnog dijaloga za unos izvestaja" />
-    <MESSAGE value="Validacija za izvjestaj o klijentu" />
-    <MESSAGE value="#211.1 Forma za unos izvestaja o zavrsenoj rezervaciji" />
-    <MESSAGE value="Kreiran ClientReviewDTO" />
-    <MESSAGE value="#211.3 Cuvanje podataka" />
-    <MESSAGE value="#211.4 Slanje maila administratoru u slucaju zahteva za sankcionisanje" />
-    <MESSAGE value="#236.1 Forma za unos vremenskog perioda" />
-    <MESSAGE value="Dodat priceHistory u Offer" />
-    <MESSAGE value="Upisivanje istorije cijena iz SQL" />
-    <MESSAGE value="#236.3 Graficki prikaz rezultata" />
-    <MESSAGE value="#236.2 Filtriranje podataka" />
-    <MESSAGE value="Dnevni, sedmicni i mjesecni izvjestaji" />
-    <MESSAGE value="Prikaz datuma od ponedeljka" />
-    <MESSAGE value="Dodati navbar linkovi za sve izvjestaje" />
-    <MESSAGE value="MouseOver i MouseLeave za kartice" />
-    <MESSAGE value="Onemoguceno azuriranje rezervisanih vikendica i brodova" />
-    <MESSAGE value="Prikaz ratinga" />
-    <MESSAGE value="Opsta podesavanja za security" />
-    <option name="LAST_COMMIT_MESSAGE" value="Opsta podesavanja za security" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1237" height="192" key="GridCell.Tab.0.bottom" timestamp="1655302756291">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="192" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1655302756291" />
-    <state width="1237" height="192" key="GridCell.Tab.0.center" timestamp="1655302756291">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="192" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1655302756291" />
-    <state width="1237" height="192" key="GridCell.Tab.0.left" timestamp="1655302756291">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="192" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1655302756291" />
-    <state width="1237" height="192" key="GridCell.Tab.0.right" timestamp="1655302756291">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="192" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1655302756291" />
-    <state width="1237" height="192" key="GridCell.Tab.1.bottom" timestamp="1655302776734">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="192" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1655302776734" />
-    <state width="1237" height="192" key="GridCell.Tab.1.center" timestamp="1655302776733">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="192" key="GridCell.Tab.1.center/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1655302776733" />
-    <state width="1237" height="192" key="GridCell.Tab.1.left" timestamp="1655302776733">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="192" key="GridCell.Tab.1.left/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1655302776733" />
-    <state width="1237" height="192" key="GridCell.Tab.1.right" timestamp="1655302776733">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="192" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1655302776733" />
-    <state width="1237" height="192" key="GridCell.Tab.2.bottom" timestamp="1655302756008">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="192" key="GridCell.Tab.2.bottom/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1655302756008" />
-    <state width="1237" height="192" key="GridCell.Tab.2.center" timestamp="1655302756008">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="192" key="GridCell.Tab.2.center/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1655302756008" />
-    <state width="1237" height="192" key="GridCell.Tab.2.left" timestamp="1655302756008">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="192" key="GridCell.Tab.2.left/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1655302756008" />
-    <state width="1237" height="192" key="GridCell.Tab.2.right" timestamp="1655302756008">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="192" key="GridCell.Tab.2.right/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1655302756008" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Test za izvjestaje" />
+    <MESSAGE value="CottageControllerTest" />
+    <MESSAGE value="CottageOwnerControllerTest" />
+    <MESSAGE value="ShipOwnerControllerTest" />
+    <MESSAGE value="Dodat travis.yml" />
+    <MESSAGE value="Izmijenjen travis.yml" />
+    <MESSAGE value="Dodat maven wrapper" />
+    <MESSAGE value="skip tests" />
+    <MESSAGE value="update readme" />
+    <MESSAGE value="Merge branch 'security_st2' into locking&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;demo.iml&#10;#&#9;pom.xml&#10;#&#9;src/main/java/com/example/demo/controller/CottageController.java&#10;#&#9;src/main/resources/data-postgres.sql&#10;#&#9;src/main/resources/static/app/addReservation.js&#10;#&#9;target/classes/data-postgres.sql" />
+    <MESSAGE value="Dodati headeri" />
+    <MESSAGE value="Kesiranje broda i vikendice" />
+    <MESSAGE value="Promjena lozinke" />
+    <MESSAGE value="Izbacen localhost iz putanja" />
+    <MESSAGE value="Brisanje akcija" />
+    <MESSAGE value="Vracen cache" />
+    <MESSAGE value="Ispravljen add i update" />
+    <MESSAGE value="Ispravljeno brisanje akcija" />
+    <MESSAGE value="Ispravljeni testovi" />
+    <MESSAGE value="Dodaj brojac akcija u Offer" />
+    <MESSAGE value="Dodatne usluge za brze rezervacije" />
+    <MESSAGE value="Sortiranje po ratingu" />
+    <MESSAGE value="Odlazak na profil klijenta iz ratinga" />
+    <MESSAGE value="Ispravljen prikaz slika" />
+    <MESSAGE value="spojena security st 1 ma cache" />
+    <option name="LAST_COMMIT_MESSAGE" value="spojena security st 1 ma cache" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/RegistrationRequestController.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

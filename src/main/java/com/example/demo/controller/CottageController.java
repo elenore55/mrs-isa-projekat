@@ -2,12 +2,15 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.*;
 import com.example.demo.model.*;
+import com.example.demo.service.AddressService;
 import com.example.demo.service.CottageOwnerService;
 import com.example.demo.service.CottageService;
 import com.example.demo.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -21,16 +24,19 @@ public class CottageController {
     private CottageService cottageService;
     private CottageOwnerService cottageOwnerService;
     private RoomService roomService;
+    private AddressService addressService;
 
     @Autowired
-    public CottageController(CottageService cottageService, CottageOwnerService cottageOwnerService, RoomService roomService) {
+    public CottageController(CottageService cottageService, CottageOwnerService cottageOwnerService, RoomService roomService, AddressService addressService) {
         this.cottageService = cottageService;
         this.cottageOwnerService = cottageOwnerService;
         this.roomService = roomService;
+        this.addressService = addressService;
     }
 
     @ResponseBody
     @RequestMapping(path = "/getCottage/{id}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'ADMIN','CLIENT')")
     public ResponseEntity<CottageDTO> getCottage(@PathVariable Integer id) {
         Cottage cottage = cottageService.findOne(id);
         if (cottage == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -60,6 +66,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/addCottage", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<CottageDTO> saveCottage(@RequestBody CottageDTO cottageDTO) {
         Cottage cottage = new Cottage();
         setAttributes(cottage, cottageDTO);
@@ -69,6 +76,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/getCottageImages/{id}", method = RequestMethod.GET, produces = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<List<String>> getCottageImages(@PathVariable Integer id) {
         Cottage cottage = cottageService.findOne(id);
         if (cottage == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -81,6 +89,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/updateCottage", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<CottageDTO> updateCottage(@RequestBody CottageDTO cottageDTO) {
         Cottage cottage = cottageService.findOne(cottageDTO.getId());
         if (cottage == null) {
@@ -101,6 +110,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/updateCottageImages", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<CottageDTO> updateCottageImages(@RequestBody CottageDTO cottageDTO) {
         Cottage cottage = cottageService.findOne(cottageDTO.getId());
         if (cottage == null) {
@@ -116,6 +126,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/updateReservationPeriod", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<CottageDTO> updateReservationPeriod(@RequestBody CottageDTO cottageDTO) {
         Cottage cottage = cottageService.findOne(cottageDTO.getId());
         if (cottage == null) {
@@ -130,6 +141,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/deleteCottage/{id}", method = RequestMethod.DELETE)
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<Void> deleteCottage(@PathVariable Integer id) {
         Cottage cottage = cottageService.findOne(id);
         if (cottage == null)
@@ -188,6 +200,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/addFastReservation/{id}", method = RequestMethod.POST, consumes = "application/json")
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<FastReservationDTO> addFastReservation(@PathVariable Integer id, @RequestBody FastReservationDTO dto) {
         Cottage c = cottageService.findOne(id);
         if (c == null)
@@ -202,6 +215,7 @@ public class CottageController {
         fr.setMaxPeople(dto.getMaxPeople());
         res.add(fr);
         c.setFastReservations(res);
+        c.incNumberOfFastReservations();
         cottageService.save(c);
         cottageService.notifySubscribers(c);
         return new ResponseEntity<>(dto, HttpStatus.OK);
@@ -209,6 +223,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/deleteFastReservation/{cottageId}/{id}", method = RequestMethod.DELETE)
+    @PreAuthorize("hasRole('COTTAGE')")
     public ResponseEntity<Void> deleteFastReservation(@PathVariable Integer cottageId, @PathVariable Integer id) {
         Cottage c = cottageService.findOne(cottageId);
         if (c == null)
@@ -226,30 +241,34 @@ public class CottageController {
     }
 
     private void setAttributes(Cottage cottage, CottageDTO cottageDTO) {
-        cottage.setId(cottageDTO.getId());
         cottage.setName(cottageDTO.getName());
         cottage.setDescription(cottageDTO.getDescription());
-        Address address = cottage.getAddress();
-        if (address == null) address = new Address();
-        address.setStreet(cottageDTO.getAddress().getStreet());
-        address.setCity(cottageDTO.getAddress().getCity());
-        address.setCountry(cottageDTO.getAddress().getCountry());
+
+        Address address = addressService.getAddress(new Address(cottageDTO.getAddress().getStreet(),
+                cottageDTO.getAddress().getCity(), cottageDTO.getAddress().getCountry()));
         cottage.setAddress(address);
         cottage.setPriceList(cottageDTO.getPrice());
 
+        List<PriceList> priceHistory = new ArrayList<>();
         if (cottage.getPriceHistory() == null || cottage.getPriceHistory().size() == 0) {
-            List<PriceList> priceHistory = new ArrayList<>();
             priceHistory.add(new PriceList(LocalDate.now(), cottageDTO.getPrice()));
-            cottage.setPriceHistory(priceHistory);
+            cottage.setNumberOfPriceLists(1);
         } else {
-            List<PriceList> priceHistory = cottage.getPriceHistory();
+            for (PriceList pl : cottage.getPriceHistory()) {
+                PriceList p = new PriceList();
+                p.setAmount(pl.getAmount());
+                p.setEndDate(pl.getEndDate());
+                p.setStartDate(pl.getStartDate());
+                priceHistory.add(p);
+            }
             PriceList last = priceHistory.get(priceHistory.size() - 1);
             if (!last.getAmount().equals(cottageDTO.getPrice())) {
                 PriceList newPrice = new PriceList(LocalDate.now(), cottageDTO.getPrice());
                 priceHistory.add(newPrice);
-                cottage.setPriceHistory(priceHistory);
             }
+            cottage.setNumberOfPriceLists(cottage.getPriceHistory().size());
         }
+        cottage.setPriceHistory(priceHistory);
 
         List<Rule> rules = new ArrayList<>();
         for (String ruleText : cottageDTO.getRules()) rules.add(new Rule(ruleText));
