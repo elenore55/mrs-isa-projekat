@@ -36,7 +36,7 @@ public class CottageController {
 
     @ResponseBody
     @RequestMapping(path = "/getCottage/{id}", method = RequestMethod.GET, produces = "application/json")
-    @PreAuthorize("hasRole('COTTAGE')")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'ADMIN','CLIENT')")
     public ResponseEntity<CottageDTO> getCottage(@PathVariable Integer id) {
         Cottage cottage = cottageService.findOne(id);
         if (cottage == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);

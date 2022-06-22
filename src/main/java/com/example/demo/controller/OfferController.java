@@ -59,7 +59,7 @@ public class OfferController {
 
     @ResponseBody
     @RequestMapping(path = "/addFastReservation/{id}", method = RequestMethod.POST, consumes = "application/json")
-    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP')")
+    @PreAuthorize("hasAnyRole('COTTAGE', 'SHIP', 'ADMIN','CLIENT', 'ADVENTURE')")
     public ResponseEntity<FastReservationDTO> addFastReservation(@PathVariable Integer id, @RequestBody FastReservationDTO dto) {
         Offer o = offerService.findOne(id);
         if (o == null)

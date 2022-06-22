@@ -43,6 +43,7 @@ const DeleteProfileMessage = {template: '<delete-profile-message></delete-profil
 const EditProfileMessage = {template: '<edit-profile-message></edit-profile-message>'};
 const ChangePassword = {template: '<change-password></change-password>'};
 const CottageDetailedView = {template: '<cottage-detailed-view></cottage-detailed-view>'};
+const CottageDetailedView2 = {template: '<cottage-detailed-view2></cottage-detailed-view2>'};
 const ShipDetailedView = {template: '<ship-detailed-view></ship-detailed-view>'};
 const UnregisteredNavbar = {template: '<unregistered-navbar></unregistered-navbar>'};
 const InstructorsAdventures = {template: '<instructors-adventures></instructors-adventures>'};
@@ -225,6 +226,10 @@ const router = new VueRouter({
         {
             path: "/cottageDetailedView/:id/:fromDate/:toDate",
             component: CottageDetailedView
+        },
+        {
+            path: "/cottageDetailedView2/:id/:fromDate/:toDate",
+            component: CottageDetailedView2
         },
         {
             path: "/upcomingReservations/:id",

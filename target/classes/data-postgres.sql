@@ -158,7 +158,7 @@ insert into ship_images (ship_id, images_id) values (1, 20);
 insert into ship_images (ship_id, images_id) values (5, 13);
 insert into ship_images (ship_id, images_id) values (9, 15);
 
-insert into profile_data (email, name, password, phone_number, surname, address_id) values ('milica.popovic55@hotmail.com', 'Marko', '$2a$10$4BdHmh6h4Y7BMm1ysD7pl.8EQSNKEG0nmJaqebJlGVh4.H.nQy1aa', '066-321-3443', 'Markovic', 3);
+insert into profile_data (email, name, password, phone_number, surname, address_id) values ('m@m', 'Marko', '$2a$10$4BdHmh6h4Y7BMm1ysD7pl.8EQSNKEG0nmJaqebJlGVh4.H.nQy1aa', '066-321-3443', 'Markovic', 3);
 insert into my_users (category,number_of_points,profile_data_id,role_id) values ('REGULAR',0, 5, 1);
 insert into client (id) values (5);
 

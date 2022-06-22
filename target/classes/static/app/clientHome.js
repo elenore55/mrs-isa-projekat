@@ -14,8 +14,8 @@ Vue.component("client-home", {
              sortBy: "",
              sortByList: ["...", "Name", "Rate", "Country", "City", "Price"],
              direction: "",
-             fromDate: "",
-             toDate: "",
+             fromDate: 7,
+             toDate: 7,
              error_date: false,
              error_radio: false,
              cottage_pictures: [],
@@ -148,7 +148,7 @@ mounted() {
                                  <div class="col-4 flex-column mt-auto mx-auto py-2">
                                      <p class="">Price: {{c.price}} EUR</p>
                                      <div class="text-center">
-                                         <a :href="'/#/cottageDetailedView/' + c.id + '/' + fromDate + '/' + toDate" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
+                                         <a :href="'/index.html#/cottageDetailedView2/' + c.id + '/' + 7 + '/' + 7" class="btn btn-primary me-3 mt-3" style="height:40px;width:100px;">View</a>
                                      </div>
                                 </div>
                             </div>
@@ -248,7 +248,7 @@ methods: {
                         Authorization: "Bearer " + this.token.accessToken
                     }
                 }).then(response => {
-                alert("Duzina dobavljenih vikendica je " + response.data.length);
+                //alert("Duzina dobavljenih vikendica je " + response.data.length);
                     this.cottages = response.data;
                         for (const c of this.cottages) {
                             if (!c.imagePaths || c.imagePaths.length === 0) {
@@ -285,7 +285,7 @@ methods: {
                     Authorization: "Bearer " + this.token.accessToken
                 }
             }).then(response => {
-                alert("Duzina dobavljenih brodova je " + response.data.length);
+                //alert("Duzina dobavljenih brodova je " + response.data.length);
                 for (const s of this.ships) {
                      if (!s.imagePaths || s.imagePaths.length === 0) {
                          this.ship_pictures.push(this.default_ship);

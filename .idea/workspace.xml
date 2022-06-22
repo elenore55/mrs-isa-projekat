@@ -5,15 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40ba84b1-d75b-4871-ab2e-141e0d13074f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/controller/AddressControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/controller/AdminControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/controller/ShipControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cache/.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app/cottageDetailedView2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/ship_ed43a8a09e9ba56d3804e6a7a1e00adc332624b1/offheap-disk-store/ehcache-disk-store.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ShipController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ShipService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ShipService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" beforeDir="false" afterPath="$PROJECT_DIR$/cache/file/cottage_beae53628764e6ddb4f5458f6e0ee5d492e4d058/offheap-disk-store/ehcache-disk-store.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/OfferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/OfferController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app/clientHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/app/clientHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/app/clientHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,19 +129,16 @@
       <recent name="com.example.demo.service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AdminControllerTest.testUpdateAdmin">
-    <configuration name="AddressControllerTest.testGetCities" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.DemoApplication">
+    <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplication" />
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.demo.controller.*" />
+          <option name="PATTERN" value="com.example.demo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.controller.AddressControllerTest" />
-      <option name="METHOD_NAME" value="testGetCities" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -238,20 +241,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Maven.demo [-N,wrapper:wrapper]" />
-      <item itemvalue="JUnit.AddressControllerTest.testGetCities" />
+      <item itemvalue="Application.DemoApplication" />
       <item itemvalue="JUnit.AddressControllerTest.testGetCountries" />
       <item itemvalue="JUnit.UserControllerTest.testGetAllUsers" />
       <item itemvalue="JUnit.AdminControllerTest.testAddAdmin" />
       <item itemvalue="JUnit.AdminControllerTest.testUpdateAdmin" />
+      <item itemvalue="Maven.demo [-N,wrapper:wrapper]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DemoApplication" />
         <item itemvalue="JUnit.AdminControllerTest.testUpdateAdmin" />
         <item itemvalue="JUnit.AdminControllerTest.testAddAdmin" />
         <item itemvalue="JUnit.UserControllerTest.testGetAllUsers" />
         <item itemvalue="JUnit.AddressControllerTest.testGetCountries" />
-        <item itemvalue="JUnit.AddressControllerTest.testGetCities" />
       </list>
     </recent_temporary>
   </component>
@@ -685,11 +688,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/CottageController.java</url>
           <line>60</line>
